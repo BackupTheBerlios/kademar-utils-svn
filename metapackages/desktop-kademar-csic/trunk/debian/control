@@ -1,0 +1,15 @@
+Source: desktop-kademar-csic
+Section: metapackages
+Priority: optional
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 6)
+Standards-Version: 3.7.3
+Homepage: http://www.kademar.org
+
+Package: desktop-kademar-csic
+Architecture: all
+Depends: desktop-kademar-leo|desktop-kademar-lyra|desktop-kademar-lxde, kademar-csic, eviacam, dasher, pidgin-festival|festival-gaim, yasr, orca|gnome-orca, screenlets, keytouch, keytouch-editor, adriane-common, adriane-config, adriane-contacts, adriane-doc, adriane-note, adriane-print, adriane-edit, adriane-mount, adriane-multimedia, adriane-ocr, adriane-screenreader, adriane-setup, adriane-shutdown, adriane-sms, adriane-x, kmousetool, kmag, kademar-audacious-skins, openoffice.org, openoffice.org-gnome, gimp, amsn, amule, aircrack-ng, foo2zjs, foomatic-db, foomatic-db-engine, foomatic-db-gutenprint,  foomatic-filters, foomatic-filters-ppds, gstreamer0.10-pulseaudio, gtk-theme-switch, kde-style-klearlook, kde-icons-oxygen, iceweasel, iceweasel-l10n-ca, iceweasel-l10n-es-es, openoffice.org-l10n-es, openoffice.org-l10n-ca, myspell-ca, myspell-es, myspell-en-gb, myspell-fr, pidgin, audacity,  gtk2-engines-geramik|gnome-themes, gksu, mozplugger, icedove|mozilla-thunderbird|thunderbird, icedove-l10n-ca, icedove-l10n-es-es, icedove-l10n-en-gb, foomatic-db-hpijs, openprinting-ppds, paman, paprefs, hpijs-ppds, hp-ppd, kde-icons-oxygen,  gnome-icon-theme, wbritish-huge, ibritish, icatalan, ispanish, ifrench, wcatalan, wspanish, wfrench, unison-gtk, gpgkeys, hplip-gui, efax, xscreensaver-gl, xscreensaver-gl-extra, xscreensaver-data-extra, xscreensaver-data, compiz-fusion-plugins-main, compiz-fusion-plugins-extra, compiz-fusion-plugins-unsupported, fusion-icon, compizconfig-settings-manager, devede, kaffeine, me-tv, recordmydesktop, gtkpod, claws-mail, claws-mail-acpi-notifier, claws-mail-archiver-plugin, claws-mail-attach-remover, claws-mail-attach-warner, claws-mail-bogofilter, claws-mail-extra-plugins, claws-mail-feeds-reader, claws-mail-fetchinfo-plugin, claws-mail-html2-viewer, claws-mail-i18n, claws-mail-mailmbox-plugin, claws-mail-multi-notifier, claws-mail-newmail-plugin, claws-mail-perl-filter, claws-mail-pgpinline, claws-mail-pgpmime, claws-mail-smime-plugin, claws-mail-plugins, claws-mail-spam-report, claws-mail-spamassassin, claws-mail-synce-plugin, claws-mail-themes, claws-mail-tnef-parser, claws-mail-tools, claws-mail-trayicon, claws-mail-vcalendar-plugin, grip, xsane, xchat, amsn, transmission, smplayer, audacious, gnomebaker, quodlibet-plugins, quodlibet, network-manager-gnome|wicd, blueman|kdebluetooth, 
+Description: Metapackage to install CSIC - Accessibility desktop
+ This is for kademar Linux desktop
+ .
+ Only contains dependences to install CSIC - Accessibility desktop easily

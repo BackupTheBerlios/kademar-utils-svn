@@ -1,0 +1,15 @@
+Source: desktop-kademar-lxde
+Section: metapackages
+Priority: optional
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 6)
+Standards-Version: 3.7.3
+Homepage: http://www.kademar.org
+
+Package: desktop-kademar-lxde
+Architecture: all
+Depends: desktop-kademar-base-x, lxde, ytree, file-roller, gksu, leafpad 
+Description: Metapackage to install LXDE Desktop
+ This is for kademar Linux desktop
+ .
+ Only contains dependences to install LXDE Desktop easily

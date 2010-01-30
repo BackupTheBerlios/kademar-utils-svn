@@ -1,0 +1,15 @@
+Source: desktop-kademar-extra-multimedia
+Section: metapackages
+Priority: optional
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 6)
+Standards-Version: 3.7.3
+Homepage: http://www.kademar.org
+
+Package: desktop-kademar-extra-multimedia
+Architecture: all
+Depends: kademar-extra-multimedia, kademar-extra-themes-kdm, kademar-extra-themes-ksplash, kademar-extra-wallpapers, kademar-audacious-skins
+Description: Metapackage to install extra multimedia add-ons
+ This is for kademar Linux desktop
+ .
+ Only contains dependences to install extra multimedia add-ons

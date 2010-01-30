@@ -1,0 +1,14 @@
+Source: desktop-kademar-develop
+Section: metapackages
+Priority: optional
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Standards-Version: 3.7.3
+Homepage: http://www.kademar.org
+
+Package: desktop-kademar-develop
+Architecture: all
+Depends: python-qt4-doc, pyqt4-dev-tools, qt4-designer, qt4-dev-tools, libqt3-mt-dev, build-essential, module-assistant, libncurses5-dev, kdesvn, fakeroot, debhelper, devscripts, dpkg-dev, debianutils, perl, sed, lintian, dh-make, eric, cvs, kernel-package, automake1.9, kdiff3, git-cvs, subversion
+Description: Metapackage to install Develop Tools
+ This is for kademar Linux desktop
+ .
+ Only contains dependences to install develop tools easily

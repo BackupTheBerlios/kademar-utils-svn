@@ -1,0 +1,15 @@
+Source: desktop-kademar-kde-extra
+Section: metapackages
+Priority: optional
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 6)
+Standards-Version: 3.7.3
+Homepage: http://www.kademar.org
+
+Package: desktop-kademar-kde-extra
+Architecture: all
+Depends: desktop-kademar-kde, kademar-kde, kmail, gwenview, gwenview-i18n, kontact, krdc, krfb, kdebluetooth, bluez-utils, bluez-pcmcia-support, bluez-hcidump, bluez-cups, audioconversor, partimage, koules, lbreakout2, kbounce, kmahjongg, kreversi, korganizer, knode, kaudiocreator
+Description: Metapackage to install KDE Desktop
+ This is for kademar Linux desktop
+ .
+ Only contains dependences to install KDE desktop easily

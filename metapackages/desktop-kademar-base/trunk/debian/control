@@ -1,0 +1,16 @@
+Source: desktop-kademar-base
+Section: metapackages
+Priority: optional
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 6)
+Standards-Version: 3.7.3
+Homepage: http://www.kademar.org
+
+Package: desktop-kademar-base
+Architecture: all
+Recommends: unzoo, athcool, fnfxd, fnfx-client, lphdisk, spicctrl, acpitool, rar, unrar, lha, ttf-msttcorefonts-installer|msttcorefonts, hfsprogs, mtpfs, mtp-tools, bash-completion, reiser4progs, kpartx
+Depends: kademar-base, acpi-support, acpid, pmount, module-init-tools, grub|grub-gfxboot, grub-common|grub, fam|gamin, dhcp3-client, deborphan, expect, less, udev, hal, usbutils, pciutils, console-tools, p7zip, unzip, zip, unace, zoo,  bzip2, gzip, tar, cabextract, arj, lzop, ncompress, parted, cdrdao, dvd+rw-tools, cdrecord|wodim, xfsdump, xfsprogs, reiserfsprogs, cramfsprogs, cramfsswap, e2fsprogs, e2tools, fdutils, dosfstools, hfsutils, hfsplus, jfsutils, ntfs-3g, ntfsprogs,  wireless-tools, pcmciautils, splashutils, splashutils-initramfs, hdparm, partimage, ntp, ssh|openssh, acpi, powernowd,  powermgmt-base, mr, powertop,  laptop-mode-tools, telnet, util-linux, ash, locales, localepurge, cpufrequtils,  mc, wvdial, alsa-base, alsa-utils, linux-sound-base, lsof, alsa-utils, alsa-tools, bc, psmisc, resolvconf, debian-multimedia-keyring, debian-archive-keyring, dmsetup, procps, dmraid, mime-support, shared-mime-info, ntpdate
+Description: Metapackage to install Base without Desktop
+ This is for kademar Linux base System
+ .
+ Only contains dependences to install Base system without desktop easily

@@ -1,0 +1,26 @@
+desktop-kademar-base (1.2.1) testing; urgency=low
+
+  * Added DMsetup
+  * Added File Changes monitor (fam|gamin)
+  * Added Procps (sysctrl.conf) & psmisc (killall)
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Fri, 23 Oct 2009 16:05:43 +0200
+
+desktop-kademar-base (1.2) testing; urgency=low
+
+  * Alsa solved
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Tue, 14 Jul 2009 00:30:17 +0200
+
+desktop-kademar-base (1.1) testing; urgency=low
+
+  * splashutils instead splashy
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Thu, 21 May 2009 21:33:58 +0200
+
+desktop-kademar-base (1.0.1) testing; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Mon, 14 Jul 2008 01:44:07 +0200
+

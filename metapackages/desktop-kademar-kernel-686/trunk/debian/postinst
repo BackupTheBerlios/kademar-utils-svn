@@ -1,0 +1,16 @@
+#!/bin/sh
+set -e
+# Automatically added by dh_installmodules
+if [ "$1" = "configure" ]; then
+                #create modules.dep/pcimap/alias, etc if not exists
+                for i in `ls /lib/modules/`
+                do
+                    if [ ! -e /lib/modules/$i/modules.dep -o ! -e /lib/modules/$i/modules.pcimap -o ! -e /lib/modules/$i/modules.alias ]; then
+                    	if [ -e /boot/System.map-$i ]; then
+                        	depmod -a -m -F /boot/System.map-$i $i
+                        fi
+                    fi
+                done
+                exit 0
+fi
+# End automatically added section

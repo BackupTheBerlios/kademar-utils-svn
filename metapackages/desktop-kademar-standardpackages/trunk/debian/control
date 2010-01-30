@@ -1,0 +1,13 @@
+Source: desktop-kademar-standardpackages
+Section: metapackages
+Priority: optional
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.8.1
+Homepage: http://www.kademar.org
+
+Package: desktop-kademar-standardpackages
+Architecture: any
+Depends: desktop-kademar-kde, desktop-kademar-kde-extra, desktop-kademar-lxde, openoffice.org, azureus, konversation, scribus, amarok, libvisual-0.4-plugins, mysql-server, krita, scribus-template, kdenlive, stellarium, pidgin, ekiga, icedove|mozilla-thunderbird|thunderbird, icedove-l10n-ca, icedove-l10n-es-es, icedove-l10n-en-gb, digikam, showfoto, kino, sun-java6-plugin, foomatic-db-hpijs, openprinting-ppds, wesnoth-all, frozen-bubble, fb-music-high, blender, xsane, kolourpaint, djview4, ktouch, kopete, kget, gftp, akregator, astromenace|openastromenace, ksmiletris, supertux, extremetuxracer, crack-attack, kolf, ktron, gltron, kspaceduel, kgoldrunner, ltris, ksnake, kasteroids, kfouleggs, ksirtet, pingus, kpoker, kblackbox, kenolaba, knights, kbackgammon, kwin4, netpanzer, konquest, katomic, kbattleship, kjumpingcube, ksame, klickety, ksokoban, paprefs, me-tv, gtkpod, kdenlive, k9copy, avidemux, kino, kalarm, kpilot, kaddressbook, korganizer, kontact, knode, krusader, krename, kfilereplace, khexedit, kommander, kdiff3, basket, efax, kfax, khelpcenter, celestia, hplip-gui, kate-plugins, konq-plugins, kdesdk-kfile-plugins, kdepim-kresources, kdepim-kfile-plugins, kdenetwork-kfile-plugins, kdegraphics-kfile-plugins, kdeaddons-kfile-plugins, yakuake,  kdemultimedia-kappfinder-data, kdemultimedia-kfile-plugins, kcron, ksysv, ksig, kgpg, ktip, kpager, tuxtype, supertux, kjumpingcube, unison-gtk, subversion, gnuchess, knights-themepack, openoffice.org-style-crystal, kscreensaver-xsavers, devede, recordmydesktop, openoffice.org-kde, openoffice.org-kab, hpijs-ppds, hp-ppd,
+Description: Metapackage to install standard package structure
+ Package to use with Lyra and Leo NG kademar

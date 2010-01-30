@@ -1,0 +1,15 @@
+Source: desktop-kademar-khronos-lite
+Section: metapackages
+Priority: optional
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 6)
+Standards-Version: 3.7.3
+Homepage: http://www.kademar.org
+
+Package: desktop-kademar-khronos-lite
+Architecture: all
+Depends: desktop-kademar-icewm, 3ddesktop, abiword, ace-of-penguins, alsamixergui, amsn, aptitude, audacious, conky, cupsys, cups-pdf, d4x, dillo, file-roller, fluxbox, gaim|pidgin, galeon, gentoo, gftp, gksu, gnome-icon-theme, gnome-keyring, gnome-ppp, gnumeric, gpm, grip, grun, gtk-smooth-themes, gtk2-engines, gtk2-engines-pixbuf, gtk2-engines-smooth, gtk2-engines-spherecrystal, gtksee, hicolor-icon-theme, icebreaker, imagemagick, imlib-base, imlib11, isapnptools, jigdo, lame, lbreakout2, lesstif2, links2, localepurge, ltris, menu, mplayer, nano, ndiswrapper-utils-1.9, net-tools, ntfs-3g, orpheus, pacman, ppp, pppconfig, pppoe, pppoeconf, python2.4, rpm, sylpheed-claws, synaptic, traceroute, trayer, vorbis-tools, wget, whiptail, wodim, worker, xdigger, xgalaga, xpaint, xpdf, xsane, xutils, ytree, audacity, amule, transmission, schism, gnomebaker
+Description: Metapackage to install Khronos Lite (IceWM) Desktop
+ This is for kademar Linux desktop
+ .
+ Only contains dependences to install Khronos Lite (IceWM) Desktop easily

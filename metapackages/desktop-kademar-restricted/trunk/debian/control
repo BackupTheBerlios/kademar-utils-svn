@@ -1,0 +1,15 @@
+Source: desktop-kademar-restricted
+Section: metapackages
+Priority: optional
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.7.3
+Homepage: http://www.kademar.org
+
+Package: desktop-kademar-restricted
+Architecture: all
+Depends: kademar-restricted, atmel-firmware, bluez-firmware, b43-fwcutter, firmware-iwlwifi, firmware-qlogic, firmware-ralink, libertas-firmware, midisport-firmware, zd1211-firmware, w32codecs|win32codecs, flashplugin-nonfree|flashplayer-mozilla|flashplugin-nonfree, ttf-msttcorefonts-installer|msttcorefonts, firmware-bnx2, firmware-ipw2x00, isight-firmware-tools, wmaloader, rar, unrar, lha, libdvdcss2,
+Description: Metapackage to install Restricted components.
+ This is for kademar Linux desktop
+ .
+ Only contains dependences to install restricted packages easily

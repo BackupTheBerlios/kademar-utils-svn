@@ -1,0 +1,15 @@
+Source: desktop-kademar-icewm
+Section: metapackages
+Priority: optional
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 6)
+Standards-Version: 3.7.3
+Homepage: http://www.kademar.org
+
+Package: desktop-kademar-icewm
+Architecture: all
+Depends: desktop-kademar-base-x, icewm, icemc, icewm-themes, idesk, leafpad, icedax, xdialog, mrxvt, wdm|slim
+Description: Metapackage to install IceWM Desktop
+ This is for kademar Linux desktop
+ .
+ Only contains dependences to install IceWM Desktop easily

@@ -1,0 +1,3 @@
+#!/bin/bash -x
+
+mkisofs -R -U -V "cloop filesystem" -P "whirm thefarm.hopto.org" -hide-rr-moved -cache-inodes -no-bak -pad ../source/KNOPPIX > ../isos/tmpcloop.iso || exit mierda

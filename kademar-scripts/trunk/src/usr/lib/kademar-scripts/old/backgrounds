@@ -1,0 +1,9 @@
+#!/bin/bash 
+
+cp -v ../artwork/background-livecd.png    ../source/KNOPPIX/usr/local/lib/knoppix.jpg || exit 1
+cp -v ../artwork/background-livecd.png    ../master/KNOPPIX/background.jpg || exit 2
+
+echo "ok, tot correcte"
+
+
+

@@ -1,0 +1,161 @@
+#!/bin/bash 
+
+#Script to generate the initramfs to start the live-cd
+
+. /usr/lib/kademar-scripts/sourcables/load_config
+
+PATH="$PATH:/usr/lib/kademar-scripts"
+MENU_FILE="$MASTER_BOOT/grub/menu.lst"
+
+#Si el profile no en defineix cap, posa els idiomes x defece
+[ -z "$LANGUAGES" ] && LANGUAGES="ca es en"
+
+#LANGUAGE_DEFINITION="ca es en eu gl fr it de"
+
+##########################
+##Script starts here :-)##
+##########################
+
+cd $SOURCE_DIR 
+
+#Check if you have created any user
+USUARI=`ls $BURNIX_ROOT/home 2>/dev/null`
+[ -z "$USUARI" ] && warn "You don't have created any user, we recommend create one at least."
+
+tip "Deleting old boot live-cd filesystem"
+rm -fR $MASTER_BOOT/*
+rm -fR $SOURCE_DIR/tmp/*
+iferrorexit "error deleting boot-cd filesystem on $MASTER_BOOT"
+ok "Done"
+
+#cp -afr root/share/grub/i386-pc/iso9660_stage1_5 boot/grub/
+
+#echo "# Suprimint kernels antics"
+#rm -f root/vmlinuz-2.*
+tip "# Searching and Listing installed kernels"
+#KERNELS=`grep ^kernel root/boot/grub/menu.lst  | awk '{print $2}'| sort | uniq`
+#KERNELS=` basename root/boot/vmlinuz* | sed 's/vmlinuz-//g' `
+
+#Check if you have compiled any kernel
+	VMLINUZ=`ls $BURNIX_ROOT/boot/vmlinuz* 2>/dev/null`
+	[ -z "$VMLINUZ" ] && error "No kernel found, you must have at least one kernel instaled on Chroot filesystem" && exit 1
+
+for x in $BURNIX_ROOT/boot/vmlinuz* 
+	do 
+		KERNELS="$KERNELS `basename $x`"
+done
+
+##els copiem al directori d'arrencada:
+for x in $KERNELS ; do 
+	cp -fr  $BURNIX_ROOT/boot/$x $MASTER_BOOT/
+done
+##Generem el fitxer de config, els initrd's...
+mkdir -p `dirname $MENU_FILE`
+
+#Assign variable DISTNAME and DISTVER if it are empty
+[ -z "$DISTNAME" ] && DISTNAME="kademar"
+
+#kademar Version Number 
+[ -z "$DISTKADEMAR" ] && [ -e "$BURNIX_ROOT/usr/kademar/config" ] && . "$BURNIX_ROOT/usr/kademar/config" && DISTKADEMAR=$kademar_type
+
+
+#kademar Version Number
+[ -z "$DISTVER" ] && DISTVER=`cat $BURNIX_ROOT/etc/kademar-release`
+
+#If system is sacred add noautoconf to boot params
+if [ ! -z "$SACRED" ]; then
+	BOOT_PARAM="$BOOT_PARAM noautoconf"
+fi
+
+# Check if  initrd-tools  is installed on live-cd filesystem
+# initrd_tools_check=`chroot $BURNIX_ROOT dpkg-query -W --showformat='${Package}\n' | grep initrd-tools`
+# [ -z $initrd_tools_check ] && warn "No  INITRD-TOOLS  package installed on chroot system, if it isn't installed, FAST_INSTALLER won't work properly"
+
+tip "# Deleting old live-cd initrd images"
+rm -fR $MASTER_BOOT/initrd*
+#Initial
+cat /usr/lib/kademar-scripts/includes/menulst.d/menu_common.lst > $MASTER_BOOT/grub/menu.lst
+for x in $KERNELS ; do
+	pushd . > /dev/null
+	KVERSION=`echo $x | sed 's:vmlinuz-::'`
+	KERNEL=$x
+
+	for j in $LANGUAGES
+	do
+		#Normal Entry (without options)
+		echo "title	$DISTNAME $DISTVER GNU/Linux$kernel_label $DISTKADEMAR - `cat /usr/lib/kademar-scripts/idiomes/$j` " >> $MENU_FILE
+		echo "configfile /boot/grub/menu_$j.lst" >> $MENU_FILE
+		echo "" >> $MENU_FILE
+
+ 		#Real internal entry (with options)
+		cat /usr/lib/kademar-scripts/includes/menulst.d/menu_$j.lst | sed s:%DISTVER%:"$DISTVER":g | sed s:%DISTNAME%:"$DISTNAME":g | sed s:%DISTKADEMAR%:"$DISTKADEMAR":g  | sed s:%kversion%:"$KVERSION":g | sed s:%KERNEL%:"$KERNEL":g | sed s:%BOOT_PARAM%:"$BOOT_PARAM":g | sed s:%APPEND_TO_BOOTPARAM%:"$APPEND_TO_BOOTPARAM":g > $MASTER_BOOT/grub/menu_$j.lst
+	done
+
+
+	tip "----------------------------------------------"
+	tip "| Creating initrd image of kernel $KVERSION |"
+	tip "----------------------------------------------"
+
+	#Call real creator
+# 	echo -n "#"
+        cd /usr/lib/kademar-scripts/includes/initrd
+	sh initrd_create "$1" $KVERSION
+	# If doesn't exists, set it on YES	
+	[ -z "$SHOW_LIVECD_BUILD_DATE" ] && SHOW_LIVECD_BUILD_DATE="yes"
+
+	popd > /dev/null
+
+	#Si hi ha més d'un kernel, que surti el nom
+        kernel_label=" Kernel $KERNEL"
+done
+
+echo -n "#"
+mv $SOURCE_DIR/tmp/initrd*gz $MASTER_BOOT/
+
+tip "Generating graphical boot live-cd menu..."
+pushd $GFXBOOT_DIR > /dev/null
+#make clean 2> /dev/null 
+#make 2> /dev/null 
+#cp -va install/bootlogo ../boot/grub/
+mkdir -p $BURNIX_BOOT/grub > /dev/null
+if [ ! -e /usr/lib/kademar-scripts/includes/message.kademar ]; then
+	tip "Generating new bootlogo file from directori `pwd`"
+	ls -1 | grep -v .xcf$ | cpio -o --quiet > $BURNIX_BOOT/grub/bootlogo 2> /dev/null
+else
+	tip "Using message.kademar as a bootlogo file"
+	cp /usr/lib/kademar-scripts/includes/message.kademar $BURNIX_BOOT/grub/bootlogo
+fi
+popd > /dev/null
+
+
+touch "$MASTER_ROOT/kademar/livecd.sgn"
+
+
+if [ -e /boot/memtest86+.bin -o -e $BURNIX_ROOT/boot/memtest86+.bin ] ; then 
+	tip "Copying memtest86+..."
+	[ -e /boot/memtest86+.bin ] && cp /boot/memtest86+.bin $BURNIX_BOOT/
+
+	echo "
+
+title           MemTest86+	Ram Memory Test
+kernel          /memtest86+.bin	
+" >>  $MENU_FILE 
+
+fi
+
+
+tip "Updating master/boot filesystem tree..."
+cd .. 
+cp -a  source/boot/* master/boot/
+
+cp -a /lib/grub/i386-pc/* master/boot/grub 2>/dev/null
+
+cp -a /usr/lib/grub/i386-pc/* master/boot/grub 2>/dev/null
+
+#copy de install en pendrive usb
+cp /usr/lib/kademar-scripts/includes/boot/* $MASTER_BOOT/
+
+ok " Done"
+
+# Delete lock file, to run menu without problems after
+rm -f $DEVEL_ROOT/lock

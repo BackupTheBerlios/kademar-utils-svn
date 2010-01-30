@@ -1,0 +1,134 @@
+#!/bin/bash 
+# TODO poder escollir l'arquitectura
+# set -x
+
+#Adonay Sanz Alsina
+
+clear
+
+###Carrego variables de config
+. /usr/lib/kademar-scripts/sourcables/load_config 
+
+tmp_dir_1="/kademar-scripts-tmp1"
+tmp_dir_2="/kademar-scripts-tmp2"
+kademar_squash_file="/sys/kademar.squash"
+kademar_squash_file2="/kademar/base/kademar.lzm"
+
+
+
+copy_source(){
+
+sudo mount -t squashfs -o loop $1 "$tmp_dir_1" 2>/dev/null
+
+tip "Copying Source, can take a while"
+sudo rm -fr "/$BURNIX_ROOT"
+sudo rm -fr "/$SOURCE_DIR/$tmp_dir_1"
+sudo cp -a "/$tmp_dir_1" "/$SOURCE_DIR"
+sudo mv "/$SOURCE_DIR/$tmp_dir_1" "/$BURNIX_ROOT"
+}
+
+if [ -e /$BURNIX_ROOT/bin/bash ]; then
+
+	echo "The filesystem has been already created"
+	sleep 3
+
+	else 
+		sudo [ ! -e "$tmp_dir_1" ] && mkdir "$tmp_dir_1"
+		sudo [ ! -e "$tmp_dir_2" ] && mkdir "$tmp_dir_2"
+
+		echo ; echo
+
+		question "What do you want to use as source?"
+		echo -n "  ${YELLOW}D${NORMAL}o you want to auto-detect media (cd/dvd drive)
+  ${YELLOW}E${NORMAL}specify manually where's placed kademar cdrom
+  E${YELLOW}s${NORMAL}pecify manually where's placed kademar .iso file
+  Es${YELLOW}p${NORMAL}ecify manually where's placed kademar Squashfs file
+
+      -> "
+		read  ANSWER
+		
+		case "$ANSWER" in
+		[Dd])
+			kademars_trobades=''
+			for i in `ls --ignore=fd? --ignore=dis* --ignore=floppy* /mnt/`
+			do
+				[ -e "/mnt/$i/$kademar_squash_file" ] && kademars_trobades="$kademars_trobades $i"
+				[ -e "/mnt/$i/$kademar_squash_file2" ] && kademars_trobades="$kademars_trobades $i"
+			done
+			tip "Usable kademar Found:
+$kademars_trobades"
+			question "Choose a device to use (eg. cdrom)"
+			echo -n "    "
+			read source
+			
+			source="`echo $source | sed s:/mnt/::g`"
+
+			
+			if [ -e "/mnt/$source$kademar_squash_file" ]; then
+
+			copy_source "/mnt/$source$kademar_squash_file"
+
+			fi
+
+			if [ -e "/mnt/$source$kademar_squash_file2" ]; then
+
+			copy_source "/mnt/$source$kademar_squash_file2"
+
+			fi
+		;;
+		
+		[Ee])
+			question "Especify where's placed kademar cdrom (eg. /mnt/cdrom):"
+			echo -n "    "
+			read source
+			
+			if [ -e "$source$kademar_squash_file" ]; then
+
+			copy_source "$source$kademar_squash_file"
+
+			fi
+
+			if [ -e "$source$kademar_squash_file2" ]; then
+
+			copy_source "$source$kademar_squash_file2"
+
+			fi
+
+		;;
+		[Ss])
+			question "Especify where's placed kademar .iso file (eg. /mnt/sda7/kademar_V4.2_Lyra.iso):"
+			echo -n "    "
+			read source
+			
+			if [ -e "$source" ]; then
+
+			sudo mount -t iso9660 -o loop "$source" "$tmp_dir_2"
+			[ -e "$tmp_dir_2$kademar_squash_file" ] && copy_source "$tmp_dir_2$kademar_squash_file"
+			[ -e "$tmp_dir_2$kademar_squash_file2" ] && copy_source "$tmp_dir_2$kademar_squash_file2"
+
+			fi
+		;;
+		
+		[pP])
+			question "Especify where's placed kademar Squashfs file (eg. /mnt/sda7/kademar.squash):"
+			echo -n "    "
+			read source
+			
+			if [ -e "$source" ]; then
+
+			sudo mount -t squashfs -o loop "$source" "$tmp_dir_1"
+			copy_source "$tmp_dir_1"
+
+			fi
+		;;
+
+		esac
+
+	#Umount mounted Files (Squash & ISO)
+	sudo umount "$tmp_dir_1" "$tmp_dir_2"  2>/dev/null ; sudo umount -l "$tmp_dir_1" "$tmp_dir_2" 2>/dev/null ; rm -fr "$tmp_dir_1" "$tmp_dir_2"
+	ok Done
+	clear
+
+fi
+# Delete lock file, to run menu without problems after
+rm -f $DEVEL_ROOT/lock

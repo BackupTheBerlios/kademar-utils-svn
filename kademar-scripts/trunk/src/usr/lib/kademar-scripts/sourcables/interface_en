@@ -1,0 +1,7 @@
+#Definition English Language
+load_config_read_profile="reading profile"
+load_config_no_exists_profile="profile not found"
+load_config_no_profile="no profile specified, using default settings"
+
+
+start_qemu_error="No qemu found on system"

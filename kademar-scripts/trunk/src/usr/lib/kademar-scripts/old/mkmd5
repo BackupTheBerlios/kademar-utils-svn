@@ -1,0 +1,5 @@
+#!/bin/bash
+cd ../master
+rm -f sys/md5sums
+find . -type f -not -name md5sums -not -name boot.cat -exec md5sum {} \; >> ../master/sys/md5sums
+

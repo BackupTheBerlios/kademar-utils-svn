@@ -1,0 +1,34 @@
+#!/bin/bash 
+
+#Elric Milon
+
+. /usr/lib/kademar-scripts/sourcables/load_config
+
+#DATA=$(date  "+%y-%m-%d-%T" | sed 's/://g')
+DATA=$(date  "+%y-%m-%d-%T")
+
+cd $MASTER_ROOT
+
+echo -n Working on: 
+pwd
+
+echo Beginning...
+
+cp -r /usr/lib/kademar-scripts/includes/fitxers_cd/* .
+
+mkisofs -q -pad -l -r -J -v -V "$DISTNAME" \
+	-no-emul-boot \
+        -b boot/grub/iso9660_stage1_5 \
+	-boot-load-size 4 \
+	-boot-info-table \
+	-c boot/boot.cat \
+	-hide-rr-moved \
+        -o $ISO_DIR/kademar-$DATA.iso \
+        ./
+	#aixo es per el grub
+        #-b boot/grub/stage2_eltorito \
+        #-b boot/grub/iso9660_stage1_5 \
+
+cd $ISO_DIR
+rm -f kademar-last.iso
+ln -s kademar-$DATA.iso  kademar-last.iso

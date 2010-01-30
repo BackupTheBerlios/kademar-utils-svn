@@ -1,0 +1,82 @@
+#kademar Profile
+
+######################
+# DISTRO INFORMATION #
+######################
+
+
+#Distro name (not used)
+DISTNAME="ZenFirewall"
+
+#Distro version (not used)
+DISTVER="0.1-pre"
+
+#Distro development root
+ROOT="/home/whirm/livecds/zenfirewall"
+
+#Guess what :)
+LIVECD_HOST_NAME="zenfirewall"
+
+#Be very careful at cleaning the system
+#Don't remove config files, don't autodetect anything
+#(use it if the live-cd is only for a specific system/hardware)
+#SACRED="Yes"
+
+
+#compression type, can be normal or lzma (if it's available)
+SQUASH=lzma
+
+#Packages to install
+PACKAGES="
+module-init-tools
+udev
+hotplug
+iptraf
+iptables
+iproute
+openssh-client
+openssh-server
+snmpd
+snmp
+snort
+oinkmaster
+ippl
+"
+#Services to remove from /etc/rc?.d  if you want to install ntpdate, but you don't want it to be started at boot time.
+SERVICES_TO_REMOVE="
+ntpdate
+"
+
+###########################
+# Debootstrap Information #
+###########################
+
+#Mirror from where the system will be debootstraped
+DEB_MIRROR="ftp://ftp.de.debian.org/debian"
+
+#Only set that if you are using amd64 and want to make x86 live-cd
+#ARCH="i386"
+
+#What distro to use Ex: (sid, etch, sarge, unstable, testing, stable)
+DIST="sid"
+
+#Use sources.list from host system while in chroot
+#USE_SOURCES_FROM_HOST=yes
+
+#Show build date when live-cd starts
+SHOW_LIVECD_BUILD_DATE=yes
+
+#url to append to all the entries in guest's sources.list so they get packages from apt-cacher
+#APT_CACHER_URL=fenix
+
+#Languages to be included on menu.lst on live-cd (main menu.lst)
+LANGUAGES="es ca en"
+
+#set Union layer can be unionfs or aufs
+AUFS=aufs
+
+#Bootparams to be added to menu.lst (on live-cd mode)
+APPEND_TO_BOOTPARAM="startjoomla"
+
+#Define Block size of squashed FS (touch only if you know. Default 131072)
+SQUASH_BLOCK_SIZE=524288

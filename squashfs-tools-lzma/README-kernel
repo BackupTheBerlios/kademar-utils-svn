@@ -1,0 +1,15 @@
+To create again (due a update on squash) the mksquashfs tools:
+==============================================================
+
+1- Decompress kernel
+
+2- Patch with squashfs
+
+3- Patch with sqlzmaXX2-k.patch   - IMPORTANT "K", not U.patch
+
+4- Patch with squash-cvs (OPTIONAL)
+
+
+Configure kernel, and build
+
+Happy compile!!!

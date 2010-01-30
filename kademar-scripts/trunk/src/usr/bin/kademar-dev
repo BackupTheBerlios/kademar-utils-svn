@@ -1,0 +1,258 @@
+#!/bin/bash 
+# TODO poder des/activar el mode debug
+
+#Elric Milon
+#Adonay Sanz
+
+. /usr/lib/kademar-scripts/sourcables/functions
+
+[ x`whoami` == xroot ] && error "Do not execute this script as root!" && exit 1
+
+check_sudo_permissions
+
+clear
+
+if [ ! -z "$1"  ]; then
+	if [ ! -e "$1" ]; then
+		error "Specified profile does not exist"
+		exit 2
+	fi
+	tip "using specified profile"
+	PROFILE_FILE="$1"
+#Check real directory of profile specified
+	if [ ! -e /$1 ]; then
+		PROFILE_FILE=`pwd`/$1
+	fi
+
+fi
+
+##Carrega les configuracions
+. /usr/lib/kademar-scripts/sourcables/load_config
+
+if [ -z "$SOURCE_DIR" ]; then
+	error "Reading config, exiting."
+	exit 666
+fi
+
+tip "Using root source dir: $SOURCE_DIR"
+echo
+
+
+#Si el sistema de fitxers de desenvolupament o algun dels seus directoris no existeixen, els crea
+for dir in \
+    $SOURCE_DIR \
+    $KM_SRC_DIR \
+    $MASTER_ROOT \
+    $BURNIX_BOOT \
+    $BURNIX_SYS \
+    $MASTER_BOOT \
+    $COMMON_DIR \
+    $ISO_DIR \
+    $INCLUDE_DIR \
+    $INITRD_INC \
+    $BUSY_DIR \
+    ; do
+        if [ ! -e $dir ]; then
+	
+		echo " $dir missing, do you want to run the workspace creation script? [y/n] (Answer NO if you know what you are doing)"
+		read key
+		
+		case $key in
+	
+		[yYsS])
+			echo "Creating basic directory hirearchy"
+			#Crea l'esctructura de l'arbre de directoris
+			/usr/lib/kademar-scripts/mkdeveltree $PROFILE_FILE
+			echo "Done!"
+			break 
+		;;
+		[nN])
+			echo Exiting... Bye!
+			exit 0
+		;;
+	
+		*)
+			echo "answer y/n."
+			exit 0;
+		;;	
+		esac
+	fi
+done
+
+
+#Si no troba el directori arrel del sistema del cd en viu...
+if [ ! -e $BURNIX_ROOT/bin/bash -o -d $BURNIX_ROOT/debootstrap ]; then
+
+	tip "It seems that this profile has no system installed"
+	question "What source I have to take to use as base of live-cd filesystem? "
+echo -n "  * ${YELLOW}[D]${NORMAL}ebootstrap: Create filesystem from Internet packages. Will be clean of configurations. Usefull to create a new distro.
+  * ${YELLOW}[C]${NORMAL}opy from HD: Create filesystem from a debian installed on HD. Will use all configurations. Usefull to create a new distro, more quickly
+  * C${YELLOW}[O]${NORMAL}py from CD-ROM: Create filesystem from a kademar GNU/Linux CD. Usefull to remaster your own kademar. You can choose cdrom drive, ISO or Squashfs file
+
+     -> "
+
+read key
+	case "$key" in
+	[dD])
+		tip "Debootstraping system"
+		sudo /usr/lib/kademar-scripts/mkfs_debootstrap $PROFILE_FILE
+		ok "Done"
+	;;
+	[cC])
+		tip "Copying from HD"
+		sudo /usr/lib/kademar-scripts/mkfs_copy-HD $PROFILE_FILE
+		ok "Done"
+	;;
+	[oO])
+		tip "Using kademar CD"
+		sudo /usr/lib/kademar-scripts/mkfs_kademar-cd $PROFILE_FILE
+		ok "Done"
+	;;
+	*)
+		question "Operation not Implemented"
+		tip "Debootstraping system"
+		sudo /usr/lib/kademar-scripts/mkfs_debootstrap $PROFILE_FILE
+		ok "Done"
+	;;
+	esac
+fi
+
+# Creating a lock file, and check, if it exist, doesn't allow to enter to burnix-dev
+find_lock_file
+touch $DEVEL_ROOT/lock
+
+while true 
+	do
+
+	echo -n "
+	Choose an option with the letter in brackets, and press ${YELLOW}[enter]${NORMAL}.
+	Note that you can enter more than one command and they will be processed sequentialy
+	IE, entering 'ni' will clean and create iso image.
+	
+	${YELLOW}[C]${NORMAL}hroot: Enter to live-cd filesystem to modify manually
+	X-ch${YELLOW}[R]${NORMAL}oot: Enter to live-cd filesystem to modify graphically
+	Clea${YELLOW}[N]${NORMAL} live-cd Filesystem
+	Compress root filesystem with ${YELLOW}[S]${NORMAL}quashfs
+	Updat${YELLOW}[E]${NORMAL} live-cd boot system
+	Create live-cd ${YELLOW}[I]${NORMAL}so image
+	Compile ${YELLOW}[K]${NORMAL}ernel and its modules
+	Make ${YELLOW}[A]${NORMAL}ll: update boot system + clean + squash image + iso file
+	Run ${YELLOW}[Q]${NORMAL}emu with last iso file generated
+	${YELLOW}[D]${NORMAL}elete all generated isos
+	E${YELLOW}[X]${NORMAL}it
+
+	->"
+	#Activar (D)ebug
+	#Editar init(R)d
+	
+	read key
+	
+	clear
+	
+	cd $DEVEL_ROOT
+	
+# 	Allow to press a combination of keys "nei" for example
+	keys_pressed=`echo $key | sed 's,[a-zA-Z],& ,g'`
+	for i in $keys_pressed
+	do
+
+		case $i in
+		
+		[cC])
+			tip "chroot"
+			sudo /usr/lib/kademar-scripts/chrootit $PROFILE_FILE
+			iferrorexit "chrooting"
+		;;
+		
+		[rR])
+			tip "chroot"
+			sudo /usr/lib/kademar-scripts/xchroot $PROFILE_FILE
+			iferrorexit "X-chrooting"
+		;;
+
+		[nN])
+			tip "Cleaning live-cd filesystem"
+			sudo /usr/lib/kademar-scripts/mkclean $PROFILE_FILE 
+			iferrorexit "cleaning live-cd filesystem"
+		;;
+		
+		[iI])
+			tip "Creating Iso"
+			sudo /usr/lib/kademar-scripts/mkiso $PROFILE_FILE
+			iferrorexit "creating iso"
+		;;
+			
+		[sS])
+			tip "Create squashfs (compressed live-cd filesystem) image"
+			sudo /usr/lib/kademar-scripts/mksquash $PROFILE_FILE
+			iferrorexit "creating squashfs image"
+		;;
+		
+		[eE])
+			tip "Creating initrd (boot live-cd filesystem)"
+			sudo /usr/lib/kademar-scripts/update-boot $PROFILE_FILE
+			iferrorexit "creating initrd"
+		;;
+		
+		[kK])
+			tip "Compile Kernel"
+			/usr/lib/kademar-scripts/build-kernel $PROFILE_FILE
+			iferrorexit "compiling kernel"
+		;;
+		
+		[aA])
+			tip "Making All"
+			tip "Creating initrd (boot live-cd filesystem)"
+			sudo /usr/lib/kademar-scripts/update-boot $PROFILE_FILE
+			iferrorexit "creating initrd"
+			tip "Cleaning live-cd filesystem"
+			sudo /usr/lib/kademar-scripts/mkclean $PROFILE_FILE
+			iferrorexit "cleaning live-cd filesystem"
+			tip "Create squashfs (compressed live-cd filesystem) image"
+			sudo /usr/lib/kademar-scripts/mksquash $PROFILE_FILE
+			iferrorexit "creating squashfs image"
+			tip "Creating Iso"
+			sudo /usr/lib/kademar-scripts/mkiso $PROFILE_FILE
+			iferrorexit "creating iso"
+		;;
+
+		[qQ])
+			tip "Starting Qemu"
+			/usr/lib/kademar-scripts/start-qemu $PROFILE_FILE
+			iferrorexit "starting qemu"
+		;;
+		
+		[dD])
+		espai="`du -hs $ISO_DIR`"
+		if  [ "`echo $espai | awk ' { print $1 } '`" != "0" ]; then
+			ask "Do you really want to DELETE  `echo $espai | awk ' { print $1 } '`  of CREATED ISOS?"
+			if [ "$ANSWER" == "y" ]; then
+				tip "Deleting Generated Isos"
+				echo Deleting `echo $espai`
+				rm -fr $ISO_DIR/*.iso
+				ok Done
+			fi
+		else
+			echo Nothing to Delete
+		fi
+		;;
+	#	[dD])
+	#		echo Debug activat
+	#		export DEBUG="DEBUG=yes"
+	#	;;
+
+		[xX]) 
+			echo "Exiting"
+			rm -f $DEVEL_ROOT/lock
+			exit 0;
+		;;
+		
+		
+		*) 
+			clear
+			echo "Option not implemented: $key"
+		;;
+		
+		esac
+	done
+done

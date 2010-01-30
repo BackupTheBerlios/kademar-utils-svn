@@ -1,0 +1,90 @@
+#!/bin/bash 
+# TODO poder escollir l'arquitectura
+# set -x
+
+clear
+
+###Carrego variables de config
+. /usr/lib/kademar-scripts/sourcables/load_config 
+
+tmp_dir_1="/kademar-scripts-tmp1"
+tmp_dir_2="/kademar-scripts-tmp2"
+kademar_squash_file="/sys/kademar.squash"
+
+
+
+copy_source(){
+			
+#sudo mount -o loop $1 "$tmp_dir_1"
+
+tip "Copying Source, can take a while"
+sudo rm -fr "/$BURNIX_ROOT"
+sudo rm -fr "/$SOURCE_DIR/$tmp_dir_1"
+sudo cp -a "/$1" "/$SOURCE_DIR/$tmp_dir_1"
+sudo mv "/$SOURCE_DIR/$tmp_dir_1" "/$BURNIX_ROOT"
+}
+
+if [ -e /$BURNIX_ROOT/bin/bash ]; then
+
+	echo "The filesystem has been already created"
+	sleep 3
+
+	else 
+		sudo [ ! -e "$tmp_dir_1" ] && mkdir "$tmp_dir_1"
+		sudo [ ! -e "$tmp_dir_2" ] && mkdir "$tmp_dir_2"
+
+		echo ; echo
+
+		question "What do you want to use as source?"
+		echo "${YELLOW}D${NORMAL}o you want to auto-detect media (HD drive)
+${YELLOW}E${NORMAL}specify manually where's placed"
+		read  ANSWER
+		
+		case "$ANSWER" in
+		[Dd])
+			kademars_trobades=''
+			for i in `ls --ignore=fd? --ignore=dis* --ignore=floppy* --ignore=cdrom* --ignore=dvdr* /mnt/`
+			do
+				[ -e "/mnt/$i/bin/bash" -a -e "/mnt/$i/etc" ] && kademars_trobades="$kademars_trobades $i"
+			done
+			tip "Usable Distros Found:
+$kademars_trobades"
+			question "Choose a device to use (eg. hda1)"
+			echo -n "    "
+			read source
+			
+			source="`echo $source | sed s:/mnt/:g`"
+			
+			if [ -e "/mnt/$source/bin/bash" -a -e "/mnt/$source/etc" ]; then
+
+				copy_source "$source"
+			
+			else
+				error "No source in /mnt/$source folder"
+			fi
+		;;
+		
+		[Ee])
+			question "Especify where's placed a usable distro (eg. /mnt/hda1):"
+			echo -n "    "
+			read source
+			
+			if [ -e "$source/bin/bash" -a -e "$source/etc" ]; then
+
+			copy_source "$source"
+
+			else
+				error "No source in $source folder"
+			fi
+		;;
+			
+		esac
+
+	#Umount mounted Files (Squash & ISO)
+	sudo rm -fr "$tmp_dir_1" "$tmp_dir_2"
+	ok Done
+	clear
+
+fi
+# Delete lock file, to run menu without problems after
+rm -f $DEVEL_ROOT/lock

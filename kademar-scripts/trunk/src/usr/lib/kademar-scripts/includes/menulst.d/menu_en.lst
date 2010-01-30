@@ -1,0 +1,53 @@
+#splashimage=/boot/grub/kademar.xpm.gz
+
+gfxmenu = /boot/grub/bootlogo
+
+timeout = 7
+
+
+title	Normal
+kernel	/boot/%KERNEL%	%BOOT_PARAM% %APPEND_TO_BOOTPARAM% vga=791 lang=en
+initrd          /boot/initrd-%kversion%.gz
+boot
+
+#kademar#title	Normal - Save Changes
+#kademar#kernel	/boot/%KERNEL%	%BOOT_PARAM% %APPEND_TO_BOOTPARAM% vga=791 lang=en changes=/kademar/
+#kademar#initrd          /boot/initrd-%kversion%.gz
+#kademar#boot
+
+title   Copy to RAM
+kernel  /boot/%KERNEL%  %BOOT_PARAM% %APPEND_TO_BOOTPARAM% vga=791 root=/dev/ram0 rw copy2ram lang=en
+initrd          /boot/initrd-%kversion%.gz
+boot
+
+title   Display 1024x768
+kernel  /boot/%KERNEL%  %BOOT_PARAM% %APPEND_TO_BOOTPARAM% vga=791 resol=1024x768 lang=en
+initrd          /boot/initrd-%kversion%.gz
+boot
+
+
+title ---   Back   ---
+configfile /boot/grub/menu.lst
+
+title
+
+title	Old display
+kernel	/boot/%KERNEL%	%BOOT_PARAM% %APPEND_TO_BOOTPARAM% vga=781 xmodule=vesa resol=800x600 lang=en
+initrd          /boot/initrd-%kversion%.gz
+boot
+
+
+title	Old PC
+kernel	/boot/%KERNEL%	%BOOT_PARAM% %APPEND_TO_BOOTPARAM% vga=791 noacpi noapm noapic lang=en
+initrd          /boot/initrd-%kversion%.gz
+boot
+
+title	Install on Console
+kernel	/boot/%KERNEL%	%BOOT_PARAM% %APPEND_TO_BOOTPARAM% vga=791 noacpi noapm noapic nox installdialog lang=en
+initrd          /boot/initrd-%kversion%.gz
+boot
+
+#title	Debug
+#kernel	/boot/%KERNEL%	%BOOT_PARAM% %APPEND_TO_BOOTPARAM% vga=791 debug lang=en
+#initrd          /boot/initrd-%kversion%.gz
+#boot

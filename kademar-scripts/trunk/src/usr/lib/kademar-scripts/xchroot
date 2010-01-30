@@ -1,0 +1,154 @@
+#!/bin/bash
+# X-chroot starter
+
+#Adonay Sanz
+# Licensed under GNU/GPL 2.0 or higher
+
+###Carrego variables de config
+. /usr/lib/kademar-scripts/sourcables/load_config 
+. /usr/lib/kademar-scripts/sourcables/colors
+
+#TODO: comprovar - tencar - matar o fer algo amb les X quan el client de X s'ha apagat
+
+# List all disponible users
+usuaris_disponibles="root `ls --ignore=ANONYMOUS $BURNIX_ROOT/home 2> /dev/null`"
+#Set variable to "NO"
+existant="no"
+#Set variable to 0
+contador=0
+#increment contador variable, to have a number of users on system, only for the first part of "if" from "while true; do" sentence. If it goes to "else", contador variable, isn't necessary for this prupose because there's more than 1 user; so it will be overwrite to count how many users.
+for i in $usuaris_disponibles
+do
+	contador=`expr $contador \+ 1`
+done
+
+#If you give a wrong user, it will repeat question
+while true; do
+	#Choose a user from list, but if it only have one, choose root by default
+	if [ $contador = "1" ]; then
+		tip selected user: root
+		selected_user="root"
+		warn Is recomendable to create at least one user
+		existant="yes"
+		break
+	else
+		#Set variable 
+		contador=0
+		echo "${BLUE}Choose a user to enter as, from the list:${NORMAL}"
+		for i in $usuaris_disponibles
+		do
+			contador=`expr $contador \+ 1`
+			echo "     ${GREEN}$contador -  $i ${NORMAL}"
+		done
+		read selected_user
+	
+		if [ $selected_user -gt $contador ]; then
+			error "No correct number"
+			echo
+			# return variable contador to 1, fix incrementation of contador number
+		else
+			#strip from starters what user you want, with your entered number
+			selected_user=`echo $usuaris_disponibles | awk '{ print $'$selected_user' } '`
+			break
+		fi
+	fi
+done
+
+#Read possible starters of window managers
+starters=`ls $BURNIX_ROOT/usr/bin/start* $BURNIX_ROOT/usr/bin/icewm --ignore=$BURNIX_ROOT/usr/bin/start_kdeinit 2> /dev/null | sed s:$BURNIX_ROOT/usr/bin/::g`
+#Set variable contador to 1, at least, there's one choice "manual entry"
+contador=1
+
+#If you give a wrong user, it will repeat question
+while true; do
+	echo "${BLUE}Choose a number to enter to X-chroot session with:${NORMAL}"
+	#If there's any starter, print it, else, only have one choice "manual entry"
+	if [ -n "$starters" ]; then
+		for i in $starters
+		do
+			echo "     ${GREEN}$contador -  $i ${NORMAL}"
+			contador=`expr $contador \+ 1`
+		done
+	fi
+
+	#contador_final is the same as contador, plus 1. It's for add the last entry. If only found 1, produces contador_total=2, so, in the next sentence it fixes that.
+	contador_total=$contador
+
+	#If contador=1 means that no has found any starter, so, only you can enter once manually
+	if [ $contador = 1 ]; then
+		contador_total=1
+	fi
+
+	echo "     ${GREEN}$contador_total -  Enter Manually (Can be a X-app, if you don't want a desktop) ${NORMAL}"
+	read starter
+	
+	#if starter number it's greater than contador_total, it means that it's a incorrect choice
+	if [ $starter -gt $contador_total ]; then
+		error "No correct number"
+		echo
+		# return variable contador to 1, fix incrementation of contador number
+		contador=1
+	else
+		#If starter variable it's the same that contador_total, it means that it's the last entry, or, the same "manual entry"
+		if [ $starter = $contador_total ]; then
+			echo "${BLUE}Enter manually what starter you want:${NORMAL}"
+			read final_starter
+			break
+		else # if it isn't greater, it means that is a possible choice
+			#strip from starters what starter you want, with your entered number
+			final_starter=`echo $starters | awk '{ print $'$starter' } '`
+			break
+		fi
+	fi
+	
+done
+
+#If you give a wrong answer, it will repeat question
+while true; do
+	
+#Choose a method to enter to Xchroot, xnest or X server alone
+echo "${BLUE}Choose a number to enter to X-chroot session:${NORMAL}"
+echo "     ${GREEN}1 -  Xnest: Windowed Mode ${NORMAL}"
+echo "     ${GREEN}2 -  X-server: Fullscreen Mode ${NORMAL}"
+read selected_x
+
+	case $selected_x in
+	1)
+		#Display Information
+		tip Selected User: $selected_user
+		tip Selected Starter: $final_starter
+		tip "Selected X: Xnest  (Windowed Mode)"
+		sudo mount --bind /dev $BURNIX_ROOT/dev
+		sudo mount -t proc $BURNIX_ROOT/proc $BURNIX_ROOT/proc
+		sudo chroot $BURNIX_ROOT su -c "export DISPLAY=localhost:7 && '$final_starter' &" - $selected_user
+		sudo Xnest :7
+		break
+	;;
+	2)
+		tip Selected User: $selected_user
+		tip Selected Starter: $final_starter
+		tip "Selected X: X-server  (Fullscreen)"
+		sudo mount --bind /dev $BURNIX_ROOT/dev
+		sudo mount -t proc $BURNIX_ROOT/proc $BURNIX_ROOT/proc
+		sudo chroot $BURNIX_ROOT su -c "export DISPLAY=localhost:7 && '$final_starter' &" - $selected_user
+		sudo X :7
+		break
+	;;
+	*)
+		if [ -z "$selected_x" ]; then
+		error "No answered. Please, reply y o n"
+		else
+		error "Wrong answer: $selected_x, reply y or n"
+		fi	
+	;;
+	esac
+done
+
+
+sudo umount $BURNIX_ROOT/dev 2>/dev/null
+sudo umount $BURNIX_ROOT/proc 2>/dev/null
+sudo umount -l $BURNIX_ROOT/dev  2>/dev/null #Force
+sudo umount -l $BURNIX_ROOT/proc 2>/dev/null #Force
+sudo umount -l $BURNIX_ROOT/dev  2>/dev/null #Force
+sudo umount -l $BURNIX_ROOT/proc  2>/dev/null  #Force
+exit 0

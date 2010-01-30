@@ -1,0 +1,62 @@
+#!/bin/bash
+############################################
+##Author: Elric Milon (truewhirm@yahoo.es)##
+##Licensed under the GNU GPL license########
+############################################
+
+
+if [ ! -f $1 -o ! -d $2 ]
+	then 
+		echo ""
+		echo `basename $0`
+		echo ""
+		echo "Gets a binary executable and a path, and"
+		echo "copies it and all the binary dependences to the specified path."
+		echo ""
+		echo "Usage:"
+		echo `basename $0` "/path/to/binary/executable /destination/dir"
+		exit 1
+fi
+
+for file in `ldd $1 | grep "/"`
+	do
+		if [ -e $file  ]
+			then
+				echo "$file exists, checking if link..."
+				while [ -L $file ] 
+					do
+					truefile=`readlink $file`
+					if [ -e $truefile ]
+						then
+							echo "$file points to $truefile, copying that file too"
+						else
+							truefile=`dirname $file`/$truefile
+							if [ -e $truefile ]
+								then
+									echo "$file points to $truefile, copying that file too"
+								else
+									echo "$file is a link to a missing file."
+									break
+							fi
+
+					fi
+					
+					mkdir -p $2/`dirname $truefile`
+					cp -a $truefile $2/$truefile
+				
+					mkdir -p $2/`dirname $file`
+					cp -a $file $2/$file
+
+					file=$truefile
+					echo "now checking $file"
+				done
+			
+				echo "$file is a file, copying it..."
+				mkdir -p $2/`dirname $file`
+				cp -a $file $2/$file
+				LIST="$LIST $file"
+		fi
+	done
+	
+mkdir -p $2/`dirname $1`
+cp -a $1 $2/$1

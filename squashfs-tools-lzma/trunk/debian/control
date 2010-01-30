@@ -1,0 +1,13 @@
+Source: squashfs-tools-lzma
+Section: devel
+Priority: optional
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.7.3
+
+Package: squashfs-tools-lzma
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Suggests: squashfs-tools
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>

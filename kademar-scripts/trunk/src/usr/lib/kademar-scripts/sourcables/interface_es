@@ -1,0 +1,7 @@
+#Definición del Idioma Castellano
+load_config_read_profile="leyendo perfil"
+load_config_no_exists_profile="perfil no encontrado"
+load_config_no_profile="no se ha especificado ningún perfil, usando la configuración por defecto"
+
+
+start_qemu_error="No se encuentra qemu en el sistema"

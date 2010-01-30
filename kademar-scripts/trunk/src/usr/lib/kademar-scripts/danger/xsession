@@ -1,0 +1,30 @@
+#!/bin/sh -x
+# Single Xwindow/KDE startup script
+# (C) Klaus Knopper Jun 2001
+
+USER=skel
+
+PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/usr/local/bin:."
+export PATH
+
+groupadd $USER 
+useradd -d /etc/skel -g $USER $USER 
+gpasswd -a $USER audio
+gpasswd -a $USER video
+gpasswd -a $USER dip 
+gpasswd -a $USER adm
+gpasswd -a $USER cdrom 
+gpasswd -a $USER floppy
+gpasswd -a $USER scanner
+
+
+cd /etc
+chown -fR skel:skel skel
+chmod u+x skel
+su -c "DISPLAY=localhost:1 /usr/bin/startkde " - $USER 
+chown -fR root:root skel
+
+find /etc/skel  -type d -exec chmod u=rwx,g=rx,o=rx {} \;
+find /etc/skel  -type f -exec chmod u=rw,g=r,o=r {} \;
+chmod u+x /etc/skel/.kde/Autostart/*
+

@@ -1,0 +1,109 @@
+#!/bin/ash
+# Optional script to be called instead of final reboot/shutdown
+# To safely switch back to initrd root and unmount everything possible
+# Mainly needed if you use changes= boot parameter in order to correctly
+# unmount the changes device/filesystem. Also needed to free up all loops
+# (to properly free disk space) if you delete an used lzm module.
+#
+# Call it this way in your shutdown script:
+#   cd /mnt/live
+#   exec ./cleanup <dev/console >dev/console 2>&1
+
+export PATH=.:/mnt/live:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib
+
+. liblinuxlive
+
+# This script needs to be re-executed to free up any shell
+# from the union which may be used (eg. /union/bin/bash)
+if [ ! "$RE_EXEC_CLEANUP" ]; then
+   export RE_EXEC_CLEANUP=1
+   header "starting Linux Live shutdown procedures..."
+   #umount kademar
+   for i in `cat /proc/mounts | grep -vi proc | awk ' { print $1 } ' | sort -r`
+   do
+       umount $i
+   done
+   
+#    grep if it's a notebook
+   [ `laptop-detect ; echo $?` = 0 ] && export LAPTOP=1 
+
+   umount /proc/bus/usb
+   umount /dev/pts
+   umount /dev/shm
+
+   echo "changing root back to initrd"
+   pivot_root . $UNION
+   echo "re-executing cleanup script"
+   exec chroot . /cleanup "$@" <dev/console >dev/console 2>&1
+   fatal "Something was wrong because we should never be here!"
+fi
+
+# kill all processes which can be killed
+killall_unneeded $(pidof cleanup)
+
+
+echo "unmounting union"
+fumount -l $UNION/dev/pts
+fumount -l $UNION/dev
+fumount -l $UNION/proc
+fumount -l $UNION/sys
+fumount $UNION/boot
+fumount $UNION
+
+echo "unmounting images"
+fumount $IMAGES/*
+
+echo "unmounting mountpoints"
+fumount $COPY2RAM
+fumount $ISOMOUNT
+fumount $XINO
+fumount $CHANGES
+fumount $MEMORY
+
+fumount $MOUNTDIR/*
+
+#debug
+#mount
+#sleep 6
+
+# eject cdrom devices
+#for MNT in $(ls -1 $MOUNTDIR 2>/dev/null); do
+   #CD=$(cat /proc/sys/dev/cdrom/info 2>/dev/null | grep name | grep "$MNT")
+   #if [ "$CD" -a "$MNT" ]; then
+      #echo "Ejecting $MNT..."
+      #/bin/eject -m /dev/$MNT >/dev/null 2>&1
+      #echo "CD tray will be closed in 6 seconds..."
+      #sleep 6
+      #/bin/eject -t /dev/$MNT >/dev/null 2>&1
+   #fi
+#done
+
+#kademar
+#eject saved device wich contains the CD
+#and isn't a ram copy
+if [ ! -e /copy2ram ]; then
+	echolog "Ejecting CDROM $(cat /data)"
+	eject -m /dev/$(cat /data)   
+    #if isn't a laptop, wait for close CD tray
+    if [ -z "$LAPTOP" ]; then
+	    echo "CD tray will be closed in 10 seconds..."
+	    sleep 10
+	    /bin/eject -t /dev/$(cat /data) >/dev/null 2>&1
+    fi
+fi
+
+
+
+if [ "$DEBUG_IS_ENABLED" ]; then
+   echo "Everything should be correctly unmounted now so we can $1"
+   echo "Verify it using 'losetup' and 'cat /proc/mounts'."
+   /bin/ash
+fi
+
+sync
+echo $1
+# $1 = action, eg. poweroff or reboot
+if [ "$1" = "" ]; then reboot -f; fi
+if [ "$1" = "halt" ]; then poweroff -f; else $1 -f; fi
+
+fatal "Something was wrong because we should never be here!"

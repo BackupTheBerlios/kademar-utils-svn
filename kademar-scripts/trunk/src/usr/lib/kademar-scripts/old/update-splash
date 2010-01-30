@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ -z "$1" ]
+then
+	echo -e "Use: burnix-splash THEME_NAME"
+else
+	if [ -d /etc/splash/$1 ]
+	then
+		splash_geninitramfs -v -g /usr/src/linux/usr/initramfs_data.cpio.gz -r 1024x768 "$1"
+		cd /usrc/src/linux
+		$bzimage = `make bzImage | tail -1 | | cut -d " " -f 2` 
+		cp $bzimage "/boot/vmlinuz-`uname -r`-splash"
+		echo -e "\nAdd this line into grub config as kernel options:\nvga=794 video=vesafb:ywrap,pmipal,1024x768-32@60 splash=silent,theme:$1"
+		echo "All OK"
+	else
+		echo "The theme $1 does not exist or not in /etc/splash/ directory."
+	fi
+fi

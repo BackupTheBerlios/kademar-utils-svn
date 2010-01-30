@@ -1,0 +1,13 @@
+Source: kademar-audacious-skins
+Section: audio
+Priority: extra
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.7.3
+Homepage: http://www.kademar.org
+
+Package: kademar-audacious-skins
+Architecture: all
+Depends: audacious
+Description: Audacious kademar Skins
+ Selection of Skins by kademar

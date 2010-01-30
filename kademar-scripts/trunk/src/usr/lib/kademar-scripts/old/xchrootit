@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# OLD X-CHROOT SCRIPT
+
+#Xnest :1 -ac -geometry 1250x1000 &
+ #sleep 2
+
+X -dpi 75 :1 -ac 2>&1 > /dev/null &
+
+#sleep 0 
+
+cp danger/xsession ../source/root/root/
+cd ../source/root
+
+
+chroot . /root/xsession
+
+rm -fv	root/xsession
+
+cd etc/skel &&
+
+rm -fv .DCOP* \
+	.ICE* \
+	.bash_history \
+	.kde/cache-* \
+	.kde/socket-* \
+	.kde/tmp-*
+
+cd .amsn
+
+rm -fvr	contacts.xml \
+	logs \
+	profiles \
+	contacts.ver \
+	displaypic
+	
+rm -fR ../.firefox &&
+#rm -fvr Cache/* \
+#	cook*.txt \
+#	downloads* \
+#	history.dat \
+#	formhistory.dat \
+#	search.rdf
+
+cd ../.aMule
+
+
+rm -frv muleconn

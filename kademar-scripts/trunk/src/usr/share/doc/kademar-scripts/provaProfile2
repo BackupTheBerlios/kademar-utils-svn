@@ -1,0 +1,28 @@
+#kademar Profile
+
+LIVECD_HOST_NAME="kademar"
+
+DISTNAME="kademar"
+DISTVER="4.1"
+ROOT="/home/clawlinux/distro/kademar"
+
+DISTKADEMAR="Lyra"
+
+SERVICES_TO_REMOVE="bluetooth ntpdate inetd xdm sysklogd klogd and fam acpid apmd tpctl fnfxd lirc xfs isdnutils exim4 mysql mysql-ndb mysql-ndb-mgm bluez-utils networking initrd-tools.sh glibc.sh hostname.sh sudo ifupdown alsa-utils pcmcia keymap.sh mountnfs.sh xserver-xorg mountvirtfs udev bootlogd samba lisa cupsys checkroot.sh hplip nviboot urandom hibernate ifupdown hotkey-setup cron atd ifupdown-clean module-init-tools modutils checkfs.sh pppd-dns dns-clean hwclock.sh powernowd ppp mountall.sh hwclockfirst.sh procps.sh udev-mtab mountvirtfs kdm splashy splashy10 splashy20 splashy30 splashy40 splashy50 splashy60 splashy70 xprint xfs-xtt zaptel pcmciautils ssh hdparm "
+
+# Debootstrap Information
+DEB_MIRROR="ftp://ftp.de.debian.org/debian"
+ARCH="i386"
+DIST="sarge"
+
+#Show build date when live-cd starts
+SHOW_LIVECD_BUILD_DATE=no
+
+#Languages to be included on menu.lst on live-cd (main menu.lst)
+LANGUAGES="es ca en"
+
+#compression type, can be normal or lzma (if it's available)
+SQUASH=lzma
+
+#Bootparams to be added to menu.lst (on live-cd mode)
+APPEND_TO_BOOTPARAM="startjoomla"

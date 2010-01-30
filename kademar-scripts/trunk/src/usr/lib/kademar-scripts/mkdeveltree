@@ -1,0 +1,163 @@
+#!/bin/bash
+
+#Elric Milon
+#Adonay Sanz
+
+#TODO do not remove source packages, do as in kernel building script
+
+. /usr/lib/kademar-scripts/sourcables/load_config
+
+busy_version="1.2.0"
+
+if [ "`whoami`" == root  ]; then
+	error "Don't run that script as root!"
+	exit 1
+fi
+		
+
+tip "Creating directory hierarchy"
+
+
+################
+##Functions part
+################
+
+
+####################
+##Begining of script
+####################
+
+
+#Create directory hierarchy
+
+mkdir -pv $DEVEL_ROOT
+cd $DEVEL_ROOT
+
+for dir in \
+	$SOURCE_DIR \
+	$BURNIX_ROOT \
+	$KM_SRC_DIR \
+	$MASTER_ROOT \
+	$BURNIX_BOOT \
+	$BURNIX_SYS \
+	$MASTER_BOOT \
+	$COMMON_DIR \
+	$ISO_DIR \
+	$INCLUDE_DIR \
+	$INITRD_INC \
+	$BUSY_DIR \
+	; do
+		mkdir -p $dir
+		iferrorexit "Creating dir: $dir"
+	done
+
+# 	$FSTYP_DIR \
+
+#Change permissions of the kernel source dir so we can get/compile/package it with user privileges
+##Not necessary anymore since we do not run this script as root.
+#chmod a+rw $KM_SRC_DIR
+	
+# set -x
+
+#Download and compile busybox
+if [ ! -d $BUSY_DIR/busybox ]; then
+# echo $BUSY_DIR
+	tip "Using Busybox Binaries"
+	busy_version=1.2.0
+	mkdir -p $BUSY_DIR
+	cd $BUSY_DIR
+	cd ..
+	rm -fr busybox
+	cp -a /usr/lib/kademar-scripts/binary-files/busybox-$busy_version .
+	ln -s busybox-$busy_version busybox
+fi
+
+# if [ ! -d $FSTYP_DIR/fstyp-0.1 ]; then
+# 	tip "Using Fstyp Binaries"
+# 	mkdir -p $FSTYP_DIR/
+# 	cp -a /usr/lib/kademar-scripts/binary-files/fstyp-0.1 $FSTYP_DIR/
+# fi
+
+
+
+##############  #####################
+####   COMPILE SOURCES NOT USED  ####
+##############  #####################
+
+#Download and compile busybox
+if [ ! -d $BUSY_DIR ]; then
+	tip "Downloading busybox"
+	pushd $BUSY_DIR
+	iferrorexit "changing current working directory, $BUSY_DIR does not exist."
+	
+	cd ..
+	
+	# wget http://www.busybox.net/downloads/snapshots/busybox-snapshot.tar.bz2 || error "downloading busybox"
+	# iferrorexit "Downloading busybox"
+	# 
+	# tip "Upacking busybox"
+	# tar xjpf busybox-snapshot.tar.bz2 
+	# iferrorexit "unpacking busybox"
+	# 
+	# rm busybox-snapshot.tar.bz2 
+	# iferrorexit "removing busybox source package, please check"
+	
+	
+	rm -fr busybox
+	
+	wget http://busybox.net/downloads/busybox-$busy_version.tar.bz2 || error "downloading busybox"
+	iferrorexit "Downloading busybox"
+	
+	tip "Upacking busybox"
+	tar xjpf busybox-$busy_version.tar.bz2
+	iferrorexit "unpacking busybox"
+	
+	rm busybox-$busy_version.tar.bz2
+	iferrorexit "removing busybox source package, please check"
+	
+	ln -s busybox-$busy_version busybox
+	
+	cd busybox
+	iferrorexit "unpacked busybox source package does not contain a busybox/ dir."
+	
+	tip "Copying default config file for busybox"
+	cp $CONFIG_DIR/busybox.conf .config 
+	iferrorexit "copying base config file for busybox."
+	
+	tip "Configuring BusyBox"
+	make oldconfig
+	iferrorexit "configuring BusyBox."
+	
+	tip "Compiling BusyBox"
+	make -s
+	iferrorexit "compiling busybox, please check for library depends"
+	ok busybox compiled
+	
+	popd
+fi
+# 
+# if [ ! -d $FSTYP_DIR/fstyp-0.1 ]; then
+# #Download and compile fstyp
+# pushd $FSTYP_DIR 
+# iferrorexit "changing current working directory, $FSTYP_DIR does not exist."
+# 
+# tip "Downloading fstyp"
+# 
+# wget http://mkp.net/fstyp/fstyp-0.1.tar.gz
+# iferrorexit "downloading fstyp"
+# 
+# tip Unpacking fstyp
+# tar xzpf fstyp-0.1.tar.gz
+# iferrorexit "unpacking fstyp"
+# 
+# cd fstyp-0.1
+# ./configure i386
+# iferrorexit "configuring fstyp"
+# 
+# make
+# iferrorexit "compiling fstyp"
+# 
+# ok fstyp compiled
+# 
+# fi
+

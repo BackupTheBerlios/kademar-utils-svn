@@ -1,0 +1,18 @@
+squashfs-tools-lzma (3.4) testing; urgency=low
+
+  * Updated to 3.4 squash-lzma
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Mon, 23 Feb 2009 15:22:15 +0100
+
+squashfs-tools-lzma (3.3-1) testing; urgency=low
+
+  * Updated to 3.3 squash-lzma
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Thu, 06 Mar 2008 10:30:42 +0200
+
+squashfs-tools-lzma (3.2-r2-1) testing; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Adonay Sanz Alsina <adonay@kademar.org>  Fri, 26 Oct 2007 10:30:42 +0200
+

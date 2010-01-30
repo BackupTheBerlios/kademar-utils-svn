@@ -1,0 +1,9 @@
+#splashimage=/boot/grub/kademar.xpm.gz
+
+gfxmenu = /boot/grub/bootlogo
+
+timeout = 7
+
+
+
+

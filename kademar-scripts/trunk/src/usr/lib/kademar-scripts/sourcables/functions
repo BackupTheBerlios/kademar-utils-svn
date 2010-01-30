@@ -1,0 +1,116 @@
+#!/bin/bash
+#Functions used in varius scripts
+
+#Elric Milon
+#Adonay Sanz
+
+. /usr/lib/kademar-scripts/sourcables/colors
+
+
+do_debug()
+#auxiliar function used if we want to debug the script
+#Usage: do_debug command
+{
+$*
+}
+
+alias debug=#
+
+[ -z "$DEBUG"  ] || alias debug=do_debug
+
+
+tip()
+{
+echo "${BLUE}·$*${NORMAL}"
+}
+
+ok()
+{
+echo "${GREEN}   $*${NORMAL}"
+}
+
+warn()
+{
+echo "${YELLOW}* $*${NORMAL}"
+}
+
+error()
+{
+echo "${RED}! Error: $*${NORMAL}"
+}
+
+question()
+{
+echo "${CYAN}?: $*${NORMAL}"
+}
+
+#Use: ask "What question?"
+ask()
+{
+while true; do
+	question "$* [y/n]${WHITE}"
+	read answer
+	echo -n "${NORMAL}"
+	case $answer in
+		[yY])
+			ANSWER=y
+			break
+		;;
+			
+		[nN])
+			ANSWER=n
+			break
+		;;
+
+		*)
+			if [ -z "$answer" ]; then
+			error "No answered. Please, reply y o n"
+			else
+			error "Wrong answer: $answer, reply y or n"
+			fi
+		;;
+	esac
+	
+done
+}
+
+
+#usage: iferrorexit error_message, if the las command has exited with error exits printing the message.
+iferrorexit()
+{
+if [ $? != 0 ]; then
+        error "$*"
+        exit 1
+fi
+}
+
+find_lock_file()
+{
+if [ -e "$DEVEL_ROOT/lock" ]; then
+	if [ -z "`ps aux | grep -i kademar-dev | grep -v 'grep -i kademar-dev'`" ]; then
+		rm -f "$DEVEL_ROOT/lock"
+	else
+		error "$DEVEL_ROOT/lock exists, it means that another kademar-dev is running. If isn't, delete it"
+		exit 7
+	fi
+fi
+}
+
+
+check_sudo_permissions(){
+#Mira si podem executar coses amb sudo
+sudo ls 2>&1 >/dev/null ; RESULT="$?"
+#Si no ha sortit bé
+if [ "$RESULT" != 0 ]; then
+	#Preguntem si volem posar les configuracions SUDO
+	ask "It's necessary to have SUDO permissions configurated. Do you want to configure automatically?"
+	if [ "$ANSWER" == "y" ]; then
+# 		Afegeix l'usuari seleccionat, a la configuracio de SUDO
+		user="`whoami`"
+		echo "Enter ROOT password:"
+		su -c "echo '$user     ALL=(ALL) ALL' >> /etc/sudoers " - root
+	fi
+	
+fi
+
+}

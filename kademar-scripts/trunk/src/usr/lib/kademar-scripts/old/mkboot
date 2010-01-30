@@ -1,0 +1,14 @@
+#!/bin/bash 
+
+
+cd $MASTER_ROOT/boot
+echo -n estic a:
+pwd
+
+echo comensemos...
+
+cp /usr/lib/grub/i386-pc/* .
+
+echo copiat.
+
+

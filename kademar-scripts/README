@@ -1,0 +1,24 @@
+kademar Base Package
+====================
+
+WHAT IS THIS?
+=============
+This is a package to be inside of all kademar GNU/Linux distros, wich contains basic scripts and functions to be 
+used by all scripts.
+Also contains CADI, Instalador, Conversor Audio, UsbTray, and other utilities created specifically by kademar distro.
+
+REQUERIMENT TO BUILD DEB PACKAGE
+================================
+apt-get install fakeroot debhelper devscripts dpkg-dev debianutils perl sed lintian dh-make
+
+
+INSTALL
+=======
+cd trunk
+debuild -r fakeroot
+dpkg -i ../kademar-base_x.x.x_i386.deb
+
+COPYRIGHT
+=========
+These scripts are licensed under GNU/GPL 2
+Created by  Adonay Sanz Alsina (c) 2006  -  adonay@kademar.org  -  kademar Team

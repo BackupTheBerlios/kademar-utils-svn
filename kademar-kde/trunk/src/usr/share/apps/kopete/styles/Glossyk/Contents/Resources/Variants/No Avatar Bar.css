@@ -1,0 +1,19 @@
+
+@import('../main.css');
+
+.koneBuddyIconME, .koneBuddyIconYOU {
+	visibility: hidden;
+}
+
+body {
+  background: white none;
+}
+
+/* Chat div */
+
+#Chat {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+

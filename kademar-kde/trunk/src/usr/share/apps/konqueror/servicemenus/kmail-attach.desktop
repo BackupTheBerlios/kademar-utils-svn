@@ -1,0 +1,23 @@
+# Servicemenu: Send file by mail						##
+# Author: Adonay Sanz Alsina - kademar    					##
+# Contact: adonay@kademar.org							## 
+# License: GPL 2.0                                                              ##
+# Date: 17.May.2006                                                      ##
+# Version: 0.1 - Initial release                                                ##   
+# Requirement Kmail			                                        ## 
+##################################################################################
+
+[Desktop Entry]
+ServiceTypes=all/allfiles
+Actions=kmail-attach
+Encoding=UTF8
+
+[Desktop Action kmail-attach]
+Name=Envia fitxer per Mail
+Name[ca]=Envia fitxer per Mail
+Name[es]=Envia fichero por Mail
+Name[en]=Send file by Mail
+
+Exec=kmail --attach
+
+Icon=kmail

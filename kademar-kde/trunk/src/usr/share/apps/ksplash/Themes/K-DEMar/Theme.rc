@@ -1,0 +1,14 @@
+# kademar
+
+[KSplash Theme: kademar]
+Name = kademar Splash Screen
+Description = kademar 4.3 Splash Screen
+Version = 3.0
+Author = Adonay Sanz <suport@kademar.org>
+Homepage = http://www.kademar.org
+
+# Theme behaviour settings.
+Engine = Default
+
+# Should icons blink ala KDE, or not?
+Icons Flashing = true

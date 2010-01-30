@@ -1,0 +1,10 @@
+#Script personal de la versió Lyra de kademar GNU/Linux
+#common-firefox
+common-gtk
+#common-kde
+#kde-desktop
+#icewm-idesk
+#kde-hack_cadi_install
+common-post
+common-powersaved
+#common-post-x

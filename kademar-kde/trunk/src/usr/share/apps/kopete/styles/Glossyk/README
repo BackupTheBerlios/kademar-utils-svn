@@ -1,0 +1,21 @@
+"Glossyk" Kopete Chat Window Style
+Version 1.0
+
+A nice looking, modern and sobre theme for Kopete conversations.
+Available with or without the avatar bar.
+
+It is inspired from kONE, and it enhance it.
+
+In the future (version 2 and more), there will be the following variants:
+- Compact View (pseudo and messages columns);
+- Show "Hours / Hours & Seconds / No Time";
+- More colors.
+Oh... and the HTML/CSS code will be much much cleaner:
+it's currently a patchwork ;-)
+
+This is Kopete 0.12 style made by Sebastien Laout.
+It use the powerful new xhtml+css engine.
+
+email: slaout at linux62 dot org
+
+See COPYRIGHT and gpl.txt for copyright.

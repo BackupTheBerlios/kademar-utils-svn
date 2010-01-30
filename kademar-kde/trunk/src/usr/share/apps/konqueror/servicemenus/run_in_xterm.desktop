@@ -1,0 +1,28 @@
+[Desktop Entry]
+ServiceTypes=application/exe,application/x-executable,application/x-python,application/x-perl,application/x-shellscript,application/x-executable-script,application/
+Encoding=UTF-8
+Actions=runinxterm;runasrootinxterm
+
+[Desktop Action runinxterm]
+Name=Run in a console
+Name[ca]=Executa en una consola
+Name[es]=Ejecuta en una consola
+#Icon=terminal
+Exec=xterm -title "%c" -e 'echo Running command `basename "%U"`;echo ;cd "%D/";"%U";echo ;echo "Press <enter> to quit...";read'
+Exec[ca]=xterm -title "%c" -e 'echo Executant ordre `basename "%U"`;echo ;cd "%D/";"%U";echo ;echo "Prem <retorn> per tencar...";read'
+Exec[es]=xterm -title "%c" -e 'echo Ejecutando comando `basename "%U"`;echo ;cd "%D/";"%U";echo ;echo "Pulse <enter> para cerrar...";read'
+
+Icon=terminal
+
+[Desktop Action runasrootinxterm]
+Name=Run in a console xterm with administrator privileges
+Name[ca]=Executa en una consola com administrador (root)
+Name[es]=Ejecuta en una consola como administrador (root)
+#Icon=kfm
+Exec=xterm -title "%c" -e "echo "Running command with administrator privileges: `basename "%U"`"; echo; echo You need to enter Root password; echo;cd "%D/";su -c "%U" - root;echo ;echo "Press <enter> to quit...";read"
+Exec[ca]=xterm -title "%c" -e 'echo "Executant ordre amb privilegis de administrador: `basename "%U"`";echo; echo Necessites introduir la contrassenya de root ;cd "%D/";su -c "%U" - root;echo ;echo ;echo "Prem <retorn> per tencar...";read'
+Exec[es]=xterm -title '%c' -e "echo "Ejecutando comando con privilegios de administrador: `basename "%U"`";echo; echo Necesitas introducir la contraseña de root ;cd "%D/";su -c "%U" - root;echo ;echo "Pulse <enter> para cerrar...";read"
+
+#made by s4ncho
+
+Icon=terminal

@@ -1,0 +1,25 @@
+#!/bin/bash
+# CREA CONFIG 2ND STAGE
+# set -x
+
+#Llegeix els fitxers a incloure 
+# I en fa un fitxer tot junt, per ser modular i alhora reduir acces al disc
+
+#llegeix la config, i va a buscar un a un a kademar-base -> kademar-inici.d-ng
+# i els suma tots i en fa un fitxer
+
+paquet_construit=kademar-leo
+
+
+cat ../../kademar-base/trunk/src/usr/share/kademar/scripts/engegada/kademar-inici.d-ng/common-base > debian/$paquet_construit/usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config
+cat src/usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config | grep -vi \# | while read line
+do
+	echo >> debian/$paquet_construit/usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config
+	echo "######  FILE   $line" >> debian/$paquet_construit/usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config
+        echo >> debian/$paquet_construit/usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config
+
+	cat ../../kademar-base/trunk/src/usr/share/kademar/scripts/engegada/kademar-inici.d-ng/$line >> debian/$paquet_construit/usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config
+        echo >> debian/$paquet_construit/usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config
+	echo "######  END FILE   $line" >> debian/$paquet_construit/usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config
+
+done

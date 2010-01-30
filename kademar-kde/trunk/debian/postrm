@@ -1,0 +1,39 @@
+#!/bin/sh
+set -e
+# Automatically added by dh_installmodules
+
+case "$1" in
+    purge|remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+
+	#Networking DHCP Permissive
+        if [ remove = "$1" ]; then
+#                 if [ -e /usr/share/apps/kicker/pics/kside.png-orig ]; then
+#                         rm /usr/share/apps/kicker/pics/kside.png
+#                 fi
+#                 if [ -e /etc/kde3/kdm/kdmrc.orig ]; then
+#                         rm /etc/kde3/kdm/kdmrc
+#                 fi
+#                 if [ -e /etc/kde3/kdm/backgroundrc.orig ]; then
+#                         rm /etc/kde3/kdm/backgroundrc
+#                 fi
+#                 dpkg-divert --package kademar-kde --remove --divert /usr/share/apps/kicker/pics/kside.png-orig --rename /usr/share/apps/kicker/pics/kside.png
+                
+#                 dpkg-divert --package kademar-kde --remove --divert /etc/kde3/kdm/kdmrc.orig --rename /etc/kde3/kdm/kdmrc
+
+#                 dpkg-divert --package kademar-kde --remove --divert /etc/kde3/kdm/backgroundrc.orig --rename /etc/kde3/kdm/backgroundrc
+                rm -f /etc/kde3/kdm/backgroundrc /etc/kde3/kdm/kdmrc /usr/share/apps/kicker/pics/kside.png
+                dpkg-divert --remove /etc/kde3/kdm/backgroundrc
+                dpkg-divert --remove /etc/kde3/kdm/kdmrc
+                dpkg-divert --remove /usr/share/apps/kicker/pics/kside.png
+
+        fi
+
+        ;;
+
+    *)
+        echo "postrm called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+exit 0

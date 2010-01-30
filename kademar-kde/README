@@ -1,0 +1,22 @@
+kademar Package
+===============
+
+WHAT IS THIS?
+=============
+This is a package to be inside of some kademar GNU/Linux distro version, wich contains basic scripts to boot and other functions.
+
+REQUERIMENT TO BUILD DEB PACKAGE
+================================
+apt-get install fakeroot debhelper devscripts dpkg-dev debianutils perl sed lintian dh-make
+
+
+INSTALL
+=======
+cd trunk
+debuild -r fakeroot
+dpkg -i ../kademar-dvd_x.x.x_i386.deb
+
+COPYRIGHT
+=========
+This Package is licensed under GNU/GPL 2
+Created by  Adonay Sanz Alsina (c) 2006  -  adonay@kademar.org  -  kademar Team

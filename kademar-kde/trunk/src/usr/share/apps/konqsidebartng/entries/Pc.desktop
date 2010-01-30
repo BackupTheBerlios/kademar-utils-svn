@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Icon=/usr/share/kademar/icons/Pc.png
+Type=Link
+URL=/Pc
+Name=Pc
+X-KDE-TreeModule=Directory
+X-KDE-KonqSidebarModule=konqsidebar_tree    
+

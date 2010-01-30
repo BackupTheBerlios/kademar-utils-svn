@@ -1,0 +1,20 @@
+Source: kademar-leo
+Section: main
+Priority: optional
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.7.3
+
+Package: kademar-leo
+Architecture: all
+Recommends: icewm, fluxbox
+Depends: kademar-base, imagemagick
+Provides: kademar-desktop-config
+Description: Paquet de kademar Leo (DVD)
+ Paquet especific de la distribució kademar Leo, la versió en DVD.
+ .
+ Conté els scrips d'engegada específics.
+ El HTML d'engegada
+ Multimedia de ejemplo
+ .
+ I el gestor de dispositius USB, UsbTray.

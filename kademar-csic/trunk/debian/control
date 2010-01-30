@@ -1,0 +1,14 @@
+Source: kademar-csic
+Section: unknown
+Priority: extra
+Maintainer: Adonay <adonay@kademar.org>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.7.3
+Homepage: http://www.kademar.org
+
+Package: kademar-csic
+Architecture: any
+Depends: kademar-base, imagemagick, screenlets, easystroke, cellwriter, dasher, orca|gnome-orca, eviacam, gok, xvkbd, kmag, kmousetool, keytouch, keytouch-editor
+Provides: kademar-desktop-config, pidgin-festival, gaim-festival
+Description: kademar Csic package
+ kademar Csic package

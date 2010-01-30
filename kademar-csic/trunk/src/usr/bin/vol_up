@@ -1,0 +1,13 @@
+#!/bin/bash
+#Script creat per Adonay Sanz Alsina 25-08-06 (Pastuira)
+#per pujar, baixar, o mutear el volum
+
+
+volum_actual=`/usr/share/kademar/scripts/engegada/amixer get PCM 2>/dev/null | grep "Playback" | grep "\[" | awk ' { print $4 } ' | tr \[\]\% " "`
+[ -z "$volum_actual" ] && volum_actual=`/usr/share/kademar/scripts/engegada/amixer get Master 2>/dev/null | grep "Playback" | grep "\[" | awk ' { print $4 } ' | tr \[\]\% " "`
+
+
+#Mira el volum actual
+#Baixa el volum dos punts, a raó de l'actual
+	/usr/share/kademar/scripts/engegada/amixer set PCM $((`echo $volum_actual | awk ' { print $1 } '` + 2))
+	/usr/share/kademar/scripts/engegada/amixer set Master $((`echo $volum_actual | awk ' { print $1 } '` + 2))

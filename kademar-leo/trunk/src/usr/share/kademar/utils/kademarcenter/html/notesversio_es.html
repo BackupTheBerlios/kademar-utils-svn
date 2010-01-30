@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+  <title>kademar Linux: Novetats de la Versió</title>
+  <meta name="GENERATOR" content="Quanta Plus">
+  <meta name="AUTHOR" content="Josep Gimbernat i Adonay Sanz">
+  <meta http-equiv="Content-Type" content="text/html; ">
+</head>
+<body background="/usr/share/kademar/utils/kademarstart/img/bg/bg_principal.png" behavior="fixed" style="background-attachment: fixed; background-repeat: no-repeat;"><STYLE TYPE="text/css">
+<!--
+     BODY {font-family:Helvetica,Arial,sans-serif;color:black}
+     A:link {text-decoration:none;font-weight:bold;color:black}
+     A:visited {text-decoration:none;font-weight:bold}
+     A:hover   {text-decoration:none; font-weight:bold}
+     A:active {text-decoration:none;font-weight:bold}
+        {font-family:Avantgarde,Helvetica,Arial,sans-serif}
+  -->
+</STYLE>
+
+
+<hr>
+<h3>kademar 4.9.1 - Notas de la Versión<h3>
+<hr>
+
+<h2> Mejoras Substanciales de PulseAudio </h2>
+<div align="center"><img src="screens/pulseaudio.jpg" alt="" /></div>
+Esta versión de kademar hemos mejorado enormemente el servidor de sonido para ofrecer una configuración perfecta, como nunca antes había estado.
+<ul><li> Mejoras de Rendimiento
+</li><li> Mejora en la integración con Iceweasel/Firefox
+</li><li> Mejoras de Seguridad
+</li></ul>
+<h2> Ext4 por defecto </h2>
+<div align="center"><img src="/usr/share/icons/oxygen/128x128/devices/hdd_mount.png" alt="" /></div>
+Por fin, después de un error importante en las antiguas configuraciones del nucleo de Linux, se han solucionado, pudiendo ya implementar de manera segura el sistema de archivos de última generación Ext4.
+
+<h2>WiCD, como substituto a NetworkManager</h2>
+<div align="center"><img src="screens/wicd.png" alt="" /></div>
+Ahora incorporamos la nueva versión de WiCD como el gestor de redes por defecto.
+<ul><li> Mejoras de encriptación
+</li><li> Mejor soporte a redes cableadas y wifi
+</li></ul>
+
+<h2> Nuevo gestor de Teclados Multimedia </h2>
+<div align="center"><img src="screens/keytouch.png" alt="" /></div>
+La herramienta de configuración CADI ahora usa un nuevo gestor más completo y perfeciconado de teclados multimedia. Con soporte a todos los escritorios
+
+
+<h2>Kernel 2.6.31.5</h2>
+<div align="center"><img src="/usr/share/icons/oxygen/128x128/apps/tux.png" alt="" /></div>
+kademar trae consigo una versión actualizada del nucleo. Más rápido, más seguro y con mucho más soporte a dispositivos.
+<ul><li>Compilado para 686
+</li><li>Más rapido
+</li><li>Más seguro
+</li><li>Nvidia 185.18.36
+</li><li>Mejoras muy notables en cantidad de dispositivos detectados
+</li><li>Módulos de Speakup
+</li><li>Modulos de Ndiswrapper
+</li></ul>
+
+<h2>Instalador</h2>
+<div align="center"><img src="screens/instalador.png" alt="" /></div>
+
+<ul><li>Ext4 por defecto
+
+</li><li>Soporte inicial a Grub2
+</li><li>Mejor soporte a <i>update-grub</i> de Debian
+</li><li>Ahora avisa exactamente qué particiones se van a formatear
+</li><li>Mejorado el borrado de programas con licencias no-libres. (VRMS ahora da un sistema 100% libre)
+</li><li>Uso de repositorios 100% libres, si se selecciona
+</li><li>Ahora kademar incorpora la versión en modo consola del instalador para optimizar recursos en máquinas más modestas
+</li><li>Mejoras sutiles en la interfaz gráfica
+</li><li>Corregidas traducciones al catalán
+</li></ul>
+
+<h2>Linux Standard Base</h2>
+<div align="center"><img src="/usr/share/icons/oxygen/128x128/apps/accessories_text_editor.png" alt="" /></div>
+kademar ahora cumple más las estandarizaciones de LSB en sus versiones, y eso la hace más compatible con algunos programas de debian, para detectar la distribución.<br>
+También se ha congelado la versión a Lenny, para que no haya problemas posteriores en actualizaciones.
+<ul><li> Uso de lsb_release
+</li><li> Acactualizado Debian Lenny y backports
+</li><li> Uso de Lenny 100% congelado
+</li></ul>
+
+<h2>Y Más...</h2>
+<ul><li> Mejorada configuración del escritorio alternativo LXDE
+</li><li>Mejor respuesta en sistemas con alto uso de disco duro (heavy disk usage)
+</li><li>Soporte a MS Office 2007 desde konqueror (gracias Pere)
+</li><li> Live-CD con "guardar cambios" desplazado en segundo lugar
+</li><li> Splashy con memoria reservada (no se escribe texto encima de la barra de carga)
+</li><li> Mejorado soporte a broadcom
+</li><li> Mejorada velocidad de Iceweasel/Firefox
+</li><li>kademarstart
+<ul><li>Mejorados permisos de montaje
+</li><li>Mejorado enormemente la velocidad de montaje
+</li><li>Corregidos errores gráficos
+</li><li>Borrados botones no usados
+</li></ul>
+
+<li> Instalados programas que se borraron: kgamma, kompare, timidity
+</li><li>Recuperado soporte a Lightscribe
+</li><li>Borrada configuración de modem 3g toshiba g450
+</li><li>Borrados archivos de desarrollo en los skins de audacious
+</li><li>Añadido parámetro "nox" para iniciar sin sesión gráfica
+</li><li>Cambios en los repositorios
+</li><li>Cambios en el arranque gráfico (grub-gfxboot)
+</li><li>Mejorada detección de particiones de intercambio en live-cd (gracias Pere)
+</li><li>Ajustado lista de programas del Menu K (gracias Pere)
+</li><li>Volumen más bajo en live-cd (gracias Pere)
+</li><li>Mejorado soporte a FlashPlayer (gracias Pere)
+</li><li>Añadido icono a unison (gracias Pere)
+</li></ul>
+
+<!-- fi kademar 4.9.1 -->
+
+<hr>
+<h4>Versión Anterior<br>
+kademar 4.9 - Notas de la Versión</h4>
+<hr>
+
+
+Basada en Debian Lenny <br>
+Después de no estár 100% de acuerdo de la política que Debian está siguiendo para su versión Squeeze, kademar se ha basado en Debian Lenny, hasta que decidamos cual será el futuro de kademar.
+CADI <br>
+<ul><li> Módulo de GRUB en instalado añadido
+</li><li> Configuracion de Internet en threads (no bloquea)
+</li><li> Ocultar el paso de pedir IP por defecto
+</li><li> Optimizar la configuración de internet
+</li><li> Optimizar el fichero de configuración de internet
+
+</li><li> Parámetros de inicio concretos
+</li></ul>
+</li></ul>
+
+kademarcenter<br>
+<ul><li> Apartado de configuración - tema de computación invasiva (bug id 1)
+</li><li> Iniciar el módulo de CADI de ineternet (eth y wifi)
+</li><li> Montaje de los dispositivos desde donde arrancas
+</li></ul>
+</li></ul>
+
+Instalador<br>
+Nueva versión del instalador, con muchas mejoras, y preparación a lo que deberá llevar
+<ul><li> Posibilidad de hacer una instalación 100% libre
+</li><li> Corregido: a veces no contaba el progreso
+
+</li><li> Mejorado el Instalador (opción sin Grub - comentado en foro)
+</li><li> Soporte a particiones no formateadas (bug id 2)
+</li><li> Interfaz rediseñada completamente.
+</li><li> GUI entera en inglés y traducida:
+</li></ul>
+</li></ul>
+
+fbsplash, el substituto de splashy<br>
+
+Después de haber tenido problemas con splashy, hemos optado por un mejor arranque gráfico. Ahora hay más compatibilidad con los ordenadores.
+
+NTFS Autofix<br>
+Cuando usamos otros sistemas operativos que usan el sistema de archivos NTFS y se cierran mal, la partición queda corrupta y no se puede escribir en ella.<br>
+Ahora se arreglan automáticamente, para que se puedan escribir, sólo arrancando kademar y usándola normalmente.
+
+
+Y Más...<br>
+<ul><li> Audioconversor
+<ul><li> Si seleccionas no crear carpeta, vuelve atrás
+</li></ul>
+</li></ul>
+
+<ul><li> Mejoras que han recibido todos los programas de kademar
+<ul><li> Cambiados los fondos
+
+</li><li> Programas a 800x600 
+</li><li> Adecuado al nuevo logo de kademar
+</li></ul>
+</li></ul>
+<ul><li> Nucleo 2.6.29 - Con mucho más soporte a dispositivos de todo tipo
+</li>
+<li> K-DEMar -&gt; kademar 
+</li>
+<li> Configuración de idioma de IceWeasel
+</li>
+
+<li> Configure /etc/apt/pinning - Varias versiones sin problemas
+</li>
+<li> KDE 3.5.10 - Mejorado
+</li>
+<li> Mejorada la intgración de openoffice con kde
+</li>
+<li> Wine 1.1.26
+</li>
+<li> Borrado de carpetas temporales residuales
+
+</li>
+<li> Versión de grub anterior, más compatibilidad
+</li>
+<li> Desactivado soporte ext4, temporalmente
+</li>
+<li> nVidia drivers 185.18.14
+</li>
+<li> Imágenes de pc cambiadas
+</li></ul>
+
+<!-- fi kademar 4.9 -->
+
+

@@ -1,0 +1,56 @@
+kademar-leo (4.9.1) testing; urgency=low
+
+  * Sources.list Lenny
+  * Bashprofile removed audacity
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Fri, 23 Oct 2009 16:34:01 +0200
+
+kademar-leo (4.9) testing; urgency=low
+
+  * kademar 4.9
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Tue, 26 May 2009 02:12:41 +0200
+
+kademar-leo (4.8) testing; urgency=low
+
+  * kademar 4.8
+  * Moved to /usr/share/kademar
+  * More Debian package
+  * Wallpapers from lyra
+  * Moved Media-Sample to kademar-extra-multimedia
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Wed, 04 Feb 2009 00:18:44 +0100
+
+kademar-leo (4.7) testing; urgency=low
+
+  * kademar 5.0
+  * Changed Version
+  * Removed ManDVD
+  * Changed to kademar-leo
+
+ -- Adonay Sanz Alsina <adonay@kademar.org>  Fri, 08 Aug 2008 08:03:19 +0200
+
+kademar-dvd (2.5) testing; urgency=low
+
+  * kademar 4.6
+  * Prepared for Instalador 5
+  * New Bash.Bashrc config (pulseaudio)
+  * Installscript more clean
+
+ -- Adonay Sanz <adonay@kademar.org>  Fri, 18 Jul 2008 09:50:55 +0200
+
+kademar-dvd (2.0) testing; urgency=low
+
+  * kademar 4.5
+
+ -- Adonay Sanz Alsina <adonay@kademar.org>  Tue, 19 Feb 2008 12:46:41 +0100
+
+kademar-dvd (1.1) testing; urgency=low
+
+  * New kademar-inici.d-ng mode to create start
+  * HTML on date
+  * Debian Standards 3.7.2
+  * Azureus 3 - VuZe
+  * CSS Miami v.1
+
+ -- Adonay Sanz Alsina <adonay@kademar.org>  Mon, 10 Dec 2007 12:43:54 +0100

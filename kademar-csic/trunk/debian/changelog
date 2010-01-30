@@ -1,0 +1,15 @@
+kademar-csic (4.9.1) unstable; urgency=low
+
+  * FEATURE: Csic Starter Screenlet
+  * FEATURE: Pidgin Screenreader plugin (imaqua)
+  * FEATURE: Scripts to Volume up/down
+  * FEATURE: LXDE + Orca  kdm/gdm/wdm  session
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Fri, 23 Oct 2009 16:55:05 +0200
+
+kademar-csic (1.0-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Thu, 03 Sep 2009 19:02:16 +0000
+

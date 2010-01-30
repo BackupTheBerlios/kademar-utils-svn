@@ -1,0 +1,10 @@
+#!/bin/sh
+
+#Engega el CADI
+
+cd /usr/share/kademar/utils/cadi
+
+executa="`which executa`"
+
+
+$executa python cadi.py $*

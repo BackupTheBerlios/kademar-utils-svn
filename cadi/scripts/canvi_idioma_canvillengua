@@ -1,0 +1,62 @@
+#!/bin/bash
+# Script per canviar l'idioma i alguns parametres interns dels progràmes
+
+#TODO: fer que mogui els directoris del vell al nou
+
+
+#Càrrega del fitxer d'idioma
+. /etc/environment
+
+# posa de dirbase l'arrel
+dirbase="/"
+
+
+fitxers_de_sistema=' etc/kde3/kdm/kdmrc'
+
+case "$LANGUAGE" in
+ca*)
+	llengua=ca
+	pais=es
+	kdm_greet='Benvinguts a kademar'
+	apollon="~/Documents/Arxius Compartits"
+	amule="Documents/Arxius Compartits"
+	amsn="Documents/Arxius Rebuts Amsn"
+	break
+;;
+es*)
+	llengua=es
+	pais=es
+	kdm_greet='Bienvenidos a kademar'
+	apollon="~/Documentos/Archivos Compartidos"
+	amule="Documentos/Archivos Compartidos"
+	amsn="Documentos/Archivos Recibidos Amsn"
+	break
+;;	
+en*|C|*)
+	llengua=en
+	pais=en
+	kdm_greet='Welcome to kademar'
+	apollon="~/Documents/Shared Files"
+	amule="Documents/Shared Files"
+	amsn="Documents/Received Files Amsn"
+	break	
+;;
+esac
+
+
+for i in $fitxers_de_sistema
+do
+	if [ -e $dirbase$i ]; then
+		find0=`cat $dirbase$i | grep "Language="`
+		find1=`cat $dirbase$i | grep "GreetString="`
+		
+		[ -z "$find0" ] && find0="AkEsTaKadenaNOLaTrobarasMai"
+		[ -z "$find1" ] && find1="AkEsTaKadenaNOLaTrobarasMai"
+	
+		cat $dirbase$i | sed s/"$find0"/"Language=$llengua"/g | sed s/"$find1"/"GreetString=$kdm_greet"/g  > $dirbase$i.tmp
+		[ -s $dirbase$i.tmp ] && rm -f $dirbase$i
+		[ -s $dirbase$i.tmp ] && mv $dirbase$i.tmp $dirbase$i
+	else
+		echo "Selected File Doesn't exists:  $dirbase$i"
+	fi
+done

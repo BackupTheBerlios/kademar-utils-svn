@@ -1,0 +1,20 @@
+#!/bin/sh
+#Script per canviar l'idioma d'un sistema ja funcionant
+
+case "$1" in
+	ca)
+		sh /usr/share/kademar/scripts/locale_configurator ca
+		sh scripts/canvi_idioma_canvillengua
+	;;
+	es)
+		sh /usr/share/kademar/scripts/locale_configurator es
+		sh scripts/canvi_idioma_canvillengua
+	;;
+	en)
+		sh /usr/share/kademar/scripts/locale_configurator en
+		sh scripts/canvi_idioma_canvillengua
+	;;
+	*)
+		echo "I NEED A LANG TO OPERATE WITH!!"
+	;;
+esac

@@ -1,0 +1,14 @@
+Source: cadi
+Section: admin
+Priority: optional
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.7.3
+Homepage: http://www.kademar.org
+
+Package: cadi
+Architecture: all
+Depends: python-qt4, mesa-utils, synaptic, ndisgtk, keytouch, keytouch-editor
+Description: CADI - The Configurator kademar Tool
+    CADI it's the utility created to configure all system settings of kademar.
+    Somehow it's the "Control Panel" .

@@ -1,0 +1,21 @@
+#Dialog preferences
+height=30
+width=80
+listheight=15
+tmpfile="/tmp/installervar"
+tmpdialog="/tmp/installerdialog"
+
+logfile="/tmp/kademar-install.log"
+
+target="/instalador/desti"
+
+defaultfs="reiserfs"
+
+plantilla="/tmp/instalador-environment"
+plantillapasswd="/tmp/instalador-environment-passwd" 
+
+#path where installer is
+pathinstaller="/usr/share/kademar/utils/instalador-dialog/"
+
+#Script to grep info from hal
+grephalinfo="sh scripts/grephalinfo.sh"

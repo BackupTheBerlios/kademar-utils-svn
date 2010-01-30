@@ -1,0 +1,17 @@
+#!/bin/bash
+#Script per engegar el cups, en cas de que no ho estigui
+#Adonay Sanz  -  1 Agost 2006
+#Modificat (afegit hplip) - 20 set 2007
+
+PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin"
+export PATH
+
+if [ -z "`pidof cupsd`" ]; then
+	[ -e /etc/init.d/cupsys ] && /etc/init.d/cupsys start
+fi
+
+if [ -z "`pidof hplip`" ]; then
+	[ -e /etc/init.d/hplip ] && /etc/init.d/cupsys hplip
+fi
+
+kcmshell --nocrashhandler printers

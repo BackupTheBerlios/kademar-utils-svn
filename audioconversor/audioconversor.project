@@ -1,0 +1,3 @@
+FORMS        = ui/audioconversor.ui 
+SOURCES      = audioconversor.py 
+TRANSLATIONS = tr/es.ts tr/ca.ts tr/en.ts

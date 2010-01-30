@@ -1,0 +1,3 @@
+FORMS        = ui/cadi.ui ui/preferencies_sistema.ui ui/bluetooth.ui ui/teclats_multimedia.ui ui/internet.ui ui/pppoe.ui ui/language.ui ui/services.ui ui/display.ui ui/users.ui ui/grub_livecd.ui ui/grub_installed.ui
+SOURCES      = cadi.py preferencies.py bluetooth.py teclats_multimedia.py internet.py pppoe.py language.py services.py display.py users.py grub_livecd.py grub_installed.py
+TRANSLATIONS = tr/es.ts tr/ca.ts tr/en.ts

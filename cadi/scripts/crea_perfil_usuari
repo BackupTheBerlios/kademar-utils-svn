@@ -1,0 +1,371 @@
+#!/bin/sh -x
+#Script per ultimar la creació del perfil d'usuari
+
+# No es pot cridar sol, sino que l'ha de cridar o l'instal·lador o el CADI
+
+# os.system('cp -Rfr /usr/share/kademar/knoppix/Desktop/Pc '+home)
+
+# MODE TO CALL IT:  crea_perfil_usuari [usuari] [yes/no] (si vols crear la config o si sobreescrius un usuari ja creat)
+
+[ -z "$1" ] && echo NEED A USER TO OPERATE WITH && exit 1
+user="$1"
+
+#Si li indiques "yes" es per un usuari normal, sino, es per un ja creat i no t'interessa esborrar la configuracio ni modificar res seu
+[ -z "$2" ] && crea_home="creahome_si"
+crea_home="$2"
+
+#Afegim l'usuari als grups
+for i in `cat /usr/share/kademar/utils/cadi/resources/user_groups`
+do
+	adduser $user $i 2>/dev/null
+done
+
+if [ "$crea_home" = "creahome_si" ]; then
+
+	#Load language config
+	. /etc/environment
+	
+	case "$LANGUAGE" in
+
+        ca*)
+                start=Autoengega
+                desktop=Escriptori
+                llengua=ca
+                llenguakdeglobals="ca:es"  #support for second language
+                pais=es
+                firefoxlanguages="ca,es-es,en-us,en"
+                apollon="~/Documents/Arxius Compartits"
+                amule="Documents/Arxius Compartits"
+                amsn="Documents/Arxius Rebuts Amsn"
+                documents=Documents
+                kfile_home="Carpeta Inicial"
+                kfile_net="Carpetes de xarxa"
+                kfile_root="Arrel de Sistema"
+        ;;
+	es*)
+		start=Autoarranque
+		desktop=Escritorio
+		llengua=es
+		pais=es
+		firefoxlanguages="es-es,en-us,en"
+		apollon="~/Documentos/Archivos Compartidos"
+		amule="Documentos/Archivos Compartidos"
+		amsn="Documentos/Archivos Recibidos Amsn"
+		documents=Documentos
+		kfile_home="Carpeta Inicial"
+		kfile_net="Carpetas de red"
+		kfile_root="Raiz de Sistema"
+	;;
+	en*|C|*)
+		start=Autostart
+		desktop=Desktop
+		llengua=en
+		pais=en
+		firefoxlanguages="en-us,en,es-es"
+		apollon="~/Documents/Shared Files"
+		amule="Documents/Shared Files"
+		amsn="Documents/Received Files Amsn"
+		documents=Documents
+		kfile_home="Home Folder"
+		kfile_net="Net Folders"
+		kfile_root="System Root"
+	
+	;;
+
+	esac
+	
+	#load Iceweasel/Firefox preferences
+	echo 'user_pref("browser.startup.homepage", "http://www.kademar.org/?lang='$llengua'");
+user_pref("browser.download.dir", "/home/'$user'/Documents");
+user_pref("extensions.update.enabled", false);
+user_pref("intl.accept_languages", "'$firefoxlanguages'");
+user_pref("app.update.enabled", false);
+user_pref("browser.search.update", false);
+user_pref("security.warn_entering_secure", false);
+user_pref("security.warn_leaving_secure", false);
+user_pref("security.warn_submit_insecure", false);
+user_pref("security.warn_viewing_mixed", false);' >> /home/$user/.mozilla/firefox/*/prefs.js
+	
+	#Delete Openoffice configuration
+	#rm -fr /home/$user/.openoffice* #deprecated solution
+	
+	# rm -fr /home/$user/.mozilla
+	rm -fr /home/$user/.sversionrc
+	
+	#Create Documents folder
+	sh /usr/share/kademar/scripts/documents $user
+	#Change preferences and lenguage of some apps
+	sh /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/common-canvillengua $user /
+	sh /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/kde-canvikdeglobals $user
+	
+	
+	#Xscreensaver Link
+	# echo "[Desktop Entry]
+	# Exec=xscreensaver -no-splash
+	# Name=XScreensaver
+	# Name[ca]=XScreensaver - Salvapantalles
+	# Name[es]=XScreensaver - Salvapantallas
+	# StartupNotify=false
+	# Terminal=false
+	# Type=Application
+	# X-KDE-StartupNotify=false
+	# X-KDE-SubstituteUID=false" > /home/$user/.kde/$start/xscreensaver
+	# chmod +x /home/$user/.kde/$start/xscreensaver
+	
+
+# 	if [ "`laptop-detect ; echo $?`" != 0 ]; then
+# 		resposta_numlock=on
+# 	else
+# 		resposta_numlock=off
+# 	fi
+	
+# 	echo "[Desktop Entry]
+# 	Exec=numlockx $resposta_numlock
+# 	Icon=keyboard
+# 	Type=Application
+# 	X-KDE-StartupNotify=false
+# 	StartupNotify=no" > /home/$user/.kde/$start/numlock.desktop
+	
+		
+	###############
+	# ICEWM ICONS #
+	###############
+	[ ! -e /home/$user/.idesktop ] && mkdir /home/$user/.idesktop
+        case "$LANGUAGE" in
+        ca*)
+                missatge_cadi="CADI"
+                tooltip_cadi="Configurar Sistema"
+                missatge_instalador="Instal.lador"
+                tooltip_instalador="Instal.la kademar al disc dur"
+                missatge_home="Inici"
+                tooltip_home="Fitxer personals"
+                missatge_trash="Paperera"
+                tooltip_trash="Arxius esborrats"
+                tooltip_pc="Dispositius"
+                [ -e /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/icewm-menu_ca ] && rm -f /home/$user/.icewm/menu && cp -a /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/icewm-menu_ca /home/$user/.icewm/menu
+                echo 'prog "Fitxer Personals" "/usr/share/kademar/icons/home.png" xfe $HOME
+prog "Pc" "/usr/share/kademar/icons/pc_p.png" xfe /Pc
+prog "Abiword - Document de Text" "/usr/share/AbiSuite-2.4/icons/abiword_48.png" /usr/bin/abiword
+prog "Volum" "/usr/share/kademar/icons/escoltar.png" alsamixergui
+prog "Navegador Dillo" "/usr/share/kademar/icons/konqueror2a.png" dillo
+prog "Terminal" "/usr/share/kademar/icons/konsole.png" mrxvt -bg black -fg white -bt -sr
+prog "CADI - Configurar Sistema" "/usr/share/kademar/icons/configure.png" executa cadi ' > /home/$user/.icewm/toolbar
+
+        ;;
+        es*)
+                missatge_cadi="CADI"
+                tooltip_cadi="Configurar Sistema"
+                missatge_instalador="Instalador"
+                tooltip_instalador="Instalar kademar en el disco duro"
+                missatge_home="Inicio"
+                tooltip_home="Ficheros personales"
+                missatge_trash="Papelera"
+                tooltip_trash="Archivos borrados"
+                tooltip_pc="Dispositivos"
+                [ -e /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/icewm-menu_ca ] && rm -f /home/$user/.icewm/menu && cp -a /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/icewm-menu_es /home/$user/.icewm/menu
+                echo 'prog "Ficheros Personales" "/usr/share/kademar/icons/home.png" xfe $HOME
+prog "Pc" "/usr/share/kademar/icons/pc_p.png" xfe /Pc
+prog "Abiword - Documento de Texto" "/usr/share/AbiSuite-2.4/icons/abiword_48.png" /usr/bin/abiword
+prog "Volumen" "/usr/share/kademar/icons/escoltar.png" alsamixergui
+prog "Navegador Dillo" "/usr/share/kademar/icons/konqueror2a.png" dillo
+prog "Terminal" "/usr/share/kademar/icons/konsole.png" mrxvt -bg black -fg white -bt -sr
+prog "CADI - Configurar Sistema" "/usr/share/kademar/icons/configure.png" executa cadi ' > /home/$user/.icewm/toolbar
+
+        ;;
+        en*|*)
+                missatge_cadi="CADI"
+                tooltip_cadi="System Settings"
+                missatge_instalador="Installer"
+                tooltip_instalador="Install kademar on Hard Drive"
+                missatge_home="Start"
+                tooltip_home="Personal files"
+                missatge_trash="Trash"
+                tooltip_trash="Erased files"
+                tooltip_pc="Devices"
+                [ -e /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/icewm-menu_en ] && rm -f /home/$user/.icewm/menu && cp -a /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/icewm-menu_en /home/$user/.icewm/menu
+                echo 'prog "Personal Files" "/usr/share/kademar/icons/home.png" xfe $HOME
+prog "Pc" "/usr/share/kademar/icons/pc_p.png" xfe /Pc
+prog "Abiword - Text Document" "/usr/share/AbiSuite-2.4/icons/abiword_48.png" /usr/bin/abiword
+prog "Volume" "/usr/share/kademar/icons/escoltar.png" alsamixergui
+prog "Dillo browser" "/usr/share/kademar/icons/konqueror2a.png" dillo
+prog "Terminal" "/usr/share/kademar/icons/konsole.png" mrxvt -bg black -fg white -bt -sr
+prog "CADI - System Settings" "/usr/share/kademar/icons/configure.png" executa cadi ' > /home/$user/.icewm/toolbar
+        ;;
+        esac
+
+        #HOME
+        echo "table Icon
+  Caption: $missatge_home
+  Tooltip.Caption: $tooltip_home
+  Icon: /usr/share/kademar/icons/home_blue.png
+  # Tamaño de icono, solo valido para versiones 0.6 y 0.7 de idesk
+  Width: 48
+  Height: 48
+  X: 27
+  Y: 74
+  Command[0]: xfe \$HOME
+  Command[1]: idesktool \$HOME/.idesktop/home.lnk
+end" > /home/$user/.idesktop/home.lnk
+
+        #TRASH
+        echo "table Icon
+  Caption: $missatge_trash
+  Tooltip.Caption: $tooltip_trash
+  Icon: /usr/share/kademar/icons/borrar.png
+  Width: 48
+  Height: 48
+  X: 27
+  Y: 174
+  Command[0]: xfe \$HOME/.xfetrash
+  Command[1]: idesktool \$HOME/.idesktop/trash.lnk
+end" > /home/$user/.idesktop/trash.lnk
+
+        #CADI
+        echo "table Icon
+  Caption: $missatge_cadi
+  Tooltip.Caption: $tooltip_cadi
+  Width: 48
+  Height: 48
+  Icon: /usr/share/kademar/icons/package_settings.png
+  X: 27
+  Y: 274
+  Command[0]: executa cadi
+  Command[1]: idesktool \$HOME/.idesktop/CADI.lnk
+end" > /home/$user/.idesktop/CADI.lnk
+	
+mkdir -p "$HOME/.xfetrash"
+
+	#Pc
+	echo "table Icon
+  Caption: Pc
+  Tooltip.Caption: $tooltip_pc
+  Width: 48
+  Height: 48
+  Icon: /usr/share/kademar/icons/pc_p.png
+  X: 27
+  Y: 374
+  Command[0]: xfe \$HOME/Pc
+  Command[1]: idesktool \$HOME/.idesktop/pc.lnk
+end" > /home/$user/.idesktop/pc.lnk
+			
+	
+	#Posa l'engegada del numlock en on o en off per a icewm
+# 	echo "numlockx $resposta_numlock" >> /home/$user/.icewm/startup
+	
+	##################
+	# FI ICEWM ICONS #
+	##################
+	
+	#sh /usr/share/kademar/utils/cadi/crea_perfil_usuari_volums $user
+	
+	#Links al Pc
+	ln -s -n /Pc /home/$user/$desktop/Pc 
+	ln -s -n /Pc /home/$user/Pc
+	
+	######################
+	#  Localitzacio de les configuracions
+	######################
+	fitxers_de_home='.kde/share/config/kdeglobals .audacity-data/audacity.cfg .giFT/giftd.conf .aMule/amule.conf .amsn/config.xml'
+	
+	for fitxer_a_modificar in $fitxers_de_home
+	do
+		echo /home/$user/$fitxer_a_modificar
+		if [ -e /home/$user/$fitxer_a_modificar ]; then
+		find0=`cat /home/$user/$fitxer_a_modificar | grep "Language="`
+		find1=`cat /home/$user/$fitxer_a_modificar | grep "Country="`
+		find2=`cat /home/$user/$fitxer_a_modificar | grep "completed = ~"`
+		find3=`cat /home/$user/$fitxer_a_modificar | grep "root = ~"`
+		find4=`cat /home/$user/$fitxer_a_modificar  | grep "IncomingDir="`
+		find5=`cat /home/$user/$fitxer_a_modificar  | grep "<value>/"`
+	
+		[ -z "$find0" ] && find0="AkEsTaKadenaNOLaTrobarasMai"
+		[ -z "$find1" ] && find1="AkEsTaKadenaNOLaTrobarasMai"
+		[ -z "$find2" ] && find2="AkEsTaKadenaNOLaTrobarasMai"
+		[ -z "$find3" ] && find3="AkEsTaKadenaNOLaTrobarasMai"
+		[ -z "$find4" ] && find4="AkEsTaKadenaNOLaTrobarasMai"
+		[ -z "$find5" ] && find5="AkEsTaKadenaNOLaTrobarasMai"
+	
+	
+		cat /home/$user/$fitxer_a_modificar  | sed s/"$find0"/"Language=$llengua"/g | sed s:"$find1":"Country=$pais":g | sed s:"$find2":"completed = $apollon":g | sed s:"$find3":"root = $apollon":g | sed s:"$find4":"IncomingDir=/home/$user/$amule":g | sed s:"$find5":"<value>/home/$user/$amsn</value>":g > /home/$user/$fitxer_a_modificar.tmp
+	
+		[ -s /home/$user/$fitxer_a_modificar.tmp ] && rm -f /home/$user/$fitxer_a_modificar && mv /home/$user/$fitxer_a_modificar.tmp /home/$user/$fitxer_a_modificar
+
+    #special modifications for double language on kdeglobals
+        if [ -n "$llenguakdeglobals" -a -e "/home/$user/.kde/share/config/kdeglobals" ]; then
+            a=`grep "Language=" "/home/$user/.kde/share/config/kdeglobals"`
+            sed s."$a"."Language=$llenguakdeglobals".g -i "/home/$user/.kde/share/config/kdeglobals"
+        fi
+
+
+	else
+		echo "Selected File Doesn't exists:  /home/$user/$fitxer_a_modificar"
+	fi	
+	done
+	
+	######################
+	# FI Localitzacio de les configuracions
+	######################
+	
+	
+	[ ! -e /home/$user/Pc ] && ln -s -n /Pc /home/$user/Pc
+	[ -e /home/$user/Desktop ] && [ ! -e /home/$user/Desktop/Pc ] && ln -s -n /Pc /home/$user/Desktop/Pc
+	[ -e /home/$user/Escriptori ] && [ ! -e /home/$user/Escriptori/Pc ] && ln -s -n /Pc /home/$user/Escriptori/Pc
+	[ -e /home/$user/Escritorio ] && [ ! -e /home/$user/Escritorio/Pc ] && ln -s -n /Pc /home/$user/Escritorio/Pc
+	
+	
+	#GTK Bookmarks pel FileDialog (gimp, inkscape, etc)
+    echo "file:///home/$user/$documents" >> "/home/$user/.gtk-bookmarks"
+	
+	#KDE Bookmarks pel FileDialog (kwrite, konqueror, etc)
+	echo "[KFileDialog Speedbar (Global)]
+	Description_0=$desktop
+	Description_1=$kfile_home
+	Description_2=$documents
+	Description_3=Pc
+	Description_4=$kfile_root
+	Description_5=$kfile_net
+	IconGroup_0=4
+	IconGroup_1=4
+	IconGroup_2=4
+	IconGroup_3=4
+	IconGroup_4=4
+	IconGroup_5=4
+	Icon_0=
+	Icon_1=folder_home
+	Icon_2=document
+	Icon_3=/usr/share/kademar/icons/Pc.png
+	Icon_4=folder_red
+	Icon_5=network
+	Number of Entries=6
+	URL_0=file://\$HOME/$desktop/
+	URL_1=file://\$HOME
+	URL_2=file://\$HOME/$documents/
+	URL_3=file:///home/Pc
+	URL_4=file:///
+	URL_5=remote:/" >> /home/$user/.kde/share/config/kdeglobals
+	
+	#Hack xungo
+	# chmod -R 777 /home/*/.kde/share/config/kdeglobals
+	
+	#Install klik
+	su -c "sh /usr/share/kademar/scripts/klik-installer-kademar" - $user
+	
+	#Link al Desktop
+	ln -s /home/$user/$desktop /home/$user/Desktop
+	
+    # configure wallpapers (panoramic/normal) - for selected user
+    sh /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/common-configure_wallpapers "$user"
+
+
+	echo "Config created for  $user"
+
+else
+	echo "NO config created for  $user"
+fi
+
+#change permissions
+chown -R $user.users /home/$user &
+chown -R $user.users /home/$user/.kde &
+chown $user.users /home/$user &
+chmod 700 /home/$user &
+chmod -R 700 /home/$user &

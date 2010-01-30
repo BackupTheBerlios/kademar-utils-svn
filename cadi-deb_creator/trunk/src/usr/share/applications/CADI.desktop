@@ -1,0 +1,18 @@
+[Desktop Entry]
+Comment=
+Exec=executa cadi
+GenericName=
+Icon=package_settings
+Name=CADI - Configure System
+Name[ca]=CADI - Configurar Sistema
+Name[es]=CADI - Configurar Sistema
+Name[en]=CADI - Configure System
+Path=
+StartupNotify=true
+Terminal=0
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
+Categories=Qt;KDE;Core;
+

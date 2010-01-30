@@ -1,0 +1,23 @@
+#!/bin/bash
+
+#Remove non-free from packages
+packages="flashplayer-mozilla w32codecs win32codecs sun-java6-jre sun-java6-bin sun-java6-plugin atmel-firmware bluez-firmware firmware-bnx2 firmware-ipw2x00 firmware-iwlwifi firmware-qlogic firmware-ralink lha libertas-firmware midisport-firmware rar unrar zd1211-firmware b43-fwcutter isight-firmware-tools msttcorefonts ttf-mscorefonts-installer kademar-restricted desktop-kademar-restricted desktop-kademar-restricted-extra flashplugin-nonfree-extrasound lightscribe lightscribeapplications libdvdcss2"
+
+aptitude -y remove $packages
+
+dpkg -P $packages
+
+
+#Remove Flash player
+rm -fr /usr/lib/mozilla/plugins/*flash*
+
+#Remove  nVidia
+rm -fr /usr/bin/nvidia* /usr/share/doc/NVIDIA-GLX* /usr/lib/*nvidia* /usr/lib/*NVIDIA* /usr/share/man/man1/nvidia* /usr/share/applications/nvidia-settings.desktop /usr/lib/tls/*nvidia* /usr/lib/libGL.so.??*.* /usr/lib/xorg/modules/extensions/*libglx*.??*.* /usr/lib/xorg/modules/*nvidia*.*
+
+rm -fr /home/*/.local/share/applications/*ightscribe*
+
+#use sources.list free
+if [ -e /etc/apt/src-free ]; then
+	rm -f /etc/apt/sources.list
+	cp /etc/apt/src-free /etc/apt/sources.list
+fi

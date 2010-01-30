@@ -1,0 +1,531 @@
+<ui version="4.0" >
+ <class>Form</class>
+ <widget class="QWidget" name="Form" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="label_2" >
+   <property name="geometry" >
+    <rect>
+     <x>-1</x>
+     <y>0</y>
+     <width>640</width>
+     <height>480</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string/>
+   </property>
+   <property name="pixmap" >
+    <pixmap>../../../../../usr/share/kademar/utils/cadi/img/bg/instalador.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QStackedWidget" name="pageWidget" >
+   <property name="geometry" >
+    <rect>
+     <x>150</x>
+     <y>0</y>
+     <width>491</width>
+     <height>481</height>
+    </rect>
+   </property>
+   <property name="currentIndex" >
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="software" >
+    <property name="geometry" >
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>491</width>
+      <height>481</height>
+     </rect>
+    </property>
+    <widget class="QPushButton" name="b_synaptic" >
+     <property name="geometry" >
+      <rect>
+       <x>50</x>
+       <y>80</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Synaptic - Gestió de programes</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_preferencies_sistema" >
+     <property name="geometry" >
+      <rect>
+       <x>270</x>
+       <y>80</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Preferències Generals del Sistema</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_4" >
+     <property name="geometry" >
+      <rect>
+       <x>270</x>
+       <y>150</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>PushButton</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_3" >
+     <property name="geometry" >
+      <rect>
+       <x>50</x>
+       <y>150</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>PushButton</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_6" >
+     <property name="geometry" >
+      <rect>
+       <x>270</x>
+       <y>220</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>PushButton</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_5" >
+     <property name="geometry" >
+      <rect>
+       <x>50</x>
+       <y>220</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>PushButton</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4" >
+     <property name="geometry" >
+      <rect>
+       <x>220</x>
+       <y>30</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Software</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="hardware" >
+    <property name="geometry" >
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>491</width>
+      <height>481</height>
+     </rect>
+    </property>
+    <widget class="QLabel" name="label_5" >
+     <property name="geometry" >
+      <rect>
+       <x>220</x>
+       <y>30</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Hardware</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_bluetooth" >
+     <property name="geometry" >
+      <rect>
+       <x>50</x>
+       <y>150</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Bluetooth</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_14" >
+     <property name="geometry" >
+      <rect>
+       <x>50</x>
+       <y>220</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_impressores" >
+     <property name="geometry" >
+      <rect>
+       <x>50</x>
+       <y>80</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Impressores</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_16" >
+     <property name="geometry" >
+      <rect>
+       <x>270</x>
+       <y>220</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_kinfocenter" >
+     <property name="geometry" >
+      <rect>
+       <x>270</x>
+       <y>150</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Informació de Sistema</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_teclats_multimedia" >
+     <property name="geometry" >
+      <rect>
+       <x>270</x>
+       <y>80</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Teclats Multimèdia</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="xarxa" >
+    <property name="geometry" >
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>491</width>
+      <height>481</height>
+     </rect>
+    </property>
+    <widget class="QPushButton" name="b_wifi" >
+     <property name="geometry" >
+      <rect>
+       <x>50</x>
+       <y>80</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Sense Fils - Wifi</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_eth" >
+     <property name="geometry" >
+      <rect>
+       <x>270</x>
+       <y>80</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Tarja de Xarxa</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_22" >
+     <property name="geometry" >
+      <rect>
+       <x>270</x>
+       <y>220</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6" >
+     <property name="geometry" >
+      <rect>
+       <x>220</x>
+       <y>30</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Xarxa</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_gprs" >
+     <property name="geometry" >
+      <rect>
+       <x>50</x>
+       <y>220</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>GPRS</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_modem" >
+     <property name="geometry" >
+      <rect>
+       <x>50</x>
+       <y>150</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Modem</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_adsl" >
+     <property name="geometry" >
+      <rect>
+       <x>270</x>
+       <y>150</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>ADSL/PPoE</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="sistema" >
+    <property name="geometry" >
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>491</width>
+      <height>481</height>
+     </rect>
+    </property>
+    <widget class="QPushButton" name="b_samba" >
+     <property name="geometry" >
+      <rect>
+       <x>50</x>
+       <y>150</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Samba - Compartir Fitxers</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_7" >
+     <property name="geometry" >
+      <rect>
+       <x>220</x>
+       <y>30</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Sistema</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_grub" >
+     <property name="geometry" >
+      <rect>
+       <x>270</x>
+       <y>150</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Restauració d'engegada - GRUB</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_serveis" >
+     <property name="geometry" >
+      <rect>
+       <x>270</x>
+       <y>80</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Activacio de Serveis</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_10" >
+     <property name="geometry" >
+      <rect>
+       <x>50</x>
+       <y>220</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>PushButton</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_11" >
+     <property name="geometry" >
+      <rect>
+       <x>270</x>
+       <y>220</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>PushButton</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_sistema_grafic" >
+     <property name="geometry" >
+      <rect>
+       <x>50</x>
+       <y>80</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Sistema gràfic</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QListWidget" name="listWidget" >
+   <property name="geometry" >
+    <rect>
+     <x>20</x>
+     <y>110</y>
+     <width>90</width>
+     <height>351</height>
+    </rect>
+   </property>
+   <property name="frameShape" >
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="iconSize" >
+    <size>
+     <width>48</width>
+     <height>48</height>
+    </size>
+   </property>
+   <property name="movement" >
+    <enum>QListView::Static</enum>
+   </property>
+   <property name="viewMode" >
+    <enum>QListView::IconMode</enum>
+   </property>
+   <property name="currentRow" >
+    <number>-1</number>
+   </property>
+   <item>
+    <property name="text" >
+     <string>Software</string>
+    </property>
+    <property name="icon" >
+     <iconset>
+      <normaloff>../../../../../usr/share/kademar/utils/cadi/img/software.png</normaloff>../../../../../usr/share/kademar/utils/cadi/img/software.png</iconset>
+    </property>
+   </item>
+   <item>
+    <property name="text" >
+     <string>Hardware</string>
+    </property>
+    <property name="icon" >
+     <iconset>
+      <normaloff>../../../../../usr/share/kademar/utils/cadi/img/hardware.png</normaloff>../../../../../usr/share/kademar/utils/cadi/img/hardware.png</iconset>
+    </property>
+   </item>
+   <item>
+    <property name="text" >
+     <string>Xarxa</string>
+    </property>
+    <property name="icon" >
+     <iconset>
+      <normaloff>../../../../../usr/share/kademar/utils/cadi/img/xarxa.png</normaloff>../../../../../usr/share/kademar/utils/cadi/img/xarxa.png</iconset>
+    </property>
+   </item>
+   <item>
+    <property name="text" >
+     <string>Sistema</string>
+    </property>
+    <property name="icon" >
+     <iconset>
+      <normaloff>../../../../../usr/share/kademar/utils/cadi/img/sistema.png</normaloff>../../../../../usr/share/kademar/utils/cadi/img/sistema.png</iconset>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_3" >
+   <property name="geometry" >
+    <rect>
+     <x>15</x>
+     <y>7</y>
+     <width>110</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string/>
+   </property>
+   <property name="pixmap" >
+    <pixmap>../../../../../usr/share/kademar/utils/cadi/img/kademar.png</pixmap>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

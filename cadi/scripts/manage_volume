@@ -1,0 +1,39 @@
+#!/bin/bash
+#Script creat per Adonay Sanz Alsina 25-08-06 (Pastuira)
+#per pujar, baixar, o mutear el volum
+
+
+volum_actual=`/usr/share/kademar/scripts/engegada/amixer get PCM 2>/dev/null | grep "Playback" | grep "\[" | awk ' { print $4 } ' | tr \[\]\% " "`
+[ -z "$volum_actual" ] && volum_actual=`/usr/share/kademar/scripts/engegada/amixer get Master 2>/dev/null | grep "Playback" | grep "\[" | awk ' { print $4 } ' | tr \[\]\% " "`
+
+case "$1" in
+up|puja|sube)
+#Mira el volum actual
+	
+#Puja el volum dos punts, a raó de l'actual
+	/usr/share/kademar/scripts/engegada/amixer set PCM $((`echo $volum_actual | awk ' { print $1 } '` + 2))
+	/usr/share/kademar/scripts/engegada/amixer set Master $((`echo $volum_actual | awk ' { print $1 } '` + 2))
+;;
+down|baixa|baja)
+#Mira el volum actual
+#Baixa el volum dos punts, a raó de l'actual
+	/usr/share/kademar/scripts/engegada/amixer set PCM $((`echo $volum_actual | awk ' { print $1 } '` - 2))
+	/usr/share/kademar/scripts/engegada/amixer set Master $((`echo $volum_actual | awk ' { print $1 } '` - 2))
+
+;;
+mute|silenci|silencio)
+#Comproba l'estat actual  (on/off)
+#Si te un estat, assigna l'altra
+	if [ "`echo $volum_actual | awk ' { print $1 } '`" = "on" ]; then
+	volum_actual=off
+	else
+	volum_actual=on
+	fi
+#Activa l'estat asignat
+	/usr/share/kademar/scripts/engegada/amixer set PCM $volum_actual
+	/usr/share/kademar/scripts/engegada/amixer set Master $volum_actual
+;;
+*)
+	echo Invalid Option
+;;
+esac

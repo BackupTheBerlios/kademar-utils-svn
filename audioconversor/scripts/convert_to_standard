@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#Fitxer per passar els fitxers de so a un format estandart
+
+#  $1 el directori on esta
+#  $2 el nom del fitxer
+
+#PATH="/bin:/usr/bin:/sbin:/usr/sbin"; export PATH
+umask 022
+
+
+
+cd "/tmp"
+mplayer -ao pcm "/tmp/audioconversor-tmp-file" -vo null

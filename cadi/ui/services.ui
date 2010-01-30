@@ -1,0 +1,249 @@
+<ui version="4.0" >
+ <class>FormServices</class>
+ <widget class="QWidget" name="FormServices" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize" >
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle" >
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="label_2" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>600</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string/>
+   </property>
+   <property name="pixmap" >
+    <pixmap>../../../../../../usr/share/kademar/utils/cadi/img/bg/cadi.png</pixmap>
+   </property>
+   <property name="scaledContents" >
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QStackedWidget" name="pageWidget" >
+   <property name="geometry" >
+    <rect>
+     <x>210</x>
+     <y>50</y>
+     <width>571</width>
+     <height>501</height>
+    </rect>
+   </property>
+   <property name="currentIndex" >
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="software" >
+    <widget class="QLabel" name="label_4" >
+     <property name="geometry" >
+      <rect>
+       <x>9</x>
+       <y>10</y>
+       <width>471</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>13</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text" >
+      <string>System Services</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label" >
+     <property name="geometry" >
+      <rect>
+       <x>40</x>
+       <y>80</y>
+       <width>411</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Here you can define what services do you want to run</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_logo_blth" >
+     <property name="geometry" >
+      <rect>
+       <x>380</x>
+       <y>200</y>
+       <width>131</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+     <property name="pixmap" >
+      <pixmap>../../../../../usr/share/kademar/utils/cadi/img/services.png</pixmap>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="geometry" >
+      <rect>
+       <x>30</x>
+       <y>160</y>
+       <width>331</width>
+       <height>211</height>
+      </rect>
+     </property>
+     <property name="title" >
+      <string>Services</string>
+     </property>
+     <widget class="QCheckBox" name="cb_samba" >
+      <property name="geometry" >
+       <rect>
+        <x>20</x>
+        <y>40</y>
+        <width>281</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text" >
+       <string>Samba - Sharing Files</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="cb_apache" >
+      <property name="geometry" >
+       <rect>
+        <x>20</x>
+        <y>70</y>
+        <width>281</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text" >
+       <string>Apache2 - Web Server</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="cb_mysql" >
+      <property name="geometry" >
+       <rect>
+        <x>20</x>
+        <y>100</y>
+        <width>281</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text" >
+       <string>MySQL - Database Server</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="cb_cups" >
+      <property name="geometry" >
+       <rect>
+        <x>20</x>
+        <y>130</y>
+        <width>271</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text" >
+       <string>CUPS - Print Service</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="cb_ssh" >
+      <property name="geometry" >
+       <rect>
+        <x>20</x>
+        <y>160</y>
+        <width>291</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text" >
+       <string>SSH - Secure Conection Server</string>
+      </property>
+     </widget>
+    </widget>
+    <zorder>label_4</zorder>
+    <zorder>label</zorder>
+    <zorder>l_logo_blth</zorder>
+    <zorder>groupBox</zorder>
+    <zorder>label_2</zorder>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="label_3" >
+   <property name="geometry" >
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>90</width>
+     <height>90</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string/>
+   </property>
+   <property name="pixmap" >
+    <pixmap>../../../../../usr/share/kademar/utils/cadi/img/kademar.png</pixmap>
+   </property>
+   <property name="scaledContents" >
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="b_sortir" >
+   <property name="geometry" >
+    <rect>
+     <x>20</x>
+     <y>530</y>
+     <width>121</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Back</string>
+   </property>
+   <property name="icon" >
+    <iconset>
+     <normaloff>../../../../../usr/share/kademar/utils/cadi/img/enrera.png</normaloff>../../../../../usr/share/kademar/utils/cadi/img/enrera.png</iconset>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="b_SaX" >
+   <property name="geometry" >
+    <rect>
+     <x>20</x>
+     <y>470</y>
+     <width>121</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Save &amp;&amp; Exit</string>
+   </property>
+   <property name="icon" >
+    <iconset>
+     <normaloff>../../../../../usr/share/kademar/utils/cadi/img/enrera.png</normaloff>../../../../../usr/share/kademar/utils/cadi/img/enrera.png</iconset>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

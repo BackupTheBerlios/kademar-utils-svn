@@ -1,0 +1,1127 @@
+<ui version="4.0" >
+ <class>FormInternet</class>
+ <widget class="QWidget" name="FormInternet" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize" >
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle" >
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="label_2" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>600</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string/>
+   </property>
+   <property name="pixmap" >
+    <pixmap>../../../../../usr/share/kademar/utils/cadi/img/bg/cadi.png</pixmap>
+   </property>
+   <property name="scaledContents" >
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QStackedWidget" name="pages" >
+   <property name="geometry" >
+    <rect>
+     <x>190</x>
+     <y>0</y>
+     <width>611</width>
+     <height>601</height>
+    </rect>
+   </property>
+   <property name="currentIndex" >
+    <number>2</number>
+   </property>
+   <widget class="QWidget" name="page" >
+    <widget class="QLabel" name="l_img_router" >
+     <property name="geometry" >
+      <rect>
+       <x>280</x>
+       <y>156</y>
+       <width>71</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+     <property name="pixmap" >
+      <pixmap>../../../../../usr/share/kademar/utils/cadi/img/router.png</pixmap>
+     </property>
+     <property name="scaledContents" >
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_img_pc" >
+     <property name="geometry" >
+      <rect>
+       <x>80</x>
+       <y>146</y>
+       <width>71</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+     <property name="pixmap" >
+      <pixmap>../../../../../usr/share/kademar/utils/cadi/img/sistema.png</pixmap>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_img_internet" >
+     <property name="geometry" >
+      <rect>
+       <x>470</x>
+       <y>152</y>
+       <width>71</width>
+       <height>70</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+     <property name="pixmap" >
+      <pixmap>../../../../../usr/share/kademar/utils/cadi/img/network.png</pixmap>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_img_diag_router" >
+     <property name="geometry" >
+      <rect>
+       <x>170</x>
+       <y>176</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+     <property name="pixmap" >
+      <pixmap>../../../../../usr/share/kademar/utils/cadi/img/search.png</pixmap>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_configure" >
+     <property name="geometry" >
+      <rect>
+       <x>130</x>
+       <y>430</y>
+       <width>291</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Configure Internet Access</string>
+     </property>
+     <property name="icon" >
+      <iconset>
+       <normaloff>../../../../../usr/share/kademar/utils/cadi/img/network.png</normaloff>../../../../../usr/share/kademar/utils/cadi/img/network.png</iconset>
+     </property>
+     <property name="iconSize" >
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_title" >
+     <property name="geometry" >
+      <rect>
+       <x>60</x>
+       <y>60</y>
+       <width>511</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text" >
+      <string>Internet and Network Connectivity </string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_pc" >
+     <property name="geometry" >
+      <rect>
+       <x>70</x>
+       <y>220</y>
+       <width>71</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>System</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_hostname" >
+     <property name="geometry" >
+      <rect>
+       <x>30</x>
+       <y>242</y>
+       <width>151</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font" >
+      <font>
+       <italic>true</italic>
+      </font>
+     </property>
+     <property name="text" >
+      <string>(localhost)</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_router" >
+     <property name="geometry" >
+      <rect>
+       <x>280</x>
+       <y>220</y>
+       <width>71</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Router</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_internet" >
+     <property name="geometry" >
+      <rect>
+       <x>470</x>
+       <y>220</y>
+       <width>71</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Internet</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_diag" >
+     <property name="geometry" >
+      <rect>
+       <x>80</x>
+       <y>320</y>
+       <width>171</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Diagnostic:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_final_diag" >
+     <property name="geometry" >
+      <rect>
+       <x>290</x>
+       <y>320</y>
+       <width>161</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font" >
+      <font>
+       <italic>true</italic>
+      </font>
+     </property>
+     <property name="layoutDirection" >
+      <enum>Qt::RightToLeft</enum>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_inet_provider" >
+     <property name="geometry" >
+      <rect>
+       <x>80</x>
+       <y>350</y>
+       <width>261</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Internet Provider Interface: </string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_inet_eth_provider" >
+     <property name="geometry" >
+      <rect>
+       <x>360</x>
+       <y>350</y>
+       <width>91</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font" >
+      <font>
+       <italic>true</italic>
+      </font>
+     </property>
+     <property name="layoutDirection" >
+      <enum>Qt::RightToLeft</enum>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_ip_pc" >
+     <property name="geometry" >
+      <rect>
+       <x>60</x>
+       <y>260</y>
+       <width>111</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>10</pointsize>
+       <italic>true</italic>
+      </font>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_ip_router" >
+     <property name="geometry" >
+      <rect>
+       <x>260</x>
+       <y>240</y>
+       <width>111</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>10</pointsize>
+       <italic>true</italic>
+      </font>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_img_diag_internet" >
+     <property name="geometry" >
+      <rect>
+       <x>360</x>
+       <y>176</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+     <property name="pixmap" >
+      <pixmap>../../../../../usr/share/kademar/utils/cadi/img/search.png</pixmap>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="pag1" >
+    <widget class="QLabel" name="label_4" >
+     <property name="geometry" >
+      <rect>
+       <x>59</x>
+       <y>60</y>
+       <width>491</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text" >
+      <string>Net Device</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label" >
+     <property name="geometry" >
+      <rect>
+       <x>60</x>
+       <y>110</y>
+       <width>381</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>11</pointsize>
+       <weight>75</weight>
+       <italic>true</italic>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text" >
+      <string>Select Net Device</string>
+     </property>
+    </widget>
+    <widget class="QListWidget" name="list_net_dev" >
+     <property name="geometry" >
+      <rect>
+       <x>60</x>
+       <y>150</y>
+       <width>491</width>
+       <height>211</height>
+      </rect>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_next" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
+     <property name="geometry" >
+      <rect>
+       <x>420</x>
+       <y>440</y>
+       <width>131</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="layoutDirection" >
+      <enum>Qt::RightToLeft</enum>
+     </property>
+     <property name="text" >
+      <string>Next</string>
+     </property>
+     <property name="icon" >
+      <iconset>
+       <normaloff>../../../../../usr/share/kademar/utils/cadi/img/go-next.png</normaloff>../../../../../usr/share/kademar/utils/cadi/img/go-next.png</iconset>
+     </property>
+     <property name="iconSize" >
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_prev" >
+     <property name="geometry" >
+      <rect>
+       <x>60</x>
+       <y>440</y>
+       <width>131</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Back</string>
+     </property>
+     <property name="icon" >
+      <iconset>
+       <normaloff>../../../../../usr/share/kademar/utils/cadi/img/go_previous.png</normaloff>../../../../../usr/share/kademar/utils/cadi/img/go_previous.png</iconset>
+     </property>
+     <property name="iconSize" >
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_disconfigure" >
+     <property name="geometry" >
+      <rect>
+       <x>240</x>
+       <y>440</y>
+       <width>131</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Disconfig</string>
+     </property>
+     <property name="icon" >
+      <iconset>
+       <normaloff>../../../../../usr/share/kademar/utils/cadi/img/stoped.png</normaloff>../../../../../usr/share/kademar/utils/cadi/img/stoped.png</iconset>
+     </property>
+     <property name="iconSize" >
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="cb_autoip" >
+     <property name="geometry" >
+      <rect>
+       <x>60</x>
+       <y>390</y>
+       <width>391</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font" >
+      <font>
+       <italic>true</italic>
+      </font>
+     </property>
+     <property name="text" >
+      <string>Configure with a Automatic IP (by default)</string>
+     </property>
+     <property name="checked" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="pag2" >
+    <widget class="QLabel" name="label_11" >
+     <property name="geometry" >
+      <rect>
+       <x>59</x>
+       <y>60</y>
+       <width>481</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text" >
+      <string>Wireless Network</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_next2" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
+     <property name="geometry" >
+      <rect>
+       <x>410</x>
+       <y>480</y>
+       <width>121</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="layoutDirection" >
+      <enum>Qt::RightToLeft</enum>
+     </property>
+     <property name="text" >
+      <string>Next</string>
+     </property>
+     <property name="icon" >
+      <iconset>
+       <normaloff>../../../../../usr/share/kademar/utils/cadi/img/go-next.png</normaloff>../../../../../usr/share/kademar/utils/cadi/img/go-next.png</iconset>
+     </property>
+     <property name="iconSize" >
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_10" >
+     <property name="geometry" >
+      <rect>
+       <x>60</x>
+       <y>110</y>
+       <width>241</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>11</pointsize>
+       <weight>75</weight>
+       <italic>true</italic>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text" >
+      <string>Select Wireless Network</string>
+     </property>
+    </widget>
+    <widget class="QListWidget" name="list_net_wifi" >
+     <property name="geometry" >
+      <rect>
+       <x>60</x>
+       <y>150</y>
+       <width>491</width>
+       <height>211</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_prev2" >
+     <property name="geometry" >
+      <rect>
+       <x>60</x>
+       <y>480</y>
+       <width>121</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Back</string>
+     </property>
+     <property name="icon" >
+      <iconset>
+       <normaloff>../../../../../usr/share/kademar/utils/cadi/img/go_previous.png</normaloff>../../../../../usr/share/kademar/utils/cadi/img/go_previous.png</iconset>
+     </property>
+     <property name="iconSize" >
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_key" >
+     <property name="geometry" >
+      <rect>
+       <x>60</x>
+       <y>420</y>
+       <width>61</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>key</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="le_key" >
+     <property name="geometry" >
+      <rect>
+       <x>130</x>
+       <y>420</y>
+       <width>291</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="echoMode" >
+      <enum>QLineEdit::Password</enum>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="cb_key_type" >
+     <property name="geometry" >
+      <rect>
+       <x>430</x>
+       <y>420</y>
+       <width>101</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text" >
+       <string>WEP/Hexa</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>ASCII</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QPushButton" name="b_reload" >
+     <property name="geometry" >
+      <rect>
+       <x>410</x>
+       <y>100</y>
+       <width>131</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Reload</string>
+     </property>
+     <property name="icon" >
+      <iconset>
+       <normaloff>../../../../../usr/share/kademar/utils/cadi/img/reload.png</normaloff>../../../../../usr/share/kademar/utils/cadi/img/reload.png</iconset>
+     </property>
+     <property name="iconSize" >
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="cb_permanent" >
+     <property name="geometry" >
+      <rect>
+       <x>60</x>
+       <y>380</y>
+       <width>391</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Make Permanent Connection (write to interfaces file)</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="pag3" >
+    <widget class="QPushButton" name="b_prev3" >
+     <property name="geometry" >
+      <rect>
+       <x>60</x>
+       <y>480</y>
+       <width>121</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Back</string>
+     </property>
+     <property name="icon" >
+      <iconset>
+       <normaloff>../../../../../usr/share/kademar/utils/cadi/img/go_previous.png</normaloff>../../../../../usr/share/kademar/utils/cadi/img/go_previous.png</iconset>
+     </property>
+     <property name="iconSize" >
+      <size>
+       <width>22</width>
+       <height>1622</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_next3" >
+     <property name="geometry" >
+      <rect>
+       <x>410</x>
+       <y>480</y>
+       <width>121</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="layoutDirection" >
+      <enum>Qt::RightToLeft</enum>
+     </property>
+     <property name="text" >
+      <string>Next</string>
+     </property>
+     <property name="icon" >
+      <iconset>
+       <normaloff>../../../../../usr/share/kademar/utils/cadi/img/go-next.png</normaloff>../../../../../usr/share/kademar/utils/cadi/img/go-next.png</iconset>
+     </property>
+     <property name="iconSize" >
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="geometry" >
+      <rect>
+       <x>90</x>
+       <y>100</y>
+       <width>431</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <property name="title" >
+      <string>IP Address</string>
+     </property>
+     <widget class="QRadioButton" name="rb_ip_static" >
+      <property name="geometry" >
+       <rect>
+        <x>220</x>
+        <y>30</y>
+        <width>102</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text" >
+       <string>Static IP</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="rb_ip_dynamic" >
+      <property name="geometry" >
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>211</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text" >
+       <string>Dynamic IP (by default)</string>
+      </property>
+      <property name="checked" >
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="l_netmask" >
+      <property name="enabled" >
+       <bool>false</bool>
+      </property>
+      <property name="geometry" >
+       <rect>
+        <x>70</x>
+        <y>104</y>
+        <width>63</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text" >
+       <string>Netmask</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="le_ip" >
+      <property name="enabled" >
+       <bool>false</bool>
+      </property>
+      <property name="geometry" >
+       <rect>
+        <x>170</x>
+        <y>70</y>
+        <width>171</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="inputMask" >
+       <string>999.999.999.999; </string>
+      </property>
+      <property name="text" >
+       <string>...</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="l_ip" >
+      <property name="enabled" >
+       <bool>false</bool>
+      </property>
+      <property name="geometry" >
+       <rect>
+        <x>70</x>
+        <y>73</y>
+        <width>63</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text" >
+       <string>IP</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="le_gateway" >
+      <property name="enabled" >
+       <bool>false</bool>
+      </property>
+      <property name="geometry" >
+       <rect>
+        <x>170</x>
+        <y>130</y>
+        <width>171</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="inputMask" >
+       <string>999.999.999.999; </string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="l_gateway" >
+      <property name="enabled" >
+       <bool>false</bool>
+      </property>
+      <property name="geometry" >
+       <rect>
+        <x>70</x>
+        <y>133</y>
+        <width>81</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text" >
+       <string>Gateway</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="le_netmask" >
+      <property name="enabled" >
+       <bool>false</bool>
+      </property>
+      <property name="geometry" >
+       <rect>
+        <x>170</x>
+        <y>100</y>
+        <width>171</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="inputMask" >
+       <string>999.999.999.999; </string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_2" >
+     <property name="geometry" >
+      <rect>
+       <x>90</x>
+       <y>290</y>
+       <width>431</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <property name="title" >
+      <string>DNS Nameservers</string>
+     </property>
+     <widget class="QLineEdit" name="le_custom_dns" >
+      <property name="enabled" >
+       <bool>false</bool>
+      </property>
+      <property name="geometry" >
+       <rect>
+        <x>60</x>
+        <y>110</y>
+        <width>311</width>
+        <height>26</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="cb_dns" >
+      <property name="enabled" >
+       <bool>false</bool>
+      </property>
+      <property name="geometry" >
+       <rect>
+        <x>30</x>
+        <y>70</y>
+        <width>381</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font" >
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="rb_dns_static" >
+      <property name="geometry" >
+       <rect>
+        <x>220</x>
+        <y>30</y>
+        <width>102</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text" >
+       <string>Static DNS</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="rb_dns_dynamic" >
+      <property name="geometry" >
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>211</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text" >
+       <string>Dynamic DNS (by default)</string>
+      </property>
+      <property name="checked" >
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="pag4" >
+    <widget class="QLabel" name="label_7" >
+     <property name="geometry" >
+      <rect>
+       <x>500</x>
+       <y>60</y>
+       <width>64</width>
+       <height>64</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+     <property name="pixmap" >
+      <pixmap>../../../../../usr/share/kademar/utils/cadi/img/network.png</pixmap>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_mng" >
+     <property name="geometry" >
+      <rect>
+       <x>280</x>
+       <y>350</y>
+       <width>21</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+     <property name="pixmap" >
+      <pixmap>../../../../../usr/share/kademar/utils/instalador/img/wait.gif</pixmap>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_9" >
+     <property name="geometry" >
+      <rect>
+       <x>70</x>
+       <y>240</y>
+       <width>441</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Now kademar is configuring your network connection.
+
+Be patient, please.</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignHCenter|Qt::AlignTop</set>
+     </property>
+     <property name="wordWrap" >
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_titol_9" >
+     <property name="geometry" >
+      <rect>
+       <x>20</x>
+       <y>110</y>
+       <width>561</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>11</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text" >
+      <string>Configuring Internet Connection</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="label_3" >
+   <property name="geometry" >
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>90</width>
+     <height>90</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string/>
+   </property>
+   <property name="pixmap" >
+    <pixmap>../../../../../usr/share/kademar/utils/cadi/img/kademar.png</pixmap>
+   </property>
+   <property name="scaledContents" >
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="b_sortir" >
+   <property name="geometry" >
+    <rect>
+     <x>20</x>
+     <y>540</y>
+     <width>131</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Back</string>
+   </property>
+   <property name="icon" >
+    <iconset>
+     <normaloff>../../../../../usr/share/kademar/utils/cadi/img/enrera.png</normaloff>../../../../../usr/share/kademar/utils/cadi/img/enrera.png</iconset>
+   </property>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>b_configure</tabstop>
+  <tabstop>b_sortir</tabstop>
+  <tabstop>list_net_dev</tabstop>
+  <tabstop>cb_autoip</tabstop>
+  <tabstop>b_next</tabstop>
+  <tabstop>b_disconfigure</tabstop>
+  <tabstop>b_prev</tabstop>
+  <tabstop>b_reload</tabstop>
+  <tabstop>list_net_wifi</tabstop>
+  <tabstop>cb_permanent</tabstop>
+  <tabstop>le_key</tabstop>
+  <tabstop>cb_key_type</tabstop>
+  <tabstop>b_next2</tabstop>
+  <tabstop>b_prev2</tabstop>
+  <tabstop>rb_ip_dynamic</tabstop>
+  <tabstop>rb_ip_static</tabstop>
+  <tabstop>le_ip</tabstop>
+  <tabstop>le_netmask</tabstop>
+  <tabstop>le_gateway</tabstop>
+  <tabstop>rb_dns_dynamic</tabstop>
+  <tabstop>rb_dns_static</tabstop>
+  <tabstop>cb_dns</tabstop>
+  <tabstop>le_custom_dns</tabstop>
+  <tabstop>b_next3</tabstop>
+  <tabstop>b_prev3</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

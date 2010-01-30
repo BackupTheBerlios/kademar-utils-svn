@@ -1,0 +1,8 @@
+?package(audioconversor):\
+	needs="X11"\
+	section="Applications/Sound"\
+	title="AudioConversor"\
+	icon32x32="/usr/share/kademar/utils/audioconversor/img/small_logo.png"\
+	icon16x16="/usr/share/kademar/utils/audioconversor/img/small_logo.png"\
+	command="python '/usr/share/kademar/utils/audioconversor/audioconversor.py'"
+

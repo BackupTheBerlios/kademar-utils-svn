@@ -1,0 +1,5 @@
+#kademar pulseaudio starter
+
+if [ -e /usr/bin/pulseaudio ]; then
+	pulseaudio -D
+fi

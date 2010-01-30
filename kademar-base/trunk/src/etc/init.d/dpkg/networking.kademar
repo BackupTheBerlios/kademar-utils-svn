@@ -1,0 +1,25 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          networking
+# Required-Start:    mountkernfs ifupdown $local_fs
+# Required-Stop:     ifupdown $local_fs
+# Default-Start:     S
+# Default-Stop:      0 6
+# Short-Description: Raise network interfaces.- kademar version
+### END INIT INFO
+
+
+#Script d'engegada de network permissiu amb DHCP que no es troba
+
+#Creat per Adonay Sanz - 20-08-07
+
+# case $1 in
+# stop)
+# 	( /etc/init.d/networking.real $* ) & 
+# ;;
+
+# *)
+	( [ -e /etc/init.d/dpkg/networking.real ] &&	/etc/init.d/dpkg/networking.real $* 
+[ -e /etc/init.d/dpkg/networking.real.dpkg-new ] &&	/etc/init.d/dpkg/networking.real.dpkg-new $*) & 
+# ;;
+# esac

@@ -1,0 +1,56 @@
+#!/bin/bash
+#
+# Creat per Adonay Sanz per la kademar  -  Agost 2007
+# 21-05-09 firefox languages & unified settings
+# 
+# Configuració Creada automàticament per  crea_config-2nd_stage  de  kademar-scripts
+#
+
+#### DEFINICIONS GENERALS ####
+
+#Usuari
+user="kademar"
+
+#Idioma
+. /etc/environment
+
+#Portàtil
+if [ "`laptop-detect ; echo $?`" != 0 ]; then
+	#Si no es portatil
+	laptop=no
+else	
+	#Si es un portatil
+	laptop=yes
+fi
+
+case "$LANGUAGE" in
+ca*)
+	documents=Documents
+	desktop=Escriptori
+	lang_firefox=ca  #referencia a pagina web kademar
+	firefoxlanguages="ca,es-es,en-us,en"
+;;
+es*)
+	documents=Documentos
+	desktop=Escritorio
+	lang_firefox=es  #referencia a pagina web kademar
+	firefoxlanguages="es-es,en-us,en"
+
+;;
+en*|*)
+	documents=Documents
+	desktop=Desktop
+	lang_firefox=en  #referencia a pagina web kademar
+	firefoxlanguages="en-us,en,es-es"
+
+;;
+esac
+
+
+#iniciem l'escalat de freqüència
+# /etc/init.d/loadcpufreq start
+# /etc/init.d/cpufrequtils start
+
+
+
+#### FI DEFINICIONS GENERALS ####

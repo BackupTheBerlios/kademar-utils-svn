@@ -1,0 +1,18 @@
+Source: kademar-base
+Section: admin
+Priority: optional
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.7.3
+Homepage: http://www.kademar.org
+
+Package: kademar-base
+Architecture: any
+Depends: modconf, libfuse2, fuse-utils, os-prober, hal, console-data, console-tools, ash, sudo, dialog, e2fsprogs, 
+Description: Basic Metapackage for all kademar distributions
+ Contains .
+ * All basic scripts to start the system .
+ * System Configurations . 
+ * Scripts to start correct Live-CD .
+ * If you install on a chrooted system, it will be converted to a Live-CD (usefull for kademar-scripts) .
+ * Dialog Installer

@@ -1,0 +1,71 @@
+no_trap="Si has d\'utilitzar aquesta commanda, perquè alguna cosa no et funciona, si us plau, contacti amb  suport@kademar.org"
+
+miss_rellotge="Definint rellotge del sistema"
+num_rellotge=5
+
+miss_hdparm="Activant acceleració DMA, controlada pel nucli"
+num_hdparm=7
+
+miss_udev="Engegant Gestor de Dispositius  -  Pot tardar uns moments, si us plau, esperi"
+num_udev=12
+
+miss_moduls_1="Carregant Mòduls Inicials"
+num_moduls_1=5
+miss_moduls_2="Carregant Mòduls"
+num_moduls_2=4
+
+miss_fstab="Creant el fstab"
+num_fstab=3
+
+miss_muntant_1="Muntant Sistema de fitxers del sistema"
+num_muntant_1=6
+
+miss_velocitat_1="Determinant velocitat del sistema"
+miss_velocitat_2="  Engegant escriptori lleuger, la teva màquina no compleix els requisits recomanats"
+miss_velocitat_3="  Engegant escriptori complet, la teva màquina compleix els requisits recomanats"
+miss_velocitat_4="  Engegant escriptori definit a la linia d'engegada"
+miss_velocitat_error="Hi ha hagut un problema determinant la memòria o la cpu, usant per defecte KDE"
+
+miss_kernel="La versió del Kernel del Linux és: "
+
+miss_acpi_1="Trobat la Bios ACPI, engegant-la"
+num_acpi_1=6
+miss_acpi_no="Saltant la detecció de la Bios ACPI com s'ha demanat a la línia de comandaments d'engegada."
+
+miss_apm_1="Bios APM trobada, funcions de gestió d'energia activades."
+miss_apm_no="Saltant la detecció de la Bios APM com s'ha demanat a la línia de comandaments d'engegada"
+
+miss_pcmcia_1="Trobat PCMCIA, iniciant serveis."
+miss_pcmcia_no="Saltant la detecció de PCMCIA com s'ha demanat a la línia de comandaments d'engegada."
+
+miss_braile="Iniciant el gestor de pantalla braille: "
+
+miss_muntant_2="Muntant els dispositius"
+num_muntant_2=4
+
+miss_serveis_no="Saltant la càrrega dels serveis d'impressió, so i compartir xarxa, tal com s'ha demanat."
+
+miss_alsa="Engegant So"
+num_alsa=3
+
+miss_cups="Engegant Servei d'impressió"
+num_cups=5
+
+miss_cups_hp="Engegant Impressió HP Linux i Sistema d'imatge"
+num_cups_hp=7
+
+miss_samba="Engegant Servei Samba"
+num_samba=4
+
+miss_lisa="Engegant Servei Lisa"
+num_lisa=4
+
+miss_swap="Creant un fitxer temporal d'intercanvi perquè tens poca memòria RAM. Això tardarà alguns minuts. "
+
+miss_xautoconf="Configurant Sistema Gràfic"
+
+miss_dhcp_1="Dispositiu de xarxa "
+miss_dhcp_2=" detectat, emissió DHCP per adresa IP."
+miss_dhcp_no="Saltant la detecció d'emisions DHCP/xarxa com s'ha demanat a la línia de comandaments d'engegada."
+
+miss_agp_no="Saltant la càrrega del mòdul d'AGP, com s'ha demanat a la línia de comandaments d'engegada."

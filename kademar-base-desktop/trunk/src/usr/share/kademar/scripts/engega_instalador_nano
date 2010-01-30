@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+# Creat per Adonay Sanz Alsina - Maig 2004
+# Modificació març 2005
+# Modificació setembre 2006 
+# Modificacio 05-11-06
+# Modificacio 30-01-07
+# Modificacions per  Kademar 5 - 28-03-08
+# Modificacions per  Kademar 5 Nano - 9-12-08
+
+
+[ "$UID" != 0 ] && echo "NEED TO BE ROOT" && exit
+
+
+if [ ! -e /tmp/instaladornano-running ]; then
+    touch /tmp/instaladornano-running
+
+    cd /usr/share/kademar/utils/instalador-nano
+    python instalador.py >>/tmp/kademar-install.log 2>&1
+    sh regenerapc >>/tmp/kademar-install.log 2>&1
+    rm -f /tmp/instaladornano-running
+
+else
+    echo "there's another instance running Instalador"
+    echo " if int's  real, remove  /tmp/instaladornano-running"
+
+fi

@@ -1,0 +1,25 @@
+# Fitxer de configuració del Firefox
+# Creat per Adonay Sanz per la kademar  -  03-11-06
+# Modificat  05-11-06
+# Modificat  07-01-07
+# Modificat  27-04-09 - configuracio idioma de navegacio 
+#
+
+#Firefox  pagina d'inici
+for i in `( ls -1 /home/$user/.mozilla/firefox/ | grep default ) 2>/dev/null`
+do
+	if [ -e "/home/$user/.mozilla/firefox" ]; then
+		echo 'user_pref("browser.startup.homepage", "http://www.kademar.org/?lang='$lang_firefox'");
+user_pref("browser.download.dir", "/home/'$user'/'$documents'");' >> "/home/$user/.mozilla/firefox/$i/prefs.js"
+	fi
+done
+
+#Iceweasel  pagina d'inici
+for i in `( ls -1 /home/$user/.mozilla/iceweasel/ | grep default ) 2>/dev/null`
+do
+	if [ -e "/home/$user/.mozilla/iceweasel" ]; then
+			echo 'user_pref("browser.startup.homepage", "http://www.kademar.org/?lang='$lang_firefox'");
+user_pref("intl.accept_languages", "'$firefoxlanguages'");
+user_pref("browser.download.dir", "/home/'$user'/'$documents'");' >> "/home/$user/.mozilla/iceweasel/$i/prefs.js"
+	fi
+done

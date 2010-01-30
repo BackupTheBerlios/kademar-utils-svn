@@ -1,0 +1,25 @@
+miss_engegant="Initiating graphic environment"
+
+miss_memoria="Sorry, at least, you need 16 Megas of RAM to start graphic system"
+
+miss_fi="Finishing"
+
+miss_engegant1="Initiating graphic environment of kademar.
+Can take few moments while optimize configuration"
+
+miss_reintentant="Retrying with graphic driver"
+
+miss_noservidor="There no graphic driver for you graphic card"
+
+miss_acabat="Graphic environment finished"
+miss_acabat_sense="without errors"
+miss_acabat_amb="with errors"
+
+miss_comprova1="Please, check configuration file"
+miss_comprova2="and try to start it again with command:"
+
+miss_apagant="halting"
+
+miss_finalitzar="Finishing graphic environment"
+
+miss_us="Use: xsession {start|stop}"

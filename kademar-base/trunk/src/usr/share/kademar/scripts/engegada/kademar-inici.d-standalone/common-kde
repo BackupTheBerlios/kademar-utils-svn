@@ -1,0 +1,63 @@
+#!/bin/bash
+#
+# Creat per Adonay Sanz per la kademar  -  Octubre 2005
+# Modificat  03-11-06
+#
+# Configurador pel dialeg de fitxers de  KDE
+#
+
+#TODO: Restaurar les configuracions
+
+user="kademar"
+
+case "$LANGUAGE" in
+ca*)
+	documents=Documents
+	desktop=Escriptori
+	kfile_home="Carpeta Inicial"
+	kfile_net="Carpetes de xarxa"
+	kfile_root="Arrel de Sistema"
+;;
+es*)
+	documents=Documentos
+	desktop=Escritorio
+	kfile_home="Carpeta Inicial"
+	kfile_net="Carpetas de red"
+	kfile_root="Raiz de Sistema"
+;;
+en*)
+	documents=Documents
+	desktop=Desktop
+	kfile_home="Home Folder"
+	kfile_net="Net Folders"
+	kfile_root="System Root"
+;;
+esac
+
+#KDE Bookmarks pel FileDialog (kwrite, konqueror, etc)
+echo "[KFileDialog Speedbar (Global)]
+Description_0=$desktop
+Description_1=$kfile_home
+Description_2=$documents
+Description_3=Pc
+Description_4=$kfile_root
+Description_5=$kfile_net
+IconGroup_0=4
+IconGroup_1=4
+IconGroup_2=4
+IconGroup_3=4
+IconGroup_4=4
+IconGroup_5=4
+Icon_0=desktop
+Icon_1=folder_home
+Icon_2=document
+Icon_3=/usr/share/kademar/icons/Pc.png
+Icon_4=folder_red
+Icon_5=network
+Number of Entries=6
+URL_0=file://\$HOME/$desktop/
+URL_1=file://\$HOME
+URL_2=file://\$HOME/$documents/
+URL_3=file:///home/Pc
+URL_4=file:///
+URL_5=remote:/" >> /home/$user/.kde/share/config/kdeglobals

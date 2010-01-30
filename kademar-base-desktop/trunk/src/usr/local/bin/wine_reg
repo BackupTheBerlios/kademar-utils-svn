@@ -1,0 +1,27 @@
+#!/bin/bash
+#Addició dels  .reg  al registre de "wine/windows"
+#Adonay Sanz - kademar 06 Març 2007 - GNU/GPL 2
+
+#set -x #Debug
+
+#Paràmetre = programa a executar
+prog="$1"
+
+. /etc/environment
+	
+case "$LANGUAGE" in
+ca*)
+	title="Afegir Registre"
+	miss="Vols afegir el fitxer al registre de l'emulador de Windows?"
+;;
+es*)
+	title="Añadir Registro"
+	miss="¿Quieres añadir el fichero al registro del emulador de Windows?"
+;;
+en*|*)
+	title="Add Register"
+	miss="Do you want to add file to Windows emulator registry?"
+;;
+esac
+	
+kdialog  --yesno "$miss" --title "$title" && regedit "$prog"

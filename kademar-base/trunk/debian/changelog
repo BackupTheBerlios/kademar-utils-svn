@@ -1,0 +1,65 @@
+kademar-base (4.9.5) testing; urgency=low
+
+  * Change Package Name
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Wed, 20 Jan 2010 15:12:28 +0000
+
+kademar-base (4.9.1) testing; urgency=low
+
+  * Live-CD: udev start splitted in 2 stages (knoppix)
+  * Live-CD: Better ramdisk Creation (knoppix)
+  * Live-CD: Support to Pulseaudio on userspace
+  * Live-CD: GTK encoding hack (accentuation problem)
+  * Live-CD: Support to kernel new security tty - udev
+  * Live-CD: Fix Restored detection of swap partitions
+  * Live-CD: KDE4 Support
+  * FEATURE: More Asus EEE Pc support
+  * FEATRUE: Support no Non-X Session - with services from kademarcenter
+  * FEATURE: Support to Adriane - Accessibility knoppix
+  * FEATURE: Profile with SDL pulseaudio support
+  * FEATURE: Support to new hal cdrom implementation
+  * FEATURE: Support to non-password sudo users
+  * FEATURE: New Dialog Installer!
+  * FEATURE: Suport to new sysv-rc (debian testing)
+  * FIX: Mount /dev/shm & /dev/pts after udev executions
+  * FIX: Removed pulseaudio system start
+  * FIX: Leave Toshiba g450 standard configuration (udev & modprobe.d)
+ 
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Sun, 06 Sep 2009 12:07:53 +0000
+
+kademar-base (4.9) testing; urgency=low
+
+  * Updated sudoers to 4.9
+  * Added firefox languages
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Thu, 21 May 2009 13:00:26 +0200
+
+kademar-base (4.8+4) testing; urgency=low
+
+  * Wine Lamesh key
+  * modules.d -> files modules.conf (new rule)
+  * LXDE support as desktop
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Wed, 01 Apr 2009 04:08:34 +0200
+
+kademar-base (4.8+3) testing; urgency=low
+
+  * Added new script to sudoers
+  * Udev.d toshiba Simyo modem rule
+  * Umnt-kademar now no want to umount live USB mounted
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Wed, 18 Mar 2009 18:18:52 +0100
+
+kademar-base (4.8) testing; urgency=low
+
+  * Package for kademar 4.8
+  * Now it's The Main Package (deprecated branch 4.x)
+  * This is the Main Without X Package (separated from X package)
+  * Removed dependences of numlockx
+  * Added kademar server keyring
+  * New locale configuration - similar to Debian Lenny
+  * Created this package forking original kademar-base
+  * Support to Panoramic Monitors (wallpapers at least)
+  * Config files using dpkg-divert
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Tue, 27 Jan 2009 13:23:55 +0100

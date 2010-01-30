@@ -1,0 +1,60 @@
+#!/bin/bash
+# set -x
+#
+# Script que unifica els volums dels mixers de les tarjes de so
+# I configura el PulseAudio
+#
+# Adonay Sanz Alsina - 15 juny 2008 - GPL 2.0 or higher
+#
+
+#Per les targes que hi ha
+for contador in `cat /proc/asound/cards | grep '\[' | cut -f1 -d\[`
+do
+	#I els controls de volum que tenen, baixa'ls a 80%
+	/usr/share/kademar/scripts/engegada/amixer -c $contador 2>/dev/null | grep "Simple mixer" | cut -d "'" -f 2 | while read line
+	do
+		/usr/share/kademar/scripts/engegada/amixer -c $contador sset "$line" 60% unmute
+	done
+	#Exepte aquests amb notificació especial
+	/usr/share/kademar/scripts/engegada/amixer -c$contador sset "Master" 75% unmute
+    /usr/share/kademar/scripts/engegada/amixer -c$contador sset "PCM" 80% unmute #posat pq d vegades falla deteccio
+    /usr/share/kademar/scripts/engegada/amixer -c$contador sset "Master Mono" 80% unmute #posat pq d vegades falla deteccio
+	/usr/share/kademar/scripts/engegada/amixer -c$contador sset "IEC958 Playback AC97-SPSA" 0% 
+	/usr/share/kademar/scripts/engegada/amixer -c$contador sset "PC Speaker" 0% 
+
+	#Mass Mute - Aquests Calla'ls
+	for i in "Front Mic" "Mic Mono" "IEC958 Capture Monitor" "IEC958 Capture Monitor" "Headphones Jack Sense" "Headphone Jack Sense" "Line Jack Sense" "Tone" Aux  Mic "External Amplifier" "Front Mic" "Mic"
+	do
+		/usr/share/kademar/scripts/engegada/amixer -c$contador sset "$i" mute
+	done
+
+done
+
+
+# ALREADY ON HOME CONFIG
+# #Escriu la config pq Alsa utilitzi PulseAudio
+# # a tots els usuaris i root
+# asoundfile="#Pass All ALSA progs to PulseAudio
+# 
+# pcm.!default {
+#   type pulse
+# }
+# 
+# ctl.!default {
+#   type pulse
+# }
+# 
+# pcm.pulse {
+#   type pulse
+# }
+# 
+# ctl.pulse {
+#   type pulse
+# }"
+# 
+# for i in `ls /home --ignore=ANONYMOUS --ignore=Pc`
+# do
+# 	echo "$asoundfile" > /home/$i/.asoundrc
+# done
+# 
+# echo "$asoundfile" > /root/.asoundrc

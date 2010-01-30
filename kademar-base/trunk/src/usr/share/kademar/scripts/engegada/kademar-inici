@@ -1,0 +1,820 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          startlivecd
+# Required-Start:    
+# Required-Stop:     
+# Default-Start:     1
+# Default-Stop:      
+# Short-Description: start & configure livecd
+# Description:       First start
+### END INIT INFO
+
+# Engegada i configuració de la kademar
+# (C) Adonay Sanz <adonay@kademar.org> 2005
+# Licensed under GNU/GPL 2.0 or higher
+#
+# Special Thanks to
+#   Klaus Knopper <knopper@knopper.net>
+# Script extensively "inspired" on KNOPPIX
+#
+# It's the first script executed before initrd on Live-CD
+
+
+PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin"
+export PATH
+
+umask 022
+
+# ANSI COLORS
+CRE="
+[K"
+NORMAL="[0;39m"
+# RED: Failure or error message
+RED="[1;31m"
+# GREEN: Success message
+GREEN="[1;32m"
+# YELLOW: Descriptions
+YELLOW="[1;33m"
+# BLUE: System messages
+BLUE="[1;34m"
+# MAGENTA: Found devices or drivers
+MAGENTA="[1;35m"
+# CYAN: Questions
+CYAN="[1;36m"
+# BOLD WHITE: Hint
+WHITE="[1;37m"
+
+
+###############
+#  FUNCTIONS  #
+###############
+
+numero_final="`stty size | awk '{ print $2 } '`"
+numero_final=$(($numero_final / 8))
+escriu_resultat(){
+#Crides la funcio amb 2 parametres: 1r la sortida i el 2n el reductor pq surti en la mateixa linia el resultat
+contador="0"
+[ -n "$2" ] && let "contador += $2"
+while true
+do
+	if [ "$contador" != "$numero_final" ]; then
+ 	echo -n -e "\t"
+	let "contador += 1"
+	else
+		if [ "$1" = "0" ]; then
+# 		echo -n " "
+		echo "${GREEN}[  OK  ]${NORMAL}"
+		break
+		else
+		echo "${RED}[  NO  ]${NORMAL}"
+		break
+		fi
+	fi
+done
+}
+
+# Simple shell grep
+stringinfile(){
+case "$(cat $2)" in *$1*) return 0;; esac
+return 1
+}
+
+# same for strings
+stringinstring(){
+case "$2" in *$1*) return 0;; esac
+return 1
+}
+
+# Reread boot command line; echo last parameter's argument or return false.
+getbootparam(){
+stringinstring " $1=" "$CMDLINE" || return 1
+result="${CMDLINE##*$1=}"
+result="${result%%[ 	]*}"
+echo "$result"
+return 0
+}
+
+# Check boot commandline for specified option
+checkbootparam(){
+stringinstring " $1" "$CMDLINE"
+return "$?"
+}
+
+appendSwapPartitionsOnFstab(){
+	if [ -z "`grep -i nofstab /proc/cmdline`" ]; then
+		
+		isRemovable(){
+		#Function to know if a device is removable or not
+		
+		hd=$1
+		
+		for i in `hal-find-by-property --key block.device --string "$hd"`
+		do
+		firstone=$i
+		break
+		done
+		
+		# if not found, try to hack it
+		if [ -z "$firstone" ]; then
+			hd=`echo $1 | sed s:"sr":"scd":g`
+			for i in `hal-find-by-property --key block.device --string "$hd"`
+			do
+				firstone=$i
+				break
+			done
+			capab=$(hal-get-property --udi "$firstone"  --key info.capabilities)
+		fi
+		
+		capab=$(hal-get-property --udi "$firstone"  --key info.capabilities)
+		
+		
+		#then check if cdrom if no have been cought a disk (volume) instead the block-device
+		if [ "$(hal-get-property --udi `hal-find-by-property --key block.device --string "$hd"`  --key block.is_volume)" == true ]; then
+		# echo parent_hack $1
+			parent=$(hal-get-property --udi `hal-find-by-property --key block.device --string "$hd"`  --key info.parent)
+			capab=$(hal-get-property --udi $parent --key info.capabilities)
+		fi
+		
+		a=$(hal-get-property --udi `hal-find-by-property --key block.device --string "$hd"`  --key storage.bus)
+		
+		# echo $capab
+		
+		# echo $capab
+		if [ -n "`echo "$capab" | grep -i cdrom`" -o -n "`echo "$capab" | grep -i scsi`" ]; then
+		#si es cdrom = YES
+			echo yes
+		else
+		#si es de usb = YES
+			if [ "$a" == usb ]; then
+				echo yes
+			else
+				echo no
+			fi
+		fi
+		}
+		
+		for i in `ls /sys/block/ | sed "s:/sys/block/::g"`
+		do
+			case $i in
+				#Hard Disk Zone
+				sd*|hd*|sr*)
+				cd /sys/block/$i
+				disc_durs=`ls -d ???[0-9]* 2>/dev/null`
+				es_removable=$(isRemovable /dev/$i 2>/dev/null)
+				[ -z "$disc_durs" -a "$es_removable" = "no" ] && disc_durs=$i && i=""
+				for hd in $disc_durs
+				do
+					opcions_especifiques=""
+					if [ `cat /sys/block/$i/$hd/size` -gt 100 -a "$es_removable" = "no" ]; then
+						fs=$(blkid /dev/$hd -o value -s TYPE)
+						if  [ "$es_removable" = "no" -a  "$fs" = "swap" ]; then
+							echo "/dev/$hd  swap  swap  pri=0  0  0" >> /etc/fstab
+						fi
+					fi
+				done
+				;;
+			esac
+		done
+	else
+		echo "${BLUE}Skipping creation of /etc/fstab file, forced in bootcommandline.${NORMAL}"
+	fi	
+}
+
+#####################
+# END OF FUNCTIONS  #
+#####################
+
+# echo -n "${BLUE}Muntant Sistema de Fitxers Virtuals${NORMAL}" ; 
+# /etc/init.d/mountvirtfs start >/dev/null 2>&1
+#  ; escriu_resultat $? 3
+
+#Muntant Sistema de Fitxers Virtuals
+#Substituit l'script original per les ordres reals que executa
+mount -t proc none /proc
+mount -t sysfs none /sys
+# mount -t devpts none /dev/pts
+mount -t usbfs none /proc/bus/usb 2>/dev/null
+# mount -t ramfs none /var/run
+# mount -t ramfs none /tmp
+
+# / must be read-write in any case, starting from here
+mount -o remount,rw / 2>/dev/null
+
+rm -f /etc/mtab
+ln -s /proc/mounts /etc/mtab
+
+
+ # Mount more ramdisks, it's safer to split these than only having ONE /ramdisk
+[ -d /var/run ]  || mkdir /var/run
+mount -t tmpfs  -o rw,size=10M,nosuid,nodev tmpfs /var/run
+[ -d /var/lock ] || mkdir /var/lock
+mount -t tmpfs  -o rw,size=10M,nosuid,nodev tmpfs /var/lock
+[ -d /var/log ]  || mkdir /var/log
+mount -t tmpfs -o rw,size=100M,nosuid,nodev tmpfs /var/log
+[ -d /tmp ]      || mkdir /tmp
+mount -t tmpfs -o rw,mode=1777,size=1G,exec,nosuid,nodev tmpfs /tmp
+
+ # Should exist
+ :> /var/run/utmp
+ :> /var/log/wtmp
+
+
+# Recreate var/tempfiles directory structure on tmpfs
+for i in $(cd /mnt/live/memory/images/kademar.lzm && find var/run var/lock var/log -type d); do
+	mkdir -p /"$i"
+done
+chmod 1777 /var/log/apt /var/run/dbus 2>/dev/null
+
+#Speetch-dispatcher hack
+if [ -e /mnt/live/memory/images/kademar.lzm/var/run/speech-dispatcher ]; then
+	rm -fr /var/run/speech-dispatcher
+	cp -a /mnt/live/memory/images/kademar.lzm/var/run/speech-dispatcher /var/run
+fi
+
+
+#Hack per utilitzar els RamFS creats sense problemes
+# chmod 777 /tmp -R &
+# chmod 777 /tmp &
+( for i in alsa cups dbus hal hplip samba sshd sudo xauth
+do
+	mkdir -p /var/run/$i
+done ) &
+
+CMDLINE=`cat /proc/cmdline`
+
+if checkbootparam "maxdebug"; then
+	set -x
+fi
+
+#Inclusió del FUSE per escriptura en NTFS
+modprobe fuse 2>/dev/null
+
+#Assegurada detecció de ratolins
+modprobe psmouse 2>/dev/null
+
+#kademar Version
+versio=`cat /etc/kademar-release`
+
+###########################
+# START CONFIGURE LOCALES #
+###########################
+#Variable definition
+locale_file="/etc/environment"
+
+### localization
+# Allow language specification via commandline. The default language
+# will be overridden via "lang=es" boot commandline, the default language
+# is Catalan
+
+LANGUAGE="$(getbootparam lang 2>/dev/null)"
+motd_file=/etc/motd
+
+#echo $LANGUAGE #DEBUG
+[ -z "$LANGUAGE" ] && LANGUAGE="ca"
+
+#Configure locale
+sh /usr/share/kademar/scripts/locale_configurator $LANGUAGE
+
+#Load configured locales
+. /etc/environment
+
+#Export it now, in order to get translated orders that can be translated
+export LANGUAGE=$LANG LANG COUNTRY CHARSET TZ
+
+#Refresh console with new parameters
+/etc/init.d/console-screen.sh restart
+
+#Load next messages
+case $LANGUAGE in
+ca*)
+. /usr/share/kademar/scripts/engegada/kademar-inici_lang-ca
+;;
+es*)
+. /usr/share/kademar/scripts/engegada/kademar-inici_lang-es
+;;
+*)
+. /usr/share/kademar/scripts/engegada/kademar-inici_lang-en
+;;
+esac
+
+#########################
+# END LOCALE DEFINITION #
+#########################
+
+
+
+[ -n "`echo $CMDLINE | grep -i debug`" ] && DEBUG="si"
+
+echo -n "${BLUE}$miss_rellotge${NORMAL}" ; /etc/init.d/hwclockfirst.sh start >/dev/null 2>&1 ; escriu_resultat $? $num_rellotge
+
+##############################
+# BASIC SYSTEM CONFIGURATION #
+##############################
+
+# No kernel messages while probing modules
+[ "$DEBUG" != "si" ] && echo "0" > /proc/sys/kernel/printk
+
+# Ignore these signals: INT, TERM, SEGV
+[ "$DEBUG" != "si" ] && trap "echo ; echo $no_trap" 2 3 11
+
+
+###
+##  Start SPLASHY
+###
+# if [ -e /sbin/splashy ]; then
+# 	modprobe fbcon 2>/dev/null
+# 	modprobe vesafb 2>/dev/null
+# 
+# test -c "/dev/fb0" ||
+# 	mknod /dev/fb0 c 29 0
+# for i in 0 1 2 3 4 5 6 7 8; do
+# 	test -c "/dev/tty$i" ||
+# 		mknod /dev/tty$i c 4 $i
+# 	done
+# 
+# # [ tdykstra ]
+# # This is supposed to replace the test for vga=
+# # on the command line. Didn't test it much...
+# 	grep -q '\(VESA\|VGA\)' /proc/fb || exit
+# 
+# 	/sbin/splashy boot &
+# fi
+
+
+
+
+# start_udev: start udevd and initialize only to the point where we can start X,
+# then launch complete hardware detection asynchronously.
+#Completly Knoppix Stolen  :-[
+start_udev(){
+ mountpoint -q /dev || mount -t tmpfs -o rw,size=20M,exec,dev udev /dev
+ mkdir -m 755 -p /dev/.udev/db /dev/.udev/queue /dev/shm /media /mnt
+ ln -snf /proc/self/fd /dev/fd
+ ln -snf /proc/self/fd/0 /dev/stdin
+ ln -snf /proc/self/fd/1 /dev/stdout
+ ln -snf /proc/self/fd/2 /dev/stderr
+ ln -snf /proc/kcore /dev/core
+ ln -snf /proc/asound/oss/sndstat /dev/sndstat
+ [ -x /dev/MAKEDEV ] || ln -sf /sbin/MAKEDEV /dev/MAKEDEV
+ ln -snf cloop0 /dev/cloop
+ ( cd /lib/udev/devices ; cp -a null zero init* console tty[1-9]* fb* isdn* capi* loop* /dev/ 2>/dev/null )
+ mount -t tmpfs -o rw,size=1G,mode=1777 tmpfs /dev/shm
+ mkdir -m 1777 -p /dev/shm/network
+ echo > /proc/sys/kernel/hotplug
+ # Start udev and load only drivers that are essential for Audio, X and Networking
+ udevd --daemon && \
+    udevadm trigger --subsystem-match=audio --subsystem-match=tty --subsystem-match=pci --subsystem-match=graphics --subsystem-match=input
+ udevadm settle
+ # Now load remaining drivers in background
+ exec udevadm trigger --subsystem-nomatch=audio --subsystem-nomatch=tty --subsystem-nomatch=pci --subsystem-nomatch=graphics --subsystem-nomatch=input &
+}
+
+
+
+#Udev Start
+echo "${BLUE}$miss_udev${NORMAL}" ; start_udev
+# ; /etc/init.d/udev start >/dev/null 2>&1
+# ; escriu_resultat $? $num_udev
+
+
+#kademar  compcache
+ccachedir="/lib/modules/`uname -r`/kernel/fs/compcache"
+if [ -e "$ccachedir" ]; then
+   echo "Found CompCache"
+   for i in lzo1x_compress.ko lzo1x_decompress.ko tlsf.ko compcache.ko
+   do
+      insmod "$ccachedir/$i" 2>/dev/null
+   done
+   #insmod "$ccachedir/compcache.ko" ccache_size_kbytes=128000
+   #debug_shell
+fi
+
+#kademar  compcache
+[ -e /dev/ramzswap0 ] && swapon /dev/ramzswap0  2>/dev/null && ramz=true && echo "Activating CompCache support 1"
+
+#be sure to be mounted
+mkdir -p /dev/shm
+mount -t tmpfs shm /dev/shm
+mkdir -p /dev/pts
+mount -t devpts -o rw,mode=1777 /dev/pts /dev/pts
+
+
+########### SPLASHY
+#######
+if [ -z "`grep nox /proc/cmdline`" ]; then
+	# [ ! -e /dev/fb0 ] && mknod /dev/fb0 c 29 0
+	[ -e /etc/init.d/splashy ] && /etc/init.d/splashy start
+	[ -e /etc/init.d/splashutils ] && /etc/init.d/splashutils start
+fi
+#######
+########### SPLASHY
+
+#kademar  compcache
+[ "$ramz" != true  ] && [ -e /dev/ramzswap0  ] && swapon /dev/ramzswap0  2>/dev/null && ramz=true && echo "Activating CompCache support 2"
+
+# echo -n "${BLUE}$miss_moduls_1${NORMAL}" ; /etc/init.d/module-init-tools start >/dev/null 2>&1 ; escriu_resultat $? $num_moduls_1
+
+########### SPLASHY
+#######
+# [ -n "`pidof splashy`" ] && /etc/init.d/splashy10 start
+#######
+########### SPLASHY
+
+
+# echo -n "${BLUE}$miss_moduls_2${NORMAL}" ; /etc/init.d/modutils start >/dev/null 2>&1 ; escriu_resultat $? $num_moduls_2
+
+########################
+
+# Set hostname
+hostname --file /etc/hostname
+
+# hwclock uses the TZ variable
+# TZ="Europe/Madrid"
+# export TZ
+#hwclock -u -s
+
+# KTZ="$(getbootparam tz 2>/dev/null)"
+# [ -f "/usr/share/zoneinfo/$KTZ" ] && TZ="$KTZ"
+# rm -f /etc/localtime
+# cp "/usr/share/zoneinfo/$TZ" /etc/localtime
+
+# Bring up loopback interface now
+ifconfig lo 127.0.0.1 up
+
+#######################
+
+# Munta tots els dispositius
+# echo -n "${BLUE}$miss_hdparm${NORMAL}" ; /etc/init.d/hdparm start >/dev/null 2>&1 ; escriu_resultat $? $num_hdparm
+
+########### SPLASHY
+#######
+# [ -n "`pidof splashy`" ] && /etc/init.d/splashy20 start
+#######
+########### SPLASHY
+
+#kademar  compcache
+[ "$ramz" != true  ] && [ -e /dev/ramzswap0  ] && swapon /dev/ramzswap0  2>/dev/null && ramz=true && echo "Activating CompCache support 2"
+
+# Munta tots els dispositius
+# echo -n "${BLUE}$miss_fstab${NORMAL}" ; sh /usr/share/kademar/scripts/engegada/fstabcreation-inicial-livecd >/dev/null 2>&1 ; escriu_resultat $? $num_fstab
+
+# echo -n "${BLUE}$miss_muntant_1${NORMAL}" ; /etc/init.d/mountall.sh start >/dev/null 2>&1 ; escriu_resultat $? $num_muntant_1
+
+appendSwapPartitionsOnFstab
+
+#Enable Swap if exists
+[ -n "`grep -i swap /etc/fstab`" ] && swapon -a
+
+
+##################################
+# END BASIC SYSTEM CONFIGURATION #
+##################################
+
+# Also read desired desktop, if any calulate what's the best desktop for performance
+DESKTOP="$(getbootparam desktop 2>/dev/null)"
+if [ -z "$DESKTOP" ]; then
+	[ -e /usr/share/kademar/config-livecd ] && . /usr/share/kademar/config-livecd
+# 	Si tenim dit que detecti velocitat, processa, sino, engega per defecte
+	if [ "$detecta_desktop" = si -o "$detecta_desktop" = yes ]; then
+		echo "${YELLOW}$miss_velocitat_1${NORMAL}"
+		#determina velocitat, si no troba algun dels 2 fitxers d'informacio, assigna total<11 per engegar KDE
+		if [ -e /proc/meminfo -a -e /proc/cpuinfo ]; then
+			#agafa la memoria, i imprimeix el valor de Memtotal nº 2 (cantita de memoria) i el dividim en moduls de 32 mb
+			mem=$((`grep 'MemTotal' /proc/meminfo | awk '{ print $2 }'` / 32000))
+			#agafa la velocitat (el 4tr parametre)
+			vel=`grep 'cpu MHz' /proc/cpuinfo | awk '{ print $4 }'`
+			#Agafen la primera velocitat (en dona dos quan es un hipertreading)
+			vel=`echo $vel | awk '{ print $1 }'`
+			#fem un strip del numero a partir del punt 2799.845 -> 2799   en el cas de que n'hi hagi de punt
+			[ -n "`echo $vel | grep '.'`" ] && vel=${vel%\.*}
+			#Si la variable es nul·la li assigna una velocitat, perque no falli
+			[ -z "$vel" ] && vel="2800"
+			#Dividim la velocitat en moduls de 250 mhz
+			vel=$(($vel / 250))
+			#sumem la cantitat de velocitat i memoria
+			total=$(($vel + $mem))
+		else
+			total=12
+			echo "${RED}$miss_velocitat_error${NORMAL}"
+		fi
+		if [ "$total" -le 11 ]; then
+			DESKTOP="$desktop_min"
+			echo "${GREEN}$miss_velocitat_2${NORMAL}"
+		else
+			DESKTOP="$desktop_max"
+			echo "${GREEN}$miss_velocitat_3${NORMAL}"
+		fi
+	else
+		DESKTOP="$desktop_max"
+	fi
+else
+	echo "${GREEN}$miss_velocitat_4:${NORMAL} ${YELLOW} $DESKTOP${NORMAL}"
+fi
+
+# Allow only supported windowmanagers
+# case "$DESKTOP" in gnome|enlightenment|kde|larswm|xfce|xfce4|windowmaker|wmaker|icewm|fluxbox|twm|nx|rdp|kiosk) ;; *) DESKTOP="kde"; ;; esac
+
+echo DESKTOP="$DESKTOP" > /var/xserver
+
+
+echo " ${GREEN}$miss_kernel${YELLOW}$(uname -r)${NORMAL}"
+
+# Print CPU info
+# echo -n "${GREEN}"
+# awk -F: '/^processor/{printf " Procesador"$2" es un "};/^model name/{printf $2};/^vendor_id/{printf vendor};/^cpu MHz/{printf " %dMHz",int($2)};/^cache size/{printf ","$2" Cache"};/^$/{print ""}' /proc/cpuinfo 2>/dev/null
+# echo -n "${NORMAL}"
+
+########### SPLASHY
+#######
+# [ -n "`pidof splashy`" ] && /etc/init.d/splashy30 start
+#######
+########### SPLASHY
+
+#ACPI Found
+if [ -e /etc/init.d/acpid ]; then
+	if [ -d /proc/acpi ]; then
+		if checkbootparam "noacpi"; then
+			echo " ${BLUE}$miss_acpi_no${NORMAL}"
+		else
+			echo " ${GREEN}$miss_acpi_1${NORMAL}" && /etc/init.d/acpid restart >/dev/null 2>&1 &
+		fi
+	fi
+fi
+
+#APM Found
+if [ -e /etc/init.d/apmd ]; then
+	if [ -d /proc/apm ]; then
+		if checkbootparam "noapm"; then
+			echo " ${BLUE}$miss_apm_no${NORMAL}"
+		else
+			echo " ${GREEN}$miss_apm_1${NORMAL}" && /etc/init.d/apmd restart >/dev/null 2>&1 &
+		fi
+	fi
+fi
+
+# First: PCMCIA Check/Setup
+# This needs to be done before other modules are being loaded by hwsetup
+if checkbootparam "nopcmcia"; then
+	echo " ${BLUE}$miss_pcmcia_no${NORMAL}"
+else
+	#Hack pels Sony Vaio, es queda penjat.
+	#Amb sipcmcia en el boot, força la carrega
+	case "$CMDLINE" in *' sipcmcia '*) sipcmcia="yes"; ;; esac	
+	#Hack pels Sony Vaio, es queda penjat.
+	if [ "$sipcmcia" = "yes" -o -z "`lspci | grep '0000:06:03.0' | egrep 'PCI7420'`" ] ; then
+# 		modprobe pcmcia_core >/dev/null 2>&1
+		# Try Cardbus or normal PCMCIA socket drivers
+# 		modprobe yenta_socket >/dev/null 2>&1 || modprobe i82365 >/dev/null 2>&1 || modprobe tcic >/dev/null 2>&1
+# 		if [ "$?" = "0" ]; then
+			echo " ${GREEN}$miss_pcmcia_1${NORMAL}"
+			/etc/init.d/pcmciautils start >/dev/null 2>&1 &
+# 		fi
+	fi
+fi
+
+
+
+########### SPLASHY
+#######
+# [ -n "`pidof splashy`" ] && /etc/init.d/splashy40 start
+#######
+########### SPLASHY
+
+
+# # Check for blind option or brltty
+# BLIND=""
+# checkbootparam "blind" && BLIND="yes"
+# BRLTTY="$(getbootparam brltty 2>/dev/null)"
+# 
+# if [ -n "$BLIND" -o -n "$BRLTTY" ]; then
+# if [ -x /sbin/brltty ]; then
+# # Blind option detected, start brltty now.
+# CMD=brltty
+# BRLTYPE=""
+# BRLDEV=""
+# BRLTEXT=""
+# if [ -n "$BRLTTY" ]; then
+# # Extra options
+# BRLTYPE="${BRLTTY%%,*}"
+# R="${BRLTTY#*,}"
+# if [ -n "$R" -a "$R" != "$BRLTTY" ]; then
+# BRLTTY="$R"
+# BRLDEV="${BRLTTY%%,*}"
+# R="${BRLTTY#*,}"
+# if [ -n "$R" -a "$R" != "$BRLTTY" ]; then
+# BRLTTY="$R"
+# BRLTEXT="${BRLTTY%%,*}"
+# R="${BRLTTY#*,}"
+# fi
+# fi
+# fi
+# [ -n "$BRLTYPE" ] && CMD="$CMD -b $BRLTYPE"
+# [ -n "$BRLDEV" ] && CMD="$CMD -d $BRLDEV"
+# [ -n "$BRLTEXT" ] && CMD="$CMD -t $BRLTEXT"
+# echo " ${BLUE}$miss_braile${GREEN}${CMD}${NORMAL}"
+# ( exec $CMD & )
+# sleep 2
+# fi
+# fi
+
+#Engega Serveis
+#Pots desactivar el servei d'impressio, samba i lisa amb el  "noserveis"
+if checkbootparam "noserveis"; then
+
+	echo "${BLUE}$miss_serveis_no${NORMAL}"
+
+	########### SPLASHY
+	#######
+	# [ -n "`pidof splashy`" ] && /etc/init.d/splashy50 start
+	#######
+	########### SPLASHY
+
+else
+	#Guarda el lspci en una variable que servirà per engegar serveis a partir d'ella
+	lspci="`lspci`"
+	#Si detecta alguna targeta d'àudio, engega ALSA / PA
+	if [ -n "`echo "$lspci" | grep 'Multimedia audio controller'`" -o -n "`echo "$lspci" | grep 'Audio device'`" ]; then
+		#Probe of wrappers OSS to Alsa 
+# 		modprobe snd-mixer-oss 2>/dev/null
+		modprobe snd-seq 2>/dev/null
+		modprobe snd-seq-device 2>/dev/null
+
+		#Restore volumes and set default-sound-card
+# 		sh /usr/share/kademar/scripts/engegada/volums >/dev/null 2>&1
+	
+		[ -e /etc/init.d/alsa-utils ] && echo -n "${BLUE}$miss_alsa${NORMAL}" ; /etc/init.d/alsa-utils start >/dev/null 2>&1 ; escriu_resultat $? $num_alsa
+#         no support a pulseaudio pq no tira desd aquí, mejor usar el rc2.d
+	fi
+
+	########### SPLASHY
+	#######
+	# [ -n "`pidof splashy`" ] && /etc/init.d/splashy50 start
+	#######
+	########### SPLASHY
+
+
+# 	echo -n "${BLUE}$miss_cups${NORMAL}" ; /etc/init.d/cupsys start >/dev/null 2>&1 ; escriu_resultat $? $num_cups
+# 	echo -n "${BLUE}$miss_cups_hp${NORMAL}" ; /etc/init.d/hplip start >/dev/null 2>&1 ; escriu_resultat $? $num_cups_hp
+	
+# 	[ -e /etc/init.d/cupsys ] && echo "${BLUE}$miss_cups${NORMAL}"
+# 	[ -e /etc/init.d/hplip ] && echo "${BLUE}$miss_cups_hp${NORMAL}"
+# 	( /etc/init.d/cupsys start >/dev/null 2>&1  ; /etc/init.d/hplip start >/dev/null 2>&1 ) &
+
+	#Si ha detectat alguna Ethernet, carrega el samba/lisa, sino, no fa falta
+# 	if [ -n "`echo "$lspci" | grep 'Ethernet controller:'`" ]; then
+# # 		Si existeix samba
+# 		if [ -e /etc/samba/smb.conf ]; then
+# 			#Definim el grup de treball del Samba
+# 			find0=`cat /etc/samba/smb.conf | grep "workgroup ="`
+# 			cat /etc/samba/smb.conf  | sed s:"$find0":"   workgroup = kademar":g > /etc/samba/smb.conf
+# 			
+# 			#Engegem Samba
+# 			echo "${BLUE}$miss_samba${NORMAL}"
+# 			echo "${BLUE}$miss_lisa${NORMAL}"
+# 			( /etc/init.d/samba start >/dev/null 2>&1 ; /etc/init.d/lisa start >/dev/null 2>&1 ) &
+# 		fi
+# 
+# 		#Engegem els dimonis
+# # 		echo -n "${BLUE}$miss_samba${NORMAL}" ; /etc/init.d/samba start >/dev/null 2>&1 ; escriu_resultat $? $num_samba
+# # 		echo -n "${BLUE}$miss_lisa${NORMAL}" ; /etc/init.d/lisa start >/dev/null 2>&1 ; escriu_resultat $? $num_samba
+# 		# ; escriu_resultat $? $num_lisa
+# 		
+# 	fi
+
+	# echo -n "${BLUE}$miss_fstab${NORMAL}" ; sh /usr/share/kademar/scripts/fstabcreation >/dev/null 2>&1 ; escriu_resultat $? $num_fstab
+
+fi
+
+# Munta tots els dispositius
+# echo -n "${BLUE}$miss_muntant_2${NORMAL}" ; sh /usr/share/kademar/scripts/mnt-kademar 2>/dev/null 2>&1 ; escriu_resultat $? $num_muntant_2
+
+
+
+#EEEpc Support
+ for i in camera cardr wlan; do
+  [ -r /sys/bus/platform/drivers/eeepc/eeepc/"$i" ] && echo 1 > /sys/bus/platform/drivers/eeepc/eeepc/"$i"
+ done
+
+
+
+############################
+#     AUTO-SWAP ZONE       #
+#  Concept got from Càtix  #
+############################
+
+mem=$((`cat /proc/meminfo | grep 'MemTotal' | awk '{ print $2 }'` / 32000))
+if [ $mem -le 8 ]; then
+# Intentem crear automàticament fitxers d'intercanvi (swap) a particions si la memòria és inferior de 250 Mb i encara no tenim partició o fitxer d'intercanvi
+	#Comprova k no hi hagi cap swap, si n'hi ha un, no creis el fitxer swap, encara que tingui menys d 256mb
+	if [ -z "`grep "swap" /etc/fstab`" ]; then
+		dispositius_mnt=`ls /mnt/ --ignore=fd* --ignore=cdrom* --ignore=dvd* --ignore=live*`
+		if [ -n "$dispositius_mnt" ]; then
+			for particio in $dispositius_mnt ; do
+				fstabparticio="$(grep "$particio" /etc/fstab)"
+				#Si es una  ntfs  no si pot escriure , així que no es pot fer re.
+				#Mirem de que el NTFS-3G n9o sigui inclòs, pq es pot escriure
+				if [ -z "`echo \"$fstabparticio\" | grep 'ntfs '`" ]; then
+					#Si no esta muntada, passa de ella, pq a dalt ja sa executat el mnt-kademar i si no la ha agafat, no la agafara ara
+					if [ -n "`grep $particio /proc/mounts`" ]; then
+						# Si l'espai disponible es menys de 200 mb, passa d'ella
+						if [ "`df -m /dev/$particio | awk '/^\/dev\//{print $4}' 2>/dev/null`" -gt 200 ]; then
+							echo " ${GREEN}$miss_swap${NORMAL}"
+							dd "if=/dev/zero" of=/mnt/$particio/K_BORRAM.TMP bs=1000k count="128" > /dev/null 2>&1  && mkswap -v1 "/mnt/$particio/K_BORRAM.TMP" >/dev/null 2>&1 && swapon -v "/mnt/$particio/K_BORRAM.TMP" >/dev/null 2>&1 && echo "/mnt/$particio/K_BORRAM.TMP swap swap defaults 0 0" >>/etc/fstab
+							break
+						fi
+					fi
+				fi
+			done
+		fi
+	fi
+fi
+
+######################
+# END AUTO-SWAP ZONE #
+######################
+
+
+########### SPLASHY
+#######
+# [ -n "`pidof splashy`" ] && /etc/init.d/splashy60 start
+#######
+########### SPLASHY
+
+#Win-Modems  Detection
+if [ -n "`lsmod | grep slamr`" -o -n "`lsmod | grep slusb`" ]; then
+	/etc/init.d/sl-modem-daemon start
+fi
+
+
+#Toshiba Keys
+if [ -d /proc/acpi/toshiba/keys -a -e /etc/init.d/fnfxd ]; then
+		/etc/init.d/fnfxd start
+fi
+
+#Configure Xserver
+echo "${GREEN}$miss_xautoconf${NORMAL}"
+sh /usr/share/kademar/scripts/engegada/xautoconf
+
+if checkbootparam "noagp"; then
+	echo " ${BLUE}$miss_agp_no${NORMAL}"
+else
+	modprobe agpgart 2>/dev/null
+fi
+
+#Activate wirless devices - needed by some wireless to be able to scan
+NETDEVICES=`ls /sys/class/net --ignore=lo`
+
+for DEVICE in $NETDEVICES
+do
+	if [ -e "/sys/class/net/$DEVICE/wireless" ]; then
+		ifconfig $DEVICE 192.168.1.100 up >/dev/null 2>&1
+	fi
+done
+
+
+# broadcom help to load hack
+lspci="`lspci`"
+
+if [ -n "`echo "$lspci" | grep -i broadcom`" -o -n "`echo "$lspci" | grep -i bcm`" ]; then
+	echo "Loading Broadcom Modules"
+	modprobe b44 2>/dev/null
+	modprobe b43 2>/dev/null
+fi
+
+
+
+#Mount boot cdrom on /mnt folder
+if [ -e /mnt/live/data ]; then
+	dev=`cat /mnt/live/data`
+	line=`grep /dev/$dev /etc/fstab`
+	if [ -n "$line" ]; then
+		mount `echo $line | awk ' { print $1 } ' ` `echo $line | awk ' { print $2 } ' ` -o ro
+	fi
+fi
+
+# PC - Directory preparation
+[ ! -d /Pc ] && mkdir /Pc
+[ ! -L /home/Pc ] && ln -s -n /Pc /home/Pc
+
+if [ ! -e /Pc/.directory ]; then
+	echo "[Desktop Entry]
+Icon=/usr/share/kademar/icons/Pc.png" > /Pc/.directory
+fi
+
+
+
+########### SPLASHY
+#######
+# [ -n "`pidof splashy`" ] && /etc/init.d/splashy70 start
+#######
+########### SPLASHY
+
+echo "Engegant Dbus & Hal"
+/etc/init.d/dbus start
+/etc/init.d/hal start
+
+# Restore kernel messages while probing modules
+echo "6" > /proc/sys/kernel/printk
+
+# Re-enable signals
+trap 2 3 11

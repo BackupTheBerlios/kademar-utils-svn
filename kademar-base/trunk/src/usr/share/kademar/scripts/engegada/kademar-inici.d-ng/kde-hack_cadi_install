@@ -1,0 +1,25 @@
+# Configurador de Hacks de KDE
+# Creat per Adonay Sanz i Marco Antonio per la kademar  -  05 octubre 2007
+#
+
+#Hack per engegar el CADI
+#Xorg 7.3 - Composite  Support
+echo "[Desktop Entry]
+Comment=
+Comment[es]=
+Exec=sudo cadi
+GenericName=
+GenericName[es]=
+Icon=package_settings
+MimeType=
+Name=CADI
+Name[es]=CADI
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DCOP-ServiceType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=" > /home/kademar/.kde/share/apps/kicker/CADI.desktop
+

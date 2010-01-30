@@ -1,0 +1,276 @@
+#!/bin/bash
+# Detectador de chipset gráficos para kademar
+# por Marco A. Romero "Capzo" , GNU/GPL  2006
+# De momento probado solo para Xorg, faltaria adaptarlo a XFree86
+
+#Cridat pel seu us des de xautoconf
+
+#Modificat 10-04-07 - Incorporacio de dirbase com a target de sistemes instalats
+
+#set -x  #DEBUG Mode
+
+#$1 com a target per a sistemes instalats
+dirbase="$1"
+
+
+#Pillamos lo relacionado con la grafica
+display_driver=`lspci | grep -i "VGA Compatible controller:" | tr A-Z a-z | sed s/"vga compatible controller"://g`
+
+#Si no dice nada indica que el lspci lo detecta como  display adapter
+[ -z "$display_driver" ] && display_driver=`lspci | grep -i "Display:" | tr A-Z a-z`
+
+# echo $display_driver
+case "$display_driver" in
+
+	*alliance*)
+		# echo Es una Alliance Semiconductor Corporation ProMotion y usa el driver apm 
+		echo apm
+	;;
+	*'ark logic'*)
+		# echo Es una grafica con chipset ARK Logic Inc. y usa el driver ark
+		echo ark
+	;;
+	
+	
+	*' ati '*)
+		# echo Es una grafica ATI Rage o Radeon y usa el driver ati
+		# echo ati
+		#Comprobar que en las XFree86 no haga falta distinguir entre driver radeon o driver r128, si hace falta,hacer algo parecido a lo de S3
+	
+		#si existeix el driver propietari de fglrx, lutilitzarem, sino, passarem d'ell (XFREE)
+		if [ -e /lib/modules/`uname -r`/misc/fglrx.ko -a -e /usr/X11R6/lib/modules/dri/fglrx_dri.so ]; then
+			echo fglrx
+		else
+			#si existeix el driver propietari de fglrx, lutilitzarem, sino, passarem d'ell (X.org)
+			if [ -e /lib/modules/`uname -r`/misc/fglrx.ko -a -e /usr/lib/xorg/modules/drivers/fglrx_drv.so ]; then
+				echo fglrx
+			else
+				echo ati
+			fi
+		fi
+	
+	
+	;;
+	*'chips and technologies'*)
+		# echo Es una grafica Chips & Technologies y usa el driver chips
+		echo chips
+	;;
+	*cirrus*)
+		# echo Es una grafica Cirrus Logic y usa el driver cirrus
+		echo cirrus
+	;;
+	*cyrix*)
+		# echo Es una grafica Cyrix MediaGX y usa el driver cyrix
+		echo cyrix
+	;;
+	*glint*)
+		# echo Es una grafica 3DLabs y usa el driver glint
+		echo glint
+	;;
+	*permedia*)
+		# echo Es una grafica 3DLabs o Texas Instruments Permedia y usa el driver glint
+		echo glint
+	;;
+	*'number 9'*)
+		# echo Es una Number 9 y usa el driver i128
+		echo i128
+	;;
+	*intel*)
+	# 	if [ -n "`echo $display_driver | grep -i 'i740'`" ]; then
+	# # 		echo Es una Intel 740 y usa el driver i740
+	# 		echo i740
+	# 	else
+	# 		echo Es una Intel 810 852 915 965G etc y usa el driver i810
+			echo intel
+	# 	fi
+	;;
+	
+	*'twin turbo'*)
+		# echo Es una Integrated Micro Solutions Twint turbo y usa el driver imstt
+		echo imstt
+	;;
+	
+	*matrox*)
+		# echo Es una grafica Matrox y usa el driver mga
+		echo mga
+	;;
+	
+	*neomagic*)
+		# echo Es una grafica Neomagic y usa el driver neomagic
+		echo neomagic
+	;;
+	*newport*)
+		# echo Es una grafica que usa el driver newport
+		echo newport
+	;;
+	*'national semiconductor'*)
+		# echo Es una grafica de National Semiconductor Corporation y usa el driver nsc
+		echo nsc
+	;;
+	
+	*nvidia*)
+		# echo Es una grafica de Nvidia y usa el driver nv
+		#Cuidado con las Riva128 que no se iniciaran con un depth de 16 bit, hay que poner 15 bit
+		
+		#If it has a Nvidia TNT, use nv driver. TNT Hack.
+		if [ -n "`lspci | grep -i vga | egrep -i tnt`" ]; then
+			echo nv
+		else
+			#XFREE 86
+			if [ -e /usr/X11R6/lib/modules/drivers/nvidia_drv.o -a -z "`lspci | grep -i vga | egrep -i tnt`" ]; then
+				#Comprobacio de l'existencia dels moduls de nvidia (propietar) pel kernel
+				if [ -e /lib/modules/`uname -r`/nvidia/nvidia.ko -o -e /lib/modules/`uname -r`/kernel/drivers/video/nvidia.ko ]; then
+					#Si el de nucli també hi es, i ja estem utilitzant el de nvidia, no facis res
+					#Hack, perque entengui que no ha de fer res. Es la millor manera, ja que així no s'ha d'afegir més codi
+					echo nvidia
+					display_driver=nvidia
+				else
+					#Si el de nucli no hi es, utilitzarem el normal (útil en canvis de nucli)
+					echo nv
+				fi
+			else
+				#Si no hi és l'existencia dels de X, directament utilizem el nomal  (X.org)
+				if [ -e /usr/lib/xorg/modules/drivers/nvidia_drv.o -o -e /usr/lib/xorg/modules/drivers/nvidia_drv.so ]; then
+					if [ -e /lib/modules/`uname -r`/nvidia/nvidia.ko -o -e /lib/modules/`uname -r`/kernel/drivers/video/nvidia.ko ]; then
+					
+						echo nvidia
+						display_driver=nvidia
+					else
+						echo nv
+					fi
+				else
+					#Si el de nucli no hi es, utilitzarem el normal (útil en canvis de nucli)
+					echo nv
+				fi
+			fi
+		fi
+	
+	
+	;;
+	*rendition*)
+		# echo Es una grafica Rendition Verite o Diamond Stealth II y usa el driver  rendition
+		echo rendition
+	;;
+	*'s3 inc'*)
+	
+		if [ -n "`echo $display_driver | grep -i 'virge'`" ]; then
+	# 		echo Es una grafica S3 Inc Virge y usa el driver s3virge
+			echo s3virge
+		elif [ -n "`echo $display_driver | grep -i 'trio 3d'`" ]; then
+	# 		echo Es una grafica S3 Inc Trio 3D y usa el driver s3virge
+			echo s3virge
+		elif [ -n "`echo $display_driver | grep -i 'savage'`" ]; then
+	# 		echo Es una S3 Inc Savage y usa el driver savage
+			echo savage
+		else
+	# 		echo Es una grafica S3 Inc y usa el driver s3
+			echo s3
+		fi
+	;;
+	*silicon*)
+	
+		if [ -n "`echo $display_driver | grep -i 'integrated'`" ]; then
+	# 		echo Es una grafica Silicon Integrated Systems SiS y usa el driver sis
+			echo sis
+		else
+	# 		echo Es una grafica Silicon Motion y usa el driver siliconmotion
+			echo siliconmotion
+		fi
+		#Hay un driver llamado sisusb para una tarjeta usb, la SiS315E/PRO pero supongo que no sale con el lspci
+	;;
+	*xabre*)
+		# echo Es una grafica SiS con chipset XGI Xabre y usa el driver sis
+		echo sis
+	;;
+	*3dfx*)
+		# echo Es una 3fx Interactive Voodoo 3 4 5 y utiliza el driver tdfx
+		echo tdfx
+		# Para soporte Voodo 1 y Voodoo 2, utilizar el driver voodoo, creo que estas graficas no salen como VGA compatible controller , habria que hacer un grep a Multimedia Video controller para poder detectarlas
+	;;
+	
+	*' tga '*)
+		# echo Es una grafica de Digital Equipment Corporation y usa el driver tga
+		echo tga
+	;;
+	*trident*)
+		# echo Es una grafica de Trident Microsystems y usa el driver trident
+		echo trident
+	;;
+	*tseng*)
+		# echo Es una grafica de Tseng Labs Inc y usa el driver tseng
+		echo tseng
+	;;
+	*' via '*)
+		# echo Es una grafica integrada de VIA Technologies posiblemente S3 Unichrome y usa el driver via
+		echo via
+	;;
+	*vmware*)
+		# echo Se está ejectuando desde  VMWare
+		echo vmware
+	;;
+	*virtualbox*)
+		# echo Se está ejectuando desde  VirtualBox y está instalado los Guest Utilities
+		if [ -e /usr/lib/xorg/modules/drivers/vboxvideo_drv.so ]; then
+			echo vboxvideo
+		else
+			echo vesa
+		fi
+	;;
+	*)
+		# echo Se usara el driver vesa
+		echo vesa
+	;;
+
+esac
+
+
+
+
+######################   RECUPERA ACCELERACIO  #####################
+
+# Si es NVIDIA el modul, mirem de que el libgl estigui ben configurat
+libglx_nvidia="`ls $dirbase/usr/lib/xorg/modules/extensions/libglx.so.1.0* 2>/dev/null`"
+libgl_nvidia="`ls $dirbase/usr/lib/libGL.so.1.0* 2>/dev/null`"
+
+#Suport als nous últims drivers de nvidia
+[ -z "$libglx_nvidia" ] && libglx_nvidia="`ls $dirbase/usr/lib/xorg/modules/extensions/libglx.so.????* 2>/dev/null`"
+[ -z "$libgl_nvidia" ] && libgl_nvidia="`ls $dirbase/usr/lib/libGL.so.????* 2>/dev/null`"
+
+#Si el dirbase no es 0, treiem la seva influencia en el path
+#Sino els links es crearien malament, ja que portarien el dirbase en la ruta d'enllaç
+if [ -n "$dirbase" ]; then
+	libglx_nvidia="`echo $libglx_nvidia | sed s:$dirbase::g`"
+	libgl_nvidia="`echo $libglx_nvidia | sed s:$dirbase::g`"
+fi
+
+# Pels moduls NVIDIA, voldrem el Link, i si no, voldrem que sigui l'original
+# Si es el modul nvidia i el GLX de nvidia està instal·lat
+if [ "$display_driver" = "nvidia" -a -n "$libglx_nvidia" ]; then
+	#Si no és un link (volem el link a les GLX de nvidia) el creem
+	if [ ! -L "$dirbase/usr/lib/xorg/modules/extensions/libglx.so" ]; then
+	#Copiem el glx vell per si l'hem de restaurar
+		rm -f "$dirbase/usr/lib/xorg/modules/extensions/libglx.so_kademar_replaced"
+		mv "$dirbase/usr/lib/xorg/modules/extensions/libglx.so" "$dirbase/usr/lib/xorg/modules/extensions/libglx.so_kademar_replaced"
+		ln -s "$libglx_nvidia" "$dirbase/usr/lib/xorg/modules/extensions/libglx.so"
+	fi
+	#Posa l'enllaç cap a libGL de nvidia
+	rm -f "$dirbase/usr/lib/libGL.so"
+	rm -f "$dirbase/usr/lib/libGL.so.1"
+
+	#Utilitza el normal, si el de NVIDIA no existeix
+	[ -z "$libgl_nvidia" ] && libgl_nvidia="/usr/lib/libGL.so.1.2"
+	ln -s "$libgl_nvidia" "$dirbase/usr/lib/libGL.so"
+	ln -s "$libgl_nvidia" "$dirbase/usr/lib/libGL.so.1"
+else
+#si el link està fet (i no es NVIDIA el modul, o no existeix) i existeix la còpia (per si canviem  nvidia -> ati per.exemple)
+	if [ -L "$dirbase/usr/lib/xorg/modules/extensions/libglx.so" -a -e "$dirbase/usr/lib/xorg/modules/extensions/libglx.so_kademar_replaced" ]; then
+		rm -f "$dirbase/usr/lib/xorg/modules/extensions/libglx.so"
+		cp "$dirbase/usr/lib/xorg/modules/extensions/libglx.so_kademar_replaced" "$dirbase/usr/lib/xorg/modules/extensions/libglx.so"
+	fi
+
+	#Restaura l'enllaç dels libGL
+	rm -f "$dirbase/usr/lib/libGL.so"
+	rm -f "$dirbase/usr/lib/libGL.so.1"
+	ln -s "/usr/lib/libGL.so.1.2" "$dirbase/usr/lib/libGL.so.1"
+	ln -s "/usr/lib/libGL.so.1.2" "$dirbase/usr/lib/libGL.so"
+fi

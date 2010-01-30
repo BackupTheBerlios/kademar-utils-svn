@@ -1,0 +1,83 @@
+#!/bin/bash
+#
+# Creat per Adonay Sanz per la kademar  -  Octubre 2005
+# Modificat  03-11-06
+#
+# Busca la configuracio i si la trobes, aplícala
+#
+# Surt amb  EXIT 7 si l'ha trobat i amb EXIT 10 si no
+
+#TODO: Restaurar les configuracions
+
+user="kademar"
+trobat="no"
+fitxer="configs.tbz"
+
+. /etc/environment
+
+case "$LANGUAGE" in
+ca*)
+	echo 'Cercant Configuracions'
+;;
+es*)
+	echo 'Buscando Configuraciones'
+;;
+en*)
+	echo 'Searching Configurations'
+;;
+esac
+
+
+
+#loadkeys es #definicio del teclat castella
+
+#Cerca una configuracio preguardada
+for i in /mnt/*
+do
+	if [ -e $i/$fitxer ]; then
+		comprovant="yes"
+		path_to_file=$i/$fitxer
+		break
+	fi
+done
+
+if [ $comprovant = "yes" ]; then
+	tar -jpPxf $path_to_file
+	cp -Rp /initrd/rootsquash/home/$user/.config /home/$user
+	cp -Rp /initrd/rootsquash/home/$user/.firefox /home/$user
+	( killall pump 2>/dev/null ; killall dhclient 2>/dev/null ) && sleep 2 && killall -9 pump 2>/dev/null && sleep 2
+	
+	case "$LANGUAGE" in
+	ca*)
+		echo "Engegant Serveis"
+	;;
+	es*)
+		echo 'Iniciando Servicios'
+	;;
+	en*)
+		echo 'Initializing Services'
+	;;
+	esac
+	
+	for i in  ifupdown networking; do [ -x /etc/init.d/$i ] && /etc/init.d/$i start 2>/dev/null; done 
+
+	case "$LANGUAGE" in
+	ca*)
+		echo "Configuracio Personal Trobada"
+	;;
+	es*)
+		echo "Configuración Personal Encontrada"
+	;;
+	en*)
+		echo "Found Personal Configuration"
+	;;
+	esac
+
+	trobat="yes"
+	#Si no hem trobat res, exit a 7
+	exit 7
+else
+	#Si no hem trobat res, exit a 10
+	exit 10
+fi
+

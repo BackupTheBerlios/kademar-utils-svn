@@ -1,0 +1,410 @@
+#!/bin/bash
+#Fitxer per crear la configuracio de X.org /etc/X11/xorg.conf
+# Depen de xautoconf-resolucions (DEPRECATED, ja no depèn) per detectar les resolucions.
+#  xautoconf-resolucions és una modificació i acurtament del  xdebconfigurator
+
+#Actualment ja funciona amb les X.org 7.0
+
+#Modificació per l'ús complet de dirbase (target per sistemes instalats)
+
+#PATH="/bin:/usr/bin:/sbin:/usr/sbin"; export PATH
+umask 022
+
+#set -x  #Debug
+
+# ANSI COLORS
+CRE="
+[K"
+NORMAL="[0;39m"
+# RED: Failure or error message
+RED="[1;31m"
+# GREEN: Success message
+GREEN="[1;32m"
+# YELLOW: Descriptions
+YELLOW="[1;33m"
+# BLUE: System messages
+BLUE="[1;34m"
+# MAGENTA: Found devices or drivers
+MAGENTA="[1;35m"
+# CYAN: Questions
+CYAN="[1;36m"
+# BOLD WHITE: Hint
+WHITE="[1;37m"
+
+
+################# FUNCTIONS #############
+getbootparam(){
+case "$CMDLINE" in *\ $1=*) ;; *) return 1; ;; esac
+result="${CMDLINE##*$1=}"
+result="${result%%[     ]*}"
+echo "$result"
+return 0
+}
+#########################################
+
+CMDLINE=`cat /proc/cmdline`
+
+# comproba si s'ha passat un parametre de directori base i, si no, posa el arrel
+if [ -z "$1" ]; then
+	dirbase=""
+else
+	dirbase="$1"
+fi
+
+[ -e "$dirbase/usr/share/kademar/config" ] && . "$dirbase/usr/share/kademar/config"
+
+#Variable to specify where's placed  Xorg.conf file
+xconfig_file="$dirbase/etc/X11/xorg.conf"
+xserver_file="$dirbase/var/xserver"
+[ -e "$xserver_file" ] && . "$xserver_file"
+
+##### TOUCHPAD CONFIGURATION #####
+#Si no es un portatil, deactiva el touchpad
+if [ "`laptop-detect ; echo $?`" != 0 ]; then
+touchpad_config1='# Section "InputDevice"
+#     Identifier      "Synaptics Touchpad"
+#     Driver          "synaptics"
+#     Option          "SendCoreEvents"        "true"
+#     Option          "Device"                "/dev/psaux"
+#     Option          "Protocol"              "auto-dev"
+#     Option          "HorizScrollDelta"      "0"
+#     Option          "SHMConfig"             "on"
+# EndSection'
+touchpad_config2='#    InputDevice     "Synaptics Touchpad"'
+
+else
+touchpad_config1='Section "InputDevice"
+    Identifier      "Synaptics Touchpad"
+    Driver          "synaptics"
+    Option          "SendCoreEvents"        "true"
+    Option          "Device"                "/dev/psaux"
+    Option          "Protocol"              "auto-dev"
+    Option          "HorizScrollDelta"      "0"
+    Option          "SHMConfig"             "on"
+EndSection'
+touchpad_config2='    InputDevice     "Synaptics Touchpad"'
+fi
+
+##### END TOUCHPAD CONFIGURATION #####
+
+# Read boot command line; echo last parameter's argument or return false.
+# CMDLINE="$(cat /proc/cmdline)"
+
+# parametre  hz=56
+hz="$(getbootparam hz 2>/dev/null)"
+if [ -n "$hz" ]; then
+	hz="`echo $hz | sed s:hz::g`"
+	# Echo information in boot process
+	case $LANGUAGE in
+	ca*)
+		echo -n "${BLUE}Utilitzant refresc de pantalla: ${NORMAL}"
+	;;
+	es*)
+		echo -n "${BLUE}Usando refresco de pantalla: ${NORMAL}"
+	;;
+	en*)
+		echo -n "${BLUE}Using display refreshrate: ${NORMAL}"
+	;;
+	esac
+	echo "${YELLOW} $hz ${NORMAL}"
+# 	 HorizSync 30.0 - 107.0
+# 	VertRefresh 50.0 - 150.0 
+fi
+
+# parametre  resol=1026x768
+resol="$(getbootparam resol 2>/dev/null)"
+if [ -n "$resol" ]; then
+	display_modes="$resol"
+	case $LANGUAGE in
+	ca*)
+		echo -n "${BLUE}Utilitzant resolució de pantalla: ${NORMAL}"
+	;;
+	es*)
+		echo -n "${BLUE}Usando resolución de pantalla: ${NORMAL}"
+	;;
+	en*)
+		echo -n "${BLUE}Using display resolution: ${NORMAL}"
+	;;
+	esac
+	echo "${YELLOW} $resol ${NORMAL}"
+	display_modes='"'$resol'"'
+	if [ -n "$hz" ]; then
+		display_modes='            Modes       "'$resol'/'$hz'Hz"'
+	else
+		display_modes='            Modes       "'$resol'"'
+	fi
+else
+	if [ -n "$hz" ]; then
+		display_modes='            Modes       "1024x768/'$hz'Hz" "800x600/'$hz'Hz" "640x480/'$hz'Hz"'
+	else
+		display_modes='#            Modes       "1024x768" "800x600" "640x480"'
+	fi
+fi
+
+
+
+# Si el $XMODULE està definit (Vol dir k les X han fallat amb el modul original, i x tan el xsession torna a provaro amb el vesa i s'ha d crear la configuracio)
+if [ -z "$XMODULE" ]; then
+	#Si no està definit, vol dir que el xsession no s'ha obert, i x tan es la primera vegada que s'executa i s'ha de autodetectar
+
+	#Cridem al script que detecta les resolucions i fem la serva sortida a un fitxer
+ 	#perl /usr/share/kademar/scripts/engegada/xautoconf-resolucions > /tmp/xautoconf
+	a=`sh /usr/share/kademar/scripts/engegada/detectachipset "$dirbase"`
+
+	#Cridem al script que detecta el chipset  gràfic
+ 	echo "display_driver='`echo $a | sed s.' '..g`'" > "$dirbase/tmp/xautoconf"
+
+	#Read config file and use his variables
+	. "$dirbase/tmp/xautoconf"
+	#cat /tmp/xautoconf #Debug
+
+	
+
+	#Determine Display Adapter
+	#If you passed with parameter  xmodule="vesa"  a wanted driver to use, it will use.
+	NEWXMODULE="$(getbootparam xmodule 2>/dev/null)"
+
+	[ -n "$NEWXMODULE" ]  && display_driver=$NEWXMODULE
+else
+	#Si ja està definit, per el xsession, utilitzem el que ell digui
+	display_driver=$XMODULE
+fi
+
+#Defineix les opcions - Ho faig aquí pq abans defineix les opcions en diferents moments i si se l'hi passa un paràmetre, no està contemplat
+#Solament no s'utilitzen les opcions si son els nvidia propietaris, sino, 
+case $display_driver in
+radeon|ati)
+	load_options='	Load "dri"'
+	load_options2=' Option        "sw_cursor"  #ati'
+	sectioncomposite='#Section "Extensions"
+#    Option "Composite" "Enable"
+#EndSection'
+;;
+nvidia)
+	load_options=''   #section Load (deprecated(
+# 	section device
+	load_options2=' Option        "NoPowerConnectorCheck" 
+Option     "AllowGLXWithComposite" "true"'
+	sectionscreen=' Option "AddARGBGLXVisuals" "True" '
+	sectioncomposite='Section "Extensions"
+    Option "Composite" "Enable"
+EndSection'
+;;
+i810|i???|intel)
+# Option "XaaNoSolidFillRect"
+# Option "XaaNoScreenToScreenCopy"
+	load_options='	Load "dri"'
+	#load_options2=' Option "no_accel" "no"
+#Option "backingstore" "true"
+#Option "XaaNoScanlineImageWriteRect"
+#Option "XaaNoScanlineCPUToScreenColorExpandFill" 
+#Option "XAANoOffscreenPixmaps" "true" '
+	sectioncomposite='Section "Extensions"
+    Option "Composite" "Enable"
+EndSection'
+;;
+# vmware|vboxvideo|vesa)
+#     forceresol=yes
+# ;;
+*)
+	load_options='	Load "dri"'
+	load_options2=''
+	sectioncomposite='#Section "Extensions"
+#    Option "Composite" "Enable"
+#EndSection'
+;;
+esac
+#Utilitzar driver Vesa i resolucio 1024x768
+# [ -z "$display_modes" ] && display_modes='"1024x768" "800x600" "640x480"' && case $LANGUAGE in ca*) echo "${BLUE}No s'ha detectat cap resolució, utilitzant estadart${NORMAL}" ; ;; es*) echo "${BLUE}No se ha detectado ninguna resolución, usando estandar${NORMAL}"; ;; en*) echo "${BLUE}No resolution detected, using default${NORMAL}" ; ;; esac
+
+[ -z "$display_driver" ] && display_driver="vesa" && case $LANGUAGE in ca*) echo "${BLUE}No s'ha detectat cap controlador, utilitzant estadart${NORMAL}" ; ;; es*) echo "${BLUE}No se ha detectado ningún controlador, usando estandar${NORMAL}"; ;; en*) echo "${BLUE}No driver detected, using default${NORMAL}" ; ;; esac
+
+#If there's a depth especified with  depth=16" in bootparam, use it, else, set it to 24
+newdepth="$(getbootparam depth 2>/dev/null)"
+if [ -z $newdepth ]; then
+    defaultdepth=24
+else
+    defaultdepth=$newdepth
+fi
+
+# Echo information in boot process
+case $LANGUAGE in
+ca*)
+echo -n "${BLUE}Utilitzant controlador gràfic: ${NORMAL}"
+;;
+es*)
+echo -n "${BLUE}Usando controlador gráfico: ${NORMAL}"
+;;
+en*)
+echo -n "${BLUE}Using Display Driver: ${NORMAL}"
+;;
+esac
+
+echo "${YELLOW} $display_driver ${NORMAL}"
+if [ -n "$newdepth" ]; then
+
+	case $LANGUAGE in
+	ca*)
+	echo -n "${BLUE}Utilitzant definició de colors: ${NORMAL}"
+	;;
+	es*)
+	echo -n "${BLUE}Usando definición de colores: ${NORMAL}"
+	;;
+	en*)
+	echo -n "${BLUE}Using color depth: ${NORMAL}"
+	;;
+	esac
+
+	echo "${YELLOW} $newdepth ${NORMAL}"
+fi
+
+#Si hem forçat una resolucio, créala (de moment solament virtualitzat, ati i vesa)
+#     $display_driver
+    forceresol="    DefaultDepth    $defaultdepth
+        SubSection \"Display\"
+            Depth       24
+$display_modes
+        EndSubSection
+        SubSection \"Display\"
+            Depth       16
+$display_modes
+        EndSubSection"
+    forcesync="#HorizSync     28-49
+#    VertRefresh   43-72"
+
+
+#Determine Keyboard
+# keyboard_model=`hwinfo --keyboard | grep "XkbModel" | sed s/"    XkbModel: "//g`
+keyboard_model="pc105"
+keyboard_layout="es"
+
+keyboard_driver="kbd"
+keyboard_rules="xorg"
+input_device='InputDevice    "Generic Keyboard"
+    InputDevice    "Generic Mouse"'
+section_files='
+	FontPath	"/usr/share/fonts/X11/misc"
+	FontPath	"/usr/X11R6/lib/X11/fonts/misc"
+	FontPath	"/usr/share/fonts/X11/cyrillic"
+	FontPath	"/usr/X11R6/lib/X11/fonts/cyrillic"
+	FontPath	"/usr/share/fonts/X11/100dpi/:unscaled"
+	FontPath	"/usr/X11R6/lib/X11/fonts/100dpi/:unscaled"
+	FontPath	"/usr/share/fonts/X11/75dpi/:unscaled"
+	FontPath	"/usr/X11R6/lib/X11/fonts/75dpi/:unscaled"
+	FontPath	"/usr/share/fonts/X11/Type1"
+	FontPath	"/usr/X11R6/lib/X11/fonts/Type1"
+	FontPath	"/usr/share/fonts/X11/100dpi"
+	FontPath	"/usr/X11R6/lib/X11/fonts/100dpi"
+	FontPath	"/usr/share/fonts/X11/75dpi"
+	FontPath	"/usr/X11R6/lib/X11/fonts/75dpi"
+	# path to defoma fonts
+	FontPath	"/var/lib/defoma/x-ttcidfont-conf.d/dirs/TrueType"'
+
+
+#Write knoppix-sysconfig substitute
+cat >> $xserver_file << EOF
+XMODULE="$display_driver"
+EOF
+
+
+#General Xorg.conf file to fill with own variables
+cat > $xconfig_file << EOF
+# /etc/X11/xorg.conf (xorg X Window System server configuration file)
+#
+# This file was generated by dexconf, the Debian X Configuration tool, using
+# values from the debconf database.
+#
+# Edit this file with caution, and see the /etc/X11/xorg.conf manual page.
+# (Type "man /etc/X11/xorg.conf" at the shell prompt.)
+#
+# This file is automatically updated on xserver-xorg package upgrades *only*
+# if it has not been modified since the last upgrade of the xserver-xorg
+# package.
+#
+# If you have edited this file but would like it to be automatically updated
+# again, run the following command:
+#   sudo dpkg-reconfigure -phigh xserver-xorg
+
+Section "Files"
+$section_files
+EndSection
+
+Section "InputDevice"
+    Identifier    "Generic Keyboard"
+    Driver        "$keyboard_driver"
+    Option        "CoreKeyboard"
+    Option        "XkbRules"    "$keyboard_rules"
+    Option        "XkbModel"    "$keyboard_model"
+    Option        "XkbLayout"    "$keyboard_layout"
+EndSection
+
+Section "InputDevice"
+    Identifier    "Generic Mouse"
+    Driver        "mouse"
+    Option        "CorePointer"
+    Option        "Device"        "/dev/input/mice"
+    Option        "Protocol"        "ImPS/2"
+    Option        "Emulate3Buttons"    "true"
+    Option          "ZAxisMapping"          "4 5"
+    Option          "YAxisMapping"          "6 7"
+    Option          "XAxisMapping"          "8 9"
+EndSection
+
+# Section "InputDevice"
+# 	Identifier  "Serial Mouse"
+# 	Driver      "mouse"
+# 	Option      "Protocol" "Microsoft"
+# 	Option      "Device" "/dev/ttyS0"
+# 	Option      "Emulate3Buttons" "true"
+# 	Option      "Emulate3Timeout" "70"
+# 	Option	    "SendCoreEvents"  "true"
+# EndSection
+
+$touchpad_config1
+
+Section "Device"
+    Identifier    "Targeta de vídeo genèrica"
+    Driver        "$display_driver"
+    $load_options2
+EndSection
+
+Section "Monitor"
+    Identifier    "Monitor genèric"
+    Option        "DPMS"
+    Option        "RandRRotation"
+    $forcesync
+    $hsync
+    $vsync
+EndSection
+
+Section "Screen"
+    Identifier    "Default Screen"
+    Device        "Targeta de vídeo genèrica"
+    Monitor        "Monitor genèric"
+$sectionscreen
+$forceresol
+EndSection
+
+Section "ServerLayout"
+    Identifier    "Default Layout"
+    Screen        "Default Screen"
+    InputDevice    "Generic Keyboard"
+    InputDevice    "Generic Mouse"
+#    Identifier  "Serial Mouse"
+$touchpad_config2
+EndSection
+ 
+Section "ServerFlags"
+	Option "AllowMouseOpenFail"  "true" 
+EndSection
+
+Section "DRI"
+    Mode 0666
+EndSection
+
+$sectioncomposite
+
+EOF
+
+#Borrem el fitxer generat per l'script
+rm -f "$dirbase/tmp/xautoconf"

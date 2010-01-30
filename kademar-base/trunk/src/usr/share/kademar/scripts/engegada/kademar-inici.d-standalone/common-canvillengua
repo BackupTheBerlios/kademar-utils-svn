@@ -1,0 +1,226 @@
+#!/bin/bash
+# Script per canviar l'idioma i alguns parametres interns dels progràmes
+
+#  METHOD TO CALL IT
+#  canvillengua [user_to_modify] [Target]
+#	canvillengua kademar /	(to modify kademar user, and not system)
+#	canvillengua kademar 	(to modify kademar user, and not system)
+#	canvillengua skel	(to modity only skel)
+#	canvillengua system	(to modity only system files)
+#	canvillengua		(to modity users, and system, without skel)
+
+#TODO: fer que mogui els directoris del vell al nou
+
+# /home/kademar/.kde/share/config/kdeglobals
+# /etc/kde3/kdm/kdmrc
+# /home/kademar/.audacity-data/audacity.cfg
+
+# set -x
+
+#Càrrega del fitxer d'idioma
+. /etc/environment
+
+# comproba si s'ha passat un parametre de directori base i, si no, posa el arrel
+if [ -z "$2" ]; then
+	dirbase="/"
+else
+	dirbase=$2
+fi
+
+if [ -n "$1" ]; then
+	home_a_treballar="$1"
+else
+	home_a_treballar=""
+fi
+
+
+fitxers_de_sistema='etc/kde3/kdm/kdmrc'
+fitxers_de_home='.kde/share/config/kdeglobals .audacity-data/audacity.cfg .giFT/giftd.conf .aMule/amule.conf .amsn/config.xml'
+#fitxer=['/home/kademar/kdeglobals','/home/kademar/kdmrc','/home/kademar/.audacity-data/audacity.cfg']  # aquests han estat de prova
+
+case "$LANGUAGE" in
+ca*)
+    llengua_orig=ca
+    llengua_kde="ca:es"
+    pais=es
+    kdm_greet='Benvinguts a kademar'
+    apollon="~/Documents/Arxius Compartits"
+    amule="Documents/Arxius Compartits"
+    amsn="Documents/Arxius Rebuts Amsn"
+    documents="Documents"
+    desktop="Escriptori"
+    break
+;;
+es*)
+	llengua_orig=es
+	llengua_kde=es
+	pais=es
+	kdm_greet='Bienvenidos a kademar'
+	apollon="~/Documentos/Archivos Compartidos"
+	amule="Documentos/Archivos Compartidos"
+	amsn="Documentos/Archivos Recibidos Amsn"
+    documents="Documentos"
+    desktop="Escritorio"
+	break
+;;	
+en*|C|*)
+	llengua_orig=en
+	llengua_kde=en
+	pais=en
+	kdm_greet='Welcome to kademar'
+	apollon="~/Documents/Shared Files"
+	amule="Documents/Shared Files"
+	amsn="Documents/Amsn Received Files"
+    documents="Documents"
+    desktop="Desktop"
+	break	
+;;
+esac
+
+[ "$dirbase" = "/" ] && dirbase=""
+
+#Si l'hi hem passat un paràmetre per treballar amb un usuari, que passi dels altres
+if [ -z "$home_a_treballar" ] ; then
+	homes_disponibles=`ls /home --ignore=ANONYMOUS --ignore=Pc`
+else
+	homes_disponibles="$home_a_treballar"
+	
+	#Si el home no es el  SKEL, mira l'usuari, sino ataca cap a /etc/skel
+	if [ "$home_a_treballar" = "skel" ]; then
+		skel="si"
+		system="no"
+	fi
+	#Si el home no es el  SYSTEM, mira l'usuari, sino ataca cap als fitxers de sistema
+	if [ "$home_a_treballar" = "system" ]; then
+		skel="no"
+		system="si"
+		home_a_treballar=""
+	fi
+fi
+
+#############################
+#  USER  FILES MODIFICATION #
+#############################
+if [ "$system" != "si" ]; then
+	#Si no treballa sobre el home, té en compte si li hem indicat algún usuari o, si no, els busca tots.
+  #### REAL USER MODIFICATION
+	if [ "$skel" != "si" ]; then
+		for i in $homes_disponibles
+		do
+			for fitxer_a_modificar in $fitxers_de_home
+			do
+			
+				if [ "$fitxer_a_modificar" = ".kde/share/config/kdeglobals" ]; then
+					llengua="$llengua_kde"
+				else
+					llengua="$llengua_orig"
+				fi
+				
+				if [ -e $dirbase/home/$i/$fitxer_a_modificar ]; then
+				find0=`cat $dirbase/home/$i/$fitxer_a_modificar | grep "Language="`
+				find1=`cat $dirbase/home/$i/$fitxer_a_modificar | grep "Country="`
+				find2=`cat $dirbase/home/$i/$fitxer_a_modificar | grep "completed = ~"`
+				find3=`cat $dirbase/home/$i/$fitxer_a_modificar | grep "root = ~"`
+				find4=`cat $dirbase/home/$i/$fitxer_a_modificar  | grep "IncomingDir="`
+				find5=`cat $dirbase/home/$i/$fitxer_a_modificar  | grep "<value>/"`
+			
+				[ -z "$find0" ] && find0="AkEsTaKadenaNOLaTrobarasMai"
+				[ -z "$find1" ] && find1="AkEsTaKadenaNOLaTrobarasMai"
+				[ -z "$find2" ] && find2="AkEsTaKadenaNOLaTrobarasMai"
+				[ -z "$find3" ] && find3="AkEsTaKadenaNOLaTrobarasMai"
+				[ -z "$find4" ] && find4="AkEsTaKadenaNOLaTrobarasMai"
+				[ -z "$find5" ] && find5="AkEsTaKadenaNOLaTrobarasMai"
+		
+		
+				cat $dirbase/home/$i/$fitxer_a_modificar  | sed s/"$find0"/"Language=$llengua"/g | sed s,"$find1","Country=$pais",g | sed s,"$find2","completed = $apollon",g | sed s,"$find3","root = $apollon",g | sed s,"$find4","IncomingDir=/home/$i/$amule",g | sed s,"$find5","<value>/home/$i/$amsn</value>",g > $dirbase/home/$i/$fitxer_a_modificar.tmp
+			
+				[ -s $dirbase/home/$i/$fitxer_a_modificar.tmp ] && rm -f $dirbase/home/$i/$fitxer_a_modificar && mv $dirbase/home/$i/$fitxer_a_modificar.tmp $dirbase/home/$i/$fitxer_a_modificar
+			else
+				echo "Selected File Doesn't exists:  $dirbase/home/$i/$fitxer_a_modificar"
+			fi	
+			done
+   
+            #trolltech qt4 specific modifications
+#             conf="$dirbase/home/$i/.config/Trolltech.conf"
+#             sed s:"·HOME·":"/home/$i":g -i $conf
+#             sed s:"·HOMEDESKTOP·":"/home/$i/$desktop":g -i $conf
+#             sed s:"·DOCUMENTS·":"/home/$i/$documents":g -i $conf
+		done
+	else
+
+#### SKEL MODIFICATION
+		if [ "$system" = "no" ]; then
+			for fitxer_a_modificar in $fitxers_de_home
+			do
+			
+			if [ "$fitxer_a_modificar" = ".kde/share/config/kdeglobals" ]; then
+				llengua="$llengua_kde"
+			else
+				llengua="$llengua_orig"
+			fi
+			
+			if [ -e $dirbase/etc/skel/$fitxer_a_modificar ]; then
+				find0=`cat $dirbase/etc/skel/$fitxer_a_modificar | grep "Language="`
+				find1=`cat $dirbase/etc/skel/$fitxer_a_modificar | grep "Country="`
+				find2=`cat $dirbase/etc/skel/$fitxer_a_modificar | grep "completed = ~"`
+				find3=`cat $dirbase/etc/skel/$fitxer_a_modificar | grep "root = ~"`
+				find4=`cat $dirbase/etc/skel/$fitxer_a_modificar  | grep "IncomingDir="`
+				find5=`cat $dirbase/etc/skel/$fitxer_a_modificar  | grep "<value>/"`
+	
+				[ -z "$find0" ] && find0="AkEsTaKadenaNOLaTrobarasMai"
+				[ -z "$find1" ] && find1="AkEsTaKadenaNOLaTrobarasMai"
+				[ -z "$find2" ] && find2="AkEsTaKadenaNOLaTrobarasMai"
+				[ -z "$find3" ] && find3="AkEsTaKadenaNOLaTrobarasMai"
+				[ -z "$find4" ] && find4="AkEsTaKadenaNOLaTrobarasMai"
+				[ -z "$find5" ] && find5="AkEsTaKadenaNOLaTrobarasMai"
+	
+				cat $dirbase/etc/skel/$fitxer_a_modificar  | sed s/"$find0"/"Language=$llengua"/g | sed s,"$find1","Country=$pais",g | sed s,"$find2","completed = $apollon",g | sed s,"$find3","root = $apollon",g | sed s,"$find4","IncomingDir=/home/$i/$amule",g | sed s,"$find5","<value>/home/$i/$amsn</value>",g > $dirbase/etc/skel/$fitxer_a_modificar.tmp
+			
+				[ -s $dirbase/etc/skel/$fitxer_a_modificar.tmp ] && rm -f $dirbase/etc/skel/$fitxer_a_modificar && mv $dirbase/etc/skel/$fitxer_a_modificar.tmp $dirbase/etc/skel/$fitxer_a_modificar
+			else
+				echo "Selected File Doesn't exists:  $dirbase/etc/skel/$fitxer_a_modificar"
+			fi
+			done
+		fi
+	fi
+else
+	echo Fitxers de skel Intactes
+	echo Fitxers de usuari Intactes
+fi
+
+#############################
+# SYSTEM FILES MODIFICATION #
+#############################
+#Si l'hi hem passat un paràmetre per treballar amb un usuari, que passi dels altres
+if [ -n "$home_a_treballar" ] ; then
+	echo Fitxers de sistema Intactes
+	echo Fitxers de skel Intactes
+else
+	[ "$dirbase" = "" ] && dirbase="/"
+	for i in $fitxers_de_sistema
+	do
+	
+		if [ "$fitxer_a_modificar" = ".kde/share/config/kdeglobals" ]; then
+			llengua="$llengua_kde"
+		else
+			llengua="$llengua_orig"
+		fi
+	
+		if [ -e $dirbase$i ]; then
+			find0=`cat $dirbase$i | grep "Language="`
+			find1=`cat $dirbase$i | grep "GreetString="`
+			
+			[ -z "$find0" ] && find0="AkEsTaKadenaNOLaTrobarasMai"
+			[ -z "$find1" ] && find1="AkEsTaKadenaNOLaTrobarasMai"
+		
+			cat $dirbase$i | sed s,"$find0","Language=$llengua",g | sed s/"$find1"/"GreetString=$kdm_greet"/g  > $dirbase$i.tmp
+			[ -s $dirbase$i.tmp ] && rm -f $dirbase$i
+			[ -s $dirbase$i.tmp ] && mv $dirbase$i.tmp $dirbase$i
+		else
+			echo "Selected File Doesn't exists:  $dirbase$i"
+		fi
+	done
+fi
+#################################
+# END SYSTEM FILES MODIFICATION #
+#################################

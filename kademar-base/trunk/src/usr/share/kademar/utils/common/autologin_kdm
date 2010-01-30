@@ -1,0 +1,34 @@
+#!/bin/bash
+#Script per posar autologin en kdm o desactivarlo
+
+AUTOLOGIN="$1"
+created_user="$2"
+DESTI="$3"
+
+[ -z "$3" ] && echo "ÑAC" && exit 1
+
+#Activem el autologin en el KDM si es demana
+if [ "$AUTOLOGIN" = "autologin_si" ]; then
+	fitxer_a_modificar=/etc/kde3/kdm/kdmrc
+	find0=`cat "$DESTI/$fitxer_a_modificar" | grep "AutoLoginUser="`
+	find1=`cat "$DESTI/$fitxer_a_modificar" | grep "AutoLoginEnable="`
+	[ -z "$find0" ] && find0="AquEStaKAdeNaNOLAtrobARAsMAI"
+	[ -z "$find1" ] && find1="AquEStaKAdeNaNOLAtrobARAsMAI"
+	
+	cat "$DESTI/$fitxer_a_modificar"  | sed s/"$find0"/"AutoLoginUser=$created_user"/g | sed s:"$find1":"AutoLoginEnable=true":g > "$DESTI/$fitxer_a_modificar.tmp"
+	rm "$DESTI/$fitxer_a_modificar"
+	mv "$DESTI/$fitxer_a_modificar.tmp" "$DESTI/$fitxer_a_modificar"
+fi
+
+#Desactivem el autologin en el KDM si es demana
+if [ "$AUTOLOGIN" = "autologin_no" ]; then
+	fitxer_a_modificar=/etc/kde3/kdm/kdmrc
+	find0=`cat "$DESTI/$fitxer_a_modificar" | grep "AutoLoginUser="`
+	find1=`cat "$DESTI/$fitxer_a_modificar" | grep "AutoLoginEnable="`
+	[ -z "$find0" ] && find0="AquEStaKAdeNaNOLAtrobARAsMAI"
+	[ -z "$find1" ] && find1="AquEStaKAdeNaNOLAtrobARAsMAI"
+	
+	cat "$DESTI/$fitxer_a_modificar"  | sed s/"$find0"/'#AutoLoginUser='/g | sed s:"$find1":"AutoLoginEnable=false":g > "$DESTI/$fitxer_a_modificar.tmp"
+	rm "$DESTI/$fitxer_a_modificar"
+	mv "$DESTI/$fitxer_a_modificar.tmp" "$DESTI/$fitxer_a_modificar"
+fi

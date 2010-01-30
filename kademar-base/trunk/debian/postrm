@@ -1,0 +1,52 @@
+#!/bin/sh
+set -e
+# Automatically added by dh_installmodules
+
+case "$1" in
+    purge|remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+	
+	
+        rm -f /etc/rc?.d/S98kademar_arranc_live-cd
+        rm -f /etc/rc?.d/S99xsession
+	# rcS.d
+        rm -f /etc/rcS.d/S01kademar-inici
+	
+	# rc1.d
+        rm -f /etc/rc?.d/K01session
+	
+	# rc0.d
+        rm -f /etc/rc?.d/S22kademar-halt
+	
+	# rc6.d
+        rm -f /etc/rc?.d/S22kademar-reboot
+	
+        if [ remove = "$1" ]; then
+		#Networking DHCP Permissive
+                rm -f /etc/init.d/networking /etc/apt/preferences /etc/default/rcS /etc/initramfs-tools/initramfs.conf /etc/ppp/options /etc/sysctl.conf
+
+                dpkg-divert --package kademar-base --remove --divert /etc/init.d/dpkg/networking.real --rename /etc/init.d/networking
+
+                dpkg-divert --package kademar-base --remove --divert /etc/apt/preferences.orig --rename /etc/apt/preferences
+
+                dpkg-divert --package kademar-base --remove --divert /etc/default/rcS.orig --rename /etc/default/rcS
+
+                dpkg-divert --package kademar-base --remove --divert /etc/initramfs-tools/initramfs.conf.orig --rename /etc/initramfs-tools/initramfs.conf
+
+                dpkg-divert --package kademar-base --remove --divert /etc/ppp/options.orig --rename /etc/ppp/options
+
+                dpkg-divert --package kademar-base --remove --divert /etc/sysctl.conf.orig --rename /etc/sysctl.conf
+
+        fi
+
+        [ -L /usr/kademar ] && rm -f /usr/kademar # DEPRECATED
+
+
+    ;;
+
+    *)
+        echo "postrm called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+exit 0

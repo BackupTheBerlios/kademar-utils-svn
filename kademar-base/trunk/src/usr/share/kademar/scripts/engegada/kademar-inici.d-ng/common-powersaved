@@ -1,0 +1,11 @@
+# Script Hack per reengegar el acpi/powernowd de control d'energia
+# Creat per Adonay Sanz per la kademar  -  Abril 2007
+# Modificat  10-04-07
+#
+
+
+( # [ -e /proc/acpi ] && /etc/init.d/acpid restart
+
+# [ -e /proc/apm ] && /etc/init.d/apmd restart
+
+[ -e /etc/init.d/powersaved ] && /etc/init.d/powersaved restart ) &

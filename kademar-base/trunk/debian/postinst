@@ -1,0 +1,207 @@
+#!/bin/sh
+set -e
+#Udev Stolen Function :-[
+chrooted() {
+  if [ "$(stat -c %d/%i /)" = "$(stat -Lc %d/%i /proc/1/root 2>/dev/null)" ];
+  then
+    # the devicenumber/inode pair of / is the same as that of /sbin/init's
+    # root, so we're *not* in a chroot and hence return false.
+    return 1
+  fi
+  echo "Live-CD Creation environment detected. Creating links to Xsession."
+  return 0
+}
+
+#Funcio to include all gpg keys of base sources.list
+gpg_keys() {
+
+#9D0633E1B6250985 - LXDE
+#6A423791         - opera
+#1C79A27CD5E81909 - http://www.vobcopy.org
+#58403026387EE263 - http://wine.budgetdedicated.com
+#07DC563D1F41B907 - http://www.debian-multimedia.org
+#A35A4E6EF00175CA - http://apt.cerkinfo.be
+#73E6B0FAA42A6CF5 - http://download.tuxfamily.org
+
+for i in `ls /var/lib/apt/keyring`
+do
+    apt-key add /var/lib/apt/keyring/$i
+done
+
+}
+
+# Automatically added by dh_installmodules
+if [ "$1" = "configure" ]; then
+
+	[ ! -e /etc/console ] && mkdir -p /etc/console
+
+	chmod 0440 /etc/sudoers
+
+	#Cdrecord Permissions
+	for i in cdrdao wodim growisofs
+	do
+		if [ -n "`whereis $i | sed s.$i:..g`" ]; then
+			chown root:users /usr/bin/$i
+			chown root:users /usr/bin/X11/$i
+			chmod 4710 /usr/bin/$i
+			chmod 4710 /usr/bin/X11/$i
+		fi
+	done
+	
+	#Use kademar initng scripts if this it's installed - deprecated?
+	if [ -e /etc/initng/default.runlevel ]; then
+		if [ -z "`grep kademar /etc/initng/default.runlevel`" ]; then
+			echo "/etc/initng/system/kademar-inici.i" >> /etc/initng/default.runlevel
+			echo "/etc/initng/system/kademar-mounter.i" >> /etc/initng/default.runlevel
+		fi
+	fi
+	
+	#Check integrity of GLX
+	if [ -L "/usr/lib/xorg/modules/extensions/libglx.so" -o ! -e  "/usr/lib/xorg/modules/extensions/libglx.so" ]; then
+		echo "/usr/lib/xorg/modules/extensions/libglx.so  IS a Link. Check  xserver-xorg-core package if you don't want this way."
+	fi
+	if [ ! -e "/usr/lib/libGL.so.1.2"  ]; then
+		echo "/usr/lib/libGL.so.1.2 does NOT exists. Check or reinstall  libgl1-mesa-glx package if you don't want this way."
+	fi
+	if [ "`readlink /usr/lib/libGL.so.1`" != "/usr/lib/libGL.so.1.2" -o "`readlink /usr/lib/libGL.so`" != "/usr/lib/libGL.so.1" ]; then
+		echo " *"
+		echo " * Removing bad links...  and fixing ..."
+		echo " *"
+		rm -f /usr/lib/libGL.so.1 /usr/lib/libGL.so
+		ln -s /usr/lib/libGL.so.1.2 /usr/lib/libGL.so.1
+		ln -s /usr/lib/libGL.so.1 /usr/lib/libGL.so
+	fi
+
+	
+	
+	
+	#Si està en chroot, vol dir que estem preparan el live-cd, doncs crea l'enllaç a la X-Session
+	if chrooted; then
+		for i in 2 3 4 5
+		do
+			echo '#!/bin/bash
+# 8-9-09 - Added support to cmdline "nox"
+#Start de Xsession
+
+
+[ -e /etc/init.d/splashy ] && /etc/init.d/splashy stop
+[ -e /etc/init.d/splashutils ] && /etc/init.d/splashutils stop
+
+
+#Detect No X cmdline
+for i in `cat /proc/cmdline`
+do
+    [ "$i" = "nox" ] &&  nox="true"
+done
+
+if [ -z "$nox" ]; then
+	sh /usr/share/kademar/scripts/engegada/xsession start &
+else
+	#Configure some services - taken of kademarcenter
+	sh /usr/share/kademar/scripts/services_nox
+fi
+
+' > /etc/rc$i.d/S99xsession
+			chmod +x /etc/rc$i.d/S99xsession
+		done
+
+		for i in 0 1 6
+		do
+			[ ! -e /etc/rc$i.d/K01session ] && ln -s /usr/share/kademar/scripts/engegada/xsession /etc/rc$i.d/K01session
+		done
+		
+		
+		for i in 2 3 4 5
+		do
+			[ ! -e /etc/rc$i.d/S98kademar_arranc_live-cd ] && ln -s /usr/share/kademar/scripts/engegada/kademar-inici_second-stage /etc/rc$i.d/S98kademar_arranc_live-cd
+		done
+	
+		# rcS.d
+		[ ! -e /etc/rcS.d/S01kademar-inici ] && ln -s /usr/share/kademar/scripts/engegada/kademar-inici /etc/rcS.d/S01kademar-inici
+		
+		# rc0.d
+		[ ! -e /etc/rc0.d/S22kademar-halt ] && ln -s /usr/share/kademar/scripts/engegada/kademar-fi /etc/rc0.d/S22kademar-halt
+		
+		# rc6.d
+		[ ! -e /etc/rc6.d/S22kademar-reboot ] && ln -s /usr/share/kademar/scripts/engegada/kademar-fi /etc/rc6.d/S22kademar-reboot	
+		
+		#Prepare Instalador-dialog
+		[ ! -e /usr/local/bin/instalador-dialog ] && ln -s /usr/share/kademar/utils/instalador-dialog/instalador.sh /usr/local/bin/instalador-dialog
+
+		#Comprobem si existeix lusuari kademar
+		if [ ! -e /home/kademar ]; then
+			echo
+			echo "There's no user created. Do you want to create one? [s/n]"
+			read var
+			[ "$var" != [sSyY] ] && break
+			adduser kademar
+			for i in `cat /usr/share/kademar/utils/cadi/resources/user_groups`
+			do
+				[ -n "`grep $i /etc/group`" ] && adduser kademar $i
+			done
+		fi
+		
+	fi
+
+
+# 	Links for firefox-iceweasel plugins  &   iceape
+	[ ! -e /usr/lib/iceweasel/plugins/ ] && mkdir -p /usr/lib/iceweasel/plugins/
+	[ ! -e /usr/lib/iceape/plugins/ ] && mkdir -p /usr/lib/iceape/plugins/
+	for i in `ls /usr/lib/mozilla/plugins/* | sed s-/usr/lib/mozilla/plugins/--g`
+	do
+		[ ! -e /usr/lib/iceweasel/plugins/$i ] && ln -s /usr/lib/mozilla/plugins/$i /usr/lib/iceweasel/plugins/$i
+		[ ! -e /usr/lib/iceape/plugins/$i ] && ln -s /usr/lib/mozilla/plugins/$i /usr/lib/iceape/plugins/$i
+	done
+	
+	#Networking DHCP Permissive
+	mkdir -p /etc/init.d/dpkg/
+	dpkg-divert --package kademar-base --add --divert /etc/init.d/dpkg/networking.real --rename /etc/init.d/networking
+	[ ! -e /etc/init.d/networking ] && ln -s /etc/init.d/dpkg/networking.kademar /etc/init.d/networking
+
+    #divert rcS
+    dpkg-divert --package kademar-base --add --divert /etc/default/rcS.orig --rename /etc/default/rcS
+    [ ! -e /etc/default/rcS ] && ln -s /etc/default/rcS.kademar /etc/default/rcS
+
+    #divert initramfs-tools
+    dpkg-divert --package kademar-base --add --divert /etc/initramfs-tools/initramfs.conf.orig --rename /etc/initramfs-tools/initramfs.conf
+    [ ! -e /etc/initramfs-tools/initramfs.conf ] && ln -s /etc/initramfs-tools/initramfs.conf.kademar /etc/initramfs-tools/initramfs.conf
+
+    #divert PPP options
+    dpkg-divert --package kademar-base --add --divert /etc/ppp/options.orig --rename /etc/ppp/options
+    [ ! -e /etc/ppp/options ] && ln -s /etc/ppp/options.kademar /etc/ppp/options
+
+    #Sysctrl control configurations (swapiness)
+    dpkg-divert --package kademar-base --add --divert /etc/sysctl.conf.orig --rename /etc/sysctl.conf
+    [ ! -e /etc/sysctl.conf ] && ln -s /etc/sysctl.conf.kademar /etc/sysctl.conf
+
+	#Networking WIFI desktop support
+# 	dpkg-divert --package kademar-base --add --divert /sbin/ifup.real --rename /sbin/ifup
+# 	[ ! -e /sbin/ifup ] && ln -s /sbin/ifup.kademar /sbin/ifup
+
+
+	#XMMS composite support
+# 	[ -e /usr/bin/xmms ] && dpkg-divert --package kademar-base --add --divert /usr/bin/xmms.real --rename /usr/bin/xmms
+# 	[ ! -e /usr/bin/xmms ] && ln -s /usr/bin/xmms.kademar /usr/bin/xmms
+
+	[ -e "/etc/init.d/networking*" ] && chmod +x /etc/init.d/networking*
+# 	[ -e "/usr/bin/xmms*" ] && chmod +x /usr/bin/xmms*
+	
+    [ ! -e "/etc/localtime" ] && ln -s /usr/share/zoneinfo/Europe/Madrid /etc/localtime
+
+    [ ! -e /etc/timezone ] && echo "Europe/Madrid" > /etc/timezone
+
+	#Check kademar base GPG keys
+	[ -z "`apt-key list 2>/dev/null | grep D0596269`" ] && gpg_keys
+
+	#Check updated kernel headers
+	if [ ! -e /usr/src/linux -a -n "`ls /usr/src/linux-headers* 2>/dev/null`" ]; then
+		rm -f /usr/src/linux 2>/dev/null
+		for i in `ls -1 /usr/src/ | grep -i linux-headers | sort -r`; do  ln -s $i /usr/src/linux && echo "Updated Kernel to $i" && break ; done
+	fi
+
+    [ ! -e /usr/kademar ] && ln -s share/kademar /usr/kademar  #DEPRECATED
+
+	exit 0
+
+fi
+# End automatically added section

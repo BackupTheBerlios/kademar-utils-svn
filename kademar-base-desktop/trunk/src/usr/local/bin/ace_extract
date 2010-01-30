@@ -1,0 +1,34 @@
+#!/bin/bash
+#Script per descomprimir fitxers .ace
+#Creat per Adonay Sanz Alsina 05-09-06 - GNU/GPL 2
+
+# set -x
+
+# echo $1
+#Parem si no li donem cap paràmetre
+[ -z "$1" ] && echo "Need a parameter" && exit 1
+
+#Treiem les variables
+directori=`dirname "$1"`
+fitxer=`basename "$1"`
+
+#Entrem al directori
+cd "$directori"
+
+#Creem un directori temporal
+mkdir "UnAce_Extract_Temp_$fitxer"
+
+#Descomprimeix el fitxer
+xterm -e unace x "$fitxer" "UnAce_Extract_Temp_$fitxer/"
+
+#Dóna permissos per llegir/escriure
+chmod -R 777 "UnAce_Extract_Temp_$fitxer"
+
+#Movem el contingut extret, al directori on estem
+mv "UnAce_Extract_Temp_$fitxer"/* .
+
+#Borrem el temporal
+rm -fr "UnAce_Extract_Temp_$fitxer"
+
+
+

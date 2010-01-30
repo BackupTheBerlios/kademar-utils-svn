@@ -1,0 +1,49 @@
+#!/bin/bash
+#
+# Creat per Adonay Sanz per la kademar  -  Octubre 2005
+# Modificat  03-11-06
+# Modificat  05-11-06
+# Modificat  05-08-07
+# Modificat  20-08-07
+#
+
+# Configurador dels bookmarks de GTK
+#
+
+#MODE TO CALL IT.  common-gtk [user] [path]
+
+#Usuari a configurar
+if [ -n "$1" ]; then
+	user="$1"
+else
+	user="kademar"
+fi
+
+#Desti
+if [ -n "$2" ]; then
+	DESTI="$2"
+else
+	DESTI=""
+fi
+
+. /etc/environment
+
+case "$LANGUAGE" in
+ca*)
+	documents=Documents
+	desktop=Escriptori
+;;
+es*)
+	documents=Documentos
+	desktop=Escritorio
+;;
+en*)
+	documents=Documents
+	desktop=Desktop
+;;
+esac
+		
+#GTK Bookmarks pel FileDialog (gimp, inkscape, etc)
+echo "file:///home/$user/$documents" > "/home/$user/.gtk-bookmarks"
+echo "file:///home/Pc" >> "/home/$user/.gtk-bookmarks"
+echo "file:///home/$user/$desktop" >> "/home/$user/.gtk-bookmarks"

@@ -1,0 +1,56 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:             kademar
+# Required-Start:       
+# Required-Stop:     
+# Default-Start:        S
+# Default-Stop:
+# Short-Description:    Set kademar configurations
+# Description:      Load compcache, search changes on display graphic card and load sl-modem if found
+### END INIT INFO
+
+#
+# Adonay Sanz per la kademar  -  Octubre 2005
+# Adonay Sanz per la kademar  -  Febrer 2006
+# Adonay Sanz per la kademar  -  Maig 2008
+# Adonay Sanz per la kademar  -  Febrer 2009
+#
+
+
+#kademar  compcache
+ccachedir="/lib/modules/`uname -r`/kernel/fs/compcache"
+if [ -e "$ccachedir" ]; then
+   echo "Found CompCache"
+   for i in lzo1x_compress lzo1x_decompress tlsf xvmalloc compcache
+   do
+      modprobe $i
+   done
+fi
+
+#Check Graphic-Card Change
+sh /usr/share/kademar/scripts/engegada/grafica-comprova
+
+[ ! -e /dev/shm ] && mkdir -p /dev/shm
+mount -t tmpfs shm /dev/shm
+
+#kademar  compcache
+[ -e /dev/ramzswap0 ] && swapon /dev/ramzswap0 && echo "Activating CompCache support"
+
+#managed by kademarcenter
+# if [ ! -e /usr/share/kademar/Sistema.txt ]; then
+# 	#Restore default volumes
+#     # execute once
+# 	sh /usr/share/kademar/scripts/engegada/volums >/dev/null 2>&1
+# 	sh /usr/share/kademar/utils/instalador/scripts/install-usuaris-fix-permissions & 
+# fi
+
+
+#Win-Modems  Detection
+[ -n "`lsmod | grep slamr`" -o -n "`lsmod | grep slusb`" ] && /etc/init.d/sl-modem-daemon start
+
+
+#Pmount Permissions
+# ( chmod ugo+x /usr/bin/pmount ; chmod ugo+x /usr/bin/pumount ) &
+
+
+

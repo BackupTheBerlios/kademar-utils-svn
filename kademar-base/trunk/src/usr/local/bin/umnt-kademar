@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+# Creat per Adonay Sanz per la kademar - 1 oct 2005
+# Modificat 25-10-08
+#
+
+#set -x #Debug
+
+dispositius=`ls /mnt --ignore=*cdrom* --ignore=*dvd* --ignore=fd* --ignore=disquet* --ignore=live* 2>/dev/null`
+algo_malament="no"
+
+if [ -n "$dispositius" ]; then
+	for i in $dispositius
+	do
+		linia=`grep $i /proc/mounts | grep -vi cdrom | grep -vi dvd | grep -vi rom | grep -vi live`
+		if [ -n "$linia" ]; then
+			umount `echo $linia | awk ' { print $1 }'` || algo_malament="si"
+		fi
+	done
+else
+	exit 0
+fi
+
+[ "$algo_malament" = "si" ] && exit 1
+exit 0

@@ -1,0 +1,89 @@
+#!/bin/bash
+set -x
+# /home/kademar/.kde/share/config/kdeglobals
+
+# comproba si s'ha passat un parametre de directori base i, si no, posa el arrel
+if [ -z "$1" ]; then
+	dirbase="/"
+else
+	dirbase=$1
+fi
+
+. /etc/environment
+
+fitxer='/.kde/share/config/kdeglobals'
+
+case "$LANGUAGE" in
+ca*)
+escriptori="Escriptori"
+autoengega='Autoengega'
+;;
+es*)
+escriptori='Escritorio'
+autoengega='Autoarranque'
+;;
+en*)
+escriptori='Desktop'
+autoengega='Autostart'
+;;
+*)
+escriptori='Escritorio'
+autoengega='Autoarranque'
+;;
+esac
+
+variables(){
+#Reiniciem variables
+find0=""
+find1=""
+processa=no
+
+#Processa fitxer, a la que arribem a la linia paths
+cat "$1" | while read line
+do
+	#Anem mirant les linies fins que trobem path, a partir de llavors activem el segon bucle per mirar les variables desktop i autostart
+	if [ "$processa" = no ]; then
+		var=`echo "$line" | grep '[Paths]'`
+		[ "$var" = '[Paths]' ] && processa=si
+	fi
+	
+	#El segon bucle s'activa pq ja hem arribat a la part del text que diu path
+	if [ "$processa" = si ]; then
+	# Troba Desktop
+	find0tmp=`echo "$line" | grep "Desktop="`
+	find1tmp=`echo "$line" | grep "Autostart="`
+	fi
+
+#Si hem trobat alguna coincidencia, fes que sigui la variable final
+[ -n "$find0tmp" ] && find0="$find0tmp"
+[ -n "$find1tmp" ] && find1="$find1tmp"
+
+#Si ja hem assignat les dos variables, tenca
+[ -n "$find0" -a -n "$find1" ] && break
+done
+
+echo "$find0" && exit
+
+}
+
+
+for j in `ls $dirbase/home --ignore=ANONYMOUS --ignore=Pc`
+do
+	
+	variables "$dirbase/home/$j$fitxer"
+
+	[ -z "$find0" ] && find0="AkEsTa Kadena NO La Trobaras Mai"
+	[ -z "$find1" ] && find1="AkEsTa Kadena NO La Trobaras Mai"	
+
+	desktop_antic="${find0##*$1=}"
+	autostart_antic="${find1##*$1=}"
+
+	if [ "$escriptori" != "$desktop_antic" -a "$escriptori" != "AkEsTa Kadena NO La Trobaras Mai" ]; then
+	
+# 		mv "/home/$j"
+
+		cat $dirbase/home/$j/$i | sed s,"$find0",Desktop="$escriptori",g| sed s,$find1,Autostart=$autoengega,g > $dirbase$i.tmp
+# 		rm -f $dirbase/home/$j/$i
+# 		mv $dirbase/home/$j/$i.tmp $dirbase/home/$j/$i
+	fi
+done

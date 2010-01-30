@@ -1,0 +1,39 @@
+#!/bin/sh
+
+#
+# kademar script fixes:
+#   unable to find /lib/modules/2.6.28.4/modules.dep
+#
+
+PREREQ=""
+
+prereqs()
+{
+	echo "$PREREQ"
+}
+
+case $1 in
+# get pre-requisites
+prereqs)
+	prereqs
+	exit 0
+	;;
+esac
+
+# set -x
+
+. /usr/share/initramfs-tools/hook-functions
+
+mkdir -p ${DESTDIR}/bin ${DESTDIR}/sbin
+
+# cp /etc/console/boottime.kmap.gz ${DESTDIR}/etc/
+cp /bin/grep ${DESTDIR}/bin
+cp /bin/pidof ${DESTDIR}/bin
+# cp /sbin/splashy ${DESTDIR}/sbin
+
+for i in `ls /lib/modules`
+do
+	mkdir -p ${DESTDIR}/lib/modules/$i
+	cp /lib/modules/$i/modules* ${DESTDIR}/lib/modules/$i 2>/dev/null
+done
+

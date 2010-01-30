@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# Creat per Adonay Sanz per la kademar  -  06 Maig 2007
+#
+# Script Hack per reengegar el dimoni de Intel ipw3945
+#
+
+#If we have ipw3945 daemon, and ipw3945 it's loaded, start it.
+if [ -n "`lsmod | grep ipw3945 `" ]; then
+
+[ -e /usr/share/doc/ipw3945d/ipw3945d-start ] && sh /usr/share/doc/ipw3945d/ipw3945d-start
+
+fi

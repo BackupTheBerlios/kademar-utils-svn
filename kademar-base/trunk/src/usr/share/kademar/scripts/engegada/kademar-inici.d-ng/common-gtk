@@ -1,0 +1,12 @@
+# Configurador dels bookmarks de GTK
+# Creat per Adonay Sanz per la kademar  -  Octubre 2005
+# Modificat  03-11-06
+# Modificat  05-11-06
+# Modificat  05-08-07
+# Modificat  20-08-07
+# Modificat  14-04-08
+#
+
+
+#GTK Bookmarks pel FileDialog (gimp, inkscape, etc)
+echo "file:///home/$user/$documents" >> "/home/$user/.gtk-bookmarks"

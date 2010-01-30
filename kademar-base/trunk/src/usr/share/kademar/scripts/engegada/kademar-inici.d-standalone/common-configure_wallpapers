@@ -1,0 +1,86 @@
+#!/bin/bash
+
+#
+# This script configure wallpapers of system, for normal & panoramic monitors
+#  script called by xsession-xinitrc
+#
+# Created in 03-02-09 by Adonay
+# GNU/GPL 2.0 or higher
+#
+
+# load monitor type
+[ -e /var/kademar/monitor ] && . /var/kademar/monitor
+
+if [ -z "$1" ];then
+    user=kademar
+else
+    user="$1"
+fi
+
+#Variable BACKGROUND agafada del fitxer de configuració (diferents gustos de kademar)
+[ -e /usr/share/kademar/config-livecd ] && . /usr/share/kademar/config-livecd
+
+[ -e /var/kademar/monitor ] && . /var/kademar/monitor
+
+if [ "$monitor" = "panoramic" ]; then
+    echo Configuring Panoramic Monitor
+    wallpaper=$xsession_background_panoramic
+else
+    echo Configuring Normal Monitor
+    wallpaper=$xsession_background
+fi
+
+
+if [ -e "$wallpaper" ]; then
+
+ #IceWM
+    prefs_file=/home/$user/.icewm/preferences
+   #Subsitute orig background with a panoramic one
+    if [ -e "$prefs_file" ]; then
+        a=`grep kademar-base-substitute-wallpaper-variable "$prefs_file"`
+        b="DesktopBackgroundImage=\"$wallpaper\""
+        #if line exists, substitute it
+        if [ -n "$a" ]; then
+            sed s,"kademar-base-substitute-wallpaper-variable","$wallpaper",g -i $prefs_file
+        else
+            #if doesn't exist, append it
+            echo "$b" >> $prefs_file
+        fi
+    fi
+
+
+ #LXDE
+    lxde_file=/home/$user/.config/pcmanfm/main.lxde
+   #Subsitute orig background with a panoramic one
+    if [ -e "$lxde_file" ]; then
+        a=`grep kademar-base-substitute-wallpaper-variable "$lxde_file"`
+        b="wallpaper=\"$wallpaper\""
+        #if line exists, substitute it
+        if [ -n "$a" ]; then
+            sed s,"kademar-base-substitute-wallpaper-variable","$wallpaper",g -i $lxde_file
+        else
+            #if doesn't exist, append it
+            echo "" >> $lxde_file
+            echo "[Desktop]" >> $lxde_file
+            echo "show_wallpaper=1" >> $lxde_file
+            echo "$b" >> $lxde_file
+            echo "bg2=55192,49082,48732" >> $lxde_file
+        fi
+    fi
+
+
+ #KDE
+    kde_file="/home/$user/.kde/share/config/kdesktoprc"
+    if [ -e "$kde_file" ]; then
+        a=`grep kademar-base-substitute-wallpaper-variable "$kde_file"`
+        #if line exists, substitute it
+        if [ -n "$a" ]; then
+            sed s,"kademar-base-substitute-wallpaper-variable","$wallpaper",g -i "$kde_file"
+        else
+            #if doesn't exist, append it
+            echo "[Desktop0]" >> $prefs_file
+            echo 'Wallpaper[$e]='$wallpaper >> $prefs_file
+        fi
+    fi
+
+fi

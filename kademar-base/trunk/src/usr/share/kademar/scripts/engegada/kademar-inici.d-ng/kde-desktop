@@ -1,0 +1,143 @@
+# Configurador del Desktop de KDE
+# Creat per Adonay Sanz per la kademar  -  Octubre 2005
+# Modificat  03-11-06
+# Modificat  24-08-07
+#
+
+#TODO: Restaurar les configuracions
+
+trobat="no"
+
+crea_kademar_links(){
+#Instal Link
+echo "[Desktop Entry]
+Encoding=UTF-8
+Exec=sudo /usr/share/kademar/scripts/engega_instalador
+Icon=/usr/share/kademar/icons/kpackage.png
+Name=Install kademar on Hard Drive
+Name[ca]=Instal·la al disc dur
+Name[es]=Instalar al disco duro
+Name[en]=Install on Hard Drive
+StartupNotify=true
+Terminal=false
+Type=Application
+X-KDE-SubstituteUID=false" > $1/Instal.desktop
+
+
+#Instal Nano Link
+echo "[Desktop Entry]
+Encoding=UTF-8
+Exec=sudo /usr/share/kademar/scripts/engega_instalador_nano
+Icon=/usr/share/kademar/icons/pendrive.png
+Name=Install to USB
+Name[ca]=Instal·la al USB
+Name[es]=Instalar al USB
+Name[en]=Install to USB
+StartupNotify=true
+Terminal=false
+Type=Application
+X-KDE-SubstituteUID=false" > $1/Instal-Nano.desktop
+
+
+#Saveconfig Link
+# echo "[Desktop Entry]
+# Exec=sh /usr/share/kademar/utils/cadi/saveconfig
+# Icon=filesave.png
+# Name=Guarda la configuració en disquet
+# Name[ca]=Guarda la configuració en disquet
+# Name[es]=Guardar la configuración personal
+# Name[en]=Save configuration on floppy disk
+# Terminal=true
+# Type=Application" > $1/Config.desktop
+
+#Xscreensaver Link
+# echo "[Desktop Entry]
+# Exec=xscreensaver -no-splash
+# Name=XScreensaver
+# Name[ca]=XScreensaver - Salvapantalles
+# Name[es]=XScreensaver - Salvapantallas
+# StartupNotify=false
+# Terminal=false
+# Type=Application
+# X-KDE-StartupNotify=false
+# X-KDE-SubstituteUID=false" > $3/xscreensaver
+# chmod +x $3/xscreensaver
+
+}
+
+#Crea bloqueig de NumLock
+#crea_numlock(){
+#	echo "[Desktop Entry]
+#Exec=numlockx $resposta_numlock
+#Icon=keyboard
+#X-KDE-StartupNotify=false
+#StartupNotify=false
+#Type=Application" > $1/numlock.desktop
+#}
+
+
+if [ "$trobat" = "no" ]; then
+	case "$LANGUAGE" in
+	ca*)
+		echo 'Creant Configuracio Personal'
+	;;
+	es*)
+		echo "Creando Configuración Personal"
+	;;
+	en*)
+		echo "Creating Personal Configuration"
+	;;
+	esac
+	if [ -e /var/directhome ]; then #assegura k no es faci 2 vegades
+		echo "Home already created - remove /var/directhome if you want to re-create it"
+		else
+		# Canviar Llengua de KDE, KDM i Audacity
+		sh /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/kde-canvikdeglobals #Canviar llengua
+		sh /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/common-canvillengua
+		if [ "$laptop" = yes ]; then
+			#Si es portatil
+			resposta_numlock=off #Desactiva
+		else	
+			#Si no es un portatil
+			resposta_numlock=on #Activa
+			rm -f /usr/share/autostart/syndock.desktop
+		fi
+		
+		#KNOPPIX hack, perque el salvapantalles no bloquegi la pantalla
+		#mv /usr/bin/kdesktop_lock /usr/bin/kdesktop_lock.orig
+		rm -f /usr/bin/kdesktop_lock
+		cp /usr/share/kademar/scripts/engegada/kdesktop_lock /usr/bin
+		
+		case "$LANGUAGE" in
+		ca*)
+			crea_kademar_links /home/$user/Escriptori _ca /home/$user/.kde/Autoengega
+#			crea_numlock /home/$user/.kde/Autoengega
+			#Links al Pc
+			ln -s -n /Pc /home/$user/Escriptori/Pc 
+			ln -s -n /Pc /home/$user/Pc
+			#Link al Desktop
+			ln -s /home/$user/$desktop /home/$user/Desktop
+		;;
+		es*)
+			crea_kademar_links /home/$user/Escritorio _es /home/$user/.kde/Autoarranque
+#			crea_numlock /home/$user/.kde/Autoarranque
+			#Links al Pc
+			ln -s -n /Pc /home/$user/Escritorio/Pc 
+			ln -s -n /Pc /home/$user/Pc
+			#Link al Desktop
+			ln -s /home/$user/$desktop /home/$user/Desktop
+		;;
+		en*|*)
+			crea_kademar_links /home/$user/Desktop _en /home/$user/.kde/Autostart
+#			crea_numlock /home/$user/.kde/Autostart
+			#Links al Pc
+			ln -s -n /Pc /home/$user/Desktop/Pc 
+			ln -s -n /Pc /home/$user/Pc
+		;;
+		esac
+		
+		#Crea directori de documents
+		sh /usr/share/kademar/scripts/documents $user
+	
+	fi
+fi

@@ -1,0 +1,46 @@
+# Fitxer per acabar de tencar les configuracions de l'usuari
+# Creat per Adonay Sanz per la kademar  -  Octubre 2005
+# Modificat  03-11-06
+#
+
+#Pc prepare
+#Directory preparation
+[ ! -d /Pc ] && mkdir /Pc
+[ ! -L /home/Pc ] && ln -s -n /Pc /home/Pc
+
+if [ ! -e /Pc/.directory ]; then
+	echo "[Desktop Entry]
+	Icon=/usr/share/kademar/icons/Pc.png" > /Pc/.directory
+fi
+
+
+
+#Hack pel IVMAN per detectar correctament els usbdisks. Si no hi ha muntat res en /media/usbdisk, ell munta allà els discs usb, encara que tinguin dos particions, fent incongruències el sistema, i fent que no es puguin muntar, ni desmuntar correctament
+#[ ! -e /media/usbdisk ] && mkdir /media/usbdisk
+#mount -t tmpfs -o size=1k none /media/usbdisk
+
+#Creem la carpeta de /var/kademar
+mkdir -p /var/kademar
+chmod 777 /var/kademar
+
+#Hack pels sudoers en live-cd
+echo "kademar ALL=NOPASSWD:ALL" >> /etc/sudoers
+
+#Hack per esciure la commanda   "su"  i que no et demani pass
+echo "" >> /etc/bash.bashrc
+echo "" >> /etc/profile
+echo "alias su='sudo su'" >> /etc/bash.bashrc
+echo "alias su='sudo su'" >> /etc/profile
+
+
+#Mplayer Hack
+#( echo 1024 > /proc/sys/dev/rtc/max-user-freq ) 2>/dev/null
+
+#canvia permisos
+#chmod 777 /dev/.static &
+chown -R $user.users /home/$user/* &
+# chown -R $user.users /home/$user/.??*
+chown $user.users /home/$user &
+chmod -R 777 /home/$user &
+chmod 777 /home/$user &
+# chmod 777 /home/$user/.kde/share/config/kio_thumbnailrc 2>/dev/null

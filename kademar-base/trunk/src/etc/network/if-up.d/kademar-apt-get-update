@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#Actualitzador automatic de apt, dp de tenir internet
+#Adonay Sanz Alsina - 24-11-07 - GNU/GPL v2
+
+#Read default config
+. /usr/share/kademar/config
+
+#Actualitza si no estàs en live-cd i fes-ho en background i sempre surt bé
+# i si esta engegat kademarcenter, avisa'l
+if [ "$apt_autoupdate" = "yes" ]; then
+	( [ ! -e "/initrd/rootsquash/usr" -a ! -e "/mnt/live/memory/images/kademar.lzm/usr" ] && apt-get update >/dev/null 2>&1 && ( [ -p  /tmp/kademarcenter.fifo ] && echo apt= > /tmp/kademarcenter.fifo ) ; exit 0 ) &
+fi

@@ -1,0 +1,168 @@
+# Fitxer per configurar les icones del iDesk i el  startup del icewm amb el NUMLOCK
+# Creat per Adonay Sanz per la kademar  -  Octubre 2005
+# Modificat   03-11-06
+# Modificat   22-10-08
+#
+
+#if [ "$laptop" = yes ]; then
+#	#Si no es portatil
+#	resposta_numlock=on
+#else	
+#	#Si es un portatil
+#	resposta_numlock=off
+#fi
+
+
+###############
+# ICEWM ICONS #
+###############
+[ ! -e "/home/$user/.idesktop" ] && mkdir -p "/home/$user/.idesktop"
+#Lenguage Messages
+        rm -f /home/$user/.icewm/menu
+        case "$LANGUAGE" in
+        ca*)
+                missatge_cadi="CADI"
+                tooltip_cadi="Configurar Sistema"
+                missatge_instalador="Instal.lador"
+                tooltip_instalador="Instal.la kademar al disc dur"
+                missatge_instalador_nano="Instal.lador USB"
+                tooltip_instalador_nano="Instal.la kademar al USB"
+                missatge_home="Inici"
+                tooltip_home="Fitxer personals"
+                missatge_trash="Paperera"
+                tooltip_trash="Arxius esborrats"
+                tooltip_pc="Dispositius"
+                [ -e /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/icewm-menu_ca ] && rm -f /home/$user/.icewm/menu && cp -a /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/icewm-menu_ca /home/$user/.icewm/menu
+                echo 'prog "Fitxer Personals" "/usr/share/kademar/icons/home.png" xfe $HOME
+prog "Pc" "/usr/share/kademar/icons/pc_p.png" xfe /Pc
+prog "Abiword - Document de Text" "/usr/share/AbiSuite-2.4/icons/abiword_48.png" /usr/bin/abiword
+prog "Volum" "/usr/share/kademar/icons/escoltar.png" alsamixergui
+prog "Navegador Dillo" "/usr/share/kademar/icons/konqueror2a.png" dillo
+prog "Terminal" "/usr/share/kademar/icons/konsole.png" mrxvt -bg black -fg white -bt -sr
+prog "CADI - Configurar Sistema" "/usr/share/kademar/icons/configure.png" executa cadi ' > /home/$user/.icewm/toolbar
+
+        ;;
+        es*)
+                missatge_cadi="CADI"
+                tooltip_cadi="Configurar Sistema"
+                missatge_instalador="Instalador"
+                tooltip_instalador="Instalar kademar en el disco duro"
+                missatge_home="Inicio"
+                tooltip_home="Ficheros personales"
+                missatge_trash="Papelera"
+                tooltip_trash="Archivos borrados"
+                tooltip_pc="Dispositivos"
+                [ -e /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/icewm-menu_es ] && rm -f /home/$user/.icewm/menu && cp -a /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/icewm-menu_es /home/$user/.icewm/menu
+                echo 'prog "Ficheros Personales" "/usr/share/kademar/icons/home.png" xfe $HOME
+prog "Pc" "/usr/share/kademar/icons/pc_p.png" xfe /Pc
+prog "Abiword - Documento de Texto" "/usr/share/AbiSuite-2.4/icons/abiword_48.png" /usr/bin/abiword
+prog "Volumen" "/usr/share/kademar/icons/escoltar.png" alsamixergui
+prog "Navegador Dillo" "/usr/share/kademar/icons/konqueror2a.png" dillo
+prog "Terminal" "/usr/share/kademar/icons/konsole.png" mrxvt -bg black -fg white -bt -sr
+prog "CADI - Configurar Sistema" "/usr/share/kademar/icons/configure.png" executa cadi ' > /home/$user/.icewm/toolbar
+
+        ;;
+        en*|*)
+                missatge_cadi="CADI"
+                tooltip_cadi="System Settings"
+                missatge_instalador="Installer"
+                tooltip_instalador="Install kademar on Hard Drive"
+                missatge_home="Start"
+                tooltip_home="Personal files"
+                missatge_trash="Trash"
+                tooltip_trash="Erased files"
+                tooltip_pc="Devices"
+                [ -e /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/icewm-menu_en ] && rm -f /home/$user/.icewm/menu && cp -a /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/icewm-menu_en /home/$user/.icewm/menu
+                echo 'prog "Personal Files" "/usr/share/kademar/icons/home.png" xfe $HOME
+prog "Pc" "/usr/share/kademar/icons/pc_p.png" xfe /Pc
+prog "Abiword - Text Document" "/usr/share/AbiSuite-2.4/icons/abiword_48.png" /usr/bin/abiword
+prog "Volume" "/usr/share/kademar/icons/escoltar.png" alsamixergui
+prog "Dillo browser" "/usr/share/kademar/icons/konqueror2a.png" dillo
+prog "Terminal" "/usr/share/kademar/icons/konsole.png" mrxvt -bg black -fg white -bt -sr
+prog "CADI - System Settings" "/usr/share/kademar/icons/configure.png" executa cadi ' > /home/$user/.icewm/toolbar
+        ;;
+        esac
+
+        #HOME
+        echo "table Icon
+  Caption: $missatge_home
+  Tooltip.Caption: $tooltip_home
+  Icon: /usr/share/kademar/icons/home_blue.png
+  # Tamaño de icono, solo valido para versiones 0.6 y 0.7 de idesk
+  Width: 48
+  Height: 48
+  X: 27
+  Y: 74
+  Command[0]: xfe \$HOME
+  Command[1]: idesktool \$HOME/.idesktop/home.lnk
+end" > /home/$user/.idesktop/home.lnk
+
+        #TRASH
+        echo "table Icon
+  Caption: $missatge_trash
+  Tooltip.Caption: $tooltip_trash
+  Icon: /usr/share/kademar/icons/borrar.png
+  Width: 48
+  Height: 48
+  X: 27
+  Y: 174
+  Command[0]: xfe \$HOME/.xfetrash
+  Command[1]: idesktool \$HOME/.idesktop/trash.lnk
+end" > /home/$user/.idesktop/trash.lnk
+
+mkdir -p "$HOME/.xfetrash"
+
+        #CADI
+        echo "table Icon
+  Caption: $missatge_cadi
+  Tooltip.Caption: $tooltip_cadi
+  Width: 48
+  Height: 48
+  Icon: /usr/share/kademar/icons/package_settings.png
+  X: 27
+  Y: 274
+  Command[0]: executa cadi
+  Command[1]: idesktool \$HOME/.idesktop/CADI.lnk
+end" > /home/$user/.idesktop/CADI.lnk
+        
+        #Pc
+        echo "table Icon
+  Caption: Pc
+  Tooltip.Caption: $tooltip_pc
+  Width: 48
+  Height: 48
+  Icon: /usr/share/kademar/icons/pc_p.png
+  X: 27
+  Y: 374
+  Command[0]: xfe \$HOME/Pc
+  Command[1]: idesktool \$HOME/.idesktop/pc.lnk
+end" > /home/$user/.idesktop/pc.lnk
+
+#Instalador
+        echo "table Icon
+  Caption: $missatge_instalador
+  Tooltip.Caption: $tooltip_instalador
+  Command: sudo /usr/share/kademar/scripts/engega_instalador
+  Icon: /usr/share/kademar/icons/kpackage.png
+  X: 27
+  Y: 474
+  Width: 48
+  Height: 48
+end" > /home/$user/.idesktop/instal.lnk
+
+#Instalador nano
+        echo "table Icon
+  Caption: $missatge_instalador_nano
+  Tooltip.Caption: $tooltip_instalador_nano
+  Command: sudo /usr/share/kademar/scripts/engega_instalador_nano
+  Icon: /usr/share/kademar/icons/pendrive.png
+  X: 27
+  Y: 574
+  Width: 48
+  Height: 48
+end" > /home/$user/.idesktop/instal-nano.lnk
+
+
+
+#Crea bloqueig de NumLock
+#echo "numlockx $resposta_numlock" >>  /home/$user/.icewm/startup

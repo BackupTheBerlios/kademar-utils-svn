@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# Modificació 25-02-07
+# Midificació 10-04-07 (Suport per mode instalador - amb targets)
+
+#set -x  #Debug
+
+#Script per comprovar que no hi ha hagut cap canvi de gràfica.
+#S'hi n'hi ha hagut algun, torna a crear el fitxer de configuració de X
+
+target="$1"
+
+crea_config(){
+		#Fem una copia de seguretat de la xorg.conf antiga
+	rm -f /etc/X11/xorg.conf-kademar
+	mv /etc/X11/xorg.conf /etc/X11/xorg.conf-kademar
+	#Actualitzem la informació de la nova gràfica
+	lspci | grep -i 'vga compatible controller:' > "$target/var/kademar/lspci_grafica"
+	#Actualitzem la versió del nucli
+	uname -r > "$target/var/kademar/kernel_version"
+	#Borrem les configuracions ràpides anteriors
+	rm -f "$target/var/xserver"
+	#Generem nova configuració de X
+	sh /usr/share/kademar/scripts/engegada/xautoconf "$target"
+}
+
+
+#Si hi ha el paràmetre de no fer cas als canvis de gràfica, no fer res
+if [ ! -e /usr/share/kademar/no_grafica ]; then
+	
+	#Si no has canviat de tarja gràfica, respectem, sino, canviem el driver
+	if [ "`cat "$target/var/kademar/lspci_grafica" 2>/dev/null`" != "`lspci | grep -i 'vga compatible controller:'`" ]; then
+		crea_config
+	fi
+	
+	#O si no exiteix la config, créala de nou
+	if [ ! -e "$target/etc/X11/XF86Config" -a ! -e "$target/etc/X11/xorg.conf" ]; then
+		crea_config
+	fi
+	
+	#O s'hi ha canviat el nucli, pq si es fglrx o nvidia, pot ser que no tingui els moduls compilats i que no engegi
+	if [ "`uname -r`" != "`cat $target/var/kademar/kernel_version`" ]; then
+		crea_config
+	fi
+	
+fi
+

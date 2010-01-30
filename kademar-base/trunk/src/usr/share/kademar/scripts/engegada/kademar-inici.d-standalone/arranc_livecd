@@ -1,0 +1,318 @@
+#!/bin/bash
+#
+# Creat per Adonay Sanz per la kademar  -  Octubre 2005
+#
+# Últim fitxer que engega tots els scripts d'inici de kademar, el primer del live-cd ha estat  kademar-inici
+#
+
+
+DEPRECATED
+
+#TODO: Restaurar les configuracions
+
+user="kademar"
+trobat="no"
+fitxer="configs.tbz"
+
+. /etc/environment
+
+case "$LANGUAGE" in
+ca*)
+	echo 'Cercant Configuracions'
+;;
+es*)
+	echo 'Buscando Configuraciones'
+;;
+en*)
+	echo 'Searching Configurations'
+;;
+esac
+
+
+
+#loadkeys es #definicio del teclat castella
+
+#Cerca una configuracio preguardada
+comprovant="no"
+# for i in /mnt/*
+# do
+# 	if [ -e $i/$fitxer ]; then
+# 		comprovant="yes"
+# 		path_to_file=$i/$fitxer
+# 		break
+# 	fi
+# done
+
+#Hack pel IVMAN per detectar correctament els usbdisks. Si no hi ha muntat res en /media/usbdisk, ell munta allà els discs usb, encara que tinguin dos particions, fent incongruències el sistema, i fent que no es puguin muntar, ni desmuntar correctament
+#[ ! -e /media/usbdisk ] && mkdir /media/usbdisk
+#mount -t tmpfs -o size=1k none /media/usbdisk
+
+if [ $comprovant = "yes" ]; then
+	tar -jpPxf $path_to_file
+	cp -Rp /initrd/rootsquash/home/$user/.config /home/$user
+	cp -Rp /initrd/rootsquash/home/$user/.firefox /home/$user
+	( killall pump 2>/dev/null ; killall dhclient 2>/dev/null ) && sleep 2 && killall -9 pump 2>/dev/null && sleep 2
+	
+	case "$LANGUAGE" in
+	ca*)
+		echo "Engegant Serveis"
+	;;
+	es*)
+		echo 'Iniciando Servicios'
+	;;
+	en*)
+		echo 'Initializing Services'
+	;;
+	esac
+	
+	for i in  ifupdown networking; do [ -x /etc/init.d/$i ] && /etc/init.d/$i start 2>/dev/null; done 
+
+	case "$LANGUAGE" in
+	ca*)
+		echo "Configuracio Personal Trobada"
+	;;
+	es*)
+		echo "Configuración Personal Encontrada"
+	;;
+	en*)
+		echo "Found Personal Configuration"
+	;;
+	esac
+
+	trobat="yes"
+fi
+
+crea_kademar_links(){
+#HTML Link on Desktop
+echo "[Desktop Entry]
+Encoding=UTF-8
+Exec=konqueror "/usr/share/kademar/html/kademar$2.html"
+Icon=tux
+Name=kademar
+Path='/usr/share/kademar/html/'
+StartupNotify=true
+Terminal=false
+Type=Application
+X-KDE-SubstituteUID=false" > $1/kademar.desktop
+
+#HTML Link on /usr/share/kademar
+echo "#!/bin/bash
+#
+# Llicencia GNU/GPL 2.0 i posterior
+# # # # # # # # # # # # # # # # #
+
+killall -15 htm 2>/dev/null #mata el proces htm
+
+kfmclient sortDesktop   #organitza les icones de l'escriptori
+
+rm -fr \$HOME/.kde/Auto*/html
+rm -fr \$HOME/.kde/Auto*/htm
+
+kfmclient sortDesktop   #organitza les icones de l'escriptori
+
+sh /usr/share/kademar/scripts/engegada/engega_serveis &
+
+konqueror /usr/share/kademar/html/kademar$2.html" > /usr/share/kademar/scripts/html_borra
+chmod +x /usr/share/kademar/scripts/html_borra
+
+#Instal Link
+echo "[Desktop Entry]
+Encoding=UTF-8
+Exec=/usr/share/kademar/scripts/engega_instalador
+Icon=/usr/share/kademar/icons/kpackage.png
+Name=Instal·la kademar al disc dur
+Name[ca]=Instal·la kademar al disc dur
+Name[es]=Instalar kademar en el disco duro
+Name[en]=Install kademar on Hard Drive
+StartupNotify=true
+Terminal=false
+Type=Application
+X-KDE-SubstituteUID=false" > $1/Instal.desktop
+
+#Saveconfig Link
+# echo "[Desktop Entry]
+# Exec=sh /usr/share/kademar/utils/cadi/saveconfig
+# Icon=filesave.png
+# Name=Guarda la configuració en disquet
+# Name[ca]=Guarda la configuració en disquet
+# Name[es]=Guardar la configuración personal
+# Name[en]=Save configuration on floppy disk
+# Terminal=true
+# Type=Application" > $1/Config.desktop
+
+#Xscreensaver Link
+# echo "[Desktop Entry]
+# Exec=xscreensaver -no-splash
+# Name=XScreensaver
+# Name[ca]=XScreensaver - Salvapantalles
+# Name[es]=XScreensaver - Salvapantallas
+# StartupNotify=false
+# Terminal=false
+# Type=Application
+# X-KDE-StartupNotify=false
+# X-KDE-SubstituteUID=false" > $3/xscreensaver
+# chmod +x $3/xscreensaver
+
+}
+
+#Crea bloqueig de NumLock
+# crea_numlock(){
+# 	echo "[Desktop Entry]
+# Exec=numlockx $resposta_numlock
+# Icon=keyboard
+# X-KDE-StartupNotify=false
+# StartupNotify=false
+# Type=Application" > $1/numlock.desktop
+# }
+
+
+if [ "$trobat" = "no" ]; then
+	case "$LANGUAGE" in
+	ca*)
+		echo 'Creant Configuracio Personal'
+	;;
+	es*)
+		echo "Creando Configuración Personal"
+	;;
+	en*)
+		echo "Creating Personal Configuration"
+	;;
+	esac
+	if [ -e /var/directhome ]; then #assegura k no es faci 2 vegades
+		echo "Home already created - remove /var/directhome if you want to re-create it"
+		else
+		# Canviar Llengua de KDE, KDM i Audacity
+		python /usr/share/kademar/scripts/engegada/canvikdeglobals.py #Canviar llengua
+		sh /usr/share/kademar/scripts/engegada/canvillengua
+		if [ "`laptop-detect ; echo $?`" != 0 ]; then
+			#Si no es portatil
+			resposta_numlock=on
+		else	
+			#Si es un portatil
+			resposta_numlock=off
+			rm -f /usr/share/autostart/syndock.desktop
+		fi
+		case "$LANGUAGE" in
+		ca*)
+			crea_kademar_links /home/$user/Escriptori _ca /home/$user/.kde/Autoengega
+			ln -s /usr/share/kademar/scripts/html-escriptori /home/$user/.kde/Autoengega/htm
+# 			crea_numlock /home/$user/.kde/Autoengega
+			#Links al Pc
+			ln -s -n /Pc /home/$user/Escriptori/Pc 
+			ln -s -n /Pc /home/$user/Pc
+			lang_firefox=ca
+			documents=Documents
+			desktop=Escriptori
+			kfile_home="Carpeta Inicial"
+			kfile_net="Carpetes de xarxa"
+			kfile_root="Arrel de Sistema"
+		;;
+		es*)
+			crea_kademar_links /home/$user/Escritorio _es /home/$user/.kde/Autoarranque
+			ln -s /usr/share/kademar/scripts/html-escriptori /home/$user/.kde/Autoarranque/htm
+# 			crea_numlock /home/$user/.kde/Autoarranque
+			#Links al Pc
+			ln -s -n /Pc /home/$user/Escritorio/Pc 
+			ln -s -n /Pc /home/$user/Pc
+			lang_firefox=es
+			documents=Documentos
+			desktop=Escritorio
+			kfile_home="Carpeta Inicial"
+			kfile_net="Carpetas de red"
+			kfile_root="Raiz de Sistema"
+		;;
+		en*)
+			crea_kademar_links /home/$user/Desktop _en /home/$user/.kde/Autostart
+			ln -s /usr/share/kademar/scripts/html-escriptori /home/$user/.kde/Autostart/htm
+# 			crea_numlock /home/$user/.kde/Autostart
+			#Links al Pc
+			ln -s -n /Pc /home/$user/Desktop/Pc 
+			ln -s -n /Pc /home/$user/Pc
+			lang_firefox=ca
+			documents=Documents
+			desktop=Desktop
+			kfile_home="Home Folder"
+			kfile_net="Net Folders"
+			kfile_root="System Root"
+		;;
+		esac
+		
+		#GTK Bookmarks pel FileDialog (gimp, inkscape, etc)
+		echo "file:///home/$user/$documents
+file:///home/Pc
+file:///home/$user/$desktop" > /home/$user/.gtk-bookmarks
+		
+		#KDE Bookmarks pel FileDialog (kwrite, konqueror, etc)
+		echo "[KFileDialog Speedbar (Global)]
+Description_0=$desktop
+Description_1=$kfile_home
+Description_2=$documents
+Description_3=Pc
+Description_4=$kfile_root
+Description_5=$kfile_net
+IconGroup_0=4
+IconGroup_1=4
+IconGroup_2=4
+IconGroup_3=4
+IconGroup_4=4
+IconGroup_5=4
+Icon_0=desktop
+Icon_1=folder_home
+Icon_2=document
+Icon_3=/usr/share/kademar/icons/Pc.png
+Icon_4=folder_red
+Icon_5=network
+Number of Entries=6
+URL_0=file://\$HOME/$desktop/
+URL_1=file://\$HOME
+URL_2=file://\$HOME/$documents/
+URL_3=file:///home/Pc
+URL_4=file:///
+URL_5=remote:/" >> /home/$user/.kde/share/config/kdeglobals
+		
+		#Firefox  pagina d'inici
+		for i in `ls /home/$user/.mozilla/firefox/ | grep default`
+		do
+		echo 'user_pref("browser.startup.homepage", "http://www.kademar.org/index.php?lang='$lang_firefox'");
+#user_pref("browser.download.dir", "/home/'$user'/'$documents'");
+user_pref("extensions.update.enabled", false);
+user_pref("app.update.enabled", false);
+user_pref("browser.search.update", false);
+user_pref("browser.display.screen_resolution", 0);
+user_pref("security.warn_entering_secure", false);
+user_pref("security.warn_leaving_secure", false);
+user_pref("security.warn_submit_insecure", false);
+user_pref("security.warn_viewing_mixed", false);' >> /home/$user/.mozilla/firefox/$i/prefs.js
+		done
+
+		#Crea directori de documents
+		sh /usr/share/kademar/scripts/documents $user
+	
+		#assegura k no es faci 2 vegades
+		echo live-cd > /var/directhome
+
+	fi
+fi
+
+
+#Creem la carpeta de /var/kademar
+mkdir -p /var/kademar
+chmod 777 /var/kademar
+
+#Mplayer Hack
+( echo 1024 > /proc/sys/dev/rtc/max-user-freq ) 2>/dev/null
+
+#Link al Desktop
+ln -s /home/$user/$desktop /home/$user/Desktop
+
+#canvia permisos
+chmod 777 /dev/.static &
+chown -R $user.users /home/$user/* &
+# chown -R $user.users /home/$user/.??*
+chown $user.users /home/$user &
+chmod -R 777 /home/$user &
+chmod 777 /home/$user &
+# chmod 777 /home/$user/.kde/share/config/kio_thumbnailrc 2>/dev/null
+
+#Engegada de la consola final
+# bash &

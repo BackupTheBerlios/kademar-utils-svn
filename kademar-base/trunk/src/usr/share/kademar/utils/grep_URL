@@ -1,0 +1,14 @@
+#!/bin/bash
+#Grep real http url of a  .url  from IE and open a firefox with it
+#Created by Adonay Sanz Alsina for kademar 2005
+#Licenced GNU/GPL2.0 or higher
+
+a=`cat "$1" | grep "URL"`
+
+for i in $a
+do
+	b=`echo "$i" | grep -i "BASEURL"`
+	c=`echo "$i" | grep -i "ORIGURl"`
+	[ -z "$b" -a -z "$c" ] && echo "$i" | sed 's/URL=//g' | xargs firefox
+
+done

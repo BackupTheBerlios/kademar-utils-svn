@@ -1,0 +1,5 @@
+# Part script to open xserver xsession
+# Creat per Adonay Sanz per la kademar  -  Maig 2009
+#
+#
+sh /usr/share/kademar/scripts/engegada/xsession start &

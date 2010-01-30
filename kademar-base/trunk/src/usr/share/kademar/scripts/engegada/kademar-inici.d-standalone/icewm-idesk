@@ -1,0 +1,103 @@
+#!/bin/bash
+#
+# Creat per Adonay Sanz per la kademar  -  Octubre 2005
+# Modificat   03-11-06
+#
+# Fitxer per configurar les icones del iDesk i el  startup del icewm amb el NUMLOCK
+#
+
+user="kademar"
+
+# if [ "`laptop-detect ; echo $?`" != 0 ]; then
+# 	#Si no es portatil
+# 	resposta_numlock=on
+# else	
+# 	#Si es un portatil
+# 	resposta_numlock=off
+# fi
+
+. /etc/environment
+
+
+###############
+# ICEWM ICONS #
+###############
+[ ! -e "/home/$user/.idesktop" ] && mkdir -p "/home/$user/.idesktop"
+#Lenguage Messages
+case "$2" in
+ca*)
+	missatge_cadi="CADI - Configuració de Sistema"
+	missatge_instalador="Instal·la kademar al disc dur"
+	missatge_home="Inici"
+	missatge_configuracio="Guardar la configuració personal"
+;;
+es*)
+	missatge_cadi="CADI - Configuración de Sistema"
+	missatge_instalador="Instalar kademar en el disco duro"
+	missatge_home="Inicio"
+;;
+en*)
+	missatge_cadi="CADI - System Configuration"
+	missatge_instalador="Install kademar on Hard Drive"
+	missatge_home="Start"
+;;
+esac
+
+#CADI
+echo "table Icon
+  Caption: $missatge_cadi
+  Command: executa cadi
+  Icon: /usr/share/icons/default.kde/32x32/apps/package_settings.png
+  X: 45
+  Y: 259
+end" > /home/$user/.idesktop/CADI.lnk
+
+#Instalador
+echo "table Icon
+  Caption: $missatge_instalador
+  Command: /usr/share/kademar/scripts/engega_instalador
+  Icon: /usr/share/kademar/icons/kpackage.png
+  X: 45
+  Y: 419
+end" > /home/$user/.idesktop/instal.lnk
+
+#HOME
+echo "table Icon
+  Caption: $missatge_home
+  Command: konqueror \$HOME
+  Icon: /usr/share/icons/default.kde/32x32/apps/kfm_home.png
+  X: 45
+  Y: 109
+end" > /home/$user/.idesktop/home.lnk
+
+#HTML
+echo "table Icon
+  Caption: kademar
+  Command: konqueror '/usr/share/kademar/html/kademar$2.html'
+  Icon: /usr/share/icons/default.kde/32x32/apps/tux.png
+  X: 45
+  Y: 339
+end" > /home/$user/.idesktop/html.lnk
+
+#Pc
+echo "table Icon
+  Caption: Pc
+  Command: konqueror \$HOME/Pc
+  Icon: /usr/share/kademar/icons/pc_p.png
+  X: 45
+  Y: 17
+end" > /home/$user/.idesktop/pc.lnk
+
+#Configuracio en disquet
+# echo "table Icon
+#   Caption: $missatge_configuracio
+#   Command: /usr/sbin/saveconfig
+#   Icon: /usr/share/icons/default.kde/32x32/devices/3floppy_unmount.png
+#   X: 45
+#   Y: 179
+# end" > /home/$user/.idesktop/config.lnk
+
+
+
+#Crea bloqueig de NumLock
+# echo "numlockx $resposta_numlock" >>  /home/$user/.icewm/startup

@@ -1,0 +1,26 @@
+# /etc/sudoers
+#
+# This file MUST be edited with the 'visudo' command as root.
+#
+# See the man page for details on how to write a sudoers file.
+#
+
+Defaults        env_reset
+
+# Host alias specification
+
+# User alias specification
+
+# Cmnd alias specification
+
+# User privilege specification
+root	ALL=(ALL) ALL
+%users  ALL=(ALL) ALL
+
+#kademar permisions
+%users  ALL=(ALL)  NOPASSWD:/usr/share/kademar/utils/kademarcenter/scripts/unlock_cdrom, /usr/share/kademar/utils/kademarcenter/scripts/umount_remove_links, /usr/share/kademar/utils/kademarcenter/scripts/umount_device_forced,  /etc/init.d/bluetooth, /usr/share/kademar/scripts/hotplug/ivman_mount_audio_cdfs, /usr/bin/synce-serial-start, /usr/share/kademar/utils/kademarcenter/scripts/ifup, /usr/share/kademar/utils/kademarcenter/scripts/upgrade, /usr/share/kademar/utils/kademarcenter/scripts/update, /usr/share/kademar/utils/kademarcenter/scripts/create_pc_enties, /usr/share/kademar/utils/kademarcenter/scripts/wifi_prepare, /usr/share/kademar/utils/kademarcenter/scripts/cups_start, /usr/share/kademar/utils/kademarcenter/scripts/samba_start, /usr/share/kademar/utils/kademarcenter/scripts/lisa_start, /usr/share/kademar/utils/kademarcenter/scripts/update_fstab, /usr/share/kademar/utils/kademarcenter/scripts/laptop_detect, /usr/share/kademar/utils/kademarcenter/scripts/mount_audio_cdfs, /usr/share/kademar/utils/kademarcenter/scripts/start_printer, /usr/share/kademar/utils/kademarcenter/scripts/ifdown_wired_network, /usr/share/kademar/utils/kademarcenter/scripts/mount_boot_data_device.sh, /usr/share/kademar/utils/kademarcenter/scripts/system_mounts
+
+# Uncomment to allow members of group sudo to not need a password
+# %sudo ALL=NOPASSWD: ALL
+
+

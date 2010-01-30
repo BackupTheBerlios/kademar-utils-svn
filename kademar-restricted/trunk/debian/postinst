@@ -1,0 +1,22 @@
+#!/bin/sh
+set -e
+
+# Automatically added by dh_installmodules
+if [ "$1" = "configure" ]; then
+
+	#Links for ZD1211
+
+	[ ! -e /lib/firmware/zd1211 ] && ln -s /lib/firmware /lib/firmware/zd1211
+	[ ! -e /lib/firmware/zd1211b_ub ] && ln -s /lib/firmware/zd1211-WS11Ub.fw /lib/firmware/zd1211b_ub
+	[ ! -e /lib/firmware/zd1211b_uphr ] && ln -s /lib/firmware/zd1211-WS11UPhR.fw /lib/firmware/zd1211b_uphr
+	[ ! -e /lib/firmware/zd1211b_ur ] && ln -s /lib/firmware/zd1211-WS11Ur.fw /lib/firmware/zd1211b_ur
+	
+	[ ! -e /lib/firmware/zd1211b_uph ] && ln -s /lib/firmware/zd1211-WS11UPh.fw /lib/firmware/zd1211b_uph
+	[ ! -e /lib/firmware/zd1211b_hm ] && ln -s /lib/firmware/zd1211-WS11UPhm.fw /lib/firmware/zd1211b_hm
+	
+	####
+
+exit 0
+
+fi
+# End automatically added section

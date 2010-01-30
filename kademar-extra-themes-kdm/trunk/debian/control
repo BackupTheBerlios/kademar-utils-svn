@@ -1,0 +1,12 @@
+Source: kademar-extra-themes-kdm
+Section: kde
+Priority: extra
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.7.3
+Homepage: http://www.kademar.org
+
+Package: kademar-extra-themes-kdm
+Architecture: all
+Description: KDM Themes shipped with kademar
+ Package with extra KDM Themes

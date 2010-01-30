@@ -1,0 +1,13 @@
+# KDE 3.4 KSplash/ML Theme
+
+[KSplash Theme: Kmatrix]
+Name = Kmatrix
+Description = KDE 3.4 Splash Screen based on the Matrix Trilogy.
+Version = 1.1
+Author = Mateusz93 <mateusz93@club-internet.fr>
+
+# Theme behaviour settings.
+Engine = Default
+
+# Should icons blink ala KDE, or not?
+Icons Flashing = true

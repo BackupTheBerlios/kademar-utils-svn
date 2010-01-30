@@ -1,0 +1,9 @@
+# This is not really a .desktop file like the rest, but it's useful to treat
+# it as such
+
+[GdmGreeterTheme]
+Encoding=UTF-8
+Greeter=macos.xml
+Name=Mac OSX Imitation - KDE Logo
+Description=Imitation of the Mac OSX Login Screen With KDE Logo
+Screenshot=screenshot.png

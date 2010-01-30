@@ -1,0 +1,12 @@
+[KSplash Theme: LinuxEvolution2]
+Name = Linux Evolution 2
+Description = KDE Splash Screen who shows the Linux Evolution. With authorisation from TSA Media. Thx for Thaht. 
+Version = 1.0
+Author = TOD
+Homepage = http://kde-look.org/
+
+# Theme behavior settings.
+Engine = Default
+
+# Should icons blink ala KDE, or not?
+Icons Flashing = false

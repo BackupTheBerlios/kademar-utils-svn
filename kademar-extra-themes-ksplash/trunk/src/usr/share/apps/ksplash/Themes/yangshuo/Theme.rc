@@ -1,0 +1,12 @@
+[KSplash Theme: yangshuo]
+Name = Yangshuo - China - sight
+Description = Landscape.
+Version = 666
+Author = Taiabati <taiabati@taiabati.com>
+Homepage = http://www.taiabati.com
+
+# Theme behavior settings.
+Engine = Default
+
+# Should icons blink ala KDE, or not?
+Icons Flashing = true

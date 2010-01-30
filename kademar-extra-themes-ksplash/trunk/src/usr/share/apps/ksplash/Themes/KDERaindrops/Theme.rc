@@ -1,0 +1,23 @@
+
+[KSplash Theme: KDERaindrops]
+Name = KDE Raindrops
+Description = KDE Splash
+Version = 1.0
+Author = Larry Jogerst
+
+# Theme behavior settings.
+Engine = Default
+
+# Should icons blink ala KDE, or not?
+Icons Flashing = true
+
+# Configurable Messages.  You may specify messages in as many
+# languages as you prefer.  Messages may be copied verbatim from
+# this file, if you wish to maintain the default settings.
+#Message1 = Please wait, starting KDE...
+#Message1[es] = Por favor escuchar, estarto KDE...
+#Message2 = Loading ...
+
+#This theme uses the Nuvola icons made by David Vigoni at http://www.icon-king.com
+#This theme uses the "buble background" from revaline http://www.kde-look.org/content/show.php?content=26858
+#The KDE Logo is a trademark of KDE e.V." 

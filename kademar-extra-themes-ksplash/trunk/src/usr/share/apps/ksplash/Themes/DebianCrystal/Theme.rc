@@ -1,0 +1,13 @@
+[KSplash Theme: DebianCrystal]
+Name = Debian Crystal (Sone Crystal Pack)
+Description = Part of Sone Crystal Pack, which also has themes fot Linux, FreeBSD, Debian, SuSE, Fedora, Gentoo and Mandriva (Wallpaper & SplashScreen)
+Version = 1.0
+Author = Sone
+Homepage = http://kde-look.org/
+
+# Theme behavior settings.
+Engine = Default
+
+# Should icons blink ala KDE, or not?
+Icons Flashing = true
+

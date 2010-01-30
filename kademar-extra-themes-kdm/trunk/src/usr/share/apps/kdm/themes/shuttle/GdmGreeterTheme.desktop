@@ -1,0 +1,10 @@
+[GdmGreeterTheme]
+Encoding=UTF-8
+Greeter=shuttle.xml
+Name=Shuttle KDM Theme
+Name[de]=Shuttle KDM Theme
+Description=A Simple KDM THeme
+Description[de]=Ein einfaches KDM Theme
+Author=Edward Nigma
+Copyright=GPL 2005 Edward Nigma
+Screenshot=screenshot.jpg

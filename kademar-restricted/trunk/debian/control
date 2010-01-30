@@ -1,0 +1,11 @@
+Source: kademar-restricted
+Section: non-free/libs
+Priority: optional
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 5)
+Standards-Version: 3.7.2
+
+Package: kademar-restricted
+Architecture: all
+Suggests: sun-java6-plugin, nvidia-kernel-common, fglrx-driver, fglrx-control, firefox, iceweasel, w32codecs, sl-modem, sl-modem-daemon, b43-fwcutter
+Description:  Moduls de llicència no GPL de kademar

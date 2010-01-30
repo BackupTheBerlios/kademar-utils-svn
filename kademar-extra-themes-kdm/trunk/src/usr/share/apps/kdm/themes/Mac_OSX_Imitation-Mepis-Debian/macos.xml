@@ -1,0 +1,129 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE greeter SYSTEM "greeter.dtd">
+<greeter>
+  <item type="pixmap" >
+    <normal file="background.png" />
+    <pos width="100%" x="0" y="0" height="100%" />
+  </item>
+  <item type="rect" >
+    <pos width="100%" x="5" y="-130" height="120" />
+  </item>
+  <item type="pixmap" >
+    <normal file="bg.png" />
+    <pos width="532" x="50%" y="50%" anchor="c" height="473" />
+    <item type="label" id="clock" >
+      <normal color="#828282" font="Sans 12" />
+      <pos x="50%" y="203" anchor="c" />
+      <text>%c</text>
+    </item>
+    <box xpadding="30" spacing="10" ypadding="30" orientation="vertical" min-width="340" >
+      <item type="rect" id="talker" >
+        <normal alpha="0" color="#000000" />
+        <pos width="box" x="50%" y="230" anchor="n" height="box" />
+<!-- box orientation="vertical" xpadding="0" ypadding="0" spacing="10" -->        <box xpadding="0" spacing="0" ypadding="0" orientation="horizontal" >
+          <item type="rect" >
+            <normal alpha="0.0" color="#FF8080" />
+            <pos width="box" y="50%" anchor="w" height="box" />
+            <box xpadding="0" spacing="14" ypadding="0" orientation="vertical" >
+              <item type="label" >
+                <pos x="100%" anchor="ne" />
+                <normal color="#000000" font="Sans 10" />
+<!-- Stock label for: Username: -->                <stock type="username-label" />
+              </item>
+              <item type="label" >
+                <pos x="100%" anchor="ne" />
+                <normal color="#000000" font="Sans 10" />
+<!-- Stock label for: Password: -->                <stock type="password-label" />
+              </item>
+            </box>
+          </item>
+          <item type="rect" >
+            <normal alpha="0.0" color="#FF80FF" />
+            <pos width="box" y="50%" anchor="w" height="box" />
+            <box xpadding="0" spacing="10" ypadding="0" orientation="vertical" >
+              <item type="entry" id="user-entry" >
+                <pos width="130" x="50%" anchor="n" height="20" />
+              </item>
+              <item type="entry" id="pw-entry" >
+                <pos width="130" x="50%" anchor="n" height="20" />
+              </item>
+            </box>
+          </item>
+        </box>
+      </item>
+      <item type="rect" id="talker" >
+        <normal alpha="0" color="#000000" />
+        <pos width="box" x="132" y="288" anchor="n" height="box" />
+<!-- box orientation="vertical" xpadding="0" ypadding="0" spacing="10" -->        <box xpadding="0" spacing="0" ypadding="0" orientation="horizontal" >
+          <item button="true" type="rect" id="session_button" >
+            <pos width="box" x="0%" y="50%" anchor="c" height="box" />
+            <box xpadding="1" spacing="1" orientation="vertical" >
+              <item type="pixmap" >
+                <normal file="session_normal.png" />
+                <prelight file="session_over.png" />
+                <active file="session_over.png" />
+                <pos x="50%" y="50%" anchor="c" />
+              </item>
+              <item type="label" >
+                <normal color="#000000" font="Sans 10" />
+                <prelight color="#666666" font="Sans 10" />
+                <active color="#ff0000" font="Sans 10" />
+                <pos x="50%" y="50%" anchor="c" />
+                <stock type="session" />
+              </item>
+            </box>
+          </item>
+          <item button="true" type="rect" id="system_button" >
+            <pos width="box" x="0%" y="50%" anchor="c" height="box" />
+            <box xpadding="1" spacing="1" orientation="vertical" >
+              <item type="pixmap" >
+                <normal file="system_normal.png" />
+                <prelight file="system_over.png" />
+                <active file="system_over.png" />
+                <pos x="50%" y="50%" anchor="c" />
+              </item>
+              <item type="label" >
+                <normal color="#000000" font="Sans 10" />
+                <prelight color="#666666" font="Sans 10" />
+                <active color="#ff0000" font="Sans 10" />
+                <pos x="50%" y="50%" anchor="c" />
+                <stock type="system" />
+              </item>
+            </box>
+          </item>
+          <item button="true" type="rect" id="login_button" >
+            <pos width="box" x="260" y="50%" anchor="c" height="box" />
+            <box xpadding="0" spacing="0" orientation="vertical" >
+              <item type="pixmap" >
+                <normal file="enter_normal.png" />
+                <prelight file="enter_over.png" />
+                <active file="enter_over.png" />
+              </item>
+              <item type="label" >
+                <normal color="#000000" font="Sans 10" />
+                <prelight color="#666666" font="Sans 10" />
+                <active color="#ff0000" font="Sans 10" />
+                <pos x="50%" y="50%" anchor="c" />
+                <text>Log In</text>
+              </item>
+            </box>
+          </item>
+        </box>
+      </item>
+    </box>
+    <fixed>
+      <item type="label" id="pam-error" >
+        <pos x="50%" y="110%" anchor="n" />
+        <normal color="#000000" font="Sans 10" />
+        <text/>
+      </item>
+    </fixed>
+    <fixed>
+      <item type="label" id="caps-lock-warning" >
+        <normal color="#000000" font="Sans 10" />
+        <pos x="50%" y="110%" anchor="n" />
+        <stock type="caps-lock-warning" />
+      </item>
+    </fixed>
+  </item>
+</greeter>

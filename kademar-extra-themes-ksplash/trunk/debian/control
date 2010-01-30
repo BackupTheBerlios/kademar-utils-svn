@@ -1,0 +1,12 @@
+Source: kademar-extra-themes-ksplash
+Section: kde
+Priority: optional
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.7.3
+Homepage: http://www.kademar.org
+
+Package: kademar-extra-themes-ksplash
+Architecture: all
+Description: Ksplash Themes shipped with kademar
+    Ksplash extra themes

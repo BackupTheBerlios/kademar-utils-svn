@@ -1,0 +1,12 @@
+Source: kademar-extra-multimedia
+Section: x11
+Priority: optional
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.7.3
+Homepage: http://www.kademar.org
+
+Package: kademar-extra-multimedia
+Architecture: all
+Description: Extra Multimedia shipped with kademar
+ Package with multimedia sample files

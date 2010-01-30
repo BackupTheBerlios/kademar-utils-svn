@@ -1,0 +1,9 @@
+# This is not really a .desktop file like the rest, but it's useful to treat
+# it as such
+
+[GdmGreeterTheme]
+Encoding=UTF-8
+Greeter=kcircles.xml
+Name=Kcircles
+Author=Bond, James Bond
+Copyright=(c) 2002 Bond, James Bond

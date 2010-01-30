@@ -1,0 +1,30 @@
+#!/bin/bash
+#Script per UP Eth device
+
+#Creat per Adonay Sanz 01-05-08
+
+eth="$1"
+
+[ -z "$eth" ] && echo NO ETH to UP && exit
+
+case "$eth" in
+
+stop)
+	#Desconnectem la ethernet wireless
+	ifdown "$eth" 2>/dev/null
+;;
+
+start|*)
+	ifdown "$eth" 2>/dev/null
+	#Prepare ETH (if a wifi, search)
+        /etc/network/kademar/ifup "$1"
+
+	#Si ja està configurada, utilitzarem la config, sino la intentarem configurar amb dhcp
+	if [ -n "`grep $eth /etc/network/interfaces`" ]; then
+		ifup "$eth" 2>/dev/null
+	else
+		dhclient "$eth"
+	fi
+
+;;
+esac

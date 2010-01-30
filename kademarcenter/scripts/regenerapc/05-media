@@ -1,0 +1,26 @@
+#!/bin/bash
+
+
+#remove old media folders
+for i in `ls /media`
+do
+
+	[ -z "`grep $i /proc/mounts`" ] && rm -fr "/media/$i"
+
+done
+
+
+
+#######################
+# DINAMIC /MEDIA ENTRIES on MNT
+#######################
+
+grep /media /proc/mounts | while read line
+do
+    dev=$(echo "$line" | awk ' { print $1 } ' | cut -d/ -f3)
+    mntpoint=$(echo "$line" | awk ' { print $2 } ')
+    [ ! -e "/mnt/$dev" ] && ln -s "$mntpoint" "/mnt/$dev"
+done 
+
+
+exit 0

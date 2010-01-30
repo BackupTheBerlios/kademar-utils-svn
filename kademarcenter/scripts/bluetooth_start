@@ -1,0 +1,25 @@
+#!/bin/bash
+#Script per engegar kbluetoothd (0.99) o kbluetooth (1.0-beta8-2)
+
+#Creat per Adonay Sanz 09-10-07
+#modificat 01-03-08 - kademarcenter
+
+sudo /etc/init.d/bluetooth restart
+
+list="blueman bluetooth-applet"
+
+#if in KDE session
+if [ -n "$KDE_SESSION_UID" ]; then
+	list="kbluetoothd kbluetooth $list"
+fi
+
+
+
+
+for i in $list
+do
+	if [ -n "`which $i`" ]; then
+		[ -z "`pidof $i`" ] && $i &
+		break
+	fi
+done 

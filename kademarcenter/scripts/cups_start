@@ -1,0 +1,7 @@
+#!/bin/bash
+#Script per engegar cups
+
+#Creat per Adonay Sanz 27-01-09
+
+[ -e /etc/init.d/cups ] && /etc/init.d/cups start
+[ -e /etc/init.d/cupsys ] && /etc/init.d/cupsys start

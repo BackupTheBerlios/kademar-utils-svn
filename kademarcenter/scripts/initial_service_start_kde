@@ -1,0 +1,21 @@
+#!/bin/bash
+# script que engega els programes aplets de KDE
+# Creat per Adonay Sanz
+
+# Creat per kademarCenter  -  5 Nov 2009
+
+
+# Kmix Volume
+if [ -z "`pidof kmix`" ]; then
+#Dos maneres d'anomenar els dispositius d'audio
+	lspci="`lspci`"
+	if [ -n "`echo "$lspci" | grep 'Multimedia audio controller'`" -o -n "`echo "$lspci" | grep 'Audio device'`" ]; then
+		kmix &
+		sh /usr/share/kademar/scripts/engegada/volums 2>/dev/null 2>&1 &
+	fi
+fi
+
+# Krandrtray   Display
+if [ -z "`pidof krandrtray`" ]; then
+ 	krandrtray &
+fi

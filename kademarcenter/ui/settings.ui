@@ -1,0 +1,383 @@
+<ui version="4.0" >
+ <class>Form_settings</class>
+ <widget class="QWidget" name="Form_settings" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="minimumSize" >
+   <size>
+    <width>600</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="maximumSize" >
+   <size>
+    <width>500</width>
+    <height>400</height>
+   </size>
+  </property>
+  <property name="windowTitle" >
+   <string>kademarcenter Settings</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset>
+    <normaloff>../../../../../usr/share/kademar/utils/kademarcenter/img/kademar.png</normaloff>../../../../../usr/share/kademar/utils/kademarcenter/img/kademar.png</iconset>
+  </property>
+  <widget class="QLabel" name="l_fons" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>600</width>
+     <height>500</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string/>
+   </property>
+   <property name="pixmap" >
+    <pixmap>../../../../../usr/share/kademar/utils/kademarcenter/img/bg/kademarcenter.png</pixmap>
+   </property>
+   <property name="scaledContents" >
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QStackedWidget" name="pages" >
+   <property name="geometry" >
+    <rect>
+     <x>150</x>
+     <y>50</y>
+     <width>401</width>
+     <height>401</height>
+    </rect>
+   </property>
+   <property name="currentIndex" >
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="p_general" >
+    <widget class="QLabel" name="label_3" >
+     <property name="geometry" >
+      <rect>
+       <x>30</x>
+       <y>0</y>
+       <width>331</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>13</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text" >
+      <string>Settings kademarcenter</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="cb_hotplugactions" >
+     <property name="geometry" >
+      <rect>
+       <x>30</x>
+       <y>100</y>
+       <width>351</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Open Action Panel on a device/media plug</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="cb_balloon" >
+     <property name="geometry" >
+      <rect>
+       <x>30</x>
+       <y>180</y>
+       <width>351</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Use a balloon to warn for a pluged device</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="cb_sound" >
+     <property name="geometry" >
+      <rect>
+       <x>30</x>
+       <y>260</y>
+       <width>361</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Use a sound warn for a pluged device</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="p_updates" >
+    <widget class="QLabel" name="l_titol" >
+     <property name="geometry" >
+      <rect>
+       <x>100</x>
+       <y>30</y>
+       <width>131</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Settings kademarcenter</string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="sb_update_hours" >
+     <property name="geometry" >
+      <rect>
+       <x>80</x>
+       <y>180</y>
+       <width>46</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="minimum" >
+      <number>1</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="l_actualitzacio" >
+     <property name="geometry" >
+      <rect>
+       <x>140</x>
+       <y>180</y>
+       <width>251</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Temps d'actualització del sistema (en Hores)</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="rb_no_update" >
+     <property name="geometry" >
+      <rect>
+       <x>20</x>
+       <y>260</y>
+       <width>111</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>No Actualitzar</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="rb_autoupdate" >
+     <property name="geometry" >
+      <rect>
+       <x>20</x>
+       <y>100</y>
+       <width>371</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Actualitzar el Sistema Automàticament (Recomanat)</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="rb_only_warn" >
+     <property name="geometry" >
+      <rect>
+       <x>20</x>
+       <y>140</y>
+       <width>181</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Solament avisar dels nous paquets</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="p_usb" >
+    <widget class="QLabel" name="label_5" >
+     <property name="geometry" >
+      <rect>
+       <x>110</x>
+       <y>30</y>
+       <width>131</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Settings kademarcenter</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_7" >
+     <property name="geometry" >
+      <rect>
+       <x>40</x>
+       <y>100</y>
+       <width>291</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Preferència de les aplicacions usades automàticament</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="p_diskcleanup" >
+    <widget class="QLabel" name="label_8" >
+     <property name="geometry" >
+      <rect>
+       <x>50</x>
+       <y>80</y>
+       <width>291</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Preferències de cercar espai de disc lliure</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_9" >
+     <property name="geometry" >
+      <rect>
+       <x>40</x>
+       <y>40</y>
+       <width>351</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Preferència de les aplicacions usades automàticament</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_4" >
+     <property name="geometry" >
+      <rect>
+       <x>50</x>
+       <y>110</y>
+       <width>231</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Cercar i avisar</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_5" >
+     <property name="geometry" >
+      <rect>
+       <x>50</x>
+       <y>150</y>
+       <width>241</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>Cercar i Esborrar automàticament les carpetes:</string>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="tableWidget" >
+     <property name="geometry" >
+      <rect>
+       <x>50</x>
+       <y>180</y>
+       <width>291</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <column>
+      <property name="text" >
+       <string>Esborrar?</string>
+      </property>
+     </column>
+     <column>
+      <property name="text" >
+       <string>Directori</string>
+      </property>
+     </column>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="l_logo" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>60</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string/>
+   </property>
+   <property name="pixmap" >
+    <pixmap>../../../../../usr/share/kademar/utils/kademarcenter/img/kademar.png</pixmap>
+   </property>
+   <property name="scaledContents" >
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="b_general" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>150</y>
+     <width>111</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>General</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="b_updates" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>190</y>
+     <width>111</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Updates</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="b_diskcleanup" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>270</y>
+     <width>111</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Disc Lliure</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="b_usb" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>230</y>
+     <width>111</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>USB</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

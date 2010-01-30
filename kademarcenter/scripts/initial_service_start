@@ -1,0 +1,73 @@
+#!/bin/bash
+
+# script que engega detecta desktop i engega els serveis de l'escriptori detectat
+# Creat per Adonay Sanz
+# Modificat 09-10-07
+
+#Modificat per kademarCenter  -  1 Apr 2008
+#Modificat per diferents desktops -  5 Nov 2009
+
+lshal="`lshal`"
+
+#Load configuration scripts
+. /usr/share/kademar/utils/kademarcenter/scripts.py
+
+# TODO: gnome & other desktop supported & common
+
+if [ -n "$KDE_SESSION_UID" ]; then
+	desktop=kde
+	$initial_service_start_kde
+else
+	desktop=lxde
+# 	$initial_service_start_lxde
+fi
+
+# icewm
+# 	$initial_service_start_icewm
+
+# 	desktop=gnome
+# 	$initial_service_start_gnome
+
+
+# 	desktop=fvwm-crystal
+# 	$initial_service_start_fvwm-crystal
+
+
+
+#Initial unlock script
+$unlock_cdrom
+
+        #If bluetooth device exists, start kbluetooth and bluetooth server
+( echo $lshal | grep -i bluetooth >/dev/null ) && $bluetooth
+
+# numlock change status
+if [ "`$laptop_detect`" = 0 ]; then
+    resposta_numlock=off
+else
+    resposta_numlock=on
+fi
+
+numlockx $resposta_numlock
+
+$system_mounts
+
+$update_fstab &
+$samba &
+$cups &  #TODO: Not start here, only if a device is connected
+$lisa &
+
+# $ifdown_wired_network &  #NOT USED at all
+
+#Mount boot cdrom on /mnt folder
+if [ -e /mnt/live/data ]; then
+	dev=`cat /mnt/live/data`
+	line=`grep /dev/$dev /etc/fstab`
+	if [ -n "$line" ]; then
+		mount `echo $line | awk ' { print $1 } ' ` `echo $line | awk ' { print $2 } ' ` -o ro
+	fi
+fi
+
+#different package configurations possible
+if [ -e /usr/share/kademar/utils/kademarcenter/scripts/scripts_2nd_stage ]; then
+	sh /usr/share/kademar/utils/kademarcenter/scripts/scripts_2nd_stage
+fi

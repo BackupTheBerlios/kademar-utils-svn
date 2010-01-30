@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#If there NO usb bluetooth interface, close kbluetoothd
+
+[ -z "`lshal | grep -i 'bluetooth'`" ] && killall -15 kbluetoothd 2>/dev/null || sleep 2 && [ -z "`lshal | grep -i 'bluetooth'`" ] && killall -15 kbluetoothd 2>/dev/null

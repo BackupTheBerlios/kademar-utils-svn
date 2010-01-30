@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2250"
+   sodipodi:version="0.32"
+   inkscape:version="0.45.1"
+   sodipodi:docbase="/home/clawlinux/192.168.1.8/kademarcenter/img/bg/src"
+   sodipodi:docname="kademarcenter.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:export-filename="/home/clawlinux/192.168.1.8/kademarcenter/img/bg/kademarcenter.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs2252">
+    <linearGradient
+       id="linearGradient5261">
+      <stop
+         style="stop-color:#989aad;stop-opacity:1;"
+         offset="0"
+         id="stop5263" />
+      <stop
+         id="stop8182"
+         offset="0.51999998"
+         style="stop-color:#f0f0f0;stop-opacity:1;" />
+      <stop
+         id="stop6240"
+         offset="1"
+         style="stop-color:#858aa3;stop-opacity:1;" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5261"
+       id="linearGradient4237"
+       x1="243.17123"
+       y1="-0.36381742"
+       x2="244.17816"
+       y2="268.30258"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.2319551,0,0,1.4886852,99.140094,38.56644)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient14979"
+       id="linearGradient17098"
+       gradientUnits="userSpaceOnUse"
+       x1="-1.10094"
+       y1="113.07809"
+       x2="66.235641"
+       y2="113.07809" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient14979">
+      <stop
+         style="stop-color:#5f5f60;stop-opacity:1;"
+         offset="0"
+         id="stop14981" />
+      <stop
+         style="stop-color:#5f5f60;stop-opacity:0;"
+         offset="1"
+         id="stop14983" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient14979"
+       id="radialGradient17096"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,2.5078344,0,-169.8691)"
+       cx="33.019931"
+       cy="112.65767"
+       fx="33.019931"
+       fy="112.65767"
+       r="34.120871" />
+    <filter
+       inkscape:collect="always"
+       x="-0.082353734"
+       width="1.1647075"
+       y="-0.1497745"
+       height="1.299549"
+       id="filter3355">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="10.331107"
+         id="feGaussianBlur3357" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.152499"
+     inkscape:cx="386.76102"
+     inkscape:cy="879.57215"
+     inkscape:document-units="px"
+     inkscape:current-layer="capa1"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="838"
+     inkscape:window-height="679"
+     inkscape:window-x="0"
+     inkscape:window-y="40">
+    <sodipodi:guide
+       orientation="vertical"
+       position="97.783783"
+       id="guide2276" />
+    <sodipodi:guide
+       orientation="horizontal"
+       position="722.79729"
+       id="guide2278" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata2255">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="capa1">
+    <rect
+       style="fill:url(#linearGradient4237);fill-opacity:1;stroke:none;stroke-width:0.6448819;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2160"
+       width="499.44992"
+       height="399.95972"
+       x="98.333862"
+       y="38.02486"
+       inkscape:export-filename="/home/josep/kademar_center.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       id="g16006"
+       transform="matrix(1.6666668,0,0,1.9227374,99.618684,56.847584)"
+       inkscape:export-filename="/home/josep/kademar_center.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         style="fill:url(#radialGradient17096);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.00344586px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="M -1.0230569,27.143573 L -1.1009404,197.80983 C -1.1009404,197.80983 45.336773,198.22463 67.140802,198.22716 C 41.059595,193.20236 72.214568,64.622639 51.107791,35.586734 C 43.619562,25.28541 26.487557,27.222731 23.746622,27.249435 C 1.2076623,27.469036 -1.0230569,27.143573 -1.0230569,27.143573 z "
+         id="path10128"
+         sodipodi:nodetypes="cccssc"
+         inkscape:export-filename="/home/josep/kademar_center.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         style="fill:url(#linearGradient17098);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.00344586px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="M -1.02409,28.048419 L -1.10094,197.74789 C -1.10094,197.74789 44.720822,198.16034 66.235642,198.16285 C 40.500376,193.16652 71.24211,65.315174 50.415293,36.443751 C 43.026388,26.200782 26.121622,28.127129 23.417042,28.153681 C 1.1770409,28.372038 -1.02409,28.048419 -1.02409,28.048419 z "
+         id="path11099"
+         sodipodi:nodetypes="cccssc"
+         inkscape:export-filename="/home/josep/kademar_center.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.00344586px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="M -1.0265008,30.159775 L -1.0680099,198.24718 C -1.0680099,198.24718 43.283602,198.16038 64.123602,198.16285 C 39.195532,193.22854 68.973041,66.963999 48.799464,38.45091 C 41.642315,28.33507 25.267773,30.237508 22.648022,30.263731 C 1.1055911,30.479378 -1.0265008,30.159775 -1.0265008,30.159775 z "
+         id="path13039"
+         sodipodi:nodetypes="cccssc"
+         inkscape:export-filename="/home/josep/kademar_center.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+    </g>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.01;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter3355)"
+       id="rect2228"
+       width="301.07507"
+       height="165.54659"
+       x="91.220772"
+       y="40.407383"
+       inkscape:export-filename="/home/josep/kademar_center.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       ry="11.136683"
+       transform="matrix(1.2319551,0,0,2.1192335,99.140094,-26.474023)" />
+  </g>
+</svg>

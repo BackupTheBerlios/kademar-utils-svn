@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Adonay Sanz Alsina - 1 Abr 2008
+# GNU/GPL 2 or higher
+#
+# Script to 
+
+#Unlock all cdrom Attached to system
+for i in /proc/sys/dev/cdrom
+do
+	echo "0" > $i/lock
+done

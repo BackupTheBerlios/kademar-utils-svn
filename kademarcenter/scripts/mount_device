@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#
+# script to mount device, using parameters to pmount
+#
+# $1 = /dev/sda1   #example
+#
+
+#Load configuration scripts
+. /usr/share/kademar/utils/kademarcenter/scripts.py
+
+
+dev=$1
+
+[ -e /usr/share/kademar/config ] && . /usr/share/kademar/config
+
+#if it's a mounted device, umount it
+if [ -n "`grep $dev /proc/mounts`" ]; then
+#     $umount $dev
+      for i in 1 2 3
+      do
+          [ -n "`grep $dev /proc/mounts`" ] && pumount $dev
+      done
+fi
+
+# then mount it
+[ -z "`grep $dev /proc/mounts`" ] && pmount $mount_mode $dev
+
+#and if with mount mode it don't mount it, try automatically
+[ -z "`grep $dev /proc/mounts`" ] && pmount $dev

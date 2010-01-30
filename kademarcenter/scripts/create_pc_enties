@@ -1,0 +1,82 @@
+#!/bin/bash
+# set -x
+# Script per crear els enllaços als dispositius en /mnt i /Pc
+
+#Modificat per funcionar amb kademarcenter
+
+# $1  = /dev/sdb
+
+ruta_mnt="/mnt"
+ruta_pc="/Pc"
+
+# hd=`echo $1 | sed s:/dev/::g`
+
+
+contingut_pc="`ls $ruta_pc -l`"
+contingut_mnt="`ls $ruta_mnt -l`"
+
+
+#############################
+# FUNCTION GREP HAL INFO    #
+#############################
+halinfo(){
+# $1 = /dev/sda4  (dispositiu a analitzar)
+# $2 = dvd/label  (informacio a obtenir)
+
+halinfovar=""
+
+#Si el que volem es la informacio del DVD, treiem els CDs introduits en les unitats
+if [ "$2" = dvd ]; then
+	udi="`hal-find-by-property --key block.device --string $1 | grep -i stor`"
+else
+	udi="`hal-find-by-property --key block.device --string $1`"
+fi
+
+case "$2" in
+
+dvd)
+	key="storage.cdrom.dvd"
+;;
+
+label)
+	key="volume.label"
+;;
+
+
+esac
+
+halinfovar="`hal-get-property --udi $udi --key  $key`"
+
+}
+
+#############################
+# END FUNCTION GREP HAL INFO#
+#############################
+
+
+
+
+
+for i in `grep $1 /proc/mounts | awk ' { print $2 } '`
+do
+# 	echo $i
+# 	a=`grep $i /proc/mounts | awk ' { print $1 } '`
+	link_del_dev="`grep \"$i\" /proc/mounts | awk ' { print $1 } '`"
+ 	sense_dev=${link_del_dev##*\/} 
+# echo $link_del_dev $sense_dev $i
+
+halinfovar=""
+halinfo "$link_del_dev" label
+
+
+	#Creem l'enllaç al /Pc amb label, o no
+	if [ -n "$halinfovar" ]; then
+		[ -z "`echo $contingut_pc | grep -i $sense_dev`" ] && ln -s -n $i "$ruta_pc/$halinfovar - USB $sense_dev"
+		[ -z "`echo $contingut_mnt | grep -i $sense_dev`" ] && ln -s -n $i "$ruta_mnt/$halinfovar - USB $sense_dev"
+	else
+		[ -z "`echo $contingut_pc | grep -i $sense_dev`" ] && ln -s -n $i "$ruta_pc/USB $sense_dev"
+		[ -z "`echo $contingut_mnt | grep -i $sense_dev`" ] && ln -s -n $i "$ruta_mnt/USB $sense_dev"
+	fi
+# 	echo $i $ruta_pc/$sense_dev  #DEBUG
+done
+

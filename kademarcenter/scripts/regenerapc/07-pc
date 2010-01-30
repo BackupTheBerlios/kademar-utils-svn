@@ -1,0 +1,354 @@
+#!/bin/bash
+#
+# Creat per Adonay Sanz per la kademar  -  Octubre 2005
+#
+# Modificat 30 agost 2006
+# Modificat Juny 2006
+# Modificat Setembre 2006
+# Modificat 30 juny 2007
+# Modificat febrer 2009
+
+# set -x
+
+
+#############################
+# FUNCTION GREP HAL INFO    #
+#############################
+halinfo(){
+# $1 = /dev/sda4  (dispositiu a analitzar)
+# $2 = dvd/label  (informacio a obtenir)
+
+halinfovar=""
+
+#Si el que volem es la informacio del DVD, treiem els CDs introduits en les unitats
+if [ "$2" = dvd ]; then
+	udi="`hal-find-by-property --key block.device --string $1 | grep -i stor`"
+else
+	udi="`hal-find-by-property --key block.device --string $1`"
+fi
+
+case "$2" in
+
+dvd)
+	key="storage.cdrom.dvd"
+;;
+
+label)
+	key="volume.label"
+;;
+
+
+esac
+
+if [ -n "$udi" ]; then
+    halinfovar="`hal-get-property --udi $udi --key  $key`"
+else
+    halinfovar=""
+fi
+
+}
+
+#############################
+# END FUNCTION GREP HAL INFO#
+#############################
+
+
+##########
+# FUNCTION TO WRITE SO NAME WITH NAME OF PARTITION
+##########
+linkname(){
+# $1 = windows
+# $2 = /dev/sda1
+halinfovar=""
+var=""
+var=`echo $2 | sed s:sr:scd:g`  #HACK TO BE WORKING ON NEW CDROM  SR0  HALINFO
+halinfo "$var" label
+
+case "$1" in
+
+	kademar)
+		#si no es dona el número de versió, no el posis
+		versio=""
+		[ -n "$3" ] && versio="$3 "
+		if [ -z "$halinfovar" ]; then
+			ln -s -n "/mnt/$i" "/Pc/kademar $versio $on $i"
+		else
+			ln -s -n "/mnt/$i" "/Pc/$halinfovar - kademar $versio $on $i"
+		fi
+
+	;;
+
+	noname)
+		if [ -z "$halinfovar" ]; then
+			ln -s -n "/mnt/$i" "/Pc/$hd $i"
+		else
+			ln -s -n "/mnt/$i" "/Pc/$halinfovar - $hd $i"
+		fi
+	;;
+
+	*)  #other linux, windows, mac os x
+		[ -n "$3" ] && versio="$3 "
+		if [ -z "$halinfovar" ]; then
+			ln -s -n "/mnt/$i" "/Pc/$1 $versio$on $i"
+		else
+			ln -s -n "/mnt/$i" "/Pc/$halinfovar - $1 $versio$on $i"
+		fi
+	;;
+
+esac
+
+}
+
+##########
+# END FUNCTION
+##########
+
+#Directory preparation
+[ ! -d /Pc ] && mkdir /Pc
+[ ! -L /home/Pc ] && ln -s -n /Pc /home/Pc
+
+if [ ! -e /Pc/.directory ]; then
+	echo "[Desktop Entry]
+Icon=/usr/share/kademar/icons/Pc.png" > /Pc/.directory
+fi
+
+#Prepare preposition on, through languages
+. /etc/environment
+case "$LANGUAGE" in
+ca*)
+	on="en"
+	hd="Unitat de disc"
+;;
+es*)
+	on="en"
+	hd="Unidad de disco"
+;;
+*)
+	on="on"
+	hd="Disc Partition"
+;;
+esac
+
+#############################
+# DELETE BUGGY LINKS ON /Pc #
+#############################
+ls /Pc -1 2>/dev/null | while read line
+do
+	[ ! -e "/Pc/$line" ] && rm -f "/Pc/$line"
+done
+#################################
+# END DELETE BUGGY LINKS ON /Pc #
+#################################
+
+########################
+# DINAMIC NAMES ON /Pc #
+########################
+
+ls -1 /Pc --ignore=fd* --ignore=cdrom* --ignore=dvd* --ignore=live* | while read line
+do
+	distrib=""
+	case "$line" in
+		*Windows*)
+		ntdetect="" ; ntdetect=`ls "/Pc/$line" | grep -i ntdetect.com`
+		ntldr="" ; ntldr=`ls "/Pc/$line" | grep -i ntldr`
+		if [ -n "$ntldr" -a -n "$ntdetect" ]; then
+			continue
+		elif [ -e "/mnt/$i/command.com" ]; then
+			continue
+		elif [ -n "`grep 'Shell=' "/Pc/$line/config.sys" 2>/dev/null`" ]; then
+			continue
+		else
+			rm -f "/Pc/$line"
+		fi
+		;;
+		*Linux*|*kademar*)
+# 			[ ! -e "/Pc/$line/etc/kademar-release" -o ! -e "/Pc/$line/usr/share/kademar/CADI/info.txt" ] && rm -f "/Pc/$line"
+			# Normal Linux
+			if [ -n "`echo "$line" | grep Linux`" ]; then
+				distrib=`grep DISTRIB_ID "/Pc/$line/etc/lsb-release" 2>/dev/null | cut -d= -f2`
+				if [ -e "/Pc/$line/lib/modules" ]; then
+					if [ -e "/Pc/$line/etc/kademar-release" -o -e "/Pc/$line/usr/share/kademar/CADI/info.txt" -o -e "/Pc/$line/usr/share/kademar/Pc.txt" -o "$distrib" = "kademar" ]; then
+						rm -f "/Pc/$line"
+					fi
+				else
+					rm -f "/Pc/$line"
+				fi
+				
+				if [ -n "$distrib" -a -z "`echo "$line" | grep "$distrib"`" ]; then
+					rm -f "/Pc/$line"
+				fi
+
+			#kademar
+			elif [ -n "`echo $line | grep kademar`" ]; then
+				#kademar amb versio
+				if [ ! -e "/Pc/$line/etc/kademar-release" -a ! -e "/Pc/$line/usr/share/kademar/CADI/info.txt" ]; then
+					#kademar sense versio
+					if [ ! -e "/mnt/$i/usr/share/kademar/Pc.txt" -a "$distrib" != "kademar" ]; then
+						rm -f "/Pc/$line"
+					fi
+				fi
+			fi
+		;;
+		*'Mac OS X'*)
+			[ ! -e "/Pc/$line/Applications" -a ! -e "/Pc/$line/Volumes" ] && rm -f "/Pc/$line"
+		;;
+		*cdrom*|*floppy*|fd?|disque*|*dvd*)
+		#No comprovem el SO si es un disquet/cdrom
+			continue
+		;;
+		*)
+			ntdetect="" ; ntdetect=`ls "/Pc/$line" | grep -i ntdetect.com`
+			ntldr="" ; ntldr=`ls "/Pc/$line" | grep -i ntldr`
+			if [ -n "$ntldr" -a -n "$ntdetect" ]; then
+				rm -f "/Pc/$line"
+			elif [ -e "/Pc/$line/command.com" ]; then
+				rm -f "/Pc/$line"
+			elif [ -n "`grep 'Shell=' "/mnt/$i/config.sys" 2>/dev/null`" ]; then
+				rm -f "/Pc/$line"
+			# Mac OS X
+			elif [ -e "/Pc/$line/Applications" -a -e "/Pc/$line/Volumes" ]; then
+				rm -f "/Pc/$line"
+			# Linux
+			elif [ -e "/Pc/$line/lib/modules" ]; then
+				rm -f "/Pc/$line"
+			else
+				continue
+			fi
+		;;
+	esac
+done
+
+distrib=""
+
+############################
+# END DINAMIC NAMES ON /Pc #
+############################
+
+
+ls /mnt/ --ignore=live*  | sed 's:/mnt/::g' | while read i
+do
+	case $i in
+		ram*)
+		;;
+		loop*)
+		;;
+		pts*)
+		;;
+		sys*)
+		;;
+		pro*)
+		;;
+		aut*)
+		;;
+		test*)
+		;;
+		fd*)
+		if [ ! -L /Pc/"$nom_fd$nou_nom - $i"  -a -z "`ls -l /Pc | grep \"$i \"`" ]; then
+			case "$LANGUAGE" in
+			ca*)
+				nom_fd="disquet"
+			;;
+			es*)
+				nom_fd="disquete"
+			;;
+			*)
+				nom_fd="floppy"
+			;;
+			esac
+			nou_nom=`echo $i | sed s/fd//g`
+			[ "$nou_nom" = "0" ] && nou_nom=""
+			if [ ! -L /Pc/"$nom_fd$nou_nom - $i"  -a -z "`ls -l /Pc | grep \"$i \"`" ]; then
+				ln -s -n "/mnt/$i" "/Pc/$nom_fd$nou_nom - $i"
+			fi
+		fi
+		;;
+		*)
+
+		#Names
+#if link does not exists
+		if [ ! -L "/Pc/$i" -a -z "`ls -l /Pc | grep "$i"`" ]; then
+#             if [ -L "/mnt/$i" ]; then
+#             #it's a link - not normal entry
+#             dispositiu=$(grep -i `readlink "/mnt/$i"` /proc/mounts)
+#             echo "$dispositiu" |  | cut -d/ -f3
+#     
+#             fi
+        
+			# Windows
+			ntdetect="" ; ntdetect=`ls "/mnt/$i" | grep -i ntdetect.com`
+			ntldr="" ; ntldr=`ls "/mnt/$i" | grep -i ntldr`
+			if [ -n "$ntldr" -a -n "$ntdetect" ]; then
+				linkname Windows "/dev/$i"
+			elif [ -e "/mnt/$i/command.com" ]; then
+				linkname Windows "/dev/$i"
+			elif [ -n "`grep 'Shell=' "/mnt/$i/config.sys" 2>/dev/null`" ]; then
+				linkname Windows "/dev/$i"
+			# Mac OS X
+			elif [ -e "/mnt/$i/Applications" -a -e "/mnt/$i/Volumes" ]; then
+				linkname "Mac OS X" "/dev/$i"
+			# Linux
+			elif [ -e "/mnt/$i/lib/modules" ]; then
+
+				#Get name & version from Linux Standard Base
+				if [ -e "/mnt/$i/etc/lsb-release" ]; then
+					versio=`grep DISTRIB_RELEASE "/mnt/$i/etc/lsb-release"  2>/dev/null | cut -d= -f2`
+					distrib=`grep DISTRIB_ID "/mnt/$i/etc/lsb-release"  2>/dev/null | cut -d= -f2`
+				fi
+				
+				if [ -z "$distrib" ]; then
+					distrib="Linux"
+				else
+					[ "$distrib" != kademar ] && distrib="$(echo "$distrib" | sed s.Linux..g) Linux"
+				fi
+				
+				#kademar  amb versio
+				if [ -e "/mnt/$i/etc/kademar-release" -o -e "/mnt/$i/usr/share/kademar/CADI/info.txt" -o -e "/mnt/$i/usr/share/kademar" -o -e "/mnt/$i/usr/share/kademar" ]; then
+					[ -z "$versio" -a -e "/mnt/$i/etc/kademar-release" ] && versio=`cat "/mnt/$i/etc/kademar-release"`
+					[ -z "$versio" -a -e "/mnt/$i/usr/share/kademar/CADI/info.txt" ] && versio=`cat "/mnt/$i/usr/share/kademar/CADI/info.txt"  | grep versio | awk ' { print $1 } '`
+					linkname kademar "/dev/$i" "$versio"
+				# Normal Linux
+				else
+					#kademar  sense versio
+					if [ -e "/mnt/$i/usr/share/kademar/Pc.txt" ]; then
+						linkname kademar "/dev/$i"
+					else
+						linkname "$distrib" "/dev/$i" "$versio"
+					fi
+				fi
+				
+				versio=""
+				distrib=""
+				
+			# No Named
+			else
+				linkname noname "/dev/$i"
+			fi
+		fi
+		;;
+	esac
+done
+
+#############################
+# REMOVE /Pc ORPHAN FOLDERS #
+#############################
+ls -1 /Pc | while read line
+do
+	[ ! -e "/Pc/$line" ] && rm -f "/Pc/$line" && echo $line
+done
+
+cd /Pc
+ls -1 *USB* 2>/dev/null | grep USB | sed s,:,,g | while read line
+do
+	[ -z "$(mount | grep "`readlink "/Pc/$line"`")" ] && rm -f "/Pc/$line" && rm -f "/mnt/$line" && echo "$line"
+done
+#################################
+# END REMOVE /Pc ORPHAN FOLDERS #
+#################################
+
+#Change Group Owner
+# if [ ! -e /usr/share/kademar/Pc.txt ]; then
+	chmod 777 /Pc 2>/dev/null
+	chgrp users /Pc 2>/dev/null
+	chgrp users /Pc/* 2>/dev/null
+	chmod +t /Pc 2>/dev/null
+# fi

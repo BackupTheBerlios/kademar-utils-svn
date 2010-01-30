@@ -1,0 +1,6 @@
+#!/bin/bash
+#Script per engegar samba
+
+#Creat per Adonay Sanz 27-01-09
+
+[ -e /etc/init.d/samba ] && /etc/init.d/samba start

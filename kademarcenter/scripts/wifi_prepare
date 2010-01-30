@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#
+# Script to assign an IP random to be able to scan (IPW3925 hack)
+# 
+
+
+[ -z "$1" ] && echo "Need a Parameter" && exit
+
+ifconfig `echo "$1" | sed s-/dev/--g` 192.168.2.200 up

@@ -1,0 +1,22 @@
+#!/bin/bash
+# Script per muntar els audio CD  amb el  CDFS (per veure les track)
+# set -x
+#  $1  /dev/sdb
+
+#Mira el mountpoint en el fstab
+mnt=`grep $1 /etc/fstab | awk ' { print $2 } '`
+#si no te mountpoint en el fstab, utilitza el que el IvMan vol
+
+if [ -z "$mnt" ]; then
+	dev="`echo $1 | sed s.scd.sr.g`"
+	mnt=`grep $dev /etc/fstab | awk ' { print $2 } '`
+
+	if [ -z "$mnt" ]; then
+	mnt=/media/cdfs
+	mkdir -p /media/cdfs
+	fi
+fi
+
+
+echo mounting cdfs "$1" on "$mnt"
+mount -t cdfs "$1" "$mnt"

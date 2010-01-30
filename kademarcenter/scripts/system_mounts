@@ -1,0 +1,16 @@
+#!/bin/bash
+# Script to be sure that system mounts, are mounted ^_^
+#Really usefull on livecd
+
+# /dev/shm
+if [ -z "`grep shm /proc/mounts`" -o ! -e /dev/shm ]; then
+	mkdir -p /dev/shm
+	mount /dev/shm /dev/shm -t tmpfs
+fi
+
+
+# /dev/pts
+if [ -z "`grep devpts /proc/mounts`" -o ! -e /dev/pts ]; then
+	mkdir -p /dev/pts
+	mount -t devpts -o rw,mode=1777 /dev/pts /dev/pts
+fi

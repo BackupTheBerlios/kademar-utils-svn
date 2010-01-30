@@ -1,0 +1,6 @@
+#!/bin/bash
+#Script per engegar lisa
+
+#Creat per Adonay Sanz 27-01-09
+
+[ -e /etc/init.d/lisa ] && /etc/init.d/lisa start

@@ -1,0 +1,43 @@
+#!/bin/bash
+# Script per borrar els enllaços als dispositius en /mnt i /Pc
+# set -x
+#Modificat 05-09-06 Adonay Sanz Alsina
+#Modificat 28.02.07 Adonay Sanz Alsina
+#Modificat 06.03.08 Adonay Sanz Alsina - Compatible amb kademarcenter
+
+# $1 = /dev/sdb
+
+if [ -n "$1" -a "$1" != "0" ]; then
+	
+	echo "BORRANT  $1"
+
+	ruta_pc="/Pc"
+	ruta_mnt="/mnt"
+	
+	hd="`echo $1 | sed s:/dev/::g`" #Treiem el /dev residual  (/dev/sdb1 -> sdb1)
+	unitat_sense_dev=${hd%%[0-9]*}  #Treiem el Numero residual  (sdb1 -> sdb)
+
+
+####################################
+# REAL DEVICE FORCED DESCONNECTION #
+####################################
+
+
+
+#Si hi ha un error al desconnectar, vol dir que ja s'havien extret, sense desmuntar-lo. Avisa k no s'ha de fer 
+# 	rm -f /tmp/kademar_error_umount
+	echo "Removing Links"
+	#Si hi ha hagut algún error, FORÇA desmunta
+
+	if [ -z "`grep $hd /proc/mounts`" ]; then
+		#Borrem l'enllaç del /Pc
+		rm -f $ruta_pc/*$hd*
+		rm -fr $ruta_mnt/*$hd*
+	fi
+
+        if [ -z "`grep $unitat_sense_dev /proc/mounts`" ]; then
+		rm -fr $ruta_mnt/*$unitat_sense_dev*
+		rm -f $ruta_pc/*$unitat_sense_dev*
+	fi
+
+fi

@@ -1,0 +1,12 @@
+cdrom_prog=""
+dvddata_prog=""
+dvd_prog=""
+vcd_prog=""
+audiocd_prog=""
+blankcd_prog=""
+pen_prog=""
+dvb_prog=""
+wlan_prog=""
+eth_prog=""
+fwcam_prog=""
+

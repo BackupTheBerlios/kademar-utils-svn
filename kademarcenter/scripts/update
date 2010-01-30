@@ -1,0 +1,8 @@
+#!/bin/bash
+
+#Script per actualitzar el sistema
+#Need to be root
+
+apt-get update
+
+# /usr/sbin/synaptic --upgrade-mode --non-interactive  --hide-main-window &

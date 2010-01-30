@@ -1,0 +1,53 @@
+kademarcenter (4.9.1) testing; urgency=low
+
+  * FIX: Mount of CDFS audio CD
+  * FIX: Force umount
+  * FIX: Support to /dev/shm and other system mountpoints
+  * FIX: Graphical glitches on kademarstart
+  * FIX: Restoring permissions mounts
+  * FIX: Gparted remove data on format partitions (kernel 2.6.31+)
+  * FEATURE: Permit 2nd stage config
+  * FEATURE: SuperSpeed mounting partitions
+  * FEATURE: Script regenerapc wrapper to new scripts
+  * FEATURE: Support to new hal cdrom implementation
+  * FEATURE: Support to lsb-release file on Pc distro names
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Thu, 24 Sep 2009 14:45:25 +0000
+
+kademarcenter (4.9) testing; urgency=low
+
+  * NEW: App bigger
+  * NEW: Setting panel (to connect/disconnect warns)
+  * NEW: New Visual interface to logo  kademar
+  * FEATURE: Open CADI on internet module if wifi/eth pluged
+  * FEATURE: Down internet interfaces, if not connected
+  * FEATURE: Mount multiple partitions of boot device data
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Wed, 20 May 2009 23:45:15 +0200
+
+kademarcenter (4.8+4) testing; urgency=low
+
+  * Solved icon - "no fer res"
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Wed, 01 Apr 2009 04:17:14 +0200
+
+kademarcenter (4.8+3) testing; urgency=low
+
+  * Fixed show of hotplug actions
+  * Force umount if has a forced unplugged
+  * Solved CADI icon
+  * Fixed Pc names with spaces (grep error)
+  * Hotplugaction raise window?
+  * No double mount of USB devices
+  * Use HAL to determine if removable or not
+  * UsbTray USB icon
+  * UsbTray close Window when no more USB (window opened)
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Tue, 17 Mar 2009 19:48:34 +0100
+
+kademarcenter (4.8) testing; urgency=low
+
+  * Initial release
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Wed, 04 Feb 2009 21:49:38 +0100
+

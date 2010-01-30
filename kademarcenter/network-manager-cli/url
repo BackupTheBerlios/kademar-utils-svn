@@ -1,0 +1,9 @@
+
+
+# Non-members may check out a read-only working copy anonymously over 
+HTTP.
+svn checkout http://network-manager-cli.googlecode.com/svn/trunk/ 
+network-manager-cli-read-only
+
+
+http://code.google.com/p/network-manager-cli/source/checkout

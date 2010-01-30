@@ -1,0 +1,639 @@
+#!/bin/bash
+# set -x
+# FITXER QUE POSA AL DIA EL FSTAB (RESPECTUÓS) - NO BORRA EL FSTAB ANTIC
+# Afegeix dispositius al fstab
+#  borra carpetes de dispositius inexistents de /mnt i /Pc
+#  Actualitza el sistema de fitxers del dispositiu, en cas de que hagi canviat
+
+# MODE TO CALL IT
+#  fstab [path to /etc/fstab] [path to /mnt] [path to /sys/block/  (NECESSÀRIA LA ULTIMA BARRA)]
+
+#PATH="/bin:/usr/bin:/sbin:/usr/sbin"; export PATH
+umask 022
+
+#Colors:
+
+# Reset fb color mode
+RESET="]R"
+# ANSI COLORS
+# Erase to end of line
+CRE="
+[K"
+# Clear and reset Screen
+CLEAR="c"
+# Normal color
+NORMAL="[0;39m"
+# RED: Failure or error message
+RED="[1;31m"
+# GREEN: Success message
+GREEN="[1;32m"
+# YELLOW: Descriptions
+YELLOW="[1;33m"
+# BLUE: System mesages
+BLUE="[1;34m"
+# MAGENTA: Found devices or drivers
+MAGENTA="[1;35m"
+# CYAN: Questions
+CYAN="[1;36m"
+# BOLD WHITE: Hint
+WHITE="[1;37m"
+
+#End colors
+
+#########################
+# INITALIZING VARIABLES #
+#########################
+
+
+dispositius_trobats=""
+dispositius_mnt=""
+# dispositius_pc=""
+
+#If detects NOFSTAB in boot cmdline, it stops /etc/fstab file creation
+[ -n "`grep -i nofstab /proc/cmdline`" ] && echo "${BLUE}Skipping creation of /etc/fstab file, forced in bootcommandline.${NORMAL}" && exit
+
+echo "${YELLOW}Creating /etc/fstab${NORMAL}"
+
+#Definició inicial de variables
+
+sys_block_path="/sys/block/"
+
+#primer parametre passat = ruta al fstab
+if [ -n "$1" ]; then
+	ruta_fstab="$1"
+else
+	ruta_fstab="/etc/fstab"
+fi
+
+#segon parametre passat = ruta al mnt
+if [ -n "$2" ]; then
+	ruta_mnt="$2"
+else
+	ruta_mnt="/mnt"
+fi
+
+#segon parametre passat = ruta al /sys/block/  (NECESSÀRIA LA ULTIMA BARRA)
+if [ -n "$3" ]; then
+	sys_block_path="$3"
+else
+	sys_block_path="/sys/block/"
+fi
+
+if [ -d /lib/modules/`uname -r`/kernel/fs/subfs ]; then
+	submount="yes"
+else
+	submount="no"
+fi
+
+isRemovable(){
+#Function to know if a device is removable or not
+
+hd=$1
+
+for i in `hal-find-by-property --key block.device --string "$hd"`
+do
+ firstone=$i
+ break
+done
+
+# if not found, try to hack it
+if [ -z "$firstone" ]; then
+	hd=`echo $1 | sed s:"sr":"scd":g`
+	for i in `hal-find-by-property --key block.device --string "$hd"`
+	do
+		firstone=$i
+		break
+	done
+	capab=$(hal-get-property --udi "$firstone"  --key info.capabilities)
+fi
+
+capab=$(hal-get-property --udi "$firstone"  --key info.capabilities)
+
+
+#then check if cdrom if no have been cought a disk (volume) instead the block-device
+if [ "$(hal-get-property --udi `hal-find-by-property --key block.device --string "$hd"`  --key block.is_volume)" == true ]; then
+# echo parent_hack $1
+	parent=$(hal-get-property --udi `hal-find-by-property --key block.device --string "$hd"`  --key info.parent)
+	capab=$(hal-get-property --udi $parent --key info.capabilities)
+fi
+
+a=$(hal-get-property --udi `hal-find-by-property --key block.device --string "$hd"`  --key storage.bus)
+
+# echo $capab
+
+# echo $capab
+if [ -n "`echo "$capab" | grep -i cdrom`" -o -n "`echo "$capab" | grep -i scsi`" ]; then
+#si es cdrom = YES
+	echo yes
+else
+#si es de usb = YES
+	if [ "$a" == usb ]; then
+		echo yes
+	else
+		echo no
+	fi
+fi
+}
+
+
+#############################
+# END INITALIZING VARIABLES #
+#############################
+
+#############################
+# FUNCTION GREP HAL INFO    #
+#############################
+halinfo(){
+# $1 = /dev/sda4  (dispositiu a analitzar)
+# $2 = dvd/label  (informacio a obtenir)
+
+halinfovar=""
+
+#Si el que volem es la informacio del DVD, treiem els CDs introduits en les unitats
+if [ "$2" = dvd ]; then
+	udi="`hal-find-by-property --key block.device --string $1 | grep -i stor`"
+else
+	udi="`hal-find-by-property --key block.device --string $1`"
+fi
+
+case "$2" in
+
+dvd)
+	key="storage.cdrom.dvd"
+;;
+
+label)
+	key="volume.label"
+;;
+
+
+esac
+
+halinfovar="`hal-get-property --udi $udi --key  $key`"
+
+}
+
+#############################
+# END FUNCTION GREP HAL INFO#
+#############################
+
+
+
+
+##############################
+# REMOVE /MNT ORPHAN FOLDERS #
+##############################
+#fstab_devices=`grep "/mnt" /etc/fstab | awk ' { print $2 } ' | sed s:/mnt/::g`
+mnt_devices=`ls $ruta_mnt`
+for i in $mnt_devices
+do
+	# Si aquesta carpeta no esta en el  fstab
+	if [ -z "`grep $i $ruta_fstab`" ]; then
+# 	echo \"$fstab_devices\" | grep \"$i \"
+# echo 1 $i  #DEBUG
+		# I si no esta muntat, borra'l
+		if [ -z "`grep $i /proc/mounts`" ]; then
+				#Maxaquem les carpetes!!!
+			#echo 2 $i #DEBUG
+				rm -fr /mnt/$i 2>/dev/null
+		fi
+	fi
+done
+##################################
+# END REMOVE /MNT ORPHAN FOLDERS #
+##################################
+
+
+
+##############################################################
+# BE SURE THAT FSTAB FOLDERS THAT ARE REFERENCIED IN, EXISTS #
+##############################################################
+for i in `cat $ruta_fstab | grep /dev/ | grep /mnt | awk ' { print $2 } ' | grep -v shm | grep -v proc | grep -v bus | grep -v sysfs | grep -v \#`
+do
+	[ ! -e "$i" ] && mkdir -p "$i"
+done
+##################################################################
+# END BE SURE THAT FSTAB FOLDERS THAT ARE REFERENCIED IN, EXISTS #
+##################################################################
+
+
+####################################
+# ADD NEW DEVICES TO FSTAB AND MNT #
+####################################
+
+
+#aquests son els /sys/block/sda sdb sdc
+for i in `ls $sys_block_path | sed "s:$sys_block_path\/::g"`
+do
+	case $i in
+		
+		ram*)
+		;;
+		
+		loop*)
+		;;
+
+		#Hard Disk Zone
+		sd*|hd*|sr*)
+		cd $sys_block_path$i
+#        aquestes son les particions sda1 sda2 sdb1       
+		disc_durs=`ls -d ???[0-9]* 2>/dev/null`
+		#definim la variable si es removable
+		es_removable=$(isRemovable /dev/$i 2>/dev/null)
+# 		echo $i $es_removable
+# 		if [ `cat $sys_block_path$i/removable` = 0 ]; then
+# 			es_removable="no"
+# 		else
+# 			es_removable="yes"
+# 		fi
+		#Si no hi ha cap partició i es removable, i fem que la $i sigui "" per quan fa la comparació de tamany que no falli
+		[ -z "$disc_durs" -a "$es_removable" = "yes" ] && disc_durs=$i && i=""
+		#Si no ha trobat cap disc dur que no falli
+		for hd in $disc_durs
+		do
+			#Si no és 0 (vol dir k n'ha trobat)
+			if [ -n "$hd" ]; then
+			#Posa a zero la variable
+			opcions_especifiques=""
+				#afegim el dispositiu trobat a la llista
+				dispositius_trobats="$dispositius_trobats $hd"
+				#Si no esta al fstab, s'afegeix
+				if [ -z "`grep "$hd" $ruta_fstab`" ]; then
+				# 	cat $hd/size  #DEBUG
+				#  	echo $hd  #DEBUG
+					#  Si el size es més petit de 100, vol dir que és una partició lògica; per tan no l'incluïm
+					# Així que: solament passa qui te el tamany mes gran de 100 o qui es removable
+					if [ `cat $sys_block_path$i/$hd/size` -gt 100 -o "$es_removable" = "yes" ]; then
+# 					echo $hd  #DEBUG
+					# Afegim un espai buit
+					echo '' >> $ruta_fstab
+					#El fs actual
+					fs=$(blkid /dev/$hd -o value -s TYPE)
+					# si és removable, vol dir que s'ha de muntar amb subfs si es pot, o si no, normal, però activant l'avís
+						if  [ "$es_removable" = "no" ]; then
+# 						echo $i $es_removable $fs  #DEBUG
+# 							#Si no retorna res el $fs, fen un atac directe per intentar-lo muntar com a hfs/hfsplus, si no respon, llavors definim el sistema de fitxers com a auto (es un error del fstyp, el hfs/hfsplus no els reconeix)
+							if [ -z "$fs" ]; then
+								while true
+								do
+									[ ! -e /muntatge_temporal ] && mkdir /muntatge_temporal
+									mount -t hfs /dev/$hd /muntatge_temporal 2>/dev/null && fs="hfs" && break
+									mount -t hfsplus /dev/$hd /muntatge_temporal 2>/dev/null && fs="hfsplus" && break
+									fs="auto" && break
+								done
+								umount /muntatge_temporal 2>/dev/null
+								[ -z "`grep /muntatge_temporal /proc/mounts`" ] && rm -fr /muntatge_temporal
+							fi
+			########################
+			# Les SWAP entren aquí #
+			########################
+							#Si es una swap, muntal com una swap
+							if [ "$fs" = "swap" ]; then
+								echo "/dev/$hd  swap  swap  pri=0  0  0" >> $ruta_fstab
+							else
+			##########################
+			# Les particions NORMALS #
+			##########################
+								#  Creem la entrada a /mnt
+								mkdir -p $ruta_mnt/$hd 2>/dev/null
+								opcions_especifiques=""
+								#Correccio de Permisos
+								chmod 777 $ruta_mnt/$hd
+								#Ús de NTFS-3G en cas de que sigui $fs=NTFS i existeixi
+								if [ "$fs" = "ntfs" ]; then
+																		#Si el sistema de fitxers es ntfs, en les opcions_especifiques, afegeix el umask i user
+									opcions_especifiques=",noauto,user,umask=000,locale=es_ES.iso88591"
+									#Comprovació existencia ntfs-3g
+									if [ -e "/usr/local/bin/ntfs-3g" -o -e "/usr/bin/ntfs-3g" ]; then
+										echo "/dev/$hd /mnt/$hd  ntfs-3g  silent,umask=000,gid=users$opcions_especifiques  0  0" >> $ruta_fstab
+									else
+									#Si no es pot muntar amb lectura,escriptura, munta'l normal
+										echo "/dev/$hd /mnt/$hd  $fs  defaults,rw,exec,user,umask=000$opcions_especifiques  0  0" >> $ruta_fstab
+									fi
+								else
+									#Si el sistema de fitxers es vfat, fat, en les opcions_especifiques, afegeix el umask i user
+									if [ "$fs" = "vfat" -o "$fs" = "fat" ]; then
+										opcions_especifiques=",user,umask=000,iocharset=iso8859-1"
+									fi
+									# Si no, muntal com un dispositiu normal
+									echo "/dev/$hd /mnt/$hd  $fs  defaults,rw,exec,auto$opcions_especifiques  0  0" >> $ruta_fstab
+								fi
+							fi
+						# Si es removable i tens submount munta'l amb submount, sino, normal
+						else
+			############################################################
+			# Els EXTRAÏBLES normals (pen drives, etc) - NO s'utilitza #
+			############################################################
+		# ELS USB ARA ES GESTIONEN AMB KADEMARCENTER - no s'apunten al FSTAB
+		#  solament entren aqui els CDROM
+							#  Creem la entrada a /mnt
+# 							set -x
+#Si la en /sys/block/$hd/device/bus/drivers hi ha algo k diu "cdrom" el tractarem com un cdrom, sino, no
+							if [ -n "`ls $sys_block_path/$i/$hd/device/bus/drivers 2>/dev/null | grep -i cdrom`" -o "`cat $sys_block_path$i/$hd/device/type 2>/dev/null`" = 5 ]; then
+# 								mkdir -p $ruta_mnt/$hd 2>/dev/null
+# 								if [ $submount = "yes" ]; then
+# 									echo "/dev/$hd  /mnt/$hd subfs fs=auto,rw,exec,user,sync,umask=000 0 0" >> $ruta_fstab
+# 								else
+# 									echo "/dev/$hd  /mnt/$hd  auto  rw,exec,user,noauto,umask=000  0  0" >> $ruta_fstab
+	# 								warning="active"
+# 								fi
+# 							else
+			###############################
+			# Els CDROM i DVD entren aquí #
+			###############################
+					###############################
+					#    Tria del Nom  CD o DVD   #
+					#			      #
+					 	nom=""		      #
+					#			      #
+					 	halinfo "/dev/$hd" dvd
+					 	
+					 	if [ -z "$halinfovar" ]; then #Convert   sr0 -> scd0  (hack x ser detectat en HALINFO)
+							hd=`echo $hd | sed s:"sr":"scd":g`
+							halinfo "/dev/$hd" dvd
+						fi
+					 	
+					 	if [ "$halinfovar" = true ]; then
+					 		nom=dvd	      #
+					 	else		      #
+					 		nom=cdrom     #
+					 	fi		      #
+					###############################
+
+								#Convert   scd0 -> sr0  (hack x ser detectat en HALINFO)
+								hd=`echo $hd | sed s:"scd":"sr":g`
+								#Si la variable contador es = a 0, fem que no apareixi
+								[ "$contador" = 0 ] && contador=""
+								#Si ja hi ha un cdrom amb el mateix nom, canviem el numero
+								while true
+								do
+									if [ ! -e "/mnt/$nom$contador" ]; then
+										break
+									else
+										[ "$contador" = "" ] && contador=0
+										contador=$(($contador + 1))
+									fi
+								done
+								#  Creem la entrada a /mnt  si no es una swap
+								mkdir -p $ruta_mnt/$nom$contador 2>/dev/null
+								#Si tens submount muntal amb submount, si no... pos va a ser k no!!!
+# 								if [ $submount = "yes" ]; then
+# 									echo "/dev/$hd  /mnt/cdrom$contador subfs fs=cdfss,ro,exec,user,sync,umask=000 0 0" >> $ruta_fstab
+# 								else
+									echo "/dev/$hd  /mnt/$nom$contador  udf,iso9660 users,noauto  0  0" >> $ruta_fstab
+# 			#							warning="active"
+# 								fi
+								#Si el contador no apareix, vol dir que era Zero, hack a la lina 163, per tant el posem a 0
+								[ "$contador" = "" ] && contador=0
+								#Posem el contador a zero (per si es un altre tipus de unitat)
+								contador=0
+							fi
+						fi
+					fi
+				fi
+			fi
+		done
+		;;
+
+		#Floppy Zone
+		fd*)
+	############################
+	# Els DISQUETS entren aquí #
+	############################
+		#Si esta activat el support a disquets
+		if [ -e "/usr/share/kademar/floppy" ]; then
+			#afegim el dispositiu trobat a la llista
+			dispositius_trobats="$dispositius_trobats $i"
+			#Si no esta al fstab, s'afegeix
+			if [ -z "`grep $i $ruta_fstab`" ]; then
+				mkdir -p $ruta_mnt/$i 2>/dev/null
+				echo '' >> $ruta_fstab
+				if [ $submount = "yes" ]; then
+					echo "/dev/$i  /mnt/$i subfs fs=floppyfss,rw,sync,umask=000  0 0" >> $ruta_fstab
+				else
+					echo "/dev/$i  /mnt/$i  auto  rw,exec,users,noauto,umask=000   0  0" >> $ruta_fstab
+		# 			warning="active"
+				fi
+				chmod 777 $ruta_mnt/$i
+			fi
+		fi
+		;;
+
+		#Other Zone
+		*)
+	################################################
+	# Els CDROM insurrectes (sr0, etc) entren aquí #
+	################################################
+###########
+######   TEORICAMENt JA no s'arriba aqui!!!
+########3
+		#If device/type is 5, it seems to be a CDRom, so, mount it as a cdrom
+		if [ "`cat $sys_block_path$i/device/type 2>/dev/null`" = 5 ]; then
+			mkdir -p $ruta_mnt/$i 2>/dev/null
+			echo '' >> $ruta_fstab
+# 			if [ $submount = "yes" ]; then
+# 				echo "/dev/$i  /mnt/$i subfs fs=cdfss,rw,exec,user,sync,umask=000 0 0" >> $ruta_fstab
+# 			else
+				echo "/dev/$i  /mnt/$i  udf,iso9660  users,noauto  0  0" >> $ruta_fstab
+#				warning="active"
+# 			fi
+		fi
+		;;
+	esac
+done
+
+########################################
+# END ADD NEW DEVICES TO FSTAB AND MNT #
+########################################
+
+
+#####################################################################
+# CHECK UNPLUGGED DEVICES AND REMOVE IT  - PREPARATION INITIAL PART #
+#####################################################################
+# Preparing Battle Terrain
+
+dispositius_mnt=`cat $ruta_fstab | grep "/dev/" | awk ' { print $1 } ' | sed s:/dev/::g | grep -v shm | grep -v proc | grep -v bus | grep -v sysfs | grep -v \#`
+# dispositius_fstab=`grep "/mnt" /etc/fstab | awk ' { print $2 } ' | sed s:/mnt/::g`
+# dispositius_mnt=`ls /mnt`
+# dispositius_pc=`ls /Pc`
+# echo $dispositius_mnt
+#Si n'ha trobat algún, continúa.
+if [ -n "$dispositius_mnt" ]; then
+	for i in $dispositius_mnt
+	do
+		#Defineix la variable si es un dispositiu removable o no
+		if [ -z "`cat $ruta_fstab | grep $i | egrep ' subfs '`" -a -z "`cat $ruta_fstab | grep $i | egrep ' auto '`" ]; then
+			dispositiu_removable="no"
+		else
+			dispositiu_removable="yes"
+		fi
+
+#########################################################################
+# END CHECK UNPLUGGED DEVICES AND REMOVE IT  - PREPARATION INITIAL PART #
+#########################################################################
+
+##########################################
+# CHECK UNPLUGGED DEVICES AND REMOVE IT  #
+##########################################
+#Let's Freddy Cruger do his job!!! ^_^	
+
+	#Si la carpeta esta creada en /mnt, pero no es un dispositiu trobat (DISPOSITIUS NO REMOVABLES)
+		if [ -z "`echo $dispositius_trobats | grep $i`" -a "$dispositiu_removable" = "no"  ]; then	
+			# I si no està muntat, vol dir que la carpeta esta buida
+			if [ -z "`grep $i /proc/mounts`" ]; then
+				#Maxaquem les carpetes!!!
+				rm -fr /mnt/$i 2>/dev/null
+				#Busquem una entrada en el Pc, d'aquest dispositiu que s'ha eliminat
+				entrada_en_el_pc=`ls -l /Pc 2>/dev/null | grep $i | awk '{ print $9 }'`
+				# I si hi ha un enllaç en el pc que correspongui a aquest dispositiu, també es borra
+				# lrwxrwxrwx  1 root users  9 Oct  7 12:10 Magatzem -> /mnt/sda1
+				[ -z "$entrada_en_el_pc" ] && rm -fr "/Pc/$entrada_en_el_pc" 2>/dev/null
+				grep_fstab=`grep $i $ruta_fstab`
+				#I borrem l'entrada en el /etc/fstab, en el cas que n'hi hagi
+				if [ -n "$grep_fstab" ]; then
+					sed s:"$grep_fstab"::g -i $ruta_fstab
+					#Ho guardem en un fitxer temporal, borrem el fstab antic, i substituim pel temporal que hem creat
+# 					rm -f $ruta_fstab
+# 					mv /tmp/fstab.tmp $ruta_fstab
+				fi
+			fi
+		fi
+		
+	#Si la carpeta està creada en el /mnt, pero no és un dispositiu real  (DISPOSITIUS REMOVABLES  cd-rom, etc)
+		if [ ! -e "$sys_block_path$i" -a "$dispositiu_removable" = "yes"  ]; then
+			# I si no està muntat, vol dir que la carpeta esta buida
+			if [ -z "`grep $i /proc/mounts`" ]; then
+				grep_fstab=`grep $i $ruta_fstab`
+				#Maxaquem les carpetes!!! del mnt
+				rm -fr `echo $grep_fstab | awk ' { print $2 } '` 2>/dev/null
+				#I borrem l'entrada en el /etc/fstab, en el cas que n'hi hagi
+				if [ -n "$grep_fstab" ]; then
+					sed s:"$grep_fstab"::g -i $ruta_fstab
+					#Ho guardem en un fitxer temporal, borrem el fstab antic, i substituim pel temporal que hem creat
+# 					rm -f $ruta_fstab
+# 					mv /tmp/fstab.tmp $ruta_fstab
+				fi
+			fi
+		fi		
+##############################################
+# END CHECK UNPLUGGED DEVICES AND REMOVE IT  #
+##############################################
+	done
+fi
+
+############################################################
+# CHECK AND FIND CHANGES ON ITS FILESYSTEMS - INITIAL PART #
+############################################################
+
+dispositius_mnt=`cat $ruta_fstab | grep "/dev/" | awk ' { print $1 } ' | sed s:/dev/::g | sed s:pts::g | grep -v shm | grep -v proc | grep -v bus | grep -v sysfs | grep -v \#`
+
+# dispositius_pc=`ls /Pc`
+
+#Si n'ha trobat algún, continúa.
+if [ -n "$dispositius_mnt" ]; then
+	for i in $dispositius_mnt
+	do
+
+################################################################
+# END CHECK AND FIND CHANGES ON ITS FILESYSTEMS - INITIAL PART #
+################################################################
+
+#############################################
+# CHECK AND FIND CHANGES ON ITS FILESYSTEMS #
+#############################################
+
+	#Defineix la variable si es un dispositiu removable o no
+		if [ -z "`cat $ruta_fstab | grep $i | egrep ' subfs '`" -a -z "`cat $ruta_fstab | grep $i | egrep ' auto '`" ]; then
+			dispositiu_removable="no"
+		else
+			dispositiu_removable="yes"
+		fi	
+
+	#Comprova que no hagi canviat algú el seu sistema de fitxers
+		
+		#Comprovem que no hagi estat muntat amb subfs o amb  auto en cas de que el submount no estigui
+		if [ "$dispositiu_removable" = "no" ]; then
+			#El fs actual
+            fs=$(blkid /dev/$i  -o value -s TYPE)
+# echo $i $dispositiu_removable $fs  $DEBUG
+			#Si no retorna res, fen un atac directe per intentar-lo muntar com a hfs/hfsplus, si no respon, llavors definim el sistema de fitxers com a auto
+			if [ -z "$fs" ]; then
+				while true
+				do
+					[ ! -e /muntatge_temporal ] && mkdir /muntatge_temporal
+					mount -t hfs /dev/$hd /muntatge_temporal 2>/dev/null && fs="hfs" && break
+					mount -t hfsplus /dev/$hd /muntatge_temporal 2>/dev/null && fs="hfsplus" && break
+					fs="auto" && break
+				done
+				umount /muntatge_temporal 2>/dev/null
+				[ -z "`grep /muntatge_temporal /proc/mounts`" ] && rm -fr /muntatge_temporal
+			fi
+			# Si es un cdrom o un disquet
+			case "$i" in
+			fd*|cdrom*|disquet*|floppy*)
+				fs=$i
+			;;
+			*)
+			;;
+			esac
+			#si no es troba cap entrada amb el dispositiu $i i amb el $fs actual, procedeix a canviar l'antic fs pel nou
+			if [ -z "`cat $ruta_fstab | grep $i | egrep $fs`" ]; then
+				# Linia on apareix el dispositiu en el fstab
+				grep_fstab="`grep $i $ruta_fstab`"
+				if [ "$fs" = "swap" ]; then
+				#Canvi de normal a swap
+					sed s:"$grep_fstab":"/dev/$i  swap  swap  pri=0  0  0":g -i $ruta_fstab
+# 					rm -f $ruta_fstab
+# 					mv /tmp/fstab.tmp $ruta_fstab
+				elif [ -n "`echo $grep_fstab | grep $i | egrep -i swap`" ]; then
+				#Canvi de swap a normal
+					mkdir -p $ruta_mnt/$i 2>/dev/null
+					opcions_especifiques=""
+					#Correccio de Permisos
+					chmod 777 $ruta_mnt/$i
+					#Ús de NTFS-3G en cas de que sigui $fs=NTFS i existeixi
+					if [ "$fs" = "ntfs" ]; then
+						#Si el sistema de fitxers es ntfs, en les opcions_especifiques, afegeix el umask i user
+						opcions_especifiques=",user,umask=000,locale=es_ES.iso88591"
+						#Comprovació existencia ntfs-3g
+						if [ -e "/usr/local/bin/ntfs-3g" -o -e "/usr/bin/ntfs-3g" ]; then
+							sed s:"$grep_fstab":"/dev/$i /mnt/$i  ntfs-3g  silent,noauto,umask=000,gid=users  0  0$opcions_especifiques":g -i $ruta_fstab
+# 							rm -f $ruta_fstab
+# 							mv /tmp/fstab.tmp $ruta_fstab
+						else
+							# Si no, muntal com un dispositiu normal
+							sed s:"$grep_fstab":"/dev/$i /mnt/$i  $fs  defaults,rw,exec,user,umask=000  0  0":g -i $ruta_fstab
+# 							rm -f $ruta_fstab
+# 							mv /tmp/fstab.tmp $ruta_fstab
+						fi
+					else
+						#Si el sistema de fitxers es vfat, fat, en les opcions_especifiques, afegeix el umask i user
+						if [ "$fs" = "vfat" -o "$fs" = "fat" ]; then
+							opcions_especifiques=",user,umask=000,iocharset=iso8859-1"
+						fi
+						# Si no, muntal com un dispositiu normal
+						sed s:"$grep_fstab":"/dev/$i /mnt/$i  $fs  defaults,rw,exec,auto$opcions_especifiques  0  0":g -i $ruta_fstab
+# 						rm -f $ruta_fstab
+# 						mv /tmp/fstab.tmp $ruta_fstab
+					fi
+					
+				else
+				#Canvi entre FS normals
+					#Substitiuim la linia que toca del fstab amb el nou $fs. print 1 i 2 pels noms (saltem el 3 pq es el fs i ja li posem la variable actual) i print de 4 5 6 que son les opcions.
+					sed s:"$grep_fstab":"`echo $grep_fstab | awk ' { print $1 \"   \" $2 } '`  $fs `echo $grep_fstab | awk ' { print $4 \"   \" $5 \"   \" $6 } '`":g -i $ruta_fstab
+					#Ho guardem en un fitxer temporal, borrem el fstab antic, i substituim pel temporal que hem creat
+# 					rm -f $ruta_fstab
+# 					mv /tmp/fstab.tmp $ruta_fstab
+				fi
+			fi
+		fi
+#################################################
+# END CHECK AND FIND CHANGES ON ITS FILESYSTEMS #
+#################################################
+	done
+fi
+
+#Mount, and recognize submounts entry
+mount -aF 2>/dev/null
+
+exit 0

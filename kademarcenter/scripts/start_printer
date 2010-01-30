@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#
+# Enable all printers
+#
+
+
+if [ -e  /etc/cups/printers.conf ]; then
+	
+	for i in `cat /etc/cups/printers.conf | grep "Printer" | sed s/">"//g | awk ' { print $2 } ' | sed s/"Printer"//g`
+	do
+	sudo /usr/sbin/lpadmin -p $i -E
+	done
+fi

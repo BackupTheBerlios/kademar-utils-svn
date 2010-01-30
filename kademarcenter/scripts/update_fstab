@@ -1,0 +1,8 @@
+#!/bin/bash
+###
+# Script to have a correct fstab & perfect /Pc - old regenerapc
+# Adonay Sanz Alsina  27 Gen 2009
+# GNU/GPL 2 or higher
+###
+
+run-parts /usr/share/kademar/utils/kademarcenter/scripts/regenerapc

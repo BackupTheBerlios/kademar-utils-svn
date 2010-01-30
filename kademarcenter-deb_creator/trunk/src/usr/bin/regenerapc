@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# 2-12-09 - Adonay Sanz
+#Run regenerapc new scripts wrapper
+
+run-parts /usr/share/kademar/utils/kademarcenter/scripts/regenerapc/ 

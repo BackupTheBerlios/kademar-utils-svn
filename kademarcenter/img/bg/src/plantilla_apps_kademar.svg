@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.45.1"
+   sodipodi:docbase="/home/clawlinux/192.168.1.8/kademarcenter"
+   sodipodi:docname="plantilla_apps_kademar.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:export-filename="/home/josep/Documents/plantilla_apps_kademar.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient4231">
+      <stop
+         style="stop-color:#badbee;stop-opacity:1;"
+         offset="0"
+         id="stop4233" />
+      <stop
+         id="stop5214"
+         offset="0.5"
+         style="stop-color:#ffffff;stop-opacity:1;" />
+      <stop
+         id="stop5208"
+         offset="1"
+         style="stop-color:#badbee;stop-opacity:1;" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient14979">
+      <stop
+         style="stop-color:#5f5f60;stop-opacity:1;"
+         offset="0"
+         id="stop14981" />
+      <stop
+         style="stop-color:#5f5f60;stop-opacity:0;"
+         offset="1"
+         id="stop14983" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5261">
+      <stop
+         style="stop-color:#989aad;stop-opacity:1;"
+         offset="0"
+         id="stop5263" />
+      <stop
+         id="stop8182"
+         offset="0.51999998"
+         style="stop-color:#f0f0f0;stop-opacity:1;" />
+      <stop
+         id="stop6240"
+         offset="1"
+         style="stop-color:#858aa3;stop-opacity:1;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4284">
+      <stop
+         style="stop-color:#b5b3b3;stop-opacity:1;"
+         offset="0"
+         id="stop4286" />
+      <stop
+         style="stop-color:#b5b3b3;stop-opacity:0;"
+         offset="1"
+         id="stop4288" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient14979"
+       id="radialGradient14985"
+       cx="33.019931"
+       cy="112.65767"
+       fx="33.019931"
+       fy="112.65767"
+       r="34.120871"
+       gradientTransform="matrix(1,0,0,2.5078344,0,-169.8691)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient14979"
+       id="linearGradient16004"
+       x1="-1.10094"
+       y1="113.07809"
+       x2="66.235641"
+       y2="113.07809"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient14979"
+       id="radialGradient16019"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,2.5078344,0,-169.8691)"
+       cx="33.019931"
+       cy="112.65767"
+       fx="33.019931"
+       fy="112.65767"
+       r="34.120871" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient14979"
+       id="linearGradient16021"
+       gradientUnits="userSpaceOnUse"
+       x1="-1.10094"
+       y1="113.07809"
+       x2="66.235641"
+       y2="113.07809" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient14979"
+       id="radialGradient17096"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,2.5078344,0,-169.8691)"
+       cx="33.019931"
+       cy="112.65767"
+       fx="33.019931"
+       fy="112.65767"
+       r="34.120871" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient14979"
+       id="linearGradient17098"
+       gradientUnits="userSpaceOnUse"
+       x1="-1.10094"
+       y1="113.07809"
+       x2="66.235641"
+       y2="113.07809" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient14979"
+       id="radialGradient17100"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,2.5078344,0,-169.8691)"
+       cx="33.019931"
+       cy="112.65767"
+       fx="33.019931"
+       fy="112.65767"
+       r="34.120871" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient14979"
+       id="linearGradient17102"
+       gradientUnits="userSpaceOnUse"
+       x1="-1.10094"
+       y1="113.07809"
+       x2="66.235641"
+       y2="113.07809" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5261"
+       id="linearGradient4237"
+       x1="243.17123"
+       y1="-0.36381742"
+       x2="244.17816"
+       y2="268.30258"
+       gradientUnits="userSpaceOnUse" />
+    <filter
+       inkscape:collect="always"
+       x="-0.082353734"
+       width="1.1647075"
+       y="-0.1497745"
+       height="1.299549"
+       id="filter3355">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="10.331107"
+         id="feGaussianBlur3357" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5261"
+       id="linearGradient3377"
+       gradientUnits="userSpaceOnUse"
+       x1="243.17123"
+       y1="-0.36381742"
+       x2="244.17816"
+       y2="268.30258"
+       gradientTransform="translate(0,492.5083)" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.9862547"
+     inkscape:cx="283.71197"
+     inkscape:cy="919.11643"
+     inkscape:document-units="px"
+     inkscape:current-layer="capa1"
+     inkscape:window-width="1280"
+     inkscape:window-height="726"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       orientation="horizontal"
+       position="560.2177"
+       id="guide3498" />
+    <sodipodi:guide
+       orientation="vertical"
+       position="-1.1009404"
+       id="guide3500" />
+    <sodipodi:guide
+       orientation="vertical"
+       position="744.24107"
+       id="guide3502" />
+    <sodipodi:guide
+       orientation="horizontal"
+       position="1052.726"
+       id="guide3504" />
+    <sodipodi:guide
+       orientation="horizontal"
+       position="983.94426"
+       id="guide6087" />
+    <sodipodi:guide
+       orientation="vertical"
+       position="-66.056425"
+       id="guide6092" />
+    <sodipodi:guide
+       orientation="vertical"
+       position="59.450783"
+       id="guide6094" />
+    <sodipodi:guide
+       orientation="vertical"
+       position="122.20439"
+       id="guide6096" />
+    <sodipodi:guide
+       orientation="horizontal"
+       position="783.86958"
+       id="guide7070" />
+    <sodipodi:guide
+       orientation="vertical"
+       position="168.44388"
+       id="guide7072" />
+    <sodipodi:guide
+       orientation="horizontal"
+       position="854.19933"
+       id="guide9157" />
+    <sodipodi:guide
+       orientation="horizontal"
+       position="1011.9548"
+       id="guide4261" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="capa1">
+    <rect
+       style="fill:url(#linearGradient4237);fill-opacity:1.0;stroke:none;stroke-width:0.6448819;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2160"
+       width="405.41241"
+       height="268.66641"
+       x="-0.65443462"
+       y="-0.36381742"
+       inkscape:export-filename="/home/josep/kademar_center.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       id="g16006"
+       transform="matrix(1.3528631,0,0,1.3528631,0.3884812,0.1283777)"
+       inkscape:export-filename="/home/josep/kademar_center.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         style="fill:url(#radialGradient17096);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.00344586px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="M -1.0230569,27.143573 L -1.1009404,197.80983 C -1.1009404,197.80983 45.336773,198.22463 67.140802,198.22716 C 41.059595,193.20236 72.214568,64.622639 51.107791,35.586734 C 43.619562,25.28541 26.487557,27.222731 23.746622,27.249435 C 1.2076623,27.469036 -1.0230569,27.143573 -1.0230569,27.143573 z "
+         id="path10128"
+         sodipodi:nodetypes="cccssc"
+         inkscape:export-filename="/home/josep/kademar_center.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         style="fill:url(#linearGradient17098);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.00344586px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="M -1.02409,28.048419 L -1.10094,197.74789 C -1.10094,197.74789 44.720822,198.16034 66.235642,198.16285 C 40.500376,193.16652 71.24211,65.315174 50.415293,36.443751 C 43.026388,26.200782 26.121622,28.127129 23.417042,28.153681 C 1.1770409,28.372038 -1.02409,28.048419 -1.02409,28.048419 z "
+         id="path11099"
+         sodipodi:nodetypes="cccssc"
+         inkscape:export-filename="/home/josep/kademar_center.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.00344586px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="M -1.0265008,30.159775 L -1.1009404,197.75305 C -1.1009404,197.75305 43.283602,198.16038 64.123602,198.16285 C 39.195532,193.22854 68.973041,66.963999 48.799464,38.45091 C 41.642315,28.33507 25.267773,30.237508 22.648022,30.263731 C 1.1055911,30.479378 -1.0265008,30.159775 -1.0265008,30.159775 z "
+         id="path13039"
+         sodipodi:nodetypes="cccssc"
+         inkscape:export-filename="/home/josep/kademar_center.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+    </g>
+    <image
+       y="198.16286"
+       x="18.874739"
+       id="image2520"
+       height="51.716854"
+       width="161.36464"
+       sodipodi:absref="/home/josep/Documents/Documents_kademar/logo_kademar_43.png"
+       xlink:href="Documents_kademar/logo_kademar_43.png"
+       inkscape:export-filename="/home/josep/kademar_center.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       id="g4251"
+       transform="translate(412.33383,-45.311409)">
+      <text
+         transform="scale(0.9991012,1.0008996)"
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/home/josep/kademar_center.png"
+         sodipodi:linespacing="125%"
+         id="text6417"
+         y="25.142693"
+         x="7.3235841"
+         style="font-size:22.75049782px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif"
+         xml:space="preserve"><tspan
+           y="25.142693"
+           x="7.3235841"
+           id="tspan2318"
+           sodipodi:role="line">K</tspan></text>
+      <text
+         transform="scale(0.9991012,1.0008996)"
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/home/josep/kademar_center.png"
+         sodipodi:linespacing="125%"
+         id="text6421"
+         y="24.584827"
+         x="28.377127"
+         style="font-size:9.51042366px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif"
+         xml:space="preserve"><tspan
+           y="24.584827"
+           x="28.377127"
+           id="tspan2320"
+           sodipodi:role="line">demar</tspan></text>
+      <text
+         transform="scale(0.9991012,1.0008996)"
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/home/josep/kademar_center.png"
+         sodipodi:linespacing="125%"
+         xml:space="preserve"
+         style="font-size:22.75049782px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif"
+         x="59.97707"
+         y="25.142693"
+         id="text6425"><tspan
+           y="25.142693"
+           x="59.97707"
+           id="tspan2322"
+           sodipodi:role="line">C</tspan></text>
+      <text
+         transform="scale(0.9991012,1.0008996)"
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="/home/josep/kademar_center.png"
+         sodipodi:linespacing="125%"
+         xml:space="preserve"
+         style="font-size:9.51042366px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif"
+         x="77.696609"
+         y="24.584827"
+         id="text6429"><tspan
+           y="24.584827"
+           x="77.696609"
+           id="tspan2324"
+           sodipodi:role="line">enter</tspan></text>
+    </g>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.01;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter3355)"
+       id="rect2228"
+       width="301.07507"
+       height="165.54659"
+       x="91.220772"
+       y="40.407383"
+       inkscape:export-filename="/home/josep/kademar_center.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       ry="11.136683" />
+    <g
+       id="g17036"
+       transform="translate(-356.49547,-2.6116372e-6)">
+      <rect
+         style="fill:#badbee;fill-opacity:1;stroke:none;stroke-width:0.6448819;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect2219"
+         width="744.52203"
+         height="423.29483"
+         x="820.12567"
+         y="68.849625"
+         inkscape:export-filename="/home/josep/Documents/plantilla_apps_kademar.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <g
+         transform="matrix(2.514517,0,0,2.4881524,823.01521,-1.0748982)"
+         id="g16011">
+        <path
+           style="fill:url(#radialGradient17100);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.00344586px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="M -1.0230569,27.143573 L -1.1009404,197.80983 C -1.1009404,197.80983 45.336773,198.22463 67.140802,198.22716 C 41.059595,193.20236 72.214568,64.622639 51.107791,35.586734 C 43.619562,25.28541 26.487557,27.222731 23.746622,27.249435 C 1.2076623,27.469036 -1.0230569,27.143573 -1.0230569,27.143573 z "
+           id="path16013"
+           sodipodi:nodetypes="cccssc"
+           inkscape:export-filename="/home/josep/kademar_center.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           style="fill:url(#linearGradient17102);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.00344586px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="M -1.02409,28.048419 L -1.10094,197.74789 C -1.10094,197.74789 44.720822,198.16034 66.235642,198.16285 C 40.500376,193.16652 71.24211,65.315174 50.415293,36.443751 C 43.026388,26.200782 26.121622,28.127129 23.417042,28.153681 C 1.1770409,28.372038 -1.02409,28.048419 -1.02409,28.048419 z "
+           id="path16015"
+           sodipodi:nodetypes="cccssc"
+           inkscape:export-filename="/home/josep/kademar_center.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+        <path
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.00344586px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="M -1.0265008,30.159775 L -1.1009404,197.75305 C -1.1009404,197.75305 43.283602,198.16038 64.123602,198.16285 C 39.195532,193.22854 68.973041,66.963999 48.799464,38.45091 C 41.642315,28.33507 25.267773,30.237508 22.648022,30.263731 C 1.1055911,30.479378 -1.0265008,30.159775 -1.0265008,30.159775 z "
+           id="path16017"
+           sodipodi:nodetypes="cccssc"
+           inkscape:export-filename="/home/josep/kademar_center.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90" />
+      </g>
+      <image
+         y="386.58804"
+         x="1253.5597"
+         id="image2223"
+         height="94.805237"
+         width="296.33908"
+         sodipodi:absref="/home/josep/Documents/Documents_kademar/logo_kademar_43.png"
+         xlink:href="Documents_kademar/logo_kademar_43.png"
+         inkscape:export-filename="/home/josep/Documents/plantilla_apps_kademar.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <rect
+         y="-0.36381477"
+         x="820.12567"
+         height="69.196869"
+         width="744.52203"
+         id="rect2225"
+         style="fill:#badbec;fill-opacity:1;stroke:none;stroke-width:0.6448819;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         inkscape:export-filename="/home/josep/Documents/plantilla_apps_kademar.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <text
+         xml:space="preserve"
+         style="font-size:41.74277878px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif"
+         x="834.76489"
+         y="46.435108"
+         id="text2227"
+         sodipodi:linespacing="125%"
+         inkscape:export-filename="/home/josep/Documents/plantilla_apps_kademar.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90"><tspan
+           sodipodi:role="line"
+           id="tspan2229"
+           x="834.76489"
+           y="46.435108">C</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:17.44979286px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif"
+         x="867.27679"
+         y="45.411533"
+         id="text2231"
+         sodipodi:linespacing="125%"
+         inkscape:export-filename="/home/josep/Documents/plantilla_apps_kademar.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90"><tspan
+           sodipodi:role="line"
+           id="tspan2233"
+           x="867.27679"
+           y="45.411533">entre</tspan></text>
+      <text
+         id="text2235"
+         y="46.435108"
+         x="928.76489"
+         style="font-size:41.74277878px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif"
+         xml:space="preserve"
+         sodipodi:linespacing="125%"
+         inkscape:export-filename="/home/josep/Documents/plantilla_apps_kademar.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90"><tspan
+           sodipodi:role="line"
+           id="tspan2237"
+           x="928.76489"
+           y="46.435108">A</tspan></text>
+      <text
+         id="text2239"
+         y="45.411533"
+         x="961.27679"
+         style="font-size:17.44979286px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif"
+         xml:space="preserve"
+         sodipodi:linespacing="125%"
+         inkscape:export-filename="/home/josep/Documents/plantilla_apps_kademar.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90"><tspan
+           sodipodi:role="line"
+           id="tspan2241"
+           x="961.27679"
+           y="45.411533">vançat</tspan></text>
+      <text
+         id="text2244"
+         y="46.435108"
+         x="1038.7649"
+         style="font-size:41.74277878px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif"
+         xml:space="preserve"
+         sodipodi:linespacing="125%"
+         inkscape:export-filename="/home/josep/Documents/plantilla_apps_kademar.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90"><tspan
+           sodipodi:role="line"
+           id="tspan2246"
+           x="1038.7649"
+           y="46.435108">D</tspan></text>
+      <text
+         id="text2248"
+         y="45.411533"
+         x="1113.2767"
+         style="font-size:17.44979286px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif"
+         xml:space="preserve"
+         sodipodi:linespacing="125%"
+         inkscape:export-filename="/home/josep/Documents/plantilla_apps_kademar.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90"><tspan
+           sodipodi:role="line"
+           id="tspan2250"
+           x="1113.2767"
+           y="45.411533">ntegració</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:41.74277878px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif"
+         x="1094.7649"
+         y="46.435108"
+         id="text2252"
+         sodipodi:linespacing="125%"
+         inkscape:export-filename="/home/josep/Documents/plantilla_apps_kademar.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90"><tspan
+           sodipodi:role="line"
+           id="tspan2254"
+           x="1094.7649"
+           y="46.435108">I</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         xml:space="preserve"
+         style="font-size:17.44979286px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif"
+         x="1073.0911"
+         y="45.411533"
+         id="text2256"
+         inkscape:export-filename="/home/josep/Documents/plantilla_apps_kademar.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90"><tspan
+           sodipodi:role="line"
+           id="tspan2258"
+           x="1073.0911"
+           y="45.411533">e</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Serif"
+         x="845.17773"
+         y="125.44489"
+         id="text2260"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan2262"
+           x="845.17773"
+           y="125.44489">Software</tspan><tspan
+           sodipodi:role="line"
+           id="tspan2264"
+           x="845.17773"
+           y="147.94489" /><tspan
+           sodipodi:role="line"
+           id="tspan2266"
+           x="845.17773"
+           y="170.44489">Hardware</tspan><tspan
+           sodipodi:role="line"
+           id="tspan2268"
+           x="845.17773"
+           y="192.94489" /><tspan
+           sodipodi:role="line"
+           id="tspan2270"
+           x="845.17773"
+           y="215.44489">Xarxa</tspan><tspan
+           sodipodi:role="line"
+           id="tspan2272"
+           x="845.17773"
+           y="237.94489" /><tspan
+           sodipodi:role="line"
+           id="tspan2274"
+           x="845.17773"
+           y="260.44489">Sistema</tspan><tspan
+           sodipodi:role="line"
+           id="tspan2276"
+           x="845.17773"
+           y="282.94489" /><tspan
+           sodipodi:role="line"
+           id="tspan2278"
+           x="845.17773"
+           y="305.44489" /><tspan
+           sodipodi:role="line"
+           id="tspan2280"
+           x="845.17773"
+           y="327.94489">Sortir</tspan></text>
+      <rect
+         style="fill:#ffffff;fill-opacity:0.60153258;stroke:none;stroke-width:0.01;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect2282"
+         width="552.91113"
+         height="292.31873"
+         x="988.85046"
+         y="102.89281" />
+    </g>
+    <rect
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="/home/josep/kademar_center.png"
+       y="492.14447"
+       x="-0.65443462"
+       height="268.66641"
+       width="405.41241"
+       id="rect3363"
+       style="fill:url(#linearGradient3377);fill-opacity:1;stroke:none;stroke-width:0.6448819;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       ry="11.136683"
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="/home/josep/kademar_center.png"
+       y="532.91571"
+       x="91.220772"
+       height="165.54659"
+       width="301.07507"
+       id="rect3375"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.01;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter3355)"
+       transform="matrix(1.1055218,0,0,1,-41.39577,0)" />
+    <image
+       y="713.80304"
+       x="11.303617"
+       id="image3441"
+       height="35.756161"
+       width="44.207619"
+       sodipodi:absref="/home/josep/logokademar.bmp"
+       xlink:href="/home/josep/logokademar.bmp"
+       inkscape:export-filename="/home/josep/kademar_center.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+  </g>
+</svg>

@@ -1,0 +1,58 @@
+fstab cdrom -> hfsplus??!
+fstab usbdisk -> en fstab?!
+
+checkspace   cron + fifo (dbus)
+
+script  apt-get update  + fifo
+
+configure settings  APT  (cron)
+
+Fer Settings Form Configuracio
+
+icones kademarcenter menu
+
+mirar per arreglar  threads   (processEvents)
+
+passar system  -> QProcess???
+
+NETWORK hal control
+
+wireless config  fifo integration + no rebenta config + eth LO detection + for 1 2 3 wifi scan fins que trobi + allow-hotplug
+
+Gravacio de les config de hotplug
+
+Gravacio de les config de kademarcenter
+
+Fer les configs inicials
+
+Fer la interface de network manager
+
+ati/nvidia  detect on start (+ no detectar mes)
+
+----------------
+
+FET:
+
+detectahw  umount dispositius
+
+start cupsys on printer  & initial device mount
+
+apt-get autoupdate [ -p   kademarcenter fifo
+
+kademarcenter  no dependencia de  UI
+
+us de scripts.py  per  bash
+
+comprobar OK del fifo
+
+fer be el initial device mount (separar tot de mounts)
+
+NO: funcions_K locale de QT ?
+
+accions on  Qthread  instancia i crea
+
+accions languages
+
+work OK accions (CD's)
+
+integrar kademarstart

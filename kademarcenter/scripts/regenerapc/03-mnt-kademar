@@ -1,0 +1,21 @@
+#!/bin/bash
+#
+# Creat per Adonay Sanz per la kademar - 1 oct 2005
+#
+
+dispositius=`ls /mnt --ignore=cdrom* --ignore=fd* --ignore=dvd* --ignore=disquet* 2>/dev/null`
+
+if [ -n "$dispositius" ]; then
+	ls -1 /mnt --ignore=cdrom* --ignore=fd* --ignore=dvd* --ignore=disquet* | while read i
+	do
+	#Munta'l i si falla, muntal com a NTFS (si ha fallat, solament pot ser un NTFS-3G que al no estar CLEAN, no el munta
+		[ -z "`grep "$i" /proc/mounts`" ] && mount "/mnt/$i" || mount -t ntfs "/dev/$i" "/mnt/$i" -o gid=users,umask=0000,nls=iso8859-1 2>/dev/null >&2
+
+		[ ! -e "/mnt/$i/mnt" -a ! -e "/mnt/$i/home" ] && chmod 777 "/mnt/$i"
+	done
+	
+fi
+
+
+
+exit 0

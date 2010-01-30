@@ -1,0 +1,59 @@
+#!/bin/bash
+# set -x
+###
+# Script to have a initial mountage of already devices pluged
+# Adonay Sanz Alsina  1 Apr 2008
+# GNU/GPL 2 or higher
+###
+
+cd /sys/block
+var=""
+for i in `ls --ignore=ram* --ignore=fd*`
+do
+	#If not mounted
+# 	hd="`echo $i | sed s/sr/scd/g`"
+	hd=$i
+	case "$hd" in
+	
+	loop*|nbd*|ram*)
+		continue
+	;;
+	
+	#If it's a cdrom, mount it, if it's not mounted
+	scd*|sr*)
+		if [ -n "`grep "$hd" /proc/mounts`" ]; then
+			umount /dev/$hd >/dev/null  2>&1
+		fi
+		pmount $hd >/dev/null  2>&1
+	;;
+	
+# 	Else, search partitions and warn to kademarcenter
+	*)
+		if [ -z "`grep $hd /proc/mounts`" ]; then
+	# 		echo $hd Not Mounted
+			udi="`sh /usr/share/kademar/utils/kademarcenter/scripts/grephalinfo.sh  /dev/$hd info.udi`"
+			var="$var $udi"
+			for part in `ls /sys/block/$hd | sed s./sys/block/$hd/..g`
+			do
+			    case "$part" in
+			    $hd*)
+			    udi="`sh /usr/share/kademar/utils/kademarcenter/scripts/grephalinfo.sh  /dev/$part info.udi`"
+			    var="$var $udi"
+			    ;;
+			    esac
+			done
+			
+		fi
+		;;
+	esac
+done
+
+#add media where you have booted  (to mount different USB partitions)
+if [ -e /mnt/live/data ]; then
+	udi="$(sh /usr/share/kademar/utils/kademarcenter/scripts/grephalinfo.sh  /dev/`cat /mnt/live/data` info.udi)"
+	var="$var $udi"
+
+	sudo /usr/share/kademar/utils/kademarcenter/scripts/mount_boot_data_device.sh 2>/dev/null >&2
+fi 
+# echo "non mounted final"
+echo $var

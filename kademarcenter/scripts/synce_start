@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#Prepare to connect to ipaq
+
+sudo /usr/bin/synce-serial-start &
+
+dccm 

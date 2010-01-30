@@ -1,0 +1,18 @@
+Source: kademarcenter
+Section: admin
+Priority: optional
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.7.3
+Homepage: http://www.kademar.org
+
+Package: kademarcenter
+Architecture: all
+Depends: kademar-base, python-qt4, python-qt4-dbus, python-pyinotify, python-dbus, python-apt, pmount, numlockx, laptop-detect, hal
+Description: kademarcenter it's the main center of kademar
+ kademarcenter using hal & dbus configures all Hotplug devices, like wlan, bluetooth, pendrives, etc .
+ it has an UsbTray integrated to umount devices .
+ hotplugactions of kademarcenter allows you to execute programs dependent of what hardware do you have plug it .
+ kademarstart autoupdate fstab to update all your .
+ it has a fifo to talk with it .
+ kademarcenter also contains kademarstart . 

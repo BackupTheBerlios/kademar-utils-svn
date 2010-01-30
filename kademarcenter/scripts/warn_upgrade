@@ -1,0 +1,6 @@
+#!/bin/bash
+
+#Script per avisar de que es comprovi els updates
+# Script utilitzat per  crontab (cron de l'usuari)
+
+[ -p  /tmp/kademarcenter.fifo ] && echo apt= > /tmp/kademarcenter.fifo 

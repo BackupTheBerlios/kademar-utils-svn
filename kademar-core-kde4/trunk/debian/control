@@ -1,0 +1,14 @@
+Source: kademar-core-kde4
+Section: admin
+Priority: optional
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.8.0
+Homepage: http://www.kademar.org
+
+Provides: kademar-desktop-config
+Package: kademar-core-kde4
+Architecture: all
+Suggests: kademar-base
+Description: kademar Core
+ Config files for kademar Core

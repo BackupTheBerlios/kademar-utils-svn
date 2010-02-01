@@ -8,7 +8,7 @@ Homepage: http://www.kademar.org
 
 Package: kademar-base
 Architecture: any
-Depends: modconf, libfuse2, fuse-utils, os-prober, hal, console-data, console-tools, ash, sudo, dialog, e2fsprogs, 
+Depends: modconf, libfuse2, fuse-utils, os-prober, hal, console-setup, ash, sudo, dialog, e2fsprogs, 
 Description: Basic Metapackage for all kademar distributions
  Contains .
  * All basic scripts to start the system .

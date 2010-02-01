@@ -9,7 +9,7 @@ Homepage: http://www.kademar.org
 Package: kademar-base-desktop
 Architecture: all
 Provides: instalador
-Depends: kademar-base, kademar-desktop-config, cadi, kademarcenter, python-qt4, modconf, xterm, libfuse2, fuse-utils, os-prober, xloadimage, reiserfsprogs, console-data, console-tools, mesa-utils, e2fsprogs, gparted, initramfs-tools|yaird
+Depends: kademar-base, kademar-desktop-config, cadi, kademarcenter, python-qt4, modconf, xterm, libfuse2, fuse-utils, os-prober, xloadimage, reiserfsprogs, console-setup, mesa-utils, e2fsprogs, gparted, initramfs-tools|yaird
 Suggests: initng, libreiserfs0.3-0, audioconversor
 Description: Base Package for all kademar Linux Desktops
  This package contains: .

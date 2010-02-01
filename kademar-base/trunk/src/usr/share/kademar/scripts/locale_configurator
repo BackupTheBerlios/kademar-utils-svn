@@ -314,14 +314,25 @@ esac
 
 echo "LANG=$LANG$OPTIONAL"        	      > "$DESTI$locale_file"
 
-# Load Key definition
-[ ! -e /etc/console/ ] && mkdir -p /etc/console/
-[ -e "$DESTI/etc/console/boottime.kmap.gz" ] && rm -fr "$DESTI/etc/console/boottime.kmap.gz"
-[ -e "$DESTI/etc/boottime.kmap.gz" ] && rm -fr "$DESTI/etc/boottime.kmap.gz"
-cp "$DESTI/usr/share/keymaps/i386/qwerty/$KEYTABLE.kmap.gz" "$DESTI/etc/console/boottime.kmap.gz"
-cp "$DESTI/usr/share/keymaps/i386/qwerty/$KEYTABLE.kmap.gz" "$DESTI/etc/boottime.kmap.gz"
 
-loadkeys $KEYTABLE >/dev/null
+cat > /etc/default/keyboard << EOF
+# If you change it, restart HAL.
+# Can have the same parameters /etc/X11/xorg.conf
+
+XKBMODEL="pc105"
+XKBLAYOUT="$XKEYBOARD"
+XKBVARIANT=""
+XKBOPTIONS=""
+EOF
+
+# Load Key definition
+# [ ! -e /etc/console/ ] && mkdir -p /etc/console/
+# [ -e "$DESTI/etc/console/boottime.kmap.gz" ] && rm -fr "$DESTI/etc/console/boottime.kmap.gz"
+# [ -e "$DESTI/etc/boottime.kmap.gz" ] && rm -fr "$DESTI/etc/boottime.kmap.gz"
+# cp "$DESTI/usr/share/keymaps/i386/qwerty/$KEYTABLE.kmap.gz" "$DESTI/etc/console/boottime.kmap.gz"
+# cp "$DESTI/usr/share/keymaps/i386/qwerty/$KEYTABLE.kmap.gz" "$DESTI/etc/boottime.kmap.gz"
+
+# loadkeys $KEYTABLE >/dev/null
 
 #Actualitzacio del MOTD, si la variable no és nul·la
 [ -n "$motd" ] && rm -f "$DESTI$motd_file" && echo "$motd" > "$DESTI$motd_file"

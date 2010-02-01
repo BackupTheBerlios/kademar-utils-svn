@@ -313,9 +313,9 @@ en*|*)
 esac
 
 
-rm -f "$DESTI/etc/boottime.kmap.gz"  "$DESTI/etc/console/boottime.kmap.gz"
-ln -s "/usr/share/keymaps/i386/qwerty/es.kmap.gz" "$DESTI/etc/boottime.kmap.gz"
-ln -s "/usr/share/keymaps/i386/qwerty/es.kmap.gz" "$DESTI/etc/console/boottime.kmap.gz"
+# rm -f "$DESTI/etc/boottime.kmap.gz"  "$DESTI/etc/console/boottime.kmap.gz"
+# ln -s "/usr/share/keymaps/i386/qwerty/es.kmap.gz" "$DESTI/etc/boottime.kmap.gz"
+# ln -s "/usr/share/keymaps/i386/qwerty/es.kmap.gz" "$DESTI/etc/console/boottime.kmap.gz"
 
 
 #Si s'ha configurat particioswap, configura la partició de resume

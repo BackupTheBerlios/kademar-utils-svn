@@ -7,9 +7,9 @@
 #Paràmetre = programa a executar
 prog="$1"
 
-. /etc/environment
+. /etc/default/locale
 	
-case "$LANGUAGE" in
+case "$LANG" in
 ca*)
 	title="Afegir Registre"
 	miss="Vols afegir el fitxer al registre de l'emulador de Windows?"

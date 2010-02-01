@@ -113,8 +113,8 @@ Icon=/usr/share/kademar/icons/Pc.png" > /Pc/.directory
 fi
 
 #Prepare preposition on, through languages
-. /etc/environment
-case "$LANGUAGE" in
+. /etc/default/locale
+case "$LANG" in
 ca*)
 	on="en"
 	hd="Unitat de disc"
@@ -244,7 +244,7 @@ do
 		;;
 		fd*)
 		if [ ! -L /Pc/"$nom_fd$nou_nom - $i"  -a -z "`ls -l /Pc | grep \"$i \"`" ]; then
-			case "$LANGUAGE" in
+			case "$LANG" in
 			ca*)
 				nom_fd="disquet"
 			;;

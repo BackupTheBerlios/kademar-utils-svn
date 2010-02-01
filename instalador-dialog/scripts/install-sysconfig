@@ -291,13 +291,13 @@ fi
 
 
 #Carreguem les variables de systema
-. /etc/environment
+. /etc/default/locale
 motd_file="$DESTI/etc/motd"
 issue_file="$DESTI/etc/issue"
 rm -fr $motd_file
 versio=`cat /etc/kademar-release`
 
-case "$LANGUAGE" in
+case "$LANG" in
 ca*)
 	echo "Benvinguts a  kademar $versio  GNU/Linux  (Kernel `uname -r`)" > $motd_file
 	echo "Benvinguts a  kademar $versio  GNU/Linux  (Kernel `uname -r`)" > $issue_file

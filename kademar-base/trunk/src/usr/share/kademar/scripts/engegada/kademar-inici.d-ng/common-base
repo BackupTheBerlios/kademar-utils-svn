@@ -12,7 +12,7 @@
 user="kademar"
 
 #Idioma
-. /etc/environment
+. /etc/default/locale
 
 #Portàtil
 if [ "`laptop-detect ; echo $?`" != 0 ]; then
@@ -23,7 +23,7 @@ else
 	laptop=yes
 fi
 
-case "$LANGUAGE" in
+case "$LANG" in
 ca*)
 	documents=Documents
 	desktop=Escriptori

@@ -26,9 +26,9 @@ else
 	DESTI=""
 fi
 
-. /etc/environment
+. /etc/default/locale
 
-case "$LANGUAGE" in
+case "$LANG" in
 ca*)
 	documents=Documents
 	desktop=Escriptori

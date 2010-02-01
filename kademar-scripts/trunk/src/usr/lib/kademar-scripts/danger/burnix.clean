@@ -25,7 +25,7 @@ rm -fR \
         /var/tmp/* \
 	/tmp/* \
 	/etc/skel/* \
-	/etc/environment \
+	/etc/default/locale \
         /var/tmp/.??* \
         /home/*/.openoffice/*/.lock \
         var/cache/apt/archives/*.deb \

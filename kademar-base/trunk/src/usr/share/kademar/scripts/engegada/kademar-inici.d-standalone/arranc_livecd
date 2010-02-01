@@ -14,9 +14,9 @@ user="kademar"
 trobat="no"
 fitxer="configs.tbz"
 
-. /etc/environment
+. /etc/default/locale
 
-case "$LANGUAGE" in
+case "$LANG" in
 ca*)
 	echo 'Cercant Configuracions'
 ;;
@@ -53,7 +53,7 @@ if [ $comprovant = "yes" ]; then
 	cp -Rp /initrd/rootsquash/home/$user/.firefox /home/$user
 	( killall pump 2>/dev/null ; killall dhclient 2>/dev/null ) && sleep 2 && killall -9 pump 2>/dev/null && sleep 2
 	
-	case "$LANGUAGE" in
+	case "$LANG" in
 	ca*)
 		echo "Engegant Serveis"
 	;;
@@ -67,7 +67,7 @@ if [ $comprovant = "yes" ]; then
 	
 	for i in  ifupdown networking; do [ -x /etc/init.d/$i ] && /etc/init.d/$i start 2>/dev/null; done 
 
-	case "$LANGUAGE" in
+	case "$LANG" in
 	ca*)
 		echo "Configuracio Personal Trobada"
 	;;
@@ -167,7 +167,7 @@ X-KDE-SubstituteUID=false" > $1/Instal.desktop
 
 
 if [ "$trobat" = "no" ]; then
-	case "$LANGUAGE" in
+	case "$LANG" in
 	ca*)
 		echo 'Creant Configuracio Personal'
 	;;
@@ -192,7 +192,7 @@ if [ "$trobat" = "no" ]; then
 			resposta_numlock=off
 			rm -f /usr/share/autostart/syndock.desktop
 		fi
-		case "$LANGUAGE" in
+		case "$LANG" in
 		ca*)
 			crea_kademar_links /home/$user/Escriptori _ca /home/$user/.kde/Autoengega
 			ln -s /usr/share/kademar/scripts/html-escriptori /home/$user/.kde/Autoengega/htm

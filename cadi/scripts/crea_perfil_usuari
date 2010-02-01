@@ -23,9 +23,9 @@ done
 if [ "$crea_home" = "creahome_si" ]; then
 
 	#Load language config
-	. /etc/environment
+	. /etc/default/locale
 	
-	case "$LANGUAGE" in
+	case "$LANG" in
 
         ca*)
                 start=Autoengega
@@ -131,7 +131,7 @@ user_pref("security.warn_viewing_mixed", false);' >> /home/$user/.mozilla/firefo
 	# ICEWM ICONS #
 	###############
 	[ ! -e /home/$user/.idesktop ] && mkdir /home/$user/.idesktop
-        case "$LANGUAGE" in
+        case "$LANG" in
         ca*)
                 missatge_cadi="CADI"
                 tooltip_cadi="Configurar Sistema"

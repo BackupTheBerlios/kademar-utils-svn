@@ -9,11 +9,11 @@ else
 	dirbase=$1
 fi
 
-. /etc/environment
+. /etc/default/locale
 
 fitxer='/.kde/share/config/kdeglobals'
 
-case "$LANGUAGE" in
+case "$LANG" in
 ca*)
 escriptori="Escriptori"
 autoengega='Autoengega'

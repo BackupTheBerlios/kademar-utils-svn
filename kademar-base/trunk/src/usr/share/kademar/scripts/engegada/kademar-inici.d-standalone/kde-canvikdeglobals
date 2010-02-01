@@ -24,11 +24,11 @@ if [ "$user" = skel ]; then
 	dirbase="/etc"
 fi
 
-. /etc/environment
+. /etc/default/locale
 
 fitxer='/.kde/share/config/kdeglobals'
 
-case "$LANGUAGE" in
+case "$LANG" in
 ca*)
 escriptori='Escriptori'
 autoengega='.kde/Autoengega'

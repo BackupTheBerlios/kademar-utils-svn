@@ -7,8 +7,8 @@ contador=0
 format=jpg
 
 #Escull quin llenguatge te
-. /etc/environment
-case "$LANGUAGE" in
+. /etc/default/locale
+case "$LANG" in
 ca*)
 	fitxer="captura de pantalla"
 	missatge="Captura de Pantalla Realitzada"

@@ -5,7 +5,7 @@
 
 
 #Càrrega del fitxer d'idioma
-. /etc/environment
+. /etc/default/locale
 
 # posa de dirbase l'arrel
 dirbase="/"
@@ -13,7 +13,7 @@ dirbase="/"
 
 fitxers_de_sistema=' etc/kde3/kdm/kdmrc'
 
-case "$LANGUAGE" in
+case "$LANG" in
 ca*)
 	llengua=ca
 	pais=es

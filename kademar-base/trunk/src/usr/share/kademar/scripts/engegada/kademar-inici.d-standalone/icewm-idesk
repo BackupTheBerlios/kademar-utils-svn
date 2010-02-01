@@ -16,7 +16,7 @@ user="kademar"
 # 	resposta_numlock=off
 # fi
 
-. /etc/environment
+. /etc/default/locale
 
 
 ###############

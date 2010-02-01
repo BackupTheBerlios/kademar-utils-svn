@@ -15,7 +15,7 @@ paperera=['Paperera','Papelera','Trash']
 def idioma():
     # determina quin idioma hi ha instalat mirant si existeix un fitxer determinat a /var, el ca, el es o el en
     idiom=0
-    fitxer='/etc/environment'
+    fitxer='/etc/default/locale'
     for i in range(len(llenguatge)):
         if os.path.exists(fitxer):
             f=open(fitxer)

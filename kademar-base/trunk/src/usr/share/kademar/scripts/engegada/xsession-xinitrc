@@ -6,7 +6,7 @@ umask 022
 
 USER="kademar"
 
-. /etc/environment
+. /etc/default/locale
 [ -e /var/xserver ] && . /var/xserver
 
  [ -n "$KDEDIR" ] || KDEDIR="/usr"
@@ -316,8 +316,8 @@ MESSAGE=""
 if [ -n "$1" ]; then
  case "$1" in
   lowmem)
-   case "$LANGUAGE" in
-    de|at|ch) MESSAGE="
+   case "$LANG" in
+    de*|at*|ch*) MESSAGE="
 Nicht genug Speicher zum Start von $DESKTOP!
 (Mindestens $2 MB benötigt.)
 
@@ -326,7 +326,7 @@ Achtung: Nicht alle Programme im linke-
 Maustaste-Menü werden funktionieren!
 "
     ;;
-    es|ca|gl|eu) MESSAGE="
+    es*|ca*|gl*|eu*) MESSAGE="
 No hay suficiente memoria para arrancar $DESKTOP!
 (Se necesitan al menos $2 MB.)
 
@@ -349,8 +349,8 @@ work here!
    esac
    ;;
   invalidwm)
-   case "$LANGUAGE" in
-    de|at|ch) MESSAGE="
+   case "$LANG" in
+    de*|at*|ch*) MESSAGE="
 Desktop-Manager '$DESKTOP' wird nicht unterstützt!
 
 Starte stattdessen den TWM Windowmanager.
@@ -358,7 +358,7 @@ Achtung: Nicht alle Programme im linke-
 Maustaste-Menü werden funktionieren!
 "
     ;;
-    es|ca|gl|eu) MESSAGE="
+    es*|ca*|gl*|eu*) MESSAGE="
 El gestor de ventanas '$DESKTOP' no esta soportado!
 
 Usando el gestor de ventanas TWM en su lugar.

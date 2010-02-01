@@ -1,8 +1,8 @@
 #!/bin/bash
 #set -x
 
-. /etc/environment
-case "$LANGUAGE" in
+. /etc/default/locale
+case "$LANG" in
 ca*)
 root="Necessites ser ROOT"
 interface="Introdueix la Interface Wifi a utilitzar"

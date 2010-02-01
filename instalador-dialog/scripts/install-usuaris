@@ -47,8 +47,8 @@ rm -fr $DESTI/etc/group?*
 # rm -fr $DESTI/home/$usuari_nom/.openoffice* $DESTI/home/$usuari_nom/.sversionrc
 
 #Canvi del HTML d'engegada del SKEL - la única cosa que modifikem del skel (tot lo demés es fa amb el CADI)
-[ -z "$LANGUAGE" ] && . /etc/environment
-case "$LANGUAGE" in
+[ -z "$LANG" ] && . /etc/default/locale
+case "$LANG" in
 ca*)
 	lang=ca
 	lang_firefox=ca

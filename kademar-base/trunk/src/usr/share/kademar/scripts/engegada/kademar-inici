@@ -259,7 +259,7 @@ versio=`cat /etc/kademar-release`
 # START CONFIGURE LOCALES #
 ###########################
 #Variable definition
-locale_file="/etc/environment"
+locale_file="/etc/default/locale"
 
 ### localization
 # Allow language specification via commandline. The default language
@@ -276,16 +276,16 @@ motd_file=/etc/motd
 sh /usr/share/kademar/scripts/locale_configurator $LANGUAGE
 
 #Load configured locales
-. /etc/environment
+. /etc/default/locale
 
 #Export it now, in order to get translated orders that can be translated
-export LANGUAGE=$LANG LANG COUNTRY CHARSET TZ
+export LANG=$LANG LANG COUNTRY CHARSET TZ
 
 #Refresh console with new parameters
 /etc/init.d/console-screen.sh restart
 
 #Load next messages
-case $LANGUAGE in
+case "$LANG" in
 ca*)
 . /usr/share/kademar/scripts/engegada/kademar-inici_lang-ca
 ;;

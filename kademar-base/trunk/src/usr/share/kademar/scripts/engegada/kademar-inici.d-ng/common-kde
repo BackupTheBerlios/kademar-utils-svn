@@ -2,7 +2,7 @@
 # Creat per Adonay Sanz per la kademar  -  Octubre 2005
 # Modificat  03-11-06
 
-case "$LANGUAGE" in
+case "$LANG" in
 ca*)
 	kfile_home="Carpeta Inicial"
 	kfile_net="Carpetes de xarxa"

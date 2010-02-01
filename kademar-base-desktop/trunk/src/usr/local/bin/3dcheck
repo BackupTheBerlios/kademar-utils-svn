@@ -12,9 +12,9 @@ accel=`glxinfo | grep "direct rendering" | awk ' { print $3 } ' | tr A-Z a-z`
 
 if [ "$accel" != "yes" ]; then
 
-	. /etc/environment
+	. /etc/default/locale
 	
-	case "$LANGUAGE" in
+	case "$LANG" in
 	ca*)
 		title="Acceleració Gràfica"
 		miss="No tens acceleració gràfica.\n L'aplicació segurament no funcionarà.\n Vols provar-ho igualment?"

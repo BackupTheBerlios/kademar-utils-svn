@@ -9,9 +9,9 @@
 # documents                  -  If you want all users
 
 #Load language conf_file
-. /etc/environment
+. /etc/default/locale
 
-case "$LANGUAGE" in
+case "$LANG" in
 ca*)
 	docs="Documents"
 	desk="Escriptori"

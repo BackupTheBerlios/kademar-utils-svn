@@ -10,7 +10,7 @@
 
 user="kademar"
 
-case "$LANGUAGE" in
+case "$LANG" in
 ca*)
 	documents=Documents
 	desktop=Escriptori

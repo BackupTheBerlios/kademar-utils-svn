@@ -19,7 +19,7 @@
 [ ! -e "/home/$user/.idesktop" ] && mkdir -p "/home/$user/.idesktop"
 #Lenguage Messages
         rm -f /home/$user/.icewm/menu
-        case "$LANGUAGE" in
+        case "$LANG" in
         ca*)
                 missatge_cadi="CADI"
                 tooltip_cadi="Configurar Sistema"

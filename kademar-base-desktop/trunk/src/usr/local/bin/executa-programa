@@ -48,8 +48,8 @@ if [ $result != "0" ]; then
 	if [ -n "`whereis csh | sed s/csh://g`" ]; then
 		csh "$prog"
 	else
-		. /etc/environment
-		case "$LANGUAGE" in
+		. /etc/default/locale
+		case "$LANG" in
 		ca*)
 		kdialog  --sorry "No tens el programa 'csh' encarregat d'executar $prog. Necessites tenir 'csh' per utilitzar-lo. \n Instal·la'l i torna-ho a provar."
 		;;
@@ -79,8 +79,8 @@ if [ $result != "0" ]; then
 	if [ -n "`whereis wine | sed s/wine://g`" ]; then
 		wine "$prog"
 	else
-		. /etc/environment
-		case "$LANGUAGE" in
+		. /etc/default/locale
+		case "$LANG" in
 		ca*)
 		kdialog  --sorry "No tens el programa 'wine' encarregat d'executar $prog. Necessites tenir 'wine' per utilitzar-lo. \n Instal·la'l i torna-ho a provar."
 		;;

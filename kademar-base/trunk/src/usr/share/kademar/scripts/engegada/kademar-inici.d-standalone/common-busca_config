@@ -13,9 +13,9 @@ user="kademar"
 trobat="no"
 fitxer="configs.tbz"
 
-. /etc/environment
+. /etc/default/locale
 
-case "$LANGUAGE" in
+case "$LANG" in
 ca*)
 	echo 'Cercant Configuracions'
 ;;
@@ -47,7 +47,7 @@ if [ $comprovant = "yes" ]; then
 	cp -Rp /initrd/rootsquash/home/$user/.firefox /home/$user
 	( killall pump 2>/dev/null ; killall dhclient 2>/dev/null ) && sleep 2 && killall -9 pump 2>/dev/null && sleep 2
 	
-	case "$LANGUAGE" in
+	case "$LANG" in
 	ca*)
 		echo "Engegant Serveis"
 	;;
@@ -61,7 +61,7 @@ if [ $comprovant = "yes" ]; then
 	
 	for i in  ifupdown networking; do [ -x /etc/init.d/$i ] && /etc/init.d/$i start 2>/dev/null; done 
 
-	case "$LANGUAGE" in
+	case "$LANG" in
 	ca*)
 		echo "Configuracio Personal Trobada"
 	;;

@@ -18,7 +18,7 @@
 # set -x
 
 #Càrrega del fitxer d'idioma
-. /etc/environment
+. /etc/default/locale
 
 # comproba si s'ha passat un parametre de directori base i, si no, posa el arrel
 if [ -z "$2" ]; then
@@ -38,7 +38,7 @@ fitxers_de_sistema='etc/kde3/kdm/kdmrc'
 fitxers_de_home='.kde/share/config/kdeglobals .audacity-data/audacity.cfg .giFT/giftd.conf .aMule/amule.conf .amsn/config.xml'
 #fitxer=['/home/kademar/kdeglobals','/home/kademar/kdmrc','/home/kademar/.audacity-data/audacity.cfg']  # aquests han estat de prova
 
-case "$LANGUAGE" in
+case "$LANG" in
 ca*)
     llengua_orig=ca
     llengua_kde="ca:es"

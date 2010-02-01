@@ -18,7 +18,7 @@
 # . $pathinstaller/sourcables/functions
 
 #Load configured locales
-. /etc/environment
+. /etc/default/locale
 
 #Load kademar configuration
 . /usr/share/kademar/config-livecd
@@ -27,7 +27,7 @@ version="`lsb_release -r -s`"
 codename="`lsb_release -c -s`"
 
 #Load localization language
-case "$LANGUAGE" in
+case "$LANG" in
 ca*)
 . $pathinstaller/translations/installer-lang_ca
 #used on config languages
@@ -593,7 +593,7 @@ if [ -e "$DESTI/usr/share/kademar/install.log.tar.gz" ]; then
 	rm -f "$DESTI/usr/share/kademar/install.log.tar.gz"
 fi
 
-tar cfz "$DESTI/usr/share/kademar/install.log.tar.gz" "/tmp/kademar*" "/tmp/particions*" "/tmp/instalador-environment" "/tmp/particio_swap" "/var/xserver" "/var/xsession*" "/var/es" "/var/en" "/var/ca" "/etc/environment" "/etc/kademar-release" "/usr/share/kademar/config*" "/var/kademar*" "$DESTI/boot/grub/menu.lst" 2>/dev/null
+tar cfz "$DESTI/usr/share/kademar/install.log.tar.gz" "/tmp/kademar*" "/tmp/particions*" "/tmp/instalador-environment" "/tmp/particio_swap" "/var/xserver" "/var/xsession*" "/var/es" "/var/en" "/var/ca" "/etc/default/locale" "/etc/kademar-release" "/usr/share/kademar/config*" "/var/kademar*" "$DESTI/boot/grub/menu.lst" 2>/dev/null
 chmod 400 "$DESTI/usr/share/kademar/install.log.tar.gz"
 chown root:root "$DESTI/usr/share/kademar/install.log.tar.gz"
 

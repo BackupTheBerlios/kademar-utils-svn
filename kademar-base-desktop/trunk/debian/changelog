@@ -1,3 +1,12 @@
+kademar-base-desktop (4.9.5) testing; urgency=low
+
+  * FEATURE: Support to Debian Squeeze
+  * FEATURE: Installer - Complete support to Grub 2 (mantaining 1 too)
+  * FEATURE: Support to bash 4.1 (Removed ==)
+  * MODIFIED: Folder of icons
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Fri, 26 Mar 2010 15:12:58 +0000
+
 kademar-base-desktop (4.9.1) testing; urgency=low
 
   * FIX: Removed Pulseaudio system start

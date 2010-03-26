@@ -9,7 +9,7 @@
 # Modificacions per  Kademar 5 Nano - 9-12-08
 
 
-[ "$UID" != 0 ] && echo "NEED TO BE ROOT" && exit
+[ "`whoami`" != root ] && echo "NEED TO BE ROOT" && exit
 
 
 if [ ! -e /tmp/instaladornano-running ]; then

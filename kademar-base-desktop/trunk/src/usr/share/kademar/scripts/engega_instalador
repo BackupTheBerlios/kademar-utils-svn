@@ -8,7 +8,7 @@
 # Modificacions per  kademar 5 - 28-03-08
 # Modificacio - tret la part de getSystemInformation (now on installer as function/script)
 
-[ "$UID" != 0 ] && echo "NEED TO BE ROOT" && exit
+[ "`whoami`" != root ] && echo "NEED TO BE ROOT" && exit
 
 if [ ! -e /tmp/instalador-running ]; then
     touch /tmp/instalador-running

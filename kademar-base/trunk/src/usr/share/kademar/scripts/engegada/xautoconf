@@ -270,35 +270,28 @@ $display_modes
 $display_modes
         EndSubSection"
     forcesync="#HorizSync     28-49
-#    VertRefresh   43-72"
+    #VertRefresh   43-72"
 
 
 #Determine Keyboard
 # keyboard_model=`hwinfo --keyboard | grep "XkbModel" | sed s/"    XkbModel: "//g`
 keyboard_model="pc105"
 keyboard_layout="es"
+keyboard_rules="xorg"
 
 keyboard_driver="kbd"
-keyboard_rules="xorg"
 input_device='InputDevice    "Generic Keyboard"
     InputDevice    "Generic Mouse"'
-section_files='
-	FontPath	"/usr/share/fonts/X11/misc"
-	FontPath	"/usr/X11R6/lib/X11/fonts/misc"
-	FontPath	"/usr/share/fonts/X11/cyrillic"
-	FontPath	"/usr/X11R6/lib/X11/fonts/cyrillic"
-	FontPath	"/usr/share/fonts/X11/100dpi/:unscaled"
-	FontPath	"/usr/X11R6/lib/X11/fonts/100dpi/:unscaled"
-	FontPath	"/usr/share/fonts/X11/75dpi/:unscaled"
-	FontPath	"/usr/X11R6/lib/X11/fonts/75dpi/:unscaled"
-	FontPath	"/usr/share/fonts/X11/Type1"
-	FontPath	"/usr/X11R6/lib/X11/fonts/Type1"
-	FontPath	"/usr/share/fonts/X11/100dpi"
-	FontPath	"/usr/X11R6/lib/X11/fonts/100dpi"
-	FontPath	"/usr/share/fonts/X11/75dpi"
-	FontPath	"/usr/X11R6/lib/X11/fonts/75dpi"
-	# path to defoma fonts
-	FontPath	"/var/lib/defoma/x-ttcidfont-conf.d/dirs/TrueType"'
+section_files='ModulePath   "/usr/lib/xorg/modules"
+	FontPath     "/usr/share/fonts/X11/misc"
+	FontPath     "/usr/share/fonts/X11/cyrillic"
+	FontPath     "/usr/share/fonts/X11/100dpi/:unscaled"
+	FontPath     "/usr/share/fonts/X11/75dpi/:unscaled"
+	FontPath     "/usr/share/fonts/X11/Type1"
+	FontPath     "/usr/share/fonts/X11/100dpi"
+	FontPath     "/usr/share/fonts/X11/75dpi"
+	FontPath     "/var/lib/defoma/x-ttcidfont-conf.d/dirs/TrueType"
+	FontPath     "built-ins"'
 
 
 #Write knoppix-sysconfig substitute
@@ -332,22 +325,15 @@ EndSection
 Section "InputDevice"
     Identifier    "Generic Keyboard"
     Driver        "$keyboard_driver"
-    Option        "CoreKeyboard"
-    Option        "XkbRules"    "$keyboard_rules"
-    Option        "XkbModel"    "$keyboard_model"
-    Option        "XkbLayout"    "$keyboard_layout"
 EndSection
 
 Section "InputDevice"
     Identifier    "Generic Mouse"
     Driver        "mouse"
-    Option        "CorePointer"
-    Option        "Device"        "/dev/input/mice"
-    Option        "Protocol"        "ImPS/2"
-    Option        "Emulate3Buttons"    "true"
-    Option          "ZAxisMapping"          "4 5"
-    Option          "YAxisMapping"          "6 7"
-    Option          "XAxisMapping"          "8 9"
+    Option        "Device"          "/dev/input/mice"
+    Option        "Protocol"        "auto"
+    Option        "Emulate3Buttons" "true"
+    Option        "ZAxisMapping"    "4 5 6 7"
 EndSection
 
 # Section "InputDevice"
@@ -363,13 +349,13 @@ EndSection
 $touchpad_config1
 
 Section "Device"
-    Identifier    "Targeta de vídeo genèrica"
+    Identifier    "Card0"
     Driver        "$display_driver"
     $load_options2
 EndSection
 
 Section "Monitor"
-    Identifier    "Monitor genèric"
+    Identifier    "Monitor0"
     Option        "DPMS"
     Option        "RandRRotation"
     $forcesync
@@ -379,8 +365,8 @@ EndSection
 
 Section "Screen"
     Identifier    "Default Screen"
-    Device        "Targeta de vídeo genèrica"
-    Monitor        "Monitor genèric"
+    Device        "Card0"
+    Monitor        "Monitor0"
 $sectionscreen
 $forceresol
 EndSection
@@ -395,7 +381,8 @@ $touchpad_config2
 EndSection
  
 Section "ServerFlags"
-	Option "AllowMouseOpenFail"  "true" 
+	Option "AllowMouseOpenFail"  "true"
+	Option "DontZap" "false"
 EndSection
 
 Section "DRI"

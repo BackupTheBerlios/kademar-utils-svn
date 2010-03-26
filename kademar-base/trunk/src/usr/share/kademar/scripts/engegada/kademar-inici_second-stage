@@ -18,21 +18,58 @@
 
 #Si existeix el configurador modular, executa'l
 
+user=kademar
+
 #Detection of what kind of start  live-cd or USB w/o changes  OR  USB with changes
 if [ -n "`grep changes /proc/cmdline`" -a -e /var/kademar/live-USB ]; then
    #start from a USB - livecd (saving changes)
    #   USB with changes
+   continue
 
-	sh /usr/share/kademar/scripts/engegada/kademar-inici.d-ng/common-base
-	sh /usr/share/kademar/scripts/engegada/kademar-inici.d-ng/common-powersaved
+# 	sh /usr/share/kademar/scripts/engegada/kademar-inici.d-ng/common-base
+# 	sh /usr/share/kademar/scripts/engegada/kademar-inici.d-ng/common-powersaved
 
 else
    #real live-CD start
    #   live-cd or USB w/o changes
-   #     if exists a second-stage
-        mkdir -p /var/kademar/
+
+    #Portàtil
+    if [ "`laptop-detect ; echo $?`" != 0 ]; then
+        #Si no es portatil
+        laptop=no
+        rm -f /usr/share/autostart/syndock.desktop #remove syndock if ISN'T a laptop
+    else
+        #Si es un portatil
+        laptop=yes
+    fi
+
+    echo $laptop > /var/kademar/laptop #en usermod
+
+
+    #KNOPPIX hack, perque el salvapantalles no bloquegi la pantalla
+    #mv /usr/bin/kdesktop_lock /usr/bin/kdesktop_lock.orig
+    if [ -e /usr/bin/kdesktop_lock ]; then
+        rm -f /usr/bin/kdesktop_lock
+        cp /usr/share/kademar/scripts/engegada/kdesktop_lock /usr/bin
+    fi
+
+    if [ -e /usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config ]; then
+        su -c "sh /usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config" $user
+    fi
+
+
+    #Hack pels sudoers en live-cd
+    echo "$user ALL=NOPASSWD:ALL" >> /etc/sudoers
+
+    #Hack per esciure la commanda   "su"  i que no et demani pass
+    echo "" >> /etc/bash.bashrc
+    echo "" >> /etc/profile
+    echo "alias su='sudo su'" >> /etc/bash.bashrc
+    echo "alias su='sudo su'" >> /etc/profile
+
 	touch /var/kademar/live-USB  #and make a mark to only start services next time you boot as  live USB
-	if [ -e /usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config ]; then
-		. /usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config
-	fi
+#DEPRECATED, now on /etc/X11/Xsession.d   
+# 	if [ -e /usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config ]; then
+# 		. /usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config
+# 	fi
 fi

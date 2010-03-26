@@ -30,7 +30,7 @@ cd $HOME
 
 #kademar
 # by Alexey
-# if test "$DISPLAY" == ""; then
+# if test "$DISPLAY" = ""; then
 # DIALOG=dialog
 # fi
 
@@ -119,7 +119,7 @@ GUIMODE=$(tty)
 fi
 
 # by Alexey
-if test "$DISPLAY" == ""; then
+if test "$DISPLAY" = ""; then
 DIALOG=dialog
 fi
 
@@ -345,7 +345,7 @@ GUIMODE=$(tty)
 fi
 
 # by Alexey
-if test "$DISPLAY" == ""; then
+if test "$DISPLAY" = ""; then
 DIALOG=dialog
 fi
 

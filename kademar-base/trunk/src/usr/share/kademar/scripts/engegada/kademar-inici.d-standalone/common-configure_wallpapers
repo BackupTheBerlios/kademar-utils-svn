@@ -54,7 +54,7 @@ if [ -e "$wallpaper" ]; then
    #Subsitute orig background with a panoramic one
     if [ -e "$lxde_file" ]; then
         a=`grep kademar-base-substitute-wallpaper-variable "$lxde_file"`
-        b="wallpaper=\"$wallpaper\""
+        b="wallpaper=$wallpaper"
         #if line exists, substitute it
         if [ -n "$a" ]; then
             sed s,"kademar-base-substitute-wallpaper-variable","$wallpaper",g -i $lxde_file

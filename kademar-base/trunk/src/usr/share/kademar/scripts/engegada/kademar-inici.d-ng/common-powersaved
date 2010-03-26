@@ -3,9 +3,10 @@
 # Modificat  10-04-07
 #
 
+# DEPRECATED
 
-( # [ -e /proc/acpi ] && /etc/init.d/acpid restart
+#  ( # [ -e /proc/acpi ] && /etc/init.d/acpid restart
 
 # [ -e /proc/apm ] && /etc/init.d/apmd restart
 
-[ -e /etc/init.d/powersaved ] && /etc/init.d/powersaved restart ) &
+#  [ -e /etc/init.d/powersaved ] && /etc/init.d/powersaved restart ) &

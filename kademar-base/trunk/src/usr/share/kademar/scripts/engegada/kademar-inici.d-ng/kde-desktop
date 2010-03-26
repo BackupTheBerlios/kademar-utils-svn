@@ -29,10 +29,10 @@ echo "[Desktop Entry]
 Encoding=UTF-8
 Exec=sudo /usr/share/kademar/scripts/engega_instalador_nano
 Icon=/usr/share/kademar/icons/pendrive.png
-Name=Install to USB
-Name[ca]=Instal·la al USB
-Name[es]=Instalar al USB
-Name[en]=Install to USB
+Name=Install to Pendrive
+Name[ca]=Instal·la al Pendrive
+Name[es]=Instalar al Pendrive
+Name[en]=Install to Pendrive
 StartupNotify=true
 Terminal=false
 Type=Application
@@ -92,24 +92,10 @@ if [ "$trobat" = "no" ]; then
 		echo "Home already created - remove /var/directhome if you want to re-create it"
 		else
 		# Canviar Llengua de KDE, KDM i Audacity
-		sh /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/kde-canvikdeglobals #Canviar llengua
-		sh /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/common-canvillengua
-		if [ "$laptop" = yes ]; then
-			#Si es portatil
-			resposta_numlock=off #Desactiva
-		else	
-			#Si no es un portatil
-			resposta_numlock=on #Activa
-			rm -f /usr/share/autostart/syndock.desktop
-		fi
-		
-		#KNOPPIX hack, perque el salvapantalles no bloquegi la pantalla
-		#mv /usr/bin/kdesktop_lock /usr/bin/kdesktop_lock.orig
-		rm -f /usr/bin/kdesktop_lock
-		cp /usr/share/kademar/scripts/engegada/kdesktop_lock /usr/bin
-		
-		case "$LANG" in
-		ca*)
+		sh /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/kde-canvikdeglobals $user #Canviar llengua
+		sh /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/common-canvillengua $user
+
+		case "$LANG" in ca*)
 			crea_kademar_links /home/$user/Escriptori _ca /home/$user/.kde/Autoengega
 #			crea_numlock /home/$user/.kde/Autoengega
 			#Links al Pc

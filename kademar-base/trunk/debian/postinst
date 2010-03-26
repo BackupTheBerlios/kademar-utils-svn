@@ -71,17 +71,38 @@ if [ "$1" = "configure" ]; then
 		ln -s /usr/lib/libGL.so.1.2 /usr/lib/libGL.so.1
 		ln -s /usr/lib/libGL.so.1 /usr/lib/libGL.so
 	fi
+    if [ "`readlink /usr/share/icons/default.kde`" != "oxygen" ]; then
+        echo " *"
+        echo " * Removing ICONS bad links...  and fixing ..."
+        echo " *"
+        rm -f /usr/share/icons/default.kde
+        ln -s oxygen /usr/share/icons/default.kde
+    fi 
 
 	
 	
 	
 	#Si està en chroot, vol dir que estem preparan el live-cd, doncs crea l'enllaç a la X-Session
 	if chrooted; then
-		for i in 2 3 4 5
-		do
-			echo '#!/bin/bash
+		echo '#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          xsession
+# Required-Start:    $local_fs $remote_fs
+# Required-Stop:     $local_fs $remote_fs
+# Should-Start:      console-screen kbd acpid dbus hal
+# Should-Stop:       console-screen kbd
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start X session on Live-CD
+# Description:       Xsession on Live-CD is usefull to start a non-installed system, in any pc.
+### END INIT INFO
+# /etc/init.d/xsession: start or stop the X display manager on Live-CD
+# Script originally stolen from the kdm & xdm package
+#
+# description: Start de Xsession
+#
+
 # 8-9-09 - Added support to cmdline "nox"
-#Start de Xsession
 
 
 [ -e /etc/init.d/splashy ] && /etc/init.d/splashy stop
@@ -101,9 +122,8 @@ else
 	sh /usr/share/kademar/scripts/services_nox
 fi
 
-' > /etc/rc$i.d/S99xsession
-			chmod +x /etc/rc$i.d/S99xsession
-		done
+' > /etc/init.d/xsession
+		chmod +x /etc/init.d/xsession
 
 		for i in 0 1 6
 		do
@@ -114,6 +134,7 @@ fi
 		for i in 2 3 4 5
 		do
 			[ ! -e /etc/rc$i.d/S98kademar_arranc_live-cd ] && ln -s /usr/share/kademar/scripts/engegada/kademar-inici_second-stage /etc/rc$i.d/S98kademar_arranc_live-cd
+			ln -s /etc/init.d/xsession /etc/rc$i.d/S99xsession
 		done
 	
 		# rcS.d
@@ -198,6 +219,11 @@ fi
 		rm -f /usr/src/linux 2>/dev/null
 		for i in `ls -1 /usr/src/ | grep -i linux-headers | sort -r`; do  ln -s $i /usr/src/linux && echo "Updated Kernel to $i" && break ; done
 	fi
+
+
+    #Remove Openoffice cache DB
+    [ -e /var/spool/openoffice/uno_packages/cache/uno_packages.db ] && rm -f /var/spool/openoffice/uno_packages/cache/uno_packages.db
+    [ -e  /var/spool/openoffice/uno_packages/cache/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend/registered_packages.db ] && rm -f /var/spool/openoffice/uno_packages/cache/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend/registered_packages.db
 
     [ ! -e /usr/kademar ] && ln -s share/kademar /usr/kademar  #DEPRECATED
 

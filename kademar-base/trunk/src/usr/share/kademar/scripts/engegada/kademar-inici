@@ -129,7 +129,7 @@ appendSwapPartitionsOnFstab(){
 		
 		
 		#then check if cdrom if no have been cought a disk (volume) instead the block-device
-		if [ "$(hal-get-property --udi `hal-find-by-property --key block.device --string "$hd"`  --key block.is_volume)" == true ]; then
+		if [ "$(hal-get-property --udi `hal-find-by-property --key block.device --string "$hd"`  --key block.is_volume)" = true ]; then
 		# echo parent_hack $1
 			parent=$(hal-get-property --udi `hal-find-by-property --key block.device --string "$hd"`  --key info.parent)
 			capab=$(hal-get-property --udi $parent --key info.capabilities)
@@ -145,7 +145,7 @@ appendSwapPartitionsOnFstab(){
 			echo yes
 		else
 		#si es de usb = YES
-			if [ "$a" == usb ]; then
+			if [ "$a" = usb ]; then
 				echo yes
 			else
 				echo no
@@ -255,6 +255,8 @@ modprobe psmouse 2>/dev/null
 #kademar Version
 versio=`cat /etc/kademar-release`
 
+user=kademar
+
 ###########################
 # START CONFIGURE LOCALES #
 ###########################
@@ -282,7 +284,8 @@ sh /usr/share/kademar/scripts/locale_configurator $LANGUAGE
 export LANG=$LANG LANG COUNTRY CHARSET TZ
 
 #Refresh console with new parameters
-/etc/init.d/console-screen.sh restart
+[ -e /etc/init.d/console-screen.sh ] && /etc/init.d/console-screen.sh restart
+[ -e /etc/init.d/console-setup ] && /etc/init.d/console-setup start
 
 #Load next messages
 case "$LANG" in
@@ -313,6 +316,16 @@ echo -n "${BLUE}$miss_rellotge${NORMAL}" ; /etc/init.d/hwclockfirst.sh start >/d
 
 # No kernel messages while probing modules
 [ "$DEBUG" != "si" ] && echo "0" > /proc/sys/kernel/printk
+
+
+ # Writeback every 30 secs maximum
+ echo 3000 > /proc/sys/vm/dirty_writeback_centisecs
+ # Don't swap unless necessary
+ echo 0 > /proc/sys/vm/swappiness
+ # Some programs seem to require incredible amounts of memory, and
+ # will just crash if overcommit is set to off.
+ echo 1 > /proc/sys/vm/overcommit_memory
+
 
 # Ignore these signals: INT, TERM, SEGV
 [ "$DEBUG" != "si" ] && trap "echo ; echo $no_trap" 2 3 11
@@ -376,7 +389,7 @@ echo "${BLUE}$miss_udev${NORMAL}" ; start_udev
 # ; /etc/init.d/udev start >/dev/null 2>&1
 # ; escriu_resultat $? $num_udev
 
-
+# Included on latest KERNEL 2.6.33
 #kademar  compcache
 ccachedir="/lib/modules/`uname -r`/kernel/fs/compcache"
 if [ -e "$ccachedir" ]; then
@@ -385,8 +398,8 @@ if [ -e "$ccachedir" ]; then
    do
       insmod "$ccachedir/$i" 2>/dev/null
    done
-   #insmod "$ccachedir/compcache.ko" ccache_size_kbytes=128000
-   #debug_shell
+   insmod "$ccachedir/compcache.ko" ccache_size_kbytes=128000
+#    debug_shell
 fi
 
 #kademar  compcache
@@ -440,6 +453,30 @@ hostname --file /etc/hostname
 
 # Bring up loopback interface now
 ifconfig lo 127.0.0.1 up
+
+#services needed to start speech-dispatcher
+/etc/init.d/dbus start
+/etc/init.d/hal start
+
+
+#SCREEN READER SUPPORT
+#  scrread or screenread   cmdline support
+[ -n "`grep scrread /proc/cmdline`" ] && scrread="true"
+[ -n "`grep screenread /proc/cmdline`" ] && scrread="true"
+
+if [ -n "$scrread" ]; then
+    [ -e /etc/init.d/pulseaudio ] && su -c "pulseaudio -D" $user
+    if [ -e /etc/init.d/speech-dispatcher ]; then
+        /etc/init.d/speech-dispatcher start
+    else
+        [ -n "`which speech-dispatcher`" ] && speech-dispatcher -d
+    fi
+    [ -n "`which adriane-screenreader`" ] && adriane-screenreader
+
+fi
+
+
+
 
 #######################
 
@@ -537,6 +574,7 @@ if [ -e /etc/init.d/acpid ]; then
 			echo " ${BLUE}$miss_acpi_no${NORMAL}"
 		else
 			echo " ${GREEN}$miss_acpi_1${NORMAL}" && /etc/init.d/acpid restart >/dev/null 2>&1 &
+             [ -e /etc/init.d/powersaved ] && /etc/init.d/powersaved restart
 		fi
 	fi
 fi
@@ -755,11 +793,11 @@ fi
 echo "${GREEN}$miss_xautoconf${NORMAL}"
 sh /usr/share/kademar/scripts/engegada/xautoconf
 
-if checkbootparam "noagp"; then
-	echo " ${BLUE}$miss_agp_no${NORMAL}"
-else
-	modprobe agpgart 2>/dev/null
-fi
+# if checkbootparam "noagp"; then
+# 	echo " ${BLUE}$miss_agp_no${NORMAL}"
+# else
+# 	modprobe agpgart 2>/dev/null
+# fi
 
 #Activate wirless devices - needed by some wireless to be able to scan
 NETDEVICES=`ls /sys/class/net --ignore=lo`
@@ -809,9 +847,44 @@ fi
 #######
 ########### SPLASHY
 
-echo "Engegant Dbus & Hal"
-/etc/init.d/dbus start
-/etc/init.d/hal start
+# echo "Dbus & Hal"
+# /etc/init.d/dbus start
+# /etc/init.d/hal start
+
+
+#Detection of what kind of start  live-cd or USB w/o changes  OR  USB with changes
+if [ -n "`grep changes /proc/cmdline`" -a -e /var/kademar/live-USB ]; then
+   #start from a USB - livecd (saving changes)
+   #   USB with changes
+   continue
+
+#   sh /usr/share/kademar/scripts/engegada/kademar-inici.d-ng/common-base
+#   sh /usr/share/kademar/scripts/engegada/kademar-inici.d-ng/common-powersaved
+
+else
+   #real live-CD start
+   #   live-cd or USB w/o changes
+
+    mkdir -p /var/kademar/
+    chmod 777 /var/kademar
+
+    #Hack pels sudoers en live-cd
+    echo "$user ALL=NOPASSWD:ALL" >> /etc/sudoers
+
+    #Hack per esciure la commanda   "su"  i que no et demani pass
+    echo "" >> /etc/bash.bashrc
+    echo "" >> /etc/profile
+    echo "alias su='sudo su'" >> /etc/bash.bashrc
+    echo "alias su='sudo su'" >> /etc/profile
+
+    touch /var/kademar/live-USB  #and make a mark to only start services next time you boot as  live USB
+#DEPRECATED, now on /etc/X11/Xsession.d   
+#   if [ -e /usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config ]; then
+#       . /usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config
+#   fi
+fi
+
+
 
 # Restore kernel messages while probing modules
 echo "6" > /proc/sys/kernel/printk

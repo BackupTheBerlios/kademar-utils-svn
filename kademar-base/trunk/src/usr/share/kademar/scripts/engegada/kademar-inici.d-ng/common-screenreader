@@ -2,15 +2,17 @@
 # Adonay Sanz for  kademar  -  September 2009
 #
 
+DEPRECATED
+
 #  scrread or screenread   cmdline support
 
-[ -n "`grep scrread /proc/cmdline`" ] && scrread="true"
-[ -n "`grep screenread /proc/cmdline`" ] && scrread="true"
+# [ -n "`grep scrread /proc/cmdline`" ] && scrread="true"
+# [ -n "`grep screenread /proc/cmdline`" ] && scrread="true"
 
-if [ -n "$scrread" ]; then
+# if [ -n "$scrread" ]; then
 
-	[ -n "`which speech-dispatcher`" ] && speech-dispatcher -d
-	[ -n "`which adriane-screenreader`" ] && adriane-screenreader
+# 	[ -n "`which speech-dispatcher`" ] && speech-dispatcher -d
+# 	[ -n "`which adriane-screenreader`" ] && adriane-screenreader
 
-fi
+# fi
 

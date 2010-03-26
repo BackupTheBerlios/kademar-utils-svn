@@ -15,13 +15,16 @@ user="kademar"
 . /etc/default/locale
 
 #Portàtil
-if [ "`laptop-detect ; echo $?`" != 0 ]; then
+if [ "`cat /var/kademar/laptop`" != 0 ]; then
 	#Si no es portatil
 	laptop=no
-else	
+    resposta_numlock=on #Activa teclat numeric
+else
 	#Si es un portatil
 	laptop=yes
+    resposta_numlock=off #Desactiva teclat numeric
 fi
+
 
 case "$LANG" in
 ca*)

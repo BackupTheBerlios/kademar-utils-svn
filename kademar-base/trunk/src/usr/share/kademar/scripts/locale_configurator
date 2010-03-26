@@ -11,6 +11,8 @@
 #################################################
 
 
+# Inspired on knoppix-autoconfig
+
 locale_file=/etc/default/locale
 motd_file=/etc/motd
 issue_file=/etc/issue
@@ -29,8 +31,10 @@ LANGUAGE="$1"
 case "$LANGUAGE" in
 # Catalan version
 ca*)
-LANG="ca_ES.UTF-8"
+COUNTRY="es"
+LANG="ca_ES@euro"
 KEYTABLE="es"
+LANG_COUNTRY="ca_ES"
 XKEYBOARD="es"
 KDEKEYBOARD="es"
 CHARSET="iso8859-15"
@@ -42,6 +46,7 @@ motd="Benvinguts a  kademar Linux"
 ;;
 # German version
 de*)
+COUNTRY="de"
 LANG="de_DE@euro"
 KEYTABLE="de-latin1-nodeadkeys"
 XKEYBOARD="de"
@@ -53,7 +58,9 @@ TZ="Europe/Berlin"
 ;;
 # Belgian version
 be*)
-LANG="be"
+LANGUAGE="be"
+COUNTRY="be"
+LANG="C"
 KEYTABLE="be2-latin1"
 XKEYBOARD="be"
 KDEKEYBOARD="be"
@@ -64,6 +71,8 @@ TZ="Europe/Brussels"
 ;;
 # Bulgarian version
 bg*)
+LANGUAGE="bg"
+COUNTRY="bg"
 LANG="bg_BG"
 KEYTABLE="bg"
 XKEYBOARD="bg"
@@ -75,6 +84,8 @@ TZ="Europe/Sofia"
 ;;
 # Swiss version (basically de with some modifications*)
 ch*)
+LANGUAGE="de"
+COUNTRY="ch"
 LANG="de_CH"
 KEYTABLE="sg-latin1"
 XKEYBOARD="de_CH"
@@ -86,6 +97,7 @@ TZ="Europe/Zurich"
 ;;
 cn*)
 # Simplified Chinese version
+COUNTRY="cn"
 LANG="zh_CN.GB2312"
 KEYTABLE="us"
 XKEYBOARD="us"
@@ -98,6 +110,8 @@ TZ="Asia/Shanghai"
 ;;
 # Czech version
 cs*|cz*)
+LANGUAGE="cs"
+COUNTRY="cs"
 LANG="cs_CZ"
 KEYTABLE="cz-lat2"
 XKEYBOARD="cs"
@@ -110,9 +124,10 @@ CONSOLEFONT="iso02g"
 ;;
 dk*|da*)
 # Dansk version
+COUNTRY="dk"
 LANG="da_DK"
 # Workaround: "dk" broken in gettext, use da:da_DK
-OPTIONAL="da:da_DK"
+LANGUAGE="da:da_DK"
 # Keytable "dk" is correct.
 KEYTABLE="dk"
 XKEYBOARD="dk"
@@ -124,8 +139,10 @@ TZ="Europe/Copenhagen"
 ;;
 es*)
 # Spanish version
+COUNTRY="es"
 LANG="es_ES@euro"
 KEYTABLE="es"
+LANG_COUNTRY="es_ES"
 XKEYBOARD="es"
 KDEKEYBOARD="es"
 CHARSET="iso8859-15"
@@ -137,6 +154,7 @@ motd="Bienvenidos a  kademar Linux"
 ;;
 fi*)
 # Finnish version, though we may not have the kde-i18n files
+COUNTRY="fi"
 LANG="fi_FI@euro"
 KEYTABLE="fi"
 XKEYBOARD="fi"
@@ -148,6 +166,7 @@ TZ="Europe/Helsinki"
 ;;
 fr*)
 # French version
+COUNTRY="fr"
 LANG="fr_FR@euro"
 KEYTABLE="fr"
 XKEYBOARD="fr"
@@ -159,6 +178,8 @@ TZ="Europe/Paris"
 ;;
 he*|il*)
 # Hebrew version
+LANGUAGE="he"
+COUNTRY="il"
 LANG="he_IL"
 KEYTABLE="us"
 XKEYBOARD="us"
@@ -170,6 +191,7 @@ TZ="Asia/Jerusalem"
 ;;
 ie*)
 # Irish (English) version
+COUNTRY="ie"
 LANG="en_IE@euro"
 KEYTABLE="uk"
 XKEYBOARD="uk"
@@ -181,6 +203,7 @@ TZ="Europe/Dublin"
 ;;
 it*)
 # Italian version
+COUNTRY="it"
 LANG="it_IT@euro"
 KEYTABLE="it"
 XKEYBOARD="it"
@@ -192,7 +215,9 @@ TZ="Europe/Rome"
 ;;
 ja*)
 # (limited) Japanese version
+COUNTRY="jp"
 LANG="ja_JP"
+LANGUAGE="ja"
 KEYTABLE="us"
 XKEYBOARD="us"
 KDEKEYBOARD="us"
@@ -203,6 +228,7 @@ TZ="Asia/Tokyo"
 ;;
 nl*)
 # Dutch version
+COUNTRY="nl"
 LANG="nl_NL@euro"
 KEYTABLE="us"
 XKEYBOARD="us"
@@ -214,6 +240,7 @@ TZ="Europe/Amsterdam"
 ;;
 pl*)
 # Polish version
+COUNTRY="pl"
 LANG="pl_PL"
 KEYTABLE="pl"
 XKEYBOARD="pl"
@@ -226,6 +253,7 @@ CONSOLEFONT="iso02g"
 ;;
 ru*)
 # Russian version
+COUNTRY="ru"
 LANG="ru_RU.KOI8-R"
 KEYTABLE="ru"
 XKEYBOARD="ru"
@@ -238,6 +266,7 @@ TZ="Europe/Moscow"
 ;;
 sk*)
 # Slovak version (guessed)
+COUNTRY="sk"
 LANG="sk"
 KEYTABLE="sk-qwerty"
 XKEYBOARD="sk"
@@ -250,6 +279,8 @@ CONSOLEFONT="iso02g"
 ;;
 # Slovenian keyboard
 sl*)
+LANGUAGE="sl"
+COUNTRY="si"
 LANG="sl_SI"
 KEYTABLE="slovene"
 XKEYBOARD="sl"
@@ -262,6 +293,7 @@ CONSOLEFONT="iso02g"
 ;;
 tr*)
 # Turkish version (guessed)
+COUNTRY="tr"
 LANG="tr_TR"
 KEYTABLE="tr_q-latin5"
 XKEYBOARD="tr"
@@ -273,7 +305,9 @@ TZ="Europe/Istanbul"
 ;;
 tw*)
 # Traditional Chinese version (thanks to Chung-Yen Chang)
+COUNTRY="tw"
 LANG="zh_TW.Big5"
+LANGUAGE="zh_TW.Big5"
 KEYTABLE="us"
 XKEYBOARD="us"
 KDEKEYBOARD="us"
@@ -286,7 +320,9 @@ TZ="Asia/Taipei"
 ;;
 uk*)
 # British version
-LANG="en_GB.UTF-8"
+COUNTRY="uk"
+LANG="en_GB"
+LANGUAGE="en"
 KEYTABLE="uk"
 XKEYBOARD="uk"
 KDEKEYBOARD="gb"
@@ -298,6 +334,8 @@ motd="Welcome to  kademar Linux"
 ;;
 en|*)
 # American version
+LANGUAGE="us"
+COUNTRY="us"
 LANG="en"
 KEYTABLE="us"
 XKEYBOARD="us"
@@ -312,10 +350,12 @@ esac
 
 ################ //  END OF LOCALE DEFINITION  \\  ####################
 
-echo "LANG=$LANG$OPTIONAL"        	      > "$DESTI$locale_file"
+echo "LANG=$LANG"                 > "$DESTI$locale_file"
+#$OPTIONAL"        	      > "$DESTI$locale_file"
+ echo "LANGUAGE=\"$LANGUAGE\""  >> "$DESTI$locale_file"
+ echo "LC_MESSAGES=\"$LANG\""   >> "$DESTI$locale_file"
 
-
-cat > /etc/default/keyboard << EOF
+cat > "$DESTI/etc/default/keyboard" << EOF
 # If you change it, restart HAL.
 # Can have the same parameters /etc/X11/xorg.conf
 
@@ -324,6 +364,43 @@ XKBLAYOUT="$XKEYBOARD"
 XKBVARIANT=""
 XKBOPTIONS=""
 EOF
+
+
+
+
+ # Need to add keyboard settings to debian's own config (HAL)
+ if [ -r $DESTI/etc/default/console-setup ]; then
+  if [ -n "$XKEYBOARD" ]; then
+   sed -i -e "s|^XKBLAYOUT=.*\$|XKBLAYOUT=\"$XKEYBOARD\"|g" $DESTI/etc/default/console-setup
+   case "$XKEYBOARD" in de*)
+    sed -i -e "s|^XKBVARIANT=.*\$|XKBVARIANT=\"nodeadkeys\"|g" $DESTI/etc/default/console-setup ;;
+   esac
+  fi
+ fi
+
+
+rm -f $DESTI/etc/environment
+ln -s /etc/default/locale $DESTI/etc/environment  2>/dev/null
+
+ # Export it now, so error messages get translated, too
+ export LANG COUNTRY CHARSET
+
+ # UTF-8: Default is "on" in newer kernels, but for practical reasons,
+ # individual languages may use latin instead, also on the initial console.
+ case "$LANG" in
+  *UTF-8*) echo "1" > /sys/module/vt/parameters/default_utf8; unicode_start 2>/dev/null ;;
+        *) echo "0" > /sys/module/vt/parameters/default_utf8; unicode_stop  2>/dev/null ;;
+ esac
+
+
+
+ if [ -n "$TZ" ]; then
+  echo "$TZ" > $DESTI/etc/timezone
+  rm -f $DESTI/etc/localtime
+  [ -r $DESTI/usr/share/zoneinfo/"$TZ" ] && { cp -f /usr/share/zoneinfo/"$TZ" $DESTI/etc/localtime; }
+ fi
+
+
 
 # Load Key definition
 # [ ! -e /etc/console/ ] && mkdir -p /etc/console/

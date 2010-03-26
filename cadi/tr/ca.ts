@@ -998,12 +998,12 @@ Pots iniciar-lo, fent servir el botó inferior anomenat &quot;Panell de Control&
 <context>
     <name>panelGrub</name>
     <message>
-        <location filename="grub_livecd.py" line="118"/>
+        <location filename="grub_livecd.py" line="121"/>
         <source>Grub Restored</source>
         <translation>Grub restaurat</translation>
     </message>
     <message>
-        <location filename="grub_livecd.py" line="118"/>
+        <location filename="grub_livecd.py" line="121"/>
         <source>Grub has been resored on the device</source>
         <translation>Grub ha sigut restaurat en el dispositiu</translation>
     </message>

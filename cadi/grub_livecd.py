@@ -69,9 +69,12 @@ class panelGrub(QWidget):
         dirdesti=target+"/boot/grub"
         
         plantilla="/tmp/instalador-environment"
+        
+        fsarrel=commands.getoutput('blkid /dev/'+variables[1]+' -o value -s TYPE')
 
         f=open(plantilla,'w')
         f.writelines('particioarrel=/dev/'+variables[1]+' \n')
+        f.writelines('fsparticioarrel=/dev/'+fsarrel+' \n')
         f.writelines("#Desti d'instal·lacio  \n")
         f.writelines('DESTI='+target+' \n')
         f.writelines('mbr='+mbr+' \n')

@@ -996,12 +996,12 @@ You can start it, using the &quot;Open Control Panel&quot; bottom button.</trans
 <context>
     <name>panelGrub</name>
     <message>
-        <location filename="grub_livecd.py" line="118"/>
+        <location filename="grub_livecd.py" line="121"/>
         <source>Grub Restored</source>
         <translation>Grub Restored</translation>
     </message>
     <message>
-        <location filename="grub_livecd.py" line="118"/>
+        <location filename="grub_livecd.py" line="121"/>
         <source>Grub has been resored on the device</source>
         <translation>Grub has been resored on the device</translation>
     </message>

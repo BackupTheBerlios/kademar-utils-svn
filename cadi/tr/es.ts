@@ -998,12 +998,12 @@ Puedes iniciarlo, usando el botón inferior llamado &quot;Panel de Control&quot;
 <context>
     <name>panelGrub</name>
     <message>
-        <location filename="grub_livecd.py" line="118"/>
+        <location filename="grub_livecd.py" line="121"/>
         <source>Grub Restored</source>
         <translation>Grub Restaurado</translation>
     </message>
     <message>
-        <location filename="grub_livecd.py" line="118"/>
+        <location filename="grub_livecd.py" line="121"/>
         <source>Grub has been resored on the device</source>
         <translation>Grub ha sido restaurado en el dispositivo</translation>
     </message>

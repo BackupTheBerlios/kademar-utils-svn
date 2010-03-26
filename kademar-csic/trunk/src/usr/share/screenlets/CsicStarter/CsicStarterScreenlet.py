@@ -25,6 +25,7 @@ import pango
 import rsvg
 import sys
 import xml.dom.minidom
+from commands import getoutput
 
 # Debugging
 #import time # for time.clock() function
@@ -216,9 +217,39 @@ class CsicStarterScreenlet(screenlets.Screenlet):
 						elif align == 'right': obj.align = pango.ALIGN_RIGHT
 						singleline = n.getAttribute('singleline')
 						if len(singleline) > 0: obj.line = int(singleline) > 0
+
 					elif type == 'image' or type == 'button':
-						obj = ciButton(n.getAttribute('src'))
-						if self.d_show_over: obj.srcOver = n.getAttribute('src_over')
+						if type == 'button':
+							#obtener a los grupos que pertenece la app
+							groups = n.getAttribute('groups')
+							cmdline=getoutput("cat /proc/cmdline")
+							trobat=False
+							for i in groups.split(","):
+								if not i.strip() == "":
+									if cmdline.find(i.strip()) > -1:
+										trobat=True
+										print "trobat ",cmdline.find(i)," ",i
+										break
+							
+							if trobat:
+								#si estamos en un grupo al que pertenece el boton, pon la imagen amarilla
+								obj = ciButton(n.getAttribute('src')+"_yellow")
+								#definir imagen del boton OVER amarillo
+								if self.d_show_over: obj.srcOver = n.getAttribute('src_over')+"_yellow"
+							else:
+								#definir imagen del boton por defecto
+								obj = ciButton(n.getAttribute('src'))
+								#definir imagen del boton OVER
+								if self.d_show_over: obj.srcOver = n.getAttribute('src_over')
+								
+						else:
+							# TYPE = IMAGE
+							#definir imagen del background
+							obj = ciButton(n.getAttribute('src'))
+							#definir imagen del boton OVER
+							if self.d_show_over: obj.srcOver = n.getAttribute('src_over')
+
+
 						ratio = n.getAttribute('preserve_scale_ratio')
 						if len(ratio) > 0: obj.pre_aspect = bool(int(ratio))
 						try: exec('obj.eventClick = ' + n.getAttribute('on_click'))

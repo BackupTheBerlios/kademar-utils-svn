@@ -56,7 +56,7 @@ alias audacity="padsp audacity"
 #export XLIB_SKIP_ARGB_VISUALS=1
 
 #Pulseaudio hack
-[ ! -e "/tmp/.esd-$UID" -a ! -h "/tmp/.esd-$UID" ] && ln -s /tmp/.esd /tmp/.esd-${UID}
+#[ ! -e "/tmp/.esd-$UID" -a ! -h "/tmp/.esd-$UID" ] && ln -s /tmp/.esd /tmp/.esd-${UID}
 
 
 # if the command-not-found package is installed, use it

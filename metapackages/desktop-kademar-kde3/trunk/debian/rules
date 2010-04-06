@@ -28,7 +28,7 @@ build-stamp: configure-stamp
 
 	# Add here commands to compile the package.
 	$(MAKE)
-	#docbook-to-man debian/desktop-kademar-kde.sgml > desktop-kademar-kde.1
+	#docbook-to-man debian/desktop-kademar-kde3.sgml > desktop-kademar-kde3.1
 
 	touch $@
 
@@ -48,8 +48,8 @@ install: build
 	dh_clean -k 
 	dh_installdirs
 
-	# Add here commands to install the package into debian/desktop-kademar-kde.
-	$(MAKE) DESTDIR=$(CURDIR)/debian/desktop-kademar-kde install
+	# Add here commands to install the package into debian/desktop-kademar-kde3.
+	$(MAKE) DESTDIR=$(CURDIR)/debian/desktop-kademar-kde3 install
 
 
 # Build architecture-independent files here.
@@ -58,11 +58,11 @@ binary-indep: build install
 
 # Build architecture-dependent files here.
 binary-arch: build install
-#	dh_testdir
-#	dh_testroot
+	dh_testdir
+	dh_testroot
 	dh_installchangelogs 
 	dh_installdocs
-#	dh_installexamples
+	dh_installexamples
 #	dh_install
 #	dh_installmenu
 #	dh_installdebconf	
@@ -74,7 +74,7 @@ binary-arch: build install
 #	dh_installinit
 #	dh_installcron
 #	dh_installinfo
-#	dh_installman
+	dh_installman
 	dh_link
 	dh_strip
 	dh_compress
@@ -82,7 +82,7 @@ binary-arch: build install
 #	dh_perl
 #	dh_makeshlibs
 	dh_installdeb
-#	dh_shlibdeps
+	dh_shlibdeps
 	dh_gencontrol
 	dh_md5sums
 	dh_builddeb

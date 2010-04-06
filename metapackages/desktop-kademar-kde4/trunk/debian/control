@@ -8,8 +8,8 @@ Homepage: http://www.kademar.org
 
 Package: desktop-kademar-kde4
 Architecture: all
-Depends: desktop-kademar-base-x, kademar-kde|kademar-kde4, kde-minimal, kdm, kde-l10n-ca, kde-l10n-es, okular, ark, kppp, kcalc, ksnapshot, k3b, k3b-i18n, vcdimager, movixmaker-2, normalize-audio, kpowersave, kpat, kmines, kmix, kcharselect, kpackage, kolourpaint4, network-manager-kde|wicd, kaffeine, kwalletmanager
-Recommends: vcdtools, kdeprint,
+Depends: desktop-kademar-base-x, kademar-kde|kademar-kde4, kde-minimal, kdm, kde-l10n-ca, kde-l10n-es, okular, ark, kppp, kcalc, ksnapshot, k3b, k3b-i18n, vcdimager, movixmaker-2, normalize-audio, kpat, kmines, kmix, kcharselect, kpackage, kolourpaint4, wicd|network-manager-kde, kaffeine, kwalletmanager
+Recommends: vcdtools, kdeprint, kpowersave
 Description: Metapackage to install KDE Desktop
  This is for kademar Linux desktop
  .

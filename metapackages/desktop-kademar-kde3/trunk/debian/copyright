@@ -1,13 +1,13 @@
-This package was debianized by Adonay Sanz Alsina <adonay@kademar.org> on
+This package was debianized by Adonay Sanz Alsina <adonay@k-demar.org> on
 Thu, 20 Sep 2007 21:16:07 +0200.
 
 Upstream Author(s): 
 
-   Adonay Sanz Alsina <adonay@kademar.org>
+   Adonay Jonay Sanz Alsina <adonay@kademar.org>
 
 Copyright: 
 
-    <Copyright (C) 2007 Adonay Sanz Alsina>
+    <Copyright (C) 2007 Adonay Jonay Sanz Alsina>
 
 License:
 
@@ -27,7 +27,7 @@ License:
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
     MA 02110-1301, USA.
 
-The Debian packaging is (C) 2007, Adonay Sanz Alsina <adonay@kademar.org> and
+The Debian packaging is (C) 2007, Adonay Sanz Alsina <adonay@k-demar.org> and
 is licensed under the GPL, see `/usr/share/common-licenses/GPL'.
 
 # Please also look if there are files or directories which have a

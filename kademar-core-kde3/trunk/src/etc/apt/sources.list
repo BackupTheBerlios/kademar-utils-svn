@@ -1,0 +1,63 @@
+#Debian Security Updates
+deb http://security.debian.org/ lenny/updates main contrib non-free
+
+#Paquets Sarge/Sid Nous
+deb ftp://ftp.es.debian.org/debian/ lenny main contrib non-free
+deb ftp://ftp.caliu.cat/debian/ lenny main contrib non-free
+
+#Backports
+deb http://backports.org/debian lenny-backports main contrib non-free
+
+#Multimedia
+deb http://www.debian-multimedia.org lenny main  # el nou  nerim - marillat
+#deb http://apt.cerkinfo.be/ unstable main contrib non-free
+
+#WINE
+deb http://www.lamaresh.net/apt lenny main
+
+##Morphix
+deb http://www.morphix.org/debian/ ./
+
+#kademar Packages Server
+deb http://packages.kademar.org/debian 4.9 main contrib non-free
+deb http://packages.kademar.org/debian common main contrib non-free
+#deb http://packages.kademar.org/debian sid main contrib non-free
+
+## Viewizard Games repository  #Astromenace
+deb http://viewizard.com/linux debian/
+
+#Opera
+deb http://deb.opera.com/opera/ lenny non-free
+
+#Enlightenment 17
+#deb http://debian.alphagemini.org/ unstable main
+
+#XMBC
+#deb http://ppa.launchpad.net/team-xbmc-intrepid/ubuntu intrepid main
+#deb-src http://ppa.launchpad.net/team-xbmc-intrepid/ubuntu intrepid main
+
+#Jahshaka
+#deb http://repo.jahshaka.org/ubuntu/dapper/ binary-i386/ 
+#deb http://www.vobcopy.org/mirror/elive/ elive main efl elive
+
+#virtualBox
+deb http://download.virtualbox.org/virtualbox/debian lenny non-free
+
+#Delvj (necesita el repo de marillat)
+#deb http://sindominio.net/~caedes/debian/ unstable main
+
+# Google software repository
+deb http://dl.google.com/linux/deb/ stable non-free main
+
+#Sources d tot
+#deb ftp://ftp.jp.debian.org/debian/ stable main
+#deb ftp://ftp.jp.debian.org/debian/ testing main
+#deb ftp://ftp.jp.debian.org/debian/ unstable main
+#deb ftp://ftp.jp.debian.org/debian/ experimental main
+
+#deb-src http://ftp.fr.debian.org/debian testing main
+#deb-src ftp://FTP.CA.Debian.Org/debian/ testing main contrib non-free
+#deb-src ftp://ftp-mirror.internap.com/pub/debian/ testing main
+#deb-src ftp://ftp.us.debian.org/debian testing main
+#deb-src ftp://ftp.de.debian.org/debian testing main
+#deb-src ftp://ftp.us.debian.org/debian testing main

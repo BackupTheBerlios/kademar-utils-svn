@@ -1,0 +1,24 @@
+#Configuration Live-CD file. Used Only when is in live-cd mode
+
+#Kind (default: lyra)
+kademar_type="Core"
+
+#Image to use by Installer, to fill kdmrc config file
+kdm_image="/usr/share/wallpapers/kademar.jpg"
+
+#background to use on xsession live-cd start (not desktop wallpaper)
+#  MUST BE A  PNG  FILE
+#for normal monitor
+xsession_background="/usr/share/wallpapers/kademar48.png"
+#for panoramic monitor
+xsession_background_panoramic="/usr/share/wallpapers/kademar48panoramic.png"
+
+
+#Minimum Desktop
+desktop_min=kde
+
+#Maximum Desktop
+desktop_max=kde
+
+#Detecta velocitat per definir desktop
+detecta_desktop="no"

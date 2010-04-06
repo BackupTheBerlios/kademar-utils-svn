@@ -1,0 +1,13 @@
+#Configuration file for kademar Installed. General use
+
+#Kind (default: lyra)
+kademar_type="Core"
+
+#Options: Sync (-s) / Async (-a) (default: sync)
+mount_mode=""
+
+#Xserver:  Xorg / Xfree86 (default: xorg)
+xserver="xorg"
+
+#Auto Update APT Servers (apt-get update) (yes/no) - (default: no)
+apt_autoupdate="no"

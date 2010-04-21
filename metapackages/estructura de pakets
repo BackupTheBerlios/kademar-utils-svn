@@ -2,7 +2,7 @@ base (sense X)
 
     X - dep base
 
-        kde - dep X
+        kde3/kde4 - dep X
 
             core - dep kde
 

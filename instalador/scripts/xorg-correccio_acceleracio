@@ -6,7 +6,7 @@ cat /etc/X11/xorg.conf | grep -v \# | grep -vi input | while read line
 do
 [ -n "`echo $line | grep Section | grep \"Device\"`" ] && trobat=si
 
-	if [ "$trobat" == "si" ]; then
+	if [ "$trobat" = "si" ]; then
 		dev=`echo "$line" | grep Driver | cut -d\" -f2`
 		[ -n "$dev" ] && echo "$dev" && exit
 	fi

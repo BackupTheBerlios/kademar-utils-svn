@@ -12,6 +12,7 @@
 12 mtab.sh
 18 ifupdown-clean
 20 module-init-tools
+22 console-setup
 30 checkfs.sh
 30 etc-setserial
 30 procps.sh

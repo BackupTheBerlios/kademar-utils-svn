@@ -57,8 +57,18 @@ echo "/dev/$DEV / $fsparticioarrel defaults 0 0" > $DESTI/etc/mtab
 
 
 #Creem el Device.map amb la informacio dels dispositius
-echo quit \
-  | grub --batch --no-floppy --device-map=$DESTI/boot/grub/device.map
+if [ -z "`dpkg -l | grep -i grub-pc | grep -i ii`" ]; then
+#grub 1
+    echo *** Grub Version 1 ***
+    grubver=1
+    echo quit \
+      | grub --batch --no-floppy --device-map=$DESTI/boot/grub/device.map
+else
+# grub2
+    echo *** Grub Version 2 ***
+    grubver=2
+    grub-mkdevicemap --no-floppy --device-map=$DESTI/boot/grub/device.map
+fi
 
 
 #chroot $DESTI sed -i "s~# kopt.*~# kopt=root=$DESTI_ROOT $DEF_BOOTPARMS~g" /boot/grub/menu.lst 
@@ -75,10 +85,16 @@ if [ "$mbr" != "no" ]; then
 		MBR_SENSE_NUMERO=`echo $mbr | awk ' { print $1 } ' | sed s:/dev/::g`
 	fi
 
+    #support to new grubs
+    if [ "$grubver" = 2 ]; then
+        lba=""
+    else
+        lba="--force-lba"
+    fi
 
-	grub-install --no-floppy --force-lba --root-directory=$DESTI /dev/$MBR_SENSE_NUMERO
+	grub-install --no-floppy $lba --root-directory=$DESTI /dev/$MBR_SENSE_NUMERO
 
-	echo "grub-install --no-floppy --force-lba --root-directory=$DESTI /dev/$MBR_SENSE_NUMERO"
+	echo "grub-install --no-floppy $lba --root-directory=$DESTI /dev/$MBR_SENSE_NUMERO"
 fi
 
 # Si el initrd esta marcat per crear-lo

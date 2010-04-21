@@ -111,7 +111,7 @@ capab=$(hal-get-property --udi "$firstone"  --key info.capabilities)
 
 
 #then check if cdrom if no have been cought a disk (volume) instead the block-device
-if [ "$(hal-get-property --udi `hal-find-by-property --key block.device --string "$hd"`  --key block.is_volume)" == true ]; then
+if [ "$(hal-get-property --udi `hal-find-by-property --key block.device --string "$hd"`  --key block.is_volume)" = true ]; then
 # echo parent_hack $1
 	parent=$(hal-get-property --udi `hal-find-by-property --key block.device --string "$hd"`  --key info.parent)
 	capab=$(hal-get-property --udi $parent --key info.capabilities)
@@ -127,7 +127,7 @@ if [ -n "`echo "$capab" | grep -i cdrom`" -o -n "`echo "$capab" | grep -i scsi`"
 	echo yes
 else
 #si es de usb = YES
-	if [ "$a" == usb ]; then
+	if [ "$a" = usb ]; then
 		echo yes
 	else
 		echo no
@@ -635,5 +635,7 @@ fi
 
 #Mount, and recognize submounts entry
 mount -aF 2>/dev/null
+swapoff -a 2>/dev/null
+swapon -a 2>/dev/null
 
 exit 0

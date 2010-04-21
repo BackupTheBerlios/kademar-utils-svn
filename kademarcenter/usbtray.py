@@ -58,7 +58,7 @@ class UsbTray(QWidget):
         self.trayMenu = QMenu()
     #Definicio de items del menu (solament el que son, icona i descripcio)
         self.action_quit = QAction(QIcon("/usr/kademar/icons/convertir.png"), self.tr("Surt"), self)
-        self.action_mainwindow = QAction(QIcon("/usr/share/icons/default.kde/22x22/devices/usbpendrive_unmount.png"), self.tr("Obre Gestor d'USB"), self)
+        self.action_mainwindow = QAction(QIcon("/usr/share/icons/default.kde/22x22/devices/drive-removable-media-usb-pendrive.png"), self.tr("Obre Gestor d'USB"), self)
 
     #Afegit opcions de dalt, en el menu del context
     #self.trayMenu.addAction(self.action_about)
@@ -76,7 +76,7 @@ class UsbTray(QWidget):
         self.tray.connect( self.tray, SIGNAL( "activated(QSystemTrayIcon::ActivationReason)" ), self.eventsdeltray )
 
 
-        self.trayIcon = QIcon("/usr/share/icons/default.kde/22x22/devices/usbpendrive_unmount.png")
+        self.trayIcon = QIcon("/usr/share/icons/default.kde/22x22/devices/drive-removable-media-usb-pendrive.png")
         self.tray.setContextMenu(self.trayMenu)
         self.tray.setIcon(self.trayIcon)
         self.tray.setToolTip("UsbTray") #Tool Hint

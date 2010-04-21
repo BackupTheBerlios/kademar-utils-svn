@@ -959,12 +959,12 @@ Be sure any program accessing it.</translation>
 <context>
     <name>hotplugaction</name>
     <message>
-        <location filename="hotplugactions.py" line="369"/>
+        <location filename="hotplugactions.py" line="379"/>
         <source>Open with konqueror</source>
         <translation>Open with konqueror</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="344"/>
+        <location filename="hotplugactions.py" line="350"/>
         <source>Copy with K3B</source>
         <translation>Copy with K3B</translation>
     </message>
@@ -979,7 +979,7 @@ Be sure any program accessing it.</translation>
         <translation type="obsolete">Inserted a new media DVD %s</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="340"/>
+        <location filename="hotplugactions.py" line="346"/>
         <source>Play with VLC</source>
         <translation>Play with VLC</translation>
     </message>
@@ -989,7 +989,7 @@ Be sure any program accessing it.</translation>
         <translation type="obsolete">Open with Kaffeine</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="326"/>
+        <location filename="hotplugactions.py" line="330"/>
         <source>Copy with K9Copy</source>
         <translation>Copy with K9Copy</translation>
     </message>
@@ -999,12 +999,12 @@ Be sure any program accessing it.</translation>
         <translation type="obsolete">Inserted a new media DVD %s</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="341"/>
+        <location filename="hotplugactions.py" line="347"/>
         <source>Extract with Kaudiocreator</source>
         <translation>Extract with Kaudiocreator</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="343"/>
+        <location filename="hotplugactions.py" line="349"/>
         <source>Extract with Media</source>
         <translation>Extract with Media</translation>
     </message>
@@ -1014,7 +1014,7 @@ Be sure any program accessing it.</translation>
         <translation type="obsolete">New media , a music CD, has been detected</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="356"/>
+        <location filename="hotplugactions.py" line="364"/>
         <source>Audio CD</source>
         <translation>Audio CD</translation>
     </message>
@@ -1044,12 +1044,12 @@ Be sure any program accessing it.</translation>
         <translation type="obsolete">Wireless Lan device has been detected</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="411"/>
+        <location filename="hotplugactions.py" line="421"/>
         <source>Wireless Lan</source>
         <translation>Wireless Lan</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="412"/>
+        <location filename="hotplugactions.py" line="422"/>
         <source>Configure with CADI</source>
         <translation>Configure with CADI</translation>
     </message>
@@ -1059,17 +1059,17 @@ Be sure any program accessing it.</translation>
         <translation type="obsolete">Network device has been detected</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="427"/>
+        <location filename="hotplugactions.py" line="437"/>
         <source>Ethernet</source>
         <translation>Ethernet</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="428"/>
+        <location filename="hotplugactions.py" line="438"/>
         <source>Capture with Kino</source>
         <translation>Capture with Kino</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="429"/>
+        <location filename="hotplugactions.py" line="439"/>
         <source>Capture with Kdenlive</source>
         <translation>Capture with Kdenlive</translation>
     </message>
@@ -1079,7 +1079,7 @@ Be sure any program accessing it.</translation>
         <translation type="obsolete">Firewire Camera has been detected</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="444"/>
+        <location filename="hotplugactions.py" line="454"/>
         <source>Firewire Camera</source>
         <translation>Firewire Camera</translation>
     </message>
@@ -1089,7 +1089,7 @@ Be sure any program accessing it.</translation>
         <translation type="obsolete">Do nothing</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="357"/>
+        <location filename="hotplugactions.py" line="365"/>
         <source>Burn with K3B</source>
         <translation>Burn with K3B</translation>
     </message>
@@ -1099,78 +1099,88 @@ Be sure any program accessing it.</translation>
         <translation type="obsolete">Inserted new blank CD</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="368"/>
+        <location filename="hotplugactions.py" line="376"/>
         <source>Blank CD-Rom</source>
         <translation>Blank CD-Rom</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="304"/>
+        <location filename="hotplugactions.py" line="306"/>
         <source>New CD media has been inserted %s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="317"/>
+        <location filename="hotplugactions.py" line="321"/>
         <source>New DVD media has been inserted %s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="332"/>
+        <location filename="hotplugactions.py" line="338"/>
         <source>New DVD Movie media has been inserted %s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="351"/>
+        <location filename="hotplugactions.py" line="359"/>
         <source>New CD Audio media has been inserted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="363"/>
+        <location filename="hotplugactions.py" line="371"/>
         <source>New Blank CD media has been inserted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="376"/>
+        <location filename="hotplugactions.py" line="386"/>
         <source>New Storage USB media has been inserted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="376"/>
+        <location filename="hotplugactions.py" line="386"/>
         <source>USB Storage - %s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="391"/>
+        <location filename="hotplugactions.py" line="401"/>
         <source>New TDT device has been inserted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="406"/>
+        <location filename="hotplugactions.py" line="416"/>
         <source>New Wifi device has been inserted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="421"/>
+        <location filename="hotplugactions.py" line="431"/>
         <source>New Ethernet wired device has been inserted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="438"/>
+        <location filename="hotplugactions.py" line="448"/>
         <source>New Firewire Camera device has been inserted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="444"/>
+        <location filename="hotplugactions.py" line="454"/>
         <source>Do nothing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="382"/>
+        <location filename="hotplugactions.py" line="392"/>
         <source>Play with Kaffeine</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="342"/>
+        <location filename="hotplugactions.py" line="348"/>
         <source>Extract with Grip</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="hotplugactions.py" line="377"/>
+        <source>Open with dolphin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="hotplugactions.py" line="378"/>
+        <source>Open with PCManFM</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

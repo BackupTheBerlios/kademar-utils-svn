@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# Creat per Adonay Sanz per la kademar  -  Octubre 2005
+#
+
+#Hack to re-create /PC
+rm -f /Pc/*
+sh /usr/share/kademar/utils/kademarcenter/scripts/regenerapc/07-pc

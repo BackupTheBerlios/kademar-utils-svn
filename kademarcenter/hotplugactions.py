@@ -295,12 +295,14 @@ class hotplugaction(QWidget):
         # CDROM
         #######
         self.cdrom=(
-            ["/usr/share/icons/default.kde/48x48/apps/kfm_home.png", self.tr("Open with konqueror"), "konqueror %s" %(mnt)],
+            ["/usr/share/icons/default.kde/48x48/apps/system-file-manager.png", self.tr("Open with dolphin"), "dolphin %s" %(mnt)],
+            ["/usr/share/pixmaps/pcmanfm.png", self.tr("Open with PCManFM"), "pcmanfm %s" %(mnt)],
+            ["/usr/share/icons/default.kde/48x48/apps/konqueror.png", self.tr("Open with konqueror"), "konqueror %s" %(mnt)],
             ["/usr/share/icons/oxygen/48x48/apps/k3b.png", self.tr("Copy with K3B"), "k3b --copycd %s" %(blk)],
             )
     
         #Icon
-        self.cdromicon="/usr/share/icons/default.kde/48x48/devices/cdrom_unmount.png"
+        self.cdromicon="/usr/share/icons/default.kde/48x48/devices/media-optical.png"
         self.cdromprop=self.tr("New CD media has been inserted %s" %(label)) 
         self.cdromname="CD-Rom"
     
@@ -308,12 +310,14 @@ class hotplugaction(QWidget):
         # DVD Data
         #######
         self.dvddata=(
-            ["/usr/share/icons/default.kde/48x48/apps/kfm_home.png", self.tr("Open with konqueror"), "konqueror %s" %(mnt)],
+            ["/usr/share/icons/default.kde/48x48/apps/system-file-manager.png", self.tr("Open with dolphin"), "dolphin %s" %(mnt)],
+            ["/usr/share/pixmaps/pcmanfm.png", self.tr("Open with PCManFM"), "pcmanfm %s" %(mnt)],
+            ["/usr/share/icons/default.kde/48x48/apps/konqueror.png", self.tr("Open with konqueror"), "konqueror %s" %(mnt)],
             ["/usr/share/icons/oxygen/48x48/apps/k3b.png", self.tr("Copy with K3B"), "k3b --copydvd %s" %(blk)],
             )
     
         #Icon
-        self.dvddataicon="/usr/share/icons/default.kde/48x48/devices/dvd_unmount.png"
+        self.dvddataicon="/usr/share/icons/default.kde/48x48/devices/media-optical-dvd.png"
         self.dvddataprop=self.tr("New DVD media has been inserted %s" %(label))
         self.dvddataname="DVD-Rom"
     
@@ -321,14 +325,16 @@ class hotplugaction(QWidget):
         # DVD  Pelicula
         #######
         self.dvd=(
-            ["/usr/share/pixmaps/vlc.png", self.tr("Play with VLC") ,"vlc dvd://%s" %(blk)],
             ["/usr/share/icons/hicolor/48x48/apps/kaffeine.png", self.tr("Play with Kaffeine"), "kaffeine DVD"],
+            ["/usr/share/pixmaps/vlc.png", self.tr("Play with VLC") ,"vlc dvd://%s" %(blk)],
             ["/usr/share/icons/hicolor/48x48/apps/k9copy.png", self.tr("Copy with K9Copy"), "k9copy --input %s" %(blk)],
-            ["/usr/share/icons/default.kde/48x48/apps/kfm_home.png", self.tr("Open with konqueror"), "konqueror %s" %(mnt)],
+            ["/usr/share/icons/default.kde/48x48/apps/system-file-manager.png", self.tr("Open with dolphin"), "dolphin %s" %(mnt)],
+            ["/usr/share/pixmaps/pcmanfm.png", self.tr("Open with PCManFM"), "pcmanfm %s" %(mnt)],
+            ["/usr/share/icons/default.kde/48x48/apps/konqueror.png", self.tr("Open with konqueror"), "konqueror %s" %(mnt)],
             ["/usr/share/icons/oxygen/48x48/apps/k3b.png", self.tr("Copy with K3B"), "k3b --copydvd %s" %(blk)],
             )
     
-        self.dvdicon="/usr/share/icons/default.kde/48x48/devices/dvd_unmount.png"
+        self.dvdicon="/usr/share/icons/default.kde/48x48/devices/media-optical-video.png"
         self.dvdprop=self.tr("New DVD Movie media has been inserted %s" %(label))
         self.dvdname="DVD-Rom"
     
@@ -342,11 +348,13 @@ class hotplugaction(QWidget):
             ["/usr/share/pixmaps/gripicon.png", self.tr("Extract with Grip"), "grip --device=%s" %(blk)],
             ["/usr/share/icons/default.kde/48x48/apps/kfm_home.png", self.tr("Extract with Media"), "konqueror media:/%s" %(blk)],
             ["/usr/share/icons/oxygen/48x48/apps/k3b.png", self.tr("Copy with K3B"), "k3b --copycd %s" %(blk)],
-            ["/usr/share/icons/default.kde/48x48/apps/kfm_home.png", self.tr("Open with konqueror"), "konqueror %s" %(mnt)],
+            ["/usr/share/icons/default.kde/48x48/apps/system-file-manager.png", self.tr("Open with dolphin"), "dolphin %s" %(mnt)],
+            ["/usr/share/pixmaps/pcmanfm.png", self.tr("Open with PCManFM"), "pcmanfm %s" %(mnt)],
+            ["/usr/share/icons/default.kde/48x48/apps/konqueror.png", self.tr("Open with konqueror"), "konqueror %s" %(mnt)],
             #["/usr/share/pixmaps/k3b.xpm", "Copy with K3B", "k3b --copydvd %s" %(blk)],
             )
     
-        self.audiocdicon="/usr/share/icons/default.kde/48x48/devices/cdaudio_unmount.png"
+        self.audiocdicon="/usr/share/icons/default.kde/48x48/devices/media-optical-audio.png"
         self.audiocdprop=self.tr("New CD Audio media has been inserted")
         self.audiocdname=self.tr("Audio CD")
     
@@ -358,7 +366,7 @@ class hotplugaction(QWidget):
             )
     
         #Icon
-        self.blankcdicon="/usr/share/icons/default.kde/48x48/devices/cdrom_unmount.png"
+        self.blankcdicon="/usr/share/icons/default.kde/48x48/devices/media-optical-recordable.png"
         self.blankcdprop=self.tr("New Blank CD media has been inserted") 
         self.blankcdname=self.tr("Blank CD-Rom")
 
@@ -366,12 +374,14 @@ class hotplugaction(QWidget):
         # PenDrive
         #######
         self.pen=(
-            ["/usr/share/icons/default.kde/48x48/apps/kfm_home.png", self.tr("Open with konqueror"), "konqueror %s" %(mnt)],
+            ["/usr/share/icons/default.kde/48x48/apps/system-file-manager.png", self.tr("Open with dolphin"), "dolphin %s" %(mnt)],
+            ["/usr/share/pixmaps/pcmanfm.png", self.tr("Open with PCManFM"), "pcmanfm %s" %(mnt)],
+            ["/usr/share/icons/default.kde/48x48/apps/konqueror.png", self.tr("Open with konqueror"), "konqueror %s" %(mnt)],
             #["/usr/share/pixmaps/k3b.xpm", "Copy with K3B", "k3b"],
             )
     
         #Icon
-        self.penicon="/usr/share/icons/default.kde/48x48/devices/usbpendrive_unmount.png"
+        self.penicon="/usr/share/icons/default.kde/48x48/devices/drive-removable-media-usb-pendrive.png"
         self.penprop=self.tr("New Storage USB media has been inserted")
         self.penname=self.tr("USB Storage - %s" %(part))
     
@@ -386,7 +396,7 @@ class hotplugaction(QWidget):
             #["/usr/share/pixmaps/k3b.xpm", "Copy with K3B", "k3b --copydvd %s" %(blk)],
             )
     
-        self.dvbicon="/usr/share/icons/default.kde/48x48/devices/tv.png"
+        self.dvbicon="/usr/share/icons/default.kde/48x48/devices/video-television.png"
         self.dvbprop=self.tr("New TDT device has been inserted")
         self.dvbname="TDT/DvB"
     
@@ -394,14 +404,14 @@ class hotplugaction(QWidget):
         # Wifi Wlan
         #######
         self.wlan=(
-            ["/usr/share/icons/crystalsvg/48x48/apps/package_settings.png", self.tr("Configure with CADI"), "cadi --module=internet"],
+            ["/usr/share/kademar/utils/cadi/img/cadi.png", self.tr("Configure with CADI"), "cadi --module=internet"],
             #["/usr/share/pixmaps/vlc.png", "Play with VLC" ,"vlc dvd://%s" %(blk)],
             #["/usr/share/icons/hicolor/48x48/apps/k9copy.png", "Copy with K9Copy", "k9copy --input %s" %(blk)],
             #["/usr/share/icons/default.kde/48x48/apps/kfm_home.png", "Open with konqueror", "konqueror %s" %(mnt)],
             #["/usr/share/pixmaps/k3b.xpm", "Copy with K3B", "k3b --copydvd %s" %(blk)],
             )
     
-        self.wlanicon="/usr/share/icons/hicolor/48x48/apps/kwifimanager.png"
+        self.wlanicon="/usr/share/icons/default.kde/48x48/devices/network-wireless.png"
         self.wlanprop=self.tr("New Wifi device has been inserted")
         self.wlanname=self.tr("Wireless Lan")
     
@@ -409,14 +419,14 @@ class hotplugaction(QWidget):
         # Wifi Wlan
         #######
         self.eth=(
-            ["/usr/share/icons/crystalsvg/48x48/apps/package_settings.png", self.tr("Configure with CADI"), "cadi --module=internet"],
+            ["/usr/share/kademar/utils/cadi/img/cadi.png", self.tr("Configure with CADI"), "cadi --module=internet"],
             #["/usr/share/pixmaps/vlc.png", "Play with VLC" ,"vlc dvd://%s" %(blk)],
             #["/usr/share/icons/hicolor/48x48/apps/k9copy.png", "Copy with K9Copy", "k9copy --input %s" %(blk)],
             #["/usr/share/icons/default.kde/48x48/apps/kfm_home.png", "Open with konqueror", "konqueror %s" %(mnt)],
             #["/usr/share/pixmaps/k3b.xpm", "Copy with K3B", "k3b --copydvd %s" %(blk)],
             )
     
-        self.ethicon="/usr/share/icons/default.kde/48x48/apps/kcmpci.png"
+        self.ethicon="/usr/share/icons/default.kde/48x48/devices/network-wired.png"
         self.ethprop=self.tr("New Ethernet wired device has been inserted")
         self.ethname=self.tr("Ethernet")
     
@@ -433,7 +443,7 @@ class hotplugaction(QWidget):
             #["/usr/share/pixmaps/k3b.xpm", "Copy with K3B", "k3b --copydvd %s" %(blk)],
             )
 
-        self.fwcamicon="/usr/share/icons/default.kde/48x48/devices/camera_unmount.png"
+        self.fwcamicon="/usr/share/icons/default.kde/48x48/devices/camera-photo.png"
         self.fwcamprop=self.tr("New Firewire Camera device has been inserted")
         self.fwcamname=self.tr("Firewire Camera")
 
@@ -441,7 +451,7 @@ class hotplugaction(QWidget):
         #######
         # NO Action
         #######
-        self.nofer=["/usr/share/icons/oxygen/48x48/actions/button_cancel.png", self.tr("Do nothing"), ""]
+        self.nofer=["/usr/share/icons/default.kde/48x48/actions/dialog-cancel.png", self.tr("Do nothing"), ""]
 
 
 

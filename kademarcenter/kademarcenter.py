@@ -332,6 +332,21 @@ else:
        print "Not starting, it's a KDE session autoload"
        sys.exit()
 
+#create kademar folder
+# and execute first-time configuration volumes
+system('[ ! -e "/home/`whoami`/.kademar" ] && mkdir -p "/home/`whoami`/.kademar" && sh /usr/share/kademar/scripts/engegada/volums')
+
+#open apps by groups
+for i in getoutput("cat /proc/cmdline").split():
+    if i == "startcsicappgroup1": #movilidad reducida en brazos y manos
+        system("( xvkbd & ) ; ( easystroke & ) ; ( kmousetool & )")
+    if i == "startcsicappgroup2": #personas mayores
+        system("echo hola1")
+    if i == "startcsicappgroup3": #Dificultades en la vision con resto visual util
+        system("( easystroke & ) ; ( kmag & )")
+    if i == "startcsicappgroup4": #Dificultades de aprendizaje
+        system("echo hola2")
+
 app = QApplication(sys.argv)
 locale = QLocale.system().name()
 qtTranslator = QTranslator()

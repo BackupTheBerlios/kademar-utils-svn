@@ -50,6 +50,7 @@ done
 
 #add media where you have booted  (to mount different USB partitions)
 if [ -e /mnt/live/data ]; then
+
 	udi="$(sh /usr/share/kademar/utils/kademarcenter/scripts/grephalinfo.sh  /dev/`cat /mnt/live/data` info.udi)"
 	var="$var $udi"
 

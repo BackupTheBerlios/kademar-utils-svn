@@ -40,7 +40,7 @@ rm -f "$DESTI/etc/mtab"
 ln -s /proc/mounts "$DESTI/etc/mtab"
 
 #Remove non-free software licenses if not accepted
-[ "$license" == "no" ] && chroot "$DESTI" sh /usr/share/kademar/utils/instalador/scripts/remove-nonfree-license
+[ "$license" = "no" ] && chroot "$DESTI" sh /usr/share/kademar/utils/instalador/scripts/remove-nonfree-license
 
 
 #search for fs if not specified (no format)
@@ -100,13 +100,13 @@ rm -f "$DESTI/etc/X11/xorg.conf"
 
 #If 100% GPL selected, check if isn't configured a fglrx or nvidia driver
 gfx="ok" #set OK by default
-if [ "$license" == "no" ]; then
+if [ "$license" = "no" ]; then
 # 	If we're using as a Xorg driver a non GPL, do not permit to use live-cd xorg.conf file in installed (drivers won't be there -> removed)
 	 [ -n "`grep nvidia /etc/X11/xorg.conf`" -o -n "`grep fglrx /etc/X11/xorg.conf`" ] && gfx="no"
 fi
 
 #And put actual live-cd config if all OK
-[ -e "/etc/X11/xorg.conf" -a "$gfx" == "ok" ] && cp -a "/etc/X11/xorg.conf" "$DESTI/etc/X11/xorg.conf"
+[ -e "/etc/X11/xorg.conf" -a "$gfx" = "ok" ] && cp -a "/etc/X11/xorg.conf" "$DESTI/etc/X11/xorg.conf"
 
 #Creacio de la configuració gràfica, juntament amb l'acceleració modificada
 #Utilitzant el driver amb el que ha lograt engegar

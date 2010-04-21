@@ -67,7 +67,7 @@ if [ "$1" != "0" ]; then
 				es_removable="no"
 			;;
 			esac
-			if [ "$es_removable" == "yes" ]; then
+			if [ "$es_removable" = "yes" ]; then
 				cd $sys_block_path$i
 				disc_durs=`ls -d ???[0-9]* 2>/dev/null`
 				#definim la variable si es removable 

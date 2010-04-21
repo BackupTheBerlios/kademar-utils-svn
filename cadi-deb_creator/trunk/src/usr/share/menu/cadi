@@ -2,7 +2,7 @@
 	needs="X11"\
 	section="Applications/System"\
 	title="CADI"\
-	icon32x32="/usr/share/kademar/icons/configure.png"\
-	icon16x16="/usr/share/kademar/icons/configure.png"\
+	icon32x32="/usr/share/kademar/utils/cadi/img/cadi.png"\
+	icon16x16="/usr/share/kademar/utils/cadi/img/cadi.png"\
 	command="executa cadi"
 

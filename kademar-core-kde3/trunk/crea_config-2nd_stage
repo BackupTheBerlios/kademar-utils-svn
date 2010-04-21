@@ -8,7 +8,7 @@
 #llegeix la config, i va a buscar un a un a kademar-base -> kademar-inici.d-ng
 # i els suma tots i en fa un fitxer
 
-paquet_construit=kademar-core
+paquet_construit=kademar-core-kde3
 
 
 cat ../../kademar-base/trunk/src/usr/share/kademar/scripts/engegada/kademar-inici.d-ng/common-base > debian/$paquet_construit/usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config

@@ -46,7 +46,7 @@ alias gmplayer="gmplayer -zoom"
 export SDL_AUDIODRIVER=pulse
 
 #Pulseaudio hack
-[ ! -e "/tmp/.esd-$UID" -a ! -h "/tmp/.esd-$UID" ] && ln -s /tmp/.esd /tmp/.esd-${UID}
+#[ ! -e "/tmp/.esd-$UID" -a ! -h "/tmp/.esd-$UID" ] && ln -s /tmp/.esd /tmp/.esd-${UID}
 
 # if the command-not-found package is installed, use it
 if [ -x /usr/lib/command-not-found ]; then

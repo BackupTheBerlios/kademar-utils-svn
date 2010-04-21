@@ -127,7 +127,7 @@ fi
 
 		for i in 0 1 6
 		do
-			[ ! -e /etc/rc$i.d/K01session ] && ln -s /usr/share/kademar/scripts/engegada/xsession /etc/rc$i.d/K01session
+			[ ! -e /etc/rc$i.d/K01session ] && ln -s /usr/share/kademar/scripts/engegada/xsession /etc/rc$i.d/K01xsession
 		done
 		
 		

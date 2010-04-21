@@ -3,10 +3,10 @@
 # Adonay Sanz Alsina - adonay@kademar.org
 
 
-( sh /usr/share/kademar/utils/kademarcenter/initial_mount ; sh /usr/share/kademar/utils/kademarcenter/update_fstab ) &
+( sh /usr/share/kademar/utils/kademarcenter/scripts/initial_mount ; sh /usr/share/kademar/utils/kademarcenter/scripts/update_fstab ) &
 
 #Start pulseaudio as user if not started
-[ -z "`ps aux | grep -i pulseaudio`" ] && [ -e /etc/X11/Xsession.d/70pulseaudio ] && sh /etc/X11/Xsession.d/70pulseaudio
+[ -z "`ps aux | grep -i pulseaudio`" ] && [ -e /etc/X11/Xsession.d/70pulseaudio ] && sh /etc/X11/Xsession.d/70pulseaudio 
 
 #Volumes
 sh /usr/share/kademar/scripts/engegada/volums >/dev/null 2>&1 &

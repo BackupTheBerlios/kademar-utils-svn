@@ -352,8 +352,8 @@ esac
 
 echo "LANG=$LANG"                 > "$DESTI$locale_file"
 #$OPTIONAL"        	      > "$DESTI$locale_file"
- echo "LANGUAGE=\"$LANGUAGE\""  >> "$DESTI$locale_file"
- echo "LC_MESSAGES=\"$LANG\""   >> "$DESTI$locale_file"
+ echo "LANGUAGE=$LANGUAGE"  >> "$DESTI$locale_file"
+ echo "LC_MESSAGES=$LANG"   >> "$DESTI$locale_file"
 
 cat > "$DESTI/etc/default/keyboard" << EOF
 # If you change it, restart HAL.
@@ -362,7 +362,7 @@ cat > "$DESTI/etc/default/keyboard" << EOF
 XKBMODEL="pc105"
 XKBLAYOUT="$XKEYBOARD"
 XKBVARIANT=""
-XKBOPTIONS=""
+XKBOPTIONS="terminate:ctrl_alt_bksp"
 EOF
 
 

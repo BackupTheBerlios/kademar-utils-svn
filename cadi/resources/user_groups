@@ -4,6 +4,7 @@ audio
 backup
 bin
 bind
+bluetooth
 camera
 captive
 cdrom
@@ -14,15 +15,19 @@ dip
 disk
 fax
 floppy
+fuse
 games
 gnats
+haldaemon
 irc
 kmem
+kvm
 list
 lp
 lpadmin
 mail
 man
+mlocate
 mysql
 news
 nogroup
@@ -31,6 +36,7 @@ plugdev
 powerdev
 proxy
 sasl
+saned
 scanner
 scripts
 shadow
@@ -46,6 +52,9 @@ utmp
 uucp
 vboxusers
 messagebus
+powerdev
+polkituser
+partimag
 video
 voice
 wheel

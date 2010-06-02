@@ -3,8 +3,10 @@
 
 #Creat per Adonay Sanz 09-10-07
 #modificat 01-03-08 - kademarcenter
+#modified 02-05-10 - adonay
 
-sudo /etc/init.d/bluetooth restart
+#now on udev rule
+# sudo /etc/init.d/bluetooth restart 
 
 list="blueman bluetooth-applet"
 

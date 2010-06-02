@@ -388,12 +388,12 @@
 <context encoding="UTF-8">
     <name>Form_kademarstart</name>
     <message>
-        <location filename="ui/kademarstart.ui" line="25"/>
+        <location filename="ui/kademarstart.ui" line="26"/>
         <source>kademarstart</source>
         <translation>kademarstart</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="45"/>
+        <location filename="ui/kademarstart.ui" line="46"/>
         <source>Principal</source>
         <translation>Main</translation>
     </message>
@@ -403,7 +403,7 @@
         <translation type="obsolete">Welcome</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="ui/kademarstart.ui" line="105"/>
+        <location filename="ui/kademarstart.ui" line="106"/>
         <source>Benvinguts al vostre nou sistema operatiu kademar.
 
 Pot començar a utilitzar el sistema o, si vols, pots veure les novetats, configurar i altres temes relacionats.</source>
@@ -412,49 +412,49 @@ Pot començar a utilitzar el sistema o, si vols, pots veure les novetats, config
 You can start to use the system, or you can read the news, configure, and other related themes.</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="126"/>
+        <location filename="ui/kademarstart.ui" line="127"/>
         <source>No tornar a engegar a l&apos;inici</source>
         <translation>Do not execute at startup</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="437"/>
+        <location filename="ui/kademarstart.ui" line="441"/>
         <source>Suport i Manuals</source>
         <translation>Support and Manuals</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="162"/>
+        <location filename="ui/kademarstart.ui" line="163"/>
         <source>Equip kademar
 (Qui som?)</source>
         <translation>kademar Team
 (Who we are?)</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="186"/>
+        <location filename="ui/kademarstart.ui" line="187"/>
         <source>Configurar el Sistema</source>
         <translation>System Configure</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="ui/kademarstart.ui" line="234"/>
+        <location filename="ui/kademarstart.ui" line="235"/>
         <source>Notes de la Versió</source>
         <translation>Notes of this version</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="254"/>
+        <location filename="ui/kademarstart.ui" line="255"/>
         <source>Configurar Sistema</source>
         <translation>System Configure</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="ui/kademarstart.ui" line="411"/>
+        <location filename="ui/kademarstart.ui" line="412"/>
         <source>Menú K   -&gt;</source>
         <translation>K Menu -&gt;</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="315"/>
+        <location filename="ui/kademarstart.ui" line="316"/>
         <source>Centre de Control</source>
         <translation>Control Center</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="ui/kademarstart.ui" line="335"/>
+        <location filename="ui/kademarstart.ui" line="336"/>
         <source>kademar ser personalitzada completament, tan en aparença, com els diferents programes que conté.
 
 La major part de les configuracions visuals es poden fer des del Centre de Control.</source>
@@ -463,49 +463,49 @@ La major part de les configuracions visuals es poden fer des del Centre de Contr
 Most of the appearance and visual configurations can be changed through the use of the Control Center.</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="353"/>
+        <location filename="ui/kademarstart.ui" line="354"/>
         <source>Engegar Kcontrol ara</source>
         <translation>Start Kcontrol now</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="366"/>
+        <location filename="ui/kademarstart.ui" line="367"/>
         <source>Engegar CADI ara</source>
         <translation>Start CADI now</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="ui/kademarstart.ui" line="379"/>
+        <location filename="ui/kademarstart.ui" line="380"/>
         <source>Les configuracions del sistema, així com instal·lar impressores, configurar internet,  gestionar usuaris, configurar els teclats multimèdia o instal·lar nous programes; es fan des del CADI. </source>
         <translation>The system configurations, like printers installations, network connectivity, manage users, configure multimedia keyboards, or install new software, can be done using the CADI tool.</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="428"/>
+        <location filename="ui/kademarstart.ui" line="432"/>
         <source>CADI</source>
         <translation>CADI</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="ui/kademarstart.ui" line="465"/>
+        <location filename="ui/kademarstart.ui" line="469"/>
         <source>FAQ
 (Preguntas más frecuentes)</source>
         <translation>FAQ
 (Frecuently Asked Questions)</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="489"/>
+        <location filename="ui/kademarstart.ui" line="493"/>
         <source>Foro de kademar</source>
         <translation>kademar forum</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="512"/>
+        <location filename="ui/kademarstart.ui" line="516"/>
         <source>eMail</source>
         <translation>eMail</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="ui/kademarstart.ui" line="535"/>
+        <location filename="ui/kademarstart.ui" line="539"/>
         <source>Documentación en Linea</source>
         <translation>Online documentation</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="ui/kademarstart.ui" line="558"/>
+        <location filename="ui/kademarstart.ui" line="562"/>
         <source>El soporte de kademar principalmente es a través de internet.
 
 Puedes configurar internet, sino está funcionando ya en &quot;Configurar Sistema&quot; 
@@ -518,28 +518,33 @@ You can configure your net conection, if it isn&apos;t working yet, in &quot;Con
 Once you have connection, you can accede to the support in line services that we offer.</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="571"/>
+        <location filename="ui/kademarstart.ui" line="575"/>
         <source>Equip kademar</source>
         <translation type="unfinished">kademar Team</translation>
     </message>
     <message>
         <location filename="ui/kademarstart.ui" line="676"/>
         <source>kademar Leo 4.3 GNU/Linux</source>
-        <translation>kademar Leo 4.3 GNU/Linux</translation>
+        <translation type="obsolete">kademar Leo 4.3 GNU/Linux</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="247"/>
+        <location filename="ui/kademarstart.ui" line="248"/>
         <source>file:///usr/share/kademar/utils/kademarcenter/html/notesversio_ca.html</source>
         <translation type="unfinished">file:///usr/share/kademar/utils/kademarcenter/html/notesversio_en.html</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="584"/>
+        <location filename="ui/kademarstart.ui" line="588"/>
         <source>file:///usr/share/kademar/utils/kademarcenter/html/equip_ca.html</source>
         <translation type="unfinished">file:///usr/share/kademar/utils/kademarcenter/html/equip_en.html</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="92"/>
+        <location filename="ui/kademarstart.ui" line="93"/>
         <source>Welcome to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ui/kademarstart.ui" line="680"/>
+        <source>kademar GNU/Linux</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

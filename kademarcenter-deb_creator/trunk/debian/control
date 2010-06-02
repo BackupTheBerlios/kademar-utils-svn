@@ -8,7 +8,7 @@ Homepage: http://www.kademar.org
 
 Package: kademarcenter
 Architecture: all
-Depends: kademar-base, python-qt4, python-qt4-dbus, python-pyinotify, python-dbus, python-apt, pmount, numlockx, laptop-detect, hal
+Depends: kademar-base, python-qt4, python-qt4-dbus, python-pyinotify, python-dbus, pmount, numlockx, laptop-detect, hal
 Description: kademarcenter it's the main center of kademar
  kademarcenter using hal & dbus configures all Hotplug devices, like wlan, bluetooth, pendrives, etc .
  it has an UsbTray integrated to umount devices .

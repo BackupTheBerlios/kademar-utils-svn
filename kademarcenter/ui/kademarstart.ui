@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>Form_kademarstart</class>
- <widget class="QWidget" name="Form_kademarstart" >
-  <property name="geometry" >
+ <widget class="QWidget" name="Form_kademarstart">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,27 +10,27 @@
     <height>480</height>
    </rect>
   </property>
-  <property name="minimumSize" >
+  <property name="minimumSize">
    <size>
     <width>640</width>
     <height>480</height>
    </size>
   </property>
-  <property name="maximumSize" >
+  <property name="maximumSize">
    <size>
     <width>640</width>
     <height>480</height>
    </size>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>kademarstart</string>
   </property>
-  <property name="windowIcon" >
+  <property name="windowIcon">
    <iconset>
     <normaloff>../../../../../../usr/share/icons/default.kde/32x32/apps/tux.png</normaloff>../../../../../../usr/share/icons/default.kde/32x32/apps/tux.png</iconset>
   </property>
-  <widget class="QTabWidget" name="pages" >
-   <property name="geometry" >
+  <widget class="QTabWidget" name="pages">
+   <property name="geometry">
     <rect>
      <x>0</x>
      <y>60</y>
@@ -37,15 +38,15 @@
      <height>397</height>
     </rect>
    </property>
-   <property name="currentIndex" >
-    <number>4</number>
+   <property name="currentIndex">
+    <number>0</number>
    </property>
-   <widget class="QWidget" name="tab_ppal" >
-    <attribute name="title" >
+   <widget class="QWidget" name="tab_ppal">
+    <attribute name="title">
      <string>Principal</string>
     </attribute>
-    <widget class="QLabel" name="label_2" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
@@ -53,15 +54,15 @@
        <height>375</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="pixmap" >
+     <property name="pixmap">
       <pixmap>../../../../../../usr/share/kademar/utils/kademarcenter/img/bg/bg_principal.png</pixmap>
      </property>
     </widget>
-    <widget class="QLabel" name="logo_kademar" >
-     <property name="geometry" >
+    <widget class="QLabel" name="logo_kademar">
+     <property name="geometry">
       <rect>
        <x>230</x>
        <y>20</y>
@@ -69,15 +70,15 @@
        <height>61</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="pixmap" >
+     <property name="pixmap">
       <pixmap>../../../../../../usr/share/kademar/utils/kademarcenter/img/logo.png</pixmap>
      </property>
     </widget>
-    <widget class="QLabel" name="l_benvinguts" >
-     <property name="geometry" >
+    <widget class="QLabel" name="l_benvinguts">
+     <property name="geometry">
       <rect>
        <x>76</x>
        <y>50</y>
@@ -85,15 +86,15 @@
        <height>20</height>
       </rect>
      </property>
-     <property name="layoutDirection" >
+     <property name="layoutDirection">
       <enum>Qt::RightToLeft</enum>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Welcome to</string>
      </property>
     </widget>
-    <widget class="QLabel" name="l_versio" >
-     <property name="geometry" >
+    <widget class="QLabel" name="l_versio">
+     <property name="geometry">
       <rect>
        <x>120</x>
        <y>83</y>
@@ -101,17 +102,17 @@
        <height>81</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Benvinguts al vostre nou sistema operatiu kademar.
 
 Pot començar a utilitzar el sistema o, si vols, pots veure les novetats, configurar i altres temes relacionats.</string>
      </property>
-     <property name="wordWrap" >
+     <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QCheckBox" name="cb_autostart" >
-     <property name="geometry" >
+    <widget class="QCheckBox" name="cb_autostart">
+     <property name="geometry">
       <rect>
        <x>358</x>
        <y>344</y>
@@ -119,15 +120,15 @@ Pot començar a utilitzar el sistema o, si vols, pots veure les novetats, config
        <height>20</height>
       </rect>
      </property>
-     <property name="layoutDirection" >
+     <property name="layoutDirection">
       <enum>Qt::RightToLeft</enum>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>No tornar a engegar a l'inici</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="b_suport" >
-     <property name="geometry" >
+    <widget class="QPushButton" name="b_suport">
+     <property name="geometry">
       <rect>
        <x>90</x>
        <y>260</y>
@@ -135,22 +136,22 @@ Pot començar a utilitzar el sistema o, si vols, pots veure les novetats, config
        <height>51</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Suport i Manuals</string>
      </property>
-     <property name="icon" >
+     <property name="icon">
       <iconset>
        <normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/img/suport.png</normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/img/suport.png</iconset>
      </property>
-     <property name="iconSize" >
+     <property name="iconSize">
       <size>
        <width>32</width>
        <height>32</height>
       </size>
      </property>
     </widget>
-    <widget class="QPushButton" name="b_equip" >
-     <property name="geometry" >
+    <widget class="QPushButton" name="b_equip">
+     <property name="geometry">
       <rect>
        <x>340</x>
        <y>260</y>
@@ -158,23 +159,23 @@ Pot començar a utilitzar el sistema o, si vols, pots veure les novetats, config
        <height>51</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Equip kademar
 (Qui som?)</string>
      </property>
-     <property name="icon" >
+     <property name="icon">
       <iconset>
        <normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/html/img/equip1.png</normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/html/img/equip1.png</iconset>
      </property>
-     <property name="iconSize" >
+     <property name="iconSize">
       <size>
        <width>32</width>
        <height>32</height>
       </size>
      </property>
     </widget>
-    <widget class="QPushButton" name="b_configurar" >
-     <property name="geometry" >
+    <widget class="QPushButton" name="b_configurar">
+     <property name="geometry">
       <rect>
        <x>340</x>
        <y>170</y>
@@ -182,22 +183,22 @@ Pot començar a utilitzar el sistema o, si vols, pots veure les novetats, config
        <height>51</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Configurar el Sistema</string>
      </property>
-     <property name="icon" >
+     <property name="icon">
       <iconset>
-       <normaloff>../../../../../../usr/share/icons/default.kde/48x48/apps/kcontrol.png</normaloff>../../../../../../usr/share/icons/default.kde/48x48/apps/kcontrol.png</iconset>
+	      <normaloff>/usr/share/icons/oxygen/48x48/categories/preferences-system.png</normaloff>/usr/share/icons/oxygen/48x48/categories/preferences-system.png</iconset>
      </property>
-     <property name="iconSize" >
+     <property name="iconSize">
       <size>
        <width>32</width>
        <height>32</height>
       </size>
      </property>
     </widget>
-    <widget class="QPushButton" name="b_notes" >
-     <property name="geometry" >
+    <widget class="QPushButton" name="b_notes">
+     <property name="geometry">
       <rect>
        <x>90</x>
        <y>170</y>
@@ -205,14 +206,14 @@ Pot començar a utilitzar el sistema o, si vols, pots veure les novetats, config
        <height>51</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Notes de la Versió</string>
      </property>
-     <property name="icon" >
+     <property name="icon">
       <iconset>
        <normaloff>../../../../../usr/share/kademar/utils/kademarcenter/img/notes.png</normaloff>../../../../../usr/share/kademar/utils/kademarcenter/img/notes.png</iconset>
      </property>
-     <property name="iconSize" >
+     <property name="iconSize">
       <size>
        <width>32</width>
        <height>32</height>
@@ -229,12 +230,12 @@ Pot començar a utilitzar el sistema o, si vols, pots veure les novetats, config
     <zorder>b_configurar</zorder>
     <zorder>b_notes</zorder>
    </widget>
-   <widget class="QWidget" name="tab_notes" >
-    <attribute name="title" >
+   <widget class="QWidget" name="tab_notes">
+    <attribute name="title">
      <string>Notes de la Versió</string>
     </attribute>
-    <widget class="QWebView" name="web_notes" >
-     <property name="geometry" >
+    <widget class="QWebView" name="web_notes">
+     <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
@@ -242,19 +243,19 @@ Pot començar a utilitzar el sistema o, si vols, pots veure les novetats, config
        <height>370</height>
       </rect>
      </property>
-     <property name="url" >
+     <property name="url">
       <url>
        <string>file:///usr/share/kademar/utils/kademarcenter/html/notesversio_ca.html</string>
       </url>
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="tab_configurar" >
-    <attribute name="title" >
+   <widget class="QWidget" name="tab_configurar">
+    <attribute name="title">
      <string>Configurar Sistema</string>
     </attribute>
-    <widget class="QLabel" name="label_3" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
       <rect>
        <x>0</x>
        <y>-10</y>
@@ -262,15 +263,15 @@ Pot començar a utilitzar el sistema o, si vols, pots veure les novetats, config
        <height>375</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="pixmap" >
+     <property name="pixmap">
       <pixmap>../../../../../../usr/share/kademar/utils/kademarcenter/img/bg/bg_principal.png</pixmap>
      </property>
     </widget>
-    <widget class="QWidget" name="horizontalLayoutWidget" >
-     <property name="geometry" >
+    <widget class="QWidget" name="horizontalLayoutWidget">
+     <property name="geometry">
       <rect>
        <x>70</x>
        <y>110</y>
@@ -278,40 +279,40 @@ Pot començar a utilitzar el sistema o, si vols, pots veure les novetats, config
        <height>81</height>
       </rect>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout" >
-      <property name="spacing" >
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="spacing">
        <number>0</number>
       </property>
       <item>
-       <widget class="QLabel" name="label" >
-        <property name="text" >
+       <widget class="QLabel" name="label">
+        <property name="text">
          <string/>
         </property>
-        <property name="pixmap" >
-         <pixmap>../../../../../../usr/share/icons/default.kde/48x48/apps/kmenu.png</pixmap>
+        <property name="pixmap">
+         <pixmap>../../../../../../usr/share/icons/default.kde/48x48/apps/kde.png</pixmap>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_5" >
-        <property name="text" >
-         <string>Menú K   -></string>
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Menú K   -&gt;</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_4" >
-        <property name="text" >
+       <widget class="QLabel" name="label_4">
+        <property name="text">
          <string/>
         </property>
-        <property name="pixmap" >
-         <pixmap>../../../../../../usr/share/icons/default.kde/48x48/apps/kcontrol.png</pixmap>
+        <property name="pixmap">
+         <pixmap>../../../../../../usr/share/icons/default.kde/48x48/apps/preferences-system-windows-actions.png</pixmap>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_6" >
-        <property name="text" >
+       <widget class="QLabel" name="label_6">
+        <property name="text">
          <string>Centre de Control</string>
         </property>
        </widget>
@@ -322,8 +323,8 @@ Pot començar a utilitzar el sistema o, si vols, pots veure les novetats, config
      <zorder>label_4</zorder>
      <zorder>label_6</zorder>
     </widget>
-    <widget class="QLabel" name="label_7" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
       <rect>
        <x>60</x>
        <y>10</y>
@@ -331,17 +332,17 @@ Pot començar a utilitzar el sistema o, si vols, pots veure les novetats, config
        <height>91</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>kademar ser personalitzada completament, tan en aparença, com els diferents programes que conté.
 
 La major part de les configuracions visuals es poden fer des del Centre de Control.</string>
      </property>
-     <property name="wordWrap" >
+     <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="b_kcontrol" >
-     <property name="geometry" >
+    <widget class="QPushButton" name="b_kcontrol">
+     <property name="geometry">
       <rect>
        <x>380</x>
        <y>120</y>
@@ -349,12 +350,12 @@ La major part de les configuracions visuals es poden fer des del Centre de Contr
        <height>40</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Engegar Kcontrol ara</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="b_cadi" >
-     <property name="geometry" >
+    <widget class="QPushButton" name="b_cadi">
+     <property name="geometry">
       <rect>
        <x>380</x>
        <y>290</y>
@@ -362,12 +363,12 @@ La major part de les configuracions visuals es poden fer des del Centre de Contr
        <height>40</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Engegar CADI ara</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_8" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
       <rect>
        <x>60</x>
        <y>200</y>
@@ -375,15 +376,15 @@ La major part de les configuracions visuals es poden fer des del Centre de Contr
        <height>61</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Les configuracions del sistema, així com instal·lar impressores, configurar internet,  gestionar usuaris, configurar els teclats multimèdia o instal·lar nous programes; es fan des del CADI. </string>
      </property>
-     <property name="wordWrap" >
+     <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QWidget" name="horizontalLayoutWidget_2" >
-     <property name="geometry" >
+    <widget class="QWidget" name="horizontalLayoutWidget_2">
+     <property name="geometry">
       <rect>
        <x>70</x>
        <y>270</y>
@@ -391,40 +392,43 @@ La major part de les configuracions visuals es poden fer des del Centre de Contr
        <height>71</height>
       </rect>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_2" >
-      <property name="spacing" >
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="spacing">
        <number>0</number>
       </property>
       <item>
-       <widget class="QLabel" name="label_9" >
-        <property name="text" >
+       <widget class="QLabel" name="label_9">
+        <property name="text">
          <string/>
         </property>
-        <property name="pixmap" >
-         <pixmap>../../../../../../usr/share/icons/default.kde/48x48/apps/kmenu.png</pixmap>
+        <property name="pixmap">
+         <pixmap>../../../../../../usr/share/icons/default.kde/48x48/apps/kde.png</pixmap>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_10" >
-        <property name="text" >
-         <string>Menú K   -></string>
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>Menú K   -&gt;</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_11" >
-        <property name="text" >
+       <widget class="QLabel" name="label_11">
+        <property name="text">
          <string/>
         </property>
-        <property name="pixmap" >
-         <pixmap>../../../../../../usr/share/kademar/icons/package_settings.png</pixmap>
+        <property name="pixmap">
+         <pixmap>../../../../../../usr/share/kademar/utils/cadi/img/cadi.png</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_12" >
-        <property name="text" >
+       <widget class="QLabel" name="label_12">
+        <property name="text">
          <string>CADI</string>
         </property>
        </widget>
@@ -432,12 +436,12 @@ La major part de les configuracions visuals es poden fer des del Centre de Contr
      </layout>
     </widget>
    </widget>
-   <widget class="QWidget" name="tab_suport" >
-    <attribute name="title" >
+   <widget class="QWidget" name="tab_suport">
+    <attribute name="title">
      <string>Suport i Manuals</string>
     </attribute>
-    <widget class="QLabel" name="label_13" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_13">
+     <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
@@ -445,15 +449,15 @@ La major part de les configuracions visuals es poden fer des del Centre de Contr
        <height>375</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="pixmap" >
+     <property name="pixmap">
       <pixmap>../../../../../../usr/share/kademar/utils/kademarcenter/img/bg/bg_principal.png</pixmap>
      </property>
     </widget>
-    <widget class="QPushButton" name="b_faq" >
-     <property name="geometry" >
+    <widget class="QPushButton" name="b_faq">
+     <property name="geometry">
       <rect>
        <x>70</x>
        <y>170</y>
@@ -461,23 +465,23 @@ La major part de les configuracions visuals es poden fer des del Centre de Contr
        <height>51</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>FAQ
 (Preguntas más frecuentes)</string>
      </property>
-     <property name="icon" >
+     <property name="icon">
       <iconset>
        <normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/img/faq.png</normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/img/faq.png</iconset>
      </property>
-     <property name="iconSize" >
+     <property name="iconSize">
       <size>
        <width>32</width>
        <height>32</height>
       </size>
      </property>
     </widget>
-    <widget class="QPushButton" name="b_foro" >
-     <property name="geometry" >
+    <widget class="QPushButton" name="b_foro">
+     <property name="geometry">
       <rect>
        <x>340</x>
        <y>170</y>
@@ -485,22 +489,22 @@ La major part de les configuracions visuals es poden fer des del Centre de Contr
        <height>51</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Foro de kademar</string>
      </property>
-     <property name="icon" >
+     <property name="icon">
       <iconset>
        <normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/img/foro.png</normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/img/foro.png</iconset>
      </property>
-     <property name="iconSize" >
+     <property name="iconSize">
       <size>
        <width>32</width>
        <height>32</height>
       </size>
      </property>
     </widget>
-    <widget class="QPushButton" name="b_email" >
-     <property name="geometry" >
+    <widget class="QPushButton" name="b_email">
+     <property name="geometry">
       <rect>
        <x>340</x>
        <y>260</y>
@@ -508,22 +512,22 @@ La major part de les configuracions visuals es poden fer des del Centre de Contr
        <height>51</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>eMail</string>
      </property>
-     <property name="icon" >
+     <property name="icon">
       <iconset>
        <normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/img/email.png</normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/img/email.png</iconset>
      </property>
-     <property name="iconSize" >
+     <property name="iconSize">
       <size>
        <width>32</width>
        <height>32</height>
       </size>
      </property>
     </widget>
-    <widget class="QPushButton" name="b_doc" >
-     <property name="geometry" >
+    <widget class="QPushButton" name="b_doc">
+     <property name="geometry">
       <rect>
        <x>70</x>
        <y>260</y>
@@ -531,22 +535,22 @@ La major part de les configuracions visuals es poden fer des del Centre de Contr
        <height>51</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Documentación en Linea</string>
      </property>
-     <property name="icon" >
+     <property name="icon">
       <iconset>
        <normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/img/docs.png</normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/img/docs.png</iconset>
      </property>
-     <property name="iconSize" >
+     <property name="iconSize">
       <size>
        <width>32</width>
        <height>32</height>
       </size>
      </property>
     </widget>
-    <widget class="QLabel" name="label_14" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_14">
+     <property name="geometry">
       <rect>
        <x>90</x>
        <y>20</y>
@@ -554,24 +558,24 @@ La major part de les configuracions visuals es poden fer des del Centre de Contr
        <height>141</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>El soporte de kademar principalmente es a través de internet.
 
-Puedes configurar internet, sino está funcionando ya en "Configurar Sistema" 
+Puedes configurar internet, sino está funcionando ya en &quot;Configurar Sistema&quot; 
 
  Una vez tengas conexión, puedes acceder a los servicios de soporte en linea que ofrecemos.</string>
      </property>
-     <property name="wordWrap" >
+     <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="tab_equip" >
-    <attribute name="title" >
+   <widget class="QWidget" name="tab_equip">
+    <attribute name="title">
      <string>Equip kademar</string>
     </attribute>
-    <widget class="QWebView" name="web_equip" >
-     <property name="geometry" >
+    <widget class="QWebView" name="web_equip">
+     <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
@@ -579,7 +583,7 @@ Puedes configurar internet, sino está funcionando ya en "Configurar Sistema"
        <height>370</height>
       </rect>
      </property>
-     <property name="url" >
+     <property name="url">
       <url>
        <string>file:///usr/share/kademar/utils/kademarcenter/html/equip_ca.html</string>
       </url>
@@ -587,8 +591,8 @@ Puedes configurar internet, sino está funcionando ya en "Configurar Sistema"
     </widget>
    </widget>
   </widget>
-  <widget class="QLabel" name="l_banner" >
-   <property name="geometry" >
+  <widget class="QLabel" name="l_banner">
+   <property name="geometry">
     <rect>
      <x>-6</x>
      <y>0</y>
@@ -596,15 +600,15 @@ Puedes configurar internet, sino está funcionando ya en "Configurar Sistema"
      <height>59</height>
     </rect>
    </property>
-   <property name="text" >
+   <property name="text">
     <string/>
    </property>
-   <property name="pixmap" >
+   <property name="pixmap">
     <pixmap>../../../../../../usr/share/kademar/utils/kademarcenter/img/banda.png</pixmap>
    </property>
   </widget>
-  <widget class="QPushButton" name="b_sortir" >
-   <property name="geometry" >
+  <widget class="QPushButton" name="b_sortir">
+   <property name="geometry">
     <rect>
      <x>10</x>
      <y>458</y>
@@ -612,16 +616,16 @@ Puedes configurar internet, sino está funcionando ya en "Configurar Sistema"
      <height>20</height>
     </rect>
    </property>
-   <property name="text" >
+   <property name="text">
     <string/>
    </property>
-   <property name="icon" >
+   <property name="icon">
     <iconset>
      <normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/img/exit.png</normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/img/exit.png</iconset>
    </property>
   </widget>
-  <widget class="QPushButton" name="b_enrera" >
-   <property name="geometry" >
+  <widget class="QPushButton" name="b_enrera">
+   <property name="geometry">
     <rect>
      <x>38</x>
      <y>458</y>
@@ -629,16 +633,16 @@ Puedes configurar internet, sino está funcionando ya en "Configurar Sistema"
      <height>20</height>
     </rect>
    </property>
-   <property name="text" >
+   <property name="text">
     <string/>
    </property>
-   <property name="icon" >
+   <property name="icon">
     <iconset>
-     <normaloff>../../../../../../usr/share/icons/default.kde/16x16/actions/previous.png</normaloff>../../../../../../usr/share/icons/default.kde/16x16/actions/previous.png</iconset>
+	    <normaloff>/usr/share/icons/oxygen/16x16/actions/go-previous.png</normaloff>/usr/share/icons/oxygen/16x16/actions/go-previous.png</iconset>
    </property>
   </widget>
-  <widget class="QPushButton" name="b_band_cat" >
-   <property name="geometry" >
+  <widget class="QPushButton" name="b_band_cat">
+   <property name="geometry">
     <rect>
      <x>560</x>
      <y>16</y>
@@ -646,22 +650,22 @@ Puedes configurar internet, sino está funcionando ya en "Configurar Sistema"
      <height>20</height>
     </rect>
    </property>
-   <property name="text" >
+   <property name="text">
     <string/>
    </property>
-   <property name="icon" >
+   <property name="icon">
     <iconset>
      <normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/img/band_catala.png</normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/img/band_catala.png</iconset>
    </property>
-   <property name="iconSize" >
+   <property name="iconSize">
     <size>
      <width>50</width>
      <height>50</height>
     </size>
    </property>
   </widget>
-  <widget class="QLabel" name="l_kademar" >
-   <property name="geometry" >
+  <widget class="QLabel" name="l_kademar">
+   <property name="geometry">
     <rect>
      <x>340</x>
      <y>460</y>
@@ -669,15 +673,15 @@ Puedes configurar internet, sino está funcionando ya en "Configurar Sistema"
      <height>20</height>
     </rect>
    </property>
-   <property name="layoutDirection" >
+   <property name="layoutDirection">
     <enum>Qt::RightToLeft</enum>
    </property>
-   <property name="text" >
-    <string>kademar Leo 4.3 GNU/Linux</string>
+   <property name="text">
+    <string>kademar GNU/Linux</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="b_band_esp" >
-   <property name="geometry" >
+  <widget class="QPushButton" name="b_band_esp">
+   <property name="geometry">
     <rect>
      <x>599</x>
      <y>16</y>
@@ -685,14 +689,14 @@ Puedes configurar internet, sino está funcionando ya en "Configurar Sistema"
      <height>20</height>
     </rect>
    </property>
-   <property name="text" >
+   <property name="text">
     <string/>
    </property>
-   <property name="icon" >
+   <property name="icon">
     <iconset>
      <normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/img/band_castella.png</normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/img/band_castella.png</iconset>
    </property>
-   <property name="iconSize" >
+   <property name="iconSize">
     <size>
      <width>50</width>
      <height>50</height>

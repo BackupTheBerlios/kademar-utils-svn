@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 #
 #  Script per obtenir informacio utilitzant hal/dbus

@@ -1,0 +1,70 @@
+#!/bin/bash
+
+### BEGIN INIT INFO
+# Provides:          sbl
+# Required-Start:    $syslog
+# Required-Stop:     $syslog
+# Should-Start:      $local_fs
+# Should-Stop:       $local_fs
+# Default-Start:     
+# Default-Stop:      
+# Short-Description: Starts sbl engine at boot time (NOT USED)
+# Description:       Init script for starting SBL as a
+#                    system-wide server process
+### END INIT INFO
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=/usr/sbin/sbl
+NAME=sbl
+DESC=Screenreader
+
+test -x $DAEMON || exit 0
+
+# Include sblsrc defaults if available
+if [ -f /etc/default/sbl ] ; then
+	. /etc/default/sbl
+fi
+
+if [ -f /etc/sbl.conf ] ; then
+	. /etc/sbl.conf
+fi
+
+SERVICES="kbdsniffd brld sbl"
+
+case "$1" in
+  start)
+	echo -n "Starting $DESC: "
+	[ -c /dev/vcsa ] || mknod /dev/vcsa c 7 128 2>/dev/null
+	case "$brlname" in [Aa]uto)
+		[ -x /usr/lib/sbl/autodetect ] && /usr/lib/sbl/autodetect >/dev/null 2>&1
+		;;
+	esac
+	for i in $SERVICES; do
+		pidof $i >/dev/null 2>&1 || $i
+		echo -n "[$i] "
+	done
+	echo ""
+	;;
+  stop)
+	echo -n "Stopping $DESC: "
+	for i in $SERVICES; do
+		for pid in $(pidof $i 2>/dev/null); do
+			if [ -n "$pid" -a "$pid" != "$$" -a -d /proc/$pid ]; then
+				kill -TERM $pid; sleep 2
+				[ -d /proc/$pid ] && kill -KILL $pid
+			fi
+		done
+		echo -n "[$i] "
+	done
+	echo ""
+	;;
+  restart)
+  	$0 stop; sleep 2; $0 start
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}" >&2
+	exit 1
+	;;
+esac
+
+exit 0

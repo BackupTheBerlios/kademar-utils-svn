@@ -5,7 +5,7 @@
 
 # Older compiz versions start gtk-window-decorator only if GNOME_DESKTOP_SESSION_ID is set.
 [ -n "$GNOME_DESKTOP_SESSION_ID" ] || export GNOME_DESKTOP_SESSION_ID="LXDE"
-export SAL_USE_VCLPLUGIN="gtk" GTK_MODULES="gail:atk-bridge"
+export SAL_USE_VCLPLUGIN="gtk" GTK_MODULES="gail:atk-bridge" GNOME_ACCESSIBILITY=1
 startorca ; sleep 10 
 
 #removed due a issue with ALT of spanish keyboards

@@ -1,0 +1,71 @@
+#!/bin/sh
+#/etc/init.d/adriane-screenread
+#
+# Init script for starting adriane-screenread as a system-wide server process.
+#
+# Written by David Huggins-Daines <dhd@cepstral.com>
+# LSBINITInfo by Kartik Mistry <kartik.mistry@gmail.com>
+# LSB logging functions by David Härdeman <david@hardeman.nu>
+
+### BEGIN INIT INFO
+# Provides:          adriane-screenread
+# Required-Start:    $syslog
+# Required-Stop:     $syslog
+# Should-Start:      $local_fs
+# Should-Stop:       $local_fs
+# Default-Start:     
+# Default-Stop:      
+# Short-Description: Starts adriane-screenread engine at boot time
+# Description:       Init script for starting adriane-screenread TTS as a
+#                    system-wide server process
+### END INIT INFO
+
+# WARNING: It is inherently insecure to run a adriane-screenread instance as a
+# server, mainly because it exposes the whole system to exploits which
+# can be easily used by attackers to gain access to your
+# computer. This is because of the inherent design of the adriane-screenread
+# server. Please use it only in a situation where you are sure that
+# you will not be subjected to such an attack, or have adequate
+# security precautions.
+
+# This file has been provided as an example file for your use, should
+# you wish to run adriane-screenread as a server.
+
+# NOTE: Not just anybody can connect to your server; the list of allowed
+# hostnames is a regexp. Check /usr/share/adriane-screenread/adriane-screenread.scm for more
+# helpful comments; add your settings to /etc/adriane-screenread.scm.
+
+set -e
+
+DAEMON=/usr/bin/adriane-screenread
+REALPROC=/usr/bin/adriane-screenread
+NAME=adriane-screenread
+
+. /lib/lsb/init-functions
+
+test -x $DAEMON || exit 0
+
+case "$1" in
+  start)
+    log_daemon_msg "Starting adriane-screenread server" "$NAME"
+    $NAME
+    log_end_msg 0
+    ;;
+  stop)
+    log_daemon_msg "Stopping adriane-screenread server" "$NAME"
+    killall -15 $NAME
+    log_end_msg 0
+    ;;
+  restart|reload|force-reload)
+    log_daemon_msg "Restarting adriane-screenread server" "$NAME"
+    killall -15 $NAME
+    $NAME
+    log_end_msg 0
+    ;;
+  *)
+    echo "Usage: /etc/init.d/$NAME {start|stop|restart}" >&2
+    exit 2
+    ;;
+esac
+
+exit 0

@@ -1,3 +1,9 @@
+kademar-csic (4.9.5) unstable; urgency=low
+
+  * FEATURE: Support to Grub-GFXBoot Heliox theme
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Tue, 25 May 2010 18:31:26 +0200
+
 kademar-csic (4.9.1) unstable; urgency=low
 
   * FEATURE: Csic Starter Screenlet
@@ -5,7 +11,7 @@ kademar-csic (4.9.1) unstable; urgency=low
   * FEATURE: Scripts to Volume up/down
   * FEATURE: LXDE + Orca  kdm/gdm/wdm  session
 
- -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Fri, 23 Oct 2009 16:55:05 +0200
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Tue, 25 May 2010 18:31:23 +0200
 
 kademar-csic (1.0-1) unstable; urgency=low
 

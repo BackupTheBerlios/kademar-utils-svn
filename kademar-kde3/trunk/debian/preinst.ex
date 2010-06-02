@@ -1,5 +1,5 @@
 #!/bin/sh
-# preinst script for kademar-kde
+# preinst script for kademar-kde3
 #
 # see: dh_installdeb(1)
 

@@ -16,11 +16,11 @@ case "$1" in
 #                 if [ -e /etc/kde3/kdm/backgroundrc.orig ]; then
 #                         rm /etc/kde3/kdm/backgroundrc
 #                 fi
-#                 dpkg-divert --package kademar-kde --remove --divert /usr/share/apps/kicker/pics/kside.png-orig --rename /usr/share/apps/kicker/pics/kside.png
+#                 dpkg-divert --package kademar-kde3 --remove --divert /usr/share/apps/kicker/pics/kside.png-orig --rename /usr/share/apps/kicker/pics/kside.png
                 
-#                 dpkg-divert --package kademar-kde --remove --divert /etc/kde3/kdm/kdmrc.orig --rename /etc/kde3/kdm/kdmrc
+#                 dpkg-divert --package kademar-kde3 --remove --divert /etc/kde3/kdm/kdmrc.orig --rename /etc/kde3/kdm/kdmrc
 
-#                 dpkg-divert --package kademar-kde --remove --divert /etc/kde3/kdm/backgroundrc.orig --rename /etc/kde3/kdm/backgroundrc
+#                 dpkg-divert --package kademar-kde3 --remove --divert /etc/kde3/kdm/backgroundrc.orig --rename /etc/kde3/kdm/backgroundrc
                 rm -f /etc/kde3/kdm/backgroundrc /etc/kde3/kdm/kdmrc /usr/share/apps/kicker/pics/kside.png
                 dpkg-divert --remove /etc/kde3/kdm/backgroundrc
                 dpkg-divert --remove /etc/kde3/kdm/kdmrc

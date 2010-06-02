@@ -1,5 +1,5 @@
 #!/bin/sh
-# prerm script for kademar-kde
+# prerm script for kademar-kde3
 #
 # see: dh_installdeb(1)
 

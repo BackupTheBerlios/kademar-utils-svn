@@ -12,22 +12,22 @@
 #
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-DAEMON=/usr/sbin/kademar-kde
-NAME=kademar-kde
-DESC=kademar-kde
+DAEMON=/usr/sbin/kademar-kde3
+NAME=kademar-kde3
+DESC=kademar-kde3
 
 test -x $DAEMON || exit 0
 
-LOGDIR=/var/log/kademar-kde
+LOGDIR=/var/log/kademar-kde3
 PIDFILE=/var/run/$NAME.pid
 DODTIME=1                   # Time to wait for the server to die, in seconds
                             # If this value is set too low you might not
                             # let some servers to die gracefully and
                             # 'restart' will not work
 
-# Include kademar-kde defaults if available
-if [ -f /etc/default/kademar-kde ] ; then
-	. /etc/default/kademar-kde
+# Include kademar-kde3 defaults if available
+if [ -f /etc/default/kademar-kde3 ] ; then
+	. /etc/default/kademar-kde3
 fi
 
 set -e

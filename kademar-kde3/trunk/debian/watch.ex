@@ -8,15 +8,15 @@ version=3
 
 # Uncomment to examine a Webpage 
 # <Webpage URL> <string match>
-#http://www.example.com/downloads.php kademar-kde-(.*)\.tar\.gz
+#http://www.example.com/downloads.php kademar-kde3-(.*)\.tar\.gz
 
 # Uncomment to examine a Webserver directory
-#http://www.example.com/pub/kademar-kde-(.*)\.tar\.gz
+#http://www.example.com/pub/kademar-kde3-(.*)\.tar\.gz
 
 # Uncommment to examine a FTP server
-#ftp://ftp.example.com/pub/kademar-kde-(.*)\.tar\.gz debian uupdate
+#ftp://ftp.example.com/pub/kademar-kde3-(.*)\.tar\.gz debian uupdate
 
 # Uncomment to find new files on sourceforge, for debscripts >= 2.9
-# http://sf.net/kademar-kde/kademar-kde-(.*)\.tar\.gz
+# http://sf.net/kademar-kde3/kademar-kde3-(.*)\.tar\.gz
 
 

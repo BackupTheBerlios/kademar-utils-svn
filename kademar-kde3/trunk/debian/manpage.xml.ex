@@ -37,7 +37,7 @@ and docbook-xsl in your Build-Depends control field.
   <!ENTITY dhemail     "<email>adonay@kademar.org</email>">
   <!ENTITY dhusername  "Adonay Sanz Alsina">
   <!ENTITY dhucpackage "<refentrytitle>KADEMAR-KDE</refentrytitle>">
-  <!ENTITY dhpackage   "kademar-kde">
+  <!ENTITY dhpackage   "kademar-kde3">
 
   <!ENTITY debian      "<productname>Debian</productname>">
   <!ENTITY gnu         "<acronym>GNU</acronym>">

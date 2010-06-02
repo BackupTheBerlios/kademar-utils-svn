@@ -16,16 +16,16 @@
 .\" .sp <n>    insert n+1 empty lines
 .\" for manpage-specific macros, see man(7)
 .SH NAME
-kademar-kde \- program to do something
+kademar-kde3 \- program to do something
 .SH SYNOPSIS
-.B kademar-kde
+.B kademar-kde3
 .RI [ options ] " files" ...
 .br
 .B bar
 .RI [ options ] " files" ...
 .SH DESCRIPTION
 This manual page documents briefly the
-.B kademar-kde
+.B kademar-kde3
 and
 .B bar
 commands.
@@ -33,7 +33,7 @@ commands.
 .\" TeX users may be more comfortable with the \fB<whatever>\fP and
 .\" \fI<whatever>\fP escape sequences to invode bold face and italics, 
 .\" respectively.
-\fBkademar-kde\fP is a program that...
+\fBkademar-kde3\fP is a program that...
 .SH OPTIONS
 These programs follow the usual GNU command line syntax, with long
 options starting with two dashes (`-').
@@ -53,7 +53,7 @@ The programs are documented fully by
 .IR "The Rise and Fall of a Fooish Bar" ,
 available via the Info system.
 .SH AUTHOR
-kademar-kde was written by <upstream author>.
+kademar-kde3 was written by <upstream author>.
 .PP
 This manual page was written by Adonay Sanz Alsina <adonay@kademar.org>,
 for the Debian project (but may be used by others).

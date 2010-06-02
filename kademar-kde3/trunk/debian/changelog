@@ -1,10 +1,10 @@
-kademar-kde (4.9) testing; urgency=low
+kademar-kde3 (4.9) testing; urgency=low
 
   * kademar -> kademar image theme
 
  -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Thu, 21 May 2009 23:51:58 +0200
 
-kademar-kde (4.8) testing; urgency=low
+kademar-kde3 (4.8) testing; urgency=low
 
   * kademar 4.8
   * Wallpapers to Wallpapers package
@@ -16,7 +16,7 @@ kademar-kde (4.8) testing; urgency=low
 
  -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Wed, 04 Feb 2009 00:15:00 +0100
 
-kademar-kde (2.7) testing; urgency=low
+kademar-kde3 (2.7) testing; urgency=low
 
   * Removed Timidity
   * Up to 4.7
@@ -24,7 +24,7 @@ kademar-kde (2.7) testing; urgency=low
 
  -- Adonay Sanz <adonay@kademar.org>  Sat, 08 Nov 2008 13:57:29 +0100
 
-kademar-kde (2.5) testing; urgency=low
+kademar-kde3 (2.5) testing; urgency=low
 
   * New Splash + Moodin
   * +4 Color Schemes
@@ -34,7 +34,7 @@ kademar-kde (2.5) testing; urgency=low
 
  -- Adonay Sanz <adonay@kademar.org>  Wed, 09 Jul 2008 00:28:13 +0200
 
-kademar-kde (2.0) testing; urgency=low
+kademar-kde3 (2.0) testing; urgency=low
 
   * Develop for kademar OS 5
   * Splashy at Start with mkinitramfs
@@ -43,19 +43,19 @@ kademar-kde (2.0) testing; urgency=low
 
  -- Adonay Sanz Alsina <clawlinux@debian>  Sun, 16 Mar 2008 17:10:35 +0100
 
-kademar-kde (1.1.2) testing; urgency=low
+kademar-kde3 (1.1.2) testing; urgency=low
 
   * Install of Kmenu - kside
 
  --  <adonay@kademar.org>  Fri, 14 Aug 2007 13:34:21 +0000
 
-kademar-kde (1.1.1) testing; urgency=low
+kademar-kde3 (1.1.1) testing; urgency=low
 
   * wav-extractor for all videos
 
  --  <adonay@kademar.org>  Fri, 14 Aug 2007 13:34:21 +0000
 
-kademar-kde (1.1) testing; urgency=low
+kademar-kde3 (1.1) testing; urgency=low
 
   * Deleted wlassistant locales (now on wlassistant package)
   * Xsession separated of lyra
@@ -68,7 +68,7 @@ kademar-kde (1.1) testing; urgency=low
 
  --  <adonay@kademar.org>  Fri, 13 Nov 2006 13:34:21 +0000
 
-kademar-kde (1.0) testing; urgency=low
+kademar-kde3 (1.0) testing; urgency=low
 
   * Initial release.
 

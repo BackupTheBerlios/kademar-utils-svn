@@ -499,7 +499,7 @@
     </rect>
    </property>
    <property name="currentIndex" >
-    <number>1</number>
+    <number>6</number>
    </property>
    <widget class="QWidget" name="p_principal" >
     <widget class="QLabel" name="label" >
@@ -1475,26 +1475,6 @@ p, li { white-space: pre-wrap; }
     </widget>
    </widget>
    <widget class="QWidget" name="p_usuari" >
-    <widget class="QLabel" name="l_user_account" >
-     <property name="geometry" >
-      <rect>
-       <x>60</x>
-       <y>340</y>
-       <width>241</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="font" >
-      <font>
-       <weight>75</weight>
-       <italic>true</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text" >
-      <string>Account name</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_19" >
      <property name="geometry" >
       <rect>
@@ -1522,13 +1502,19 @@ If you don't want to be asked for it every time you start, check User Autostart 
      </property>
     </widget>
     <widget class="QLineEdit" name="t_user_account" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
      <property name="geometry" >
       <rect>
-       <x>80</x>
-       <y>360</y>
+       <x>700</x>
+       <y>470</y>
        <width>191</width>
        <height>24</height>
       </rect>
+     </property>
+     <property name="text" >
+      <string>Heliox</string>
      </property>
      <property name="maxLength" >
       <number>20</number>
@@ -1541,7 +1527,7 @@ If you don't want to be asked for it every time you start, check User Autostart 
      <property name="geometry" >
       <rect>
        <x>300</x>
-       <y>410</y>
+       <y>360</y>
        <width>271</width>
        <height>16</height>
       </rect>
@@ -1577,7 +1563,7 @@ If you don't want to be asked for it every time you start, check User Autostart 
      <property name="geometry" >
       <rect>
        <x>320</x>
-       <y>430</y>
+       <y>380</y>
        <width>191</width>
        <height>24</height>
       </rect>
@@ -1635,8 +1621,8 @@ If you don't want to be asked for it every time you start, check User Autostart 
     <widget class="QCheckBox" name="cb_autologin" >
      <property name="geometry" >
       <rect>
-       <x>320</x>
-       <y>350</y>
+       <x>700</x>
+       <y>430</y>
        <width>261</width>
        <height>41</height>
       </rect>
@@ -1645,12 +1631,15 @@ If you don't want to be asked for it every time you start, check User Autostart 
       <string>User Autostart
  without ask your password.</string>
      </property>
+     <property name="checked" >
+      <bool>true</bool>
+     </property>
     </widget>
     <widget class="QLineEdit" name="t_user_passwd1" >
      <property name="geometry" >
       <rect>
        <x>80</x>
-       <y>430</y>
+       <y>380</y>
        <width>191</width>
        <height>24</height>
       </rect>
@@ -1666,7 +1655,7 @@ If you don't want to be asked for it every time you start, check User Autostart 
      <property name="geometry" >
       <rect>
        <x>60</x>
-       <y>410</y>
+       <y>360</y>
        <width>231</width>
        <height>16</height>
       </rect>

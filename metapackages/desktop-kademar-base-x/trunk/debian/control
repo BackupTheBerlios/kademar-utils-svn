@@ -8,7 +8,7 @@ Homepage: http://www.kademar.org
 
 Package: desktop-kademar-base-x
 Architecture: all
-Depends: desktop-kademar-base, kademar-base-desktop, xorg, xserver-xorg, xfonts-100dpi, xfonts-75dpi, xfonts-scalable, libgl1-mesa-dri|xlibmesa-dri, libgl1-mesa-glx|xlibmesa-gl, libglu1-mesa|xlibmesa-glu, gsfonts-x11, x-ttcidfont-conf, ttf-freefont, gsfonts, xfonts-100dpi, xfonts-75dpi, xfonts-base, ttf-freefont, gsfonts-x11, xfonts-75dpi-transcoded, xfonts-100dpi-transcoded, xdg-utils, dbus-x11, xkb-data, libao-pulse|libao-alsa|libao2, libsdl1.2debian-pulseaudio|libsdl1.2debian-alsa, ladspa-sdk, gstreamer0.10-pulseaudio|gstreamer0.10-alsa, pulseaudio|alsa-utils, libasound2-plugins, swh-plugins, procmeter3, x11-utils, language-env
+Depends: desktop-kademar-base, kademar-base-desktop, xorg,  xserver-xorg, xserver-xorg-video-all, xserver-xorg-input-all, xfonts-100dpi, xfonts-75dpi, xfonts-scalable, libgl1-mesa-dri|xlibmesa-dri, libgl1-mesa-glx|xlibmesa-gl, libglu1-mesa|xlibmesa-glu, gsfonts-x11, x-ttcidfont-conf, ttf-freefont, gsfonts, xfonts-100dpi, xfonts-75dpi, xfonts-base, ttf-freefont, gsfonts-x11, xfonts-75dpi-transcoded, xfonts-100dpi-transcoded, xdg-utils, dbus-x11, xkb-data, libao-pulse|libao-alsa|libao2, libsdl1.2debian-pulseaudio|libsdl1.2debian-alsa, ladspa-sdk, gstreamer0.10-pulseaudio|gstreamer0.10-alsa, pulseaudio|alsa-utils, libasound2-plugins, swh-plugins, procmeter3, x11-utils, language-env
 Description: Metapackage to install base for all desktops (X.org) + Sound Server + kademar utilities
  This is for kademar Linux desktop
  .

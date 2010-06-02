@@ -8,7 +8,7 @@ Homepage: http://www.kademar.org
 
 Package: desktop-kademar-khronos
 Architecture: all
-Depends: desktop-kademar-lxde, audioconversor, cadi, abiword, gnumeric, pidgin, amsn, wicd, claws-mail, claws-mail-i18n, claws-mail-bogofilter, claws-mail-html2-viewer, claws-mail-pgpmime, claws-mail-pgpinline, claws-mail-trayicon, gnome-icon-theme, gnome-themes, gdm, smplayer, mtpaint, transmission, amule, xsane, xpdf, gnomebaker, grip, myspell-ca, myspell-es, myspell-en-gb, myspell-fr, xcalc|x11-apps, mrxvt, easytag, ace-of-penguins, ltris, lbreakout2, xdigger, xgalaga, pacman, icebreaker, mirage, quodlibet
+Depends: desktop-kademar-lxde, audioconversor, cadi, abiword, gnumeric, pidgin, amsn|emesene, wicd, claws-mail, claws-mail-i18n, claws-mail-bogofilter, claws-mail-html2-viewer, claws-mail-pgpmime, claws-mail-pgpinline, claws-mail-trayicon, gnome-icon-theme, gnome-themes, gdm, smplayer, mtpaint, transmission, amule, xsane, xpdf, gnomebaker, grip, myspell-ca, myspell-es, myspell-en-gb, myspell-fr, xcalc|x11-apps, mrxvt, easytag, ace-of-penguins, ltris, lbreakout2, xdigger, xgalaga, pacman, icebreaker, mirage, quodlibet
 Description: Metapackage to install Khronos lxde Desktop
  This is for kademar Linux desktop
  .

@@ -1,3 +1,9 @@
+desktop-kademar-csic (4.9.5) testing; urgency=low
+
+  * Added emesene to solve amsn depend
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Sun, 02 May 2010 22:22:51 +0000
+
 desktop-kademar-csic (4.9) testing; urgency=low
 
   * 4.9

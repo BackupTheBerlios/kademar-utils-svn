@@ -9,7 +9,7 @@ Homepage: http://www.kademar.org
 Package: desktop-kademar-lyra
 Architecture: all
 Suggests: apollon
-Depends: desktop-kademar-kde, desktop-kademar-kde-extra, kademar-lyra, kademar-audacious-skins, gimp, amsn, amule, aircrack-ng, foo2zjs, foomatic-db, foomatic-db-engine, foomatic-db-gutenprint,  foomatic-filters, foomatic-filters-ppds, gimp, gparted, gstreamer0.10-pulseaudio, gtk-theme-switch, kde-style-klearlook, kde-icons-oxygen, iceweasel, iceweasel-l10n-ca, iceweasel-l10n-es-es, openoffice.org-writer, openoffice.org-l10n-es, openoffice.org-l10n-ca, myspell-ca, myspell-es, myspell-en-gb, myspell-fr, pidgin, kaudiocreator, audacity, pidgin, gtk2-engines-geramik|gnome-themes, gksu, mozplugger, 
+Depends: desktop-kademar-kde, desktop-kademar-kde-extra, kademar-lyra, kademar-audacious-skins, gimp, amsn|emesene, amule, aircrack-ng, foo2zjs, foomatic-db, foomatic-db-engine, foomatic-db-gutenprint,  foomatic-filters, foomatic-filters-ppds, gimp, gparted, gstreamer0.10-pulseaudio, gtk-theme-switch, kde-style-klearlook, kde-icons-oxygen, iceweasel, iceweasel-l10n-ca, iceweasel-l10n-es-es, openoffice.org-writer, openoffice.org-l10n-es, openoffice.org-l10n-ca, myspell-ca, myspell-es, myspell-en-gb, myspell-fr, pidgin, kaudiocreator, audacity, pidgin, gtk2-engines-geramik|gnome-themes, gksu, mozplugger, 
 Description: Metapackage to install Lyra - CD desktop
  This is for kademar Linux desktop
  .

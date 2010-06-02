@@ -22,11 +22,7 @@ set -e
 case "$1" in
     purge|remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
         if [ remove = "$1" ]; then
-		#Remove splashy config
-                rm -f /etc/bash.bashrc /etc/mailcap.order
-
-                dpkg-divert --package kademar-khronos-lite --remove --divert /etc/bash.bashrc.orig --rename /etc/bash.bashrc
-
+                rm -f /etc/mailcap.order
                 dpkg-divert --package kademar-khronos-lite --remove --divert /etc/mailcap.order.orig --rename /etc/mailcap.order
         fi
 

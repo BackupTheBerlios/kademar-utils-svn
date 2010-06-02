@@ -6,7 +6,7 @@ Build-Depends: debhelper (>= 7)
 Standards-Version: 3.8.0
 Homepage: http://www.kademar.org
 
-Provides: kademar-desktop-config
+Provides: kademar-desktop-config, kademar-core
 Package: kademar-core-kde4
 Architecture: all
 Suggests: kademar-base

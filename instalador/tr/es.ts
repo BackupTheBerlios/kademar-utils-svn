@@ -307,10 +307,10 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="ui/instalador.ui" line="1495"/>
         <source>Account name</source>
-        <translation>Nombre de cuenta</translation>
+        <translation type="obsolete">Nombre de cuenta</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1511"/>
+        <location filename="ui/instalador.ui" line="1491"/>
         <source>Now you have to enter a user to be able to use the system.
 Username can be your name, to create the accout that you&apos;ll use as default.
 
@@ -323,34 +323,34 @@ Para mayor seguridad, tiene que definir una contraseña para el usuario
 Si no quiere que le sea solicitada cada vez que inicie, marque la casilla Autoinicio de Usuario.</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1557"/>
+        <location filename="ui/instalador.ui" line="1543"/>
         <source>Reenter User Password</source>
         <translation>Reintroduzca la Contraseña de Usuario</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1609"/>
+        <location filename="ui/instalador.ui" line="1595"/>
         <source>Enter your name</source>
         <translation>Introduzca su nombre</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1629"/>
+        <location filename="ui/instalador.ui" line="1615"/>
         <source>User Configuration</source>
         <translation>Configuración de Usuario</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1645"/>
+        <location filename="ui/instalador.ui" line="1631"/>
         <source>User Autostart
  without ask your password.</source>
         <translation>Autoinicio de Usuario
 sin solicitar la contraseña.</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1682"/>
+        <location filename="ui/instalador.ui" line="1671"/>
         <source>User Password</source>
         <translation>Contraseña de Usuario</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1716"/>
+        <location filename="ui/instalador.ui" line="1705"/>
         <source>Here you have to indicate a disk where install Grub Boot Manager.
 By default this selection is automatic, but you can set it manually.
 Also you can bypass, setting not to install, but use it only if you know what you are doing.
@@ -363,39 +363,39 @@ Tambien puede escoger no instalarlo, pero use esta opción solo si sabe lo que h
 Grub hará que pueda arrancar kademar Linux en su ordenador, asi como otros sistemas operativos.</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1744"/>
+        <location filename="ui/instalador.ui" line="1733"/>
         <source>Manual - Advanced Selecction</source>
         <translation>Manual - Selección Avanzada</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1764"/>
+        <location filename="ui/instalador.ui" line="1753"/>
         <source>Automatic - Recomended</source>
         <translation>Automática - Recomendado</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1785"/>
+        <location filename="ui/instalador.ui" line="1774"/>
         <source>Do not install boot manager - NOT RECOMMENDED
  (Only do it if you know what are doing)</source>
         <translation>No instalar el gestor de arranque - NO RECOMENDADO
  (Elegir solo si se sabe que está haciendo)</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1806"/>
+        <location filename="ui/instalador.ui" line="1795"/>
         <source>Boot Configuration</source>
         <translation>Configuración de Arranque</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1832"/>
+        <location filename="ui/instalador.ui" line="1821"/>
         <source>Initrd (Activate if you receive an error when start)</source>
         <translation>Initrd (Activar si obtiene un error en el inicio)</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1870"/>
+        <location filename="ui/instalador.ui" line="1859"/>
         <source>Ending Installation Tasks</source>
         <translation>Finalizando las Tareas de Instalación</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1886"/>
+        <location filename="ui/instalador.ui" line="1875"/>
         <source>Some installation tasks are pending.
 
 You have to wait while process is finishing.
@@ -406,12 +406,12 @@ Tiene que esperar mientras el proceso finaliza.
 Puede ver el estado de las tareas en la barra de la izquierda.</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1952"/>
+        <location filename="ui/instalador.ui" line="1941"/>
         <source>Installation Finished!!!</source>
         <translation>Instalación Finalizada!!!</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1968"/>
+        <location filename="ui/instalador.ui" line="1957"/>
         <source>kademar Linux it&apos;s installed on your PC
 
 Now you can close installer and continue using kademar on Live mode, or you can reboot you computer and start on the installed system.
@@ -432,9 +432,14 @@ Recuerde visitar nuestra página web si tiene algun problema.
 Gracias por elegir kademar Linux</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1995"/>
+        <location filename="ui/instalador.ui" line="1984"/>
         <source>Reboot Computer</source>
         <translation>Reiniciar Ordenador</translation>
+    </message>
+    <message>
+        <location filename="ui/instalador.ui" line="1517"/>
+        <source>Heliox</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

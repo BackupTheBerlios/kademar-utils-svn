@@ -307,10 +307,10 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="ui/instalador.ui" line="1495"/>
         <source>Account name</source>
-        <translation>Nom de compte</translation>
+        <translation type="obsolete">Nom de compte</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1511"/>
+        <location filename="ui/instalador.ui" line="1491"/>
         <source>Now you have to enter a user to be able to use the system.
 Username can be your name, to create the accout that you&apos;ll use as default.
 
@@ -323,34 +323,34 @@ Per a major seguretat ha de definir una contrassenya per al usuari.
 Si no vol que li sigui sol·licitada cada vegada que iniciï ,marqui la casella Autoinici d&apos;Usuari.</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1557"/>
+        <location filename="ui/instalador.ui" line="1543"/>
         <source>Reenter User Password</source>
         <translation>Re-escrigui la Contrassenya d&apos;Usuari</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1609"/>
+        <location filename="ui/instalador.ui" line="1595"/>
         <source>Enter your name</source>
         <translation>Introdueixi el seu nom</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1629"/>
+        <location filename="ui/instalador.ui" line="1615"/>
         <source>User Configuration</source>
         <translation>Configuració d&apos;Usuari</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1645"/>
+        <location filename="ui/instalador.ui" line="1631"/>
         <source>User Autostart
  without ask your password.</source>
         <translation>Autoinici d&apos;Usuari
  sense sol·licitar la constrasenya.</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1682"/>
+        <location filename="ui/instalador.ui" line="1671"/>
         <source>User Password</source>
         <translation>Contrassenya d&apos;Usuari</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1716"/>
+        <location filename="ui/instalador.ui" line="1705"/>
         <source>Here you have to indicate a disk where install Grub Boot Manager.
 By default this selection is automatic, but you can set it manually.
 Also you can bypass, setting not to install, but use it only if you know what you are doing.
@@ -363,39 +363,39 @@ També pot escollir no instal·lar-lo, pero utilitzi aquesta opció només si sa
 Grub farà que pugui arrencar kademar Linux al seu ordinador, així com d&apos;altres sistemes operatius.</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1744"/>
+        <location filename="ui/instalador.ui" line="1733"/>
         <source>Manual - Advanced Selecction</source>
         <translation>Manual - Selecció Avançada</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1764"/>
+        <location filename="ui/instalador.ui" line="1753"/>
         <source>Automatic - Recomended</source>
         <translation>Automàtic - Recomanat</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1785"/>
+        <location filename="ui/instalador.ui" line="1774"/>
         <source>Do not install boot manager - NOT RECOMMENDED
  (Only do it if you know what are doing)</source>
         <translation>No instal·lar el gestor d&apos;engegada - NO RECOMANAT
  (Escollir només si sap el que es fa)</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1806"/>
+        <location filename="ui/instalador.ui" line="1795"/>
         <source>Boot Configuration</source>
         <translation>Configuració d&apos;Engegada</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1832"/>
+        <location filename="ui/instalador.ui" line="1821"/>
         <source>Initrd (Activate if you receive an error when start)</source>
         <translation>Initrd (Activi&apos;l si rep un error en l&apos;engegar)</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1870"/>
+        <location filename="ui/instalador.ui" line="1859"/>
         <source>Ending Installation Tasks</source>
         <translation>Finalitzant les Tasques d&apos;Instal·lacioó</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1886"/>
+        <location filename="ui/instalador.ui" line="1875"/>
         <source>Some installation tasks are pending.
 
 You have to wait while process is finishing.
@@ -406,12 +406,12 @@ Ha d&apos;esperar mentre el procès finalitza.
 Pot veure l&apos;estat de les tasques a la barra de la esquerra.</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1952"/>
+        <location filename="ui/instalador.ui" line="1941"/>
         <source>Installation Finished!!!</source>
         <translation>Instalació Finalitzada!!!</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1968"/>
+        <location filename="ui/instalador.ui" line="1957"/>
         <source>kademar Linux it&apos;s installed on your PC
 
 Now you can close installer and continue using kademar on Live mode, or you can reboot you computer and start on the installed system.
@@ -432,9 +432,14 @@ Recordi-se&apos;n de visitar la nostra pàgina web si té cap problema.
 Gracies per escollir kademar Linux</translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1995"/>
+        <location filename="ui/instalador.ui" line="1984"/>
         <source>Reboot Computer</source>
         <translation>Reiniciar l&apos;Ordinador</translation>
+    </message>
+    <message>
+        <location filename="ui/instalador.ui" line="1517"/>
+        <source>Heliox</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

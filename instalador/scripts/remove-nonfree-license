@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Remove non-free from packages
-packages="flashplayer-mozilla w32codecs win32codecs sun-java6-jre sun-java6-bin sun-java6-plugin atmel-firmware bluez-firmware firmware-bnx2 firmware-ipw2x00 firmware-iwlwifi firmware-qlogic firmware-ralink lha libertas-firmware midisport-firmware rar unrar zd1211-firmware b43-fwcutter isight-firmware-tools msttcorefonts ttf-mscorefonts-installer kademar-restricted desktop-kademar-restricted desktop-kademar-restricted-extra flashplugin-nonfree-extrasound lightscribe lightscribeapplications libdvdcss2"
+packages="flashplayer-mozilla w32codecs win32codecs sun-java6-jre sun-java6-bin sun-java6-plugin atmel-firmware bluez-firmware firmware-bnx2 firmware-ipw2x00 firmware-iwlwifi firmware-qlogic firmware-ralink lha libertas-firmware midisport-firmware rar unrar zd1211-firmware b43-fwcutter isight-firmware-tools msttcorefonts ttf-mscorefonts-installer kademar-restricted desktop-kademar-restricted desktop-kademar-restricted-extra flashplugin-nonfree-extrasound lightscribe lightscribeapplications libdvdcss2 teamviewer virtualbox-2.0 virtualbox-3.0 virtualbox-3.1 virtualbox-3.2"
 
 aptitude -y remove $packages
 

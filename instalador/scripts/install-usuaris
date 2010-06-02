@@ -75,7 +75,9 @@ user_pref("browser.download.dir", "/home/'$user'/'$documents'");' >> "$DESTI/etc
 
 #Activem el autologin en el KDM si es demana
 if [ "$AUTOLOGIN" = "si" ]; then
-	sh /usr/share/kademar/utils/common/autologin_kdm autologin_si "$login" "$DESTI"
+	[ -e /usr/share/kademar/utils/common/autologin_kdm ] && sh /usr/share/kademar/utils/common/autologin_kdm autologin_si "$login" "$DESTI"
+	[ -e /usr/share/kademar/utils/common/autologin_slim ] && sh /usr/share/kademar/utils/common/autologin_slim autologin_si "$login" "$DESTI"
+	[ -e /usr/share/kademar/utils/common/autologin_gdm ] && sh /usr/share/kademar/utils/common/autologin_gdm autologin_si "$login" "$DESTI"
 fi
 
 chroot "$DESTI" sh /usr/share/kademar/utils/cadi/scripts/crea_perfil_usuari "$login" "$crea_home"

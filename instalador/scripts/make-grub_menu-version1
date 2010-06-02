@@ -286,6 +286,9 @@ fi
 vga=$(getbootparam vga)  #vga=791 de com ha engegat
 [ -n "$vga" ] && vga="vga=$vga"
 
+apm=$(getbootparam apm)  #apm=power-off de com ha engegat
+[ -n "$apm" ] && apm="apm=$apm"
+
 #Support for resume/suspend/hibernate partition (now uses swap partition)
 #Grep UUID information
 uidsw=`vol_id $particioswap 2>/dev/null| grep "ID_FS_UUID=" | cut -d= -f2`
@@ -305,14 +308,24 @@ fi
 
 #support to other configurations
 moreoptions=""
-for i in noapm noacpi noapic nosmp apm nomce mce nopat nopae startjoomla startcsicappgroup1 startcsicappgroup2 startcsicappgroup3 startcsicappgroup4 nox adriane screenread orca
+for i in noapm noacpi noapic nosmp apm nomce mce nopat nopae startjoomla 
 do
-    a=$(getbootparam $i)  #vga=791 de com ha engegat
-    [ -n "$a" ] && moreoptions="$moreoptions $a"
+    a=$(checkbootparam $i ; echo $?)  #vga=791 de com ha engegat
+    [ "$a" = 0 ] && moreoptions="$moreoptions $i"
 done
 
-#Define standard User params
-user_params="splash=silent quiet CONSOLE=/dev/tty1 ro $vga apm=power-off $resume $ext4 $moreoptions"
+#Define standard User params - accessibility free - to create more accessibility options menu
+user_params_no_accessibility="splash=silent quiet CONSOLE=/dev/tty1 ro $apm $resume $ext4 $moreoptions"
+
+for i in startcsicappgroup1 startcsicappgroup2 startcsicappgroup3 startcsicappgroup4 nox adriane screenread orca
+do
+    a=$(checkbootparam $i ; echo $?)  #vga=791 de com ha engegat
+    [ "$a" = 0 ] && moreoptions="$moreoptions $i"
+done
+
+#Define standard User params with accessibility already configured
+user_params="splash=silent quiet CONSOLE=/dev/tty1 ro $vga $apm $resume $ext4 $moreoptions"
+
 
 
 #Grep UUID information
@@ -390,7 +403,7 @@ echo $template > $menulist
 #Agafem tots els SO menys el de la particio en la que l'hem instal·lat.
 # os-prober
 # cat $particions_arrancables 
-cat $particions_arrancables  | grep -v $particioarrel | while read line
+cat $particions_arrancables  | grep -v $particioarrel | grep -vi "No volume groups" | while read line
 do
 	echo "$line"| cut -d: -f1
 	device=`echo "$line" | cut -d: -f1`  #device=/dev/sda1
@@ -423,7 +436,7 @@ finish="
 ## e.g. kopt=root=/dev/hda1 ro
 ##      kopt_2_6_8=root=/dev/hdc1 ro
 ##      kopt_2_6_8_2_686=root=/dev/hdc2 ro
-# kopt=root=$root $user_params
+# kopt=root=$root $user_params_no_accessibility $vga
 
 ### END DEBIAN AUTOMAGIC KERNELS LIST
 "
@@ -436,7 +449,7 @@ echo "# This file is sourced by update-grub, and its variables are propagated
 GRUB_DEFAULT=0
 GRUB_TIMEOUT=5
 GRUB_DISTRIBUTOR=\`lsb_release -i -s 2> /dev/null || echo Debian\`
-GRUB_CMDLINE_LINUX=\"$user_params\"
+GRUB_CMDLINE_LINUX=\"$user_params_no_accessibility $vga\"
 
 # Uncomment to disable graphical terminal (grub-pc only)
 #GRUB_TERMINAL=console

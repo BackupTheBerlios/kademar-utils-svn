@@ -56,18 +56,25 @@ rm -f  $DESTI/etc/mtab
 echo "/dev/$DEV / $fsparticioarrel defaults 0 0" > $DESTI/etc/mtab
 
 
-#Creem el Device.map amb la informacio dels dispositius
-if [ -z "`dpkg -l | grep -i grub-pc`" ]; then
+# Search for grub version
+if [ -z "`dpkg -l | grep -i grub-pc | grep -i ii`" ]; then
 #grub 1
     echo *** Grub Version 1 ***
     grubver=1
-    echo quit \
-      | grub --batch --no-floppy --device-map=$DESTI/boot/grub/device.map
 else
 # grub2
     echo *** Grub Version 2 ***
     grubver=2
+fi
+
+#Creem el Device.map amb la informacio dels dispositius
+if [ -n "`which grub-mkdevicemap`" ]; then
+# grub2 normally  and  grub 1 tunned installations
     grub-mkdevicemap --no-floppy --device-map=$DESTI/boot/grub/device.map
+else
+#grub 1
+    echo quit \
+      | grub --batch --no-floppy --device-map=$DESTI/boot/grub/device.map
 fi
 
 

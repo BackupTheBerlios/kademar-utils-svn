@@ -24,9 +24,10 @@ rm -f /usr/local/bin/instalador-dialog
 ruta_fstab="/etc/fstab"
 
 #Borrem els serveis de la kademar especifics per live-cd
-rm -f "$DESTI/etc/rc0.d/S22kademar-halt"
-rm -f "$DESTI/etc/rcS.d/S01kademar-inici"
-rm -f $DESTI/etc/rc?.d/[SK][0-9][0-9]xsession
+rm -f "$DESTI/etc/rc0.d/*kademar-livecd-halt"
+rm -f "$DESTI/etc/rc6.d/*kademar-livecd-reboot"
+rm -f "$DESTI/etc/rcS.d/*kademar-livecd-autoconfig"
+rm -f $DESTI/etc/rc?.d/[SK][0-9][0-9]kademar-livecd-xsession
 rm -f $DESTI/etc/rc?.d/S98kademar_arranc_live-cd
 rm -f "$DESTI/etc/rcS.d/S00splashy"
 rm -f "$DESTI/etc/rc6.d/S22kademar-reboot"

@@ -5,7 +5,7 @@ common-kde
 kde-desktop
 icewm-idesk
 kde-hack_cadi_install
-common-post
-common-powersaved
+#common-post
+#common-powersaved
 #common-post-x
-common-screenreader
+#common-screenreader

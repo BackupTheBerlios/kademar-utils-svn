@@ -5,9 +5,6 @@ if [ "$1" = "configure" ]; then
 	echo "Updating Mime Types"
 	update-mime
 
-    dpkg-divert --package kademar-leo --add --divert /etc/bash.bashrc.orig --rename /etc/bash.bashrc
-    [ ! -e /etc/bash.bashrc ] && ln -s /etc/bash.bashrc.kademar /etc/bash.bashrc
-
     dpkg-divert --package kademar-leo --add --divert /etc/mailcap.order.orig --rename /etc/mailcap.order
     [ ! -e /etc/mailcap.order ] && ln -s /etc/mailcap.order.kademar /etc/mailcap.order
 

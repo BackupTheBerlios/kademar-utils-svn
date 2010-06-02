@@ -10,9 +10,9 @@ kademar-base (4.9.5) testing; urgency=low
   * FEATURE: Installer - Support autologin GDM & Slim (when done)
   * FEATURE: Installer - Changed new init.d script names
   * FEATURE: Installer - Removed better squeeze non-free packages
- 
+  * FEATURE: Added oracle/sun keyring
 
- -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Wed, 02 Jun 2010 13:46:56 +0200
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Wed, 02 Jun 2010 14:43:45 +0200
 
 kademar-base (4.9.1) testing; urgency=low
 

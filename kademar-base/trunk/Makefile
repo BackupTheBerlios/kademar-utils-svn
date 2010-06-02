@@ -28,6 +28,7 @@ install:
 	#  kademar Zone #
 	#################
 	chmod -R 755 $(DESTDIR)/usr/share/kademar/scripts
+	chmod +x $(DESTDIR)/usr/share/kademar/utils/instalador-dialog/instalador.sh
 # 	chmod -R 755 $(DESTDIR)/etc/network/if-up.d/kademar-apt-get-update
 
 	####################

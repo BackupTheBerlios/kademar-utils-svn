@@ -5,8 +5,18 @@
 
 ( sh /usr/share/kademar/utils/kademarcenter/scripts/initial_mount ; sh /usr/share/kademar/utils/kademarcenter/scripts/update_fstab ) &
 
+#Printer support
+if [ -n "`grep adriane /proc/cmdline`" ]; then
+	[ -e /etc/init.d/cups ] && /etc/init.d/cups start
+	[ -e /etc/init.d/cupsys ] && /etc/init.d/cupsys start
+fi
+
 #Start pulseaudio as user if not started
 [ -z "`ps aux | grep -i pulseaudio`" ] && [ -e /etc/X11/Xsession.d/70pulseaudio ] && sh /etc/X11/Xsession.d/70pulseaudio 
 
 #Volumes
 sh /usr/share/kademar/scripts/engegada/volums >/dev/null 2>&1 &
+
+if [ -n "`grep installdialog /proc/cmdline 2>/dev/null`" ]; then
+	install-dialog
+fi

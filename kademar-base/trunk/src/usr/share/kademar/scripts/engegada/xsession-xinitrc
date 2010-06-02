@@ -264,7 +264,10 @@ lnusertemp cache >/dev/null
 dcopserver_shutdown
 
 #Start KDE
-/usr/bin/startkde
+[ -e /usr/bin/startkde ] && k3=/usr/bin/startkde
+[ -e /opt/kde3/bin/startkde ] && k3=/opt/kde3/bin/startkde
+
+$k3
 
 # load the splashscreen and progress indicator
 # LD_BIND_NOW=true ksplash --nodcop
@@ -656,6 +659,7 @@ EOF
 
 #Start pulseaudio as user
 [ -e /etc/X11/Xsession.d/70pulseaudio ] && sh /etc/X11/Xsession.d/70pulseaudio
+[ -e /etc/X11/Xsession.d/40pulseaudio ] && sh /etc/X11/Xsession.d/40pulseaudio
 
 #GTK encoding hacks
 [ -e /etc/X11/Xsession.d/60kademar-gtk_encoding ] && sh /etc/X11/Xsession.d/60kademar-gtk_encoding

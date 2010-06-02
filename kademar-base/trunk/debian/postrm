@@ -6,13 +6,13 @@ case "$1" in
     purge|remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
 	
 	
-        rm -f /etc/rc?.d/S98kademar_arranc_live-cd
-        rm -f /etc/rc?.d/S99xsession
+#         rm -f /etc/rc?.d/S98kademar_arranc_live-cd
+        rm -f /etc/rc?.d/*kademar-livecd-xsession
 	# rcS.d
-        rm -f /etc/rcS.d/S01kademar-inici
+#         rm -f /etc/rcS.d/S01kademar-inici
 	
 	# rc1.d
-        rm -f /etc/rc?.d/K01session
+#         rm -f /etc/rc?.d/K01session
 	
 	# rc0.d
         rm -f /etc/rc?.d/S22kademar-halt
@@ -22,9 +22,12 @@ case "$1" in
 	
         if [ remove = "$1" ]; then
 		#Networking DHCP Permissive
-                rm -f /etc/init.d/networking /etc/apt/preferences /etc/default/rcS /etc/initramfs-tools/initramfs.conf /etc/ppp/options /etc/sysctl.conf
+                rm -f /etc/init.d/networking /etc/init.d/splashutilsend /etc/init.d/splashutils /etc/apt/preferences /etc/default/rcS /etc/initramfs-tools/initramfs.conf /etc/ppp/options /etc/sysctl.conf 
 
                 dpkg-divert --package kademar-base --remove --divert /etc/init.d/dpkg/networking.real --rename /etc/init.d/networking
+
+                dpkg-divert --package kademar-base --remove --divert /etc/init.d/dpkg/splashutilsend.real --rename /etc/init.d/splashutilsend
+                dpkg-divert --package kademar-base --remove --divert /etc/init.d/dpkg/splashutils.real --rename /etc/init.d/splashutils
 
                 dpkg-divert --package kademar-base --remove --divert /etc/apt/preferences.orig --rename /etc/apt/preferences
 
@@ -35,6 +38,9 @@ case "$1" in
                 dpkg-divert --package kademar-base --remove --divert /etc/ppp/options.orig --rename /etc/ppp/options
 
                 dpkg-divert --package kademar-base --remove --divert /etc/sysctl.conf.orig --rename /etc/sysctl.conf
+
+                rm -f /etc/bash.bashrc
+                dpkg-divert --package kademar-base --remove --divert /etc/bash.bashrc.orig --rename /etc/bash.bashrc
 
         fi
 

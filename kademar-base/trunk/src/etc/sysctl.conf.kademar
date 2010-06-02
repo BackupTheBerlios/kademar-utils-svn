@@ -69,8 +69,11 @@
 # kademar hacks
 ##################
 
-#Por defecto el núcleo de linux tiene este valor a un 60%. Esto quiere decir que se hará bastante uso de la memoria de intercambio (swap). Resulta útil si tenemos un servidor con gran carga de trabajo y poca RAM, o si compilamos frecuentemente aplicaciones muuuuy grandes. Sin embargo, en un sistema de 
-#escritorio, con varias aplicaciones pequeñas ejecutándose, podemos bajar este valor a 10 para que el núcleo use más a menudo la memoria RAM (más rápida) y recurra menos a la memoria de intercambio.
+#Por defecto el nucleo de linux tiene este valor a un 60%. Esto quiere decir que se hara bastante uso de la memoria de intercambio (swap).
+#Resulta util si tenemos un servidor con gran carga de trabajo y poca RAM, o si compilamos frecuentemente aplicaciones muuuuy grandes. Sin embargo, en un sistema de 
+#escritorio, con varias aplicaciones pequenas ejecutandose, podemos bajar este valor a 10 para que el nucleo use mas a 
+#menudo la memoria RAM (mas rapida) y recurra menos a la memoria de intercambio.
+
 vm.swappiness = 10
 
 vm.drop_caches = 3

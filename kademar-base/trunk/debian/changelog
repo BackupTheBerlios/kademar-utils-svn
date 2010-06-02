@@ -4,9 +4,15 @@ kademar-base (4.9.5) testing; urgency=low
   * FEATURE: Change Package Name
   * FEATURE: Update Xorg configuration
   * FEATURE: Added more support to debootstrap
-  * FIX: Support to bah 4.1 (Removed ==)
+  * FEATURE: Use udev rules to do automatic configurations
+  * FIX: Support to bash 4.1 (Removed ==)
+  * FEATURE: Installer - Complete support to Grub 2 (mantaining 1 too)
+  * FEATURE: Installer - Support autologin GDM & Slim (when done)
+  * FEATURE: Installer - Changed new init.d script names
+  * FEATURE: Installer - Removed better squeeze non-free packages
+ 
 
- -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Fri, 26 Mar 2010 14:56:05 +0000
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Wed, 02 Jun 2010 13:46:56 +0200
 
 kademar-base (4.9.1) testing; urgency=low
 

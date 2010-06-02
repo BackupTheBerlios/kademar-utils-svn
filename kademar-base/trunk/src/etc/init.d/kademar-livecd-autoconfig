@@ -3,7 +3,7 @@
 # Provides:          startlivecd
 # Required-Start:    
 # Required-Stop:     
-# Default-Start:     1
+# Default-Start:     S
 # Default-Stop:      
 # Short-Description: start & configure livecd
 # Description:       First start
@@ -220,7 +220,7 @@ mount -t tmpfs -o rw,mode=1777,size=1G,exec,nosuid,nodev tmpfs /tmp
 
 
 # Recreate var/tempfiles directory structure on tmpfs
-for i in $(cd /mnt/live/memory/images/kademar.lzm && find var/run var/lock var/log -type d); do
+for i in $(cd /mnt/live/memory/images/kademar.lzm && find var/run var/lock var/log var/run/speech-dispatcher -type d); do
 	mkdir -p /"$i"
 done
 chmod 1777 /var/log/apt /var/run/dbus 2>/dev/null
@@ -235,7 +235,9 @@ fi
 #Hack per utilitzar els RamFS creats sense problemes
 # chmod 777 /tmp -R &
 # chmod 777 /tmp &
-( for i in alsa cups dbus hal hplip samba sshd sudo xauth
+( mkdir -p var/log/speech-dispatcher
+chmod 777 var/log/speech-dispatcher
+for i in alsa cups dbus hal hplip samba sshd sudo xauth
 do
 	mkdir -p /var/run/$i
 done ) &
@@ -286,6 +288,9 @@ export LANG=$LANG LANG COUNTRY CHARSET TZ
 #Refresh console with new parameters
 [ -e /etc/init.d/console-screen.sh ] && /etc/init.d/console-screen.sh restart
 [ -e /etc/init.d/console-setup ] && /etc/init.d/console-setup start
+
+#load sysctl.conf params
+/etc/init.d/procps start
 
 #Load next messages
 case "$LANG" in
@@ -466,12 +471,22 @@ ifconfig lo 127.0.0.1 up
 
 if [ -n "$scrread" ]; then
     [ -e /etc/init.d/pulseaudio ] && su -c "pulseaudio -D" $user
+    [ -e /etc/init.d/festival ] && /etc/init.d/festival start
     if [ -e /etc/init.d/speech-dispatcher ]; then
         /etc/init.d/speech-dispatcher start
     else
         [ -n "`which speech-dispatcher`" ] && speech-dispatcher -d
     fi
     [ -n "`which adriane-screenreader`" ] && adriane-screenreader
+
+#renice processes to be better
+	pidofpulse=`pidof pulseaudio`
+	pidoffestival=`pidof festival`
+	pidofspeech=`pidof speech-dispatcher`
+	
+	[ -n "$pidofpulse" ] && renice -5 $pidofpulse
+	[ -n "$pidoffestival" ] && renice -5 $pidoffestival
+	[ -n "$pidofspeech" ] && renice -5 $pidofspeech
 
 fi
 

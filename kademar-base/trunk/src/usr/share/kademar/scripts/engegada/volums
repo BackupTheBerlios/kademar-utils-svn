@@ -17,7 +17,9 @@ do
 	done
 	#Exepte aquests amb notificació especial
 	/usr/share/kademar/scripts/engegada/amixer -c$contador sset "Master" 75% unmute
-    /usr/share/kademar/scripts/engegada/amixer -c$contador sset "PCM" 80% unmute #posat pq d vegades falla deteccio
+    /usr/share/kademar/scripts/engegada/amixer -c$contador sset "PCM" 90% unmute #posat pq d vegades falla deteccio
+/usr/share/kademar/scripts/engegada/amixer -c$contador sset "Front" 90% unmute #posat pq d vegades falla deteccio
+/usr/share/kademar/scripts/engegada/amixer -c$contador sset "Front Master" 90% unmute #posat pq d vegades falla deteccio
     /usr/share/kademar/scripts/engegada/amixer -c$contador sset "Master Mono" 80% unmute #posat pq d vegades falla deteccio
 	/usr/share/kademar/scripts/engegada/amixer -c$contador sset "IEC958 Playback AC97-SPSA" 0% 
 	/usr/share/kademar/scripts/engegada/amixer -c$contador sset "PC Speaker" 0% 

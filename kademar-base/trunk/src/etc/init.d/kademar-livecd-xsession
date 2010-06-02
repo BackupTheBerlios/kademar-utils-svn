@@ -1,0 +1,38 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          xsession
+# Required-Start:    $local_fs $all
+# Required-Stop:     $local_fs $remote_fs
+# Should-Start:      console-screen kbd acpid dbus hal
+# Should-Stop:       console-screen kbd
+# Default-Start:     
+# Default-Stop:      
+# Short-Description: Start X session on Live-CD
+# Description:       Xsession on Live-CD is usefull to start a non-installed system, in any pc.
+### END INIT INFO
+# /etc/init.d/xsession: start or stop the X display manager on Live-CD
+# Script originally stolen from the kdm & xdm package
+#
+# description: Start de Xsession
+#
+
+# 8-9-09 - Added support to cmdline "nox"
+
+
+[ -e /etc/init.d/splashy ] && /etc/init.d/splashy stop
+[ -e /etc/init.d/splashutils ] && /etc/init.d/splashutils stop
+
+
+#Detect No X cmdline
+for i in `cat /proc/cmdline`
+do
+    [ "$i" = "nox" ] &&  nox="true"
+    [ "$i" = "server" ] &&  nox="true"
+done
+
+if [ -z "$nox" ]; then
+	sh /usr/share/kademar/scripts/engegada/xsession start &
+else
+	#Configure some services - taken of kademarcenter
+	sh /usr/share/kademar/scripts/services_nox
+fi

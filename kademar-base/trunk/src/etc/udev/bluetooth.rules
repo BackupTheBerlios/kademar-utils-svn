@@ -1,0 +1,3 @@
+ACTION=="add", KERNEL=="bluetooth", RUN+="/bin/sh -c '[ -x /etc/init.d/bluetooth ] && /etc/init.d/bluetooth restart >/dev/null'"
+
+ACTION=="remove", KERNEL=="bluetooth", RUN+="/bin/sh -c '[ -x /etc/init.d/bluetooth ] && /etc/init.d/bluetooth stop >/dev/null'"

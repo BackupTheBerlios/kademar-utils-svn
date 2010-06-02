@@ -7,6 +7,8 @@
 
 #Modificació per l'ús complet de dirbase (target per sistemes instalats)
 
+#FEATURE: No use DPMS with Vesa display dirver - 30-04-10
+
 #PATH="/bin:/usr/bin:/sbin:/usr/sbin"; export PATH
 umask 022
 
@@ -214,6 +216,10 @@ EndSection'
 #EndSection'
 ;;
 esac
+
+#set DPMS if display_driver isn't vesa
+[ "$display_driver" != "vesa" ] && dpms='Option        "DPMS"'
+
 #Utilitzar driver Vesa i resolucio 1024x768
 # [ -z "$display_modes" ] && display_modes='"1024x768" "800x600" "640x480"' && case $LANGUAGE in ca*) echo "${BLUE}No s'ha detectat cap resolució, utilitzant estadart${NORMAL}" ; ;; es*) echo "${BLUE}No se ha detectado ninguna resolución, usando estandar${NORMAL}"; ;; en*) echo "${BLUE}No resolution detected, using default${NORMAL}" ; ;; esac
 
@@ -356,8 +362,8 @@ EndSection
 
 Section "Monitor"
     Identifier    "Monitor0"
-    Option        "DPMS"
     Option        "RandRRotation"
+    $dpms
     $forcesync
     $hsync
     $vsync

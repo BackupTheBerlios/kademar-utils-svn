@@ -8,12 +8,14 @@ chrooted() {
     # root, so we're *not* in a chroot and hence return false.
     return 1
   fi
-  echo "Live-CD Creation environment detected. Creating links to Xsession."
+  echo "Live-CD Creation environment detected."
   return 0
 }
 
 #Funcio to include all gpg keys of base sources.list
 gpg_keys() {
+# gpg --keyserver subkeys.pgp.net --recv 079A381C44869960D
+# gpg --export --armor 079A381C44869960 | sudo apt-key add -
 
 #9D0633E1B6250985 - LXDE
 #6A423791         - opera
@@ -22,6 +24,7 @@ gpg_keys() {
 #07DC563D1F41B907 - http://www.debian-multimedia.org
 #A35A4E6EF00175CA - http://apt.cerkinfo.be
 #73E6B0FAA42A6CF5 - http://download.tuxfamily.org
+#079A381C44869960 - KDE3 ubuntu
 
 for i in `ls /var/lib/apt/keyring`
 do
@@ -84,67 +87,15 @@ if [ "$1" = "configure" ]; then
 	
 	#Si està en chroot, vol dir que estem preparan el live-cd, doncs crea l'enllaç a la X-Session
 	if chrooted; then
-		echo '#!/bin/bash
-### BEGIN INIT INFO
-# Provides:          xsession
-# Required-Start:    $local_fs $remote_fs
-# Required-Stop:     $local_fs $remote_fs
-# Should-Start:      console-screen kbd acpid dbus hal
-# Should-Stop:       console-screen kbd
-# Default-Start:     2 3 4 5
-# Default-Stop:      0 1 6
-# Short-Description: Start X session on Live-CD
-# Description:       Xsession on Live-CD is usefull to start a non-installed system, in any pc.
-### END INIT INFO
-# /etc/init.d/xsession: start or stop the X display manager on Live-CD
-# Script originally stolen from the kdm & xdm package
-#
-# description: Start de Xsession
-#
-
-# 8-9-09 - Added support to cmdline "nox"
-
-
-[ -e /etc/init.d/splashy ] && /etc/init.d/splashy stop
-[ -e /etc/init.d/splashutils ] && /etc/init.d/splashutils stop
-
-
-#Detect No X cmdline
-for i in `cat /proc/cmdline`
-do
-    [ "$i" = "nox" ] &&  nox="true"
-done
-
-if [ -z "$nox" ]; then
-	sh /usr/share/kademar/scripts/engegada/xsession start &
-else
-	#Configure some services - taken of kademarcenter
-	sh /usr/share/kademar/scripts/services_nox
-fi
-
-' > /etc/init.d/xsession
-		chmod +x /etc/init.d/xsession
-
-		for i in 0 1 6
+			for i in 0 1 6
 		do
-			[ ! -e /etc/rc$i.d/K01session ] && ln -s /usr/share/kademar/scripts/engegada/xsession /etc/rc$i.d/K01xsession
+			[ ! -e /etc/rc$i.d/K99kademar-livecd-xsession ] && ln -s ../init.d/kademar-livecd-xsession /etc/rc$i.d/K99kademar-livecd-xsession
 		done
-		
-		
 		for i in 2 3 4 5
 		do
 			[ ! -e /etc/rc$i.d/S98kademar_arranc_live-cd ] && ln -s /usr/share/kademar/scripts/engegada/kademar-inici_second-stage /etc/rc$i.d/S98kademar_arranc_live-cd
-			ln -s /etc/init.d/xsession /etc/rc$i.d/S99xsession
+			[ ! -e /etc/rc$i.d/S99kademar-livecd-xsession ] && ln -s ../init.d/kademar-livecd-xsession /etc/rc$i.d/S99kademar-livecd-xsession
 		done
-	
-		# rcS.d
-		[ ! -e /etc/rcS.d/S01kademar-inici ] && ln -s /usr/share/kademar/scripts/engegada/kademar-inici /etc/rcS.d/S01kademar-inici
-		
-		# rc0.d
-		[ ! -e /etc/rc0.d/S22kademar-halt ] && ln -s /usr/share/kademar/scripts/engegada/kademar-fi /etc/rc0.d/S22kademar-halt
-		
-		# rc6.d
-		[ ! -e /etc/rc6.d/S22kademar-reboot ] && ln -s /usr/share/kademar/scripts/engegada/kademar-fi /etc/rc6.d/S22kademar-reboot	
 		
 		#Prepare Instalador-dialog
 		[ ! -e /usr/local/bin/instalador-dialog ] && ln -s /usr/share/kademar/utils/instalador-dialog/instalador.sh /usr/local/bin/instalador-dialog
@@ -179,9 +130,16 @@ fi
 	dpkg-divert --package kademar-base --add --divert /etc/init.d/dpkg/networking.real --rename /etc/init.d/networking
 	[ ! -e /etc/init.d/networking ] && ln -s /etc/init.d/dpkg/networking.kademar /etc/init.d/networking
 
+# 	splashutils
+	dpkg-divert --package kademar-base --add --divert /etc/init.d/dpkg/splashutils.real --rename /etc/init.d/splashutils
+	[ ! -e /etc/init.d/splashutils ] && ln -s /etc/init.d/dpkg/splashutils.kademar /etc/init.d/splashutils
+	dpkg-divert --package kademar-base --add --divert /etc/init.d/dpkg/splashutilsend.real --rename /etc/init.d/splashutilsend
+	[ ! -e /etc/init.d/splashutilsend ] && ln -s /etc/init.d/dpkg/splashutilsend.kademar /etc/init.d/splashutilsend
+
+
     #divert rcS
     dpkg-divert --package kademar-base --add --divert /etc/default/rcS.orig --rename /etc/default/rcS
-    [ ! -e /etc/default/rcS ] && ln -s /etc/default/rcS.kademar /etc/default/rcS
+    [ ! -e /etc/default/rcS ] && ln -s rcS.kademar /etc/default/rcS
 
     #divert initramfs-tools
     dpkg-divert --package kademar-base --add --divert /etc/initramfs-tools/initramfs.conf.orig --rename /etc/initramfs-tools/initramfs.conf
@@ -194,6 +152,9 @@ fi
     #Sysctrl control configurations (swapiness)
     dpkg-divert --package kademar-base --add --divert /etc/sysctl.conf.orig --rename /etc/sysctl.conf
     [ ! -e /etc/sysctl.conf ] && ln -s /etc/sysctl.conf.kademar /etc/sysctl.conf
+
+    dpkg-divert --package kademar-base --add --divert /etc/bash.bashrc.orig --rename /etc/bash.bashrc
+    [ ! -e /etc/bash.bashrc ] && ln -s /etc/bash.bashrc.kademar /etc/bash.bashrc
 
 	#Networking WIFI desktop support
 # 	dpkg-divert --package kademar-base --add --divert /sbin/ifup.real --rename /sbin/ifup

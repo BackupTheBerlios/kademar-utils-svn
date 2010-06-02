@@ -12,6 +12,7 @@
 #$1 com a target per a sistemes instalats
 dirbase="$1"
 
+kversion=`uname -r`
 
 #Pillamos lo relacionado con la grafica
 display_driver=`lspci | grep -i "VGA Compatible controller:" | tr A-Z a-z | sed s/"vga compatible controller"://g`
@@ -38,14 +39,18 @@ case "$display_driver" in
 		#Comprobar que en las XFree86 no haga falta distinguir entre driver radeon o driver r128, si hace falta,hacer algo parecido a lo de S3
 	
 		#si existeix el driver propietari de fglrx, lutilitzarem, sino, passarem d'ell (XFREE)
-		if [ -e /lib/modules/`uname -r`/misc/fglrx.ko -a -e /usr/X11R6/lib/modules/dri/fglrx_dri.so ]; then
-			echo fglrx
+		if [ -e /lib/modules/$kversion/misc/fglrx.ko -o -e /lib/modules/$kversion/updates/dkms/fglrx.ko ]; then
+			if [ -e /usr/X11R6/lib/modules/dri/fglrx_dri.so ]; then
+				echo fglrx
+			fi
 		else
 			#si existeix el driver propietari de fglrx, lutilitzarem, sino, passarem d'ell (X.org)
-			if [ -e /lib/modules/`uname -r`/misc/fglrx.ko -a -e /usr/lib/xorg/modules/drivers/fglrx_drv.so ]; then
-				echo fglrx
-			else
-				echo ati
+			if [ -e /lib/modules/$kversion/misc/fglrx.ko -o -e /lib/modules/$kversion/updates/dkms/fglrx.ko ]; then
+				if [ -e /usr/lib/xorg/modules/drivers/fglrx_drv.so ]; then
+					echo fglrx
+				else
+					echo ati
+				fi
 			fi
 		fi
 	
@@ -119,7 +124,7 @@ case "$display_driver" in
 			#XFREE 86
 			if [ -e /usr/X11R6/lib/modules/drivers/nvidia_drv.o -a -z "`lspci | grep -i vga | egrep -i tnt`" ]; then
 				#Comprobacio de l'existencia dels moduls de nvidia (propietar) pel kernel
-				if [ -e /lib/modules/`uname -r`/nvidia/nvidia.ko -o -e /lib/modules/`uname -r`/kernel/drivers/video/nvidia.ko ]; then
+				if [ -e /lib/modules/$kversion/nvidia/nvidia.ko -o -e /lib/modules/$kversion/kernel/drivers/video/nvidia.ko ]; then
 					#Si el de nucli també hi es, i ja estem utilitzant el de nvidia, no facis res
 					#Hack, perque entengui que no ha de fer res. Es la millor manera, ja que així no s'ha d'afegir més codi
 					echo nvidia
@@ -131,7 +136,7 @@ case "$display_driver" in
 			else
 				#Si no hi és l'existencia dels de X, directament utilizem el nomal  (X.org)
 				if [ -e /usr/lib/xorg/modules/drivers/nvidia_drv.o -o -e /usr/lib/xorg/modules/drivers/nvidia_drv.so ]; then
-					if [ -e /lib/modules/`uname -r`/nvidia/nvidia.ko -o -e /lib/modules/`uname -r`/kernel/drivers/video/nvidia.ko ]; then
+					if [ -e /lib/modules/$kversion/nvidia/nvidia.ko -o -e /lib/modules/$kversion/kernel/drivers/video/nvidia.ko ]; then
 					
 						echo nvidia
 						display_driver=nvidia

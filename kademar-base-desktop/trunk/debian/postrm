@@ -37,11 +37,6 @@ case "$1" in
                 rm -f /etc/libao.conf
                 dpkg-divert --package kademar-base-desktop --remove --divert /etc/libao.conf.orig --rename /etc/libao.conf
 
-		#Remove iceweasel pulse config
-                rm -f /etc/iceweasel/iceweaselrc
-                dpkg-divert --package kademar-base-desktop --remove --divert /etc/iceweasel/iceweaselrc.orig --rename /etc/iceweasel/iceweaselrc
-
-
         fi
 
     ;;

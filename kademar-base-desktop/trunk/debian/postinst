@@ -29,9 +29,6 @@ if [ "$1" = "configure" ]; then
     dpkg-divert --package kademar-base-desktop --add --divert /etc/libao.conf.orig --rename /etc/libao.conf
     [ ! -e /etc/libao.conf ] && ln -s /etc/libao.conf.kademar /etc/libao.conf
 
-    dpkg-divert --package kademar-base-desktop --add --divert /etc/iceweasel/iceweaselrc.orig --rename /etc/iceweasel/iceweaselrc
-    [ ! -e /etc/iceweasel/iceweaselrc ] && ln -s /etc/iceweasel/iceweaselrc.kademar /etc/iceweasel/iceweaselrc
-
     #suport to audacious binary
     if [ -e /usr/bin/audacious2 -a ! -e /usr/bin/audacious ]; then
         ln -s /usr/bin/audacious2 /usr/bin/audacious

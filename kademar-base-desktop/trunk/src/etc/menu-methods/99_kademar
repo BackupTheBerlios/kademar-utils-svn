@@ -1,0 +1,17 @@
+#!/bin/bash
+#stolen from knoppix :[
+
+# Remove useless menu entries
+rm -f /usr/share/applications/elinks.desktop \
+      /usr/share/applications/*java*-java*.desktop \
+      /usr/share/applications/gv.desktop \
+      /usr/share/applications/sun-java6*.desktop \
+      /usr/share/applications/hplj1020.desktop \
+      /usr/share/applications/gnome-dictionary.desktop \
+      /usr/share/applications/mplayer.desktop
+
+# Remove entries from kde
+rm -f /usr/share/applications/kde*/knetattach.desktop
+
+# Remove potentially dangerous menu entries
+rm -f /usr/share/applications/wireshark*.desktop

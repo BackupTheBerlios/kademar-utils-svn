@@ -43,10 +43,10 @@ initrd          /boot/initrd-%kversion%.gz
 boot
 
 
-title	Instala en Consola
-kernel	/boot/%KERNEL%	%BOOT_PARAM% %APPEND_TO_BOOTPARAM% vga=791 noacpi noapm noapic nox installdialog lang=es
-initrd          /boot/initrd-%kversion%.gz
-boot
+#title	Instala en Consola
+#kernel	/boot/%KERNEL%	%BOOT_PARAM% %APPEND_TO_BOOTPARAM% vga=791 noacpi noapm noapic nox installdialog lang=es
+#initrd          /boot/initrd-%kversion%.gz
+#boot
 
 #title	Debug
 #kernel	/boot/%KERNEL%	%BOOT_PARAM% %APPEND_TO_BOOTPARAM% vga=791 debug lang=es

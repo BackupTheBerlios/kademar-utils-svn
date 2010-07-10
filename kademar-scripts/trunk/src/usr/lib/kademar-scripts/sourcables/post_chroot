@@ -14,6 +14,8 @@ mv dev.old dev
 #Desmuntem /sys
 umount sys
 
+rm -f $BURNIX_ROOT/etc/init.d/.legacy-bootordering
+
 #Borrem el /etc/resolv.conf del live-cd agafat abans del sistema amfitrió  i restaurem el del live-cd original, en el cas de que l'hàgim modificat abans
 if [ -h etc/resolv.conf.bak ]; then
   rm -f etc/resolv.conf

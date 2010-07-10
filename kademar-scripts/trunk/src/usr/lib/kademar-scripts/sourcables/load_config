@@ -2,7 +2,9 @@
 
 . /usr/lib/kademar-scripts/sourcables/functions
 #Carrega l'idioma
-. /etc/default/locale
+[ -e /etc/default/locale ] && . /etc/default/locale
+[ -e /etc/environment ] && . /etc/environment
+
 case "$LANG" in
 ca*)
 	. /usr/lib/kademar-scripts/sourcables/interface_ca

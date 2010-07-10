@@ -50,7 +50,7 @@ case $lang in
         msg_sgn="cercat per data en el directori (cercant pel fitxer $SGN)"
         msg_found="trobat en"
         msg_setting="preparant els directoris pels canvis"
-        msg_aufs="preparant directori union (usant aufs)"
+        msg_aufs="preparant directori union"
         msg_ccache="activant suport a CompCache"
         msg_copy2ram="copiant data a RAM, pot trigar una estona..."
         msg_rootdirectory="canviant a directori arrel..."
@@ -63,7 +63,7 @@ case $lang in
         msg_sgn="buscando los datos en el directorio (buscando el fichero $SGN)"
         msg_found="encontrado en"
         msg_setting="preparando el directorio para los cambios"
-        msg_aufs="preparando directorio union (usando aufs)"
+        msg_aufs="preparando directorio union"
         msg_ccache="activando soporte a CompCache"
         msg_copy2ram="copiando datos a RAM, puede tardar un poco..."
         msg_rootdirectory="cambiando a directorio raiz..."
@@ -76,7 +76,7 @@ case $lang in
         msg_sgn="looking for data directory (searching for $SGN file)"
         msg_found="found in"
         msg_setting="setting up directory for changes"
-        msg_aufs="setup union directory (using aufs)"
+        msg_aufs="setup union directory"
         msg_ccache="activating CompCache support"
         msg_copy2ram="copying data to RAM, this may take some time..."
         msg_rootdirectory="changing root directory..."
@@ -97,6 +97,7 @@ echolog "$mesg_udev"
 udev_casero_kademar
 debug_shell
 
+# start hotplugging before hw drivers load
 mdev_start_hotplug
 
 # /usr is compressed in initrd so it must be mounted from /usr.lzm
@@ -135,24 +136,39 @@ echolog "$msg_sgn"
 # First, try from= boot argument, if given
 DATAFROM=$(cmdline_value from)
 
+# If ip= parameter is present, assume we're booted over PXE
+# In that case, we have to initialize network very soon (now)
+# ip=<client-ip>:<boot-server-ip>:<gw-ip>:<netmask>
+# Nevertheless, from= parameter won't be overwritten by this
+IP=$(cmdline_value ip)
+if [ "$IP" != "" -a "$DATAFROM" = "" ]; then
+   DATAFROM="http://"$(echo $IP | cut -d : -f 2)
+fi
+
 if [ "$DATAFROM" ]; then
-   DATAFROM=$(find_in_computer $DATAFROM)
-   if [ "$DATAFROM" ]; then
-      mount_device $DATAFROM $LOOPMOUNT # mount again, it may be loop device
-      if [ $? -eq 0 -a "$(find_modules $LOOPMOUNT/$LIVECDNAME)" != "" ]; then
-         echolog "$msg_found $DATAFROM"
-         DATA=$LOOPMOUNT/$LIVECDNAME
-      else
-         fumount $LOOPMOUNT
-	 fumount $MOUNTDIR/*
+   if [ "$(echo $DATAFROM | cut -b 1-7 | tr "[:upper:]" "[:lower:]")" = "http://" ]; then
+      init_dhcp $(modprobe_network_modules)
+      mount_httpfs $DATAFROM $MOUNTDIR/httpfs
+      # if mountdir/httpfs/livecdname is found, set DATA=, else umount httpfs
+      # - currently this part works even without the above mentioned, but livecd.sgn is required now untill it's uncommented
+   else
+      DATAFROM=$(find_in_computer $DATAFROM)
+      if [ "$DATAFROM" ]; then
+         mount_device $DATAFROM $LOOPMOUNT # mount again, it may be loop device
+         if [ $? -eq 0 -a "$(find_modules $LOOPMOUNT/$LIVECDNAME)" != "" ]; then
+            echolog "found in $DATAFROM"
+            DATA=$LOOPMOUNT/$LIVECDNAME
+         else
+            fumount $LOOPMOUNT
+            fumount $MOUNTDIR/*
+         fi
       fi
    fi
 fi
 
-
 if [ "$DATA" = "" ]; then
    # from= is not used or it didn't contain valid data
-   debug_log Trying Second round of mount
+   debug_log Trying First round of mount
    DATA=$(find_in_computer $LIVECDNAME/$SGN)
    DATA=$(dirname $DATA 2>/dev/null)
 fi
@@ -162,7 +178,7 @@ fi
 #kademar
 if [ "$DATA" = "" ]; then
    # from= is not used or it didn't contain valid data
-   debug_log Trying first round of mount
+   debug_log Trying Second round of mount
    DATA=$(kademar_mount_function $LIVECDNAME/$SGN)
    DATA=$(dirname $DATA 2>/dev/null)
 fi
@@ -230,7 +246,8 @@ else
       debug_log "not compatible - starting posixovl"
       rm $MEMORY/.empty1 $MEMORY/.empty2 2>/dev/null
       mkdir -p $CHANGES
-      posixovl -F $CHANGES
+      posixovl -F $CHANGES -- -o attr_timeout=300,entry_timeout=300,negative_timeout=300,kernel_cache,allow_other
+      find $CHANGES >/dev/null 2>&1 # cache everything now
    fi
 fi
 
@@ -249,11 +266,15 @@ if [ "$XINO" != "$MEMORY" ]; then
 fi
 
 # mount aufs using the writable branch as the first one (leftmost/topmost)
-mount -t aufs -o nowarn_perm,xino=$XINO/.aufs.xino,br:$CHANGES=rw aufs $UNION
-if [ $? -ne 0 ]; then dmesg | tail -n 1; fatal "can't setup union (aufs)"; fi
+if [ "$UNIONMODULE" = aufs ]; then
+
+ mount -t aufs -o nowarn_perm,xino=$XINO/.aufs.xino,br:$CHANGES=rw $unionfs $UNION
+
+ if [ $? -ne 0 ]; then dmesg | tail -n 1; fatal "can't setup union FS"; fi
+
+fi
 
 debug_shell
-
 
 # If toram or copy2ram boot parameter is present, copy all fs modules to RAM.
 # (skip modules from /optional/ which are not listed in load= boot option)
@@ -284,7 +305,17 @@ union_insert_modules $UNION $DATA $IMAGES
 
 # the $MEMORY directory can contain $MEMORY/modules too
 # in the case if changes= boot argument is used. If not, it doesn't hurt
-union_insert_modules $UNION $MEMORY $IMAGES
+# mount aufs using the writable branch as the first one (leftmost/topmost)
+
+if [ "$UNIONMODULE" = "aufs" ]; then
+    union_insert_modules $UNION $MEMORY $IMAGES
+else
+# unionfs support
+#     echo "mount -t unionfs -o dirs=/memory/changes=rw:/memory/images/kademar.lzm=ro $UNIONMODULE $UNION"
+
+    mount -t unionfs -o dirs=$CHANGES=rw:/memory/images/kademar.lzm=ro $UNIONMODULE $UNION
+
+fi
 
 debug_shell
 
@@ -303,7 +334,8 @@ debug_shell
 
 #echolog "creating /etc/fstab"
 touch $UNION/etc/fstab
-#fstab_update $UNION
+rmdir $UNION/mnt/* 2>/dev/null
+# fstab_update $UNION
 
 # everything is ready now, so we may unload unused kernel modules
 # and do some cleanup, unmount few things which are no longer needed.
@@ -336,6 +368,10 @@ echolog "$msg_rootdirectory"
 cd $UNION
 mkdir -p $INITRAMDISK
 
+# make sure some devices are there
+if [ ! -e dev/console ]; then mknod dev/console c 5 1; fi
+if [ ! -e dev/null ]; then mknod dev/null c 1 3; fi
+
 #kademar /bin/bash immortal shells for live-cd ONLY
 rm -f etc/inittab
 
@@ -343,13 +379,16 @@ rm -f etc/inittab
 [ -n "`grep adriane /proc/cmdline`" ] && adriane=".adriane"
 cp /inittab$adriane etc/inittab
 
+#kademar
+#change CONCURRENCY for live-cd
+sed s.CONCURRENCY=startpar.CONCURRENCY=none.g -i etc/default/rcS.kademar
 
-
-# Copy all dev files (found by mdev) to unioned dev directory
-# so at least disk devices exist (your Linux may need them).
-# Two exceptions, do not copy pty* and tty* devs.
-if [ ! -e /dev/console ]; then mknod /dev/console c 5 1; fi
-cp -fdR /dev . 2>/dev/null
+# If a boot parameter nohotplug is used, copy all dev files (found by mdev)
+# to the unioned dev directory, your Linux may need them since most likely
+# udev will not be started in that case
+if [ "$(cmdline_parameter nohotplug)" != "" ]; then
+   cp -fdR /dev . 2>/dev/null
+fi
 
 # find chroot and init
 if [ -x bin/chroot ]; then  CHROOT=bin/chroot; fi
@@ -368,7 +407,7 @@ header "$msg_final"
 
 debug_shell
 
-mount -n -o remount,ro aufs .
+mount -n -o remount,ro $unionfs .
 
 # We will copy init from the distro to initrd (there should be 2MB free)
 # This allows us to use the cleanup script during reboot, as init will be

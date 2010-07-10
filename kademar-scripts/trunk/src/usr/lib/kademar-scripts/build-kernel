@@ -2,7 +2,7 @@
 
 #Elric Milon
 
-if [ `whoami` == root  ]; then
+if [ `whoami` = root  ]; then
 	echo "Don't run that script as root!"
 	exit 1
 fi

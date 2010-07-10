@@ -99,7 +99,7 @@ for x in $KERNELS ; do
 	#Call real creator
 # 	echo -n "#"
         cd /usr/lib/kademar-scripts/includes/initrd
-	sh initrd_create "$1" $KVERSION
+	bash initrd_create "$1" $KVERSION
 	# If doesn't exists, set it on YES	
 	[ -z "$SHOW_LIVECD_BUILD_DATE" ] && SHOW_LIVECD_BUILD_DATE="yes"
 

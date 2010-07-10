@@ -9,7 +9,7 @@
 
 busy_version="1.2.0"
 
-if [ "`whoami`" == root  ]; then
+if [ "`whoami`" = root  ]; then
 	error "Don't run that script as root!"
 	exit 1
 fi

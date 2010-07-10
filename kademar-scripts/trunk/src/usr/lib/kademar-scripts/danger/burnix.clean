@@ -34,7 +34,8 @@ rm -fR \
 	/etc/ssh/ssh_host_rsa_key \
 	/etc/ssh/ssh_host_dsa_key.pub \
 	/etc/ssh/ssh_host_rsa_key.pub \
-    /tmp/.esd* \
+	/etc/udev/rules.d/70*persistent* \
+        /tmp/.esd* \
 	/var/log/*  || exit 10
 
 for i in `ls /var/run --ignore=speech*`

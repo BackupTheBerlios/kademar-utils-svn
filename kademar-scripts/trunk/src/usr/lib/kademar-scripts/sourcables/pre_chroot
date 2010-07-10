@@ -23,6 +23,7 @@ mount -t sysfs sys sys
 #copy apt/lists of base system, not to do re-update if you have been done
 cp -af /var/lib/apt/lists/* var/lib/apt/lists || exit 15
 
+touch $BURNIX_ROOT/etc/init.d/.legacy-bootordering
 
 [ ! -e common ] && mkdir common
 mount --bind $COMMON_DIR common

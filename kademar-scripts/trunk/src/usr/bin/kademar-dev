@@ -6,7 +6,7 @@
 
 . /usr/lib/kademar-scripts/sourcables/functions
 
-[ x`whoami` == xroot ] && error "Do not execute this script as root!" && exit 1
+[ x`whoami` = xroot ] && error "Do not execute this script as root!" && exit 1
 
 check_sudo_permissions
 
@@ -226,7 +226,7 @@ while true
 		espai="`du -hs $ISO_DIR`"
 		if  [ "`echo $espai | awk ' { print $1 } '`" != "0" ]; then
 			ask "Do you really want to DELETE  `echo $espai | awk ' { print $1 } '`  of CREATED ISOS?"
-			if [ "$ANSWER" == "y" ]; then
+			if [ "$ANSWER" = "y" ]; then
 				tip "Deleting Generated Isos"
 				echo Deleting `echo $espai`
 				rm -fr $ISO_DIR/*.iso

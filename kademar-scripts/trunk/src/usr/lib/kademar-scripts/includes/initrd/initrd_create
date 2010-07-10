@@ -6,6 +6,9 @@
 # Modified by Adonay Sanz - kademar
 
 #kademar
+DEBUG=0
+
+#kademar
 WANTED_FIRMWARES="ql2"
 
 #kademar
@@ -111,7 +114,9 @@ rcopy_ex()
 #kademar
 debug()
 {
-   continue
+   if [ "$DEBUG" = 1 ]; then
+       echo "$1"
+   fi
 }
 
 ##################################################
@@ -187,11 +192,22 @@ ln -sf bin $INITRD_TREE/sbin
 
 # copy modules.* on initrd
 mkdir -p $INITRD_TREE/$LMK
-cp $ROOT/$LMK/modules.{dep,alias,pcimap,ofmap,usbmap,symbols,seriomap,ieee1394map,order} $INITRD_TREE/$LMK
+#kademar (added 2>/dev/null)
+cp $ROOT/$LMK/modules.{dep,alias,pcimap,ofmap,usbmap,symbols,seriomap,ieee1394map,order} $INITRD_TREE/$LMK 2>/dev/null
 
 # necessary modules and dependency files
+#kademar
 mkdir -p $INITRD_TREE/$LMK/kernel/fs
-rcopy $ROOT/$LMK/kernel/fs/aufs $INITRD_TREE
+if [ ! -e $ROOT/$LMK/kernel/fs/aufs -a ! -e $ROOT/$LMK/kernel/fs/unionfs ]; then
+    #make it fail
+    rcopy $ROOT/$LMK/kernel/fs/aufs $INITRD_TREE
+else
+
+[ -e $ROOT/$LMK/kernel/fs/aufs ] && rcopy $ROOT/$LMK/kernel/fs/aufs $INITRD_TREE
+[ -e $ROOT/$LMK/kernel/fs/unionfs ] && rcopy $ROOT/$LMK/kernel/fs/unionfs $INITRD_TREE
+
+fi
+
 rcopy $ROOT/$LMK/kernel/fs/squashfs $INITRD_TREE
 
 # copy filesystem modules, if not directly copied into kernel
@@ -304,7 +320,8 @@ debug "unpacking all kernel modules for initrd"
 find $INITRD_TREE -noleaf -name "*.ko.gz" | xargs -r gunzip
 
 debug "generating module dependency files"
-depmod -b $INITRD_TREE $KERNEL
+#kademar
+depmod -a -m -F /boot/System.map-$KERNEL -b $INITRD_TREE $KERNEL
 #depmod -a -b -F /boot/System.map-$KERNEL $KERNEL
 
 

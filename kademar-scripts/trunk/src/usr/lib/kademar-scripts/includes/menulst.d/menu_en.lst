@@ -42,10 +42,10 @@ kernel	/boot/%KERNEL%	%BOOT_PARAM% %APPEND_TO_BOOTPARAM% vga=791 noacpi noapm no
 initrd          /boot/initrd-%kversion%.gz
 boot
 
-title	Install on Console
-kernel	/boot/%KERNEL%	%BOOT_PARAM% %APPEND_TO_BOOTPARAM% vga=791 noacpi noapm noapic nox installdialog lang=en
-initrd          /boot/initrd-%kversion%.gz
-boot
+#title	Install on Console
+#kernel	/boot/%KERNEL%	%BOOT_PARAM% %APPEND_TO_BOOTPARAM% vga=791 noacpi noapm noapic nox installdialog lang=en
+#initrd          /boot/initrd-%kversion%.gz
+#boot
 
 #title	Debug
 #kernel	/boot/%KERNEL%	%BOOT_PARAM% %APPEND_TO_BOOTPARAM% vga=791 debug lang=en

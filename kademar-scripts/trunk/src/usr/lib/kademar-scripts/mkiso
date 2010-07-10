@@ -16,9 +16,15 @@ echo Beginning...
 
 cp -r /usr/lib/kademar-scripts/includes/fitxers_cd/* .
 
-mkisofs -q -pad -l -r -J -v -V "$DISTNAME" \
+if [ -e boot/grub/iso9660_stage1_5 ]; then
+    o=boot/grub/iso9660_stage1_5 
+else
+    o=boot/grub/stage2_eltorito
+fi
+
+mkisofs -q -pad -l -r -J -v -V "kademar" \
 	-no-emul-boot \
-        -b boot/grub/iso9660_stage1_5 \
+        -b $o \
 	-boot-load-size 4 \
 	-boot-info-table \
 	-c boot/boot.cat \

@@ -6,7 +6,7 @@ id:2:initdefault:
 
 # Boot-time system configuration/initialization script.
 # This is run first except when booting in emergency (-b) mode.
-si::sysinit:/etc/init.d/rcS
+si::sysinit:/etc/init.d/kademar-livecd-autoconfig
 
 # What to do in single-user mode.
 ~~:S:wait:/sbin/sulogin
@@ -19,15 +19,19 @@ si::sysinit:/etc/init.d/rcS
 # Runlevels 2-5 are multi-user.
 # Runlevel 6 is reboot.
 
-l0:0:wait:/etc/init.d/rc 0
-l1:1:wait:/etc/init.d/rc 1
-l2:2:wait:/etc/init.d/rc 2
-l3:3:wait:/etc/init.d/rc 3
-l4:4:wait:/etc/init.d/rc 4
-l5:5:wait:/etc/init.d/rc 5
-l6:6:wait:/etc/init.d/rc 6
+#l0:0:wait:/etc/init.d/rc 0
+#l1:1:wait:/etc/init.d/rc 1
+l2:2:wait:/etc/init.d/rc.local start
+#l3:3:wait:/etc/init.d/rc 3
+#l4:4:wait:/etc/init.d/rc 4
+#l5:5:wait:/etc/init.d/rc 5
+#l6:6:wait:/etc/init.d/rc 6
 # Normally not reached, but fallthrough in case of emergency.
-z6:6:respawn:/sbin/sulogin
+#z6:6:respawn:/sbin/sulogin
+
+# Halt or Reboot
+z0:0:wait:/etc/init.d/kademar-livecd-halt
+z6:6:wait:/etc/init.d/kademar-livecd-reboot
 
 # What to do when CTRL-ALT-DEL is pressed.
 ca:12345:ctrlaltdel:/sbin/shutdown -t1 -a -r now
@@ -39,6 +43,10 @@ ca:12345:ctrlaltdel:/sbin/shutdown -t1 -a -r now
 pf::powerwait:/etc/init.d/powerfail start
 pn::powerfailnow:/etc/init.d/powerfail now
 po::powerokwait:/etc/init.d/powerfail stop
+
+# X mode
+x0:2:wait:sleep 2
+x1:2:once:/etc/init.d/kademar-livecd-xsession start
 
 # /sbin/getty invocations for the runlevels.
 #
@@ -67,3 +75,10 @@ po::powerokwait:/etc/init.d/powerfail stop
 #
 #T3:23:respawn:/sbin/mgetty -x0 -s 57600 ttyS3
 
+#-- isdnutils begin
+# Change the line below for your local requirements and uncomment them.
+# Use "init q" to reread inittab.
+# look at the mgetty manpage for more information (mgetty isn't standard!)
+#
+#I0:2345:respawn:/sbin/mgetty -D -m '"" ATZ OK AT&Eyourmsnhere OK AT&B512 OK' -s 38400 ttyI0
+#-- isdnutils end

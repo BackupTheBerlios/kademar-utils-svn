@@ -104,7 +104,7 @@ sudo ls 2>&1 >/dev/null ; RESULT="$?"
 if [ "$RESULT" != 0 ]; then
 	#Preguntem si volem posar les configuracions SUDO
 	ask "It's necessary to have SUDO permissions configurated. Do you want to configure automatically?"
-	if [ "$ANSWER" == "y" ]; then
+	if [ "$ANSWER" = "y" ]; then
 # 		Afegeix l'usuari seleccionat, a la configuracio de SUDO
 		user="`whoami`"
 		echo "Enter ROOT password:"

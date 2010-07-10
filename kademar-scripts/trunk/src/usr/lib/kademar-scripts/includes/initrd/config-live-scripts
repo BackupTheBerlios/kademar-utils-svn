@@ -5,7 +5,7 @@
 # the size of RAMdisk (in KBytes)
 # if you change this, then you will need to change the same
 # in the following files as well: ./cd-root/boot/isolinux.cfg, ./cd-root/boot/syslinux.cfg, ./cd-root/boot/DOS/config
-RAM0SIZE=7777
+RAM0SIZE=8888
 
 # list of directories which will be modularized
 # no subdirectories are allowed, no slashes. You can't use /var/tmp here for example

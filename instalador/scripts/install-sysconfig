@@ -13,11 +13,11 @@
 . /tmp/instalador-environment
 
 #Carreguem algunes variables des del fitxer general live-cd
-[ -e /usr/share/kademar/config-livecd ] && . /usr/share/kademar/config-livecd
+[ -e /etc/kademar/config-livecd ] && . /etc/kademar/config-livecd
 
-#Creem la carpeta de /var/kademar
-mkdir -p "$DESTI/var/kademar"
-chmod 777 "$DESTI/var/kademar"
+#Creem la carpeta de /etc/kademar
+mkdir -p "$DESTI/etc/kademar"
+# chmod 777 "$DESTI/etc/kademar"
 
 rm -f /usr/local/bin/instalador-dialog
 
@@ -53,11 +53,7 @@ cat > "$DESTI/etc/fstab" << EOF
 #
 # <file system> <mount point>   <type>  <options>       <dump>  <pass>
 
-#proc		/proc		proc	defaults	0	0 
-#sys     	/sys    	sysfs   defaults        0       0
-/dev/pts	/dev/pts	devpts	defaults	0	0
-#/proc/bus/usb	/proc/bus/usb	usbfs	defaults	0	0
-/dev/shm /dev/shm tmpfs nodev,nosuid,noexec 0 0
+proc		/proc		proc	defaults	0	0 
 
 $particioarrel	/		$fsparticioarrel	defaults	0	1
 $particioswap	swap	swap	pri=0	0	0
@@ -93,8 +89,8 @@ cp -a "/etc/network/interfaces" "$DESTI/etc/network/interfaces"
 ####
 
 #Fem que la configuracio de grafica sigui la mateixa que en live-cd
-lspci | grep -i 'vga compatible controller:' > "$DESTI/var/kademar/lspci_grafica"
-uname -r > "$DESTI/var/kademar/kernel_version"
+lspci | grep -i 'vga compatible controller:' > "$DESTI/etc/kademar/lspci_grafica"
+uname -r > "$DESTI/etc/kademar/kernel_version"
 
 #Remove xorg file on installed (if exists)
 rm -f "$DESTI/etc/X11/xorg.conf"
@@ -111,7 +107,7 @@ fi
 
 #Creacio de la configuració gràfica, juntament amb l'acceleració modificada
 #Utilitzant el driver amb el que ha lograt engegar
-# cp /var/xserver "$DESTI/var/xserver"
+# cp /var/tmp/xserver "$DESTI/var/tmp/xserver"
 
 #correcció de acceleració
 chroot "$DESTI" sh /usr/share/kademar/utils/instalador/scripts/xorg-correccio_acceleracio
@@ -278,7 +274,7 @@ sh /usr/share/kademar/scripts/locale_configurator "$LANGUAGE" "$DESTI"
 ##### END CONFIGURE LOCALE  ##########
 
 #Actualitzem la versio del nucli
-uname -r > "$DESTI/var/kademar/kernel_version"
+uname -r > "$DESTI/etc/kademar/kernel_version"
 
 
 # PC - Directory preparation
@@ -295,23 +291,51 @@ fi
 . /etc/default/locale
 motd_file="$DESTI/etc/motd"
 issue_file="$DESTI/etc/issue"
-rm -fr $motd_file
+# rm -fr $motd_file
 versio=`cat /etc/kademar-release`
 
 case "$LANG" in
 ca*)
-	echo "Benvinguts a  kademar $versio  GNU/Linux  (Kernel `uname -r`)" > $motd_file
-	echo "Benvinguts a  kademar $versio  GNU/Linux  (Kernel `uname -r`)" > $issue_file
+	echo "
+Els programes inclosos en Kademar GNU/Linux son programari lliure
+en la seva majoria, i una part residual de programari no lliure;
+els termes exactes de distribució de cada programa estan descrits en
+fitxers individuals en /usr/share/doc/*/copyright.
+
+kademar GNU/Linux ve en ABSOLUTA NO GARANTIA, en la mesura
+permesa per la llei actual." > $motd_file.tail
 ;;
 es*)
-	echo "Bienvenidos a  kademar $versio  GNU/Linux  (Kernel `uname -r`)" > $motd_file
-	echo "Bienvenidos a  kademar $versio  GNU/Linux  (Kernel `uname -r`)" > $issue_file
+		echo "
+Los programas incluidos en Kademar GNU/Linux son software libre
+en su mayoría, y una parte residual de software no libre;
+los términos exactos de distribución de cada programa están descritos en
+archivos individuales en /usr/share/doc/*/copyright.
+
+Kademar GNU/Linux viene en ABSOLUTA NO GARANTÍA, en la medida
+permitida por la ley actual." > $motd_file.tail
 ;;
 en*|*)
-	echo "Welcome to  kademar $versio  GNU/Linux (Kernel `uname -r`)" > $motd_file
-	echo "Welcome to  kademar $versio  GNU/Linux (Kernel `uname -r`)" > $issue_file
+	echo "
+The programs included with the Kademar GNU/Linux system are free 
+software on major part, and a residual non-free software part;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+kademar GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law." > $motd_file.tail
 ;;
 esac
+
+# 	echo "Benvinguts a kademar $versio  GNU/Linux  (Kernel `uname -r`)" > $motd_file
+cat >  $issue_file << EOF
+  kademar $versio GNU/Linux \n \l
+EOF
+
+echo "  kademar $versio GNU/Linux" > $issue_file.net
+
+echo >> $issue_file #blank file at end
+# : > $motd_file #remove all content
 
 
 # rm -f "$DESTI/etc/boottime.kmap.gz"  "$DESTI/etc/console/boottime.kmap.gz"
@@ -335,6 +359,11 @@ fi
 if [ -n "`which startkde`" ]; then
 	rm -fr "$DESTI/etc/alternatives/x-session-manager"
 	ln -s /usr/bin/startkde "$DESTI/etc/alternatives/x-session-manager"
+fi
+
+#use KDM
+if [ -n "`which kdm`" ]; then
+	echo "/usr/bin/kdm" > "$DESTI/etc/X11/default-display-manager"
 fi
 
 

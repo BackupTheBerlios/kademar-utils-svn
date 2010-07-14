@@ -248,13 +248,13 @@ if [ -z "$cadi" ]; then
 #      execucio per part del Instalador
      nucli="`uname -r`"
      version=`cat /etc/kademar-release`
-     . /usr/share/kademar/config  #import kademar_type
+     . /etc/kademar/config  #import kademar_type
 #      initrd="initrd /boot/initrd.img-$nucli"
 else
 #      execucio en el restauragrub del CADI
      nucli=$(cd $DESTI/boot ; for i in `ls -1 vmlinuz* | sed s/vmlinuz-//g`; do echo $i; break; done)
      version=`cat $DESTI/etc/kademar-release 2>/dev/null`
-     . $DESTI/usr/share/kademar/config  #import kademar_type
+     . $DESTI/etc/kademar/config  #import kademar_type
 
 fi
 

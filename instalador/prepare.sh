@@ -16,4 +16,4 @@ pyuic4 ui/instalador.ui > ui_instalador.py
 pylupdate4 instalador.project
 
 #Release translation
-lrelease-qt4 instalador.project
+lrelease-qt3 instalador.project

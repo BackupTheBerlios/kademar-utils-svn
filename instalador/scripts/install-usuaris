@@ -88,7 +88,7 @@ chroot "$DESTI" sh /usr/share/kademar/scripts/engegada/kademar-inici.d-standalon
 chroot "$DESTI" sh /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/common-canvillengua "system"
 
 #Documents
-chroot "$DESTI" sh /usr/share/kademar/scripts/documents
+# chroot "$DESTI" sh /usr/share/kademar/scripts/documents
 
 
 echo "Fixing user permissions"

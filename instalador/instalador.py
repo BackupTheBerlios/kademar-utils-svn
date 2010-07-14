@@ -999,7 +999,7 @@ class instalador(QDialog):
             #Copiem el log de l'instal.lador i tots els fitxers que poden haver tingut a veure i borrem anteriors logs
             if path.exists(target+"/usr/share/kademar/install.log.tar.gz"):
                 system("rm -f "+target+"/usr/share/kademar/install.log.tar.gz")
-            system("tar cfz "+target+"/usr/share/kademar/install.log.tar.gz /tmp/kademar* /tmp/particions* /tmp/instalador-environment /tmp/particio_swap /var/xserver /var/xsession* /var/es /var/en /var/ca /etc/default/locale /etc/kademar-release /usr/share/kademar/config* /var/kademar* "+target+"/boot/grub/menu.lst 2>/dev/null")
+            system("tar cfz "+target+"/usr/share/kademar/install.log.tar.gz /tmp/kademar* /tmp/particions* /tmp/instalador-environment /tmp/particio_swap /var/tmp/xserver /var/xsession* /var/es /var/en /var/ca /etc/default/locale /etc/kademar-release /etc/kademar/config* /etc/kademar* "+target+"/boot/grub/menu.lst 2>/dev/null")
             system("chmod 400 "+target+"/usr/share/kademar/install.log.tar.gz")
             system("chown root:root "+target+"/usr/share/kademar/install.log.tar.gz")
             #desmunta els directoris si existeixen per una fallida de l'instalador

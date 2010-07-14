@@ -1,0 +1,80 @@
+#!/bin/bash
+
+#################################################
+# Script per Configurar el sistema a la nova    #
+#         -------------------------             #
+#    Preparat per la kademar 4.0 - 3 Nov 2005   #
+#    Preparat per la kademar 4.1 - 2 Feb 2006   #
+#    Preparat per la kademar 4.7 - 24 Mar 2008  #
+#    Preparat per la kademar 4.8 - 07 Feb 2009  #
+#    Ready for kademar 4.9.5     - 08 Jul 2010  #
+#    Llicenciat Sota GNU/GPL 2.0 o Superiors    #
+#################################################
+
+. /tmp/instalador-environment
+
+#Carreguem algunes variables des del fitxer general live-cd
+[ -e /etc/kademar/config-livecd ] && . /etc/kademar/config-livecd
+
+ruta_fstab="/etc/fstab"
+
+#########################
+
+#Ens assegurem de que està buit el fitxer de restauracio de Serveis dels rc?.d
+echo > "$DESTI/serveis"
+
+#Càrrega de les tecles de toshiba, si existeixen
+if [ -d /proc/acpi/toshiba/keys ]; then
+		echo "update-rc.d fnfxd defaults 20" >> "$DESTI/serveis"
+fi
+
+#Fem el mateix amb el APM
+if [ -d /proc/apm ]; then
+	# APM
+	if [ -z "`grep noacpi /proc/cmdline`" ]; then
+		echo "update-rc.d apmd defaults 20" >> "$DESTI/serveis"
+	fi
+fi
+
+#Win-Modems  Detection
+if [ -n "`lsmod | grep slamr`" -o -n "`lsmod | grep slusb`" ]; then
+	echo "update-rc.d sl-modem-daemon defaults 12" >> "$DESTI/serveis"
+fi
+
+
+#CREEM ELS SERVEIS
+chroot "$DESTI" sh /serveis
+
+#Borrem la prova del delicte  :-D
+rm -f "$DESTI/serveis"
+
+
+#Creem les entrades pel klik en /etc/fstab
+echo "
+#Klik Lines
+/tmp/app/1/image /tmp/app/1 cramfs,iso9660 user,noauto,ro,loop,exec 0 0
+/tmp/app/2/image /tmp/app/2 cramfs,iso9660 user,noauto,ro,loop,exec 0 0
+/tmp/app/3/image /tmp/app/3 cramfs,iso9660 user,noauto,ro,loop,exec 0 0
+/tmp/app/4/image /tmp/app/4 cramfs,iso9660 user,noauto,ro,loop,exec 0 0
+/tmp/app/5/image /tmp/app/5 cramfs,iso9660 user,noauto,ro,loop,exec 0 0
+/tmp/app/6/image /tmp/app/6 cramfs,iso9660 user,noauto,ro,loop,exec 0 0
+/tmp/app/7/image /tmp/app/7 cramfs,iso9660 user,noauto,ro,loop,exec 0 0" >> "$DESTI$ruta_fstab"
+
+#Fem que  www.kademar.org sigui la pagina per defecte del firefox
+[ -e "$DESTI/etc/mozilla-firefox/profile/prefs.js" ] && echo 'user_pref("browser.startup.homepage", "http://www.kademar.org");
+user_pref(\"network.protocol-handler.app.klik\", \"~/.klik\"); >> ' >> "$DESTI/etc/mozilla-firefox/profile/prefs.js"
+
+
+#substitution of all wallpapers from configurated monitor (panoramic/normal)
+[ -e "$DESTI/etc/kademar/monitor" ] && . "$DESTI/etc/kademar/monitor"
+[ -z "$monitor" ] && monitor=normal
+[ -e /etc/kademar/config-livecd ] && . /etc/kademar/config-livecd
+
+
+if [ "$monitor" = panoramic ]; then
+    for i in  /usr/share/apps/kdm/themes/kademar/background.png /etc/splashy/themes/kademar/background.png
+    do
+        rm -f "$DESTI$i"
+        cp "$xsession_background_panoramic" "$DESTI$i"
+    done
+fi

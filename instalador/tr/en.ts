@@ -269,7 +269,7 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1491"/>
+        <location filename="ui/instalador.ui" line="1511"/>
         <source>Now you have to enter a user to be able to use the system.
 Username can be your name, to create the accout that you&apos;ll use as default.
 
@@ -278,33 +278,33 @@ If you don&apos;t want to be asked for it every time you start, check User Autos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1543"/>
+        <location filename="ui/instalador.ui" line="1557"/>
         <source>Reenter User Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1595"/>
+        <location filename="ui/instalador.ui" line="1609"/>
         <source>Enter your name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1615"/>
+        <location filename="ui/instalador.ui" line="1629"/>
         <source>User Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1631"/>
+        <location filename="ui/instalador.ui" line="1645"/>
         <source>User Autostart
  without ask your password.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1671"/>
+        <location filename="ui/instalador.ui" line="1682"/>
         <source>User Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1705"/>
+        <location filename="ui/instalador.ui" line="1716"/>
         <source>Here you have to indicate a disk where install Grub Boot Manager.
 By default this selection is automatic, but you can set it manually.
 Also you can bypass, setting not to install, but use it only if you know what you are doing.
@@ -313,38 +313,38 @@ Grub will make you able to start kademar Linux on your machine and other operati
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1733"/>
+        <location filename="ui/instalador.ui" line="1744"/>
         <source>Manual - Advanced Selecction</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1753"/>
+        <location filename="ui/instalador.ui" line="1764"/>
         <source>Automatic - Recomended</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1774"/>
+        <location filename="ui/instalador.ui" line="1785"/>
         <source>Do not install boot manager - NOT RECOMMENDED
  (Only do it if you know what are doing)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1795"/>
+        <location filename="ui/instalador.ui" line="1806"/>
         <source>Boot Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1821"/>
+        <location filename="ui/instalador.ui" line="1832"/>
         <source>Initrd (Activate if you receive an error when start)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1859"/>
+        <location filename="ui/instalador.ui" line="1870"/>
         <source>Ending Installation Tasks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1875"/>
+        <location filename="ui/instalador.ui" line="1886"/>
         <source>Some installation tasks are pending.
 
 You have to wait while process is finishing.
@@ -352,12 +352,12 @@ You can see tasks status on left bar.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1941"/>
+        <location filename="ui/instalador.ui" line="1952"/>
         <source>Installation Finished!!!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1957"/>
+        <location filename="ui/instalador.ui" line="1968"/>
         <source>kademar Linux it&apos;s installed on your PC
 
 Now you can close installer and continue using kademar on Live mode, or you can reboot you computer and start on the installed system.
@@ -370,7 +370,7 @@ Thanks for choosing kademar Linux</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1984"/>
+        <location filename="ui/instalador.ui" line="1995"/>
         <source>Reboot Computer</source>
         <translation type="unfinished"></translation>
     </message>
@@ -380,8 +380,8 @@ Thanks for choosing kademar Linux</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1517"/>
-        <source>Heliox</source>
+        <location filename="ui/instalador.ui" line="1495"/>
+        <source>Account name</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

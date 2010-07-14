@@ -1,0 +1,19 @@
+#!/bin/sh
+set -e
+#Udev Stolen Function :-[
+
+# Automatically added by dh_installmodules
+if [ "$1" = "configure" ]; then
+
+    if [ ! -e /usr/bin/kdesu -a -e /usr/bin/kdesudo ]; then
+        ln -s kdesudo /usr/bin/kdesu
+    fi
+ 
+    #graphics raster render engine
+    dpkg-divert --package kademar-kde4-core --add --divert /usr/share/autostart/bkp/plasma-desktop.desktop.orig --rename /usr/share/autostart/plasma-desktop.desktop
+    [ ! -e /usr/share/autostart/plasma-desktop.desktop ] && ln -s /usr/share/autostart/bkp/plasma-desktop-kademar.desktop /usr/share/autostart/plasma-desktop.desktop
+
+    exit 0
+
+fi
+# End automatically added section

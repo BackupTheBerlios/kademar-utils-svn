@@ -1,0 +1,7 @@
+[KdmGreeterTheme]
+Greeter=kademar-kde4.xml
+Name=kademar KDE4
+Description=Based on Slick Chakra KDM theme
+Author=Mladen Pejaković
+Copyright=GPL, 2009, Mladen Pejaković <pejakm@gmail.com>
+Screenshot=screenshot.png

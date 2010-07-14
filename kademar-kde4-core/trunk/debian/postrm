@@ -1,0 +1,23 @@
+#!/bin/sh
+set -e
+# Automatically added by dh_installmodules
+
+case "$1" in
+    purge|remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+	
+        if [ remove = "$1" ]; then
+		#remove raster render engine KDE4
+                rm -f /usr/share/autostart/plasma-desktop.desktop
+                dpkg-divert --package kademar-kde4-core --remove --divert /usr/share/autostart/bkp/plasma-desktop.desktop.orig --rename /usr/share/autostart/plasma-desktop.desktop
+
+        fi
+
+    ;;
+
+    *)
+        echo "postrm called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+exit 0

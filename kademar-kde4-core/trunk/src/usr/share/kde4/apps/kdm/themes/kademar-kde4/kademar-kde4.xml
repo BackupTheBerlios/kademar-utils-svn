@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE greeter SYSTEM "greeter.dtd">
+<!--
+Copyright 2009 Lionel Chauvin <megabigbug@yahoo.fr>
+Copyright 2008 Urs Wolfer <uwolfer @ kde.org>
+Copyright 2008 Oswald Buddenhagen <ossi @ kde.org>
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 2 of 
+the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<greeter id="theme">
+	<style font="Sans 12" window-text-color="#ffffff"
+	       base-color="#ffffff" alternate-base-color="#cccccc"
+	       text-color="#000000" disabled-text-color="#808080"/>
+	<item type="pixmap" id="background" background="true">
+		<normal file="background.png"/>
+		<pos anchor="c" x="50%" y="50%" width="100%" height="100%"/>
+	</item>
+
+	<item type="rect" id="greeter">
+		<pos y="65%" x="50%" anchor="c" width="box" height="box"/>
+
+		<fixed>
+			<item type="svg">
+				<normal file="box.svg" element="topleft"/>
+				<pos anchor="nw" x="0" y="0" width="10" height="10"/>
+			</item>
+			<item type="svg">
+				<normal file="box.svg" element="top"/>
+				<pos anchor="nw" x="10" y="0" width="-20" height="10"/>
+			</item>
+			<item type="svg">
+				<normal file="box.svg" element="topright"/>
+				<pos anchor="ne" x="-0" y="0" width="10" height="10"/>
+			</item>
+			<item type="svg">
+				<normal file="box.svg" element="left"/>
+				<pos anchor="w" x="0" y="50%" width="10" height="-20"/>
+			</item>
+			<item type="svg">
+				<normal file="box.svg" element="center"/>
+				<pos anchor="nw" x="10" y="10" width="-20" height="-20"/>
+			</item>
+			<item type="svg">
+				<normal file="box.svg" element="right"/>
+				<pos anchor="e" x="-0" y="50%" width="10" height="-20"/>
+			</item>
+			<item type="svg">
+				<normal file="box.svg" element="bottomleft"/>
+				<pos anchor="sw" x="0" y="-0" width="10" height="10"/>
+			</item>
+			<item type="svg">
+				<normal file="box.svg" element="bottom"/>
+				<pos anchor="sw" x="10" y="-0" width="-20" height="10"/>
+			</item>
+			<item type="svg">
+				<normal file="box.svg" element="bottomright"/>
+				<pos anchor="se" x="-0" y="-0" width="10" height="10"/>
+			</item>
+		</fixed>
+
+		<box orientation="vertical" xpadding="15" ypadding="15" spacing="10">
+			<item type="rect" id="banner">
+				<pos width="box" height="box" min-width="100%"/>
+				<box orientation="horizontal" spacing="10">
+					<item type="rect">
+					  <pos anchor="w" y="50%" width="box" height="box"/>									 
+					  <box>
+					      <item type="label">
+						<normal color="#000000" alpha="0.5" font="Sans 16"/>
+						<pos x="1" y="1"/>
+						<stock type="welcome-label"/>
+					      </item>
+					  </box>
+					  <fixed>
+					    <item type="label" id="welcome">
+					      <normal color="#FFFFFF" font="Sans 16"/>
+					      <stock type="welcome-label"/>
+					    </item>
+					  </fixed>
+					</item>
+					
+					<item type="rect" id="spacer1">
+						<pos expand="true"/>
+					</item>
+					<item type="pixmap" id="branding">
+						<normal file="kde.png"/>
+					</item>
+				</box>
+			</item>
+			<item type="rect" id="content">
+				<pos width="box" height="box"/>
+				<box orientation="horizontal" spacing="10">
+				
+			
+				<item type="rect" id="userlist-rect">
+				<pos width="box" height="box"/>
+				  <box xpadding="3" ypadding="3">
+				  <item type="list" id="userlist" />
+				  </box>
+									  
+				  <fixed>
+	 		
+				    <item type="svg">
+				      <normal file="input-shadow.svg" element="top-left"/>
+				      <pos  anchor="nw" x="0" y="0" width="3" height="3"/>
+				    </item>
+				    
+				    <item type="svg">
+				      <normal file="input-shadow.svg" element="top"/>
+				      <pos anchor="nw" x="3" y="0"  width="-6" height="3"/>
+				    </item>
+				    
+				    <item type="svg">
+				      <normal file="input-shadow.svg" element="top-right"/>
+				      <pos anchor="ne" x="-0" y="0" width="3" height="3"/>
+				    </item>
+				    
+				    <item type="svg">
+				      <normal file="input-shadow.svg" element="left"/>
+				      <pos anchor="nw" x="0" y="3" width="3"  height="-6" />
+				    </item>			    
+				 
+				    <item type="svg">
+				      <normal file="input-shadow.svg" element="right"/>
+				      <pos anchor="ne" x="-0" y="3" width="3" height="-6" />
+				    </item>
+				    
+				    <item type="svg">
+				      <normal file="input-shadow.svg" element="bottom-left"/>
+				      <pos anchor="sw" x="0" y="-0" width="3" height="3"/>
+				    </item>
+				    
+				    <item type="svg">
+				      <normal file="input-shadow.svg" element="bottom"/>
+				      <pos anchor="sw" x="3" y="-0" width="-6" height="3"/>
+				    </item>
+				    
+				    <item type="svg">
+				      <normal file="input-shadow.svg" element="bottom-right"/>
+				      <pos anchor="se" x="-0" y="-0" width="3" height="3"/>
+				    </item>
+				   
+				</fixed>
+				 
+					
+			      </item>
+									
+					
+					<item type="rect" id="verify">
+						<pos width="box" height="box"/>
+						<box orientation="vertical" spacing="2">
+							<item type="rect" id="talker">
+								<pos anchor="n" x="50%" width="box" height="box"/>
+								<box orientation="vertical" xpadding="2" ypadding="2" spacing="2">
+								
+									<item type="rect">
+									  <pos x="5" width="box" height="box"/>									 
+									  <box>
+									      <item type="label">
+										<normal color="#000000" alpha="0.5" font="Sans 12"/>
+										<pos x="6" y="1"/>
+										<stock type="username-label"/>
+									      </item>
+									  </box>
+									  <fixed>
+									    <item type="label">
+									      <pos x="5"/>
+									      <stock type="username-label"/>
+									    </item>
+									  </fixed>
+									</item>
+																	
+									<item type="rect" id="user-entry-rect">
+									  <pos x="0" y="0" width="156" height="24"/>
+									  <fixed>
+									  
+									    <item type="svg">
+									      <normal file="input-shadow.svg" element="top-left"/>
+									      <pos x="0" y="0" width="3" height="3"/>
+									    </item>
+									    
+									    <item type="svg">
+									      <normal file="input-shadow.svg" element="top"/>
+									      <pos x="3" y="0" width="150" height="3"/>
+									    </item>
+									    
+									    <item type="svg">
+									      <normal file="input-shadow.svg" element="top-right"/>
+									      <pos x="153" y="0" width="3" height="3"/>
+									    </item>
+									    
+									    <item type="svg">
+									      <normal file="input-shadow.svg" element="bottom-left"/>
+									      <pos x="0" y="21" width="3" height="3"/>
+									    </item>
+									    
+									    <item type="svg">
+									      <normal file="input-shadow.svg" element="bottom"/>
+									      <pos x="3" y="21" width="150" height="3"/>
+									    </item>
+									    
+									    <item type="svg">
+									      <normal file="input-shadow.svg" element="bottom-right"/>
+									      <pos x="153" y="21" width="3" height="3"/>
+									    </item>
+									    
+									    <item type="svg">
+									      <normal file="input-shadow.svg" element="left"/>
+									      <pos x="0" y="3" width="3" height="18"/>
+									    </item>
+									    
+									    <item type="svg">
+									      <normal file="input-shadow.svg" element="right"/>
+									      <pos x="153" y="3" width="3" height="18"/>
+									    </item>
+									    
+									    <item type="entry" id="user-entry">
+										<pos x="3" y="3" width="150" height="18"/>
+									    </item>
+						
+									  </fixed>
+									</item>
+									
+									
+									<item type="rect">
+									  <pos x="5" width="box" height="box"/>									 
+									  <box>
+									      <item type="label">
+										<normal color="#000000" alpha="0.5" font="Sans 12"/>
+										<pos x="6" y="1"/>
+										<stock type="password-label"/>
+									      </item>
+									  </box>
+									  <fixed>
+									    <item type="label">
+									      <pos x="5"/>
+									      <stock type="password-label"/>
+									    </item>
+									  </fixed>
+									</item>
+									
+									
+																		
+									<item type="rect" id="pw-entry-rect">
+									  <pos x="0" y="0" width="156" height="24"/>
+									  <fixed>
+									  
+									    <item type="svg">
+									      <normal file="input-shadow.svg" element="top-left"/>
+									      <pos x="0" y="0" width="3" height="3"/>
+									    </item>
+									    
+									    <item type="svg">
+									      <normal file="input-shadow.svg" element="top"/>
+									      <pos x="3" y="0" width="150" height="3"/>
+									    </item>
+									    
+									    <item type="svg">
+									      <normal file="input-shadow.svg" element="top-right"/>
+									      <pos x="153" y="0" width="3" height="3"/>
+									    </item>
+									    
+									    <item type="svg">
+									      <normal file="input-shadow.svg" element="bottom-left"/>
+									      <pos x="0" y="21" width="3" height="3"/>
+									    </item>
+									    
+									    <item type="svg">
+									      <normal file="input-shadow.svg" element="bottom"/>
+									      <pos x="3" y="21" width="150" height="3"/>
+									    </item>
+									    
+									    <item type="svg">
+									      <normal file="input-shadow.svg" element="bottom-right"/>
+									      <pos x="153" y="21" width="3" height="3"/>
+									    </item>
+									    
+									    <item type="svg">
+									      <normal file="input-shadow.svg" element="left"/>
+									      <pos x="0" y="3" width="3" height="18"/>
+									    </item>
+									    
+									    <item type="svg">
+									      <normal file="input-shadow.svg" element="right"/>
+									      <pos x="153" y="3" width="3" height="18"/>
+									    </item>
+									    
+									    <item type="entry" id="pw-entry">
+										<pos x="3" y="3" width="150" height="18"/>
+									    </item>
+						
+									  </fixed>
+									</item>
+								</box>
+							</item>
+							<item type="rect" id="pam-error-placeholder">
+								<pos width="100%" height="box"/>
+								<box orientation="horizontal">
+									<item type="label" id="dummy1">
+										<normal alpha="0" font="Sans Bold 12"/>
+										<text/>
+									</item>
+									<item type="label" id="pam-error">
+										<pos anchor="c" x="50%" y="50%" expand="true"/>
+										<normal color="#C7C7C7" font="Sans Bold 12"/>
+										<text/>
+									</item>
+								</box>
+							</item>
+							<item type="label" id="caps-lock-warning">
+								<normal color="#C7C7C7" font="Sans 12"/>
+								<pos anchor="c" x="50%" y="50%"/>
+								<stock type="caps-lock-warning"/>
+							</item>
+						</box>
+					</item>
+				</box>
+			</item>
+		</box>
+
+	</item>
+
+	<!-- bottom bar and session buttons -->
+	<item type="rect" id="footer">
+		<pos x="0" y="-0" width="100%" height="38" anchor="sw"/>
+		<fixed>
+			<item type="svg">
+				<normal file="footer.svg" element="south-top"/>
+				<pos width="100%" height="3"/>
+			</item>
+		</fixed>
+		<fixed>
+			<item type="svg">
+				<normal file="footer.svg" element="south-center"/>
+				<pos y="3" width="100%" height="35"/>
+			</item>
+		</fixed>
+		<box orientation="horizontal" spacing="10" xpadding="10">
+			<item type="rect" id="session_button" button="true">
+				<pos y="50%" anchor="w" width="box" height="box"/>
+				<box orientation="horizontal" spacing="10" xpadding="10">
+					<item type="pixmap">
+						<normal file="session.png" tint="#ffffff"/>
+						<prelight file="session.png"/>
+						<active file="session.png" tint="#ffffff"/>
+						<pos y="53%" anchor="w"/>
+					</item>
+					
+					<item type="rect">
+					<pos anchor="w" y="53%" width="box" height="box"/>									 
+					<box>
+					  <item type="label">
+					    <normal color="#000000" alpha="0.5" font="Sans 12"/>
+					    <pos x="1" y="1"/>
+					    <stock type="session"/>
+					  </item>
+					</box>
+					<fixed>
+					  <item type="label">
+						<normal color="#ffffff" font="Sans 12"/>
+						<prelight color="#C7C7C7" font="Sans 12"/>
+						<active color="#666666" font="Sans 12"/>
+						<stock type="session"/>
+					  </item>
+					</fixed>
+				      </item>
+		
+				</box>
+			</item>
+			
+				
+			<item type="rect" id="system_button" button="true">
+				<show modes="console" type="system"/>
+				<pos y="50%" anchor="w" width="box" height="box"/>
+								
+				<box orientation="horizontal" spacing="10" xpadding="10">
+					<item type="pixmap">
+						<normal file="system.png" tint="#ffffff"/>
+						<prelight file="system.png"/>
+						<active file="system.png" tint="#ffffff"/>
+						<pos y="53%" anchor="w"/>
+					</item>
+					
+					
+					<item type="rect">
+					<pos anchor="w" y="53%" width="box" height="box"/>									 
+					<box>
+					  <item type="label">
+					    <normal color="#000000" alpha="0.5" font="Sans 12"/>
+					    <pos x="1" y="1"/>
+					    <stock type="system"/>
+					  </item>
+					</box>
+					<fixed>
+					  <item type="label">
+						<normal color="#ffffff" font="Sans 12"/>
+						<prelight color="#C7C7C7" font="Sans 12"/>
+						<active color="#666666" font="Sans 12"/>
+						<stock type="system"/>
+					  </item>
+					</fixed>
+				      </item>
+					
+					
+				</box>
+			</item>
+			<item type="rect" id="spacer2">
+				<pos expand="true"/>
+			</item>
+			
+			
+			<item type="rect">
+			  <pos anchor="w" y="53%" width="box" height="box"/>									 
+			  <box>
+			    <item type="label">
+			      <normal color="#000000" alpha="0.5" font="Sans 12"/>
+			      <pos x="1" y="1"/>
+			      <text>%c</text>
+			    </item>
+			  </box>
+			  <fixed>
+			    <item type="label"  id="clock">
+			      <text>%c</text>
+			    </item>
+			  </fixed>
+			</item>
+		
+			<item type="rect" id="spacer3">
+				<pos width="15"/>
+			</item>
+		</box>
+	</item>
+
+	<item type="rect" id="timed-label">
+		<pos anchor="c" x="50%" y="20%" width="box" height="box"/>
+		<box orientation="vertical" xpadding="50" ypadding="5" spacing="0">
+		<item type="rect">
+		    <pos x="50%" anchor="n" width="box" height="box"/>									 
+		    <box>
+			<item type="label">
+			  <normal color="#000000" alpha="0.5" font="Sans 12"/>
+			  <pos x="1" y="1"/>
+			  <stock type="timed-label"/>
+			</item>
+		    </box>
+		    <fixed>
+		      <item type="label">
+			<stock type="timed-label"/>
+		      </item>
+		    </fixed>
+		</item>
+		
+		</box>
+	</item>
+
+</greeter>

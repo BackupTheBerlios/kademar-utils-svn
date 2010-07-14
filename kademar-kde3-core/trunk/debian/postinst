@@ -1,0 +1,29 @@
+#!/bin/sh
+set -e
+#Udev Stolen Function :-[
+chrooted() {
+  if [ "$(stat -c %d/%i /)" = "$(stat -Lc %d/%i /proc/1/root 2>/dev/null)" ];
+  then
+    # the devicenumber/inode pair of / is the same as that of /sbin/init's
+    # root, so we're *not* in a chroot and hence return false.
+    return 1
+  fi
+#   echo "Live-CD Creation environment detected. Creating links to Xsession."
+  return 0
+}
+
+# Automatically added by dh_installmodules
+if [ "$1" = "configure" ]; then
+	
+	#Networking DHCP Permissive
+	[ ! -e /opt/kde3/share/apps/kicker/pics/kside.png-orig ] && dpkg-divert --package kademar-kde3 --add --divert /opt/kde3/share/apps/kicker/pics/kside.png-orig --rename /opt/kde3/share/apps/kicker/pics/kside.png
+	[ ! -e /opt/kde3/share/apps/kicker/pics/kside.png ] && ln -s /opt/kde3/share/apps/kicker/pics/kside_kademar.png /opt/kde3/share/apps/kicker/pics/kside.png
+
+    [ ! -e /etc/kde3/kdm/kdmrc.orig ] && dpkg-divert --package kademar-kde3 --add --divert /etc/kde3/kdm/kdmrc.orig --rename /etc/kde3/kdm/kdmrc
+    [ ! -e /etc/kde3/kdm/kdmrc ] && ln -s /etc/kde3/kdm/kdmrc.kademar /etc/kde3/kdm/kdmrc
+    [ ! -e /etc/kde3/kdm/backgroundrc.orig ] && dpkg-divert --package kademar-kde3 --add --divert /etc/kde3/kdm/backgroundrc.orig --rename /etc/kde3/kdm/backgroundrc
+    [ ! -e /etc/kde3/kdm/backgroundrc ] && ln -s /etc/kde3/kdm/backgroundrc.kademar /etc/kde3/kdm/backgroundrc
+
+    exit 0
+fi
+# End automatically added section

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Icon=samba
+Name[ca]=samba
+Name[ca]=samba
+Open=false
+Type=Link
+URL=smb:/
+X-KDE-KonqSidebarModule=konqsidebar_tree
+X-KDE-TreeModule=Directory

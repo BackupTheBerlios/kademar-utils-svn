@@ -19,4 +19,4 @@ done
 pylupdate4 audioconversor.project
 
 #Release translation
-lrelease-qt4 audioconversor.project
+lrelease-qt3 audioconversor.project

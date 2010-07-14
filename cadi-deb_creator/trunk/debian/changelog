@@ -1,3 +1,9 @@
+cadi (4.9.1.1) testing; urgency=low
+
+  * FEATURE: Support to BUM (service manager)
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Thu, 08 Jul 2010 14:21:12 +0200
+
 cadi (4.9.1) testing; urgency=low
 
   * FEATURE: Better support to multimedia keyboards (non desktop dependent)

@@ -784,59 +784,64 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>FormServices</name>
     <message>
-        <location filename="ui/services.ui" line="19"/>
+        <location filename="ui/services.ui" line="20"/>
         <source>Form</source>
         <translation>Form</translation>
     </message>
     <message>
-        <location filename="ui/services.ui" line="70"/>
+        <location filename="ui/services.ui" line="71"/>
         <source>System Services</source>
         <translation>System Services</translation>
     </message>
     <message>
-        <location filename="ui/services.ui" line="86"/>
+        <location filename="ui/services.ui" line="87"/>
         <source>Here you can define what services do you want to run</source>
         <translation>Here you can define what services do you want to run</translation>
     </message>
     <message>
-        <location filename="ui/services.ui" line="118"/>
+        <location filename="ui/services.ui" line="119"/>
         <source>Services</source>
         <translation>Services</translation>
     </message>
     <message>
-        <location filename="ui/services.ui" line="130"/>
+        <location filename="ui/services.ui" line="131"/>
         <source>Samba - Sharing Files</source>
         <translation>Samba - Sharing Files</translation>
     </message>
     <message>
-        <location filename="ui/services.ui" line="143"/>
+        <location filename="ui/services.ui" line="144"/>
         <source>Apache2 - Web Server</source>
         <translation>Apache2 - Web Server</translation>
     </message>
     <message>
-        <location filename="ui/services.ui" line="156"/>
+        <location filename="ui/services.ui" line="157"/>
         <source>MySQL - Database Server</source>
         <translation>MySQL - Database Server</translation>
     </message>
     <message>
-        <location filename="ui/services.ui" line="169"/>
+        <location filename="ui/services.ui" line="170"/>
         <source>CUPS - Print Service</source>
         <translation>CUPS - Print Service</translation>
     </message>
     <message>
-        <location filename="ui/services.ui" line="182"/>
+        <location filename="ui/services.ui" line="183"/>
         <source>SSH - Secure Conection Server</source>
         <translation>SSH - Secure Conection Server</translation>
     </message>
     <message>
-        <location filename="ui/services.ui" line="222"/>
+        <location filename="ui/services.ui" line="235"/>
         <source>Back</source>
         <translation>Back</translation>
     </message>
     <message>
-        <location filename="ui/services.ui" line="239"/>
+        <location filename="ui/services.ui" line="252"/>
         <source>Save &amp;&amp; Exit</source>
         <translation>Save &amp;&amp;Exit</translation>
+    </message>
+    <message>
+        <location filename="ui/services.ui" line="197"/>
+        <source>Open Advanced Manager</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -960,7 +965,7 @@ You can start it, using the &quot;Open Control Panel&quot; bottom button.</trans
 <context>
     <name>cadi</name>
     <message>
-        <location filename="cadi.py" line="196"/>
+        <location filename="cadi.py" line="195"/>
         <source>Are you sure to quit?</source>
         <translation>Are you sure you want to quit?</translation>
     </message>
@@ -1024,12 +1029,12 @@ You can start it, using the &quot;Open Control Panel&quot; bottom button.</trans
         <translation>Failed</translation>
     </message>
     <message>
-        <location filename="internet.py" line="421"/>
+        <location filename="internet.py" line="420"/>
         <source>yes</source>
         <translation>yes</translation>
     </message>
     <message>
-        <location filename="internet.py" line="424"/>
+        <location filename="internet.py" line="422"/>
         <source>no</source>
         <translation>no</translation>
     </message>

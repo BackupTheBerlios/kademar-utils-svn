@@ -1,6 +1,7 @@
 adm
 arpwatch
 audio
+avahi
 backup
 bin
 bind
@@ -12,6 +13,7 @@ crontab
 daemon
 dialout
 dip
+dirmngr
 disk
 fax
 floppy
@@ -31,6 +33,7 @@ mlocate
 mysql
 news
 nogroup
+ntp
 operator
 plugdev
 powerdev
@@ -57,6 +60,7 @@ polkituser
 partimag
 video
 vboxusers
+wmaloader
 voice
 wheel
 www-data

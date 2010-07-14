@@ -139,7 +139,7 @@ class panelDisplay(QWidget):
 
         for i in listdir("/home/"):
             if i.lower()<>"pc":
-                directory="/home/"+i+"/.kde/share/config/"
+                directory="/home/"+i+"/.kde3/share/config/"
 
                 system("mkdir "+directory+" -p")
                 f=open(directory+file,'w')

@@ -28,8 +28,12 @@ class panelServices(QWidget):
         self.connect(self.ui.cb_mysql, SIGNAL("clicked()"), self.enableSaX)
         self.connect(self.ui.cb_cups, SIGNAL("clicked()"), self.enableSaX)
         self.connect(self.ui.cb_ssh, SIGNAL("clicked()"), self.enableSaX)
+        self.connect(self.ui.b_open_bum, SIGNAL("clicked()"), self.executeBum)
 
 #### END SIGNAL & SLOTS ####
+
+        if not path.exists("/usr/bin/bum"): 
+            self.ui.b_open_bum.setVisible(0)
 
         self.samba=self.apache=self.mysql=self.cups=self.ssh=False
 
@@ -72,12 +76,12 @@ class panelServices(QWidget):
                 system('update-rc.d -f lisa remove')
                 #dirs=getoutput('ls /home --ignore=Pc --ignore=ANONYMOUS').split()
                 #for i in dirs:
-                    #system('mkdir -p /home/'+i+'/.kde/share/apps/konqsidebartng/entries/ 2>/dev/null')
-                    #self.crealandesktop('/home/'+i+'/.kde/share/apps/konqsidebartng/entries/')
-                #system('mkdir -p /etc/skel/.kde/share/apps/konqsidebartng/entries/ 2>/dev/null')
-                #self.crealandesktop('/etc/skel/.kde/share/apps/konqsidebartng/entries/')
-                #system('mkdir -p /root/.kde/share/apps/konqsidebartng/entries/ 2>/dev/null')
-                #self.crealandesktop('/root/.kde/share/apps/konqsidebartng/entries/')
+                    #system('mkdir -p /home/'+i+'/.kde3/share/apps/konqsidebartng/entries/ 2>/dev/null')
+                    #self.crealandesktop('/home/'+i+'/.kde3/share/apps/konqsidebartng/entries/')
+                #system('mkdir -p /etc/skel/.kde3/share/apps/konqsidebartng/entries/ 2>/dev/null')
+                #self.crealandesktop('/etc/skel/.kde3/share/apps/konqsidebartng/entries/')
+                #system('mkdir -p /root/.kde3/share/apps/konqsidebartng/entries/ 2>/dev/null')
+                #self.crealandesktop('/root/.kde3/share/apps/konqsidebartng/entries/')
 
                 system('update-rc.d samba defaults '+self.data[0][1])
                 system('update-rc.d lisa defaults '+self.data[0][1])
@@ -89,9 +93,9 @@ class panelServices(QWidget):
                 system('/etc/init.d/lisa stop')
                 system('update-rc.d -f samba remove')
                 system('update-rc.d -f lisa remove')
-                #system('rm -f /home/*/.kde/share/apps/konqsidebartng/entries/LAN.desktop')
-                #system('rm -f /etc/skel/.kde/share/apps/konqsidebartng/entries/LAN.desktop')
-                #system('rm -f /root/.kde/share/apps/konqsidebartng/entries/LAN.desktop')
+                #system('rm -f /home/*/.kde3/share/apps/konqsidebartng/entries/LAN.desktop')
+                #system('rm -f /etc/skel/.kde3/share/apps/konqsidebartng/entries/LAN.desktop')
+                #system('rm -f /root/.kde3/share/apps/konqsidebartng/entries/LAN.desktop')
       #apache
         if  self.ui.cb_apache.isEnabled() and not self.ui.cb_apache.isChecked() == self.data[1][3]:
          #stat true
@@ -138,6 +142,8 @@ class panelServices(QWidget):
                 system('update-rc.d -f ssh remove')
         self.close()
 
+    def executeBum(self):
+        system("bum")
 
     def crealandesktop(self,directori):
         f=open(directori+'LAN.desktop','w')

@@ -18,28 +18,28 @@ ca*)
 	llengua=ca
 	pais=es
 	kdm_greet='Benvinguts a kademar'
-	apollon="~/Documents/Arxius Compartits"
-	amule="Documents/Arxius Compartits"
-	amsn="Documents/Arxius Rebuts Amsn"
-	break
+# 	apollon="~/Documents/Arxius Compartits"
+# 	amule="Documents/Arxius Compartits"
+# 	amsn="Documents/Arxius Rebuts Amsn"
+# 	break
 ;;
 es*)
 	llengua=es
 	pais=es
 	kdm_greet='Bienvenidos a kademar'
-	apollon="~/Documentos/Archivos Compartidos"
-	amule="Documentos/Archivos Compartidos"
-	amsn="Documentos/Archivos Recibidos Amsn"
-	break
+# 	apollon="~/Documentos/Archivos Compartidos"
+# 	amule="Documentos/Archivos Compartidos"
+# 	amsn="Documentos/Archivos Recibidos Amsn"
+# 	break
 ;;	
 en*|C|*)
 	llengua=en
 	pais=en
 	kdm_greet='Welcome to kademar'
-	apollon="~/Documents/Shared Files"
-	amule="Documents/Shared Files"
-	amsn="Documents/Received Files Amsn"
-	break	
+# 	apollon="~/Documents/Shared Files"
+# 	amule="Documents/Shared Files"
+# 	amsn="Documents/Received Files Amsn"
+# 	break	
 ;;
 esac
 

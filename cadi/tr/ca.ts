@@ -786,59 +786,64 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>FormServices</name>
     <message>
-        <location filename="ui/services.ui" line="19"/>
+        <location filename="ui/services.ui" line="20"/>
         <source>Form</source>
         <translation>Form</translation>
     </message>
     <message>
-        <location filename="ui/services.ui" line="70"/>
+        <location filename="ui/services.ui" line="71"/>
         <source>System Services</source>
         <translation>Serveis de Sistema</translation>
     </message>
     <message>
-        <location filename="ui/services.ui" line="86"/>
+        <location filename="ui/services.ui" line="87"/>
         <source>Here you can define what services do you want to run</source>
         <translation>Aquí pots definir els serveis que vols executar</translation>
     </message>
     <message>
-        <location filename="ui/services.ui" line="118"/>
+        <location filename="ui/services.ui" line="119"/>
         <source>Services</source>
         <translation>Serveis</translation>
     </message>
     <message>
-        <location filename="ui/services.ui" line="130"/>
+        <location filename="ui/services.ui" line="131"/>
         <source>Samba - Sharing Files</source>
         <translation>Samba - Compartir Arxius</translation>
     </message>
     <message>
-        <location filename="ui/services.ui" line="143"/>
+        <location filename="ui/services.ui" line="144"/>
         <source>Apache2 - Web Server</source>
         <translation>Apache2 - Servidor Web</translation>
     </message>
     <message>
-        <location filename="ui/services.ui" line="156"/>
+        <location filename="ui/services.ui" line="157"/>
         <source>MySQL - Database Server</source>
         <translation>MySQL - Servidor de Base de Dades</translation>
     </message>
     <message>
-        <location filename="ui/services.ui" line="169"/>
+        <location filename="ui/services.ui" line="170"/>
         <source>CUPS - Print Service</source>
         <translation>CUPS - Servidor de Impressió</translation>
     </message>
     <message>
-        <location filename="ui/services.ui" line="182"/>
+        <location filename="ui/services.ui" line="183"/>
         <source>SSH - Secure Conection Server</source>
         <translation>SSH - Servidor de Connexió Segura</translation>
     </message>
     <message>
-        <location filename="ui/services.ui" line="222"/>
+        <location filename="ui/services.ui" line="235"/>
         <source>Back</source>
         <translation>Tornar</translation>
     </message>
     <message>
-        <location filename="ui/services.ui" line="239"/>
+        <location filename="ui/services.ui" line="252"/>
         <source>Save &amp;&amp; Exit</source>
         <translation>Desar i Surtir</translation>
+    </message>
+    <message>
+        <location filename="ui/services.ui" line="197"/>
+        <source>Open Advanced Manager</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -962,7 +967,7 @@ Pots iniciar-lo, fent servir el botó inferior anomenat &quot;Panell de Control&
 <context>
     <name>cadi</name>
     <message>
-        <location filename="cadi.py" line="196"/>
+        <location filename="cadi.py" line="195"/>
         <source>Are you sure to quit?</source>
         <translation>Estàs segur de voler sortir?</translation>
     </message>
@@ -1026,12 +1031,12 @@ Pots iniciar-lo, fent servir el botó inferior anomenat &quot;Panell de Control&
         <translation>Ha fallat</translation>
     </message>
     <message>
-        <location filename="internet.py" line="421"/>
+        <location filename="internet.py" line="420"/>
         <source>yes</source>
         <translation>si</translation>
     </message>
     <message>
-        <location filename="internet.py" line="424"/>
+        <location filename="internet.py" line="422"/>
         <source>no</source>
         <translation>no</translation>
     </message>

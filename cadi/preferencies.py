@@ -33,7 +33,7 @@ class panelPreferencies(QWidget):
         self.ui.b_SaX.setEnabled(False)
 
 
-        f=open('/usr/share/kademar/config','r')
+        f=open('/etc/kademar/config','r')
         llista=f.readlines()
         f.close()
         self.found=False
@@ -72,11 +72,11 @@ class panelPreferencies(QWidget):
     def SaveAndExit(self):
         #posar aqui tot el que s'hagi de fer per desar per 
         #defecte la opcio de Sync o no Sync
-        f=open('/usr/share/kademar/config','r')
+        f=open('/etc/kademar/config','r')
         llista=f.readlines()
         f.close()
         # i ara gravem la opció que toca al fitxer config
-        f=open('/usr/share/kademar/config','w')
+        f=open('/etc/kademar/config','w')
         for i in llista:
             # al repassar linia a linia el fitxer quan troba mount_mode=...
             if i.find("mount_mode=")<>-1:

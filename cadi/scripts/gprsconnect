@@ -21,7 +21,7 @@ DIALOG="dialog"
 trap bailout 1 2 3 15
 
 # LANGUAGE etc.
-[ -f /etc/sysconfig/knoppix ] && . /etc/sysconfig/knoppix
+[ -f /etc/default/locale ] && . /etc/default/locale
 [ -z "$LANG" ] && export LANG
 [ -z "$LANGUAGE" ] && export LANGUAGE
 [ -z "$CHARSET" ] && export CHARSET

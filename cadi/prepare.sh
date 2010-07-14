@@ -19,7 +19,7 @@ done
 pylupdate4 cadi.project
 
 #Release translation
-lrelease-qt4 cadi.project
+lrelease-qt3 cadi.project
 
 rm -f todo
 

@@ -22,50 +22,49 @@ done
 
 if [ "$crea_home" = "creahome_si" ]; then
 
+
 	#Load language config
 	. /etc/default/locale
-	
+
+	desktop=`gettext -d xdg-user-dirs -s "Desktop"`
+	documents=`gettext -d xdg-user-dirs -s "Documents"`
+	pub=`gettext -d xdg-user-dirs -s "Public"`
+	amule="$pub"
+#         apollon="~/$pub"
+
+	down=`gettext -d xdg-user-dirs -s "Downloads"`
+
 	case "$LANG" in
 
         ca*)
                 start=Autoengega
-                desktop=Escriptori
                 llengua=ca
                 llenguakdeglobals="ca:es"  #support for second language
                 pais=es
                 firefoxlanguages="ca,es-es,en-us,en"
-                apollon="~/Documents/Arxius Compartits"
-                amule="Documents/Arxius Compartits"
-                amsn="Documents/Arxius Rebuts Amsn"
-                documents=Documents
+#                 amsn="$documents/Arxius Rebuts Amsn"
                 kfile_home="Carpeta Inicial"
                 kfile_net="Carpetes de xarxa"
                 kfile_root="Arrel de Sistema"
         ;;
 	es*)
 		start=Autoarranque
-		desktop=Escritorio
 		llengua=es
 		pais=es
 		firefoxlanguages="es-es,en-us,en"
-		apollon="~/Documentos/Archivos Compartidos"
-		amule="Documentos/Archivos Compartidos"
-		amsn="Documentos/Archivos Recibidos Amsn"
-		documents=Documentos
+# 		apollon="~/Documentos/Archivos Compartidos"
+# 		amsn="Documentos/Archivos Recibidos Amsn"
 		kfile_home="Carpeta Inicial"
 		kfile_net="Carpetas de red"
 		kfile_root="Raiz de Sistema"
 	;;
 	en*|C|*)
 		start=Autostart
-		desktop=Desktop
 		llengua=en
 		pais=en
 		firefoxlanguages="en-us,en,es-es"
-		apollon="~/Documents/Shared Files"
-		amule="Documents/Shared Files"
-		amsn="Documents/Received Files Amsn"
-		documents=Documents
+# 		apollon="~/Documents/Shared Files"
+# 		amsn="Documents/Received Files Amsn"
 		kfile_home="Home Folder"
 		kfile_net="Net Folders"
 		kfile_root="System Root"
@@ -76,7 +75,7 @@ if [ "$crea_home" = "creahome_si" ]; then
 	
 	#load Iceweasel/Firefox preferences
 	echo 'user_pref("browser.startup.homepage", "http://www.kademar.org/?lang='$llengua'");
-user_pref("browser.download.dir", "/home/'$user'/Documents");
+user_pref("browser.download.dir", "/home/'$user'/'$down'");
 user_pref("extensions.update.enabled", false);
 user_pref("intl.accept_languages", "'$firefoxlanguages'");
 user_pref("app.update.enabled", false);
@@ -93,7 +92,7 @@ user_pref("security.warn_viewing_mixed", false);' >> /home/$user/.mozilla/firefo
 	rm -fr /home/$user/.sversionrc
 	
 	#Create Documents folder
-	sh /usr/share/kademar/scripts/documents $user
+# 	sh /usr/share/kademar/scripts/documents $user
 	#Change preferences and lenguage of some apps
 	sh /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/common-canvillengua $user /
 	sh /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/kde-canvikdeglobals $user
@@ -109,8 +108,8 @@ user_pref("security.warn_viewing_mixed", false);' >> /home/$user/.mozilla/firefo
 	# Terminal=false
 	# Type=Application
 	# X-KDE-StartupNotify=false
-	# X-KDE-SubstituteUID=false" > /home/$user/.kde/$start/xscreensaver
-	# chmod +x /home/$user/.kde/$start/xscreensaver
+	# X-KDE-SubstituteUID=false" > /home/$user/.kde3/$start/xscreensaver
+	# chmod +x /home/$user/.kde3/$start/xscreensaver
 	
 
 # 	if [ "`laptop-detect ; echo $?`" != 0 ]; then
@@ -124,7 +123,7 @@ user_pref("security.warn_viewing_mixed", false);' >> /home/$user/.mozilla/firefo
 # 	Icon=keyboard
 # 	Type=Application
 # 	X-KDE-StartupNotify=false
-# 	StartupNotify=no" > /home/$user/.kde/$start/numlock.desktop
+# 	StartupNotify=no" > /home/$user/.kde3/$start/numlock.desktop
 	
 		
 	###############
@@ -259,13 +258,13 @@ end" > /home/$user/.idesktop/pc.lnk
 	#sh /usr/share/kademar/utils/cadi/crea_perfil_usuari_volums $user
 	
 	#Links al Pc
-	ln -s -n /Pc /home/$user/$desktop/Pc 
-	ln -s -n /Pc /home/$user/Pc
+# 	ln -s -n /Pc /home/$user/$desktop/Pc 
+# 	ln -s -n /Pc /home/$user/Pc
 	
 	######################
 	#  Localitzacio de les configuracions
 	######################
-	fitxers_de_home='.kde/share/config/kdeglobals .audacity-data/audacity.cfg .giFT/giftd.conf .aMule/amule.conf .amsn/config.xml'
+	fitxers_de_home='.kde3/share/config/kdeglobals .audacity-data/audacity.cfg .aMule/amule.conf'
 	
 	for fitxer_a_modificar in $fitxers_de_home
 	do
@@ -286,14 +285,14 @@ end" > /home/$user/.idesktop/pc.lnk
 		[ -z "$find5" ] && find5="AkEsTaKadenaNOLaTrobarasMai"
 	
 	
-		cat /home/$user/$fitxer_a_modificar  | sed s/"$find0"/"Language=$llengua"/g | sed s:"$find1":"Country=$pais":g | sed s:"$find2":"completed = $apollon":g | sed s:"$find3":"root = $apollon":g | sed s:"$find4":"IncomingDir=/home/$user/$amule":g | sed s:"$find5":"<value>/home/$user/$amsn</value>":g > /home/$user/$fitxer_a_modificar.tmp
+		cat /home/$user/$fitxer_a_modificar  | sed s/"$find0"/"Language=$llengua"/g | sed s:"$find1":"Country=$pais":g | sed s:"$find4":"IncomingDir=/home/$user/$amule":g  > /home/$user/$fitxer_a_modificar.tmp
 	
 		[ -s /home/$user/$fitxer_a_modificar.tmp ] && rm -f /home/$user/$fitxer_a_modificar && mv /home/$user/$fitxer_a_modificar.tmp /home/$user/$fitxer_a_modificar
 
     #special modifications for double language on kdeglobals
-        if [ -n "$llenguakdeglobals" -a -e "/home/$user/.kde/share/config/kdeglobals" ]; then
-            a=`grep "Language=" "/home/$user/.kde/share/config/kdeglobals"`
-            sed s."$a"."Language=$llenguakdeglobals".g -i "/home/$user/.kde/share/config/kdeglobals"
+        if [ -n "$llenguakdeglobals" -a -e "/home/$user/.kde3/share/config/kdeglobals" ]; then
+            a=`grep "Language=" "/home/$user/.kde3/share/config/kdeglobals"`
+            sed s."$a"."Language=$llenguakdeglobals".g -i "/home/$user/.kde3/share/config/kdeglobals"
         fi
 
 
@@ -307,10 +306,10 @@ end" > /home/$user/.idesktop/pc.lnk
 	######################
 	
 	
-	[ ! -e /home/$user/Pc ] && ln -s -n /Pc /home/$user/Pc
-	[ -e /home/$user/Desktop ] && [ ! -e /home/$user/Desktop/Pc ] && ln -s -n /Pc /home/$user/Desktop/Pc
-	[ -e /home/$user/Escriptori ] && [ ! -e /home/$user/Escriptori/Pc ] && ln -s -n /Pc /home/$user/Escriptori/Pc
-	[ -e /home/$user/Escritorio ] && [ ! -e /home/$user/Escritorio/Pc ] && ln -s -n /Pc /home/$user/Escritorio/Pc
+# 	[ ! -e /home/$user/Pc ] && ln -s -n /Pc /home/$user/Pc
+# 	[ -e /home/$user/Desktop ] && [ ! -e /home/$user/Desktop/Pc ] && ln -s -n /Pc /home/$user/Desktop/Pc
+# 	[ -e /home/$user/Escriptori ] && [ ! -e /home/$user/Escriptori/Pc ] && ln -s -n /Pc /home/$user/Escriptori/Pc
+# 	[ -e /home/$user/Escritorio ] && [ ! -e /home/$user/Escritorio/Pc ] && ln -s -n /Pc /home/$user/Escritorio/Pc
 	
 	
 	#GTK Bookmarks pel FileDialog (gimp, inkscape, etc)
@@ -340,18 +339,18 @@ end" > /home/$user/.idesktop/pc.lnk
 	URL_0=file://\$HOME/$desktop/
 	URL_1=file://\$HOME
 	URL_2=file://\$HOME/$documents/
-	URL_3=file:///home/Pc
+	URL_3=file:///Pc
 	URL_4=file:///
-	URL_5=remote:/" >> /home/$user/.kde/share/config/kdeglobals
+	URL_5=remote:/" >> /home/$user/.kde3/share/config/kdeglobals
 	
 	#Hack xungo
-	# chmod -R 777 /home/*/.kde/share/config/kdeglobals
+	# chmod -R 777 /home/*/.kde3/share/config/kdeglobals
 	
 	#Install klik
 	su -c "sh /usr/share/kademar/scripts/klik-installer-kademar" - $user
 	
 	#Link al Desktop
-	ln -s /home/$user/$desktop /home/$user/Desktop
+# 	ln -s /home/$user/$desktop /home/$user/Desktop
 	
     # configure wallpapers (panoramic/normal) - for selected user
     sh /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/common-configure_wallpapers "$user"
@@ -365,7 +364,7 @@ fi
 
 #change permissions
 chown -R $user.users /home/$user &
-chown -R $user.users /home/$user/.kde &
+chown -R $user.users /home/$user/.kde3 &
 chown $user.users /home/$user &
 chmod 700 /home/$user &
 chmod -R 700 /home/$user &

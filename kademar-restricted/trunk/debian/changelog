@@ -1,3 +1,9 @@
+kademar-restricted (2.0) testing; urgency=low
+
+  * Added Broadcom 43xx firmwares
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Thu, 08 Jul 2010 00:52:06 +0200
+
 kademar-restricted (1.5.1) testing; urgency=low
 
   * Removed more fw

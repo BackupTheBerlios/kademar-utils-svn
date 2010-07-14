@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/img">
+        <file alias="gnome">img/gnome.png</file>
+        <file alias="kde3">img/kde3.png</file>
+        <file alias="kde4">img/kde4.png</file>
+        <file alias="lxde">img/lxde.png</file>
+        <file alias="quit">img/quit.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,5 @@
+if [ ! -e "$HOME/.kademar/initial-volumes" ]; then
+	sh /usr/share/kademar/scripts/documents
+	[ ! -e "$HOME/.kademar/" ] && mkdir -p "$HOME/.kademar/"
+	touch "$HOME/.kademar/initial-volumes"
+fi

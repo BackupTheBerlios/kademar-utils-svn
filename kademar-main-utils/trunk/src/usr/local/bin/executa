@@ -1,0 +1,29 @@
+#!/bin/bash
+#
+#  Creat per Adonay Sanz - Octubre 2005 - kademar
+#  Modificat per Marco Antonio Romero - Març 2006
+# engega un programa amb el kdesu o sudo depenen si esta livecd o instalada
+#
+
+ordre="$@"
+
+if [ -z "$ordre" ]; then
+	echo I need a parameter
+	echo Necessito un paràmetre
+	echo Necesito un parámetro
+else
+	if [ "`whoami`" = "root" ]; then
+		$ordre
+	else
+		#mira si la capreta rootsquash exsiteix per saber si sesta executant en mode livecd
+		if [ ! -d /initrd/rootsquash -a ! -d /mnt/live/memory/images/kademar.lzm ]; then
+			if [ -n "`pidof kdeinit`" ]; then
+				kdesu -t --noignorebutton "$ordre"
+			else
+				gksu "$ordre"
+			fi
+		else
+			sudo $ordre
+		fi
+	fi
+fi

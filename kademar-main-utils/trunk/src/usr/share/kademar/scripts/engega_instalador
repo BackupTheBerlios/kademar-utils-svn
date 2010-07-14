@@ -1,0 +1,26 @@
+#!/bin/sh
+#
+# Creat per Adonay Sanz Alsina - Maig 2004
+# Modificació març 2005
+# Modificació setembre 2006 
+# Modificacio 05-11-06
+# Modificacio 30-01-07
+# Modificacions per  kademar 5 - 28-03-08
+# Modificacio - tret la part de getSystemInformation (now on installer as function/script)
+
+[ "`whoami`" != root ] && echo "NEED TO BE ROOT" && exit
+
+if [ ! -e /tmp/instalador-running ]; then
+    touch /tmp/instalador-running
+    touch /tmp/kademarcenter-inicial
+    cd /usr/share/kademar/utils/instalador
+    python instalador.py >>/tmp/kademar-install.log 2>&1
+    sh /usr/share/kademar/utils/kademarcenter/scripts/update_fstab >>/tmp/kademar-install.log 2>&1  #old regenerapc
+    swapon -a
+    rm -f /tmp/instalador-running
+    rm -f /tmp/kademarcenter-inicial
+else
+    echo "there's another instance running Instalador"
+    echo " if int's  real, remove  /tmp/instalador-running"
+
+fi

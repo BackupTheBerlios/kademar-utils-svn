@@ -1,0 +1,36 @@
+#!/bin/bash
+#Comprobació de 3d abans d'executar el programa
+#Adonay Sanz - kademar 06 Març 2007 - GNU/GPL 2
+
+#set -x #Debug
+
+#Paràmetre = programa a executar
+prog="$*"
+
+#Comprobem acceleració
+accel=`glxinfo | grep "direct rendering" | awk ' { print $3 } ' | tr A-Z a-z`
+
+if [ "$accel" != "yes" ]; then
+
+	. /etc/default/locale
+	
+	case "$LANG" in
+	ca*)
+		title="Acceleració Gràfica"
+		miss="No tens acceleració gràfica.\n L'aplicació segurament no funcionarà.\n Vols provar-ho igualment?"
+	;;
+	es*)
+		title="Acceleración Gráfica"
+		miss="No tienes aceleración gráfica.\n La aplicación seguramente no funcionará.\n ¿Quieres probarlo igualmente?"
+	;;
+	en*|*)
+		title="Graphic Acceleration"
+		miss="You don't have graphic acceleration.\n Probably app won't work. \n Do you want to try it?"
+	;;
+	esac
+	
+	kdialog  --yesno "$miss" --title "$title" && $prog
+
+else
+	$prog
+fi

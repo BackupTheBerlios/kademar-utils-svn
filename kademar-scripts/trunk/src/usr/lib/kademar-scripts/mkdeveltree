@@ -64,11 +64,12 @@ if [ ! -d $BUSY_DIR/busybox ]; then
 # echo $BUSY_DIR
 	tip "Using Busybox Binaries"
 	busy_version=1.2.0
+	[ "`arch`" = "x86_64" ] && arch="_amd64"
 	mkdir -p $BUSY_DIR
 	cd $BUSY_DIR
 	cd ..
 	rm -fr busybox
-	cp -a /usr/lib/kademar-scripts/binary-files/busybox-$busy_version .
+	cp -a /usr/lib/kademar-scripts/binary-files/busybox-$busy_version$arch busybox-$busy_version
 	ln -s busybox-$busy_version busybox
 fi
 

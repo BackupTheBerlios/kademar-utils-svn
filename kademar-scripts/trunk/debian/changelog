@@ -1,6 +1,7 @@
 kademar-scripts (3.2) testing; urgency=low
 
   * Update to Linux-Live Scripts 6.3.0
+  * FEATURE: AMD 64bit support
   * FEATURE: LiveCD using configure inittab (modify rcS)
   * FEATURE: Support to new bash/sh/dash differentiation
   * FEATURE: Support to stage 1.5 and 2 on mkiso

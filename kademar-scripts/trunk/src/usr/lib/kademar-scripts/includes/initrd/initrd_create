@@ -183,8 +183,13 @@ fi
 
 cp -a rootfs/* $INITRD_TREE
 
+#kademar
+[ "`arch`" = "x86_64" ] && arch="_amd64"
+cp -a $BUSY_DIR/busybox $INITRD_TREE/bin
+
+#kademar
 # build links to busybox's functions from busybox's own help text
-for i in $(rootfs/bin/busybox --help | grep -v Copyright | grep , | tr , " "); do
+for i in $($INITRD_TREE/bin/busybox --help | grep -v Copyright | grep , | tr , " "); do
    ln -s busybox $INITRD_TREE/bin/$i
 done
 

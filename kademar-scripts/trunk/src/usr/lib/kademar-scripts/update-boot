@@ -105,7 +105,7 @@ for x in $KERNELS ; do
 
 	popd > /dev/null
 
-	#Si hi ha més d'un kernel, que surti el nom
+	#Si hi ha mï¿½s d'un kernel, que surti el nom
         kernel_label=" Kernel $KERNEL"
 done
 
@@ -149,8 +149,9 @@ cd ..
 cp -a  source/boot/* master/boot/
 
 cp -a /lib/grub/i386-pc/* master/boot/grub 2>/dev/null
-
 cp -a /usr/lib/grub/i386-pc/* master/boot/grub 2>/dev/null
+cp -a /lib/grub/x86_64-pc/* master/boot/grub 2>/dev/null
+cp -a /usr/lib/grub/x86_64-pc/* master/boot/grub 2>/dev/null
 
 #copy de install en pendrive usb
 cp /usr/lib/kademar-scripts/includes/boot/* $MASTER_BOOT/

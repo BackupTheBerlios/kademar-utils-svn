@@ -1,9 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Icon=samba
-Name[ca]=Xarxa
-Name[es]=Red
-Open=false
-X-KDE-KonqSidebarModule=konqsidebar_tree
-X-KDE-RelURL=samba
-X-KDE-TreeModule=Virtual

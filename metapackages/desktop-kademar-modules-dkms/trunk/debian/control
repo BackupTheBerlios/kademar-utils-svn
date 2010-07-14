@@ -8,7 +8,8 @@ Homepage: http://www.kademar.org
 
 Package: desktop-kademar-modules-dkms
 Architecture: all
-Depends: dkms, batman-adv-dkms, batmand-gateway-dkms, blcr-dkms, ipheth-dkms, ndiswrapper-dkms, openafs-modules-dkms, tp-smapi-dkms, open-vm-dkms, fglrx-modules-dkms 
+Depends: dkms, batman-adv-dkms, batmand-gateway-dkms, blcr-dkms, ipheth-dkms, ndiswrapper-dkms, openafs-modules-dkms, tp-smapi-dkms, open-vm-dkms
+#, fglrx-modules-dkms, fglrx-glx, fglrx-control, nvidia-kernel-dkms, nvidia-glx, nvidia-settings
 Recommends: sl-modem-source
 Suggests: virtualbox-ose-guest-dkms, virtualbox-ose-dkms|virtualbox-2.0|virtualbox-3.0|virtualbox-3.2|virtualbox-4.0
 Description: Metapackage to install kernel DKMS Modules

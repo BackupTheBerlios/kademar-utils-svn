@@ -8,7 +8,7 @@ Homepage: http://www.kademar.org
 
 Package: desktop-kademar-restricted-extra
 Architecture: all
-Depends: desktop-kademar-restricted, sun-java6-plugin
+Depends: desktop-kademar-restricted, sun-java6-plugin, virtualbox-4.0  | virtualbox-3.4 | virtualbox-3.5 | virtualbox-3.3 |virtualbox-3.2 | virtualbox-3.1 | virtualbox-3.0, 
 Description: Metapackage to install Restricted components of Leo
  This is for kademar Linux desktop Leo
  .

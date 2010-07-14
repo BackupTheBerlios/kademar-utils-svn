@@ -8,8 +8,9 @@ Homepage: http://www.kademar.org
 
 Package: desktop-kademar-restricted
 Architecture: all
-Depends: kademar-restricted, atmel-firmware, bluez-firmware, b43-fwcutter, firmware-qlogic, firmware-ralink, libertas-firmware, midisport-firmware, zd1211-firmware, w32codecs|win32codecs, flashplugin-nonfree|flashplayer-mozilla|flashplugin-nonfree, ttf-msttcorefonts-installer|msttcorefonts, firmware-bnx2, firmware-bnx2x, firmware-intelwimax, firmware-iwlwifi, firmware-ipw2x00, firmware-ivtv, isight-firmware-tools, wmaloader, rar, unrar, lha, libdvdcss2, firmware-linux, firmware-linux-nonfree, firmware-b43-installer, firmware-b43legacy-installer, firmware-ipw3945, prism54-nonfree, prism2-usb-firmware-installer, linux-wlan-ng-firmware
-Suggensts: alsa-firmware-loaders
+Depends: kademar-restricted, atmel-firmware, bluez-firmware, b43-fwcutter, firmware-qlogic, firmware-ralink, libertas-firmware, midisport-firmware, zd1211-firmware, w32codecs|win32codecs|w64codecs|win64codecs, flashplugin-nonfree|flashplayer-mozilla|flashplugin-nonfree, ttf-msttcorefonts-installer|msttcorefonts, firmware-bnx2, firmware-bnx2x, firmware-intelwimax, firmware-iwlwifi, firmware-ivtv, isight-firmware-tools, wmaloader, rar, unrar, lha, libdvdcss2, firmware-linux, firmware-linux-nonfree, firmware-b43-installer, firmware-b43legacy-installer, prism2-usb-firmware-installer, linux-wlan-ng-firmware
+#prism54-nonfree,
+Suggests: alsa-firmware-loaders
 Description: Metapackage to install Restricted components.
  This is for kademar Linux desktop
  .

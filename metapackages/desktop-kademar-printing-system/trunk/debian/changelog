@@ -1,0 +1,11 @@
+desktop-kademar-printing-system (4.9.5) unstable; urgency=low
+
+  * New Package Structure
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Sat, 26 Jun 2010 13:53:51 +0200
+
+desktop-kademar-printing-system (1.2-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Sat, 26 Jun 2010 13:45:58 +0200

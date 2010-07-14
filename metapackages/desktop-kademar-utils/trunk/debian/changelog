@@ -1,0 +1,11 @@
+desktop-kademar-utils (4.9.5) unstable; urgency=low
+
+  * New Package Structure
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Sat, 26 Jun 2010 13:53:58 +0200
+
+desktop-kademar-utils (1.1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Fri, 25 Jun 2010 17:22:44 +0200

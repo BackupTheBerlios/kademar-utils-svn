@@ -1,3 +1,9 @@
+desktop-kademar-base (4.9.5) testing; urgency=low
+
+  * New Package Structure
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Sat, 26 Jun 2010 13:52:46 +0200
+
 desktop-kademar-base (1.2.3) testing; urgency=low
 
   * Removed localepurge

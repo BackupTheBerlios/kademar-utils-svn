@@ -1,3 +1,9 @@
+desktop-kademar-leo (4.9.5) testing; urgency=low
+
+  * New Package Structure
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Sat, 26 Jun 2010 13:53:38 +0200
+
 desktop-kademar-leo (4.9.1) testing; urgency=low
 
   * Noves deps

@@ -1,0 +1,15 @@
+Source: desktop-kademar-lxde-core
+Section: metapackages
+Priority: optional
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 6)
+Standards-Version: 3.7.3
+Homepage: http://www.kademar.org
+
+Package: desktop-kademar-lxde-core
+Architecture: all
+Depends: desktop-kademar-base-x, lxde, ytree, file-roller, gksu, leafpad, claws-mail, claws-mail-i18n, claws-mail-bogofilter, claws-mail-html2-viewer, claws-mail-pgpmime, claws-mail-pgpinline, claws-mail-trayicon, xcalc|x11-apps, iceweasel, iceweasel-l10n-ca, iceweasel-l10n-es-es, gtk-chtheme|gtk-theme-switch,
+Description: Metapackage to install LXDE Desktop
+ This is for kademar Linux desktop
+ .
+ Only contains dependences to install LXDE Desktop easily

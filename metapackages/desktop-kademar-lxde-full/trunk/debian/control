@@ -1,0 +1,17 @@
+Source: desktop-kademar-lxde-full
+Section: metapackages
+Priority: optional
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 6)
+Standards-Version: 3.7.3
+Homepage: http://www.kademar.org
+
+Package: desktop-kademar-lxde-full
+Architecture: all
+Depends: desktop-kademar-lxde-core, audioconversor, abiword, gnumeric, pidgin, amsn|emesene, network-manager-gnome|wicd, claws-mail, claws-mail-acpi-notifier, claws-mail-archiver-plugin, claws-mail-attach-remover, claws-mail-attach-warner, claws-mail-bogofilter, claws-mail-extra-plugins, claws-mail-feeds-reader, claws-mail-fetchinfo-plugin, claws-mail-html2-viewer, claws-mail-i18n, claws-mail-mailmbox-plugin, claws-mail-multi-notifier, claws-mail-newmail-plugin, claws-mail-perl-filter, claws-mail-pgpinline, claws-mail-pgpmime, claws-mail-smime-plugin, claws-mail-plugins, claws-mail-spam-report, claws-mail-spamassassin, claws-mail-synce-plugin, claws-mail-themes, claws-mail-tnef-parser, claws-mail-tools, claws-mail-trayicon, claws-mail-vcalendar-plugin, gnome-icon-theme, gnome-themes, smplayer, mtpaint, transmission, amule, xsane, xpdf, gnomebaker, grip,  mrxvt, easytag, ace-of-penguins, ltris, lbreakout2, xdigger, xgalaga, pacman, icebreaker, mirage, quodlibet, quodlibet-plugins, unison-gtk, gpgkeys, audacious, mozplugger, efax, xscreensaver-gl, xscreensaver-gl-extra, xscreensaver-data-extra,  xscreensaver-data, icedove|mozilla-thunderbird|thunderbird, icedove-l10n-ca, icedove-l10n-es-es, icedove-l10n-en-gb,
+Description: Metapackage to install LXDE Desktop
+ This is for kademar Linux desktop
+ .
+ Only contains dependences to install LXDE Desktop easily
+
+

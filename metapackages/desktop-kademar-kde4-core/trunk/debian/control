@@ -1,0 +1,16 @@
+Source: desktop-kademar-kde4-core
+Section: metapackages
+Priority: optional
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 6)
+Standards-Version: 3.7.3
+Homepage: http://www.kademar.org
+
+Package: desktop-kademar-kde4-core
+Architecture: all
+Depends: desktop-kademar-utils, kademar-kde4-core, gtk2-engines|gnome-themes, kde-plasma-desktop, kde-l10n-ca, kde-l10n-es, dragonplayer, kolourpaint4, kdesudo
+#virtuoso-minimal,
+Description: Metapackage to install KDE 4 Desktop Minimal
+ This is for kademar Linux desktop
+ .
+ Only contains dependences to install Core KDE4 Desktop easily

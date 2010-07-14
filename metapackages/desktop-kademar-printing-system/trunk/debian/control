@@ -1,0 +1,14 @@
+Source: desktop-kademar-printing-system
+Section: unknown
+Priority: extra
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 7.0.50~)
+Standards-Version: 3.8.4
+Homepage: http://www.kademar.org
+#Vcs-Git: git://git.debian.org/collab-maint/desktop-kademar-printing-system.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/desktop-kademar-printing-system.git;a=summary
+
+Package: desktop-kademar-printing-system
+Architecture: all
+Depends: cups|cupsys, cups-bsd, cups-pdf, cups-client|cupsys-client, foo2zjs, foomatic-db, foomatic-db-engine, foomatic-db-gutenprint, foomatic-filters, foomatic-db-hpijs, hplip-gui, hpijs-ppds, hp-ppd, openprinting-ppds| foomatic-filters-ppds,
+Description: Install Printing System

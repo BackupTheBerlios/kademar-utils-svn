@@ -463,7 +463,7 @@ Puedes configurar internet, sino está funcionando ya en &quot;Configurar Sistem
 <context>
     <name>Form_kademarcenter</name>
     <message>
-        <location filename="ui/kademarcenter.ui" line="25"/>
+        <location filename="ui/kademarcenter.ui" line="26"/>
         <source>kademarcenter</source>
         <translation>kademarcenter</translation>
     </message>
@@ -473,42 +473,42 @@ Puedes configurar internet, sino está funcionando ya en &quot;Configurar Sistem
         <translation type="obsolete">Info</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="94"/>
+        <location filename="ui/kademarcenter.ui" line="95"/>
         <source>versio</source>
         <translation>versió</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="107"/>
+        <location filename="ui/kademarcenter.ui" line="108"/>
         <source>tipus</source>
         <translation>tipus</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="120"/>
+        <location filename="ui/kademarcenter.ui" line="121"/>
         <source>kdm</source>
         <translation>kdm</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="133"/>
+        <location filename="ui/kademarcenter.ui" line="134"/>
         <source>RAM</source>
         <translation>RAM</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="162"/>
+        <location filename="ui/kademarcenter.ui" line="163"/>
         <source>kernel</source>
         <translation>nucli</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="194"/>
+        <location filename="ui/kademarcenter.ui" line="195"/>
         <source>CPU info</source>
         <translation>CPU info</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="207"/>
+        <location filename="ui/kademarcenter.ui" line="208"/>
         <source>CPU</source>
         <translation>CPU</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="220"/>
+        <location filename="ui/kademarcenter.ui" line="221"/>
         <source>hostname</source>
         <translation>hostname</translation>
     </message>
@@ -518,12 +518,12 @@ Puedes configurar internet, sino está funcionando ya en &quot;Configurar Sistem
         <translation type="obsolete">Sistema:</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="249"/>
+        <location filename="ui/kademarcenter.ui" line="250"/>
         <source>System:</source>
         <translation>Sistema:</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="262"/>
+        <location filename="ui/kademarcenter.ui" line="263"/>
         <source>Settings</source>
         <translation>Preferències</translation>
     </message>
@@ -1009,12 +1009,12 @@ Assegura&apos;t de que no hi ha cap programa accedint al dispositiu.</translatio
         <translation type="obsolete">Forçar Desmuntatge (No Recomanat)</translation>
     </message>
     <message>
-        <location filename="usbtray.py" line="52"/>
+        <location filename="usbtray.py" line="51"/>
         <source>Retry Extraction</source>
         <translation>Reintentar Extracció</translation>
     </message>
     <message>
-        <location filename="usbtray.py" line="57"/>
+        <location filename="usbtray.py" line="52"/>
         <source>Cancel</source>
         <translation>Cancel·lar</translation>
     </message>
@@ -1108,12 +1108,12 @@ Assegura&apos;t de que no hi ha cap programa accedint al dispositiu.</translatio
 <context>
     <name>hotplugaction</name>
     <message>
-        <location filename="hotplugactions.py" line="379"/>
+        <location filename="hotplugactions.py" line="376"/>
         <source>Open with konqueror</source>
         <translation>Obre amb konqueror</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="350"/>
+        <location filename="hotplugactions.py" line="344"/>
         <source>Copy with K3B</source>
         <translation>Còpia amb K3B</translation>
     </message>
@@ -1128,7 +1128,7 @@ Assegura&apos;t de que no hi ha cap programa accedint al dispositiu.</translatio
         <translation type="obsolete">S&apos;ha inserit un nou medi DVD %s</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="346"/>
+        <location filename="hotplugactions.py" line="344"/>
         <source>Play with VLC</source>
         <translation>Reproduïx amb VLC</translation>
     </message>
@@ -1138,7 +1138,7 @@ Assegura&apos;t de que no hi ha cap programa accedint al dispositiu.</translatio
         <translation type="obsolete">Obre amb Kaffeine</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="330"/>
+        <location filename="hotplugactions.py" line="327"/>
         <source>Copy with K9Copy</source>
         <translation>Còpia amb K9Copy</translation>
     </message>
@@ -1148,12 +1148,12 @@ Assegura&apos;t de que no hi ha cap programa accedint al dispositiu.</translatio
         <translation type="obsolete">S&apos;ha inserit una película DVD %s</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="347"/>
+        <location filename="hotplugactions.py" line="344"/>
         <source>Extract with Kaudiocreator</source>
         <translation>Extreu amb Kaudiocreator</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="349"/>
+        <location filename="hotplugactions.py" line="344"/>
         <source>Extract with Media</source>
         <translation>Extreu amb Media</translation>
     </message>
@@ -1163,7 +1163,7 @@ Assegura&apos;t de que no hi ha cap programa accedint al dispositiu.</translatio
         <translation type="obsolete">S&apos;ha inserit un nou medi CD de música</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="364"/>
+        <location filename="hotplugactions.py" line="359"/>
         <source>Audio CD</source>
         <translation>Audio CD</translation>
     </message>
@@ -1193,12 +1193,12 @@ Assegura&apos;t de que no hi ha cap programa accedint al dispositiu.</translatio
         <translation type="obsolete">S&apos;ha inserit un dispositiu de Xarxa Inalámbrica</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="421"/>
+        <location filename="hotplugactions.py" line="416"/>
         <source>Wireless Lan</source>
         <translation>Xarxa Inalàmbrica</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="422"/>
+        <location filename="hotplugactions.py" line="421"/>
         <source>Configure with CADI</source>
         <translation>Configura amb CADI</translation>
     </message>
@@ -1208,17 +1208,17 @@ Assegura&apos;t de que no hi ha cap programa accedint al dispositiu.</translatio
         <translation type="obsolete">S&apos;ha inserit un dispositiu de Xarxa de Fils</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="437"/>
+        <location filename="hotplugactions.py" line="431"/>
         <source>Ethernet</source>
         <translation>Ethernet</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="438"/>
+        <location filename="hotplugactions.py" line="437"/>
         <source>Capture with Kino</source>
         <translation>Captura amb Kino</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="439"/>
+        <location filename="hotplugactions.py" line="437"/>
         <source>Capture with Kdenlive</source>
         <translation>Captura amb Kdenlive</translation>
     </message>
@@ -1228,7 +1228,7 @@ Assegura&apos;t de que no hi ha cap programa accedint al dispositiu.</translatio
         <translation type="obsolete">S&apos;ha inserit una càmera FireWire</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="454"/>
+        <location filename="hotplugactions.py" line="448"/>
         <source>Firewire Camera</source>
         <translation>Càmera Firewire</translation>
     </message>
@@ -1238,7 +1238,7 @@ Assegura&apos;t de que no hi ha cap programa accedint al dispositiu.</translatio
         <translation type="obsolete">No fer res</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="365"/>
+        <location filename="hotplugactions.py" line="364"/>
         <source>Burn with K3B</source>
         <translation>Gravar amb K3B</translation>
     </message>
@@ -1248,7 +1248,7 @@ Assegura&apos;t de que no hi ha cap programa accedint al dispositiu.</translatio
         <translation type="obsolete">S&apos;ha inserit nou medi CD buit</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="376"/>
+        <location filename="hotplugactions.py" line="371"/>
         <source>Blank CD-Rom</source>
         <translation>CD-Rom buit</translation>
     </message>
@@ -1268,17 +1268,17 @@ Assegura&apos;t de que no hi ha cap programa accedint al dispositiu.</translatio
         <translation>S&apos;ha inserit un nou medi de película DVD %s</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="359"/>
+        <location filename="hotplugactions.py" line="358"/>
         <source>New CD Audio media has been inserted</source>
         <translation>S&apos;ha inserit un nou medi CD de música</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="371"/>
+        <location filename="hotplugactions.py" line="370"/>
         <source>New Blank CD media has been inserted</source>
         <translation>S&apos;ha inserit un nou medi CD en blanc</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="386"/>
+        <location filename="hotplugactions.py" line="385"/>
         <source>New Storage USB media has been inserted</source>
         <translation>Nou dispositiu d&apos;emmagatzematge USB s&apos;ha inserit</translation>
     </message>
@@ -1288,22 +1288,22 @@ Assegura&apos;t de que no hi ha cap programa accedint al dispositiu.</translatio
         <translation>Magatzematge USB - %s</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="401"/>
+        <location filename="hotplugactions.py" line="400"/>
         <source>New TDT device has been inserted</source>
         <translation>S&apos;ha inserit nou dispositiu TDT</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="416"/>
+        <location filename="hotplugactions.py" line="415"/>
         <source>New Wifi device has been inserted</source>
         <translation>S&apos;ha inserit nou dispositiu Wifi</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="431"/>
+        <location filename="hotplugactions.py" line="430"/>
         <source>New Ethernet wired device has been inserted</source>
         <translation>S&apos;ha inserit nou dispositiu de xarxa</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="448"/>
+        <location filename="hotplugactions.py" line="447"/>
         <source>New Firewire Camera device has been inserted</source>
         <translation>S&apos;ha inserit nou dispositiu de càmera Firewire</translation>
     </message>
@@ -1313,22 +1313,22 @@ Assegura&apos;t de que no hi ha cap programa accedint al dispositiu.</translatio
         <translation>No fer res</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="392"/>
+        <location filename="hotplugactions.py" line="391"/>
         <source>Play with Kaffeine</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="348"/>
+        <location filename="hotplugactions.py" line="344"/>
         <source>Extract with Grip</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="377"/>
+        <location filename="hotplugactions.py" line="376"/>
         <source>Open with dolphin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="378"/>
+        <location filename="hotplugactions.py" line="376"/>
         <source>Open with PCManFM</source>
         <translation type="unfinished"></translation>
     </message>

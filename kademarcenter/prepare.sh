@@ -19,4 +19,4 @@ done
 pylupdate4 kademarcenter.project
 
 #Release translation
-lrelease-qt4 kademarcenter.project
+lrelease-qt3 kademarcenter.project

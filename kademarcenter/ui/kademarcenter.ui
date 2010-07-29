@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>Form_kademarcenter</class>
- <widget class="QWidget" name="Form_kademarcenter" >
-  <property name="geometry" >
+ <widget class="QWidget" name="Form_kademarcenter">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,27 +10,27 @@
     <height>400</height>
    </rect>
   </property>
-  <property name="minimumSize" >
+  <property name="minimumSize">
    <size>
     <width>500</width>
     <height>400</height>
    </size>
   </property>
-  <property name="maximumSize" >
+  <property name="maximumSize">
    <size>
     <width>500</width>
     <height>400</height>
    </size>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>kademarcenter</string>
   </property>
-  <property name="windowIcon" >
+  <property name="windowIcon">
    <iconset>
     <normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/img/kademar.png</normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/img/kademar.png</iconset>
   </property>
-  <widget class="QLabel" name="label_4" >
-   <property name="geometry" >
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
@@ -37,18 +38,18 @@
      <height>400</height>
     </rect>
    </property>
-   <property name="text" >
+   <property name="text">
     <string/>
    </property>
-   <property name="pixmap" >
+   <property name="pixmap">
     <pixmap>../../../../../../usr/share/kademar/utils/kademarcenter/img/bg/kademarcenter.png</pixmap>
    </property>
-   <property name="scaledContents" >
+   <property name="scaledContents">
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label" >
-   <property name="geometry" >
+  <widget class="QLabel" name="label">
+   <property name="geometry">
     <rect>
      <x>13</x>
      <y>6</y>
@@ -56,18 +57,18 @@
      <height>60</height>
     </rect>
    </property>
-   <property name="text" >
+   <property name="text">
     <string/>
    </property>
-   <property name="pixmap" >
+   <property name="pixmap">
     <pixmap>../../../../../../usr/share/kademar/utils/kademarcenter/img/kademar.png</pixmap>
    </property>
-   <property name="scaledContents" >
+   <property name="scaledContents">
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QFrame" name="frame" >
-   <property name="geometry" >
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
     <rect>
      <x>129</x>
      <y>39</y>
@@ -75,14 +76,14 @@
      <height>331</height>
     </rect>
    </property>
-   <property name="frameShape" >
+   <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
    </property>
-   <property name="frameShadow" >
+   <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QLabel" name="l_ver" >
-    <property name="geometry" >
+   <widget class="QLabel" name="l_ver">
+    <property name="geometry">
      <rect>
       <x>130</x>
       <y>63</y>
@@ -90,12 +91,12 @@
       <height>16</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string>versio</string>
     </property>
    </widget>
-   <widget class="QLabel" name="l_tipu" >
-    <property name="geometry" >
+   <widget class="QLabel" name="l_tipu">
+    <property name="geometry">
      <rect>
       <x>130</x>
       <y>46</y>
@@ -103,12 +104,12 @@
       <height>16</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string>tipus</string>
     </property>
    </widget>
-   <widget class="QLabel" name="l_kdm" >
-    <property name="geometry" >
+   <widget class="QLabel" name="l_kdm">
+    <property name="geometry">
      <rect>
       <x>130</x>
       <y>30</y>
@@ -116,12 +117,12 @@
       <height>16</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string>kdm</string>
     </property>
    </widget>
-   <widget class="QLabel" name="l_ram" >
-    <property name="geometry" >
+   <widget class="QLabel" name="l_ram">
+    <property name="geometry">
      <rect>
       <x>70</x>
       <y>226</y>
@@ -129,12 +130,12 @@
       <height>16</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string>RAM</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_6" >
-    <property name="geometry" >
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
      <rect>
       <x>10</x>
       <y>10</y>
@@ -142,15 +143,15 @@
       <height>85</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string/>
     </property>
-    <property name="pixmap" >
+    <property name="pixmap">
      <pixmap>../../../../../../usr/share/kademar/utils/kademarcenter/img/pc.png</pixmap>
     </property>
    </widget>
-   <widget class="QLabel" name="l_kern" >
-    <property name="geometry" >
+   <widget class="QLabel" name="l_kern">
+    <property name="geometry">
      <rect>
       <x>130</x>
       <y>80</y>
@@ -158,15 +159,15 @@
       <height>16</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string>kernel</string>
     </property>
-    <property name="textFormat" >
+    <property name="textFormat">
      <enum>Qt::PlainText</enum>
     </property>
    </widget>
-   <widget class="QLabel" name="label_5" >
-    <property name="geometry" >
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
      <rect>
       <x>10</x>
       <y>216</y>
@@ -174,15 +175,15 @@
       <height>48</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string/>
     </property>
-    <property name="pixmap" >
+    <property name="pixmap">
      <pixmap>../../../../../../usr/share/kademar/utils/kademarcenter/img/mem.png</pixmap>
     </property>
    </widget>
-   <widget class="QLabel" name="l_cpuinfo" >
-    <property name="geometry" >
+   <widget class="QLabel" name="l_cpuinfo">
+    <property name="geometry">
      <rect>
       <x>70</x>
       <y>160</y>
@@ -190,12 +191,12 @@
       <height>31</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string>CPU info</string>
     </property>
    </widget>
-   <widget class="QLabel" name="l_cpu" >
-    <property name="geometry" >
+   <widget class="QLabel" name="l_cpu">
+    <property name="geometry">
      <rect>
       <x>70</x>
       <y>140</y>
@@ -203,12 +204,12 @@
       <height>16</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string>CPU</string>
     </property>
    </widget>
-   <widget class="QLabel" name="l_host" >
-    <property name="geometry" >
+   <widget class="QLabel" name="l_host">
+    <property name="geometry">
      <rect>
       <x>130</x>
       <y>97</y>
@@ -216,12 +217,12 @@
       <height>16</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string>hostname</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2" >
-    <property name="geometry" >
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
      <rect>
       <x>10</x>
       <y>140</y>
@@ -229,15 +230,15 @@
       <height>48</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string/>
     </property>
-    <property name="pixmap" >
+    <property name="pixmap">
      <pixmap>../../../../../../usr/share/kademar/utils/kademarcenter/img/cpu.png</pixmap>
     </property>
    </widget>
-   <widget class="QLabel" name="label_7" >
-    <property name="geometry" >
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
      <rect>
       <x>120</x>
       <y>10</y>
@@ -245,12 +246,12 @@
       <height>16</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string>System:</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="b_settings" >
-    <property name="geometry" >
+   <widget class="QPushButton" name="b_settings">
+    <property name="geometry">
      <rect>
       <x>100</x>
       <y>270</y>
@@ -258,14 +259,14 @@
       <height>51</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string>Settings</string>
     </property>
-    <property name="icon" >
+    <property name="icon">
      <iconset>
       <normaloff>../../../../../usr/share/kademar/utils/kademarcenter/img/kcontrol.png</normaloff>../../../../../usr/share/kademar/utils/kademarcenter/img/kcontrol.png</iconset>
     </property>
-    <property name="iconSize" >
+    <property name="iconSize">
      <size>
       <width>32</width>
       <height>32</height>

@@ -12,7 +12,7 @@
 
 dev=$1
 
-[ -e /usr/share/kademar/config ] && . /usr/share/kademar/config
+[ -e /etc/kademar/config ] && . /etc/kademar/config
 
 #if it's a mounted device, umount it
 if [ -n "`grep $dev /proc/mounts`" ]; then

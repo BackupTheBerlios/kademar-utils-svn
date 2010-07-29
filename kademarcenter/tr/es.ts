@@ -463,7 +463,7 @@ Puedes configurar internet, sino está funcionando ya en &quot;Configurar Sistem
 <context>
     <name>Form_kademarcenter</name>
     <message>
-        <location filename="ui/kademarcenter.ui" line="25"/>
+        <location filename="ui/kademarcenter.ui" line="26"/>
         <source>kademarcenter</source>
         <translation>kademarcenter</translation>
     </message>
@@ -473,42 +473,42 @@ Puedes configurar internet, sino está funcionando ya en &quot;Configurar Sistem
         <translation type="obsolete">Info</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="94"/>
+        <location filename="ui/kademarcenter.ui" line="95"/>
         <source>versio</source>
         <translation>versión</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="107"/>
+        <location filename="ui/kademarcenter.ui" line="108"/>
         <source>tipus</source>
         <translation>tipo</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="120"/>
+        <location filename="ui/kademarcenter.ui" line="121"/>
         <source>kdm</source>
         <translation>kdm</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="133"/>
+        <location filename="ui/kademarcenter.ui" line="134"/>
         <source>RAM</source>
         <translation>RAM</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="162"/>
+        <location filename="ui/kademarcenter.ui" line="163"/>
         <source>kernel</source>
         <translation>núcleo</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="194"/>
+        <location filename="ui/kademarcenter.ui" line="195"/>
         <source>CPU info</source>
         <translation>CPU info</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="207"/>
+        <location filename="ui/kademarcenter.ui" line="208"/>
         <source>CPU</source>
         <translation>CPU</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="220"/>
+        <location filename="ui/kademarcenter.ui" line="221"/>
         <source>hostname</source>
         <translation>hostname</translation>
     </message>
@@ -518,12 +518,12 @@ Puedes configurar internet, sino está funcionando ya en &quot;Configurar Sistem
         <translation type="obsolete">Sistema:</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="249"/>
+        <location filename="ui/kademarcenter.ui" line="250"/>
         <source>System:</source>
         <translation>Sistema:</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="262"/>
+        <location filename="ui/kademarcenter.ui" line="263"/>
         <source>Settings</source>
         <translation>Preferencias</translation>
     </message>
@@ -1009,12 +1009,12 @@ Asegúrate de que no hay ningún programa accediendo al dispositivo.</translatio
         <translation type="obsolete">Forzar Desmontaje (No Recomendado)</translation>
     </message>
     <message>
-        <location filename="usbtray.py" line="52"/>
+        <location filename="usbtray.py" line="51"/>
         <source>Retry Extraction</source>
         <translation>Reintentar Extracción</translation>
     </message>
     <message>
-        <location filename="usbtray.py" line="57"/>
+        <location filename="usbtray.py" line="52"/>
         <source>Cancel</source>
         <translation>Cancelar</translation>
     </message>
@@ -1113,12 +1113,12 @@ Asegúrate de que no hay ningún programa accediendo al dispositivo.</translatio
 <context>
     <name>hotplugaction</name>
     <message>
-        <location filename="hotplugactions.py" line="379"/>
+        <location filename="hotplugactions.py" line="376"/>
         <source>Open with konqueror</source>
         <translation>Abrir con Konqueror</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="350"/>
+        <location filename="hotplugactions.py" line="344"/>
         <source>Copy with K3B</source>
         <translation>Copiar con K3B</translation>
     </message>
@@ -1133,7 +1133,7 @@ Asegúrate de que no hay ningún programa accediendo al dispositivo.</translatio
         <translation type="obsolete">Se ha insertado un nuevo medio DVD %s</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="346"/>
+        <location filename="hotplugactions.py" line="344"/>
         <source>Play with VLC</source>
         <translation>Reproducir con VLC</translation>
     </message>
@@ -1143,7 +1143,7 @@ Asegúrate de que no hay ningún programa accediendo al dispositivo.</translatio
         <translation type="obsolete">Abrir con Kaffeine</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="330"/>
+        <location filename="hotplugactions.py" line="327"/>
         <source>Copy with K9Copy</source>
         <translation>Copiar con K9Copy</translation>
     </message>
@@ -1153,12 +1153,12 @@ Asegúrate de que no hay ningún programa accediendo al dispositivo.</translatio
         <translation type="obsolete">Se ha insertado una película DVD %s</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="347"/>
+        <location filename="hotplugactions.py" line="344"/>
         <source>Extract with Kaudiocreator</source>
         <translation>Extraer con Kaudiocreator</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="349"/>
+        <location filename="hotplugactions.py" line="344"/>
         <source>Extract with Media</source>
         <translation>Extraer con Media</translation>
     </message>
@@ -1168,7 +1168,7 @@ Asegúrate de que no hay ningún programa accediendo al dispositivo.</translatio
         <translation type="obsolete">Se ha insertado un nuevo medio CD de música</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="364"/>
+        <location filename="hotplugactions.py" line="359"/>
         <source>Audio CD</source>
         <translation>CD de Audio</translation>
     </message>
@@ -1198,12 +1198,12 @@ Asegúrate de que no hay ningún programa accediendo al dispositivo.</translatio
         <translation type="obsolete">Se ha insertado un dispositivo de Red Inalámbrica</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="421"/>
+        <location filename="hotplugactions.py" line="416"/>
         <source>Wireless Lan</source>
         <translation>Red Inalámbrica</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="422"/>
+        <location filename="hotplugactions.py" line="421"/>
         <source>Configure with CADI</source>
         <translation>Configurar con CADI</translation>
     </message>
@@ -1213,17 +1213,17 @@ Asegúrate de que no hay ningún programa accediendo al dispositivo.</translatio
         <translation type="obsolete">Se ha insertado un dispositivo de Red Cableada</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="437"/>
+        <location filename="hotplugactions.py" line="431"/>
         <source>Ethernet</source>
         <translation>Ethernet</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="438"/>
+        <location filename="hotplugactions.py" line="437"/>
         <source>Capture with Kino</source>
         <translation>Capturar con Kino</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="439"/>
+        <location filename="hotplugactions.py" line="437"/>
         <source>Capture with Kdenlive</source>
         <translation>Capturar con Kdenlive</translation>
     </message>
@@ -1233,7 +1233,7 @@ Asegúrate de que no hay ningún programa accediendo al dispositivo.</translatio
         <translation type="obsolete">Se ha insertado una cámara Firewire</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="454"/>
+        <location filename="hotplugactions.py" line="448"/>
         <source>Firewire Camera</source>
         <translation>Cámara Firewire</translation>
     </message>
@@ -1243,7 +1243,7 @@ Asegúrate de que no hay ningún programa accediendo al dispositivo.</translatio
         <translation type="obsolete">No hacer nada</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="365"/>
+        <location filename="hotplugactions.py" line="364"/>
         <source>Burn with K3B</source>
         <translation>Grabar con K3B</translation>
     </message>
@@ -1253,7 +1253,7 @@ Asegúrate de que no hay ningún programa accediendo al dispositivo.</translatio
         <translation type="obsolete">Se ha insertado un medio CD vacío</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="376"/>
+        <location filename="hotplugactions.py" line="371"/>
         <source>Blank CD-Rom</source>
         <translation>CD-Rom Vacío</translation>
     </message>
@@ -1273,17 +1273,17 @@ Asegúrate de que no hay ningún programa accediendo al dispositivo.</translatio
         <translation>Se ha insertado un nuevo medio de película DVD %s</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="359"/>
+        <location filename="hotplugactions.py" line="358"/>
         <source>New CD Audio media has been inserted</source>
         <translation>Se ha insertado un nuevo medio CD de música</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="371"/>
+        <location filename="hotplugactions.py" line="370"/>
         <source>New Blank CD media has been inserted</source>
         <translation>Se ha insertado un nuevo medio CD blanco</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="386"/>
+        <location filename="hotplugactions.py" line="385"/>
         <source>New Storage USB media has been inserted</source>
         <translation>Se ha insertado nuevo dispositivo de almacenaje USB</translation>
     </message>
@@ -1293,22 +1293,22 @@ Asegúrate de que no hay ningún programa accediendo al dispositivo.</translatio
         <translation>Almacenaje USB - %s</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="401"/>
+        <location filename="hotplugactions.py" line="400"/>
         <source>New TDT device has been inserted</source>
         <translation>Se ha insertado un nuevo dispositivo de TDT</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="416"/>
+        <location filename="hotplugactions.py" line="415"/>
         <source>New Wifi device has been inserted</source>
         <translation>Dispositivo de Red Inalámbrica Conectado</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="431"/>
+        <location filename="hotplugactions.py" line="430"/>
         <source>New Ethernet wired device has been inserted</source>
         <translation>Dispositivo de Red Conectado</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="448"/>
+        <location filename="hotplugactions.py" line="447"/>
         <source>New Firewire Camera device has been inserted</source>
         <translation>Se ha insertado un nuevo dispositivo cámara Firewire</translation>
     </message>
@@ -1318,22 +1318,22 @@ Asegúrate de que no hay ningún programa accediendo al dispositivo.</translatio
         <translation>No hacer nada</translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="392"/>
+        <location filename="hotplugactions.py" line="391"/>
         <source>Play with Kaffeine</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="348"/>
+        <location filename="hotplugactions.py" line="344"/>
         <source>Extract with Grip</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="377"/>
+        <location filename="hotplugactions.py" line="376"/>
         <source>Open with dolphin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="hotplugactions.py" line="378"/>
+        <location filename="hotplugactions.py" line="376"/>
         <source>Open with PCManFM</source>
         <translation type="unfinished"></translation>
     </message>

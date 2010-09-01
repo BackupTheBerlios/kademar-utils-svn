@@ -37,6 +37,9 @@ if [ "$1" = "configure" ]; then
         ln -s /usr/bin/audacious2 /usr/bin/audacious
     fi
 
+    dpkg-divert --package kademar-main-utils --add --divert /etc/xdg/user-dirs.conf.orig --rename /etc/xdg/user-dirs.conf
+    [ ! -e /etc/xdg/user-dirs.conf ] && ln -s /etc/xdg/user-dirs.conf.kademar /etc/xdg/user-dirs.conf
+
     echo "Updating Mime Types"
     dpkg-divert --package kademar-main-utils --add --divert /etc/mailcap.order.orig --rename /etc/mailcap.order
     [ ! -e /etc/mailcap.order ] && ln -s /etc/mailcap.order.kademar /etc/mailcap.order

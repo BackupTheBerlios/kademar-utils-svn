@@ -37,6 +37,9 @@ case "$1" in
                 rm -f /etc/libao.conf
                 dpkg-divert --package kademar-main-utils --remove --divert /etc/libao.conf.orig --rename /etc/libao.conf
 
+                rm -f /etc/xdg/user-dirs.conf
+                dpkg-divert --package kademar-main-utils --remove --divert /etc/xdg/user-dirs.conf.orig --rename /etc/xdg/user-dirs.conf
+
                 rm -f /etc/mailcap.order
                 dpkg-divert --package kademar-main-utils --remove --divert /etc/mailcap.order.orig --rename /etc/mailcap.order
         fi

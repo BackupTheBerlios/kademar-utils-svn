@@ -6,4 +6,8 @@
         <file alias="lxde">img/lxde.png</file>
         <file alias="quit">img/quit.png</file>
     </qresource>
+    <qresource prefix="/tr">
+        <file>tr/es.qm</file>
+        <file>tr/ca.qm</file>
+    </qresource>
 </RCC>

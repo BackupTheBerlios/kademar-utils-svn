@@ -4,7 +4,10 @@
 TARGET = desktop-selector
 TEMPLATE = app
 SOURCES += main.cpp \
-    desktopselector.cpp
-HEADERS += desktopselector.h
+    desktopselector.cpp \
+    qpushbuttonwithevents.cpp
+HEADERS += desktopselector.h \
+    qpushbuttonwithevents.h
 FORMS += desktopselector.ui
 RESOURCES += resource.qrc
+TRANSLATIONS = tr/es.ts tr/ca.ts tr/en.ts

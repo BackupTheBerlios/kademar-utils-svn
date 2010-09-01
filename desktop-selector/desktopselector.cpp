@@ -20,6 +20,9 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
     //Use detect-monitor to configure it
     QProcess *dresol = new QProcess();
     dresol->start(QString("/usr/share/kademar/scripts/engegada/detect-monitor"));
+    QString label = tr("Select the desktop you want to use");
+    QProcess *readcommand = new QProcess();
+    readcommand->start(QString("spd-say \"%1\"").arg(label));
 }
 
 
@@ -54,9 +57,12 @@ void DesktopSelector::setConnects()
 
 void DesktopSelector::askForShutdown()
 {
+    QString label = tr("Are you sure to shutdown the computer?");
+    QProcess *readcommand = new QProcess();
+    readcommand->start(QString("spd-say \"%1\"").arg(label));
     QMessageBox *dial = new QMessageBox();
-    dial->setWindowTitle("Shutdown Computer");
-    dial->setText("Are you sure to shutdown the computer?");
+    dial->setWindowTitle(tr("Shutdown Computer"));
+    dial->setText(label);
     dial->setStandardButtons(QMessageBox::No | QMessageBox::Yes);
     dial->setDefaultButton(QMessageBox::No );
     if (dial->exec() == QMessageBox::Yes) {
@@ -93,6 +99,11 @@ void DesktopSelector::setMaxResolution()
     if  (!(filebg->exists())) {
 
         filebg->setFileName(QString("/usr/share/wallpapers/Ethais/contents/images/1280x1024.png"));
+    }
+
+    if  (!(filebg->exists())) {
+
+        filebg->setFileName(QString("/usr/share/wallpapers/kademar.png"));
     }
 
     ui->background->setPixmap(QPixmap(filebg->fileName()));

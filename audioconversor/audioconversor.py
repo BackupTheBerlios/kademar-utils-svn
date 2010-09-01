@@ -35,7 +35,7 @@ class AudioConversor(QWidget):
         self.inoredIconTarget=globalpath+"img/ignored_target.png"
         self.stopedIcon=globalpath+"img/stoped.png"
         self.okIcon=globalpath+"img/ok.png"
-        fileformats=" *.mp3 *.ogg *.wma *.wav *.flv .mid *.midi *.pcm *.umx *.kar *.spc *.psf *.ra *.ape *.flac *.mpc *.flc *.avi *.mkv)"
+        fileformats=" *.mp3 *.ogg *.wma *.wav *.flv .mid *.midi *.pcm *.umx *.kar *.spc *.psf *.ra *.ape *.flac *.mpc *.flc *.avi *.mkv *.mp4)"
         self.ui.listWidget.setIconSize(QSize(32,32))
 
         self.ui.pages.setCurrentIndex(0)
@@ -403,6 +403,10 @@ if qtTranslator.load("/usr/share/kademar/utils/audioconversor/tr/"+locale.split(
 elif qtTranslator.load("/usr/share/kademar/utils/audioconversor/tr/en.qm"):
     app.installTranslator(qtTranslator)
     print "Loaded "+locale
+
+qtTranslator = QTranslator()
+qtTranslator.load("qt_"+locale, "/usr/share/qt4/translations")
+app.installTranslator(qtTranslator)
 
 AudioConversor = AudioConversor()
 AudioConversor.show()

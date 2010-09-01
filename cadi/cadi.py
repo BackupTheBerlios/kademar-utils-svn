@@ -325,6 +325,11 @@ if qtTranslator.load("/usr/share/kademar/utils/cadi/tr/"+locale.split("_")[0]+".
 elif qtTranslator.load("/usr/share/kademar/utils/cadi/tr/en.qm"):
     app.installTranslator(qtTranslator)
     print "Loaded "+locale
+    
+qtTranslator = QTranslator()
+qtTranslator.load("qt_"+locale, "/usr/share/qt4/translations")
+app.installTranslator(qtTranslator)
+
 cadi = cadi()
 cadi.show()
 app.exec_()

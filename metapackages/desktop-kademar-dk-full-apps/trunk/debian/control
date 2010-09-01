@@ -1,0 +1,15 @@
+Source: desktop-kademar-dk-full-apps
+Section: unknown
+Priority: extra
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 7.0.50~)
+Standards-Version: 3.8.4
+Homepage: <insert the upstream URL, if relevant>
+#Vcs-Git: git://git.debian.org/collab-maint/desktop-kademar-dk-full-apps.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/desktop-kademar-dk-full-apps.git;a=summary
+
+Package: desktop-kademar-dk-full-apps
+Architecture: all
+Depends: kademar-audacious-skins, openoffice.org, openoffice.org-kde, openoffice.org-style-crystal,openoffice.org-ogltrans, openoffice.org-gcj, gimp, amsn|emesene, amule, aircrack-ng, gtk-chtheme|gtk-theme-switch, iceweasel, iceweasel-l10n-ca, iceweasel-l10n-es-es, openoffice.org-l10n-es, openoffice.org-l10n-ca, pidgin, ekiga, audacity, gtk2-engines-geramik|gnome-themes, gksu, mozplugger, transmission|azureus, icedove|mozilla-thunderbird|thunderbird, icedove-l10n-ca, icedove-l10n-es-es, icedove-l10n-en-gb, kino, wesnoth-all, wesnoth-editor, frozen-bubble, fb-music-high, extremetuxracer, crack-attack, blender, tuxtype, supertux, icc-profiles, oxygen-icon-theme|kde-icons-oxygen, scribus-ng|scribus, scribus-template, kdenlive, stellarium, supertux, gltron, mysql-server, css-miami, unison-gtk, subversion, ttf-wqy-zenhei, pingus, recordmydesktop, gtk-recordmydesktop, avidemux, me-tv, gtkpod, devede, astromenace|openastromenace, netpanzer, ltris, gnome-icon-theme, libvisual-0.4-plugins, xicc, inkscape, xmp-audacious, audacious, audacious-plugins, audacious-dumb, aptlinex, gstreamer0.10-plugins-base, gstreamer0.10-plugins-good, wine (>= 1.1.42~winehq1-1), wine-gecko, q4wine, gpointing-device-settings, playonlinux, qt4-qtconfig, grdesktop, rdesktop, wammu, kaffeine, blueman|kdebluetooth, 
+#amarok, timidity
+Description: Desktop kademar Full Only Application packages

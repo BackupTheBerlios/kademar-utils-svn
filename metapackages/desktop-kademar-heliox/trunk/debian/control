@@ -8,7 +8,7 @@ Homepage: http://www.kademar.org
 
 Package: desktop-kademar-heliox
 Architecture: all
-Depends: desktop-kademar-kde3-full, desktop-kademar-lxde-full, desktop-kademar-accessibility, kademar-heliox, kademar-audacious-skins, openoffice.org, openoffice.org-gnome, gimp, aircrack-ng, kde-icons-oxygen, openoffice.org-l10n-es, openoffice.org-l10n-ca, audacity, gtk2-engines-geramik|gnome-themes, oxygen-icon-theme|kde-icons-oxygen, gnome-icon-theme, compiz-gtk, compiz-fusion-plugins-main, compiz-fusion-plugins-extra, compiz-fusion-plugins-unsupported, fusion-icon, compizconfig-settings-manager, devede, kaffeine, me-tv, gtk-recordmydesktop, gtkpod, xchat, transmission, blueman|kdebluetooth,
+Depends: desktop-kademar-kde3-full, desktop-kademar-lxde-full, desktop-kademar-accessibility, desktop-kademar-dk-full-apps, kademar-heliox, openoffice.org-gnome, compiz-gtk, compiz-fusion-plugins-main, compiz-fusion-plugins-extra, compiz-fusion-plugins-unsupported, fusion-icon, compizconfig-settings-manager, xchat,
 Description: Metapackage to install CSIC - Accessibility desktop
  This is for kademar Linux desktop
  .

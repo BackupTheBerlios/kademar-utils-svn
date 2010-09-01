@@ -8,7 +8,7 @@ Homepage: http://www.kademar.org
 
 Package: desktop-kademar-kde3-core
 Architecture: all
-Depends: desktop-kademar-utils, kademar-kde3-core, ksmserver-kde3, kdesktop-kde3, kdm-kde3, kde-i18n-ca-kde3, kde-i18n-es-kde3, konqueror-kde3, kpdf-kde3, ark-kde3, kppp-kde3, kdeprint-kde3, ksplash-kde3,  kcalc-kde3, konsole-kde3, kate-kde3, kpowersave-kde3, kpat-kde3, kmines-kde3, klipper-kde3, kmenuedit-kde3, kmix-kde3, ksysguard-kde3, kappfinder-kde3, kpackage-kde3, kmilo-kde3, network-manager-kde|wicd, ksplash-engine-moodin-kde3, kwalletmanager-kde3, oxygen-icon-theme|kde-icons-oxygen, kgamma-kde3, gnome-themes, kolourpaint-kde3
+Depends: desktop-kademar-utils, kademar-kde3-core, ksmserver-kde3, kdesktop-kde3, kdm-kde3, kde-i18n-ca-kde3, kde-i18n-es-kde3, konqueror-kde3, kpdf-kde3, ark-kde3, kppp-kde3, kdeprint-kde3, ksplash-kde3,  kcalc-kde3, konsole-kde3, kate-kde3, kpowersave-kde3, kpat-kde3, kmines-kde3, klipper-kde3, kmenuedit-kde3, kmix-kde3, ksysguard-kde3, kappfinder-kde3, kpackage-kde3, kmilo-kde3, network-manager-kde|wicd|network-manager-gnome, ksplash-engine-moodin-kde3, kwalletmanager-kde3, oxygen-icon-theme|kde-icons-oxygen, kgamma-kde3, gnome-themes, kolourpaint-kde3
 #, keybled-kde3, kde-style-klearlook,
 #kademar-kde3-core, desktop-kademar-kde3, 
 #,

@@ -1,0 +1,27 @@
+[Color Scheme]
+Name=Black
+activeBackground=106,105,102
+activeBlend=148,145,142
+activeForeground=255,255,255
+activeTitleBtnBg=207,207,207
+alternateBackground=240,240,240
+background=232,229,222
+buttonBackground=232,229,222
+buttonForeground=0,0,0
+contrast=1
+foreground=0,0,0
+frame=230,230,230
+handle=230,230,230
+inactiveBackground=197,197,197
+inactiveBlend=215,215,215
+inactiveForeground=127,127,127
+inactiveFrame=230,230,230
+inactiveHandle=230,230,230
+inactiveTitleBtnBg=238,238,238
+linkColor=0,0,192
+selectBackground=106,105,102
+selectForeground=255,255,255
+shadeSortColumn=true
+visitedLinkColor=128,0,128
+windowBackground=238,236,225
+windowForeground=0,0,0

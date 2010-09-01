@@ -1,0 +1,14 @@
+Source: kademar-kde3-core
+Section: admin
+Priority: optional
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.8.0
+Homepage: http://www.kademar.org
+
+Provides: kademar-desktop-config, kademar-kde3-core
+Package: kademar-kde3-core
+Architecture: all
+Suggests: kademar-base
+Description: kademar Core KDE 3
+ Config files for kademar Core KDE 3 desktop

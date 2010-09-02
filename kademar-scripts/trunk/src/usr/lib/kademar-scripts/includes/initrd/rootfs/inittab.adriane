@@ -44,6 +44,10 @@ pf::powerwait:/etc/init.d/powerfail start
 pn::powerfailnow:/etc/init.d/powerfail now
 po::powerokwait:/etc/init.d/powerfail stop
 
+# X mode
+x0:2:wait:sleep 2
+x1:2:once:/etc/init.d/kademar-livecd-xsession start
+
 # /sbin/getty invocations for the runlevels.
 #
 # The "id" field MUST be the same as the last

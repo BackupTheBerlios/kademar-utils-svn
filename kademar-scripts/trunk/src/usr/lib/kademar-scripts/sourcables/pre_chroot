@@ -165,8 +165,8 @@ fi
 
 
 #Check if desktops are installed (if not, will fail on live-cd start with no reason)
-if [ -e /usr/kademar/config-livecd ]; then
-	. /usr/kademar/config-livecd  #load config
+if [ -e /etc/kademar/config-livecd ]; then
+	. /etc/kademar/config-livecd  #load config
 	for i in $desktop_min $desktop_max
 	do
 		[ -n "`which $i`" -a -n "`which start$i`" ] && warn "Make sure that $i Desktop it's installed"

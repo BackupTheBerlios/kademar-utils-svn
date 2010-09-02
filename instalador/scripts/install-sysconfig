@@ -362,9 +362,9 @@ if [ -n "`which startkde`" ]; then
 fi
 
 #use KDM
-if [ -n "`which kdm`" ]; then
-	echo "/usr/bin/kdm" > "$DESTI/etc/X11/default-display-manager"
-fi
+# if [ -n "`which kdm`" ]; then
+# 	echo "/usr/bin/kdm" > "$DESTI/etc/X11/default-display-manager"
+# fi
 
 
 #broadcom help to load hack

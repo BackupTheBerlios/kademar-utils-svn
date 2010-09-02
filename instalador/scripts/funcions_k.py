@@ -24,7 +24,7 @@ def idioma():
             text=''
             for linea in llista:
                 if linea.find('LANG=')<>-1:
-                    text=linea[9:11]
+                    text=linea[5:7]
                     if text=='ca':
                         idiom=0
                         break
@@ -77,6 +77,8 @@ def tipuskademar():
        return "Lyra - CD"
     elif tipuskademar=="khronos":
         return "Khronos - Lite"
+    elif tipuskademar=="heliox":
+        return "Heliox"
     else:
         return tipuskademar
 

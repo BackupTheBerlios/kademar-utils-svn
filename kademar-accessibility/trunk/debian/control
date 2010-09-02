@@ -1,0 +1,16 @@
+Source: kademar-accessibility
+Section: unknown
+Priority: extra
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 7.0.50~)
+Standards-Version: 3.8.4
+Homepage: http://www.kademar.org
+#Vcs-Git: git://git.debian.org/collab-maint/kademar-accessibility.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/kademar-accessibility.git;a=summary
+
+Package: kademar-accessibility
+Architecture: all
+Depends: screenlets, easystroke, cellwriter, dasher, orca|gnome-orca, eviacam, gok, xvkbd, kmag, kmousetool, keytouch, keytouch-editor
+Provides: pidgin-festival, gaim-festival
+Description: kademar Accessibility Package
+ kademar Accessibility package for any distribution

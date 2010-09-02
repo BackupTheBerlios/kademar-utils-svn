@@ -1,0 +1,22 @@
+#!/bin/bash
+#Script to start orca & lxde
+#Adonay Sanz - adonay@kademar.org
+# GPL 2.0
+
+# Older compiz versions start gtk-window-decorator only if GNOME_DESKTOP_SESSION_ID is set.
+[ -n "$GNOME_DESKTOP_SESSION_ID" ] || export GNOME_DESKTOP_SESSION_ID="LXDE"
+export SAL_USE_VCLPLUGIN="gtk" GTK_MODULES="gail:atk-bridge" GNOME_ACCESSIBILITY=1
+startorca ; sleep 10 
+
+#removed due a issue with ALT of spanish keyboards
+# Orca, for some reason, ruins Alt_R on the german keyboard.
+# This is a workaround to fix it.
+# (
+#  for ((i=0; i<30; i++)); do
+#   sleep 2
+#   xmodmap | grep -q 'mod1.*ISO_Level3_Shift' && xmodmap -e "remove mod1 = ISO_Level3_Shift"
+#  done
+# ) &
+
+
+startlxde

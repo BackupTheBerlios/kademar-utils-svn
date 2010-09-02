@@ -42,7 +42,6 @@ CHARSET="iso8859-15"
 KDEKEYBOARDS=""
 TZ="Europe/Madrid"
 OPTIONAL=":ca_ES:ca:es_ES@euro:es_ES:es"
-motd="Benvinguts a  kademar Linux"
 ;;
 # German version
 de*)
@@ -150,7 +149,6 @@ CHARSET="iso8859-15"
 KDEKEYBOARDS="de,us,fr"
 TZ="Europe/Madrid"
 OPTIONAL=":es_ES:es"
-motd="Bienvenidos a  kademar Linux"
 ;;
 fi*)
 # Finnish version, though we may not have the kde-i18n files
@@ -330,7 +328,6 @@ CHARSET="iso8859-1"
 # Additional KDE Keyboards
 KDEKEYBOARDS="us"
 TZ="Europe/London"
-motd="Welcome to  kademar Linux"
 ;;
 en|*)
 # American version
@@ -344,16 +341,19 @@ CHARSET="iso8859-1"
 # Additional KDE Keyboards
 KDEKEYBOARDS="de,fr"
 TZ="America/New_York"
-motd="Welcome to  kademar Linux"
 ;;
 esac
 
 ################ //  END OF LOCALE DEFINITION  \\  ####################
 
-echo "LANG=$LANG"                 > "$DESTI$locale_file"
+# echo "LANG=$LANG"                 > "$DESTI$locale_file"
 #$OPTIONAL"        	      > "$DESTI$locale_file"
- echo "LANGUAGE=$LANGUAGE"  >> "$DESTI$locale_file"
- echo "LC_MESSAGES=$LANG"   >> "$DESTI$locale_file"
+#  echo "LANGUAGE=$LANGUAGE"  >> "$DESTI$locale_file"
+#  echo "LC_ALL=$LANG"        >> "$DESTI$locale_file"
+#  echo "LC_MESSAGES=$LANG"   >> "$DESTI$locale_file"
+
+rm -f "$DESTI$locale_file"
+update-locale --reset --locale-file=$DESTI$locale_file LANG=$LANG LANGUAGE=$LANGUAGE LC_ALL=$LANG LC_MESSAGES=$LANG
 
 cat > "$DESTI/etc/default/keyboard" << EOF
 # If you change it, restart HAL.
@@ -379,18 +379,18 @@ EOF
  fi
 
 
-rm -f $DESTI/etc/environment
-ln -s /etc/default/locale $DESTI/etc/environment  2>/dev/null
+# rm -f $DESTI/etc/environment
+# ln -s /etc/default/locale $DESTI/etc/environment  2>/dev/null
 
  # Export it now, so error messages get translated, too
  export LANG COUNTRY CHARSET
 
  # UTF-8: Default is "on" in newer kernels, but for practical reasons,
  # individual languages may use latin instead, also on the initial console.
- case "$LANG" in
-  *UTF-8*) echo "1" > /sys/module/vt/parameters/default_utf8; unicode_start 2>/dev/null ;;
-        *) echo "0" > /sys/module/vt/parameters/default_utf8; unicode_stop  2>/dev/null ;;
- esac
+#  case "$LANG" in
+#   *UTF-8*) echo "1" > /sys/module/vt/parameters/default_utf8; unicode_start 2>/dev/null ;;
+#         *) echo "0" > /sys/module/vt/parameters/default_utf8; unicode_stop  2>/dev/null ;;
+#  esac
 
 
 
@@ -411,6 +411,45 @@ ln -s /etc/default/locale $DESTI/etc/environment  2>/dev/null
 
 # loadkeys $KEYTABLE >/dev/null
 
-#Actualitzacio del MOTD, si la variable no és nul·la
-[ -n "$motd" ] && rm -f "$DESTI$motd_file" && echo "$motd" > "$DESTI$motd_file"
-[ -n "$motd" ] && echo "$motd" > "$DESTI$issue_file"
+#Actualitzacio del MOTD, si la variable no ï¿½s nulï¿½la
+# [ -n "$motd" ] && rm -f "$DESTI$motd_file" && echo "$motd" > "$DESTI$motd_file"
+# [ -n "$motd" ] && echo "$motd" > "$DESTI$issue_file"
+
+
+#Carreguem les variables de systema
+motd_file="$DESTI/etc/motd"
+# rm -fr $motd_file
+versio=`cat "$DESTI/etc/kademar-release"`
+
+case "$LANG" in
+ca*)
+	echo "
+Els programes inclosos en Kademar GNU/Linux son programari lliure
+en la seva majoria, i una part residual de programari no lliure;
+els termes exactes de distribuciï¿½ de cada programa estan descrits en
+fitxers individuals en /usr/share/doc/*/copyright.
+
+kademar GNU/Linux ve en ABSOLUTA NO GARANTIA, en la mesura
+permesa per la llei actual." > $motd_file.tail
+;;
+es*)
+		echo "
+Los programas incluidos en Kademar GNU/Linux son software libre
+en su mayorï¿½a, y una parte residual de software no libre;
+los tï¿½rminos exactos de distribuciï¿½n de cada programa estï¿½n descritos en
+archivos individuales en /usr/share/doc/*/copyright.
+
+Kademar GNU/Linux viene en ABSOLUTA NO GARANTï¿½A, en la medida
+permitida por la ley actual." > $motd_file.tail
+;;
+en*|*)
+	echo "
+The programs included with the Kademar GNU/Linux system are free 
+software on major part, and a residual non-free software part;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+kademar GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law." > $motd_file.tail
+;;
+esac

@@ -9,7 +9,7 @@
 #
 
 # load monitor type
-[ -e /var/kademar/monitor ] && . /var/kademar/monitor
+[ -e /etc/kademar/monitor ] && . /etc/kademar/monitor
 
 if [ -z "$1" ];then
     user=kademar
@@ -18,9 +18,9 @@ else
 fi
 
 #Variable BACKGROUND agafada del fitxer de configuració (diferents gustos de kademar)
-[ -e /usr/share/kademar/config-livecd ] && . /usr/share/kademar/config-livecd
+[ -e /etc/kademar/config-livecd ] && . /etc/kademar/config-livecd
 
-[ -e /var/kademar/monitor ] && . /var/kademar/monitor
+[ -e /etc/kademar/monitor ] && . /etc/kademar/monitor
 
 if [ "$monitor" = "panoramic" ]; then
     echo Configuring Panoramic Monitor
@@ -70,7 +70,7 @@ if [ -e "$wallpaper" ]; then
 
 
  #KDE
-    kde_file="/home/$user/.kde/share/config/kdesktoprc"
+    kde_file="/home/$user/.kde3/share/config/kdesktoprc"
     if [ -e "$kde_file" ]; then
         a=`grep kademar-base-substitute-wallpaper-variable "$kde_file"`
         #if line exists, substitute it

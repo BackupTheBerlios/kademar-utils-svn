@@ -26,24 +26,20 @@ fi
 
 . /etc/default/locale
 
-fitxer='/.kde/share/config/kdeglobals'
+fitxer='/.kde3/share/config/kdeglobals'
 
 case "$LANG" in
 ca*)
 escriptori='Escriptori'
-autoengega='.kde/Autoengega'
+autoengega='.kde3/Autoengega'
 ;;
 es*)
 escriptori='Escritorio'
-autoengega='.kde/Autoarranque'
+autoengega='.kde3/Autoarranque'
 ;;
-en*)
+en*|C|*)
 escriptori='Desktop'
-autoengega='.kde/Autostart'
-;;
-*)
-escriptori='Escritorio'
-autoengega='.kde/Autoarranque'
+autoengega='.kde3/Autostart'
 ;;
 esac
 

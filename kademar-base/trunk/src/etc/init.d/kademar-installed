@@ -31,8 +31,8 @@ fi
 #Check Graphic-Card Change
 sh /usr/share/kademar/scripts/engegada/grafica-comprova
 
-[ ! -e /dev/shm ] && mkdir -p /dev/shm
-mount -t tmpfs shm /dev/shm
+# [ ! -e /dev/shm ] && mkdir -p /dev/shm
+# mount -t tmpfs shm /dev/shm
 
 #kademar  compcache
 [ -e /dev/ramzswap0 ] && swapon /dev/ramzswap0 && echo "Activating CompCache support"

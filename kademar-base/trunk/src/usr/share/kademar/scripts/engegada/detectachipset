@@ -5,7 +5,8 @@
 
 #Cridat pel seu us des de xautoconf
 
-#Modificat 10-04-07 - Incorporacio de dirbase com a target de sistemes instalats
+#Modified 10-04-07 - Use  dirbase  with first param to have a target for installed systems
+#Modified 05-06-10 - Modification for new xsession script (kademar 4.9.5 +)
 
 #set -x  #DEBUG Mode
 
@@ -23,13 +24,17 @@ display_driver=`lspci | grep -i "VGA Compatible controller:" | tr A-Z a-z | sed 
 # echo $display_driver
 case "$display_driver" in
 
+# 	*[Rr]adeon\ [Hh][Dd]*)
+# 		display_driver="radeonhd"
+# 	;;
+
 	*alliance*)
 		# echo Es una Alliance Semiconductor Corporation ProMotion y usa el driver apm 
-		echo apm
+		display_driver=apm
 	;;
 	*'ark logic'*)
 		# echo Es una grafica con chipset ARK Logic Inc. y usa el driver ark
-		echo ark
+		display_driver=ark
 	;;
 	
 	
@@ -41,16 +46,18 @@ case "$display_driver" in
 		#si existeix el driver propietari de fglrx, lutilitzarem, sino, passarem d'ell (XFREE)
 		if [ -e /lib/modules/$kversion/misc/fglrx.ko -o -e /lib/modules/$kversion/updates/dkms/fglrx.ko ]; then
 			if [ -e /usr/X11R6/lib/modules/dri/fglrx_dri.so ]; then
-				echo fglrx
+				display_driver=fglrx
 			fi
 		else
 			#si existeix el driver propietari de fglrx, lutilitzarem, sino, passarem d'ell (X.org)
 			if [ -e /lib/modules/$kversion/misc/fglrx.ko -o -e /lib/modules/$kversion/updates/dkms/fglrx.ko ]; then
 				if [ -e /usr/lib/xorg/modules/drivers/fglrx_drv.so ]; then
-					echo fglrx
+					display_driver=fglrx
 				else
-					echo ati
+					display_driver=ati
 				fi
+			else
+				display_driver=ati
 			fi
 		fi
 	
@@ -58,59 +65,59 @@ case "$display_driver" in
 	;;
 	*'chips and technologies'*)
 		# echo Es una grafica Chips & Technologies y usa el driver chips
-		echo chips
+		display_driver=chips
 	;;
 	*cirrus*)
 		# echo Es una grafica Cirrus Logic y usa el driver cirrus
-		echo cirrus
+		display_driver=cirrus
 	;;
 	*cyrix*)
 		# echo Es una grafica Cyrix MediaGX y usa el driver cyrix
-		echo cyrix
+		display_driver=cyrix
 	;;
 	*glint*)
 		# echo Es una grafica 3DLabs y usa el driver glint
-		echo glint
+		display_driver=glint
 	;;
 	*permedia*)
 		# echo Es una grafica 3DLabs o Texas Instruments Permedia y usa el driver glint
-		echo glint
+		display_driver=glint
 	;;
 	*'number 9'*)
 		# echo Es una Number 9 y usa el driver i128
-		echo i128
+		display_driver=i128
 	;;
 	*intel*)
 	# 	if [ -n "`echo $display_driver | grep -i 'i740'`" ]; then
 	# # 		echo Es una Intel 740 y usa el driver i740
-	# 		echo i740
+	# 		display_driver=i740
 	# 	else
 	# 		echo Es una Intel 810 852 915 965G etc y usa el driver i810
-			echo intel
+			display_driver=intel
 	# 	fi
 	;;
 	
 	*'twin turbo'*)
 		# echo Es una Integrated Micro Solutions Twint turbo y usa el driver imstt
-		echo imstt
+		display_driver=imstt
 	;;
 	
 	*matrox*)
 		# echo Es una grafica Matrox y usa el driver mga
-		echo mga
+		display_driver=mga
 	;;
 	
 	*neomagic*)
 		# echo Es una grafica Neomagic y usa el driver neomagic
-		echo neomagic
+		display_driver=neomagic
 	;;
 	*newport*)
 		# echo Es una grafica que usa el driver newport
-		echo newport
+		display_driver=newport
 	;;
 	*'national semiconductor'*)
 		# echo Es una grafica de National Semiconductor Corporation y usa el driver nsc
-		echo nsc
+		display_driver=nsc
 	;;
 	
 	*nvidia*)
@@ -119,7 +126,7 @@ case "$display_driver" in
 		
 		#If it has a Nvidia TNT, use nv driver. TNT Hack.
 		if [ -n "`lspci | grep -i vga | egrep -i tnt`" ]; then
-			echo nv
+			display_driver=nv
 		else
 			#XFREE 86
 			if [ -e /usr/X11R6/lib/modules/drivers/nvidia_drv.o -a -z "`lspci | grep -i vga | egrep -i tnt`" ]; then
@@ -127,25 +134,23 @@ case "$display_driver" in
 				if [ -e /lib/modules/$kversion/nvidia/nvidia.ko -o -e /lib/modules/$kversion/kernel/drivers/video/nvidia.ko ]; then
 					#Si el de nucli també hi es, i ja estem utilitzant el de nvidia, no facis res
 					#Hack, perque entengui que no ha de fer res. Es la millor manera, ja que així no s'ha d'afegir més codi
-					echo nvidia
 					display_driver=nvidia
 				else
 					#Si el de nucli no hi es, utilitzarem el normal (útil en canvis de nucli)
-					echo nv
+					display_driver=nv
 				fi
 			else
 				#Si no hi és l'existencia dels de X, directament utilizem el nomal  (X.org)
 				if [ -e /usr/lib/xorg/modules/drivers/nvidia_drv.o -o -e /usr/lib/xorg/modules/drivers/nvidia_drv.so ]; then
 					if [ -e /lib/modules/$kversion/nvidia/nvidia.ko -o -e /lib/modules/$kversion/kernel/drivers/video/nvidia.ko ]; then
 					
-						echo nvidia
 						display_driver=nvidia
 					else
-						echo nv
+						display_driver=nv
 					fi
 				else
 					#Si el de nucli no hi es, utilitzarem el normal (útil en canvis de nucli)
-					echo nv
+					display_driver=nv
 				fi
 			fi
 		fi
@@ -154,79 +159,85 @@ case "$display_driver" in
 	;;
 	*rendition*)
 		# echo Es una grafica Rendition Verite o Diamond Stealth II y usa el driver  rendition
-		echo rendition
+		display_driver=rendition
 	;;
 	*'s3 inc'*)
 	
 		if [ -n "`echo $display_driver | grep -i 'virge'`" ]; then
 	# 		echo Es una grafica S3 Inc Virge y usa el driver s3virge
-			echo s3virge
+			display_driver=s3virge
 		elif [ -n "`echo $display_driver | grep -i 'trio 3d'`" ]; then
 	# 		echo Es una grafica S3 Inc Trio 3D y usa el driver s3virge
-			echo s3virge
+			display_driver=s3virge
 		elif [ -n "`echo $display_driver | grep -i 'savage'`" ]; then
 	# 		echo Es una S3 Inc Savage y usa el driver savage
-			echo savage
+			display_driver=savage
 		else
 	# 		echo Es una grafica S3 Inc y usa el driver s3
-			echo s3
+			display_driver=s3
 		fi
 	;;
 	*silicon*)
 	
 		if [ -n "`echo $display_driver | grep -i 'integrated'`" ]; then
 	# 		echo Es una grafica Silicon Integrated Systems SiS y usa el driver sis
-			echo sis
+			display_driver=sis
 		else
 	# 		echo Es una grafica Silicon Motion y usa el driver siliconmotion
-			echo siliconmotion
+			display_driver=siliconmotion
 		fi
 		#Hay un driver llamado sisusb para una tarjeta usb, la SiS315E/PRO pero supongo que no sale con el lspci
 	;;
 	*xabre*)
 		# echo Es una grafica SiS con chipset XGI Xabre y usa el driver sis
-		echo sis
+		display_driver=sis
 	;;
 	*3dfx*)
 		# echo Es una 3fx Interactive Voodoo 3 4 5 y utiliza el driver tdfx
-		echo tdfx
+		display_driver=tdfx
 		# Para soporte Voodo 1 y Voodoo 2, utilizar el driver voodoo, creo que estas graficas no salen como VGA compatible controller , habria que hacer un grep a Multimedia Video controller para poder detectarlas
 	;;
 	
 	*' tga '*)
 		# echo Es una grafica de Digital Equipment Corporation y usa el driver tga
-		echo tga
+		display_driver=tga
 	;;
 	*trident*)
 		# echo Es una grafica de Trident Microsystems y usa el driver trident
-		echo trident
+		display_driver=trident
 	;;
 	*tseng*)
 		# echo Es una grafica de Tseng Labs Inc y usa el driver tseng
-		echo tseng
+		display_driver=tseng
 	;;
 	*' via '*)
 		# echo Es una grafica integrada de VIA Technologies posiblemente S3 Unichrome y usa el driver via
-		echo via
+		display_driver=via
 	;;
 	*vmware*)
 		# echo Se está ejectuando desde  VMWare
-		echo vmware
+		display_driver=vmware
 	;;
 	*virtualbox*)
 		# echo Se está ejectuando desde  VirtualBox y está instalado los Guest Utilities
 		if [ -e /usr/lib/xorg/modules/drivers/vboxvideo_drv.so ]; then
-			echo vboxvideo
+			display_driver=vboxvideo
 		else
-			echo vesa
+			display_driver=vesa
 		fi
 	;;
 	*)
 		# echo Se usara el driver vesa
-		echo vesa
+		display_driver=vesa
 	;;
 
 esac
+
+
+
+
+echo "XMODULE=$display_driver" >> /var/tmp/xserver
+echo $display_driver
 
 
 

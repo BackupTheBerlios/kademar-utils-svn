@@ -14,9 +14,9 @@ user="kademar"
 #[ ! -e /media/usbdisk ] && mkdir /media/usbdisk
 #mount -t tmpfs -o size=1k none /media/usbdisk
 
-#Creem la carpeta de /var/kademar
-mkdir -p /var/kademar
-chmod 777 /var/kademar
+#Creem la carpeta de /etc/kademar
+mkdir -p /etc/kademar
+# chmod 777 /etc/kademar
 
 #Mplayer Hack
 ( echo 1024 > /proc/sys/dev/rtc/max-user-freq ) 2>/dev/null
@@ -28,4 +28,4 @@ chown -R $user.users /home/$user/* &
 chown $user.users /home/$user &
 chmod -R 777 /home/$user &
 chmod 777 /home/$user &
-# chmod 777 /home/$user/.kde/share/config/kio_thumbnailrc 2>/dev/null
+# chmod 777 /home/$user/.kde3/share/config/kio_thumbnailrc 2>/dev/null

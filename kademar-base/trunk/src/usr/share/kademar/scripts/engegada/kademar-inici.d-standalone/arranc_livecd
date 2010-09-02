@@ -105,8 +105,8 @@ killall -15 htm 2>/dev/null #mata el proces htm
 
 kfmclient sortDesktop   #organitza les icones de l'escriptori
 
-rm -fr \$HOME/.kde/Auto*/html
-rm -fr \$HOME/.kde/Auto*/htm
+rm -fr \$HOME/.kde3/Auto*/html
+rm -fr \$HOME/.kde3/Auto*/htm
 
 kfmclient sortDesktop   #organitza les icones de l'escriptori
 
@@ -194,9 +194,9 @@ if [ "$trobat" = "no" ]; then
 		fi
 		case "$LANG" in
 		ca*)
-			crea_kademar_links /home/$user/Escriptori _ca /home/$user/.kde/Autoengega
-			ln -s /usr/share/kademar/scripts/html-escriptori /home/$user/.kde/Autoengega/htm
-# 			crea_numlock /home/$user/.kde/Autoengega
+			crea_kademar_links /home/$user/Escriptori _ca /home/$user/.kde3/Autoengega
+			ln -s /usr/share/kademar/scripts/html-escriptori /home/$user/.kde3/Autoengega/htm
+# 			crea_numlock /home/$user/.kde3/Autoengega
 			#Links al Pc
 			ln -s -n /Pc /home/$user/Escriptori/Pc 
 			ln -s -n /Pc /home/$user/Pc
@@ -208,9 +208,9 @@ if [ "$trobat" = "no" ]; then
 			kfile_root="Arrel de Sistema"
 		;;
 		es*)
-			crea_kademar_links /home/$user/Escritorio _es /home/$user/.kde/Autoarranque
-			ln -s /usr/share/kademar/scripts/html-escriptori /home/$user/.kde/Autoarranque/htm
-# 			crea_numlock /home/$user/.kde/Autoarranque
+			crea_kademar_links /home/$user/Escritorio _es /home/$user/.kde3/Autoarranque
+			ln -s /usr/share/kademar/scripts/html-escriptori /home/$user/.kde3/Autoarranque/htm
+# 			crea_numlock /home/$user/.kde3/Autoarranque
 			#Links al Pc
 			ln -s -n /Pc /home/$user/Escritorio/Pc 
 			ln -s -n /Pc /home/$user/Pc
@@ -222,9 +222,9 @@ if [ "$trobat" = "no" ]; then
 			kfile_root="Raiz de Sistema"
 		;;
 		en*)
-			crea_kademar_links /home/$user/Desktop _en /home/$user/.kde/Autostart
-			ln -s /usr/share/kademar/scripts/html-escriptori /home/$user/.kde/Autostart/htm
-# 			crea_numlock /home/$user/.kde/Autostart
+			crea_kademar_links /home/$user/Desktop _en /home/$user/.kde3/Autostart
+			ln -s /usr/share/kademar/scripts/html-escriptori /home/$user/.kde3/Autostart/htm
+# 			crea_numlock /home/$user/.kde3/Autostart
 			#Links al Pc
 			ln -s -n /Pc /home/$user/Desktop/Pc 
 			ln -s -n /Pc /home/$user/Pc
@@ -268,7 +268,7 @@ URL_1=file://\$HOME
 URL_2=file://\$HOME/$documents/
 URL_3=file:///home/Pc
 URL_4=file:///
-URL_5=remote:/" >> /home/$user/.kde/share/config/kdeglobals
+URL_5=remote:/" >> /home/$user/.kde3/share/config/kdeglobals
 		
 		#Firefox  pagina d'inici
 		for i in `ls /home/$user/.mozilla/firefox/ | grep default`
@@ -295,9 +295,9 @@ user_pref("security.warn_viewing_mixed", false);' >> /home/$user/.mozilla/firefo
 fi
 
 
-#Creem la carpeta de /var/kademar
-mkdir -p /var/kademar
-chmod 777 /var/kademar
+#Creem la carpeta de /etc/kademar
+mkdir -p /etc/kademar
+# chmod 777 /etc/kademar
 
 #Mplayer Hack
 ( echo 1024 > /proc/sys/dev/rtc/max-user-freq ) 2>/dev/null
@@ -312,7 +312,7 @@ chown -R $user.users /home/$user/* &
 chown $user.users /home/$user &
 chmod -R 777 /home/$user &
 chmod 777 /home/$user &
-# chmod 777 /home/$user/.kde/share/config/kio_thumbnailrc 2>/dev/null
+# chmod 777 /home/$user/.kde3/share/config/kio_thumbnailrc 2>/dev/null
 
 #Engegada de la consola final
 # bash &

@@ -60,4 +60,4 @@ URL_1=file://\$HOME
 URL_2=file://\$HOME/$documents/
 URL_3=file:///home/Pc
 URL_4=file:///
-URL_5=remote:/" >> /home/$user/.kde/share/config/kdeglobals
+URL_5=remote:/" >> /home/$user/.kde3/share/config/kdeglobals

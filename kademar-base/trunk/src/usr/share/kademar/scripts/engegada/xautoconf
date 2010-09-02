@@ -53,11 +53,11 @@ else
 	dirbase="$1"
 fi
 
-[ -e "$dirbase/usr/share/kademar/config" ] && . "$dirbase/usr/share/kademar/config"
+[ -e "$dirbase/etc/kademar/config" ] && . "$dirbase/etc/kademar/config"
 
 #Variable to specify where's placed  Xorg.conf file
 xconfig_file="$dirbase/etc/X11/xorg.conf"
-xserver_file="$dirbase/var/xserver"
+xserver_file="$dirbase/var/tmp/xserver"
 [ -e "$xserver_file" ] && . "$xserver_file"
 
 ##### TOUCHPAD CONFIGURATION #####
@@ -97,7 +97,7 @@ hz="$(getbootparam hz 2>/dev/null)"
 if [ -n "$hz" ]; then
 	hz="`echo $hz | sed s:hz::g`"
 	# Echo information in boot process
-	case $LANGUAGE in
+	case $LANG in
 	ca*)
 		echo -n "${BLUE}Utilitzant refresc de pantalla: ${NORMAL}"
 	;;
@@ -117,7 +117,7 @@ fi
 resol="$(getbootparam resol 2>/dev/null)"
 if [ -n "$resol" ]; then
 	display_modes="$resol"
-	case $LANGUAGE in
+	case $LANG in
 	ca*)
 		echo -n "${BLUE}Utilitzant resolució de pantalla: ${NORMAL}"
 	;;
@@ -177,7 +177,7 @@ fi
 case $display_driver in
 radeon|ati)
 	load_options='	Load "dri"'
-	load_options2=' Option        "sw_cursor"  #ati'
+# 	load_options2=' Option        "sw_cursor"  #ati'
 	sectioncomposite='#Section "Extensions"
 #    Option "Composite" "Enable"
 #EndSection'
@@ -221,9 +221,9 @@ esac
 [ "$display_driver" != "vesa" ] && dpms='Option        "DPMS"'
 
 #Utilitzar driver Vesa i resolucio 1024x768
-# [ -z "$display_modes" ] && display_modes='"1024x768" "800x600" "640x480"' && case $LANGUAGE in ca*) echo "${BLUE}No s'ha detectat cap resolució, utilitzant estadart${NORMAL}" ; ;; es*) echo "${BLUE}No se ha detectado ninguna resolución, usando estandar${NORMAL}"; ;; en*) echo "${BLUE}No resolution detected, using default${NORMAL}" ; ;; esac
+# [ -z "$display_modes" ] && display_modes='"1024x768" "800x600" "640x480"' && case $LANG in ca*) echo "${BLUE}No s'ha detectat cap resolució, utilitzant estadart${NORMAL}" ; ;; es*) echo "${BLUE}No se ha detectado ninguna resolución, usando estandar${NORMAL}"; ;; en*) echo "${BLUE}No resolution detected, using default${NORMAL}" ; ;; esac
 
-[ -z "$display_driver" ] && display_driver="vesa" && case $LANGUAGE in ca*) echo "${BLUE}No s'ha detectat cap controlador, utilitzant estadart${NORMAL}" ; ;; es*) echo "${BLUE}No se ha detectado ningún controlador, usando estandar${NORMAL}"; ;; en*) echo "${BLUE}No driver detected, using default${NORMAL}" ; ;; esac
+[ -z "$display_driver" ] && display_driver="vesa" && case $LANG in ca*) echo "${BLUE}No s'ha detectat cap controlador, utilitzant estadart${NORMAL}" ; ;; es*) echo "${BLUE}No se ha detectado ningún controlador, usando estandar${NORMAL}"; ;; en*) echo "${BLUE}No driver detected, using default${NORMAL}" ; ;; esac
 
 #If there's a depth especified with  depth=16" in bootparam, use it, else, set it to 24
 newdepth="$(getbootparam depth 2>/dev/null)"
@@ -234,7 +234,7 @@ else
 fi
 
 # Echo information in boot process
-case $LANGUAGE in
+case $LANG in
 ca*)
 echo -n "${BLUE}Utilitzant controlador gràfic: ${NORMAL}"
 ;;
@@ -249,7 +249,7 @@ esac
 echo "${YELLOW} $display_driver ${NORMAL}"
 if [ -n "$newdepth" ]; then
 
-	case $LANGUAGE in
+	case $LANG in
 	ca*)
 	echo -n "${BLUE}Utilitzant definició de colors: ${NORMAL}"
 	;;

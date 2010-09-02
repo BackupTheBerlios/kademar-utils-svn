@@ -195,7 +195,7 @@ chmod 700 ~/.klik
 # create helper protocol for konqueror to send klicks to the klik script
 #
 
-[ x"$KDEHOME" = x ] && KDEHOME=$HOME/.kde
+[ x"$KDEHOME" = x ] && KDEHOME=$HOME/.kde3
 
 mkdir -p $KDEHOME/share/services/
 cat > ${KDEHOME}/share/services/klik.protocol <<EOF
@@ -218,7 +218,7 @@ Description=klik
 EOF
 
 #
-# create ~/.kde/share/applnk/klik
+# create ~/.kde3/share/applnk/klik
 #
 
 mkdir -p  ${KDEHOME}/share/applnk/klik
@@ -469,7 +469,7 @@ esac
 	# update klik menu
 	
 	CMGDIR=$(dirname $CMG)
-	[ x"$KDEHOME" = x ] && KDEHOME=$HOME/.kde
+	[ x"$KDEHOME" = x ] && KDEHOME=$HOME/.kde3
 
 	# find cmg files
 	CMGFILES=$(find $CMGDIR/*.cmg 2>/dev/null)

@@ -23,8 +23,8 @@ def idioma():
             f.close()
             text=''
             for linea in llista:
-                if linea.find('LANGUAGE=')<>-1:
-                    text=linea[9:11]
+                if linea.find('LANG=')<>-1:
+                    text=linea[5:7]
                     if text=='ca':
                         idiom=0
                         break
@@ -70,13 +70,15 @@ def versiokademar():
 #Return kademar type
 def tipuskademar():
     from commands import getoutput
-    tipuskademar=getoutput(""". /usr/share/kademar/config ; echo $kademar_type  2>/dev/null""").lower()
+    tipuskademar=getoutput(""". /etc/kademar/config ; echo $kademar_type  2>/dev/null""").lower()
     if tipuskademar=="leo":
         return "Leo - DvD"
     elif tipuskademar=="lyra":
        return "Lyra - CD"
     elif tipuskademar=="khronos":
         return "Khronos - Lite"
+    elif tipuskademar=="heliox":
+        return "Heliox"
     else:
         return tipuskademar
 

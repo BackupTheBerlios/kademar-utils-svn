@@ -22,7 +22,7 @@ case "$1" in
 	
         if [ remove = "$1" ]; then
 		#Networking DHCP Permissive
-                rm -f /etc/init.d/networking /etc/init.d/splashutilsend /etc/init.d/splashutils /etc/apt/preferences /etc/default/rcS /etc/initramfs-tools/initramfs.conf /etc/ppp/options /etc/sysctl.conf 
+                rm -f /etc/init.d/networking /etc/init.d/splashutilsend /etc/init.d/splashutils /etc/apt/preferences /etc/default/rcS /etc/initramfs-tools/initramfs.conf /etc/ppp/options /etc/sysctl.conf /etc/rc.local 
 
                 dpkg-divert --package kademar-base --remove --divert /etc/init.d/dpkg/networking.real --rename /etc/init.d/networking
 
@@ -38,6 +38,8 @@ case "$1" in
                 dpkg-divert --package kademar-base --remove --divert /etc/ppp/options.orig --rename /etc/ppp/options
 
                 dpkg-divert --package kademar-base --remove --divert /etc/sysctl.conf.orig --rename /etc/sysctl.conf
+
+                dpkg-divert --package kademar-base --remove --divert /etc/rc.local.orig --rename /etc/rc.local
 
                 rm -f /etc/bash.bashrc
                 dpkg-divert --package kademar-base --remove --divert /etc/bash.bashrc.orig --rename /etc/bash.bashrc

@@ -187,11 +187,6 @@ cat > $ruta_fstab << EOF
 # <file system> <mount point>   <type>  <options>       <dump>  <pass>
 $root_mount
 proc		/proc		proc	defaults	0	0 
-sysfs     	/sys    	sysfs   defaults        0       0
-devpts	        /dev/pts	devpts	gid=5,mode=620 	0	0
-/proc/bus/usb	/proc/bus/usb	usbfs	defaults	0	0
-shm             /dev/shm        tmpfs   nodev,nosuid,noexec 0   0
-
 
 
 EOF
@@ -240,8 +235,8 @@ do
 							while true
 							do
 								[ ! -e /muntatge_temporal ] && mkdir /muntatge_temporal
-								mount -t hfs /dev/$hd /muntatge_temporal 2>/dev/null && fs="hfs" && break
 								mount -t hfsplus /dev/$hd /muntatge_temporal 2>/dev/null && fs="hfsplus" && break
+								mount -t hfs /dev/$hd /muntatge_temporal 2>/dev/null && fs="hfs" && break
 								fs="auto" && break
 							done
 							umount /muntatge_temporal 2>/dev/null

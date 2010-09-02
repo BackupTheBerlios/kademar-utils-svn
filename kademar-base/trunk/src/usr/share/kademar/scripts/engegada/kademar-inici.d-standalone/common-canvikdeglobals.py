@@ -6,7 +6,7 @@
 
 #Ja no es fa res amb la paperera pq ho gestiona el propi KDE 3.4
 
-# /home/kademar/.kde/share/config/kdeglobals canviar dins seccio [Paths] el autostart, desktop i trash per catala o castella
+# /home/kademar/.kde3/share/config/kdeglobals canviar dins seccio [Paths] el autostart, desktop i trash per catala o castella
 
 import os
 import sys
@@ -26,7 +26,7 @@ if usuari=="skel":
 else:
     home="/home/"+usuari+"/"
 
-fitxer=home+'.kde/share/config/kdeglobals'
+fitxer=home+'.kde3/share/config/kdeglobals'
 
 casa=home
 noms=[['Escriptori','Autoengega','Paperera'],
@@ -60,8 +60,8 @@ for i in range(linea,len(llista)):
         f.write('Desktop=$HOME/'+noms[numllengua][0]+'\n')
     elif llista[i][:9]=='Autostart':
         autostart0=llista[i][16:-1]
-        autostart1='.kde/'+noms[numllengua][1]
-        f.write('Autostart=$HOME/.kde/'+noms[numllengua][1]+'\n')
+        autostart1='.kde3/'+noms[numllengua][1]
+        f.write('Autostart=$HOME/.kde3/'+noms[numllengua][1]+'\n')
 #     elif llista[i][:5]=='Trash':
 #         trash0=llista[i][12:-1]
 #         trash1=noms[numllengua][0]+'/'+noms[numllengua][2]

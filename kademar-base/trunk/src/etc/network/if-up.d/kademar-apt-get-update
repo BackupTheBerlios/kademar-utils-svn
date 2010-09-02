@@ -4,7 +4,7 @@
 #Adonay Sanz Alsina - 24-11-07 - GNU/GPL v2
 
 #Read default config
-. /usr/share/kademar/config
+. /etc/kademar/config
 
 #Actualitza si no estàs en live-cd i fes-ho en background i sempre surt bé
 # i si esta engegat kademarcenter, avisa'l

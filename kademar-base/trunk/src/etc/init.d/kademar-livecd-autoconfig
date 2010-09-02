@@ -220,7 +220,7 @@ mount -t tmpfs -o rw,mode=1777,size=1G,exec,nosuid,nodev tmpfs /tmp
 
 
 # Recreate var/tempfiles directory structure on tmpfs
-for i in $(cd /mnt/live/memory/images/kademar.lzm && find var/run var/lock var/log var/run/speech-dispatcher -type d); do
+for i in $(cd /mnt/live/memory/images/kademar.lzm && find var/run var/lock var/log var/run/speech-dispatcher -type d 2>/dev/null); do
 	mkdir -p /"$i"
 done
 chmod 1777 /var/log/apt /var/run/dbus 2>/dev/null
@@ -271,7 +271,7 @@ locale_file="/etc/default/locale"
 # is Catalan
 
 LANGUAGE="$(getbootparam lang 2>/dev/null)"
-motd_file=/etc/motd
+## motd_file=/etc/motd
 
 #echo $LANGUAGE #DEBUG
 [ -z "$LANGUAGE" ] && LANGUAGE="ca"
@@ -284,10 +284,6 @@ sh /usr/share/kademar/scripts/locale_configurator $LANGUAGE
 
 #Export it now, in order to get translated orders that can be translated
 export LANG=$LANG LANG COUNTRY CHARSET TZ
-
-#Refresh console with new parameters
-[ -e /etc/init.d/console-screen.sh ] && /etc/init.d/console-screen.sh restart
-[ -e /etc/init.d/console-setup ] && /etc/init.d/console-setup start
 
 #load sysctl.conf params
 /etc/init.d/procps start
@@ -324,12 +320,13 @@ echo -n "${BLUE}$miss_rellotge${NORMAL}" ; /etc/init.d/hwclockfirst.sh start >/d
 
 
  # Writeback every 30 secs maximum
- echo 3000 > /proc/sys/vm/dirty_writeback_centisecs
+#  echo 3000 > /proc/sys/vm/dirty_writeback_centisecs
  # Don't swap unless necessary
- echo 0 > /proc/sys/vm/swappiness
+#  echo 0 > /proc/sys/vm/swappiness
  # Some programs seem to require incredible amounts of memory, and
  # will just crash if overcommit is set to off.
- echo 1 > /proc/sys/vm/overcommit_memory
+#  echo 1 > /proc/sys/vm/overcommit_memory
+/etc/init.d/procps start #set kernel sysctl.conf vars
 
 
 # Ignore these signals: INT, TERM, SEGV
@@ -394,6 +391,10 @@ echo "${BLUE}$miss_udev${NORMAL}" ; start_udev
 # ; /etc/init.d/udev start >/dev/null 2>&1
 # ; escriu_resultat $? $num_udev
 
+#Refresh console with new parameters (need /dev/tty*)
+[ -e /etc/init.d/console-screen.sh ] && /etc/init.d/console-screen.sh restart
+[ -e /etc/init.d/console-setup ] && /etc/init.d/console-setup start
+
 # Included on latest KERNEL 2.6.33
 #kademar  compcache
 ccachedir="/lib/modules/`uname -r`/kernel/fs/compcache"
@@ -411,10 +412,11 @@ fi
 [ -e /dev/ramzswap0 ] && swapon /dev/ramzswap0  2>/dev/null && ramz=true && echo "Activating CompCache support 1"
 
 #be sure to be mounted
-mkdir -p /dev/shm
-mount -t tmpfs shm /dev/shm
-mkdir -p /dev/pts
-mount -t devpts -o rw,mode=1777 /dev/pts /dev/pts
+# mkdir -p /dev/shm
+# mount -t tmpfs shm /dev/shm
+# mkdir -p /dev/pts
+# mount -t devpts -o rw,mode=1777 /dev/pts /dev/pts
+/etc/init.d/mountdevsubfs.sh start
 
 
 ########### SPLASHY
@@ -463,34 +465,42 @@ ifconfig lo 127.0.0.1 up
 /etc/init.d/dbus start
 /etc/init.d/hal start
 
-
-#SCREEN READER SUPPORT
+#
+# Accessibility Support - SCREEN READER 
+#
 #  scrread or screenread   cmdline support
 [ -n "`grep scrread /proc/cmdline`" ] && scrread="true"
 [ -n "`grep screenread /proc/cmdline`" ] && scrread="true"
 
-if [ -n "$scrread" ]; then
+#Configuration for Heliox
+if [ -e /etc/init.d/pulseaudio -a -n "`grep -i heliox /etc/kademar/config-livecd`" ]; then
     [ -e /etc/init.d/pulseaudio ] && su -c "pulseaudio -D" $user
     [ -e /etc/init.d/festival ] && /etc/init.d/festival start
-    if [ -e /etc/init.d/speech-dispatcher ]; then
-        /etc/init.d/speech-dispatcher start
-    else
-        [ -n "`which speech-dispatcher`" ] && speech-dispatcher -d
-    fi
+#     if [ -e /etc/init.d/speech-dispatcher ]; then
+#         /etc/init.d/speech-dispatcher start
+#     else
+#         [ -n "`which speech-dispatcher`" ] && speech-dispatcher -d
+#     fi
+
     [ -n "`which adriane-screenreader`" ] && adriane-screenreader
 
-#renice processes to be better
-	pidofpulse=`pidof pulseaudio`
-	pidoffestival=`pidof festival`
-	pidofspeech=`pidof speech-dispatcher`
-	
-	[ -n "$pidofpulse" ] && renice -5 $pidofpulse
-	[ -n "$pidoffestival" ] && renice -5 $pidoffestival
-	[ -n "$pidofspeech" ] && renice -5 $pidofspeech
+  #Stop SBL (real screenreader) if not need it 
+    [ -z "$scrread" ] && /etc/init.d/sbl stop
+
+  #renice processes to have better responsibiness
+    pidofpulse=`pidof pulseaudio`
+    pidoffestival=`pidof festival`
+    pidofspeech=`pidof speech-dispatcher`
+
+    [ -n "$pidofpulse" ] && renice -5 $pidofpulse
+    [ -n "$pidoffestival" ] && renice -5 $pidoffestival
+    [ -n "$pidofspeech" ] && renice -5 $pidofspeech
 
 fi
 
-
+#
+# END Accessibility Support
+#
 
 
 #######################
@@ -525,13 +535,13 @@ appendSwapPartitionsOnFstab
 # Also read desired desktop, if any calulate what's the best desktop for performance
 DESKTOP="$(getbootparam desktop 2>/dev/null)"
 if [ -z "$DESKTOP" ]; then
-	[ -e /usr/share/kademar/config-livecd ] && . /usr/share/kademar/config-livecd
+	[ -e /etc/kademar/config-livecd ] && . /etc/kademar/config-livecd
 # 	Si tenim dit que detecti velocitat, processa, sino, engega per defecte
 	if [ "$detecta_desktop" = si -o "$detecta_desktop" = yes ]; then
 		echo "${YELLOW}$miss_velocitat_1${NORMAL}"
 		#determina velocitat, si no troba algun dels 2 fitxers d'informacio, assigna total<11 per engegar KDE
 		if [ -e /proc/meminfo -a -e /proc/cpuinfo ]; then
-			#agafa la memoria, i imprimeix el valor de Memtotal nº 2 (cantita de memoria) i el dividim en moduls de 32 mb
+			#agafa la memoria, i imprimeix el valor de Memtotal nº 2 (quantitat de memoria) i el dividim en moduls de 32 mb
 			mem=$((`grep 'MemTotal' /proc/meminfo | awk '{ print $2 }'` / 32000))
 			#agafa la velocitat (el 4tr parametre)
 			vel=`grep 'cpu MHz' /proc/cpuinfo | awk '{ print $4 }'`
@@ -553,11 +563,20 @@ if [ -z "$DESKTOP" ]; then
 			DESKTOP="$desktop_min"
 			echo "${GREEN}$miss_velocitat_2${NORMAL}"
 		else
-			DESKTOP="$desktop_max"
-			echo "${GREEN}$miss_velocitat_3${NORMAL}"
+			if [ "$total" -gt 30 -a -n "$desktop_max_max" ]; then
+				DESKTOP="$desktop_max_max"
+				echo "${GREEN}$miss_velocitat_3${NORMAL}"
+			else
+				DESKTOP="$desktop_max"
+				echo "${GREEN}$miss_velocitat_3${NORMAL}"
+			fi
 		fi
 	else
-		DESKTOP="$desktop_max"
+		if [ -n "$desktop_max_max" ]; then
+			DESKTOP="$desktop_max_max"
+		else
+			DESKTOP="$desktop_max"
+		fi
 	fi
 else
 	echo "${GREEN}$miss_velocitat_4:${NORMAL} ${YELLOW} $DESKTOP${NORMAL}"
@@ -566,7 +585,7 @@ fi
 # Allow only supported windowmanagers
 # case "$DESKTOP" in gnome|enlightenment|kde|larswm|xfce|xfce4|windowmaker|wmaker|icewm|fluxbox|twm|nx|rdp|kiosk) ;; *) DESKTOP="kde"; ;; esac
 
-echo DESKTOP="$DESKTOP" > /var/xserver
+echo DESKTOP="$DESKTOP" > /var/tmp/xserver
 
 
 echo " ${GREEN}$miss_kernel${YELLOW}$(uname -r)${NORMAL}"
@@ -867,21 +886,47 @@ fi
 # /etc/init.d/hal start
 
 
+#start services  # emulate  rc2.d (rc2)
+# /etc/init.d/rc.local start  #DO IT ON INITTAB
+
+
+mkdir -p /etc/kademar/
+
 #Detection of what kind of start  live-cd or USB w/o changes  OR  USB with changes
-if [ -n "`grep changes /proc/cmdline`" -a -e /var/kademar/live-USB ]; then
+if [ -n "`grep changes /proc/cmdline`" -a -e /etc/kademar/live-USB ]; then
    #start from a USB - livecd (saving changes)
    #   USB with changes
    continue
-
-#   sh /usr/share/kademar/scripts/engegada/kademar-inici.d-ng/common-base
-#   sh /usr/share/kademar/scripts/engegada/kademar-inici.d-ng/common-powersaved
 
 else
    #real live-CD start
    #   live-cd or USB w/o changes
 
-    mkdir -p /var/kademar/
-    chmod 777 /var/kademar
+    #Portàtil
+    if [ "`laptop-detect ; echo $?`" != 0 ]; then
+        #Si no es portatil
+        laptop=no
+        [ -e /usr/share/autostart/syndock.desktop ] && rm -f /usr/share/autostart/syndock.desktop #remove syndock if ISN'T a laptop
+    else
+        #Si es un portatil
+        laptop=yes
+    fi
+
+    echo $laptop > /etc/kademar/laptop #en usermod
+
+
+    #KNOPPIX hack, perque el salvapantalles no bloquegi la pantalla
+    if [ -e /usr/bin/kdesktop_lock ]; then
+        : > /usr/bin/kdesktop_lock        
+    fi
+    if [ -e /opt/kde3/bin/kdesktop_lock ]; then
+        : > /opt/kde3/bin/kdesktop_lock        
+    fi
+
+    if [ -e /usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config ]; then
+        su -c "sh /usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config" $user
+    fi
+
 
     #Hack pels sudoers en live-cd
     echo "$user ALL=NOPASSWD:ALL" >> /etc/sudoers
@@ -892,11 +937,7 @@ else
     echo "alias su='sudo su'" >> /etc/bash.bashrc
     echo "alias su='sudo su'" >> /etc/profile
 
-    touch /var/kademar/live-USB  #and make a mark to only start services next time you boot as  live USB
-#DEPRECATED, now on /etc/X11/Xsession.d   
-#   if [ -e /usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config ]; then
-#       . /usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config
-#   fi
+	touch /etc/kademar/live-USB  #and make a mark to only start services next time you boot as  live USB
 fi
 
 

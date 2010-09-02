@@ -7,7 +7,7 @@ Standards-Version: 3.7.3
 Homepage: http://www.kademar.org
 
 Package: kademar-base
-Architecture: any
+Architecture: all
 Depends: modconf, libfuse2, fuse-utils, os-prober, hal, console-setup, ash, sudo, dialog, e2fsprogs, 
 Description: Basic Metapackage for all kademar distributions
  Contains .

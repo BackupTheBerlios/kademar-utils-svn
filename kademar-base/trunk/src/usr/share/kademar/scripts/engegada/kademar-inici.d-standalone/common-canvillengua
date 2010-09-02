@@ -11,7 +11,7 @@
 
 #TODO: fer que mogui els directoris del vell al nou
 
-# /home/kademar/.kde/share/config/kdeglobals
+# /home/kademar/.kde3/share/config/kdeglobals
 # /etc/kde3/kdm/kdmrc
 # /home/kademar/.audacity-data/audacity.cfg
 
@@ -35,45 +35,39 @@ fi
 
 
 fitxers_de_sistema='etc/kde3/kdm/kdmrc'
-fitxers_de_home='.kde/share/config/kdeglobals .audacity-data/audacity.cfg .giFT/giftd.conf .aMule/amule.conf .amsn/config.xml'
+fitxers_de_home='.kde3/share/config/kdeglobals .audacity-data/audacity.cfg .aMule/amule.conf .kde/share/config/kdeglobals'
 #fitxer=['/home/kademar/kdeglobals','/home/kademar/kdmrc','/home/kademar/.audacity-data/audacity.cfg']  # aquests han estat de prova
+
+desktop=`gettext -d xdg-user-dirs -s "Desktop"`
+documents=`gettext -d xdg-user-dirs -s "Documents"`
+pub=`gettext -d xdg-user-dirs -s "Public"`
+amule="$pub"
+#apollon="~/$pub"
 
 case "$LANG" in
 ca*)
     llengua_orig=ca
     llengua_kde="ca:es"
     pais=es
-    kdm_greet='Benvinguts a kademar'
-    apollon="~/Documents/Arxius Compartits"
-    amule="Documents/Arxius Compartits"
-    amsn="Documents/Arxius Rebuts Amsn"
-    documents="Documents"
-    desktop="Escriptori"
-    break
+    kdm_greet='Benvinguts a kademar GNU/Linux'
+#     apollon="~/Documents/Arxius Compartits"
+#     amsn="Documents/Arxius Rebuts Amsn"
 ;;
 es*)
 	llengua_orig=es
-	llengua_kde=es
+	llengua_kde="es"
 	pais=es
-	kdm_greet='Bienvenidos a kademar'
-	apollon="~/Documentos/Archivos Compartidos"
-	amule="Documentos/Archivos Compartidos"
-	amsn="Documentos/Archivos Recibidos Amsn"
-    documents="Documentos"
-    desktop="Escritorio"
-	break
+	kdm_greet='Bienvenidos a kademar GNU/Linux'
+# 	apollon="~/Documentos/Archivos Compartidos"
+# 	amsn="Documentos/Archivos Recibidos Amsn"
 ;;	
 en*|C|*)
 	llengua_orig=en
-	llengua_kde=en
+	llengua_kde="en_US"
 	pais=en
-	kdm_greet='Welcome to kademar'
-	apollon="~/Documents/Shared Files"
-	amule="Documents/Shared Files"
-	amsn="Documents/Amsn Received Files"
-    documents="Documents"
-    desktop="Desktop"
-	break	
+	kdm_greet='Welcome to kademar GNU/Linux'
+# 	apollon="~/Documents/Shared Files"
+# 	amsn="Documents/Amsn Received Files"
 ;;
 esac
 
@@ -110,7 +104,7 @@ if [ "$system" != "si" ]; then
 			for fitxer_a_modificar in $fitxers_de_home
 			do
 			
-				if [ "$fitxer_a_modificar" = ".kde/share/config/kdeglobals" ]; then
+				if [ "$fitxer_a_modificar" = ".kde3/share/config/kdeglobals" -o "$fitxer_a_modificar" = ".kde/share/config/kdeglobals" ]; then
 					llengua="$llengua_kde"
 				else
 					llengua="$llengua_orig"
@@ -132,7 +126,7 @@ if [ "$system" != "si" ]; then
 				[ -z "$find5" ] && find5="AkEsTaKadenaNOLaTrobarasMai"
 		
 		
-				cat $dirbase/home/$i/$fitxer_a_modificar  | sed s/"$find0"/"Language=$llengua"/g | sed s,"$find1","Country=$pais",g | sed s,"$find2","completed = $apollon",g | sed s,"$find3","root = $apollon",g | sed s,"$find4","IncomingDir=/home/$i/$amule",g | sed s,"$find5","<value>/home/$i/$amsn</value>",g > $dirbase/home/$i/$fitxer_a_modificar.tmp
+				cat $dirbase/home/$i/$fitxer_a_modificar  | sed s/"$find0"/"Language=$llengua"/g | sed s,"$find1","Country=$pais",g | sed s,"$find4","IncomingDir=/home/$i/$amule",g  > $dirbase/home/$i/$fitxer_a_modificar.tmp
 			
 				[ -s $dirbase/home/$i/$fitxer_a_modificar.tmp ] && rm -f $dirbase/home/$i/$fitxer_a_modificar && mv $dirbase/home/$i/$fitxer_a_modificar.tmp $dirbase/home/$i/$fitxer_a_modificar
 			else
@@ -153,7 +147,7 @@ if [ "$system" != "si" ]; then
 			for fitxer_a_modificar in $fitxers_de_home
 			do
 			
-			if [ "$fitxer_a_modificar" = ".kde/share/config/kdeglobals" ]; then
+			if [ "$fitxer_a_modificar" = ".kde3/share/config/kdeglobals" -o "$fitxer_a_modificar" = ".kde/share/config/kdeglobals" ]; then
 				llengua="$llengua_kde"
 			else
 				llengua="$llengua_orig"
@@ -174,7 +168,7 @@ if [ "$system" != "si" ]; then
 				[ -z "$find4" ] && find4="AkEsTaKadenaNOLaTrobarasMai"
 				[ -z "$find5" ] && find5="AkEsTaKadenaNOLaTrobarasMai"
 	
-				cat $dirbase/etc/skel/$fitxer_a_modificar  | sed s/"$find0"/"Language=$llengua"/g | sed s,"$find1","Country=$pais",g | sed s,"$find2","completed = $apollon",g | sed s,"$find3","root = $apollon",g | sed s,"$find4","IncomingDir=/home/$i/$amule",g | sed s,"$find5","<value>/home/$i/$amsn</value>",g > $dirbase/etc/skel/$fitxer_a_modificar.tmp
+				cat $dirbase/etc/skel/$fitxer_a_modificar  | sed s/"$find0"/"Language=$llengua"/g | sed s,"$find1","Country=$pais",g | sed s,"$find4","IncomingDir=/home/$i/$amule",g  > $dirbase/etc/skel/$fitxer_a_modificar.tmp
 			
 				[ -s $dirbase/etc/skel/$fitxer_a_modificar.tmp ] && rm -f $dirbase/etc/skel/$fitxer_a_modificar && mv $dirbase/etc/skel/$fitxer_a_modificar.tmp $dirbase/etc/skel/$fitxer_a_modificar
 			else
@@ -200,7 +194,7 @@ else
 	for i in $fitxers_de_sistema
 	do
 	
-		if [ "$fitxer_a_modificar" = ".kde/share/config/kdeglobals" ]; then
+		if [ "$fitxer_a_modificar" = ".kde3/share/config/kdeglobals" -o "$fitxer_a_modificar" = ".kde/share/config/kdeglobals" ]; then
 			llengua="$llengua_kde"
 		else
 			llengua="$llengua_orig"

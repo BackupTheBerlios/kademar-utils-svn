@@ -1,109 +1,97 @@
 #!/bin/bash
 #
-# Creat per Adonay Sanz per la kademar  -  Gener 2006
-#  Script per Crear la carpeta de Documents
+# Created by Adonay Sanz for kademar  -  Genuary 2006
+#  Script to Create Documents folder
+#
+# Modification 09-06-10: Icon part (combinated with xdg-user-dirs)
 #
 
 # mode to call it:
-# documents [name_of_user]   -  If you want a specified user
-# documents                  -  If you want all users
+# documents                  -  for your current user
 
 #Load language conf_file
 . /etc/default/locale
 
+#get translation from xdg-user-dirs
+docs=`gettext -d xdg-user-dirs -s "Documents"`
+desk=`gettext -d xdg-user-dirs -s "Desktop"`
+down=`gettext -d xdg-user-dirs -s "Downloads"`
+video=`gettext -d xdg-user-dirs -s "Videos"`
+audio=`gettext -d xdg-user-dirs -s "Music"`
+img=`gettext -d xdg-user-dirs -s "Pictures"`
+tmpl=`gettext -d xdg-user-dirs -s "Templates"`
+pub=`gettext -d xdg-user-dirs -s "Public"`
+
 case "$LANG" in
 ca*)
-	docs="Documents"
-	desk="Escriptori"
-	video="Vídeos"
-	audio="Música"
-	img="Imatges"
-	shared="Arxius Compartits"
-	amsn="Arxius Rebuts Amsn"
+# 		amsn="Arxius Rebuts Amsn"
 	sample=" de mostra"
 ;;
 en*)
-	docs="Documents"
-	desk="Desktop"
-	video="Videos"
-	audio="Music"
-	img="Images"
-	shared="Shared Files"
-	amsn="Amsn Received Files"
+
+# 		amsn="Amsn Received Files"
 	sample=" sample"
 ;;
 es*|*)
-	docs="Documentos"
-	desk="Escritorio"
-	video="Videos"
-	audio="Música"
-	img="Imágenes"
-	shared="Archivos Compartidos"
-	amsn="Archivos Recibidos Amsn"
+# 		amsn="Archivos Recibidos Amsn"
 	sample=" de muestra"
 ;;
 esac
 
-if [ -z "$1" ]; then
-	users_to_proceed=`ls /home --ignore=ANONYMOUS --ignore=Pc`
-else
-	users_to_proceed="$1"
+
+#Link Part
+# 	[ ! -e "$HOME/$desk/$docs" ] && ln -s -n "$HOME/$docs" "$HOME/$desk/$docs"
+
+# 	mkdir -p "$HOME/$down/$amsn/"
+
+#Icon Parts
+#Docs
+if [ ! -e "$HOME/$docs/.directory" -a -e "$HOME/$docs/" ]; then
+	echo "[Desktop Entry]
+Icon=/usr/share/icons/oxygen/256x256/places/folder-documents.png" > "$HOME/$docs/.directory"
 fi
-
-for user in $users_to_proceed
-do
-	#Directories
-	[ ! -e "/home/$user/$docs" ] && mkdir "/home/$user/$docs" && chown $user "/home/$user/$docs"
-	[ ! -e "/home/$user/$docs/$video" ] && mkdir "/home/$user/$docs/$video" && chown $user "/home/$user/$docs/$video"
-	[ ! -e "/home/$user/$docs/$audio" ] && mkdir "/home/$user/$docs/$audio" && chown $user "/home/$user/$docs/$audio"
-	[ ! -e "/home/$user/$docs/$img" ] && mkdir "/home/$user/$docs/$img" && chown $user "/home/$user/$docs/$img"
-	[ ! -e "/home/$user/$docs/$amsn" ] && mkdir "/home/$user/$docs/$amsn" && chown $user "/home/$user/$docs/$amsn"
-	[ ! -e "/home/$user/$docs/$shared" ] && mkdir "/home/$user/$docs/$shared" && chown $user "/home/$user/$docs/$shared"
-
-	#Link Part
-	[ ! -e "/home/$user/$desk/$docs" ] && ln -s -n "/home/$user/$docs" "/home/$user/$desk/$docs"
-
-	#Icon Parts
-	#Docs
-	if [ ! -e "/home/$user/$docs/.directory" ]; then
-		echo "[Desktop Entry]
-Icon=document" > "/home/$user/$docs/.directory"
-	fi
-	#Video
-	if [ ! -e "/home/$user/$docs/$video/.directory" ]; then
-		echo "[Desktop Entry]
-Icon=folder_video" > "/home/$user/$docs/$video/.directory"
-	fi
-	#Audio
-	if [ ! -e "/home/$user/$docs/$audio/.directory" ]; then
-		echo "[Desktop Entry]
-Icon=folder_sound" > "/home/$user/$docs/$audio/.directory"
-	fi
-	#Imatges
-	if [ ! -e "/home/$user/$docs/$img/.directory" ]; then
-		echo "[Desktop Entry]
-Icon=folder_image" > "/home/$user/$docs/$img/.directory"
-	fi
-	#Amsn
-	if [ ! -e "/home/$user/$docs/$amsn/.directory" ]; then
-		echo "[Desktop Entry]
-Icon=/usr/share/kademar/icons/amsn_folder.png" > "/home/$user/$docs/$amsn/.directory"
-	fi
-	#Amule - Apollon
-	if [ ! -e "/home/$user/$docs/$shared/.directory" ]; then
-		echo "[Desktop Entry]
-Icon=/usr/share/kademar/icons/shared_folder.png" > "/home/$user/$docs/$shared/.directory"
-	fi
-
+#Downloads
+if [ ! -e "$HOME/$down/.directory" -a -e "$HOME/$down/" ]; then
+	echo "[Desktop Entry]
+Icon=/usr/share/icons/oxygen/256x256/places/folder-downloads.png" > "$HOME/$down/.directory"
+fi
+#Video
+if [ ! -e "$HOME/$video/.directory" -a -e "$HOME/$video/" ]; then
+	echo "[Desktop Entry]
+Icon=/usr/share/icons/oxygen/256x256/places/folder-video.png" > "$HOME/$video/.directory"
+fi
+#Audio
+if [ ! -e "$HOME/$audio/.directory" -a -e "$HOME/$audio/" ]; then
+	echo "[Desktop Entry]
+Icon=/usr/share/icons/oxygen/256x256/places/folder-sound.png" > "$HOME/$audio/.directory"
+fi
+#Images
+if [ ! -e "$HOME/$img/.directory" -a -e "$HOME/$img/" ]; then
+	echo "[Desktop Entry]
+Icon=/usr/share/icons/oxygen/256x256/places/folder-image.png" > "$HOME/$img/.directory"
+fi
+#Public (Amule - Apollon)
+if [ ! -e "$HOME/$pub/.directory" -a -e "$HOME/$pub/" ]; then
+	echo "[Desktop Entry]
+Icon=/usr/share/icons/oxygen/256x256/places/folder-remote.png" > "$HOME/$pub/.directory"
+fi
+#Amsn
+# 	if [ ! -e "$HOME/$shared/$amsn/.directory" -a -e "$HOME/$shared/$amsn/" ]; then
+# 		echo "[Desktop Entry]
+# Icon=/usr/share/icons/oxygen/256x256/places//usr/share/kademar/icons/amsn_folder.png" > "$HOME/$shared/$amsn/.directory"
+# 	fi
+#Templates
+if [ ! -e "$HOME/$tmpl/.directory" -a -e "$HOME/$tmpl/" ]; then
+	echo "[Desktop Entry]
+Icon=/usr/share/icons/oxygen/256x256/places/folder-html.png" > "$HOME/$tmpl/.directory"
+fi
 #Carpeta de samples si existeixen i no exiteix el link que volem crear
-[ -e /usr/share/kademar/media_sample/sound ] && [ ! -e "/home/$user/$docs/$audio/$audio$sample" ] && ln -s /usr/share/kademar/media_sample/sound "/home/$user/$docs/$audio/$audio$sample"
-[ -e /usr/share/kademar/media_sample/video ] && [ ! -e "/home/$user/$docs/$video/$video$sample" ] && ln -s /usr/share/kademar/media_sample/video "/home/$user/$docs/$video/$video$sample"
+[ -e /usr/share/kademar/media_sample/sound ] && [ ! -e "$HOME/$audio/$audio$sample" ] && ln -s /usr/share/kademar/media_sample/sound "$HOME/$audio/$audio$sample"
+[ -e /usr/share/kademar/media_sample/video ] && [ ! -e "$HOME/$video/$video$sample" ] && ln -s /usr/share/kademar/media_sample/video "$HOME/$video/$video$sample"
 
 #Si existeix media_sample/wallpapers  es una copia (per no tenir els  .desktop pel mig)
 if [ -e /usr/share/kademar/media_sample/wallpapers ]; then
-	[ ! -e "/home/$user/$docs/$img/$img$sample" ] && ln -s /usr/share/kademar/media_sample/wallpapers "/home/$user/$docs/$img/$img$sample"
+	[ ! -e "$HOME/$img/$img$sample" ] && ln -s /usr/share/kademar/media_sample/wallpapers "$HOME/$img/$img$sample"
 else
-	[ -e /usr/share/wallpapers ] && [ ! -e "/home/$user/$docs/$img/$img$sample" ] && ln -s /usr/share/wallpapers "/home/$user/$docs/$img/$img$sample"
+	[ -e /usr/share/wallpapers ] && [ ! -e "$HOME/$img/$img$sample" ] && ln -s /usr/share/wallpapers "$HOME/$img/$img$sample"
 fi
-
-done

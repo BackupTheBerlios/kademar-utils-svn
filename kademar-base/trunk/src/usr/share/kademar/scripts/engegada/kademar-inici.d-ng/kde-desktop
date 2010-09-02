@@ -15,7 +15,7 @@ Encoding=UTF-8
 Exec=sudo /usr/share/kademar/scripts/engega_instalador
 Icon=/usr/share/kademar/icons/kpackage.png
 Name=Install kademar on Hard Drive
-Name[ca]=Instal·la al disc dur
+Name[ca]=InstalÂ·la al disc dur
 Name[es]=Instalar al disco duro
 Name[en]=Install on Hard Drive
 StartupNotify=true
@@ -30,7 +30,7 @@ Encoding=UTF-8
 Exec=sudo /usr/share/kademar/scripts/engega_instalador_nano
 Icon=/usr/share/kademar/icons/pendrive.png
 Name=Install to Pendrive
-Name[ca]=Instal·la al Pendrive
+Name[ca]=InstalÂ·la al Pendrive
 Name[es]=Instalar al Pendrive
 Name[en]=Install to Pendrive
 StartupNotify=true
@@ -96,34 +96,68 @@ if [ "$trobat" = "no" ]; then
 		sh /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/common-canvillengua $user
 
 		case "$LANG" in ca*)
-			crea_kademar_links /home/$user/Escriptori _ca /home/$user/.kde/Autoengega
-#			crea_numlock /home/$user/.kde/Autoengega
+			crea_kademar_links /home/$user/Escriptori _ca /home/$user/.kde3/Autoengega
+#			crea_numlock /home/$user/.kde3/Autoengega
 			#Links al Pc
-			ln -s -n /Pc /home/$user/Escriptori/Pc 
-			ln -s -n /Pc /home/$user/Pc
+			#ln -s -n /Pc /home/$user/Escriptori/Pc 
+			#ln -s -n /Pc /home/$user/Pc
 			#Link al Desktop
-			ln -s /home/$user/$desktop /home/$user/Desktop
+			#ln -s /home/$user/$desktop /home/$user/Desktop
 		;;
 		es*)
-			crea_kademar_links /home/$user/Escritorio _es /home/$user/.kde/Autoarranque
-#			crea_numlock /home/$user/.kde/Autoarranque
+			crea_kademar_links /home/$user/Escritorio _es /home/$user/.kde3/Autoarranque
+#			crea_numlock /home/$user/.kde3/Autoarranque
 			#Links al Pc
-			ln -s -n /Pc /home/$user/Escritorio/Pc 
-			ln -s -n /Pc /home/$user/Pc
+			#ln -s -n /Pc /home/$user/Escritorio/Pc 
+			#ln -s -n /Pc /home/$user/Pc
 			#Link al Desktop
-			ln -s /home/$user/$desktop /home/$user/Desktop
+			#ln -s /home/$user/$desktop /home/$user/Desktop
 		;;
 		en*|*)
-			crea_kademar_links /home/$user/Desktop _en /home/$user/.kde/Autostart
-#			crea_numlock /home/$user/.kde/Autostart
+			crea_kademar_links /home/$user/Desktop _en /home/$user/.kde3/Autostart
+#			crea_numlock /home/$user/.kde3/Autostart
 			#Links al Pc
-			ln -s -n /Pc /home/$user/Desktop/Pc 
-			ln -s -n /Pc /home/$user/Pc
+			#ln -s -n /Pc /home/$user/Desktop/Pc 
+			#ln -s -n /Pc /home/$user/Pc
 		;;
 		esac
 		
+		#Desactivate nepomuk
+		#KDE3
+		echo "[Basic Settings]
+Start Nepomuk=false
+
+[Service-nepomukmigration1]
+autostart=false
+
+[Service-nepomukstrigiservice]
+autostart=true" > /home/$user/.kde3/share/config/nepomukserverrc
+
+#disable strigi indexation on livecd
+		#KDE4
+		echo "[Basic Settings]
+Start Nepomuk=false
+
+[Service-nepomukmigration1]
+autostart=false
+
+[Service-nepomukstrigiservice]
+autostart=true" > /home/$user/.kde/share/config/nepomukserverrc
+	
+
+#disable free space notifier on  LIVECD
+		echo "[General]
+enableNotification=false
+	
+" > /home/$user/.kde/share/config/freespacenotifierrc
+		
+		echo "[Module-freespacenotifier]
+autoload=false" >> /home/$user/.kde/share/config/kdedrc
+
 		#Crea directori de documents
-		sh /usr/share/kademar/scripts/documents $user
+		#xdg-user-dirs-update
+		#sh /usr/share/kademar/scripts/documents $user
+		chmod 777 /home/$user/$desktop/*.desktop
 	
 	fi
 fi

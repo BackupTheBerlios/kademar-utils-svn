@@ -167,7 +167,7 @@ if [ "$trobat" = "no" ]; then
 		esac
 		
 		#Crea directori de documents
-		sh /usr/share/kademar/scripts/documents $user
+# 		sh /usr/share/kademar/scripts/documents $user
 	
 	fi
 fi

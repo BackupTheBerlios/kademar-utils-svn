@@ -1,6 +1,6 @@
 #!/bin/bash
 set -x
-# /home/kademar/.kde/share/config/kdeglobals
+# /home/kademar/.kde3/share/config/kdeglobals
 
 # comproba si s'ha passat un parametre de directori base i, si no, posa el arrel
 if [ -z "$1" ]; then
@@ -11,7 +11,7 @@ fi
 
 . /etc/default/locale
 
-fitxer='/.kde/share/config/kdeglobals'
+fitxer='/.kde3/share/config/kdeglobals'
 
 case "$LANG" in
 ca*)

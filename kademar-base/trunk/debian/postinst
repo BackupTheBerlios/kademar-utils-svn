@@ -52,19 +52,24 @@ if [ "$1" = "configure" ]; then
 	done
 	
 	#Use kademar initng scripts if this it's installed - deprecated?
-	if [ -e /etc/initng/default.runlevel ]; then
-		if [ -z "`grep kademar /etc/initng/default.runlevel`" ]; then
-			echo "/etc/initng/system/kademar-inici.i" >> /etc/initng/default.runlevel
-			echo "/etc/initng/system/kademar-mounter.i" >> /etc/initng/default.runlevel
-		fi
-	fi
+# 	if [ -e /etc/initng/default.runlevel ]; then
+# 		if [ -z "`grep kademar /etc/initng/default.runlevel`" ]; then
+# 			echo "/etc/initng/system/kademar-inici.i" >> /etc/initng/default.runlevel
+# 			echo "/etc/initng/system/kademar-mounter.i" >> /etc/initng/default.runlevel
+# 		fi
+# 	fi
 	
 	#Check integrity of GLX
 	if [ -L "/usr/lib/xorg/modules/extensions/libglx.so" -o ! -e  "/usr/lib/xorg/modules/extensions/libglx.so" ]; then
-		echo "/usr/lib/xorg/modules/extensions/libglx.so  IS a Link. Check  xserver-xorg-core package if you don't want this way."
+		echo " *"
+		echo " * /usr/lib/xorg/modules/extensions/libglx.so  IS a Link. Check  xserver-xorg-core package if you don't want this way."
+		echo " *"
 	fi
 	if [ ! -e "/usr/lib/libGL.so.1.2"  ]; then
-		echo "/usr/lib/libGL.so.1.2 does NOT exists. Check or reinstall  libgl1-mesa-glx package if you don't want this way."
+		echo " *"
+		echo " * /usr/lib/libGL.so.1.2 does NOT exists. Check or reinstall  libgl1-mesa-glx package if you don't want this way."
+		echo " *"
+
 	fi
 	if [ "`readlink /usr/lib/libGL.so.1`" != "/usr/lib/libGL.so.1.2" -o "`readlink /usr/lib/libGL.so`" != "/usr/lib/libGL.so.1" ]; then
 		echo " *"
@@ -87,16 +92,6 @@ if [ "$1" = "configure" ]; then
 	
 	#Si està en chroot, vol dir que estem preparan el live-cd, doncs crea l'enllaç a la X-Session
 	if chrooted; then
-			for i in 0 1 6
-		do
-			[ ! -e /etc/rc$i.d/K99kademar-livecd-xsession ] && ln -s ../init.d/kademar-livecd-xsession /etc/rc$i.d/K99kademar-livecd-xsession
-		done
-		for i in 2 3 4 5
-		do
-			[ ! -e /etc/rc$i.d/S98kademar_arranc_live-cd ] && ln -s /usr/share/kademar/scripts/engegada/kademar-inici_second-stage /etc/rc$i.d/S98kademar_arranc_live-cd
-			[ ! -e /etc/rc$i.d/S99kademar-livecd-xsession ] && ln -s ../init.d/kademar-livecd-xsession /etc/rc$i.d/S99kademar-livecd-xsession
-		done
-		
 		#Prepare Instalador-dialog
 		[ ! -e /usr/local/bin/instalador-dialog ] && ln -s /usr/share/kademar/utils/instalador-dialog/instalador.sh /usr/local/bin/instalador-dialog
 
@@ -156,6 +151,9 @@ if [ "$1" = "configure" ]; then
     dpkg-divert --package kademar-base --add --divert /etc/bash.bashrc.orig --rename /etc/bash.bashrc
     [ ! -e /etc/bash.bashrc ] && ln -s /etc/bash.bashrc.kademar /etc/bash.bashrc
 
+    dpkg-divert --package kademar-base --add --divert /etc/rc.local.orig --rename /etc/rc.local
+    [ ! -e /etc/rc.local ] && ln -s /etc/rc.local.kademar /etc/rc.local
+
 	#Networking WIFI desktop support
 # 	dpkg-divert --package kademar-base --add --divert /sbin/ifup.real --rename /sbin/ifup
 # 	[ ! -e /sbin/ifup ] && ln -s /sbin/ifup.kademar /sbin/ifup
@@ -173,20 +171,25 @@ if [ "$1" = "configure" ]; then
     [ ! -e /etc/timezone ] && echo "Europe/Madrid" > /etc/timezone
 
 	#Check kademar base GPG keys
-	[ -z "`apt-key list 2>/dev/null | grep D0596269`" ] && gpg_keys
+    [ -z "`apt-key list 2>/dev/null | grep D0596269`" ] && gpg_keys
 
-	#Check updated kernel headers
-	if [ ! -e /usr/src/linux -a -n "`ls /usr/src/linux-headers* 2>/dev/null`" ]; then
-		rm -f /usr/src/linux 2>/dev/null
-		for i in `ls -1 /usr/src/ | grep -i linux-headers | sort -r`; do  ln -s $i /usr/src/linux && echo "Updated Kernel to $i" && break ; done
-	fi
+    #Check updated kernel headers
+    if [ ! -e /usr/src/linux -a -n "`ls /usr/src/linux-headers* 2>/dev/null`" ]; then
+        rm -f /usr/src/linux 2>/dev/null
+        for i in `ls -1 /usr/src/ | grep -i linux-headers | sort -r`; do  ln -s $i /usr/src/linux && echo "Updated Kernel to $i" && break ; done
+    fi
+
+#     for i in `ls /lib/modules | sed s./lib/modules..g`
+#     do
+#         [ ! -e /lib/modules/$i/modules.pcimap ] && depmod -a -m -F /boot/System.map-$i $i
+#     done
 
 
     #Remove Openoffice cache DB
     [ -e /var/spool/openoffice/uno_packages/cache/uno_packages.db ] && rm -f /var/spool/openoffice/uno_packages/cache/uno_packages.db
     [ -e  /var/spool/openoffice/uno_packages/cache/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend/registered_packages.db ] && rm -f /var/spool/openoffice/uno_packages/cache/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend/registered_packages.db
 
-    [ ! -e /usr/kademar ] && ln -s share/kademar /usr/kademar  #DEPRECATED
+#     [ ! -e /usr/kademar ] && ln -s share/kademar /usr/kademar  #DEPRECATED
 
 	exit 0
 

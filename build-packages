@@ -15,8 +15,6 @@ read folder
 
 if [ -n "$folder" ]; then
     mkdir -p "$folder"
-    for i in $list
-    do
-        cp $i/*.deb "$folder"
-    done
 fi
+
+mv */*.deb "$folder"

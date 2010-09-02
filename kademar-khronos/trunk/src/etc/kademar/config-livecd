@@ -4,14 +4,14 @@
 kademar_type="Khronos"
 
 #Image to use by Installer, to fill kdmrc config file
-kdm_image="/usr/share/wallpapers/kademar.jpg"
+kdm_image="/usr/share/wallpapers/kademar.png"
 
 #background to use on xsession live-cd start (not desktop wallpaper)
 #  MUST BE A  PNG  FILE
 #for normal monitor
-xsession_background="/usr/share/wallpapers/kademar48.png"
+xsession_background="/usr/share/wallpapers/kademar.png"
 #for panoramic monitor
-xsession_background_panoramic="/usr/share/wallpapers/kademar48panoramic.png"
+xsession_background_panoramic="/usr/share/wallpapers/kademar-panoramic.png"
 
 
 #Minimum Desktop

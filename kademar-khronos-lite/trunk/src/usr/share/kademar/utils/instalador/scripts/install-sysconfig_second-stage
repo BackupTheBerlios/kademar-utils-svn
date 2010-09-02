@@ -14,7 +14,7 @@
 
 
 #Carreguem algunes variables des del fitxer general live-cd
-[ -e /usr/share/kademar/config-livecd ] && . /usr/share/kademar/config-livecd
+[ -e /etc/kademar/config-livecd ] && . /etc/kademar/config-livecd
 
 fitxer_serveis_en_rcS="/usr/share/kademar/utils/instalador/scripts/scripts-lyra/install-sysconfig_serveis_en_rcS"
 fitxer_serveis_en_rc1="/usr/share/kademar/utils/instalador/scripts/scripts-lyra/install-sysconfig_serveis_en_rc1_single"
@@ -145,9 +145,9 @@ user_pref(\"network.protocol-handler.app.klik\", \"~/.klik\"); >> ' >> "$DESTI/e
 
 
 #substitution of all wallpapers from configurated monitor (panoramic/normal)
-[ -e "$DESTI/var/kademar/monitor" ] && . "$DESTI/var/kademar/monitor"
+[ -e "$DESTI/etc/kademar/monitor" ] && . "$DESTI/etc/kademar/monitor"
 [ -z "$monitor" ] && monitor=normal
-[ -e /usr/share/kademar/config-livecd ] && . /usr/share/kademar/config-livecd
+[ -e /etc/kademar/config-livecd ] && . /etc/kademar/config-livecd
 
 
 if [ "$monitor" = panoramic ]; then

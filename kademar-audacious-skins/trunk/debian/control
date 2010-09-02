@@ -8,6 +8,6 @@ Homepage: http://www.kademar.org
 
 Package: kademar-audacious-skins
 Architecture: all
-Depends: audacious
+Depends: audacious|audacious2
 Description: Audacious kademar Skins
  Selection of Skins by kademar

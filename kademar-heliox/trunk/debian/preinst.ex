@@ -1,5 +1,5 @@
 #!/bin/sh
-# preinst script for kademar-csic
+# preinst script for kademar-heliox
 #
 # see: dh_installdeb(1)
 

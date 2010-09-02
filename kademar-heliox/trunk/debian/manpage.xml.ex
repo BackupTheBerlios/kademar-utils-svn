@@ -56,9 +56,9 @@ man(1), man(7), http://www.tldp.org/HOWTO/Man-Page/
   <!ENTITY dhsection   "SECTION">
   <!-- TITLE should be something like "User commands" or similar (see
        http://www.tldp.org/HOWTO/Man-Page/q2.html). -->
-  <!ENTITY dhtitle     "kademar-csic User Manual">
+  <!ENTITY dhtitle     "kademar-heliox User Manual">
   <!ENTITY dhucpackage "KADEMAR-CSIC">
-  <!ENTITY dhpackage   "kademar-csic">
+  <!ENTITY dhpackage   "kademar-heliox">
 ]>
 
 <refentry>

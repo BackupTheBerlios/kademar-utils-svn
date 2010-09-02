@@ -27,7 +27,7 @@ manpage.1: manpage.sgml
   <!ENTITY dhemail     "<email>adonay@kademar.org</email>">
   <!ENTITY dhusername  "Adonay">
   <!ENTITY dhucpackage "<refentrytitle>KADEMAR-CSIC</refentrytitle>">
-  <!ENTITY dhpackage   "kademar-csic">
+  <!ENTITY dhpackage   "kademar-heliox">
 
   <!ENTITY debian      "<productname>Debian</productname>">
   <!ENTITY gnu         "<acronym>GNU</acronym>">

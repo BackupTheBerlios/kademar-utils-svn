@@ -1,7 +1,7 @@
 #Configuration file for kademar Installed. General use
 
 #Kind (default: lyra)
-kademar_type="Leo"
+kademar_type="heliox"
 
 #Xserver:  Xorg / Xfree86 (default: xorg)
 xserver="xorg"

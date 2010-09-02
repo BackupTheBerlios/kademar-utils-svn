@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+  <title>kademar GNU/Linux: Equip</title>
+  <meta http-equiv="Content-Type" content="text/html; ">
+</head>
+<body background="/usr/share/kademar/utils/kademarcenter/img/bg/bg_principal.png" behavior="fixed" style="background-attachment: fixed; background-repeat: no-repeat;"><STYLE TYPE="text/css">
+<!--
+     BODY {font-family:Helvetica,Arial,sans-serif;color:black}
+     A:link {text-decoration:none;font-weight:bold;color:black}
+     A:visited {text-decoration:none;font-weight:bold}
+     A:hover   {text-decoration:none; font-weight:bold}
+     A:active {text-decoration:none;font-weight:bold}
+     H2   {font-family:Avantgarde,Helvetica,Arial,sans-serif}
+  -->
+</STYLE>
+
+<h3><p align="center">Equip Heliox</p></h3>
+
+
+<h3><p align="center">Idea</p></h3>
+<hr />
+<table style="padding: 5px; margin: 2%;" cellspacing="13">
+	<tbody>
+		<tr><td>
+			<img src="images/author.png" alt="pixmap" style="margin: 5px;" align="center" />
+		</td><td>
+			<p><strong>Roberto Feltero ~ (UNED)</strong></p>
+
+		</td></tr>
+		<tr><td>
+			<img src="images/author.png" alt="pixmap" style="margin: 5px;" align="center" />
+		</td><td>
+			<p><strong>Mario Toboso ~ (CSIC)</strong></p>
+
+		</td></tr>
+	</tbody>
+</table>
+
+
+<h3><p align="center">Desarrollo</p></h3>
+<hr />
+<table style="padding: 5px; margin: 2%;" cellspacing="13">
+	<tbody>
+		<tr><td>
+			<img src="images/author.png" alt="pixmap" style="margin: 5px;" align="center" />
+		</td><td>
+			<p><strong>Adonay Sanz Alsina ~ (kademar.org)</strong></p>
+
+		</td></tr>
+		<tr><td>
+			<img src="images/team.png" alt="pixmap" style="margin: 5px;" align="center" />
+		</td><td>
+			<p><strong>Isabel Bernal ~ (Universidad de Sevilla)</strong></p>
+		</td></tr>
+		<tr><td>
+			<img src="images/team.png" alt="pixmap" style="margin: 5px;" align="center" />
+		</td><td>
+			<p><strong>Marco Antonio Romero Garcia ~ (kademar.org)</strong></p>
+		</td></tr>
+
+		<tr><td>
+			<img src="images/team.png" alt="pixmap" style="margin: 5px;" align="center" />
+		</td><td>
+			<p><strong>Isaac Ruiz S&aacute;ez ~ (kademar.org)</strong></p>
+		</td></tr>
+	</tbody>
+</table>
+
+<p>Amb el recolzament del Projecta Intramural Especial (CSIC) "Discapacitat, envelliment i qualitat de vida"</p>
+
+
+
+</body>
+</html>

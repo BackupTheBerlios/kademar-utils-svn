@@ -1,5 +1,5 @@
 #!/bin/sh
-# postinst script for kademar-csic
+# postinst script for kademar-heliox
 #
 # see: dh_installdeb(1)
 

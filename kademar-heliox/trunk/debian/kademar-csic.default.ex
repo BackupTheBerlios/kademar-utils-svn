@@ -1,6 +1,6 @@
-# Defaults for kademar-csic initscript
-# sourced by /etc/init.d/kademar-csic
-# installed at /etc/default/kademar-csic by the maintainer scripts
+# Defaults for kademar-heliox initscript
+# sourced by /etc/init.d/kademar-heliox
+# installed at /etc/default/kademar-heliox by the maintainer scripts
 
 #
 # This is a POSIX shell fragment

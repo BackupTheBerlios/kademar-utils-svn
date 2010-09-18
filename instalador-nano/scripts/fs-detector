@@ -9,7 +9,7 @@
 # Script que informa dels discs i / o particions d'aquests - Detectador de particions
 
 # MODE TO CALL IT
-#  fs-detector [1 or 0] [path to /mnt] [path to /sys/block/  (NECESSÀRIA LA ULTIMA BARRA)]
+#  fs-detector [1 or 0] [path to /mnt] [path to /sys/block/  (NECESSÃ€RIA LA ULTIMA BARRA)]
 
 
 #########################
@@ -22,11 +22,11 @@ dispositius_trobats=""
 
 # echo "${YELLOW}Detecting Filesystems${NORMAL}"
 
-#Definició inicial de variables
+#DefiniciÃ³ inicial de variables
 
 sys_block_path="/sys/block/"
 
-#segon parametre passat = ruta al /sys/block/  (NECESSÀRIA LA ULTIMA BARRA)
+#segon parametre passat = ruta al /sys/block/  (NECESSÃ€RIA LA ULTIMA BARRA)
 if [ -n "$3" ]; then
 	sys_block_path="$2"
 else
@@ -39,7 +39,7 @@ fi
 
 
 ###########################
-# DETECCIÓ DE PARTICIONS  # PARÀMETRE 1 o PARAMETRE  [disc dur]  i retorna les particions
+# DETECCIÃ“ DE PARTICIONS  # PARÃ€METRE 1 o PARAMETRE  [disc dur]  i retorna les particions
 ###########################
 if [ "$1" != "0" ]; then
 	hd=$1
@@ -77,26 +77,26 @@ if [ "$1" != "0" ]; then
 	# 				es_removable="yes"
 	# 			fi
 				
-				#Si no hi ha cap partició i es removable, i fem que la $i sigui "" per quan fa la comparació de tamany que no falli
+				#Si no hi ha cap particiÃ³ i es removable, i fem que la $i sigui "" per quan fa la comparaciÃ³ de tamany que no falli
 				[ -z "$disc_durs" -a "$es_removable" = "yes" ] && disc_durs=$i && i=""
 				#Si no ha trobat cap disc dur que no falli
 				for hd in $disc_durs
 				do
-				#Si no és 0 (vol dir k n'ha trobat)
+				#Si no Ã©s 0 (vol dir k n'ha trobat)
 				if [ -n "$hd" ]; then
 					#afegim el dispositiu trobat a la llista
 					dispositius_trobats="$dispositius_trobats $hd"
 					#Si no esta al fstab, s'afegeix
 					# 	cat $hd/size  #DEBUG
 					#  	echo $hd  #DEBUG
-						#  Si el size es més petit de 100, vol dir que és una partició lògica; per tan no l'incluïm
-						# Així que: solament passa qui te el tamany mes gran de 100 o qui es removable
+						#  Si el size es mÃ©s petit de 100, vol dir que Ã©s una particiÃ³ lÃ²gica; per tan no l'incluÃ¯m
+						# AixÃ­ que: solament passa qui te el tamany mes gran de 100 o qui es removable
 						if [ `cat $sys_block_path$i/$hd/size` -gt 100 -o "$es_removable" = "yes" ]; then
 		# 				echo $hd  #DEBUG
 		# 				Tamany: de blocks a mb
 						size=$((`cat $sys_block_path$i/$hd/size` / 1000))
 						size=$(($size / 2))
-		# 				Apliquem una correcció d'un  0,24,pero solament admet nombres enters
+		# 				Apliquem una correcciÃ³ d'un  0,24,pero solament admet nombres enters
 						size=$(($size * 1024))
 						size=$(($size / 1000))
 						#El fs actual
@@ -116,7 +116,7 @@ if [ "$1" != "0" ]; then
 									[ -z "`grep /tmp/muntatge_temporal /proc/mounts`" ] && rm -fr /tmp/muntatge_temporal
 								fi
 				########################
-				# Les SWAP entren aquí #
+				# Les SWAP entren aquÃ­ #
 				########################
 								#Si es una swap, muntal com una swap
 								if [ $fs = "swap" ]; then
@@ -131,7 +131,7 @@ if [ "$1" != "0" ]; then
 							# Si es removable i tens submount monta'l amb submount, sino, normal
 							else
 				############################################
-				# Els EXTRAÏBLES normals (pen drives, etc) #
+				# Els EXTRAÃBLES normals (pen drives, etc) #
 				############################################
 							#Si la en /sys/block/$hd/device/bus/drivers hi ha algo k diu "cdrom" el tractarem com un cdrom, sino, no
 								if [ -z "`ls /sys/block/$hd/device/bus/drivers 2>/dev/null | grep -i cdrom`" ]; then
@@ -143,7 +143,7 @@ if [ "$1" != "0" ]; then
 									echo -n "$hd-$fs-$size "
 								else
 				#########################
-				# Els CDROM entren aquí #
+				# Els CDROM entren aquÃ­ #
 				#########################
 									continue
 								fi
@@ -157,7 +157,7 @@ if [ "$1" != "0" ]; then
 			#Floppy Zone
 			fd*)
 		############################
-		# Els DISQUETS entren aquí #
+		# Els DISQUETS entren aquÃ­ #
 		############################
 			continue
 			;;
@@ -171,7 +171,7 @@ if [ "$1" != "0" ]; then
 fi
 
 ##########################
-# DETECCIÓ DE DISCS DURS #  PARÀMETRE 0
+# DETECCIÃ“ DE DISCS DURS #  PARÃ€METRE 0
 ##########################
 if [ "$1" = "0" ]; then
 for i in `ls $sys_block_path | sed 's/\/sys\/block\///g'`
@@ -197,7 +197,7 @@ for i in `ls $sys_block_path | sed 's/\/sys\/block\///g'`
 			if  [ "$es_removable" = "yes" ]; then
 				size=$((`cat $sys_block_path$i/size` / 1000))
 				size=$(($size / 2))
-		# 				Apliquem una correcció d'un  0,24,pero solament admet nombres enters
+		# 				Apliquem una correcciÃ³ d'un  0,24,pero solament admet nombres enters
 				size=$(($size * 1024))
 				size=$(($size / 1000))
 				echo "$i-$size"
@@ -205,7 +205,7 @@ for i in `ls $sys_block_path | sed 's/\/sys\/block\///g'`
 # 				if [ -z "`ls $sys_block_path$i/device/bus/drivers 2>/dev/null | grep -i cdrom`" ]; then
 # 				size=$(expr `cat $sys_block_path$i/size` \/ 1000)
 # 				size=$(expr $size \/ 2)
-# 		# 				Apliquem una correcció d'un  0,24,pero solament admet nombres enters
+# 		# 				Apliquem una correcciÃ³ d'un  0,24,pero solament admet nombres enters
 # 				size=$(expr $size \* 1024)
 # 				size=$(expr $size \/ 1000)
 # 				echo "$i-$size"

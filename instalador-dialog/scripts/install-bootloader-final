@@ -25,7 +25,7 @@
 #Si no n'hem assignat cap, assignem el per defecte en la kademar 4.0
 # [ -z "$DESTI" -o "$DESTI" = "0" ] && DESTI="/instalador/desti"
 
-#Versió del Kernel
+#VersiÃ³ del Kernel
 # kernel="`uname -r`"
 
 #Borrem una possible carpeta grub anterior, i la tornem a crear
@@ -34,7 +34,7 @@
 
 #Copiem propiament el grub en la seva carpeta
 # cp $DESTI/lib/grub/i386-pc/* $DESTI/boot/grub/ 
-#Borrem l'arxiu de configuració del grub en cas de que existeixi
+#Borrem l'arxiu de configuraciÃ³ del grub en cas de que existeixi
 # [ -e $DESTI/boot/grub/menu.lst ] && rm -f $DESTI/boot/grub/menu.lst
 # [ -e $DESTI/boot/grub/device.map ] && rm -f $DESTI/boot/grub/device.map
 
@@ -74,7 +74,7 @@
 
 #echo "${BLUE}Boot parms: ${GREEN}$DEF_BOOTPARMS${NORMAL}"
 
-#Borrem l'entrada genèrica del mtab
+#Borrem l'entrada genÃ¨rica del mtab
 rm -f $DESTI/etc/mtab
 #Restaurem l'entrada original del mtab
 ln -s /proc/mounts $DESTI/etc/mtab

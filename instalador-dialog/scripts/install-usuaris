@@ -5,8 +5,8 @@
 #         -------------------------             #
 #    Preparat per la kademar 4.0 - 3 Nov 2005   #
 #    Llicenciat Sota GNU/GPL 2.0 o Superiors    #
-#    Modificat - 24 Març 2008			        #
-#    Modificat kademar5   -  24 Març 2008	    #
+#    Modificat - 24 MarÃ§ 2008			        #
+#    Modificat kademar5   -  24 MarÃ§ 2008	    #
 #    Modificat kademar4.6 (5) -  13 Juliol 2008  #
 #################################################
 
@@ -14,7 +14,7 @@
 
 default_user="kademar"
 
-#Copiem el home modificat, i el substituïm pel que hi hagi al  skel
+#Copiem el home modificat, i el substituÃ¯m pel que hi hagi al  skel
 rm -fr "$DESTI/etc/skel"
 mkdir -p "$DESTI/etc/skel"
 cp -a /mnt/live/memory/images/kademar.lzm/home/kademar/* "$DESTI/etc/skel"
@@ -26,7 +26,7 @@ cp -a /mnt/live/memory/images/kademar.lzm/home/kademar/* "$DESTI/root"
 cp -a /mnt/live/memory/images/kademar.lzm/home/kademar/.??* "$DESTI/root"
 
 
-#Borrem l'usuari kademar si encara resideix en el pc, i si no n'existeix cap més
+#Borrem l'usuari kademar si encara resideix en el pc, i si no n'existeix cap mÃ©s
 if [ "$default_user" != "$login" ]; then
 	echo "els usuaris son diferents _"$default_user"_  _"$login"_ "
 	chroot "$DESTI" deluser "$default_user"
@@ -43,10 +43,10 @@ rm -fr $DESTI/etc/shadow?*
 rm -fr $DESTI/etc/group?*
 
 
-#Borrem arxius de configuració de l'openoffice
+#Borrem arxius de configuraciÃ³ de l'openoffice
 # rm -fr $DESTI/home/$usuari_nom/.openoffice* $DESTI/home/$usuari_nom/.sversionrc
 
-#Canvi del HTML d'engegada del SKEL - la única cosa que modifikem del skel (tot lo demés es fa amb el CADI)
+#Canvi del HTML d'engegada del SKEL - la Ãºnica cosa que modifikem del skel (tot lo demÃ©s es fa amb el CADI)
 [ -z "$LANG" ] && . /etc/default/locale
 case "$LANG" in
 ca*)

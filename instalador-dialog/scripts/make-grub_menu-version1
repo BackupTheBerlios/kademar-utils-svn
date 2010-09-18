@@ -2,7 +2,7 @@
 
 #
 # Script per crear el menu del grub a la instalada
-#  amb detecció de sistemes operatius
+#  amb detecciÃ³ de sistemes operatius
 #
 #  Inspirat en Morphix i Debian Installer / Grub Installer / Update Grub
 #
@@ -141,7 +141,7 @@ addlinuxlilotomenu(){
 		if [ "$paraula" = "image" -a "$titleprocessat" = "no" ]; then
 			trobat=si
 		else
-		#I a la que hem trobat el següent image, vol dir que ja es un altre, i no ens interessa
+		#I a la que hem trobat el segÃ¼ent image, vol dir que ja es un altre, i no ens interessa
 			if [ "$paraula" = "image" -a "$titleprocessat" = "si" ]; then
 				trobat=no
 				#Es ara el moment de escriure lo trobat, pq ja ha canviat de entrada del menu
@@ -243,7 +243,7 @@ device_map="$DESTI/boot/grub/device.map"
 menulist="$DESTI/boot/grub/menu.lst"
 rm -f $menulist
 
-#Versió del Kernel
+#VersiÃ³ del Kernel
 if [ -z "$cadi" ]; then
 #      execucio per part del Instalador
      nucli="`uname -r`"
@@ -346,8 +346,8 @@ fi
 
 
 # Mantas-> I don't know what IFS is, but after this newlines are written ;)
-# IFS és el tipus de salt de linia, que necessita ser d'un determinat tipus
-# pq el grub l'entengui. Per això, python no ho pot fer
+# IFS Ã©s el tipus de salt de linia, que necessita ser d'un determinat tipus
+# pq el grub l'entengui. Per aixÃ², python no ho pot fer
 newline="
 "
 IFS="$newline"
@@ -400,7 +400,7 @@ echo $template > $menulist
 #  Add other SO to menu.lst
 #
 
-#Agafem tots els SO menys el de la particio en la que l'hem instal·lat.
+#Agafem tots els SO menys el de la particio en la que l'hem instalÂ·lat.
 # os-prober
 # cat $particions_arrancables 
 cat $particions_arrancables  | grep -v $particioarrel | grep -vi "No volume groups" | while read line

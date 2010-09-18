@@ -602,6 +602,10 @@ elif qtTranslator.load("/usr/share/kademar/utils/instalador-nano/tr/en.qm"):
     app.installTranslator(qtTranslator)
     print "Loaded "+locale
 
+qtTranslatorQT = QTranslator()
+qtTranslatorQT.load("qt_"+locale, "/usr/share/qt4/translations")
+app.installTranslator(qtTranslatorQT)
+
 instalador = instalador()
 instalador.show()
 	#global args

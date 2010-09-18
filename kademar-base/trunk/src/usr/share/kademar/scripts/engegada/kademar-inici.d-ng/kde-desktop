@@ -15,7 +15,7 @@ Encoding=UTF-8
 Exec=sudo /usr/share/kademar/scripts/engega_instalador
 Icon=/usr/share/kademar/icons/kpackage.png
 Name=Install kademar on Hard Drive
-Name[ca]=Instal·la al disc dur
+Name[ca]=InstalÂ·la al disc dur
 Name[es]=Instalar al disco duro
 Name[en]=Install on Hard Drive
 StartupNotify=true
@@ -30,7 +30,7 @@ Encoding=UTF-8
 Exec=sudo /usr/share/kademar/scripts/engega_instalador_nano
 Icon=/usr/share/kademar/icons/pendrive.png
 Name=Install to Pendrive
-Name[ca]=Instal·la al Pendrive
+Name[ca]=InstalÂ·la al Pendrive
 Name[es]=Instalar al Pendrive
 Name[en]=Install to Pendrive
 StartupNotify=true
@@ -43,9 +43,9 @@ X-KDE-SubstituteUID=false" > $1/Instal-Nano.desktop
 # echo "[Desktop Entry]
 # Exec=sh /usr/share/kademar/utils/cadi/saveconfig
 # Icon=filesave.png
-# Name=Guarda la configuraci� en disquet
-# Name[ca]=Guarda la configuraci� en disquet
-# Name[es]=Guardar la configuraci�n personal
+# Name=Guarda la configuració en disquet
+# Name[ca]=Guarda la configuració en disquet
+# Name[es]=Guardar la configuración personal
 # Name[en]=Save configuration on floppy disk
 # Terminal=true
 # Type=Application" > $1/Config.desktop
@@ -82,7 +82,7 @@ if [ "$trobat" = "no" ]; then
 		echo 'Creant Configuracio Personal'
 	;;
 	es*)
-		echo "Creando Configuraci�n Personal"
+		echo "Creando Configuración Personal"
 	;;
 	en*)
 		echo "Creating Personal Configuration"

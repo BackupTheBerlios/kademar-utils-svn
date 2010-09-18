@@ -1,6 +1,6 @@
-# Configurador pel dialeg de fitxers de  KDE
-# Creat per Adonay Sanz per la kademar  -  Octubre 2005
-# Modificat  03-11-06
+# KDE File dialog configurator
+# Created by Adonay Sanz for kademar  -  October 2005
+# Modified  03-11-06
 
 case "$LANG" in
 ca*)
@@ -21,7 +21,7 @@ en*|*)
 ;;
 esac
 
-#KDE Bookmarks pel FileDialog (kwrite, konqueror, etc)
+#KDE Bookmarks for KDE FileDialog (kwrite, konqueror, etc)
 echo "[KFileDialog Speedbar (Global)]
 Description_0=$desktop
 Description_1=$kfile_home

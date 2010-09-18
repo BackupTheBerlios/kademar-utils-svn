@@ -88,7 +88,7 @@ prog "CADI - System Settings" "/usr/share/kademar/icons/configure.png" executa c
   Caption: $missatge_home
   Tooltip.Caption: $tooltip_home
   Icon: /usr/share/kademar/icons/home_blue.png
-  # Tamaño de icono, solo valido para versiones 0.6 y 0.7 de idesk
+  # TamaÃ±o de icono, solo valido para versiones 0.6 y 0.7 de idesk
   Width: 48
   Height: 48
   X: 27

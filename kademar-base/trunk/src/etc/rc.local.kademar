@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# rc.local
+#
+# Start local services after hardware detection
+
+SERVICES="acpid cpufrequtils fancontrol keytouch powernowd vboxdrv wicd acpi-fakekey acpi-support"
+
+for i in $SERVICES; do
+ [ -x /etc/init.d/"$i" ] && /etc/init.d/"$i" start >/dev/null 2>&1
+done
+
+exit 0

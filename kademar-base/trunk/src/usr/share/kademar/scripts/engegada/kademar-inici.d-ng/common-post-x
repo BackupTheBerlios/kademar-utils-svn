@@ -2,4 +2,11 @@
 # Creat per Adonay Sanz per la kademar  -  Maig 2009
 #
 #
+
+# DEPRECATED
+# DEPRECATED
+# DEPRECATED  in order of inittab
+# DEPRECATED
+# DEPRECATED
+
 sh /usr/share/kademar/scripts/engegada/xsession start &

@@ -10,6 +10,8 @@
 ### END INIT INFO
 
 
+[ -z "`which splash`" ] && echo "Splash not installed" && exit 0
+
 . /lib/lsb/init-functions
 . /sbin/splash-functions.sh
 

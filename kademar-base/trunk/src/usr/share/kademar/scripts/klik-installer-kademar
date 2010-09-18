@@ -229,7 +229,7 @@ cat > ${KDEHOME}/share/applnk/klik/.directory <<EOF
 Encoding=UTF-8
 Name=Applications (installed by klik)
 Name[de]=Programme (installiert mit klik)
-Name[ca]=Programes (Instal·lats per klik)
+Name[ca]=Programes (InstalÂ·lats per klik)
 Name[es]=Programas (Instalados por klik)
 Icon=rebuild
 #package_applications
@@ -247,8 +247,8 @@ Exec=konqueror http://klik.atekon.de?from=profile
 Icon=package_network
 Name=Install more software...
 Name[de]=Weitere Software installieren...
-Name[ca]=Instal·la més programari
-Name[es]=Instalar más programas
+Name[ca]=InstalÂ·la mÃ©s programari
+Name[es]=Instalar mÃ¡s programas
 EOF
 
 
@@ -261,7 +261,7 @@ if [ -z "$PROFILES" ]
 then
 #kademar
 # dmsgbox "You need to start the mozilla/firefox browser once before running the klik installer if you want it to support klik.  If you do not use mozilla/firefox you can ignore this message.  If you plan on using mozilla/firefox with klik please run and exit the browser and then install klik again."
-echo "Necessites executar el firefox almenys una vegada perquè funcioni el klik"
+echo "Necessites executar el firefox almenys una vegada perquÃ¨ funcioni el klik"
 else
 for i in $PROFILES
 do

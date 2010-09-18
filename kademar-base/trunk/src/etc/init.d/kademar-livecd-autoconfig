@@ -9,7 +9,7 @@
 # Description:       First start
 ### END INIT INFO
 
-# Engegada i configuració de la kademar
+# Engegada i configuraciÃ³ de la kademar
 # (C) Adonay Sanz <adonay@kademar.org> 2005
 # Licensed under GNU/GPL 2.0 or higher
 #
@@ -248,10 +248,10 @@ if checkbootparam "maxdebug"; then
 	set -x
 fi
 
-#Inclusió del FUSE per escriptura en NTFS
+#InclusiÃ³ del FUSE per escriptura en NTFS
 modprobe fuse 2>/dev/null
 
-#Assegurada detecció de ratolins
+#Assegurada detecciÃ³ de ratolins
 modprobe psmouse 2>/dev/null
 
 #kademar Version
@@ -291,13 +291,13 @@ export LANG=$LANG LANG COUNTRY CHARSET TZ
 #Load next messages
 case "$LANG" in
 ca*)
-. /usr/share/kademar/scripts/engegada/kademar-inici_lang-ca
+. /usr/share/kademar/scripts/engegada/kademar-livecd-autoconfig-ca
 ;;
 es*)
-. /usr/share/kademar/scripts/engegada/kademar-inici_lang-es
+. /usr/share/kademar/scripts/engegada/kademar-livecd-autoconfig-es
 ;;
 *)
-. /usr/share/kademar/scripts/engegada/kademar-inici_lang-en
+. /usr/share/kademar/scripts/engegada/kademar-livecd-autoconfig-en
 ;;
 esac
 
@@ -541,7 +541,7 @@ if [ -z "$DESKTOP" ]; then
 		echo "${YELLOW}$miss_velocitat_1${NORMAL}"
 		#determina velocitat, si no troba algun dels 2 fitxers d'informacio, assigna total<11 per engegar KDE
 		if [ -e /proc/meminfo -a -e /proc/cpuinfo ]; then
-			#agafa la memoria, i imprimeix el valor de Memtotal nº 2 (quantitat de memoria) i el dividim en moduls de 32 mb
+			#agafa la memoria, i imprimeix el valor de Memtotal nÂº 2 (quantitat de memoria) i el dividim en moduls de 32 mb
 			mem=$((`grep 'MemTotal' /proc/meminfo | awk '{ print $2 }'` / 32000))
 			#agafa la velocitat (el 4tr parametre)
 			vel=`grep 'cpu MHz' /proc/cpuinfo | awk '{ print $4 }'`
@@ -549,7 +549,7 @@ if [ -z "$DESKTOP" ]; then
 			vel=`echo $vel | awk '{ print $1 }'`
 			#fem un strip del numero a partir del punt 2799.845 -> 2799   en el cas de que n'hi hagi de punt
 			[ -n "`echo $vel | grep '.'`" ] && vel=${vel%\.*}
-			#Si la variable es nul·la li assigna una velocitat, perque no falli
+			#Si la variable es nulÂ·la li assigna una velocitat, perque no falli
 			[ -z "$vel" ] && vel="2800"
 			#Dividim la velocitat en moduls de 250 mhz
 			vel=$(($vel / 250))
@@ -630,7 +630,7 @@ if checkbootparam "nopcmcia"; then
 	echo " ${BLUE}$miss_pcmcia_no${NORMAL}"
 else
 	#Hack pels Sony Vaio, es queda penjat.
-	#Amb sipcmcia en el boot, força la carrega
+	#Amb sipcmcia en el boot, forÃ§a la carrega
 	case "$CMDLINE" in *' sipcmcia '*) sipcmcia="yes"; ;; esac	
 	#Hack pels Sony Vaio, es queda penjat.
 	if [ "$sipcmcia" = "yes" -o -z "`lspci | grep '0000:06:03.0' | egrep 'PCI7420'`" ] ; then
@@ -702,9 +702,9 @@ if checkbootparam "noserveis"; then
 	########### SPLASHY
 
 else
-	#Guarda el lspci en una variable que servirà per engegar serveis a partir d'ella
+	#Guarda el lspci en una variable que servirÃ  per engegar serveis a partir d'ella
 	lspci="`lspci`"
-	#Si detecta alguna targeta d'àudio, engega ALSA / PA
+	#Si detecta alguna targeta d'Ã udio, engega ALSA / PA
 	if [ -n "`echo "$lspci" | grep 'Multimedia audio controller'`" -o -n "`echo "$lspci" | grep 'Audio device'`" ]; then
 		#Probe of wrappers OSS to Alsa 
 # 		modprobe snd-mixer-oss 2>/dev/null
@@ -715,7 +715,7 @@ else
 # 		sh /usr/share/kademar/scripts/engegada/volums >/dev/null 2>&1
 	
 		[ -e /etc/init.d/alsa-utils ] && echo -n "${BLUE}$miss_alsa${NORMAL}" ; /etc/init.d/alsa-utils start >/dev/null 2>&1 ; escriu_resultat $? $num_alsa
-#         no support a pulseaudio pq no tira desd aquí, mejor usar el rc2.d
+#         no support a pulseaudio pq no tira desd aquÃ­, mejor usar el rc2.d
 	fi
 
 	########### SPLASHY
@@ -771,20 +771,20 @@ fi
 
 ############################
 #     AUTO-SWAP ZONE       #
-#  Concept got from Càtix  #
+#  Concept got from CÃ tix  #
 ############################
 
 mem=$((`cat /proc/meminfo | grep 'MemTotal' | awk '{ print $2 }'` / 32000))
 if [ $mem -le 8 ]; then
-# Intentem crear automàticament fitxers d'intercanvi (swap) a particions si la memòria és inferior de 250 Mb i encara no tenim partició o fitxer d'intercanvi
+# Intentem crear automÃ ticament fitxers d'intercanvi (swap) a particions si la memÃ²ria Ã©s inferior de 250 Mb i encara no tenim particiÃ³ o fitxer d'intercanvi
 	#Comprova k no hi hagi cap swap, si n'hi ha un, no creis el fitxer swap, encara que tingui menys d 256mb
 	if [ -z "`grep "swap" /etc/fstab`" ]; then
 		dispositius_mnt=`ls /mnt/ --ignore=fd* --ignore=cdrom* --ignore=dvd* --ignore=live*`
 		if [ -n "$dispositius_mnt" ]; then
 			for particio in $dispositius_mnt ; do
 				fstabparticio="$(grep "$particio" /etc/fstab)"
-				#Si es una  ntfs  no si pot escriure , així que no es pot fer re.
-				#Mirem de que el NTFS-3G n9o sigui inclòs, pq es pot escriure
+				#Si es una  ntfs  no si pot escriure , aixÃ­ que no es pot fer re.
+				#Mirem de que el NTFS-3G n9o sigui inclÃ²s, pq es pot escriure
 				if [ -z "`echo \"$fstabparticio\" | grep 'ntfs '`" ]; then
 					#Si no esta muntada, passa de ella, pq a dalt ja sa executat el mnt-kademar i si no la ha agafat, no la agafara ara
 					if [ -n "`grep $particio /proc/mounts`" ]; then
@@ -902,7 +902,7 @@ else
    #real live-CD start
    #   live-cd or USB w/o changes
 
-    #Portàtil
+    #PortÃ til
     if [ "`laptop-detect ; echo $?`" != 0 ]; then
         #Si no es portatil
         laptop=no
@@ -923,8 +923,8 @@ else
         : > /opt/kde3/bin/kdesktop_lock        
     fi
 
-    if [ -e /usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config ]; then
-        su -c "sh /usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config" $user
+    if [ -e /etc/kademar/kademar-livecd-second-stage_config ]; then
+        su -c "sh /etc/kademar/kademar-livecd-second-stage_config" $user
     fi
 
 

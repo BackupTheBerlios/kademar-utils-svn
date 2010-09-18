@@ -2,10 +2,10 @@
 #
 # Creat per Adonay Sanz per la kademar  -  Febrer 2007
 #
-# Ús total de bash a l'engegada, ideat per la kademar 4.0, 20 dec 2006.
+# Ãšs total de bash a l'engegada, ideat per la kademar 4.0, 20 dec 2006.
 # Posat a la practica completament el febrer 2007
 
-#Script per canviar l'ubicació del home i/o del autostart, canviant el kdeglobals
+#Script per canviar l'ubicaciÃ³ del home i/o del autostart, canviant el kdeglobals
 
 # set -x #Debug
 dirbase="/home"
@@ -50,7 +50,7 @@ do
 #ESCRIPTORI
 	#Troba la definicio actual del fitxer
 	find0=`cat "$dirbase/$j$fitxer" | grep = | grep 'Desktop=$HOME'` 
-	#Si no la ha trobat, assegura que no la trobarà (per no provocar accidents)
+	#Si no la ha trobat, assegura que no la trobarÃ  (per no provocar accidents)
 	[ -z "$find0" ] && find0="AkEsTa Kadena NO La Trobaras Mai"
 	#Treu el $HOME de la variable
 	desktop_antic=`echo "$find0" | sed s,'$HOME/',,g`
@@ -72,7 +72,7 @@ do
 #AUTOSTART
 	#Troba la definicio actual del fitxer
 	find1=`cat "$dirbase/$j$fitxer" | grep = | grep "Autostart="`
-	#Si no la ha trobat, assegura que no la trobarà (per no provocar accidents)
+	#Si no la ha trobat, assegura que no la trobarÃ  (per no provocar accidents)
 	[ -z "$find1" ] && find1="AkEsTa Kadena NO La Trobaras Mai"	
 	#Treu el $HOME de la variable
 	autostart_antic=`echo "$find1" | sed s,'$HOME',,g`

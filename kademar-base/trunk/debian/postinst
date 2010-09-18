@@ -90,7 +90,7 @@ if [ "$1" = "configure" ]; then
 	
 	
 	
-	#Si està en chroot, vol dir que estem preparan el live-cd, doncs crea l'enllaç a la X-Session
+	#Si estï¿½ en chroot, vol dir que estem preparan el live-cd, doncs crea l'enllaï¿½ a la X-Session
 	if chrooted; then
 		#Prepare Instalador-dialog
 		[ ! -e /usr/local/bin/instalador-dialog ] && ln -s /usr/share/kademar/utils/instalador-dialog/instalador.sh /usr/local/bin/instalador-dialog
@@ -186,9 +186,10 @@ if [ "$1" = "configure" ]; then
 
 
     #Remove Openoffice cache DB
-    [ -e /var/spool/openoffice/uno_packages/cache/uno_packages.db ] && rm -f /var/spool/openoffice/uno_packages/cache/uno_packages.db
-    [ -e  /var/spool/openoffice/uno_packages/cache/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend/registered_packages.db ] && rm -f /var/spool/openoffice/uno_packages/cache/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend/registered_packages.db
-
+#     [ -e /var/spool/openoffice/uno_packages/cache/uno_packages.db ] && rm -f /var/spool/openoffice/uno_packages/cache/uno_packages.db
+#     [ -e  /var/spool/openoffice/uno_packages/cache/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend/registered_packages.db ] && rm -f /var/spool/openoffice/uno_packages/cache/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend/registered_packages.db
+    [ -e /var/spool/openoffice/uno_packages/cache/uno_packages.db ] && echo "  *  Check anoying /var/spool/openoffice/uno_packages/cache/uno_packages.db"
+    [ -e /var/spool/openoffice/uno_packages/cache/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend/registered_packages.db ] && echo "  *  Check anoying /var/spool/openoffice/uno_packages/cache/registry/com.sun.star.comp.deployment.configuration.PackageRegistryBackend/registered_packages.db"
 #     [ ! -e /usr/kademar ] && ln -s share/kademar /usr/kademar  #DEPRECATED
 
 	exit 0

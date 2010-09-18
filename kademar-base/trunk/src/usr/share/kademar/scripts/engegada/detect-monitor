@@ -3,7 +3,7 @@
 #use parameter as DESTI
 [ -n "$1" ] && DESTI="$1"
 
-#posibilita la configuracio de pantalles panoramiques
+#Check capability to check if it's a normal or panoramic display
 var="$(echo `xrandr -q 2>/dev/null | grep \* | awk ' { print $1 } ' | sed s.x.\/.g` | bc -l)"
 
 #if resolution detected

@@ -1,17 +1,21 @@
 #!/bin/bash
 
 #################################################
-#     Script for configure distro Language      #
+# Script per Configurar l'idioma amb el CADI    #
 #         -------------------------             #
-#    Prepared for kademar 4.0 - 3 Nov 2005      #
-#        Modified    kademar 4.1 - 20 Feb 2006  #
-#        Modified    kademar 4.3 - 5 Set 2006   #
-#        Modified    kademar 4.8 - 2 Feb 2009   #
-#    Licensed under  GNU/GPL 2.0 o Higher       #
+#    Preparat per la kademar 4.0 - 3 Nov 2005   #
+#        Modificat   kademar 4.1 - 20 Feb 2006  #
+#        Modificat   kademar 4.3 - 5 Set 2006   #
+#        Modificat   kademar 4.8 - 2 Feb 2009   #
+#    Llicenciat Sota GNU/GPL 2.0 o Superiors    #
 #################################################
 
 
 # Inspired on knoppix-autoconfig
+
+locale_file=/etc/default/locale
+motd_file=/etc/motd
+issue_file=/etc/issue
 
 #Check parameters
 [ -z "$1" ] && echo "I need at least a LANG (xx) parameter to work" && exit 1
@@ -22,19 +26,13 @@ LANGUAGE="$1"
 #Target folder, may change
 [ -n "$2" ] && DESTI="$2"
 
-#Load variables
-locale_file="$DESTI/etc/default/locale"
-issue_file="$DESTI/etc/issue"
-motd_file="$DESTI/etc/motd"
-versio=`cat "$DESTI/etc/kademar-release"`
-
 ########### //  LOCALE DEFINITION EXTRACTED FROM KNOPPIX \\ #############
 
 case "$LANGUAGE" in
 # Catalan version
 ca*)
 COUNTRY="es"
-LANG="ca_ES.UTF-8"
+LANG="ca_ES@euro"
 KEYTABLE="es"
 LANG_COUNTRY="ca_ES"
 XKEYBOARD="es"
@@ -43,12 +41,12 @@ CHARSET="iso8859-15"
 # Additional KDE Keyboards
 KDEKEYBOARDS=""
 TZ="Europe/Madrid"
-OPTIONAL=":ca_ES:ca:es_ES.UTF-8:es_ES:es"
+OPTIONAL=":ca_ES:ca:es_ES@euro:es_ES:es"
 ;;
 # German version
 de*)
 COUNTRY="de"
-LANG="de_DE.UTF-8"
+LANG="de_DE@euro"
 KEYTABLE="de-latin1-nodeadkeys"
 XKEYBOARD="de"
 KDEKEYBOARD="de"
@@ -141,7 +139,7 @@ TZ="Europe/Copenhagen"
 es*)
 # Spanish version
 COUNTRY="es"
-LANG="es_ES.UTF-8"
+LANG="es_ES@euro"
 KEYTABLE="es"
 LANG_COUNTRY="es_ES"
 XKEYBOARD="es"
@@ -155,7 +153,7 @@ OPTIONAL=":es_ES:es"
 fi*)
 # Finnish version, though we may not have the kde-i18n files
 COUNTRY="fi"
-LANG="fi_FI.UTF-8"
+LANG="fi_FI@euro"
 KEYTABLE="fi"
 XKEYBOARD="fi"
 KDEKEYBOARD="fi"
@@ -167,7 +165,7 @@ TZ="Europe/Helsinki"
 fr*)
 # French version
 COUNTRY="fr"
-LANG="fr_FR.UTF-8"
+LANG="fr_FR@euro"
 KEYTABLE="fr"
 XKEYBOARD="fr"
 KDEKEYBOARD="fr"
@@ -192,7 +190,7 @@ TZ="Asia/Jerusalem"
 ie*)
 # Irish (English) version
 COUNTRY="ie"
-LANG="en_IE.UTF-8"
+LANG="en_IE@euro"
 KEYTABLE="uk"
 XKEYBOARD="uk"
 KDEKEYBOARD="gb"
@@ -204,7 +202,7 @@ TZ="Europe/Dublin"
 it*)
 # Italian version
 COUNTRY="it"
-LANG="it_IT.UTF-8"
+LANG="it_IT@euro"
 KEYTABLE="it"
 XKEYBOARD="it"
 KDEKEYBOARD="it"
@@ -229,7 +227,7 @@ TZ="Asia/Tokyo"
 nl*)
 # Dutch version
 COUNTRY="nl"
-LANG="nl_NL.UTF-8"
+LANG="nl_NL@euro"
 KEYTABLE="us"
 XKEYBOARD="us"
 KDEKEYBOARD="en_US"
@@ -413,30 +411,35 @@ EOF
 
 # loadkeys $KEYTABLE >/dev/null
 
-#Update MOTD, if variable isn't null
+#Actualitzacio del MOTD, si la variable no �s nul�la
 # [ -n "$motd" ] && rm -f "$DESTI$motd_file" && echo "$motd" > "$DESTI$motd_file"
 # [ -n "$motd" ] && echo "$motd" > "$DESTI$issue_file"
 
+
+#Carreguem les variables de systema
+motd_file="$DESTI/etc/motd"
+# rm -fr $motd_file
+versio=`cat "$DESTI/etc/kademar-release"`
 
 case "$LANG" in
 ca*)
 	echo "
 Els programes inclosos en Kademar GNU/Linux son programari lliure
 en la seva majoria, i una part residual de programari no lliure;
-els termes exactes de distribució de cada programa estan descrits en
+els termes exactes de distribuci� de cada programa estan descrits en
 fitxers individuals en /usr/share/doc/*/copyright.
 
-Kademar GNU/Linux ve en ABSOLUTA NO GARANTIA, en la mesura
+kademar GNU/Linux ve en ABSOLUTA NO GARANTIA, en la mesura
 permesa per la llei actual." > $motd_file.tail
 ;;
 es*)
 		echo "
 Los programas incluidos en Kademar GNU/Linux son software libre
-en su mayoría, y una parte residual de software no libre;
-los términos exactos de distribución de cada programa están descritos en
+en su mayor�a, y una parte residual de software no libre;
+los t�rminos exactos de distribuci�n de cada programa est�n descritos en
 archivos individuales en /usr/share/doc/*/copyright.
 
-Kademar GNU/Linux viene en ABSOLUTA NO GARANTÍA, en la medida
+Kademar GNU/Linux viene en ABSOLUTA NO GARANT�A, en la medida
 permitida por la ley actual." > $motd_file.tail
 ;;
 en*|*)
@@ -446,7 +449,7 @@ software on major part, and a residual non-free software part;
 the exact distribution terms for each program are described in the
 individual files in /usr/share/doc/*/copyright.
 
-Kademar GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+kademar GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
 permitted by applicable law." > $motd_file.tail
 ;;
 esac

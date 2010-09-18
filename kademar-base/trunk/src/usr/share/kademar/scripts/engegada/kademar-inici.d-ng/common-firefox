@@ -1,11 +1,11 @@
-# Fitxer de configuració del Firefox
-# Creat per Adonay Sanz per la kademar  -  03-11-06
-# Modificat  05-11-06
-# Modificat  07-01-07
-# Modificat  27-04-09 - configuracio idioma de navegacio 
+# Configuration file for Firefox
+# Created by Adonay Sanz for kademar  -  03-11-06
+# Modified  05-11-06
+# Modified  07-01-07
+# Modified  27-04-09 - Navigation browser language configuration
 #
 
-#Firefox  pagina d'inici
+#Firefox start page
 for i in `( ls -1 /home/$user/.mozilla/firefox/ | grep default ) 2>/dev/null`
 do
 	if [ -e "/home/$user/.mozilla/firefox" ]; then
@@ -14,7 +14,7 @@ user_pref("browser.download.dir", "/home/'$user'/'$documents'");' >> "/home/$use
 	fi
 done
 
-#Iceweasel  pagina d'inici
+#Iceweasel start page
 for i in `( ls -1 /home/$user/.mozilla/iceweasel/ | grep default ) 2>/dev/null`
 do
 	if [ -e "/home/$user/.mozilla/iceweasel" ]; then

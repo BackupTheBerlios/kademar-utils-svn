@@ -73,7 +73,7 @@ xsesson_commands_file=/var/tmp/xsession-commands
 
 
 
-#Variable BACKGROUND agafada del fitxer de configuraci� (diferents gustos de kademar)
+#Variable BACKGROUND agafada del fitxer de configuraciï¿œ (diferents gustos de kademar)
 # xsession_background="/usr/share/wallpapers/kademar.jpg"
 [ -e /etc/kademar/config-livecd ] && . /etc/kademar/config-livecd
 [ -e /etc/kademar/config ] && . /etc/kademar/config
@@ -204,8 +204,8 @@ error_msg(){
  # Shutdown or failure messages
  case "$LANG" in
   de*)
-  ERRORMSG="\n[1mDie graphische Oberfl�che konnte nicht gestartet werden\noder wurde unerwartet beendet.\nVermutlich sind Grafikkarte oder Monitor nicht automatisch konfigurierbar.\n\nBitte versuchen Sie einen Neustart und geben Sie beim boot:-Prompt\ndie Knoppix-Cheatcodes (Bootoptionen) passend zu Ihrer Grafikkarte ein.\nBeispiele:\n   knoppix xmodule=radeon (oder ati, nv, cirrus, ...)\n   knoppix xmodule=fbdev\n   knoppix xmodule=vesa\n   knoppix hsync=90 vsync=75[0m\n"
-  RETURNPROMPT="Bitte EINGABETASTE dr�cken, um den Rechner neu zu starten.";;
+  ERRORMSG="\n[1mDie graphische Oberflï¿œche konnte nicht gestartet werden\noder wurde unerwartet beendet.\nVermutlich sind Grafikkarte oder Monitor nicht automatisch konfigurierbar.\n\nBitte versuchen Sie einen Neustart und geben Sie beim boot:-Prompt\ndie Knoppix-Cheatcodes (Bootoptionen) passend zu Ihrer Grafikkarte ein.\nBeispiele:\n   knoppix xmodule=radeon (oder ati, nv, cirrus, ...)\n   knoppix xmodule=fbdev\n   knoppix xmodule=vesa\n   knoppix hsync=90 vsync=75[0m\n"
+  RETURNPROMPT="Bitte EINGABETASTE drï¿œcken, um den Rechner neu zu starten.";;
  *)
   ERRORMSG="[1mThe graphical subsystem could not be startet\nor terminated unexpectedly.\nMaybe your graphics adapter or monitor are not auto-configurable.\n\nPlease try to reboot and give some of the Knoppix-Cheatcodes\nat the initial boot:-prompt, which match your graphics adapter.\nExamples:\n   knoppix xmodule=radeon (or ati, nv, cirrus, ...)\n   knoppix xmodule=fbdev\n   knoppix xmodule=vesa\n   knoppix hsync=90 vsync=75[0m\n"
   RETURNPROMPT="Please hit ENTER to reboot.";;

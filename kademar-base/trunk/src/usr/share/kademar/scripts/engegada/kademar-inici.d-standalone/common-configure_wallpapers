@@ -17,7 +17,7 @@ else
     user="$1"
 fi
 
-#Variable BACKGROUND agafada del fitxer de configuració (diferents gustos de kademar)
+#Variable BACKGROUND taken from kademar configuration file (different flavours of kademar)
 [ -e /etc/kademar/config-livecd ] && . /etc/kademar/config-livecd
 
 [ -e /etc/kademar/monitor ] && . /etc/kademar/monitor

@@ -3,26 +3,26 @@
 # Creat per Adonay Sanz per la kademar  -  Agost 2007
 # 21-05-09 firefox languages & unified settings
 # 
-# Configuració Creada automàticament per  crea_config-2nd_stage  de  kademar-scripts
+# Configuration automated created by  crea_config-2nd_stage  of  kademar package
 #
 
-#### DEFINICIONS GENERALS ####
+#### GENERAL DEFINITIONS ####
 
-#Usuari
+#User
 user="kademar"
 
-#Idioma
+#Language
 . /etc/default/locale
 
-#Portàtil
+#Laptop
 if [ "`cat /etc/kademar/laptop`" != 0 ]; then
-	#Si no es portatil
+	#If isn't a laptop
 	laptop=no
-    resposta_numlock=on #Activa teclat numeric
+    resposta_numlock=on #Activate numeric keypad
 else
-	#Si es un portatil
+	#If it's a laptop
 	laptop=yes
-    resposta_numlock=off #Desactiva teclat numeric
+    resposta_numlock=off #Desactivate numeric keypad
 fi
 
 
@@ -30,30 +30,30 @@ case "$LANG" in
 ca*)
 	documents=Documents
 	desktop=Escriptori
-	lang_firefox=ca  #referencia a pagina web kademar
+	lang_firefox=ca  #in reference of kademar webpage
 	firefoxlanguages="ca,es-es,en-us,en"
 ;;
 es*)
 	documents=Documentos
 	desktop=Escritorio
-	lang_firefox=es  #referencia a pagina web kademar
+	lang_firefox=es  #in reference of kademar webpage
 	firefoxlanguages="es-es,en-us,en"
 
 ;;
 en*|*)
 	documents=Documents
 	desktop=Desktop
-	lang_firefox=en  #referencia a pagina web kademar
+	lang_firefox=en  #in reference of kademar webpage
 	firefoxlanguages="en-us,en,es-es"
 
 ;;
 esac
 
 
-#iniciem l'escalat de freqüència
+#start cpu frequency scale
 # /etc/init.d/loadcpufreq start
 # /etc/init.d/cpufrequtils start
 
 
 
-#### FI DEFINICIONS GENERALS ####
+#### EMD GENERALDEFINITIONS ####

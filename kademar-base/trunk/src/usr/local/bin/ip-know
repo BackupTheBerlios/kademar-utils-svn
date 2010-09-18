@@ -3,8 +3,8 @@
 cd /tmp
 wget http://www.kademar.org/ip.php >/dev/null 2>&1 ; result=$?
 if [ "$result" != "0" ]; then
-	echo "Necessito connexió a internet"
-	echo "Necesito conexión a internet"
+	echo "Necessito connexiÃ³ a internet"
+	echo "Necesito conexiÃ³n a internet"
 	echo "Need internet conection"
 	exit 1
 fi
@@ -12,4 +12,4 @@ echo -n "IP: "
 cat ip.php
 echo
 rm -f index.html
-#La teva IP real és <b>xxx.xxx.xxx.xxx
+#La teva IP real Ã©s <b>xxx.xxx.xxx.xxx

@@ -6,7 +6,7 @@
 #Read default config
 . /etc/kademar/config
 
-#Actualitza si no estàs en live-cd i fes-ho en background i sempre surt bé
+#Actualitza si no estÃ s en live-cd i fes-ho en background i sempre surt bÃ©
 # i si esta engegat kademarcenter, avisa'l
 if [ "$apt_autoupdate" = "yes" ]; then
 	( [ ! -e "/initrd/rootsquash/usr" -a ! -e "/mnt/live/memory/images/kademar.lzm/usr" ] && apt-get update >/dev/null 2>&1 && ( [ -p  /tmp/kademarcenter.fifo ] && echo apt= > /tmp/kademarcenter.fifo ) ; exit 0 ) &

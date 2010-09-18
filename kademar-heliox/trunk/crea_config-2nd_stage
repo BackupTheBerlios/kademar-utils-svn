@@ -11,15 +11,15 @@
 paquet_construit=kademar-heliox
 
 
-cat ../../kademar-base/trunk/src/usr/share/kademar/scripts/engegada/kademar-inici.d-ng/common-base > debian/$paquet_construit/usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config
-cat src/usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config | grep -vi \# | while read line
+cat ../../kademar-base/trunk/src/usr/share/kademar/scripts/engegada/kademar-inici.d-ng/common-base > debian/$paquet_construit/etc/kademar/kademar-livecd-second-stage_config
+cat src/etc/kademar/kademar-livecd-second-stage_config | grep -vi \# | while read line
 do
-	echo >> debian/$paquet_construit/usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config
-	echo "######  FILE   $line" >> debian/$paquet_construit/usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config
-        echo >> debian/$paquet_construit/usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config
+	echo >> debian/$paquet_construit/etc/kademar/kademar-livecd-second-stage_config
+	echo "######  FILE   $line" >> debian/$paquet_construit/etc/kademar/kademar-livecd-second-stage_config
+        echo >> debian/$paquet_construit/etc/kademar/kademar-livecd-second-stage_config
 
-	cat ../../kademar-base/trunk/src/usr/share/kademar/scripts/engegada/kademar-inici.d-ng/$line >> debian/$paquet_construit/usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config
-        echo >> debian/$paquet_construit/usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config
-	echo "######  END FILE   $line" >> debian/$paquet_construit/usr/share/kademar/scripts/engegada/kademar-inici_second-stage_config
+	cat ../../kademar-base/trunk/src/usr/share/kademar/scripts/engegada/kademar-inici.d-ng/$line >> debian/$paquet_construit/etc/kademar/kademar-livecd-second-stage_config
+        echo >> debian/$paquet_construit/etc/kademar/kademar-livecd-second-stage_config
+	echo "######  END FILE   $line" >> debian/$paquet_construit/etc/kademar/kademar-livecd-second-stage_config
 
 done

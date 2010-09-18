@@ -1,6 +1,6 @@
 #Configuration file for kademar Installed. General use
 
-#Kind (default: lyra)
+#Flavour
 kademar_type="Leo"
 
 #Xserver:  Xorg / Xfree86 (default: xorg)

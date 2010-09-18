@@ -37,8 +37,13 @@ if [ "$1" = "configure" ]; then
         ln -s /usr/bin/audacious2 /usr/bin/audacious
     fi
 
-    dpkg-divert --package kademar-main-utils --add --divert /etc/xdg/user-dirs.conf.orig --rename /etc/xdg/user-dirs.conf
-    [ ! -e /etc/xdg/user-dirs.conf ] && ln -s /etc/xdg/user-dirs.conf.kademar /etc/xdg/user-dirs.conf
+    #support for OLD xmms binary (gtkpod play function)
+    if [ -e /usr/bin/audacious2 -a ! -e /usr/bin/xmms ]; then
+        ln -s /usr/bin/audacious2 /usr/bin/xmms
+    fi
+
+#     dpkg-divert --package kademar-main-utils --add --divert /etc/xdg/user-dirs.conf.orig --rename /etc/xdg/user-dirs.conf
+#     [ ! -e /etc/xdg/user-dirs.conf ] && ln -s /etc/xdg/user-dirs.conf.kademar /etc/xdg/user-dirs.conf
 
     echo "Updating Mime Types"
     dpkg-divert --package kademar-main-utils --add --divert /etc/mailcap.order.orig --rename /etc/mailcap.order

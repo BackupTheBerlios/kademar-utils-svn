@@ -1,6 +1,6 @@
 #Configuration Live-CD file. Used Only when is in live-cd mode
 
-#Kind (default: lyra)
+#Flavour
 kademar_type="Heliox"
 
 #Image to use by Installer, to fill kdmrc config file

@@ -20,6 +20,10 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
     //Use detect-monitor to configure it
     QProcess *dresol = new QProcess();
     dresol->start(QString("/usr/share/kademar/scripts/engegada/detect-monitor"));
+    //configure Volumes (usefull to screenreader)
+    QProcess *volumes = new QProcess();
+    volumes->start(QString("/usr/share/kademar/scripts/engegada/volums"));
+    volumes->waitForFinished();
     QString label = tr("Select the desktop you want to use");
     QProcess *readcommand = new QProcess();
     readcommand->start(QString("spd-say \"%1\"").arg(label));

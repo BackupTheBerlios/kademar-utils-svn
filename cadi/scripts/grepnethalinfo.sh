@@ -2,7 +2,7 @@
 
 #
 #  Script per obtenir informacio utilitzant hal/dbus
-#  Funcio que altres utilitzen, però la utiltzen embebbed 
+#  Funcio que altres utilitzen, perÃ² la utiltzen embebbed 
 #  Adonay Sanz Alsina   -  21-03-08  - GNU/GPL v 2.0 or higer
 #
 

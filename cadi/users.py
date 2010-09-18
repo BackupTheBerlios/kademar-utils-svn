@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#-*- coding: iso-8859-15 -*-
+# -*- coding: utf-8 -*-
 
 import sys
 from PyQt4.QtGui import *
@@ -162,7 +162,7 @@ class panelUsers(QWidget):
         print "Home='"+str(home)+"'"
         QApplication.processEvents()
 
-        #Script per ultimar la creació del perfil d'usuari
+        #Script per ultimar la creaciÃ³ del perfil d'usuari
         print 'sh scripts/crea_perfil_usuari '+str(cuenta)+' '+str(crea_home)
         system('sh scripts/crea_perfil_usuari '+str(cuenta)+' "'+str(crea_home)+'"')
         self.ui.pages.setCurrentIndex(0)

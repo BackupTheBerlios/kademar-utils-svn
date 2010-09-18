@@ -1,10 +1,10 @@
 #!/bin/bash
-# Script per canviar l'idioma i alguns parametres interns dels progr‡mes
+# Script per canviar l'idioma i alguns parametres interns dels progr√†mes
 
 #TODO: fer que mogui els directoris del vell al nou
 
 
-#C‡rrega del fitxer d'idioma
+#C√†rrega del fitxer d'idioma
 . /etc/default/locale
 
 # posa de dirbase l'arrel

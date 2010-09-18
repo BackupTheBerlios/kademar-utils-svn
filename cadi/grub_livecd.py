@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#-*- coding: iso-8859-15 -*-
+# -*- coding: utf-8 -*-
 
 import sys
 from PyQt4.QtGui import *
@@ -31,7 +31,7 @@ class panelGrub(QWidget):
 #### END SIGNAL & SLOTS ####
 
 
-        self.grubs=getoutput("ls /mnt/*/boot/grub/menu.lst").split()
+        self.grubs=getoutput("ls /mnt/*/boot/grub/menu.lst 2>/dev/null").split()
         print self.grubs
         
         for i in self.grubs:
@@ -70,12 +70,12 @@ class panelGrub(QWidget):
         
         plantilla="/tmp/instalador-environment"
         
-        fsarrel=commands.getoutput('blkid /dev/'+variables[1]+' -o value -s TYPE')
+        fsarrel=getoutput('blkid /dev/'+variables[1]+' -o value -s TYPE')
 
         f=open(plantilla,'w')
         f.writelines('particioarrel=/dev/'+variables[1]+' \n')
         f.writelines('fsparticioarrel=/dev/'+fsarrel+' \n')
-        f.writelines("#Desti d'instal·lacio  \n")
+        f.writelines("#Desti d'instalÂ·lacio  \n")
         f.writelines('DESTI='+target+' \n')
         f.writelines('mbr='+mbr+' \n')
         f.writelines('mbr_dev='+variables[1]+' \n')

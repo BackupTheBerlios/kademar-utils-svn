@@ -1,3 +1,9 @@
+cadi (9.5.1.2) testing; urgency=low
+
+  * FIX: Force resolution on displayFunctions
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Tue, 14 Sep 2010 13:13:52 +0200
+
 cadi (4.9.1.1) testing; urgency=low
 
   * FEATURE: Support to BUM (service manager)

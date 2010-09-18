@@ -1,8 +1,9 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 
 def grepSubSectionLines( reversed=None):
-        interfacesFile='/etc/X11/xorg.conf-kademar'
+        interfacesFile='/etc/X11/xorg.conf'
         f=open(interfacesFile,'r')
         llista=f.readlines()
         f.close()

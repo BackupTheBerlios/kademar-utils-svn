@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#-*- coding: iso-8859-15 -*-
+# -*- coding: utf-8 -*-
 
 import sys
 from PyQt4.QtGui import *
@@ -206,7 +206,7 @@ class cadi(QMainWindow):
         self.a=QProcess()
         self.a.start("synaptic")
 
-  #Preferències de sistema
+  #PreferÃ¨ncies de sistema
     def boto_preferencies(self):
         from preferencies import panelPreferencies
         self.preferencies = panelPreferencies()
@@ -326,9 +326,9 @@ elif qtTranslator.load("/usr/share/kademar/utils/cadi/tr/en.qm"):
     app.installTranslator(qtTranslator)
     print "Loaded "+locale
     
-qtTranslator = QTranslator()
-qtTranslator.load("qt_"+locale, "/usr/share/qt4/translations")
-app.installTranslator(qtTranslator)
+qtTranslatorQT = QTranslator()
+qtTranslatorQT.load("qt_"+locale, "/usr/share/qt4/translations")
+app.installTranslator(qtTranslatorQT)
 
 cadi = cadi()
 cadi.show()

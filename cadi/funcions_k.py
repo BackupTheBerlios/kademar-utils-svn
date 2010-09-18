@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#-*- coding: iso-8859-15 -*-
+# -*- coding: utf-8 -*-
 
 # Modul de funcions i variables per us itern de kademar
 
@@ -78,9 +78,9 @@ def tipuskademar():
     from commands import getoutput
     tipuskademar=getoutput(""". /etc/kademar/config ; echo $kademar_type  2>/dev/null""").lower()
     if tipuskademar=="leo":
-        return "Leo - DvD"
+        return "Leo - 64bit"
     elif tipuskademar=="lyra":
-       return "Lyra - CD"
+       return "Lyra - 32bit"
     elif tipuskademar=="khronos":
         return "Khronos - Lite"
     elif tipuskademar=="core":

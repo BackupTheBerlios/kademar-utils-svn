@@ -10,13 +10,13 @@ case "$1" in
 up|puja|sube)
 #Mira el volum actual
 	
-#Puja el volum dos punts, a raó de l'actual
+#Puja el volum dos punts, a raÃ³ de l'actual
 	/usr/share/kademar/scripts/engegada/amixer set PCM $((`echo $volum_actual | awk ' { print $1 } '` + 2))
 	/usr/share/kademar/scripts/engegada/amixer set Master $((`echo $volum_actual | awk ' { print $1 } '` + 2))
 ;;
 down|baixa|baja)
 #Mira el volum actual
-#Baixa el volum dos punts, a raó de l'actual
+#Baixa el volum dos punts, a raÃ³ de l'actual
 	/usr/share/kademar/scripts/engegada/amixer set PCM $((`echo $volum_actual | awk ' { print $1 } '` - 2))
 	/usr/share/kademar/scripts/engegada/amixer set Master $((`echo $volum_actual | awk ' { print $1 } '` - 2))
 

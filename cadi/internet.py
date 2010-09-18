@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#-*- coding: iso-8859-15 -*-
+# -*- coding: utf-8 -*-
 
 #############################################
 #            -=|  CADI 5  |=-               #
@@ -395,7 +395,7 @@ class panelInternet(QWidget):
                             encryption=False
                     if i.lower().find('quality')<>-1:
                         i=i.split()[0]
-                    #suport a separació per : o =
+                    #suport a separaciÃ³ per : o =
                         if i.lower().find('=')<>-1:
                             quality=(i.split('=')[1]).split()[0].split("/")[0]
                         elif i.lower().find(':')<>-1:

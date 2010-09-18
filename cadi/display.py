@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#-*- coding: iso-8859-15 -*-
+# -*- coding: utf-8 -*-
 
 import sys
 from PyQt4.QtGui import *
@@ -22,7 +22,7 @@ class panelDisplay(QWidget):
         self.ui.setupUi(self)
 
         self.ui.pages.setCurrentIndex(0)
-        self.forcedResolutions=[ "2048x1536", "1920x1440", "1920x1200", "1856x1392", "1800x1440", "1792x1344", "1680x1050", "1600x1200", "1440×900", "1400x1050", "1280x1024", "1280x960", "1280x800", "1280x768", "1280x720", "1280x480", "1152x864", "1024x768", "848x480", "800x600", "768x576", "720x576", "720x480", "720x400", "640x960", "640x480" ]
+        self.forcedResolutions=[ "2048x1536", "1920x1440", "1920x1200", "1856x1392", "1800x1440", "1792x1344", "1680x1050", "1600x1200", "1440Ã—900", "1400x1050", "1280x1024", "1280x960", "1280x800", "1280x768", "1280x720", "1280x480", "1152x864", "1024x768", "848x480", "800x600", "768x576", "720x576", "720x480", "720x400", "640x960", "640x480" ]
 
 #####  SIGNAL & SLOTS  #####
         self.connect(self.ui.b_sortir, SIGNAL("clicked()"), self.close)

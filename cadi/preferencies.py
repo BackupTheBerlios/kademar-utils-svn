@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#-*- coding: iso-8859-15 -*-
+# -*- coding: utf-8 -*-
 
 #
 # configure USB sync/async mode
@@ -42,7 +42,7 @@ class panelPreferencies(QWidget):
             if i.find("mount_mode=")<>-1:
                 linea=i.split('=')
                 # si despres de separar en dos la linea per mitja del =
-                # troba -a vol dir sincrona est‡ a false en el fitxer de config
+                # troba -a vol dir sincrona est√† a false en el fitxer de config
                 if linea[1].find('-s')<>-1:
                     self.found=True
                     self.ui.rb_sync.setChecked(True)
@@ -57,7 +57,7 @@ class panelPreferencies(QWidget):
 
                 #print linea
                 #print linea[1].strip()
-                # i si no troba -a vol dir que ja est‡ a true, es deixa igual
+                # i si no troba -a vol dir que ja est√† a true, es deixa igual
         #print 'sincrona  =',self.ui.ch_sync.isChecked()
 
         self.connect(self.ui.rb_sync, SIGNAL("toggled (bool)"), self.enableSaX)
@@ -75,12 +75,12 @@ class panelPreferencies(QWidget):
         f=open('/etc/kademar/config','r')
         llista=f.readlines()
         f.close()
-        # i ara gravem la opciÛ que toca al fitxer config
+        # i ara gravem la opci√≥ que toca al fitxer config
         f=open('/etc/kademar/config','w')
         for i in llista:
             # al repassar linia a linia el fitxer quan troba mount_mode=...
             if i.find("mount_mode=")<>-1:
-                # si el checkbox de sync est‡ marcat, vol dir mode sincrone
+                # si el checkbox de sync est√† marcat, vol dir mode sincrone
                 if self.ui.rb_sync.isChecked():
                     linea='mount_mode="-s"\n'
                 else:

@@ -1,5 +1,5 @@
 #!/usr/bin/python 
-#-*- coding: iso-8859-15 -*-
+# -*- coding: utf-8 -*-
 
 #############################################
 #      * Instalador. Copy Files Part *      #
@@ -20,7 +20,7 @@ from threadCheckspace import *
 #import scripts
 
 
-#Funcio de Format i Còpia de fitxers
+#Funcio de Format i CÃ²pia de fitxers
 class copyfiles(QThread):
     def __init__(self, a, b, c, d ,e, f, g):
         QThread.__init__(self)
@@ -61,7 +61,7 @@ class copyfiles(QThread):
                 print "Formatant HOME  /dev/"+particiohome[0]+" amb "+mkfilesystems[particiohome[1]]
                 system(mkfilesystems[particiohome[1]]+" /dev/"+particiohome[0])
                 print  mkfilesystems[particiohome[1]]+" /dev/"+particiohome[0]+" Home"
-        print "Comença copia de Fitxers"
+        print "ComenÃ§a copia de Fitxers"
 
         #TEMP
         from os import system

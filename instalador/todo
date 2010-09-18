@@ -7,7 +7,7 @@ fusionar els 2 instaladors
   tot per HAL (fs, si es removable, etc)
   autoparticionar disks / detectar antigues particions de kademar
 
-script de desprÈs del instalador, mes inteligent (regenerapc/fstab, etc)
+script de despr√©s del instalador, mes inteligent (regenerapc/fstab, etc)
 
 ferlo seguint els standards de kademar
   les signals i els threads
@@ -15,6 +15,6 @@ ferlo seguint els standards de kademar
 
 GUI a 800x600
 
-FET: engegada inicial en thread enlloc de  engega_instalador +  MNG de c‡rrega
+FET: engegada inicial en thread enlloc de  engega_instalador +  MNG de c√†rrega
 
-FET: p‡gina final real del instalador
+FET: p√†gina final real del instalador

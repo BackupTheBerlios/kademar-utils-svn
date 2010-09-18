@@ -24,28 +24,28 @@ display_driver="$(driver)"
 libglx_nvidia="`ls $dirbase/usr/lib/xorg/modules/extensions/libglx.so.1.0* 2>/dev/null`"
 libgl_nvidia="`ls $dirbase/usr/lib/libGL.so.1.0* 2>/dev/null`"
 
-#Suport als nous últims drivers de nvidia
+#Suport als nous Ãºltims drivers de nvidia
 [ -z "$libglx_nvidia" ] && libglx_nvidia="`ls $dirbase/usr/lib/xorg/modules/extensions/libglx.so.????* 2>/dev/null`"
 [ -z "$libgl_nvidia" ] && libgl_nvidia="`ls $dirbase/usr/lib/libGL.so.????* 2>/dev/null`"
 
 #Si el dirbase no es 0, treiem la seva influencia en el path
-#Sino els links es crearien malament, ja que portarien el dirbase en la ruta d'enllaç
+#Sino els links es crearien malament, ja que portarien el dirbase en la ruta d'enllaÃ§
 if [ -n "$dirbase" ]; then
 	libglx_nvidia="`echo $libglx_nvidia | sed s:$dirbase::g`"
 	libgl_nvidia="`echo $libglx_nvidia | sed s:$dirbase::g`"
 fi
 
 # Pels moduls NVIDIA, voldrem el Link, i si no, voldrem que sigui l'original
-# Si es el modul nvidia i el GLX de nvidia està instal·lat
+# Si es el modul nvidia i el GLX de nvidia estÃ  instalÂ·lat
 if [ "$display_driver" = "nvidia" -a -n "$libglx_nvidia" ]; then
-	#Si no és un link (volem el link a les GLX de nvidia) el creem
+	#Si no Ã©s un link (volem el link a les GLX de nvidia) el creem
 	if [ ! -L "$dirbase/usr/lib/xorg/modules/extensions/libglx.so" ]; then
 	#Copiem el glx vell per si l'hem de restaurar
 		rm -f "$dirbase/usr/lib/xorg/modules/extensions/libglx.so_kademar_replaced"
 		mv "$dirbase/usr/lib/xorg/modules/extensions/libglx.so" "$dirbase/usr/lib/xorg/modules/extensions/libglx.so_kademar_replaced"
 		ln -s "$libglx_nvidia" "$dirbase/usr/lib/xorg/modules/extensions/libglx.so"
 	fi
-	#Posa l'enllaç cap a libGL de nvidia
+	#Posa l'enllaÃ§ cap a libGL de nvidia
 	rm -f "$dirbase/usr/lib/libGL.so"
 	rm -f "$dirbase/usr/lib/libGL.so.1"
 
@@ -54,13 +54,13 @@ if [ "$display_driver" = "nvidia" -a -n "$libglx_nvidia" ]; then
 	ln -s "$libgl_nvidia" "$dirbase/usr/lib/libGL.so"
 	ln -s "$libgl_nvidia" "$dirbase/usr/lib/libGL.so.1"
 else
-#si el link està fet (i no es NVIDIA el modul, o no existeix) i existeix la còpia (per si canviem  nvidia -> ati per.exemple)
+#si el link estÃ  fet (i no es NVIDIA el modul, o no existeix) i existeix la cÃ²pia (per si canviem  nvidia -> ati per.exemple)
 	if [ -L "$dirbase/usr/lib/xorg/modules/extensions/libglx.so" -a -e "$dirbase/usr/lib/xorg/modules/extensions/libglx.so_kademar_replaced" ]; then
 		rm -f "$dirbase/usr/lib/xorg/modules/extensions/libglx.so"
 		cp "$dirbase/usr/lib/xorg/modules/extensions/libglx.so_kademar_replaced" "$dirbase/usr/lib/xorg/modules/extensions/libglx.so"
 	fi
 
-	#Restaura l'enllaç dels libGL
+	#Restaura l'enllaÃ§ dels libGL
 	rm -f "$dirbase/usr/lib/libGL.so"
 	rm -f "$dirbase/usr/lib/libGL.so.1"
 	ln -s "/usr/lib/libGL.so.1.2" "$dirbase/usr/lib/libGL.so.1"

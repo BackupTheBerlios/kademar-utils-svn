@@ -1,5 +1,5 @@
 #!/usr/bin/python 
-#-*- coding: iso-8859-15 -*-
+# -*- coding: utf-8 -*-
 
 #############################################
 #   * Instalador. Check progress status *   #
@@ -15,7 +15,7 @@ from PyQt4.QtCore import QThread, SIGNAL
 from commands import getoutput
 from os import system
 
-#Comprobació de el progrés de la còpia
+#ComprobaciÃ³ de el progrÃ©s de la cÃ²pia
 class checkspace(QThread):
     def __init__(self, a, b, c, d):
         QThread.__init__(self)
@@ -44,14 +44,14 @@ class checkspace(QThread):
         #print "Check Space Function"
 
         percent=0
-        #suma conté el tamany dels fitxers que s'han de copiar
+        #suma contÃ© el tamany dels fitxers que s'han de copiar
         #suma=int(getoutput("df / | grep / | awk ' { print $2 } ' "))
         if path.exists("/usr/share/kademar/utils/instalador/distrosize"):
             suma=int(getoutput("cat /usr/share/kademar/utils/instalador/distrosize"))
         else:
             suma=4000000  #4 gb
 
-        #ocupainicial conté el tamany de les particions, per si no s'han formatat
+        #ocupainicial contÃ© el tamany de les particions, per si no s'han formatat
         # pero per si s'ha seleccionat home separats... es comprova cada un d'ells
         ocupaarrel=int(getoutput("df /dev/"+particioarrel[0]+" | grep /dev/"+particioarrel[0]+"  | awk ' { print $3 } ' "))
         if particiohome:

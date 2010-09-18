@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#-*- coding: iso-8859-15 -*-
+# -*- coding: utf-8 -*-
 
 #############################################
 #         -=|  INSTALADOR 5  |=-            #
@@ -77,11 +77,11 @@ class instalador(QDialog):
         icona_hd=pathinstaller+"/img/hdd.png"
         icona_partition=pathinstaller+"/img/partition.png"
 
-        #Ordre de fer aparËixer els leds i les pagines
+        #Ordre de fer apar√®ixer els leds i les pagines
         led_order=[self.ui.led_disc, self.ui.led_disc, self.ui.led_license, self.ui.led_sistema, self.ui.led_passwd, self.ui.led_user, self.ui.led_mbr]
         page_order=["principal", "information", "disc", "license", "sistema", "passwd", "user", "mbr", "final"]
 
-        copiant=0       #Estat de si est‡ copiant o no
+        copiant=0       #Estat de si est√† copiant o no
         varcopiaacabada=0  #Estat de copia finalitzada
 
         grephalinfo="sh scripts/grephalinfo.sh"  #Script to grep info from hal
@@ -276,7 +276,7 @@ class instalador(QDialog):
                 contapart=contapart+1
 
 
-        #Si finalment no hi ha mÈs d'un disc dur, desactiva la possiblitat d'escollir manual al MBR
+        #Si finalment no hi ha m√©s d'un disc dur, desactiva la possiblitat d'escollir manual al MBR
         if len(discs)==1:
             self.ui.rb_man.setVisible(0)
         #Autoseleccio de la particio swap. Si es troba, posala, sino posa -1 == RES
@@ -391,8 +391,8 @@ class instalador(QDialog):
         charorig=char
         if char<>"":
             char=char[-1]
-            if char=="‡" or char=="·" or char=="Ë" or char=="È" or char=="Ì" or char=="Ï" or char=="Û" or char=="Ú" or char=="˙" or char=="˘" or char=="Á" or char=="∑" or char==" " or char=="$" or char=="#" or char=="(" or char==")" or char==" ":
-                self.showwarnmsg("critical", self.tr("Character error"), self.tr("You cannot write special characters as: \n   ‡, Ë, È, Ì, Ú, Û, ˙, (, ), ' ', Á, ∑, $, #, etc"))
+            if char=="√†" or char=="√°" or char=="√®" or char=="√©" or char=="√≠" or char=="√¨" or char=="√≥" or char=="√≤" or char=="√∫" or char=="√π" or char=="√ß" or char=="¬∑" or char==" " or char=="$" or char=="#" or char=="(" or char==")" or char==" ":
+                self.showwarnmsg("critical", self.tr("Character error"), self.tr("You cannot write special characters as: \n   √†, √®, √©, √≠, √≤, √≥, √∫, (, ), ' ', √ß, ¬∑, $, #, etc"))
                 return charorig[:-1]  #Return modified line without invalid char
 
     ##  FUNCIONS DE WARNING
@@ -424,7 +424,7 @@ class instalador(QDialog):
         else:
             self.ui.cb_hd_format_home.setVisible(0)
 
-    #Si est‡ activat, fes visible lo de Format
+    #Si est√† activat, fes visible lo de Format
     def discs_adv(self):  #Advanced
         if self.ui.ch_adv.isChecked():
             visible=1
@@ -541,7 +541,7 @@ class instalador(QDialog):
 ##  FUNCTIONS OF USER FORM
 #####
     def fillaccount(self, char):
-        replacers=[("‡","a"),("·","a"),("Ë","e"),("È","e"),("Ì","i"),("Ï","i"),("Ú","o"),("Û","o"),("˙","u"),("˘","u"),("Á","c")]
+        replacers=[("√†","a"),("√°","a"),("√®","e"),("√©","e"),("√≠","i"),("√¨","i"),("√≤","o"),("√≥","o"),("√∫","u"),("√π","u"),("√ß","c")]
         nom=char.split(" ")[0]  #Agafem la primera part del nom
         for i in replacers:
             nom=nom.replace(i[0], i[1])
@@ -650,7 +650,7 @@ class instalador(QDialog):
                 
                 if reply==QMessageBox.Ok:
                     if int(getoutput("umnt-kademar 2>/dev/null; echo $?"))<>0:
-                        #Si hi ha un error, vol dir que no s'ha desmuntat bÈ i torna a fer-ho, aviant
+                        #Si hi ha un error, vol dir que no s'ha desmuntat b√© i torna a fer-ho, aviant
                         while True:
                             reply = self.showwarnmsg("infopreg", self.tr("Close all applications"), self.tr("You should close all opened applications with disk access, in order to be able to install sucessfully.\n\nIf you want to stop installation process, press 'NO'"))
                             if reply==QMessageBox.No:
@@ -660,9 +660,9 @@ class instalador(QDialog):
                                 error=0
                                 break
                     else:
-                        #Di en despuntar no hi ha hagut error vol dir k tot est‡ ok
+                        #Di en despuntar no hi ha hagut error vol dir k tot est√† ok
                         error=0
-                #si ha contestat que no vol comenÁar el procÈs d'instal∑laciÛ, para-ho
+                #si ha contestat que no vol comen√ßar el proc√©s d'instal¬∑laci√≥, para-ho
                 else:
                     error=3
 
@@ -793,7 +793,7 @@ class instalador(QDialog):
 
 
         print "copia acabada"
-        if currentpage==7 and varcopiaacabada:  #Si estem a la ˙ltima p‡gina, vol dir ue hem acabat
+        if currentpage==7 and varcopiaacabada:  #Si estem a la √∫ltima p√†gina, vol dir ue hem acabat
             self.ui.boto_back.setVisible(0)
             self.ui.boto_next.setVisible(0)
             
@@ -822,16 +822,16 @@ class instalador(QDialog):
             plantillapasswd="/tmp/instalador-environment-passwd"  #Plantilla amb les contrassenyes
 
             f=open(plantilla,'w')
-            f.writelines('# Taula de Configuracio de la nova instal∑laciÛ \n')
+            f.writelines('# Taula de Configuracio de la nova instal¬∑laci√≥ \n')
             f.writelines('particioarrel=/dev/'+particioarrel[0]+' \n')
             f.writelines('fsparticioarrel='+filesystems[particioarrel[1]]+' \n')
             f.writelines('particioswap=/dev/'+particioswap[0]+' \n')
             if particiohome:
                 f.writelines('particiohome=/dev/'+particiohome[0]+' \n')
                 f.writelines('fsparticiohome='+filesystems[particiohome[1]]+' \n')
-            f.writelines("#Desti d'instal∑lacio  \n")
+            f.writelines("#Desti d'instal¬∑lacio  \n")
             f.writelines('DESTI='+target+' \n')
-            f.writelines("#Nom PC i Idioma de la instal∑lada \n")
+            f.writelines("#Nom PC i Idioma de la instal¬∑lada \n")
             f.writelines('NOM_PC="'+self.ui.t_pc.text()+'" \n')
             f.writelines('LANGUAGE='+idioma+' \n')
             f.writelines('#Nom persona \n')
@@ -959,9 +959,9 @@ class instalador(QDialog):
         ##############
         # BOOTLOADER #
         ##############
-        # si el checkbox2 est‡ marcat es desitja NO instal.lar el GRUB
-        # l'usuari tindr‡ que configurar a ma el seu sistema d'engegada
-        # amb la opciÛ marcada les passes 1 a 4 no es far‡n 
+        # si el checkbox2 est√† marcat es desitja NO instal.lar el GRUB
+        # l'usuari tindr√† que configurar a ma el seu sistema d'engegada
+        # amb la opci√≥ marcada les passes 1 a 4 no es far√†n 
 
             # Prepara el grub (carpeta /boot)
             print "sh scripts/install-bootloader" 
@@ -970,7 +970,7 @@ class instalador(QDialog):
             QApplication.processEvents()  # python QT Yield
 
             if mbr=="no":
-                print "No s'instal∑la GRUB"
+                print "No s'instal¬∑la GRUB"
             else:
                 print 'mbr=',mbr
 
@@ -1007,9 +1007,9 @@ class instalador(QDialog):
             #Muntem sistemes de fitxers virtuals
             system("umount "+target+"/dev "+target+"/proc $DESTI/proc 2>/dev/null")
 
-            #desmunta els directoris si existeixen per una fallida de l'instalador - FOR«AT
+            #desmunta els directoris si existeixen per una fallida de l'instalador - FOR√áAT
             system("for i in `cat /proc/mounts | grep '"+target+"' | awk ' { print $2 } ' | sort -r`; do umount -l $i; done")
-            #Tornem a desmuntaro x tal d'assegurar-nos - FOR«AT
+            #Tornem a desmuntaro x tal d'assegurar-nos - FOR√áAT
             system("umount -l "+target+"/dev "+target+"/proc "+target+"/proc 2>/dev/null")
 
 
@@ -1071,9 +1071,9 @@ elif qtTranslator.load("/usr/share/kademar/utils/instalador/tr/en.qm"):
     app.installTranslator(qtTranslator)
     print "Loaded "+locale
 
-qtTranslator = QTranslator()
-qtTranslator.load("qt_"+locale, "/usr/share/qt4/translations")
-app.installTranslator(qtTranslator)
+qtTranslatorQT = QTranslator()
+qtTranslatorQT.load("qt_"+locale, "/usr/share/qt4/translations")
+app.installTranslator(qtTranslatorQT)
 
 instalador = instalador()
 instalador.show()

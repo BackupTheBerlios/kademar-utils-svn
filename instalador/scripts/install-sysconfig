@@ -105,11 +105,11 @@ fi
 #And put actual live-cd config if all OK
 [ -e "/etc/X11/xorg.conf" -a "$gfx" = "ok" ] && cp -a "/etc/X11/xorg.conf" "$DESTI/etc/X11/xorg.conf"
 
-#Creacio de la configuració gràfica, juntament amb l'acceleració modificada
+#Creacio de la configuraciÃ³ grÃ fica, juntament amb l'acceleraciÃ³ modificada
 #Utilitzant el driver amb el que ha lograt engegar
 # cp /var/tmp/xserver "$DESTI/var/tmp/xserver"
 
-#correcció de acceleració
+#correcciÃ³ de acceleraciÃ³
 chroot "$DESTI" sh /usr/share/kademar/utils/instalador/scripts/xorg-correccio_acceleracio
 
 #####
@@ -117,7 +117,7 @@ chroot "$DESTI" sh /usr/share/kademar/utils/instalador/scripts/xorg-correccio_ac
 # aixo fara k en instalada no es torni a generar el xorg.conf fins que no es canvii la grafica o el nucli
 #####
 
-#Posem el nom a la màquina
+#Posem el nom a la mÃ quina
 echo "$NOM_PC" > "$DESTI/etc/hostname"
 
 cat > "$DESTI/etc/hosts" << EOF
@@ -152,12 +152,12 @@ snd-seq-device" >> "$DESTI/etc/modules"
 #Canviem el rellotge / Hack per la hora correcta
 echo "Europe/Madrid" > "$DESTI/etc/timezone"
 
-#Afegim la càrrega del mòdul d'APM
+#Afegim la cÃ rrega del mÃ²dul d'APM
 if [ ! -e /proc/acpi ]; then
 	echo "apm power_off=1" > "$DESTI/etc/modules"
 fi
 
-#Desactivem el bloqueig de teclat numèric, si és un portàtil.
+#Desactivem el bloqueig de teclat numÃ¨ric, si Ã©s un portÃ til.
 if [ "`laptop-detect ; echo $?`" = 0 ]; then
 #Portatil Zone
 	rm -fr "$DESTI/etc/X11/Xsession.d/55numlockx"
@@ -174,7 +174,7 @@ if [ -e "$DESTI/etc/samba/smb.conf" ]; then
 	sed s:\""$find0"\":"   workgroup = kademar":g -i "$DESTI/etc/samba/smb.conf"
 fi
 
-#Definim la descripció del servidor - Treiem el Número de versió del samba per preveure possibles exploits
+#Definim la descripciÃ³ del servidor - Treiem el NÃºmero de versiÃ³ del samba per preveure possibles exploits
 find0=`cat "/etc/samba/smb.conf"  | grep "server string" | grep -i "="`
 sed s:\""$find0"\":"   server string = kademar Server (Samba)":g -i "$DESTI/etc/samba/smb.conf"
 
@@ -216,10 +216,10 @@ if [ -n "`echo $CMDLINE | grep -i csin`" -o -n "`echo $CMDLINE | grep -i csex`" 
 	
 fi
 
-#Borrem l'entrada a l'escript d'instal·lació
+#Borrem l'entrada a l'escript d'instalÂ·laciÃ³
 #rm -fr "$DESTI/usr/local/bin/instalador" #DEPRECATED
 
-#Permisos d'execució a  pmount
+#Permisos d'execuciÃ³ a  pmount
 chmod ugo+x "$DESTI/usr/bin/pmount"
 chmod ugo+x "$DESTI/usr/bin/pumount"
 
@@ -299,7 +299,7 @@ ca*)
 	echo "
 Els programes inclosos en Kademar GNU/Linux son programari lliure
 en la seva majoria, i una part residual de programari no lliure;
-els termes exactes de distribució de cada programa estan descrits en
+els termes exactes de distribuciÃ³ de cada programa estan descrits en
 fitxers individuals en /usr/share/doc/*/copyright.
 
 kademar GNU/Linux ve en ABSOLUTA NO GARANTIA, en la mesura
@@ -308,11 +308,11 @@ permesa per la llei actual." > $motd_file.tail
 es*)
 		echo "
 Los programas incluidos en Kademar GNU/Linux son software libre
-en su mayoría, y una parte residual de software no libre;
-los términos exactos de distribución de cada programa están descritos en
+en su mayorÃ­a, y una parte residual de software no libre;
+los tÃ©rminos exactos de distribuciÃ³n de cada programa estÃ¡n descritos en
 archivos individuales en /usr/share/doc/*/copyright.
 
-Kademar GNU/Linux viene en ABSOLUTA NO GARANTÍA, en la medida
+Kademar GNU/Linux viene en ABSOLUTA NO GARANTÃA, en la medida
 permitida por la ley actual." > $motd_file.tail
 ;;
 en*|*)
@@ -343,7 +343,7 @@ echo >> $issue_file #blank file at end
 # ln -s "/usr/share/keymaps/i386/qwerty/es.kmap.gz" "$DESTI/etc/console/boottime.kmap.gz"
 
 
-#Si s'ha configurat particioswap, configura la partició de resume
+#Si s'ha configurat particioswap, configura la particiÃ³ de resume
 if [ -n "$particioswap" ]; then
 	echo "# /etc/uswsusp.conf(8) -- Configuration file for s2disk/s2both 
 resume device = $particioswap
@@ -376,6 +376,6 @@ fi
 # detect monitor
 sh /usr/share/kademar/scripts/engegada/detect-monitor "$DESTI"
 
-#Executa la configuració Modular
+#Executa la configuraciÃ³ Modular
 [ -e /usr/share/kademar/utils/instalador/scripts/install-sysconfig_second-stage ] && sh /usr/share/kademar/utils/instalador/scripts/install-sysconfig_second-stage
 

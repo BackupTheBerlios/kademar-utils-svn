@@ -20,10 +20,10 @@ ruta_fstab="/etc/fstab"
 
 #########################
 
-#Ens assegurem de que està buit el fitxer de restauracio de Serveis dels rc?.d
+#Ens assegurem de que estÃ  buit el fitxer de restauracio de Serveis dels rc?.d
 echo > "$DESTI/serveis"
 
-#Càrrega de les tecles de toshiba, si existeixen
+#CÃ rrega de les tecles de toshiba, si existeixen
 if [ -d /proc/acpi/toshiba/keys ]; then
 		echo "update-rc.d fnfxd defaults 20" >> "$DESTI/serveis"
 fi

@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#-*- coding: iso-8859-15 -*-
+# -*- coding: utf-8 -*-
 
 import sys
 from PyQt4.QtGui import *
@@ -293,7 +293,7 @@ class AudioConversor(QWidget):
                 self.ui.b_sortir_2.setVisible(1)
                 self.ui.b_stop.setVisible(0)
                 self.ui.b_sortir.setEnabled(1)
-                QMessageBox.information(self, self.tr("¡¡¡Conversion Completed!!!"), self.tr("Finish. All files were converted!"), QMessageBox.Ok )
+                QMessageBox.information(self, self.tr("Â¡Â¡Â¡Conversion Completed!!!"), self.tr("Finish. All files were converted!"), QMessageBox.Ok )
         #else:
             #print "nomore - process stoped"
 
@@ -404,9 +404,9 @@ elif qtTranslator.load("/usr/share/kademar/utils/audioconversor/tr/en.qm"):
     app.installTranslator(qtTranslator)
     print "Loaded "+locale
 
-qtTranslator = QTranslator()
-qtTranslator.load("qt_"+locale, "/usr/share/qt4/translations")
-app.installTranslator(qtTranslator)
+qtTranslatorQT = QTranslator()
+qtTranslatorQT.load("qt_"+locale, "/usr/share/qt4/translations")
+app.installTranslator(qtTranslatorQT)
 
 AudioConversor = AudioConversor()
 AudioConversor.show()

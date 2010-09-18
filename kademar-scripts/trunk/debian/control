@@ -7,6 +7,6 @@ Standards-Version: 3.7.2
 
 Package: kademar-scripts
 Architecture: all
-Depends: squashfs-tools|squashfs-tools-lzma, bzip2, devscripts, dh-make, debhelper, grub-gfxboot|grub2, mkisofs, cpio, unp, sudo, gnupg,  xnest, debootstrap, gcc, libc6-dev, build-essential, ${shlibs:Depends}, ${misc:Depends}
+Depends: squashfs-tools|squashfs-tools-lzma, bzip2, devscripts, dh-make, debhelper, grub-gfxboot|grub2, mkisofs, cpio, unp, sudo, gnupg,  xnest, debootstrap, gcc, libc6-dev, build-essential, ${misc:Depends}
 Suggests: qemu, unionfs-source, squashfs-tools-lzma
 Description: Scripts made to make easier the life of the kademar developer. :)

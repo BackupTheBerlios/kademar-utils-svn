@@ -272,8 +272,12 @@ fi
 
 #kademar
 cd $INITRD_TREE/lib/
-cpio -id --quiet < lib.cpio 2>/dev/null
-rm -f lib.cpio
+cpio -id --quiet < lib$arch.cpio 2>/dev/null
+rm -f lib$arch.cpio
+
+#kademar
+#if defined, means 64bit system
+[ -n "$arch" ] && ln -s lib $INITRD_TREE/lib64
 
 #kademar
 #Copy firmwares
@@ -326,7 +330,9 @@ find $INITRD_TREE -noleaf -name "*.ko.gz" | xargs -r gunzip
 
 debug "generating module dependency files"
 #kademar
-depmod -a -m -F /boot/System.map-$KERNEL -b $INITRD_TREE $KERNEL
+mkdir -p $INITRD_TREE/boot
+cp -a $ROOT/boot/System.map-$KERNEL $INITRD_TREE/boot
+depmod -a -m -F $INITRD_TREE/boot/System.map-$KERNEL -b $INITRD_TREE $KERNEL
 #depmod -a -b -F /boot/System.map-$KERNEL $KERNEL
 
 
@@ -334,6 +340,15 @@ debug "compressing usr in initrd"
 mksquashfs $INITRD_TREE/usr $INITRD_TREE/usr.lzm >/dev/null 2>/dev/null
 chmod ago-x $INITRD_TREE/usr.lzm
 rm -Rf $INITRD_TREE/usr/*
+
+#kademar - make it here, because need it some libraries on /usr on start, no later when mount usr.lzm
+#use normal insmod & modprobe 'cause in 1.17.2 isn't working
+for i in blockdev blkid lspci eject insmod modprobe
+do
+  file=`which $i`
+  rm -f $INITRD_TREE/$file #remove if exists
+  /usr/lib/kademar-scripts/lddget $file $INITRD_TREE >/dev/null #copy with it's dependences
+done
 
 debug "creating empty image file for initrd"
 dd if=/dev/zero of=$INITRDIMG bs=1024 count=$RAM0SIZE >>$DEBUG 2>&1

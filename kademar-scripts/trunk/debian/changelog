@@ -5,6 +5,7 @@ kademar-scripts (3.2) testing; urgency=low
   * FEATURE: LiveCD using configure inittab (modify rcS)
   * FEATURE: Support to new bash/sh/dash differentiation
   * FEATURE: Support to stage 1.5 and 2 on mkiso
+  * FEATURE: Support to Qemu x64 guests
   * FIX: Creation of  modules.pcimap / .dep / .alias  if not exists
 
  -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Thu, 08 Jul 2010 21:05:58 +0200

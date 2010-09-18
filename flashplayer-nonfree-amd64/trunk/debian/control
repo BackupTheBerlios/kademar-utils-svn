@@ -1,0 +1,15 @@
+Source: flashplayer-nonfree-amd64
+Section: non-free/web
+Priority: extra
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 7.0.50~)
+Standards-Version: 3.8.4
+#Homepage: <insert the upstream URL, if relevant>
+#Vcs-Git: git://git.debian.org/collab-maint/flashplayer-nonfree-amd64.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/flashplayer-nonfree-amd64.git;a=summary
+
+Package: flashplayer-nonfree-amd64
+Architecture: amd64
+Depends: nspluginwrapper
+Description: Flash Player plugin 
+ Flash player plugin for 64 bit systems - kademar

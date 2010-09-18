@@ -1,19 +1,28 @@
 #!/bin/bash
 #
-# Creat per Adonay Sanz per la kademar - 1 oct 2005
+# Created by Adonay Sanz for kademar - 1 oct 2005
+# Modified 14 abr 09 - auto ntfsfix
+# Modified 13 Sep 10 - Better failedmount
 #
 
-dispositius=`ls /mnt --ignore=cdrom* --ignore=fd* --ignore=dvd* --ignore=disquet* 2>/dev/null`
+failedmount(){
+#if mount fails, umount and NTFS-fix if it's a NTFS partition
+	i=$1
+	if [ "`blkid -o value -s TYPE /dev/$i`" = "ntfs" ]; then
+		umount /mnt/$i
+		ntfsfix /dev/$i
+		mount /mnt/$i || mount -t ntfs /dev/$i /mnt/$i -o gid=users,umask=0000,nls=iso8859-1 #mount normally or force on readonly mode
+	fi
+}
+
+dispositius=`ls /mnt --ignore=cdrom* --ignore=fd* --ignore=dvd* --ignore=disquet* --ignore=live* 2>/dev/null`
 
 if [ -n "$dispositius" ]; then
-	ls -1 /mnt --ignore=cdrom* --ignore=fd* --ignore=dvd* --ignore=disquet* | while read i
+	for i in $dispositius
 	do
-	#Munta'l i si falla, muntal com a NTFS (si ha fallat, solament pot ser un NTFS-3G que al no estar CLEAN, no el munta
-		[ -z "`grep "$i" /proc/mounts`" ] && mount "/mnt/$i" || mount -t ntfs "/dev/$i" "/mnt/$i" -o gid=users,umask=0000,nls=iso8859-1 2>/dev/null >&2
-
-		[ ! -e "/mnt/$i/mnt" -a ! -e "/mnt/$i/home" ] && chmod 777 "/mnt/$i"
+	#Mount partition. If fails, go to failedmount funcion (clean NTFS, and mount on RW again)
+		[ -z "`grep $i /proc/mounts`" ] && ( mount /mnt/$i || failedmount $i ) 2>/dev/null >&2
 	done
-	
 fi
 
 

@@ -14,7 +14,7 @@ lshal="`lshal`"
 
 # TODO: gnome & other desktop supported & common
 
-if [ -n "$KDE_SESSION_UID" ]; then
+if [ -n "$KDE_SESSION_UID" -o "$DESKTOP_SESSION" = "kde3" ]; then
 	desktop=kde
 	$initial_service_start_kde
 else

@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#-*- coding: iso-8859-15 -*-
+# -*- coding: utf-8 -*-
 import funcions_k
 import sys
 from PyQt4.QtGui import *
@@ -259,13 +259,13 @@ class UsbTray(QWidget):
         #print "conectat"
 
     def botosortir(self):
-        self.showmsg(self.tr("Ejecución"), self.tr("UsbTray sigue funcionando aquí"))
+        self.showmsg(self.tr("EjecuciÃ³n"), self.tr("UsbTray sigue funcionando aquÃ­"))
         self.mainwindow()
 
   #Troggle main window visibility
     def mainwindow(self):
         self.setVisible( not self.isVisible() )
-        #self.showmsg(self.tr("Ejecución"), self.tr("UsbTray sigue funcionando\n aquí"))
+        #self.showmsg(self.tr("EjecuciÃ³n"), self.tr("UsbTray sigue funcionando\n aquÃ­"))
 
   #Set active action when hover - Contextual menu
     def hoveredaccio(self):
@@ -355,7 +355,7 @@ class UsbTray(QWidget):
          #event.ignore()
         event.ignore()
         self.mainwindow()
-        self.showmsg(self.tr("UsbTray"), self.tr("UsbTray sigue funcionando aquí"))
+        self.showmsg(self.tr("UsbTray"), self.tr("UsbTray sigue funcionando aquÃ­"))
      #self.tray.hide()
 
   #Tray Message Main function

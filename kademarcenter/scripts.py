@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#-*- coding: iso-8859-15 -*-
+# -*- coding: utf-8 -*-
 
 #Scripts to make kademarcenter full power!!!
 # OK to use with python or bash

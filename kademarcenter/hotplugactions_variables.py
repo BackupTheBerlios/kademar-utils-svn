@@ -1,5 +1,5 @@
 #!/usr/bin/python 
-#-*- coding: iso-8859-15 -*-
+# -*- coding: utf-8 -*-
 
 from PyQt4.QtGui import *
 #from PyQt4 import *
@@ -55,7 +55,7 @@ class HotplugactionsVariables(QDialog):
             )
     
         self.dvdicon="/usr/share/icons/default.kde/48x48/devices/dvd_unmount.png"
-        self.dvdprop=self.tr("S'ha inserit una pelÌcula DVD %s" %(label))
+        self.dvdprop=self.tr("S'ha inserit una pel√≠cula DVD %s" %(label))
         self.dvdname="DVD-Rom"
     
         #######
@@ -72,7 +72,7 @@ class HotplugactionsVariables(QDialog):
             )
     
         self.audiocdicon="/usr/share/icons/default.kde/48x48/devices/cdaudio_unmount.png"
-        self.audiocdprop=self.tr("S'ha inserit un nou medi CD de m˙sica")
+        self.audiocdprop=self.tr("S'ha inserit un nou medi CD de m√∫sica")
         self.audiocdname=self.tr("Audio CD")
     
         #######
@@ -115,7 +115,7 @@ class HotplugactionsVariables(QDialog):
             )
     
         self.wlanicon="/usr/share/icons/hicolor/48x48/apps/kwifimanager.png"
-        self.wlanprop=self.tr("S'ha inserit un dispositiu de Xarxa Inal·mbrica")
+        self.wlanprop=self.tr("S'ha inserit un dispositiu de Xarxa Inal√°mbrica")
         self.wlanname=self.tr("Wireless Lan")
     
         #######
@@ -147,7 +147,7 @@ class HotplugactionsVariables(QDialog):
             )
 
         self.fwcamicon="/usr/share/icons/default.kde/48x48/devices/camera_unmount.png"
-        self.fwcamprop=self.tr("S'ha inserit una c‡mera FireWire")
+        self.fwcamprop=self.tr("S'ha inserit una c√†mera FireWire")
         self.fwcamname=self.tr("Firewire Camera")
 
 

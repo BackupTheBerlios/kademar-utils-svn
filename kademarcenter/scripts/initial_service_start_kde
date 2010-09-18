@@ -11,7 +11,7 @@ if [ -z "`pidof kmix`" ]; then
 	lspci="`lspci`"
 	if [ -n "`echo "$lspci" | grep 'Multimedia audio controller'`" -o -n "`echo "$lspci" | grep 'Audio device'`" ]; then
 		kmix &
-# 		sh /usr/share/kademar/scripts/engegada/volums 2>/dev/null 2>&1 &
+ 		sh /usr/share/kademar/scripts/engegada/volums 2>/dev/null 2>&1 &
 	fi
 fi
 

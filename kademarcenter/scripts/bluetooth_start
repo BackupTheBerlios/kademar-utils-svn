@@ -8,7 +8,7 @@
 #now on udev rule
 # sudo /etc/init.d/bluetooth restart 
 
-list="blueman-manager blueman bluetooth-applet"
+list="blueman-applet blueman-manager blueman bluetooth-applet"
 
 #if in KDE session
 if [ -n "$KDE_SESSION_UID" ]; then

@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#-*- coding: iso-8859-15 -*-
+# -*- coding: utf-8 -*-
 
 #
 # Function to warn if you have desconnected a USB Device Incorrectly

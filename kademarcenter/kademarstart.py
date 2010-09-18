@@ -1,7 +1,5 @@
 #!/usr/bin/python
-
-#!/usr/bin/python
-#-*- coding: iso-8859-15 -*-
+# -*- coding: utf-8 -*-
 
 import sys
 from PyQt4.QtGui import *

@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#-*- coding: iso-8859-15 -*-
+# -*- coding: utf-8 -*-
 
 # Modul de funcions i variables per us itern de kademar
 
@@ -49,6 +49,12 @@ def instalat():
     else:
         return True
     
+def installed():
+    if os.path.exists('/initrd/rootsquash') or os.path.exists("/mnt/live/memory/images/kademar.lzm"):
+        return False
+    else:
+        return True
+    
 def ajuda(self,b,vist,num):
     if vist[num]==False:
         self.timer1.Stop()
@@ -72,9 +78,9 @@ def tipuskademar():
     from commands import getoutput
     tipuskademar=getoutput(""". /etc/kademar/config ; echo $kademar_type  2>/dev/null""").lower()
     if tipuskademar=="leo":
-        return "Leo - DvD"
+        return "Leo - 64bit"
     elif tipuskademar=="lyra":
-       return "Lyra - CD"
+       return "Lyra - 32bit"
     elif tipuskademar=="khronos":
         return "Khronos - Lite"
     elif tipuskademar=="core":
@@ -82,7 +88,7 @@ def tipuskademar():
     elif tipuskademar=="heliox":
         return "Heliox"
     else:
-        return tipuskademar.capitalize()
+        return tipuskademar
 
 #Function to check if internet's available
 def internet():

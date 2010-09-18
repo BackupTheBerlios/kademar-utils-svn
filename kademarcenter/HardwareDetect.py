@@ -1,8 +1,8 @@
 #!/usr/bin/python 
-#-*- coding: iso-8859-15 -*-
+# -*- coding: utf-8 -*-
 
 #############################################
-#  *KADEMARCENTER Module: Detecta Hardware*  #
+#  *KADEMARCENTER Module: Detecta Hardware* #
 #  ---------------------------------------  #
 #     Author: Adonay Sanz Alsina            #
 #     License: GPL 2.0 or higer             #
@@ -262,7 +262,7 @@ class HardwareDetect(QThread):
                 if not doit:
                     self.usbactions('cdrom', block, mntpoint, label)
 
-            #print "paso per aquí"
+            #print "paso per aquÃ­"
             #print label, mntpoint, block, doit
     ########   FI CDROM  ########
 

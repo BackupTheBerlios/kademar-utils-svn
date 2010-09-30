@@ -976,12 +976,12 @@ Assegura&apos;t de que no hi ha cap programa accedint al dispositiu.</translatio
     <message>
         <location filename="usbtray.py" line="262"/>
         <source>Ejecuci&#xf3;n</source>
-        <translation>Execuci</translation>
+        <translation type="obsolete">Execuci</translation>
     </message>
     <message>
         <location filename="usbtray.py" line="358"/>
         <source>UsbTray sigue funcionando aqu&#xed;</source>
-        <translation>UsbTray segueix funcionant aquí</translation>
+        <translation type="obsolete">UsbTray segueix funcionant aquí</translation>
     </message>
     <message>
         <location filename="usbtray.py" line="300"/>
@@ -1039,6 +1039,16 @@ Assegura&apos;t de que no hi ha cap programa accedint al dispositiu.</translatio
     <message>
         <location filename="usbtray.py" line="358"/>
         <source>UsbTray</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="usbtray.py" line="262"/>
+        <source>Ejecuci&#xc3;&#xb3;n</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="usbtray.py" line="358"/>
+        <source>UsbTray sigue funcionando aqu&#xc3;&#xad;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1346,17 +1356,17 @@ Assegura&apos;t de que no hi ha cap programa accedint al dispositiu.</translatio
         <translation type="obsolete">Hi ha disponibles per actualitzar %s paquets.</translation>
     </message>
     <message>
-        <location filename="kademarcenter.py" line="235"/>
+        <location filename="kademarcenter.py" line="243"/>
         <source>Closed, there&apos;s no remaining massive storage devices.</source>
         <translation>Tancat, no hi ha cap dispsitiu d&apos;emmagatzematge més.</translation>
     </message>
     <message>
-        <location filename="kademarcenter.py" line="218"/>
+        <location filename="kademarcenter.py" line="226"/>
         <source>Updade Available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="kademarcenter.py" line="218"/>
+        <location filename="kademarcenter.py" line="226"/>
         <source>Update available for %s packages.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1370,16 +1380,32 @@ Assegura&apos;t de que no hi ha cap programa accedint al dispositiu.</translatio
         <source>Configure</source>
         <translation>Configura</translation>
     </message>
+    <message>
+        <location filename="kademarcenter.py" line="162"/>
+        <source>Executing 32bit kademar on a 64bit Machine</source>
+        <translation>Executant kademar de 32bit en una Màquina de 64bit</translation>
+    </message>
+    <message>
+        <location filename="kademarcenter.py" line="162"/>
+        <source>Your computer is a 64bit capable, but you are executing a 32bit kademar.
+This can cause performance issues and kademar experience could be reduced.
+
+For live-cd use there&apos;s no problem, but if you want to install kademar on this machine, would be better if you download 64bit version from www.kademar.org</source>
+        <translation>El seu ordinador es de 64bit, però està executant una kademar de 32bit.
+Això pot causar que el sistema vagi més lent i la satisfacció d&apos;usar kademar sigui reduïda.
+
+Per usar-la com a live-cd no hi ha cap problema, però si vol instal·lar kademar en aquesta màquina, estaria millor que descarregués la versió 64bit des de www.kademar.org</translation>
+    </message>
 </context>
 <context>
     <name>kademarstart</name>
     <message>
-        <location filename="kademarstart_kademarcenter.py" line="166"/>
+        <location filename="kademarstart_kademarcenter.py" line="164"/>
         <source>file:///usr/share/kademar/utils/kademarcenter/html/equip_ca.html</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="kademarstart_kademarcenter.py" line="167"/>
+        <location filename="kademarstart_kademarcenter.py" line="165"/>
         <source>file:///usr/share/kademar/utils/kademarcenter/html/notesversio_ca.html</source>
         <translation type="unfinished"></translation>
     </message>

@@ -832,12 +832,12 @@ Be sure any program accessing it.</translation>
     <message>
         <location filename="usbtray.py" line="262"/>
         <source>Ejecuci&#xf3;n</source>
-        <translation>Execution</translation>
+        <translation type="obsolete">Execution</translation>
     </message>
     <message>
         <location filename="usbtray.py" line="358"/>
         <source>UsbTray sigue funcionando aqu&#xed;</source>
-        <translation>Usbtray continues working here</translation>
+        <translation type="obsolete">Usbtray continues working here</translation>
     </message>
     <message>
         <location filename="usbtray.py" line="300"/>
@@ -895,6 +895,16 @@ Be sure any program accessing it.</translation>
     <message>
         <location filename="usbtray.py" line="358"/>
         <source>UsbTray</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="usbtray.py" line="262"/>
+        <source>Ejecuci&#xc3;&#xb3;n</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="usbtray.py" line="358"/>
+        <source>UsbTray sigue funcionando aqu&#xc3;&#xad;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1202,17 +1212,17 @@ Be sure any program accessing it.</translation>
         <translation type="obsolete">Avaliable for update %s packages</translation>
     </message>
     <message>
-        <location filename="kademarcenter.py" line="235"/>
+        <location filename="kademarcenter.py" line="243"/>
         <source>Closed, there&apos;s no remaining massive storage devices.</source>
         <translation>Closed, there&apos;s no remaining massive storage devices.</translation>
     </message>
     <message>
-        <location filename="kademarcenter.py" line="218"/>
+        <location filename="kademarcenter.py" line="226"/>
         <source>Updade Available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="kademarcenter.py" line="218"/>
+        <location filename="kademarcenter.py" line="226"/>
         <source>Update available for %s packages.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1226,16 +1236,29 @@ Be sure any program accessing it.</translation>
         <source>Configure</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="kademarcenter.py" line="162"/>
+        <source>Executing 32bit kademar on a 64bit Machine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="kademarcenter.py" line="162"/>
+        <source>Your computer is a 64bit capable, but you are executing a 32bit kademar.
+This can cause performance issues and kademar experience could be reduced.
+
+For live-cd use there&apos;s no problem, but if you want to install kademar on this machine, would be better if you download 64bit version from www.kademar.org</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>kademarstart</name>
     <message>
-        <location filename="kademarstart_kademarcenter.py" line="166"/>
+        <location filename="kademarstart_kademarcenter.py" line="164"/>
         <source>file:///usr/share/kademar/utils/kademarcenter/html/equip_ca.html</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="kademarstart_kademarcenter.py" line="167"/>
+        <location filename="kademarstart_kademarcenter.py" line="165"/>
         <source>file:///usr/share/kademar/utils/kademarcenter/html/notesversio_ca.html</source>
         <translation type="unfinished"></translation>
     </message>

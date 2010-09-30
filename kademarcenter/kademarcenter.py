@@ -153,6 +153,14 @@ class kademarcenter(QWidget):
         self.ui.l_host.setText(hostname)
 
         self.kademarstart()
+        
+        #if live-cd check if executing 32bit kademar on 64bit Machine
+        if not funcions_k.instalat():
+            check64bit=getoutput(""" for i in `grep cache_alignment /proc/cpuinfo | cut -d: -f2`; do echo $i; break; done """).strip()
+            checkSsse3=getoutput("""  grep -i ssse3 /proc/cpuinfo 2>/dev/null """)
+            if checkSsse3 and int(check64bit) >= 64:
+                QMessageBox.critical(self, self.tr('Executing 32bit kademar on a 64bit Machine'), self.tr("Your computer is a 64bit capable, but you are executing a 32bit kademar.\nThis can cause performance issues and kademar experience could be reduced.\n\nFor live-cd use there's no problem, but if you want to install kademar on this machine, would be better if you download 64bit version from www.kademar.org"))
+
 
 #############
 ####  END PC INFO

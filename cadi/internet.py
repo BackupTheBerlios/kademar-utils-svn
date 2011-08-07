@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: utf-8 -*-
+# -*- coding: iso-8859-15 -*-
 
 #############################################
 #            -=|  CADI 5  |=-               #
@@ -80,7 +80,7 @@ class panelInternet(QWidget):
         self.initialFormPrepare()
 
         #fill DNS list
-        self.ui.cb_dns.addItem(self.tr("Insert Custom DNS"))
+        self.ui.cb_dns.addItem(self.tr("Insert Custom DNS. Whitespaces separated"))
         f=open('/usr/share/kademar/utils/cadi/resources/dns_list','r')
         llista=f.readlines()
         f.close()

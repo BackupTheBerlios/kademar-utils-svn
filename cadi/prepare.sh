@@ -12,7 +12,7 @@ echo "#################"
 #Prepare form
 for i in ui/*
 do
-    pyuic4 $i > ui_`echo $i | sed s·ui/··g | sed s·.ui··g`.py
+    pyuic4 $i > ui_`echo $i | sed s.ui/..g | sed s-.ui--g`.py
 done
 
 #Prepare Translation

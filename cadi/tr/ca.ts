@@ -412,7 +412,7 @@ Si has forçat la resolució,necessitaràs reiniciar la sessió.</translation>
     <message>
         <location filename="ui/grub_installed.ui" line="121"/>
         <source>Expert Mode</source>
-        <translation>Mode Experrt</translation>
+        <translation>Mode Expert</translation>
     </message>
     <message>
         <location filename="ui/grub_installed.ui" line="233"/>
@@ -605,7 +605,7 @@ Si has forçat la resolució,necessitaràs reiniciar la sessió.</translation>
     <message>
         <location filename="ui/internet.ui" line="282"/>
         <source>Internet Provider Interface: </source>
-        <translation>Interfície de Proveïdor de Internet.</translation>
+        <translation>Interfície de Proveïdor de Internet:</translation>
     </message>
     <message>
         <location filename="ui/internet.ui" line="713"/>
@@ -695,7 +695,7 @@ Tingui paciència, si us plau.</translation>
     <message>
         <location filename="ui/pppoe.ui" line="86"/>
         <source>Here you can configure ADSL PPP over Ethernet.</source>
-        <translation>Aqui pots configurar la connexió ADSL PPP sobre Ethernet</translation>
+        <translation>Aqui pots configurar la connexió ADSL PPP sobre Ethernet.</translation>
     </message>
     <message>
         <location filename="ui/pppoe.ui" line="121"/>
@@ -707,7 +707,7 @@ Tingui paciència, si us plau.</translation>
     <message>
         <location filename="ui/pppoe.ui" line="146"/>
         <source>This isn&apos;t the normal connection way. So, if you aren&apos;t sure that you need this kind of connection, we recommend to quit from this module</source>
-        <translation>Aquest no es el mode normal de connexió. De tota manera, si no et trobes segur de fer servir aquest tipus de connexió, et recomenem sortir d&apos;aquest módul.</translation>
+        <translation>Aquest no es el mode normal de connexió. De tota manera, si no et trobes segur de fer servir aquest tipus de connexió, et recomenem sortir d&apos;aquest mòdul</translation>
     </message>
     <message>
         <location filename="ui/pppoe.ui" line="164"/>
@@ -843,7 +843,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="ui/services.ui" line="197"/>
         <source>Open Advanced Manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrir Manejador Avançat</translation>
     </message>
 </context>
 <context>
@@ -863,7 +863,7 @@ p, li { white-space: pre-wrap; }
         <source>You can configure your multimedia keyboard choosing your model on the control panel and then, press &apos;Apply&apos;.
 You can start it, using &quot;Open Control Panel&quot; bottom button.</source>
         <translation>Pots configurar els teclats multimèdia escollint el teu model al panell de control i després, prémer en &apos;Aplica&apos;.
-Pots iniciar-lo, fent servir el botó inferior anomenat &quot;Panell de Control&quot;</translation>
+Pots iniciar-lo, fent servir el botó inferior anomenat &quot;Panell de Control&quot;.</translation>
     </message>
     <message>
         <location filename="ui/teclats_multimedia.ui" line="119"/>
@@ -1048,12 +1048,12 @@ Pots iniciar-lo, fent servir el botó inferior anomenat &quot;Panell de Control&
     <message>
         <location filename="internet.py" line="316"/>
         <source>Wireless Key Error!</source>
-        <translation>Error a Clau Wireless</translation>
+        <translation>Error a Clau Wireless!</translation>
     </message>
     <message>
         <location filename="internet.py" line="316"/>
         <source>A Wireless key must be entered.</source>
-        <translation>Una clau Wireless ha de ser introduïda</translation>
+        <translation>Una clau Wireless ha de ser introduïda.</translation>
     </message>
     <message>
         <location filename="internet.py" line="645"/>
@@ -1063,7 +1063,7 @@ Pots iniciar-lo, fent servir el botó inferior anomenat &quot;Panell de Control&
     <message>
         <location filename="internet.py" line="83"/>
         <source>Insert Custom DNS</source>
-        <translation>Introdueix DNS Personalitzada</translation>
+        <translation type="obsolete">Introdueix DNS Personalitzada</translation>
     </message>
     <message>
         <location filename="internet.py" line="342"/>
@@ -1083,7 +1083,7 @@ Pots iniciar-lo, fent servir el botó inferior anomenat &quot;Panell de Control&
     <message>
         <location filename="internet.py" line="299"/>
         <source>Number must be lesser than 255.</source>
-        <translation>Nombre ha de ser menor a 255</translation>
+        <translation>Nombre ha de ser menor a 255.</translation>
     </message>
     <message>
         <location filename="internet.py" line="288"/>
@@ -1134,6 +1134,11 @@ Pots iniciar-lo, fent servir el botó inferior anomenat &quot;Panell de Control&
         <location filename="internet.py" line="479"/>
         <source>Custom DNS entries, must not be blank.</source>
         <translation>Les entrades personalitzades de DNS no poden quedar-hi en blanc.</translation>
+    </message>
+    <message>
+        <location filename="internet.py" line="83"/>
+        <source>Insert Custom DNS. Whitespaces separated</source>
+        <translation>Introdueix DNS Personalitzada. Separada per espais</translation>
     </message>
 </context>
 <context>

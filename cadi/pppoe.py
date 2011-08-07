@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: utf-8 -*-
+# -*- coding: iso-8859-15 -*-
 
 import sys
 from PyQt4.QtGui import *
@@ -73,7 +73,7 @@ class panelPPPoE(QWidget):
     def detectConcentrator(self):
         # detecta si hi ha un concentrador que permeti configurar pppoe
         self.interface=getoutput('''b='' ; for i in `ls /sys/class/net/ --ignore=lo --ignore=sit0`; do for mmm in '' '-U'; do a=`pppoe-discovery $mmm -A -I $i 2>&1 | grep "AC-Ethernet-Address"`; if [ -n "$a" ]; then  b="$b $i"; fi; done; done ; echo $b''')
-        #self.interface='eth0 eth0 eth1 eth1 eth2 eth2'  # poso aixÃ² per anar comprovant l'escript
+        #self.interface='eth0 eth0 eth1 eth1 eth2 eth2'  # poso això per anar comprovant l'escript
         codis=[]
         if self.interface.strip()<>'':
             llista=self.interface.split()
@@ -117,7 +117,7 @@ class panelPPPoE(QWidget):
         f.close()
 
         fitxer='/etc/ppp/options' 
-        #fitxer='/home/josep/options' # ho poso per proves, borrar-lo desprÃ©s        
+        #fitxer='/home/josep/options' # ho poso per proves, borrar-lo després        
         #en el /etc/ppp/options has de aseguarte que hi hagin les entrades
         # noipdefault i noauth 
         #buscar si hi ha #noipdefault i descomentar-lo, si no hi es posar-li
@@ -175,7 +175,7 @@ class panelPPPoE(QWidget):
         if not trobat:
             llista.append('''kademar "*" "" \n''')
         
-        #fitxer='/home/josep/chap-secrets' #ho poso per proves, borrar-ho desprÃ©s    
+        #fitxer='/home/josep/chap-secrets' #ho poso per proves, borrar-ho després    
             
         f=open(fitxer,'w')
         f.writelines(llista)
@@ -192,7 +192,7 @@ class panelPPPoE(QWidget):
         if not trobat:
             llista.append('''kademar "*" "" \n''')
         
-        #fitxer='/home/josep/pap-secrets' #ho poso per proves, borrar-ho desprÃ©s    
+        #fitxer='/home/josep/pap-secrets' #ho poso per proves, borrar-ho després    
             
         f=open(fitxer,'w')
         f.writelines(llista)
@@ -200,7 +200,7 @@ class panelPPPoE(QWidget):
         
         #al fitxer /etc/ppp/peers/provider  maxakarlo
         fitxer='/etc/ppp/peers/provider'
-        #fitxer='/home/josep/dsl-provider' # ho poso per proves, borrar-lo desprÃ©s
+        #fitxer='/home/josep/dsl-provider' # ho poso per proves, borrar-lo després
         f=open(fitxer,'w')
         f.write('noipdefault \n')
         f.write('usepeerdns \n')
@@ -221,11 +221,11 @@ class panelPPPoE(QWidget):
         
         #al fitxer /etc/ppp/eth???-dsl-provider    maxakarlo
         fitxer='/etc/ppp/'+self.interface+'-dsl-provider'
-        #fitxer='/home/josep/'+self.interface+'-dsl-provider' # ho poso per proves, borrar-lo desprÃ©s
+        #fitxer='/home/josep/'+self.interface+'-dsl-provider' # ho poso per proves, borrar-lo després
         f=open(fitxer,'w')
         f.write('#!/bin/bash \n')
-        f.write('/usr/sbin/pppoe -I '+self.interface+' -T 80 -m 1452 Â 2>&1 >/dev/null \n')
-        f.write('pon dsl-provider Â 2>&1 >/dev/null \n')
+        f.write('/usr/sbin/pppoe -I '+self.interface+' -T 80 -m 1452  2>&1 >/dev/null \n')
+        f.write('pon dsl-provider  2>&1 >/dev/null \n')
         f.close()
 
         #al fitxer /etc/network/interfaces buscar dsl-provider  i substitueixes d auto a auto

@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: utf-8 -*-
+# -*- coding: iso-8859-15 -*-
 
 import sys
 from PyQt4.QtGui import *
@@ -75,7 +75,7 @@ class panelGrub(QWidget):
         f=open(plantilla,'w')
         f.writelines('particioarrel=/dev/'+variables[1]+' \n')
         f.writelines('fsparticioarrel=/dev/'+fsarrel+' \n')
-        f.writelines("#Desti d'instalÂ·lacio  \n")
+        f.writelines("#Desti d'instal·lacio  \n")
         f.writelines('DESTI='+target+' \n')
         f.writelines('mbr='+mbr+' \n')
         f.writelines('mbr_dev='+variables[1]+' \n')

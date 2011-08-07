@@ -652,7 +652,7 @@ Tenga paciencia, por favor.</translation>
     <message>
         <location filename="ui/language.ui" line="86"/>
         <source>You can change the default system language.</source>
-        <translation>Puedes cambiar el idioma por defecto del sistema</translation>
+        <translation>Puedes cambiar el idioma por defecto del sistema.</translation>
     </message>
     <message>
         <location filename="ui/language.ui" line="102"/>
@@ -695,7 +695,7 @@ Tenga paciencia, por favor.</translation>
     <message>
         <location filename="ui/pppoe.ui" line="86"/>
         <source>Here you can configure ADSL PPP over Ethernet.</source>
-        <translation>Aqui puedes configurar la conexión ADSL PPP sobre Ethernet</translation>
+        <translation>Aqui puedes configurar la conexión ADSL PPP sobre Ethernet.</translation>
     </message>
     <message>
         <location filename="ui/pppoe.ui" line="121"/>
@@ -707,7 +707,7 @@ Tenga paciencia, por favor.</translation>
     <message>
         <location filename="ui/pppoe.ui" line="146"/>
         <source>This isn&apos;t the normal connection way. So, if you aren&apos;t sure that you need this kind of connection, we recommend to quit from this module</source>
-        <translation>Este no es el modo normal de conexión. De todas formas, si no estás seguro de necesitar este tipo de conexión, recomendamos salir de este módulo.</translation>
+        <translation>Este no es el modo normal de conexión. De todas formas, si no estás seguro de necesitar este tipo de conexión, recomendamos salir de este módulo</translation>
     </message>
     <message>
         <location filename="ui/pppoe.ui" line="164"/>
@@ -843,7 +843,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="ui/services.ui" line="197"/>
         <source>Open Advanced Manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir Manejador Avanzado</translation>
     </message>
 </context>
 <context>
@@ -863,7 +863,7 @@ p, li { white-space: pre-wrap; }
         <source>You can configure your multimedia keyboard choosing your model on the control panel and then, press &apos;Apply&apos;.
 You can start it, using &quot;Open Control Panel&quot; bottom button.</source>
         <translation>Puedes configurar los teclados multimedia escogiendo tu modelo en el panel de control y después, pulsar en &apos;Aplicar&apos;.
-Puedes iniciarlo, usando el botón inferior llamado &quot;Panel de Control&quot;</translation>
+Puedes iniciarlo, usando el botón inferior llamado &quot;Panel de Control&quot;.</translation>
     </message>
     <message>
         <location filename="ui/teclats_multimedia.ui" line="119"/>
@@ -1048,12 +1048,12 @@ Puedes iniciarlo, usando el botón inferior llamado &quot;Panel de Control&quot;
     <message>
         <location filename="internet.py" line="316"/>
         <source>Wireless Key Error!</source>
-        <translation>Error en Clave Wireless</translation>
+        <translation>Error en Clave Wireless!</translation>
     </message>
     <message>
         <location filename="internet.py" line="316"/>
         <source>A Wireless key must be entered.</source>
-        <translation>Una clave Wireless debe ser introducida</translation>
+        <translation>Una clave Wireless debe ser introducida.</translation>
     </message>
     <message>
         <location filename="internet.py" line="645"/>
@@ -1063,7 +1063,7 @@ Puedes iniciarlo, usando el botón inferior llamado &quot;Panel de Control&quot;
     <message>
         <location filename="internet.py" line="83"/>
         <source>Insert Custom DNS</source>
-        <translation>Introduce DNS Personalizada</translation>
+        <translation type="obsolete">Introduce DNS Personalizada</translation>
     </message>
     <message>
         <location filename="internet.py" line="342"/>
@@ -1083,7 +1083,7 @@ Puedes iniciarlo, usando el botón inferior llamado &quot;Panel de Control&quot;
     <message>
         <location filename="internet.py" line="299"/>
         <source>Number must be lesser than 255.</source>
-        <translation>Número debe de ser menor que 255</translation>
+        <translation>Número debe de ser menor que 255.</translation>
     </message>
     <message>
         <location filename="internet.py" line="288"/>
@@ -1113,7 +1113,7 @@ Puedes iniciarlo, usando el botón inferior llamado &quot;Panel de Control&quot;
     <message>
         <location filename="internet.py" line="469"/>
         <source>Netmask must contains numbers.</source>
-        <translation>Máscara de Red debe contener números</translation>
+        <translation>Máscara de Red debe contener números.</translation>
     </message>
     <message>
         <location filename="internet.py" line="474"/>
@@ -1123,7 +1123,7 @@ Puedes iniciarlo, usando el botón inferior llamado &quot;Panel de Control&quot;
     <message>
         <location filename="internet.py" line="474"/>
         <source>Gateway must contains numbers.</source>
-        <translation>Puerta de Enlace debe contener números</translation>
+        <translation>Puerta de Enlace debe contener números.</translation>
     </message>
     <message>
         <location filename="internet.py" line="479"/>
@@ -1134,6 +1134,11 @@ Puedes iniciarlo, usando el botón inferior llamado &quot;Panel de Control&quot;
         <location filename="internet.py" line="479"/>
         <source>Custom DNS entries, must not be blank.</source>
         <translation>Las entradas personalizadas de DNS no pueden quedar en blanco.</translation>
+    </message>
+    <message>
+        <location filename="internet.py" line="83"/>
+        <source>Insert Custom DNS. Whitespaces separated</source>
+        <translation>Introduce DNS Personalizada. Separada por espacios</translation>
     </message>
 </context>
 <context>
@@ -1156,7 +1161,7 @@ Puedes iniciarlo, usando el botón inferior llamado &quot;Panel de Control&quot;
     <message>
         <location filename="pppoe.py" line="97"/>
         <source>Has removed successfuly configuration.</source>
-        <translation>Se ha borrado con éxito la configuración</translation>
+        <translation>Se ha borrado con éxito la configuración.</translation>
     </message>
     <message>
         <location filename="pppoe.py" line="255"/>

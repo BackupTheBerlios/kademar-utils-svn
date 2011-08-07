@@ -347,7 +347,7 @@ end" > /home/$user/.idesktop/pc.lnk
 	# chmod -R 777 /home/*/.kde3/share/config/kdeglobals
 	
 	#Install klik
-	su -c "sh /usr/share/kademar/scripts/klik-installer-kademar" - $user
+	#su -c "sh /usr/share/kademar/scripts/klik-installer-kademar" - $user
 	
 	#Link al Desktop
 # 	ln -s /home/$user/$desktop /home/$user/Desktop

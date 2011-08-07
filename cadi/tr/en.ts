@@ -1061,7 +1061,7 @@ You can start it, using the &quot;Open Control Panel&quot; bottom button.</trans
     <message>
         <location filename="internet.py" line="83"/>
         <source>Insert Custom DNS</source>
-        <translation>Insert Custom DNS</translation>
+        <translation type="obsolete">Insert Custom DNS</translation>
     </message>
     <message>
         <location filename="internet.py" line="342"/>
@@ -1132,6 +1132,11 @@ You can start it, using the &quot;Open Control Panel&quot; bottom button.</trans
         <location filename="internet.py" line="479"/>
         <source>Custom DNS entries, must not be blank.</source>
         <translation>Custom DNS entries, must not be blank.</translation>
+    </message>
+    <message>
+        <location filename="internet.py" line="83"/>
+        <source>Insert Custom DNS. Whitespaces separated</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

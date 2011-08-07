@@ -1,8 +1,11 @@
 cadi (9.5.1.2) testing; urgency=low
 
   * FIX: Force resolution on displayFunctions
+  * NEW: Added Google Open DNS
+  * FEATURE: Specified write DNS with whitespaces
+  * FEATURE: KDE version detection
 
- -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Tue, 14 Sep 2010 13:13:52 +0200
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Thu, 07 Oct 2010 10:03:29 +0200
 
 cadi (4.9.1.1) testing; urgency=low
 

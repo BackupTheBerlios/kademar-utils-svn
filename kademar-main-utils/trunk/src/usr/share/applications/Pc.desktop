@@ -1,0 +1,14 @@
+[Desktop Entry]
+Comment=
+Exec=pc
+GenericName=
+Icon=/usr/share/kademar/icons/Pc.png
+Name=Pc
+Path=
+StartupNotify=true
+Terminal=0
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
+Categories=Qt;KDE;Core;

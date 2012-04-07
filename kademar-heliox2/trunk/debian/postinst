@@ -1,0 +1,85 @@
+#!/bin/sh
+# postinst script for kademar-heliox
+#
+# see: dh_installdeb(1)
+
+set -e
+
+# summary of how this script can be called:
+#        * <postinst> `configure' <most-recently-configured-version>
+#        * <old-postinst> `abort-upgrade' <new version>
+#        * <conflictor's-postinst> `abort-remove' `in-favour' <package>
+#          <new-version>
+#        * <postinst> `abort-remove'
+#        * <deconfigured's-postinst> `abort-deconfigure' `in-favour'
+#          <failed-install-package> <version> `removing'
+#          <conflicting-package> <version>
+# for details, see http://www.debian.org/doc/debian-policy/ or
+# the debian-policy package
+
+
+case "$1" in
+    configure)
+    dpkg-divert --package kademar-heliox --add --divert /boot/message.kademar.orig --rename /boot/grub/message.kademar
+    [ ! -e /boot/grub/message.kademar ] && ln -s /boot/message.kademar.heliox /boot/grub/message.kademar
+
+    dpkg-divert --package kademar-heliox --add --divert /usr/share/kademar/utils/instalador/scripts/make-grub_menu-version1.orig --rename /usr/share/kademar/utils/instalador/scripts/make-grub_menu-version1
+    [ ! -e /usr/share/kademar/utils/instalador/scripts/make-grub_menu-version1 ] && ln -s /usr/share/kademar/utils/instalador/scripts/make-grub_menu-version1.heliox /usr/share/kademar/utils/instalador/scripts/make-grub_menu-version1
+
+    rm -f /etc/splash/splash
+    ln -s /etc/splash/splash.heliox /etc/splash/splash
+
+    dpkg-divert --package kademar-heliox --add --divert /usr/share/kademar/utils/instalador/instalador.py.orig --rename /usr/share/kademar/utils/instalador/instalador.py
+    [ ! -e /usr/share/kademar/utils/instalador/instalador.py ] && ln -s /usr/share/kademar/utils/instalador/instalador.py.heliox /usr/share/kademar/utils/instalador/instalador.py
+
+    dpkg-divert --package kademar-heliox --add --divert /usr/share/kademar/utils/instalador/ui_instalador.py.orig --rename /usr/share/kademar/utils/instalador/ui_instalador.py
+    [ ! -e /usr/share/kademar/utils/instalador/ui_instalador.py ] && ln -s /usr/share/kademar/utils/instalador/ui_instalador.py.heliox /usr/share/kademar/utils/instalador/ui_instalador.py
+
+    dpkg-divert --package kademar-heliox --add --divert /usr/share/kademar/utils/kademarcenter/html/equip_ca.html.orig --rename /usr/share/kademar/utils/kademarcenter/html/equip_ca.html
+    [ ! -e /usr/share/kademar/utils/kademarcenter/html/equip_ca.html ] && ln -s /usr/share/kademar/utils/kademarcenter/html/equip_ca.html.heliox /usr/share/kademar/utils/kademarcenter/html/equip_ca.html
+
+    dpkg-divert --package kademar-heliox --add --divert /usr/share/kademar/utils/kademarcenter/html/equip_es.html.orig --rename /usr/share/kademar/utils/kademarcenter/html/equip_es.html
+    [ ! -e /usr/share/kademar/utils/kademarcenter/html/equip_es.html ] && ln -s /usr/share/kademar/utils/kademarcenter/html/equip_es.html.heliox /usr/share/kademar/utils/kademarcenter/html/equip_es.html
+
+    dpkg-divert --package kademar-heliox --add --divert /usr/share/kademar/utils/kademarcenter/html/equip_en.html.orig --rename /usr/share/kademar/utils/kademarcenter/html/equip_en.html
+    [ ! -e /usr/share/kademar/utils/kademarcenter/html/equip_en.html ] && ln -s /usr/share/kademar/utils/kademarcenter/html/equip_en.html.heliox /usr/share/kademar/utils/kademarcenter/html/equip_en.html
+
+    dpkg-divert --package kademar-heliox --add --divert /usr/share/kademar/utils/kademarcenter/ui_kademarstart.py.orig --rename /usr/share/kademar/utils/kademarcenter/ui_kademarstart.py
+    [ ! -e /usr/share/kademar/utils/kademarcenter/ui_kademarstart.py ] && ln -s /usr/share/kademar/utils/kademarcenter/ui_kademarstart.py.heliox /usr/share/kademar/utils/kademarcenter/ui_kademarstart.py
+
+    dpkg-divert --package kademar-heliox --add --divert /usr/share/kademar/utils/kademarcenter/kademarcenter.py.orig --rename /usr/share/kademar/utils/kademarcenter/kademarcenter.py
+    [ ! -e /usr/share/kademar/utils/kademarcenter/kademarcenter.py ] && ln -s /usr/share/kademar/utils/kademarcenter/kademarcenter.py.heliox /usr/share/kademar/utils/kademarcenter/kademarcenter.py
+
+    dpkg-divert --package kademar-heliox --add --divert /usr/share/wallpapers/kademar.png.orig --rename /usr/share/wallpapers/kademar.png
+    [ ! -e /usr/share/wallpapers/kademar.png ] && ln -s /usr/share/wallpapers/kademar_heliox.png /usr/share/wallpapers/kademar.png
+
+    dpkg-divert --package kademar-heliox --add --divert /usr/share/wallpapers/kademar-panoramic.png.orig --rename /usr/share/wallpapers/kademar-panoramic.png
+    [ ! -e /usr/share/wallpapers/kademar-panoramic.png ] && ln -s /usr/share/wallpapers/kademar-panoramic_heliox.png /usr/share/wallpapers/kademar-panoramic.png
+
+    dpkg-divert --package kademar-heliox --add --divert /usr/share/wallpapers/kademar-black.png.orig --rename /usr/share/wallpapers/kademar-black.png
+    [ ! -e /usr/share/wallpapers/kademar-black.png ] && ln -s /usr/share/wallpapers/kademar-black_heliox.png /usr/share/wallpapers/kademar-black.png
+
+    dpkg-divert --package kademar-heliox --add --divert /usr/share/kademar/utils/kademarcenter/img/banda.png.orig --rename /usr/share/kademar/utils/kademarcenter/img/banda.png
+    [ ! -e /usr/share/kademar/utils/kademarcenter/img/banda.png ] && ln -s /usr/share/kademar/utils/kademarcenter/img/banda.png.heliox /usr/share/kademar/utils/kademarcenter/img/banda.png
+
+    dpkg-divert --package kademar-heliox --add --divert /usr/share/kademar/kademarcenter.desktop --rename /usr/share/applications/kademarcenter.desktop
+
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+# dh_installdeb will replace this with shell code automatically
+# generated by other debhelper scripts.
+
+#DEBHELPER#
+
+exit 0
+
+

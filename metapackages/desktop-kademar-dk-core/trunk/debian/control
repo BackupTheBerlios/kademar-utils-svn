@@ -1,0 +1,15 @@
+Source: desktop-kademar-dk-core
+Section: unknown
+Priority: extra
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 7.0.50~)
+Standards-Version: 3.8.4
+Homepage: http://www.kademar.org
+#Vcs-Git: git://git.debian.org/collab-maint/desktop-kademar-dk-core.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/desktop-kademar-dk-core.git;a=summary
+
+Package: desktop-kademar-dk-core
+Architecture: any
+Depends: desktop-kademar-kde3-core, desktop-kademar-kde4-core, umplayer|smplayer, smplayer-translations, smplayer-themes, gdebi-kde
+Description: kademar Core Distribution
+ This package installs the basic Core kademar distribution

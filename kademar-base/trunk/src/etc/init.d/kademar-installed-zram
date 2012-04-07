@@ -1,0 +1,76 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:             kademar-installed-zram
+# Required-Start:       udev
+# Required-Stop:     
+# Default-Start:        S
+# Default-Stop:
+# X-Interactive:     true
+# Short-Description:    Set kademar configurations
+# Description:      Load compcache
+### END INIT INFO
+
+#
+# Adonay Sanz per la kademar  -  Octubre 2005
+# Adonay Sanz per la kademar  -  Febrer 2006
+# Adonay Sanz per la kademar  -  Maig 2008
+# Adonay Sanz per la kademar  -  Febrer 2009
+# Adonay Sanz per la kademar  -  Maig 2010
+# Adonay Sanz per la kademar  -  Febrer 2011
+#
+
+(
+
+ifup lo
+
+modprobe zram num_devices=4
+
+#kademar  compcache
+uname=`uname -r`
+ccachedir="/lib/modules/$uname/kernel/fs/compcache"
+ccachedir2="/lib/modules/$uname/kernel/fs/compcache"
+ccachedir3="/lib/modules/$uname/kernel/fs/zram"
+ccachedir4="/lib/modules/$uname/kernel/drivers/staging/zram"
+if [ -e "$ccachedir" -o -e "$ccachedir2" -o -e "$ccachedir3" -o -e "$ccachedir4" ]; then
+   echo "Found CompCache"
+#    modprobe zram
+
+   #This creates 4 devices: /dev/zram{0,1,2,3}   
+
+   zram="yes"
+fi
+
+sleep 1
+
+#do it in two steps to have time to create zram devices
+if [ "$zram" = "yes" ]; then
+   #Set disk size by writing the value to sysfs node 'disksize'
+   #(in bytes). If disksize is not given, default value of 25% of RAM is used.
+
+   # Set disksize of 50MB for /dev/zram0
+   echo $((50*1024*1024)) > /sys/block/zram0/disksize
+
+   #Activate swap
+   mkswap /dev/zram0
+   swapon /dev/zram0 -p 1  #maximum priority
+fi
+
+#managed by kademarcenter
+# if [ ! -e /usr/share/kademar/Sistema.txt ]; then
+# 	#Restore default volumes
+#     # execute once
+# 	sh /usr/share/kademar/scripts/engegada/volums >/dev/null 2>&1
+# 	sh /usr/share/kademar/utils/instalador/scripts/install-usuaris-fix-permissions & 
+# fi
+
+
+#Win-Modems  Detection - Now on Udev Rules
+# [ -n "`lsmod | grep slamr`" -o -n "`lsmod | grep slusb`" ] && /etc/init.d/sl-modem-daemon start
+
+
+#Pmount Permissions
+# ( chmod ugo+x /usr/bin/pmount ; chmod ugo+x /usr/bin/pumount ) &
+
+ifup lo 2>/dev/null
+
+) &

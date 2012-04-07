@@ -1,0 +1,12 @@
+[Desktop Entry]
+Categories=GTK;GNOME;Utility;Accessibility;
+Exec= python -u /usr/share/screenlets/HelioxStarter/HelioxStarterScreenlet.py
+GenericName=Heliox Starter
+Icon=/usr/share/screenlets/HelioxStarter/icon.png
+MimeType=
+Name=Heliox Starter
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application

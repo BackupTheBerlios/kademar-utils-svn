@@ -1,0 +1,9 @@
+[KSplash Theme: kademar-kde4]
+Name = kademar KDE4 Theme - Based on Air and Ethais Splash Screen
+Description = Air and Ethais Splash Screen
+Version = 1.0
+Author = Adonay Sanz Alsina <adonay@kademar.org>
+Homepage = http://www.kademar.org
+
+# Theme behaviour settings.
+Engine = KSplashX

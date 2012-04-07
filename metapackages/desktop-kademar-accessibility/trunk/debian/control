@@ -1,0 +1,17 @@
+Source: desktop-kademar-accessibility
+Section: unknown
+Priority: extra
+Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+Build-Depends: debhelper (>= 7.0.50~)
+Standards-Version: 3.8.4
+Homepage: <insert the upstream URL, if relevant>
+#Vcs-Git: git://git.debian.org/collab-maint/desktop-kademar-accessibility.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/desktop-kademar-accessibility.git;a=summary
+
+Package: desktop-kademar-accessibility
+Architecture: all
+Depends: kademar-accessibility, eviacam, dasher, pidgin-festival|festival-gaim, yasr, orca|gnome-orca, screenlets, keytouch, keytouch-editor, adriane-common, adriane-config, adriane-contacts, adriane-doc, adriane-note, adriane-print, adriane-edit, adriane-mount, adriane-multimedia, adriane-ocr, adriane-screenreader, adriane-setup, adriane-shutdown, adriane-sms, adriane-x, kmousetool, kmag, speech-dispatcher-festival, okular, okular-extra-backends, kttsd
+Description: Metapackage to install Accessibility packages on kademar
+ This is for kademar Linux desktop
+ .
+ Only contains dependences to install Accessibility desktop tools easily

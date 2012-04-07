@@ -1,0 +1,13 @@
+#Configuration file for kademar Installed. General use
+
+#Flavour
+kademar_type="heliox"
+
+#Xserver:  Xorg / Xfree86 (default: xorg)
+xserver="xorg"
+
+#Options: Sync ("-s") / Async ("") (default: async)
+mount_mode=""
+
+#Auto Update APT Servers (apt-get update) (yes/no) - (default: no)
+apt_autoupdate="no"

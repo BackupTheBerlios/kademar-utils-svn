@@ -1,3 +1,10 @@
+audioconversor (4.9.1) testing; urgency=low
+
+  * FIX: QT messages translated
+  * FEATURE: Support to MP4 video files 
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Thu, 07 Oct 2010 10:41:58 +0200
+
 audioconversor (4.9) testing; urgency=low
 
   * NEW: App to 800x600

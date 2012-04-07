@@ -1,3 +1,10 @@
+kademar-base (4.9.5.1) testing; urgency=low
+
+  * FEATURE: Added Virtualbox Guest Additions Support
+  * LIVECD: Start with silent volume fix
+
+ -- Adonay Sanz Alsina <adonay@kademar.org>  Sun, 27 Nov 2011 22:45:11 +0100
+
 kademar-base (4.9.5) testing; urgency=low
 
   * FEATURE: Debian Squeeze Support
@@ -11,7 +18,7 @@ kademar-base (4.9.5) testing; urgency=low
   * FEATURE: Installer - Removed better squeeze non-free packages
   * FEATURE: Added oracle/sun keyring
   * FEATURE: Locale configured with UTF-8
-  * FEATURE: better isue and motd file configure
+  * FEATURE: better isue and motd file configuration
   * FEATURE: Support to KDE4 on livecd specific configurations
   * FEATURE: LiveCD rc[2-5].d on rc.local
   * EVOLVED: Use new configuration files
@@ -38,12 +45,13 @@ kademar-base (4.9.5) testing; urgency=low
   * FEATURE: Always start pulseaudio & speech-dispatcher if it's a Heliox release
   * LIVE-CD: Livecd start files on /etc/init.d
   * LIVE-CD: Use debian startscripts on some functions of livecd start
+  * LIVE-CD: Desktop-Selector read if want speech-dispatcher to be used
   * FIX: Some hacks on installed (done by bad init.d links - devpts,etc.)
   * FIX: Use ntfsfix to solve wrong shutdowns of M$ Hazefrog
   * FIX: Support to bash 4.1 (Removed ==)
   * DEPRECATED: Remove initng support
 
- -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Thu, 08 Jul 2010 15:48:55 +0200
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Thu, 07 Oct 2010 10:41:01 +0200
 
 kademar-base (4.9.1) testing; urgency=low
 

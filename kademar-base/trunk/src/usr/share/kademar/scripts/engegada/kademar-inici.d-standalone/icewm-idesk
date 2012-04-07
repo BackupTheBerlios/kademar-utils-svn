@@ -26,13 +26,13 @@ user="kademar"
 #Lenguage Messages
 case "$2" in
 ca*)
-	missatge_cadi="CADI - ConfiguraciÃ³ de Sistema"
-	missatge_instalador="InstalÂ·la kademar al disc dur"
+	missatge_cadi="CADI - Configuració de Sistema"
+	missatge_instalador="Instal·la kademar al disc dur"
 	missatge_home="Inici"
-	missatge_configuracio="Guardar la configuraciÃ³ personal"
+	missatge_configuracio="Guardar la configuració personal"
 ;;
 es*)
-	missatge_cadi="CADI - ConfiguraciÃ³n de Sistema"
+	missatge_cadi="CADI - Configuración de Sistema"
 	missatge_instalador="Instalar kademar en el disco duro"
 	missatge_home="Inicio"
 ;;

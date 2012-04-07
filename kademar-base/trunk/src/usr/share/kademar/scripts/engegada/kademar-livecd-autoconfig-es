@@ -6,12 +6,12 @@ num_rellotge=5
 miss_udev="Encendiendo Gestor de Dispositivos  -  Puede tardar unos momentos, por favor, espere"
 num_udev=12
 
-miss_moduls_1="Cargando M贸dulos Iniciales"
+miss_moduls_1="Cargando M骴ulos Iniciales"
 num_moduls_1=5
-miss_moduls_2="Cargando M贸dulos"
+miss_moduls_2="Cargando M骴ulos"
 num_moduls_2=4
 
-miss_hdparm="Activando aceleraci贸n DMA, controlada por el nucleo"
+miss_hdparm="Activando aceleraci髇 DMA, controlada por el nucleo"
 num_hdparm=8
 
 miss_fstab="Creando el fstab"
@@ -21,38 +21,38 @@ miss_muntant_1="Montando Sistema de ficheros del sistema"
 num_muntant_1=7
 
 miss_velocitat_1="Determinando velocidad del sistema"
-miss_velocitat_2="  Encendiendo escritorio ligero, tu m谩quina no cumple los requisitos recomendados"
-miss_velocitat_3="  Encendiendo escritorio completo, tu m谩quina cumple los requisitos recomendados"
+miss_velocitat_2="  Encendiendo escritorio ligero, tu m醧uina no cumple los requisitos recomendados"
+miss_velocitat_3="  Encendiendo escritorio completo, tu m醧uina cumple los requisitos recomendados"
 miss_velocitat_4="  Encendiendo esctitorio definido en linia de arranque"
 miss_velocitat_error="Ha habido un problema determinando o la memoria o la cpu, usando por defecto KDE"
 
-miss_kernel="La versi贸n del Kernel de Linux es: "
+miss_kernel="La versi髇 del Kernel de Linux es: "
 
-miss_acpi_1="Encontrada Bios ACPI, inici谩ndola"
+miss_acpi_1="Encontrada Bios ACPI, inici醤dola"
 num_acpi_1=6
-miss_acpi_no="Saltando la detecci贸n de la Bios ACPI, como se ha pedido en el arranque."
+miss_acpi_no="Saltando la detecci髇 de la Bios ACPI, como se ha pedido en el arranque."
 
-miss_apm_1="Bios APM encontrada, funciones de gesti贸n de energia activadas."
+miss_apm_1="Bios APM encontrada, funciones de gesti髇 de energia activadas."
 num_apm_1=6
-miss_apm_no="Saltando la detecci贸n de la Bios APM, como se ha pedido en el arranque."
+miss_apm_no="Saltando la detecci髇 de la Bios APM, como se ha pedido en el arranque."
 
 miss_pcmcia_1="Encontrada PCMCIA, iniciando cardmgr."
-miss_pcmcia_no="Saltando la detecci贸n de PCMCIA como se ha pedido en el arranque."
+miss_pcmcia_no="Saltando la detecci髇 de PCMCIA como se ha pedido en el arranque."
 
 miss_braile="Iniciando el gestor de pantalla braille: "
 
 miss_muntant_2="Montando los dispositivos"
 num_muntant_2=5
 
-miss_serveis_no="Saltando la carga de los servicios de impresi贸n, sonido y compartir red, tal y como se ha pedido en el arranque."
+miss_serveis_no="Saltando la carga de los servicios de impresi髇, sonido y compartir red, tal y como se ha pedido en el arranque."
 
 miss_alsa="Iniciando Sonido"
 num_alsa=4
 
-miss_cups="Encendiendo Servicio de Impresi贸n"
+miss_cups="Encendiendo Servicio de Impresi髇"
 num_cups=6
 
-miss_cups_hp="Encendiendo Impressi贸n HP Linux y Sistema de imagen"
+miss_cups_hp="Encendiendo Impressi髇 HP Linux y Sistema de imagen"
 num_cups_hp=8
 
 miss_samba="Encendiendo Servicio Samba"
@@ -63,10 +63,10 @@ num_lisa=5
 
 miss_swap="Creando un fichero temporal de intercambio porque tienes poca memoria RAM. Esto puede demorar algunos minutos. "
 
-miss_xautoconf="Configurando Sistema Gr谩fico"
+miss_xautoconf="Configurando Sistema Gr醘ico"
 
 miss_dhcp_1="Dispositivo de red "
-miss_dhcp_2=" detectado, emisi贸n DHCP para la direcci贸n IP."
-miss_dhcp_no="Saltando la detecci贸n de red DHCP, como se ha pedido en el arranque."
+miss_dhcp_2=" detectado, emisi髇 DHCP para la direcci髇 IP."
+miss_dhcp_no="Saltando la detecci髇 de red DHCP, como se ha pedido en el arranque."
 
-miss_agp_no="Saltando la carga del m贸dulo de AGP, como se ha pedido en el arranque."
+miss_agp_no="Saltando la carga del m骴ulo de AGP, como se ha pedido en el arranque."

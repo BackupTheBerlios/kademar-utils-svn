@@ -1,11 +1,11 @@
 #!/bin/bash
 #Fitxer per crear la configuracio de X.org /etc/X11/xorg.conf
-# Depen de xautoconf-resolucions (DEPRECATED, ja no dep√®n) per detectar les resolucions.
-#  xautoconf-resolucions √©s una modificaci√≥ i acurtament del  xdebconfigurator
+# Depen de xautoconf-resolucions (DEPRECATED, ja no depËn) per detectar les resolucions.
+#  xautoconf-resolucions Ès una modificaciÛ i acurtament del  xdebconfigurator
 
 #Actualment ja funciona amb les X.org 7.0
 
-#Modificaci√≥ per l'√∫s complet de dirbase (target per sistemes instalats)
+#ModificaciÛ per l'˙s complet de dirbase (target per sistemes instalats)
 
 #FEATURE: No use DPMS with Vesa display dirver - 30-04-10
 
@@ -64,13 +64,28 @@ xserver_file="$dirbase/var/tmp/xserver"
 #Si no es un portatil, deactiva el touchpad
 if [ "`laptop-detect ; echo $?`" != 0 ]; then
 touchpad_config1='# Section "InputDevice"
-#     Identifier      "Synaptics Touchpad"
-#     Driver          "synaptics"
-#     Option          "SendCoreEvents"        "true"
-#     Option          "Device"                "/dev/psaux"
-#     Option          "Protocol"              "auto-dev"
-#     Option          "HorizScrollDelta"      "0"
-#     Option          "SHMConfig"             "on"
+#        Identifier      "Synaptics Touchpad"
+#        Driver          "synaptics"
+#        MatchIsTouchpad "yes"                           # required
+#        Option          "TapButton1"            "1"
+#        Option          "SHMConfig"             "on"
+#        Option          "MinSpeed"              "0.2"
+#        Option          "MaxSpeed"              "0.6"
+#        Option          "AccelFactor"           "0.060"
+#        Option          "TapButton2"            "2"     # multitouch
+#        Option          "TapButton3"            "3"     # multitouch
+#        Option          "VertTwoFingerScroll"   "1"     # multitouch
+#        Option          "HorizTwoFingerScroll"  "1"     # multitouch
+#        Option          "VertEdgeScroll"        "1"
+#        Option          "CoastingSpeed"         "8"
+#        Option          "CornerCoasting"        "1"
+#        Option          "CircularScrolling"     "1"
+#        Option          "CircScrollTrigger"     "7"
+#        Option          "EdgeMotionUseAlways"   "1"
+#        Option          "LBCornerButton"        "8"     # browser "back" btn
+#        Option          "RBCornerButton"        "9"     # browser "forward" btn
+#        Option          "EmulateTwoFingerMinZ"  "35"
+#        Option          "EmulateTwoFingerMinW"  "8"
 # EndSection'
 touchpad_config2='#    InputDevice     "Synaptics Touchpad"'
 
@@ -78,11 +93,27 @@ else
 touchpad_config1='Section "InputDevice"
     Identifier      "Synaptics Touchpad"
     Driver          "synaptics"
-    Option          "SendCoreEvents"        "true"
-    Option          "Device"                "/dev/psaux"
-    Option          "Protocol"              "auto-dev"
-    Option          "HorizScrollDelta"      "0"
-    Option          "SHMConfig"             "on"
+        #MatchIsTouchpad "yes"                           # required
+        Driver          "synaptics"                     # required
+        Option          "TapButton1"            "1"
+        Option          "SHMConfig"             "on"
+#        Option          "MinSpeed"              "0.2"
+#        Option          "MaxSpeed"              "0.6"
+#        Option          "AccelFactor"           "0.060"
+#        Option          "TapButton2"            "2"     # multitouch
+#        Option          "TapButton3"            "3"     # multitouch
+#        Option          "VertTwoFingerScroll"   "1"     # multitouch
+#        Option          "HorizTwoFingerScroll"  "1"     # multitouch
+#        Option          "VertEdgeScroll"        "1"
+#        Option          "CoastingSpeed"         "8"
+#        Option          "CornerCoasting"        "1"
+#        Option          "CircularScrolling"     "1"
+#        Option          "CircScrollTrigger"     "7"
+#        Option          "EdgeMotionUseAlways"   "1"
+#        Option          "LBCornerButton"        "8"     # browser "back" btn
+#        Option          "RBCornerButton"        "9"     # browser "forward" btn
+#        Option          "EmulateTwoFingerMinZ"  "35"
+#        Option          "EmulateTwoFingerMinW"  "8"
 EndSection'
 touchpad_config2='    InputDevice     "Synaptics Touchpad"'
 fi
@@ -119,10 +150,10 @@ if [ -n "$resol" ]; then
 	display_modes="$resol"
 	case $LANG in
 	ca*)
-		echo -n "${BLUE}Utilitzant resoluci√≥ de pantalla: ${NORMAL}"
+		echo -n "${BLUE}Utilitzant resoluciÛ de pantalla: ${NORMAL}"
 	;;
 	es*)
-		echo -n "${BLUE}Usando resoluci√≥n de pantalla: ${NORMAL}"
+		echo -n "${BLUE}Usando resoluciÛn de pantalla: ${NORMAL}"
 	;;
 	en*)
 		echo -n "${BLUE}Using display resolution: ${NORMAL}"
@@ -145,15 +176,15 @@ fi
 
 
 
-# Si el $XMODULE est√† definit (Vol dir k les X han fallat amb el modul original, i x tan el xsession torna a provaro amb el vesa i s'ha d crear la configuracio)
+# Si el $XMODULE est‡ definit (Vol dir k les X han fallat amb el modul original, i x tan el xsession torna a provaro amb el vesa i s'ha d crear la configuracio)
 if [ -z "$XMODULE" ]; then
-	#Si no est√† definit, vol dir que el xsession no s'ha obert, i x tan es la primera vegada que s'executa i s'ha de autodetectar
+	#Si no est‡ definit, vol dir que el xsession no s'ha obert, i x tan es la primera vegada que s'executa i s'ha de autodetectar
 
 	#Cridem al script que detecta les resolucions i fem la serva sortida a un fitxer
  	#perl /usr/share/kademar/scripts/engegada/xautoconf-resolucions > /tmp/xautoconf
 	a=`sh /usr/share/kademar/scripts/engegada/detectachipset "$dirbase"`
 
-	#Cridem al script que detecta el chipset  gr√†fic
+	#Cridem al script que detecta el chipset  gr‡fic
  	echo "display_driver='`echo $a | sed s.' '..g`'" > "$dirbase/tmp/xautoconf"
 
 	#Read config file and use his variables
@@ -168,11 +199,11 @@ if [ -z "$XMODULE" ]; then
 
 	[ -n "$NEWXMODULE" ]  && display_driver=$NEWXMODULE
 else
-	#Si ja est√† definit, per el xsession, utilitzem el que ell digui
+	#Si ja est‡ definit, per el xsession, utilitzem el que ell digui
 	display_driver=$XMODULE
 fi
 
-#Defineix les opcions - Ho faig aqu√≠ pq abans defineix les opcions en diferents moments i si se l'hi passa un par√†metre, no est√† contemplat
+#Defineix les opcions - Ho faig aquÌ pq abans defineix les opcions en diferents moments i si se l'hi passa un par‡metre, no est‡ contemplat
 #Solament no s'utilitzen les opcions si son els nvidia propietaris, sino, 
 case $display_driver in
 radeon|ati)
@@ -185,8 +216,9 @@ radeon|ati)
 nvidia)
 	load_options=''   #section Load (deprecated(
 # 	section device
-	load_options2=' Option        "NoPowerConnectorCheck" 
-Option     "AllowGLXWithComposite" "true"'
+	load_options2=' Option     "NoPowerConnectorCheck" 
+Option     "AllowGLXWithComposite" "true"
+Option     "NoLogo"'
 	sectionscreen=' Option "AddARGBGLXVisuals" "True" '
 	sectioncomposite='Section "Extensions"
     Option "Composite" "Enable"
@@ -221,9 +253,9 @@ esac
 [ "$display_driver" != "vesa" ] && dpms='Option        "DPMS"'
 
 #Utilitzar driver Vesa i resolucio 1024x768
-# [ -z "$display_modes" ] && display_modes='"1024x768" "800x600" "640x480"' && case $LANG in ca*) echo "${BLUE}No s'ha detectat cap resoluci√≥, utilitzant estadart${NORMAL}" ; ;; es*) echo "${BLUE}No se ha detectado ninguna resoluci√≥n, usando estandar${NORMAL}"; ;; en*) echo "${BLUE}No resolution detected, using default${NORMAL}" ; ;; esac
+# [ -z "$display_modes" ] && display_modes='"1024x768" "800x600" "640x480"' && case $LANG in ca*) echo "${BLUE}No s'ha detectat cap resoluciÛ, utilitzant estadart${NORMAL}" ; ;; es*) echo "${BLUE}No se ha detectado ninguna resoluciÛn, usando estandar${NORMAL}"; ;; en*) echo "${BLUE}No resolution detected, using default${NORMAL}" ; ;; esac
 
-[ -z "$display_driver" ] && display_driver="vesa" && case $LANG in ca*) echo "${BLUE}No s'ha detectat cap controlador, utilitzant estadart${NORMAL}" ; ;; es*) echo "${BLUE}No se ha detectado ning√∫n controlador, usando estandar${NORMAL}"; ;; en*) echo "${BLUE}No driver detected, using default${NORMAL}" ; ;; esac
+[ -z "$display_driver" ] && display_driver="vesa" && case $LANG in ca*) echo "${BLUE}No s'ha detectat cap controlador, utilitzant estadart${NORMAL}" ; ;; es*) echo "${BLUE}No se ha detectado ning˙n controlador, usando estandar${NORMAL}"; ;; en*) echo "${BLUE}No driver detected, using default${NORMAL}" ; ;; esac
 
 #If there's a depth especified with  depth=16" in bootparam, use it, else, set it to 24
 newdepth="$(getbootparam depth 2>/dev/null)"
@@ -236,10 +268,10 @@ fi
 # Echo information in boot process
 case $LANG in
 ca*)
-echo -n "${BLUE}Utilitzant controlador gr√†fic: ${NORMAL}"
+echo -n "${BLUE}Utilitzant controlador gr‡fic: ${NORMAL}"
 ;;
 es*)
-echo -n "${BLUE}Usando controlador gr√°fico: ${NORMAL}"
+echo -n "${BLUE}Usando controlador gr·fico: ${NORMAL}"
 ;;
 en*)
 echo -n "${BLUE}Using Display Driver: ${NORMAL}"
@@ -251,10 +283,10 @@ if [ -n "$newdepth" ]; then
 
 	case $LANG in
 	ca*)
-	echo -n "${BLUE}Utilitzant definici√≥ de colors: ${NORMAL}"
+	echo -n "${BLUE}Utilitzant definiciÛ de colors: ${NORMAL}"
 	;;
 	es*)
-	echo -n "${BLUE}Usando definici√≥n de colores: ${NORMAL}"
+	echo -n "${BLUE}Usando definiciÛn de colores: ${NORMAL}"
 	;;
 	en*)
 	echo -n "${BLUE}Using color depth: ${NORMAL}"
@@ -264,7 +296,7 @@ if [ -n "$newdepth" ]; then
 	echo "${YELLOW} $newdepth ${NORMAL}"
 fi
 
-#Si hem for√ßat una resolucio, cr√©ala (de moment solament virtualitzat, ati i vesa)
+#Si hem forÁat una resolucio, crÈala (de moment solament virtualitzat, ati i vesa)
 #     $display_driver
     forceresol="    DefaultDepth    $defaultdepth
         SubSection \"Display\"

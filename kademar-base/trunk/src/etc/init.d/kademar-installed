@@ -1,12 +1,12 @@
 #!/bin/bash
 ### BEGIN INIT INFO
-# Provides:             kademar
-# Required-Start:       
-# Required-Stop:     
-# Default-Start:        S
-# Default-Stop:
+# Provides:             kademar-installed
+# Required-Start:    $local_fs $remote_fs
+# Required-Stop:     $local_fs $remote_fs
+# Default-Start:     2 3
+# Default-Stop:     
 # Short-Description:    Set kademar configurations
-# Description:      Load compcache, search changes on display graphic card and load sl-modem if found
+# Description:      Search changes on display graphic card and load sl-modem if found
 ### END INIT INFO
 
 #
@@ -15,27 +15,16 @@
 # Adonay Sanz per la kademar  -  Maig 2008
 # Adonay Sanz per la kademar  -  Febrer 2009
 # Adonay Sanz per la kademar  -  Maig 2010
+# Adonay Sanz per la kademar  -  Gener 2011
 #
-
-
-#kademar  compcache
-ccachedir="/lib/modules/`uname -r`/kernel/fs/compcache"
-if [ -e "$ccachedir" ]; then
-   echo "Found CompCache"
-   for i in lzo1x_compress lzo1x_decompress tlsf xvmalloc compcache
-   do
-      modprobe $i
-   done
-fi
 
 #Check Graphic-Card Change
 sh /usr/share/kademar/scripts/engegada/grafica-comprova
 
-# [ ! -e /dev/shm ] && mkdir -p /dev/shm
-# mount -t tmpfs shm /dev/shm
+# hack to fix possible errors on desktop start
+#  due a start apps with sudo command
+rm -f /home/*/.ICEauthority 2>/dev/null
 
-#kademar  compcache
-[ -e /dev/ramzswap0 ] && swapon /dev/ramzswap0 && echo "Activating CompCache support"
 
 #managed by kademarcenter
 # if [ ! -e /usr/share/kademar/Sistema.txt ]; then
@@ -52,6 +41,3 @@ sh /usr/share/kademar/scripts/engegada/grafica-comprova
 
 #Pmount Permissions
 # ( chmod ugo+x /usr/bin/pmount ; chmod ugo+x /usr/bin/pumount ) &
-
-
-

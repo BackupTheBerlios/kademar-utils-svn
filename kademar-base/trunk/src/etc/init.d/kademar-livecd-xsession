@@ -73,7 +73,7 @@ xsesson_commands_file=/var/tmp/xsession-commands
 
 
 
-#Variable BACKGROUND agafada del fitxer de configuraciï¿œ (diferents gustos de kademar)
+#Variable BACKGROUND agafada del fitxer de configuraci� (diferents gustos de kademar)
 # xsession_background="/usr/share/wallpapers/kademar.jpg"
 [ -e /etc/kademar/config-livecd ] && . /etc/kademar/config-livecd
 [ -e /etc/kademar/config ] && . /etc/kademar/config
@@ -111,8 +111,11 @@ KVER="`uname -r`"
   # Older compiz versions start gtk-window-decorator only if GNOME_DESKTOP_SESSION_ID is set.
   sessreg -a -l :0 -x /etc/X11/xdm/Xservers $USER
 
-#start  Desktop Selector
-  su -l -c "$precommand export STARTUP=desktop-selector$arch ; exec /usr/bin/startx -- vt5 -dpi "$DPI" -br -noreset -nolisten tcp" "$USER" </dev/tty5 >/dev/null 2>&1 ; RC="$?"
+#start  Desktop Selector if requested
+#if [ "$desktop_selector" != "no" ]; then
+su -l -c "$precommand export STARTUP=desktop-selector$arch ; exec /usr/bin/startx -- vt5 -dpi "$DPI" -br -noreset -nolisten tcp" "$USER" </dev/tty5 >/dev/null 2>&1 ; RC="$?"
+## xserver_file is filled on  kademar-livecd-autoconfig
+#fi
 
 [ -e $xserver_file ] && . $xserver_file
 
@@ -133,7 +136,9 @@ KVER="`uname -r`"
 	
 			[ -e /usr/bin/startkde ] && STARTUP=/usr/bin/startkde
 			[ -e /opt/kde3/bin/startkde ] && STARTUP=/opt/kde3/bin/startkde
+			[ -e /opt/trinity/bin/startkde ] && STARTUP=/opt/trinity/bin/startkde
 			precommand="export XDM_MANAGED=\"/var/tmp/xsession-commands,maysd,mayfn,sched,method=classic\""
+
 	
 		;;
 		kde4|KDE4|Kde4) 
@@ -203,11 +208,8 @@ stop(){
 error_msg(){
  # Shutdown or failure messages
  case "$LANG" in
-  de*)
-  ERRORMSG="\n[1mDie graphische Oberflï¿œche konnte nicht gestartet werden\noder wurde unerwartet beendet.\nVermutlich sind Grafikkarte oder Monitor nicht automatisch konfigurierbar.\n\nBitte versuchen Sie einen Neustart und geben Sie beim boot:-Prompt\ndie Knoppix-Cheatcodes (Bootoptionen) passend zu Ihrer Grafikkarte ein.\nBeispiele:\n   knoppix xmodule=radeon (oder ati, nv, cirrus, ...)\n   knoppix xmodule=fbdev\n   knoppix xmodule=vesa\n   knoppix hsync=90 vsync=75[0m\n"
-  RETURNPROMPT="Bitte EINGABETASTE drï¿œcken, um den Rechner neu zu starten.";;
  *)
-  ERRORMSG="[1mThe graphical subsystem could not be startet\nor terminated unexpectedly.\nMaybe your graphics adapter or monitor are not auto-configurable.\n\nPlease try to reboot and give some of the Knoppix-Cheatcodes\nat the initial boot:-prompt, which match your graphics adapter.\nExamples:\n   knoppix xmodule=radeon (or ati, nv, cirrus, ...)\n   knoppix xmodule=fbdev\n   knoppix xmodule=vesa\n   knoppix hsync=90 vsync=75[0m\n"
+  ERRORMSG="[1mThe graphical subsystem could not be startet\nor terminated unexpectedly.\nMaybe your graphics adapter or monitor are not auto-configurable.\n\nPlease try to reboot and give some of the Knoppix-Cheatcodes\nat the initial boot:-prompt, which match your graphics adapter.\nExamples:\n   kademar xmodule=radeon (or ati, nv, cirrus, ...)\n   kademar xmodule=fbdev\n   kademar xmodule=vesa\n"
   RETURNPROMPT="Please hit ENTER to reboot.";;
  esac
  echo -e "$ERRORMSG"

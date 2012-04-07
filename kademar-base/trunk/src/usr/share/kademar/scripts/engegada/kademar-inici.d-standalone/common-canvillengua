@@ -1,5 +1,5 @@
 #!/bin/bash
-# Script per canviar l'idioma i alguns parametres interns dels progrÃ mes
+# Script per canviar l'idioma i alguns parametres interns dels progràmes
 
 #  METHOD TO CALL IT
 #  canvillengua [user_to_modify] [Target]
@@ -17,7 +17,7 @@
 
 # set -x
 
-#CÃ rrega del fitxer d'idioma
+#Càrrega del fitxer d'idioma
 . /etc/default/locale
 
 # comproba si s'ha passat un parametre de directori base i, si no, posa el arrel
@@ -73,7 +73,7 @@ esac
 
 [ "$dirbase" = "/" ] && dirbase=""
 
-#Si l'hi hem passat un parÃ metre per treballar amb un usuari, que passi dels altres
+#Si l'hi hem passat un paràmetre per treballar amb un usuari, que passi dels altres
 if [ -z "$home_a_treballar" ] ; then
 	homes_disponibles=`ls /home --ignore=ANONYMOUS --ignore=Pc`
 else
@@ -96,7 +96,7 @@ fi
 #  USER  FILES MODIFICATION #
 #############################
 if [ "$system" != "si" ]; then
-	#Si no treballa sobre el home, tÃ© en compte si li hem indicat algÃºn usuari o, si no, els busca tots.
+	#Si no treballa sobre el home, té en compte si li hem indicat algún usuari o, si no, els busca tots.
   #### REAL USER MODIFICATION
 	if [ "$skel" != "si" ]; then
 		for i in $homes_disponibles
@@ -136,9 +136,9 @@ if [ "$system" != "si" ]; then
    
             #trolltech qt4 specific modifications
 #             conf="$dirbase/home/$i/.config/Trolltech.conf"
-#             sed s:"Â·HOMEÂ·":"/home/$i":g -i $conf
-#             sed s:"Â·HOMEDESKTOPÂ·":"/home/$i/$desktop":g -i $conf
-#             sed s:"Â·DOCUMENTSÂ·":"/home/$i/$documents":g -i $conf
+#             sed s:"·HOME·":"/home/$i":g -i $conf
+#             sed s:"·HOMEDESKTOP·":"/home/$i/$desktop":g -i $conf
+#             sed s:"·DOCUMENTS·":"/home/$i/$documents":g -i $conf
 		done
 	else
 
@@ -185,7 +185,7 @@ fi
 #############################
 # SYSTEM FILES MODIFICATION #
 #############################
-#Si l'hi hem passat un parÃ metre per treballar amb un usuari, que passi dels altres
+#Si l'hi hem passat un paràmetre per treballar amb un usuari, que passi dels altres
 if [ -n "$home_a_treballar" ] ; then
 	echo Fitxers de sistema Intactes
 	echo Fitxers de skel Intactes

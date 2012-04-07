@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Creador del fitxer Fstab - DESTRUCTOR 
-# AVÃS: ELIMINA EL FSTAB ANTERIOR (no Ã©s respectuÃ³s). I no purga el /mnt.  Ideal per live-cd
+# AVÍS: ELIMINA EL FSTAB ANTERIOR (no és respectuós). I no purga el /mnt.  Ideal per live-cd
 
 
 # MODE TO CALL IT
@@ -45,7 +45,7 @@ echo "${YELLOW}Creating /etc/fstab${NORMAL}"
 # INITALIZING VARIABLES #
 #########################
 
-#DefiniciÃ³ inicial de variables
+#Definició inicial de variables
 
 #primer parametre passat = ruta al fstab
 if [ -n "$1" ]; then
@@ -180,7 +180,7 @@ halinfovar="`hal-get-property --udi $udi --key  $key`"
 #############################
 
 
-#CreaciÃ³ del /etc/fstab buit
+#Creació del /etc/fstab buit
 cat > $ruta_fstab << EOF 
 #/etc/fstab: static file system information.
 #
@@ -210,7 +210,7 @@ do
 		es_removable=$(isRemovable /dev/$i 2>/dev/null)
 # 		echo $i
 # 		echo $es_removable
-		#Si no hi ha cap particiÃ³ i es removable, i fem que la $i sigui "" per quan fa la comparaciÃ³ de tamany que no falli
+		#Si no hi ha cap partició i es removable, i fem que la $i sigui "" per quan fa la comparació de tamany que no falli
 		[ -z "$disc_durs" -a "$es_removable" = "yes" ] && disc_durs=$i && i=""
 		#Si no ha trobat cap disc dur que no falli
 		for hd in $disc_durs
@@ -220,15 +220,15 @@ do
 			opcions_especifiques=""
 			# 	cat $hd/size  #DEBUG
 			#  	echo $hd  #DEBUG
-				#  Si el size es mÃ©s petit de 100, vol dir que Ã©s una particiÃ³ lÃ²gica
+				#  Si el size es més petit de 100, vol dir que és una partició lògica
 				if [ `cat $sys_block_path$i/$hd/size` -gt 100 -o "$es_removable" = "yes" ]; then
 # 				echo $i 
 # 			 	echo $hd  #DEBUG
 				# Afegim un espai buit
 				echo '' >> $ruta_fstab
-				# si Ã©s removable, vol dir que s'ha de muntar amb subfs si es pot, o si no, normal, perÃ² activant l'avÃ­s
+				# si és removable, vol dir que s'ha de muntar amb subfs si es pot, o si no, normal, però activant l'avís
 					if  [ "$es_removable" = "no" ]; then
-					# DetecciÃ³ del tipus de sistema de fitxers de la particiÃ³, en els removables no fa falta saber el sistema de fitxers, ja que pot variar (els posem amb auto)
+					# Detecció del tipus de sistema de fitxers de la partició, en els removables no fa falta saber el sistema de fitxers, ja que pot variar (els posem amb auto)
 						fs=$(blkid /dev/$hd -o value -s TYPE)
 						#Si no retorna res, fen un atac directe per intentar-lo muntar com a hfs/hfsplus, si no respon, llavors definim el sistema de fitxers com a auto
 						if [ -z "$fs" ]; then
@@ -243,7 +243,7 @@ do
 							[ -z "`grep /muntatge_temporal /proc/mounts`" ] && rm -fr /muntatge_temporal
 						fi
 			########################
-			# Les SWAP entren aquÃ­ #
+			# Les SWAP entren aquí #
 			########################
 						#Si es una swap, muntal com una swap
 						if [ $fs = "swap" ]; then
@@ -257,10 +257,10 @@ do
 							opcions_especifiques=""
 							#Correccio de Permisos
 							chmod 777 $ruta_mnt/$hd
-							#Ãšs de NTFS-3G en cas de que sigui $fs=NTFS i existeixi
+							#Ús de NTFS-3G en cas de que sigui $fs=NTFS i existeixi
 							if [ "$fs" = "ntfs" ]; then
 								opcions_especifiques=",user,umask=000,locale=es_ES.iso88591"
-								#ComprovaciÃ³ existencia ntfs-3g
+								#Comprovació existencia ntfs-3g
 								if [ -e "/usr/local/bin/ntfs-3g" -o -e "/usr/bin/ntfs-3g" ]; then
 									echo "/dev/$hd /mnt/$hd  ntfs-3g  silent,noauto,umask=000,gid=users$opcions_especifiques  0  0" >> $ruta_fstab
 								else
@@ -279,7 +279,7 @@ do
 					# Si es removable i tens submount munta'l amb submount, sino, normal
 					else
 			############################################
-			# Els EXTRAÃBLES normals (pen drives, etc) #
+			# Els EXTRAÏBLES normals (pen drives, etc) #
 			############################################
 
 # /sys/block/$i/device/bus/drivers
@@ -299,7 +299,7 @@ do
 # 							fi
 # 						else
 			#########################
-			# Els CDROM entren aquÃ­ #
+			# Els CDROM entren aquí #
 			#########################
 					###############################
 					#    Tria del Nom  CD o DVD   #
@@ -335,7 +335,7 @@ do
 # 							fi
 							#Si el contador no apareix, vol dir que era Zero, hack a la lina 163, per tant el posem a 0
 							[ "$contador" = "" ] && contador=0
-							#Posem a zero el contador (per no influir amb nÃºmero si es un cd/dvd) cdrom2 dvd3 -> cdrom2 dvd
+							#Posem a zero el contador (per no influir amb número si es un cd/dvd) cdrom2 dvd3 -> cdrom2 dvd
 							contador=0
 						fi
 					fi
@@ -347,7 +347,7 @@ do
 		#Floppy Zone
 		fd*)
 ############################
-# Els DISQUETS entren aquÃ­ #
+# Els DISQUETS entren aquí #
 ############################
 		mkdir -p $ruta_mnt/$i 2>/dev/null
 		echo '' >> $ruta_fstab
@@ -366,7 +366,7 @@ do
 ######   TEORICAMENt JA no s'arriba aqui!!!
 ########3
 ################################################
-# Els CDROM insurrectes (sr0, etc) entren aquÃ­ #
+# Els CDROM insurrectes (sr0, etc) entren aquí #
 ################################################
 		#If device/type is 5, it seems to be a CDRom, so, mount it as a cdrom
 		if [ `cat $sys_block_path$i/device/type` = 5 ]; then
@@ -383,7 +383,7 @@ do
 	esac
 done
 
-#AddiciÃ³ de Linies per   Klik
+#Addició de Linies per   Klik
 echo "
 #Klik Lines
 /tmp/app/1/image /tmp/app/1 cramfs,iso9660 user,noauto,ro,loop,exec 0 0

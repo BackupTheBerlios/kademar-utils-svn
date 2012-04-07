@@ -9,7 +9,7 @@
 # Description:       First start
 ### END INIT INFO
 
-# Engegada i configuraciÃ³ de la kademar
+# Engegada i configuració de la kademar
 # (C) Adonay Sanz <adonay@kademar.org> 2005
 # Licensed under GNU/GPL 2.0 or higher
 #
@@ -44,6 +44,7 @@ CYAN="[1;36m"
 # BOLD WHITE: Hint
 WHITE="[1;37m"
 
+uname=`uname -r`
 
 ###############
 #  FUNCTIONS  #
@@ -214,6 +215,12 @@ mount -t tmpfs -o rw,size=100M,nosuid,nodev tmpfs /var/log
 [ -d /tmp ]      || mkdir /tmp
 mount -t tmpfs -o rw,mode=1777,size=1G,exec,nosuid,nodev tmpfs /tmp
 
+#let's do  /var/tmp  link to /tmp (where exists really ramfs/zram drive)
+#rm -fr /var/tmp
+ln -s /tmp /var/tmp
+
+chmod 777 /tmp
+
  # Should exist
  :> /var/run/utmp
  :> /var/log/wtmp
@@ -233,8 +240,6 @@ fi
 
 
 #Hack per utilitzar els RamFS creats sense problemes
-# chmod 777 /tmp -R &
-# chmod 777 /tmp &
 ( mkdir -p var/log/speech-dispatcher
 chmod 777 var/log/speech-dispatcher
 for i in alsa cups dbus hal hplip samba sshd sudo xauth
@@ -248,10 +253,10 @@ if checkbootparam "maxdebug"; then
 	set -x
 fi
 
-#InclusiÃ³ del FUSE per escriptura en NTFS
+#Inclusió del FUSE per escriptura en NTFS
 modprobe fuse 2>/dev/null
 
-#Assegurada detecciÃ³ de ratolins
+#Assegurada detecció de ratolins
 modprobe psmouse 2>/dev/null
 
 #kademar Version
@@ -391,25 +396,29 @@ echo "${BLUE}$miss_udev${NORMAL}" ; start_udev
 # ; /etc/init.d/udev start >/dev/null 2>&1
 # ; escriu_resultat $? $num_udev
 
+
+# Included on latest KERNEL 2.6.33 - but really working on 2.6.37
+#kademar  compcache
+ccachedir="/lib/modules/$uname/kernel/fs/compcache"
+ccachedir2="/lib/modules/$uname/kernel/fs/compcache"
+ccachedir3="/lib/modules/$uname/kernel/fs/zram"
+ccachedir4="/lib/modules/$uname/kernel/drivers/staging/zram"
+if [ -e "$ccachedir" -o -e "$ccachedir2" -o -e "$ccachedir3" -o -e "$ccachedir4" ]; then
+#use compcache to create fast /tmp directory
+   echo "Found CompCache/Zram"
+#    modprobe zram
+
+   #This creates 4 devices: /dev/zram{0,1,2,3}   
+   modprobe zram num_devices=4
+
+   zram=yes
+
+fi
+
+
 #Refresh console with new parameters (need /dev/tty*)
 [ -e /etc/init.d/console-screen.sh ] && /etc/init.d/console-screen.sh restart
 [ -e /etc/init.d/console-setup ] && /etc/init.d/console-setup start
-
-# Included on latest KERNEL 2.6.33
-#kademar  compcache
-ccachedir="/lib/modules/`uname -r`/kernel/fs/compcache"
-if [ -e "$ccachedir" ]; then
-   echo "Found CompCache"
-   for i in lzo1x_compress.ko lzo1x_decompress.ko tlsf.ko compcache.ko
-   do
-      insmod "$ccachedir/$i" 2>/dev/null
-   done
-   insmod "$ccachedir/compcache.ko" ccache_size_kbytes=128000
-#    debug_shell
-fi
-
-#kademar  compcache
-[ -e /dev/ramzswap0 ] && swapon /dev/ramzswap0  2>/dev/null && ramz=true && echo "Activating CompCache support 1"
 
 #be sure to be mounted
 # mkdir -p /dev/shm
@@ -418,6 +427,18 @@ fi
 # mount -t devpts -o rw,mode=1777 /dev/pts /dev/pts
 /etc/init.d/mountdevsubfs.sh start
 
+#do it in two steps to have time to create zram devices
+if [ "$zram" = yes ]; then
+   #Set disk size by writing the value to sysfs node 'disksize'
+   #(in bytes). If disksize is not given, default value of 25% of RAM is used.
+
+   # Set disksize of 50MB for /dev/zram0
+   echo $((50*1024*1024)) > /sys/block/zram0/disksize
+
+   #Activate swap
+   mkswap /dev/zram0
+   swapon /dev/zram0 -p 1  #maximum priority
+fi
 
 ########### SPLASHY
 #######
@@ -428,9 +449,6 @@ if [ -z "`grep nox /proc/cmdline`" ]; then
 fi
 #######
 ########### SPLASHY
-
-#kademar  compcache
-[ "$ramz" != true  ] && [ -e /dev/ramzswap0  ] && swapon /dev/ramzswap0  2>/dev/null && ramz=true && echo "Activating CompCache support 2"
 
 # echo -n "${BLUE}$miss_moduls_1${NORMAL}" ; /etc/init.d/module-init-tools start >/dev/null 2>&1 ; escriu_resultat $? $num_moduls_1
 
@@ -496,6 +514,9 @@ if [ -e /etc/init.d/pulseaudio -a -n "`grep -i heliox /etc/kademar/config-livecd
     [ -n "$pidoffestival" ] && renice -5 $pidoffestival
     [ -n "$pidofspeech" ] && renice -5 $pidofspeech
 
+    #fix volumes
+    sh /usr/share/kademar/scripts/engegada/volums >/dev/null 2>&1
+
 fi
 
 #
@@ -513,9 +534,6 @@ fi
 # [ -n "`pidof splashy`" ] && /etc/init.d/splashy20 start
 #######
 ########### SPLASHY
-
-#kademar  compcache
-[ "$ramz" != true  ] && [ -e /dev/ramzswap0  ] && swapon /dev/ramzswap0  2>/dev/null && ramz=true && echo "Activating CompCache support 2"
 
 # Munta tots els dispositius
 # echo -n "${BLUE}$miss_fstab${NORMAL}" ; sh /usr/share/kademar/scripts/engegada/fstabcreation-inicial-livecd >/dev/null 2>&1 ; escriu_resultat $? $num_fstab
@@ -541,7 +559,7 @@ if [ -z "$DESKTOP" ]; then
 		echo "${YELLOW}$miss_velocitat_1${NORMAL}"
 		#determina velocitat, si no troba algun dels 2 fitxers d'informacio, assigna total<11 per engegar KDE
 		if [ -e /proc/meminfo -a -e /proc/cpuinfo ]; then
-			#agafa la memoria, i imprimeix el valor de Memtotal nÂº 2 (quantitat de memoria) i el dividim en moduls de 32 mb
+			#agafa la memoria, i imprimeix el valor de Memtotal nº 2 (quantitat de memoria) i el dividim en moduls de 32 mb
 			mem=$((`grep 'MemTotal' /proc/meminfo | awk '{ print $2 }'` / 32000))
 			#agafa la velocitat (el 4tr parametre)
 			vel=`grep 'cpu MHz' /proc/cpuinfo | awk '{ print $4 }'`
@@ -549,7 +567,7 @@ if [ -z "$DESKTOP" ]; then
 			vel=`echo $vel | awk '{ print $1 }'`
 			#fem un strip del numero a partir del punt 2799.845 -> 2799   en el cas de que n'hi hagi de punt
 			[ -n "`echo $vel | grep '.'`" ] && vel=${vel%\.*}
-			#Si la variable es nulÂ·la li assigna una velocitat, perque no falli
+			#Si la variable es nul·la li assigna una velocitat, perque no falli
 			[ -z "$vel" ] && vel="2800"
 			#Dividim la velocitat en moduls de 250 mhz
 			vel=$(($vel / 250))
@@ -588,7 +606,7 @@ fi
 echo DESKTOP="$DESKTOP" > /var/tmp/xserver
 
 
-echo " ${GREEN}$miss_kernel${YELLOW}$(uname -r)${NORMAL}"
+echo " ${GREEN}$miss_kernel${YELLOW}$uname${NORMAL}"
 
 # Print CPU info
 # echo -n "${GREEN}"
@@ -630,7 +648,7 @@ if checkbootparam "nopcmcia"; then
 	echo " ${BLUE}$miss_pcmcia_no${NORMAL}"
 else
 	#Hack pels Sony Vaio, es queda penjat.
-	#Amb sipcmcia en el boot, forÃ§a la carrega
+	#Amb sipcmcia en el boot, força la carrega
 	case "$CMDLINE" in *' sipcmcia '*) sipcmcia="yes"; ;; esac	
 	#Hack pels Sony Vaio, es queda penjat.
 	if [ "$sipcmcia" = "yes" -o -z "`lspci | grep '0000:06:03.0' | egrep 'PCI7420'`" ] ; then
@@ -702,9 +720,9 @@ if checkbootparam "noserveis"; then
 	########### SPLASHY
 
 else
-	#Guarda el lspci en una variable que servirÃ  per engegar serveis a partir d'ella
+	#Guarda el lspci en una variable que servirà per engegar serveis a partir d'ella
 	lspci="`lspci`"
-	#Si detecta alguna targeta d'Ã udio, engega ALSA / PA
+	#Si detecta alguna targeta d'àudio, engega ALSA / PA
 	if [ -n "`echo "$lspci" | grep 'Multimedia audio controller'`" -o -n "`echo "$lspci" | grep 'Audio device'`" ]; then
 		#Probe of wrappers OSS to Alsa 
 # 		modprobe snd-mixer-oss 2>/dev/null
@@ -715,7 +733,7 @@ else
 # 		sh /usr/share/kademar/scripts/engegada/volums >/dev/null 2>&1
 	
 		[ -e /etc/init.d/alsa-utils ] && echo -n "${BLUE}$miss_alsa${NORMAL}" ; /etc/init.d/alsa-utils start >/dev/null 2>&1 ; escriu_resultat $? $num_alsa
-#         no support a pulseaudio pq no tira desd aquÃ­, mejor usar el rc2.d
+#         no support a pulseaudio pq no tira desd aquí, mejor usar el rc2.d
 	fi
 
 	########### SPLASHY
@@ -771,20 +789,20 @@ fi
 
 ############################
 #     AUTO-SWAP ZONE       #
-#  Concept got from CÃ tix  #
+#  Concept got from Càtix  #
 ############################
 
 mem=$((`cat /proc/meminfo | grep 'MemTotal' | awk '{ print $2 }'` / 32000))
 if [ $mem -le 8 ]; then
-# Intentem crear automÃ ticament fitxers d'intercanvi (swap) a particions si la memÃ²ria Ã©s inferior de 250 Mb i encara no tenim particiÃ³ o fitxer d'intercanvi
+# Intentem crear automàticament fitxers d'intercanvi (swap) a particions si la memòria és inferior de 250 Mb i encara no tenim partició o fitxer d'intercanvi
 	#Comprova k no hi hagi cap swap, si n'hi ha un, no creis el fitxer swap, encara que tingui menys d 256mb
 	if [ -z "`grep "swap" /etc/fstab`" ]; then
 		dispositius_mnt=`ls /mnt/ --ignore=fd* --ignore=cdrom* --ignore=dvd* --ignore=live*`
 		if [ -n "$dispositius_mnt" ]; then
 			for particio in $dispositius_mnt ; do
 				fstabparticio="$(grep "$particio" /etc/fstab)"
-				#Si es una  ntfs  no si pot escriure , aixÃ­ que no es pot fer re.
-				#Mirem de que el NTFS-3G n9o sigui inclÃ²s, pq es pot escriure
+				#Si es una  ntfs  no si pot escriure , així que no es pot fer re.
+				#Mirem de que el NTFS-3G n9o sigui inclòs, pq es pot escriure
 				if [ -z "`echo \"$fstabparticio\" | grep 'ntfs '`" ]; then
 					#Si no esta muntada, passa de ella, pq a dalt ja sa executat el mnt-kademar i si no la ha agafat, no la agafara ara
 					if [ -n "`grep $particio /proc/mounts`" ]; then
@@ -902,7 +920,7 @@ else
    #real live-CD start
    #   live-cd or USB w/o changes
 
-    #PortÃ til
+    #Portàtil
     if [ "`laptop-detect ; echo $?`" != 0 ]; then
         #Si no es portatil
         laptop=no
@@ -914,6 +932,12 @@ else
 
     echo $laptop > /etc/kademar/laptop #en usermod
 
+    #detect virtualbox
+    if [ -n "`lspci | grep -i virtualbox`" -o -n "`lshal | grep -i virtualbox`" ] ; then
+        [ -e /etc/init.d/vboxadd ] && /etc/init.d/vboxadd start
+        [ -e /etc/init.d/vboxadd-x11 ] && /etc/init.d/vboxadd-x11 start
+        [ -e /etc/init.d/vboxadd-service ] && /etc/init.d/vboxadd-service start
+    fi
 
     #KNOPPIX hack, perque el salvapantalles no bloquegi la pantalla
     if [ -e /usr/bin/kdesktop_lock ]; then

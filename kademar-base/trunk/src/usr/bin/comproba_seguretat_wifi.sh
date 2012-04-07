@@ -19,7 +19,7 @@ interface="Introduce la Interfaz Wifi a usar"
 routermac=" *  Introduce la MAC de la wifi seleccionada"
 channelask=" *  Introduce el canal de la wifi seleccionada"
 essidask=" *  Introduce la ESSID de la wifi seleccionada"
-nomon="No se puede iniciar ningÃºn monitor"
+nomon="No se puede iniciar ningún monitor"
 simon="Introduce el nombre del monitor iniciado (ej. mon0)"
 end="* A partir de 5000 data (no beacon) ejecuta: *"
 

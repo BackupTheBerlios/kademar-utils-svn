@@ -36,6 +36,15 @@ done
 # Automatically added by dh_installmodules
 if [ "$1" = "configure" ]; then
 
+	#Create kademar-installed links on start
+	#normal kademar
+	[ -e /etc/init.d/kademar-installed-zram ] && [ -z "`ls /etc/rc?.d/*kademar-installed-zram 2>/dev/null`" ] && update-rc.d kademar-installed-zram start 07 S .
+	[ -e /etc/init.d/kademar-installed ] && [ -z "`ls /etc/rc?.d/*kademar-installed 2>/dev/null`" ] && update-rc.d kademar-installed start 01 2 3 .
+
+	#heliox kademar
+	[ -e /etc/init.d/kademar-installed-autoconfig-heliox ] && [ -z "`ls /etc/rc?.d/*kademar-installed-autoconfig-heliox 2>/dev/null`" ] && update-rc.d kademar-installed-autoconfig-heliox start 07 S .
+	
+
 	[ ! -e /etc/console ] && mkdir -p /etc/console
 
 	chmod 0440 /etc/sudoers

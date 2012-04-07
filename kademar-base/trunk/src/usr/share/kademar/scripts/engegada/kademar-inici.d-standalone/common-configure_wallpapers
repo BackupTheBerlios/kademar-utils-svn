@@ -50,22 +50,27 @@ if [ -e "$wallpaper" ]; then
 
 
  #LXDE
-    lxde_file=/home/$user/.config/pcmanfm/main.lxde
+    lxde_file=/home/$user/.config/pcmanfm/LXDE.conf
+    b="wallpaper=$wallpaper"
    #Subsitute orig background with a panoramic one
     if [ -e "$lxde_file" ]; then
         a=`grep kademar-base-substitute-wallpaper-variable "$lxde_file"`
-        b="wallpaper=$wallpaper"
         #if line exists, substitute it
         if [ -n "$a" ]; then
             sed s,"kademar-base-substitute-wallpaper-variable","$wallpaper",g -i $lxde_file
         else
             #if doesn't exist, append it
             echo "" >> $lxde_file
-            echo "[Desktop]" >> $lxde_file
-            echo "show_wallpaper=1" >> $lxde_file
+            echo "[desktop]" >> $lxde_file
+            echo "wallpaper_mode=2" >> $lxde_file
             echo "$b" >> $lxde_file
-            echo "bg2=55192,49082,48732" >> $lxde_file
         fi
+    else
+        #if doesn't exist, create it
+        echo "[Desktop]" > $lxde_file
+        echo "[desktop]" >> $lxde_file
+        echo "wallpaper_mode=2" >> $lxde_file
+        echo "$b" >> $lxde_file
     fi
 
 

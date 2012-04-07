@@ -5,22 +5,12 @@ set -e
 case "$1" in
     purge|remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
 	
-	
-#         rm -f /etc/rc?.d/S98kademar_arranc_live-cd
-        rm -f /etc/rc?.d/*kademar-livecd-xsession
-	# rcS.d
-#         rm -f /etc/rcS.d/S01kademar-inici
-	
-	# rc1.d
-#         rm -f /etc/rc?.d/K01session
-	
-	# rc0.d
-        rm -f /etc/rc?.d/S22kademar-halt
-	
-	# rc6.d
-        rm -f /etc/rc?.d/S22kademar-reboot
-	
         if [ remove = "$1" ]; then
+        
+        	#Removing links
+		update-rc.d -f kademar-installed remove
+		update-rc.d -f kademar-installed-zram remove
+
 		#Networking DHCP Permissive
                 rm -f /etc/init.d/networking /etc/init.d/splashutilsend /etc/init.d/splashutils /etc/apt/preferences /etc/default/rcS /etc/initramfs-tools/initramfs.conf /etc/ppp/options /etc/sysctl.conf /etc/rc.local 
 

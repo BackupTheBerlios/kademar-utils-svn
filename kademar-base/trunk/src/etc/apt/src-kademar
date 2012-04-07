@@ -10,7 +10,8 @@ deb http://volatile.debian.org/debian-volatile/ lenny/volatile main contrib non-
 # deb http://debian.grn.cat/debian-volatile/ squeeze/volatile main contrib non-free
 
 #KDE3 packages
-deb http://ppa.launchpad.net/kde3-maintainers/ppa/ubuntu karmic main 
+deb http://ppa.quickbuild.pearsoncomputing.net/trinity/trinity/debian squeeze main
+deb http://ppa.quickbuild.pearsoncomputing.net/trinity/trinity-builddeps/debian squeeze main
 
 #Backports
 #deb http://backports.org/debian squeeze-backports main contrib non-free
@@ -50,7 +51,7 @@ deb http://deb.opera.com/opera/ squeeze non-free
 #deb http://www.vobcopy.org/mirror/elive/ elive main efl elive
 
 #virtualBox
-deb http://download.virtualbox.org/virtualbox/debian lenny non-free
+deb http://download.virtualbox.org/virtualbox/debian squeeze contrib
 
 #Delvj (necesita el repo de marillat)
 #deb http://sindominio.net/~caedes/debian/ unstable main

@@ -74,7 +74,7 @@ swapoff -a
 #Esborra el fitxer swap temporal creat
 for i in /mnt/*
 do
-	[ -e "$i/K_BORRAM.TMP" ] && rm -f "$i/K_BORRAM.TMP" && echo "${BLUE}Esborrat fitxer temporal de memÃ²ria virtual.${NORMAL}"
+	[ -e "$i/K_BORRAM.TMP" ] && rm -f "$i/K_BORRAM.TMP" && echo "${BLUE}Esborrat fitxer temporal de memòria virtual.${NORMAL}"
 done
 
 umnt-kademar || umnt-kademar || umnt-kademar || sleep 2 ; umnt-kademar

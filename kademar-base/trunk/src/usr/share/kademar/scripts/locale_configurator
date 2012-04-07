@@ -34,7 +34,7 @@ case "$LANGUAGE" in
 # Catalan version
 ca*)
 COUNTRY="es"
-LANG="ca_ES.UTF-8"
+LANG="ca_ES@euro"
 KEYTABLE="es"
 LANG_COUNTRY="ca_ES"
 XKEYBOARD="es"
@@ -43,12 +43,12 @@ CHARSET="iso8859-15"
 # Additional KDE Keyboards
 KDEKEYBOARDS=""
 TZ="Europe/Madrid"
-OPTIONAL=":ca_ES:ca:es_ES.UTF-8:es_ES:es"
+OPTIONAL=":ca_ES:ca:es_ES@euro:es_ES:es"
 ;;
 # German version
 de*)
 COUNTRY="de"
-LANG="de_DE.UTF-8"
+LANG="de_DE@euro"
 KEYTABLE="de-latin1-nodeadkeys"
 XKEYBOARD="de"
 KDEKEYBOARD="de"
@@ -141,7 +141,7 @@ TZ="Europe/Copenhagen"
 es*)
 # Spanish version
 COUNTRY="es"
-LANG="es_ES.UTF-8"
+LANG="es_ES@euro"
 KEYTABLE="es"
 LANG_COUNTRY="es_ES"
 XKEYBOARD="es"
@@ -155,7 +155,7 @@ OPTIONAL=":es_ES:es"
 fi*)
 # Finnish version, though we may not have the kde-i18n files
 COUNTRY="fi"
-LANG="fi_FI.UTF-8"
+LANG="fi_FI@euro"
 KEYTABLE="fi"
 XKEYBOARD="fi"
 KDEKEYBOARD="fi"
@@ -167,7 +167,7 @@ TZ="Europe/Helsinki"
 fr*)
 # French version
 COUNTRY="fr"
-LANG="fr_FR.UTF-8"
+LANG="fr_FR@euro"
 KEYTABLE="fr"
 XKEYBOARD="fr"
 KDEKEYBOARD="fr"
@@ -192,7 +192,7 @@ TZ="Asia/Jerusalem"
 ie*)
 # Irish (English) version
 COUNTRY="ie"
-LANG="en_IE.UTF-8"
+LANG="en_IE@euro"
 KEYTABLE="uk"
 XKEYBOARD="uk"
 KDEKEYBOARD="gb"
@@ -204,7 +204,7 @@ TZ="Europe/Dublin"
 it*)
 # Italian version
 COUNTRY="it"
-LANG="it_IT.UTF-8"
+LANG="it_IT@euro"
 KEYTABLE="it"
 XKEYBOARD="it"
 KDEKEYBOARD="it"
@@ -229,7 +229,7 @@ TZ="Asia/Tokyo"
 nl*)
 # Dutch version
 COUNTRY="nl"
-LANG="nl_NL.UTF-8"
+LANG="nl_NL@euro"
 KEYTABLE="us"
 XKEYBOARD="us"
 KDEKEYBOARD="en_US"
@@ -333,9 +333,9 @@ TZ="Europe/London"
 ;;
 en|*)
 # American version
-LANGUAGE="us"
+LANGUAGE="en_US"
 COUNTRY="us"
-LANG="en"
+LANG="en_US"
 KEYTABLE="us"
 XKEYBOARD="us"
 KDEKEYBOARD="us"
@@ -354,8 +354,8 @@ esac
 #  echo "LC_ALL=$LANG"        >> "$DESTI$locale_file"
 #  echo "LC_MESSAGES=$LANG"   >> "$DESTI$locale_file"
 
-rm -f "$DESTI$locale_file"
-update-locale --reset --locale-file=$DESTI$locale_file LANG=$LANG LANGUAGE=$LANGUAGE LC_ALL=$LANG LC_MESSAGES=$LANG
+rm -f "$locale_file"
+update-locale --reset --locale-file=$locale_file LANG=$LANG LANGUAGE=$LANGUAGE LC_ALL=$LANG LC_MESSAGES=$LANG
 
 cat > "$DESTI/etc/default/keyboard" << EOF
 # If you change it, restart HAL.
@@ -399,7 +399,7 @@ EOF
  if [ -n "$TZ" ]; then
   echo "$TZ" > $DESTI/etc/timezone
   rm -f $DESTI/etc/localtime
-  [ -r $DESTI/usr/share/zoneinfo/"$TZ" ] && { cp -f /usr/share/zoneinfo/"$TZ" $DESTI/etc/localtime; }
+  [ -r $DESTI/usr/share/zoneinfo/"$TZ" ] && { cp -f $DESTI/usr/share/zoneinfo/"$TZ" $DESTI/etc/localtime; }
  fi
 
 
@@ -423,7 +423,7 @@ ca*)
 	echo "
 Els programes inclosos en Kademar GNU/Linux son programari lliure
 en la seva majoria, i una part residual de programari no lliure;
-els termes exactes de distribuciÃ³ de cada programa estan descrits en
+els termes exactes de distribució de cada programa estan descrits en
 fitxers individuals en /usr/share/doc/*/copyright.
 
 Kademar GNU/Linux ve en ABSOLUTA NO GARANTIA, en la mesura
@@ -432,11 +432,11 @@ permesa per la llei actual." > $motd_file.tail
 es*)
 		echo "
 Los programas incluidos en Kademar GNU/Linux son software libre
-en su mayorÃ­a, y una parte residual de software no libre;
-los tÃ©rminos exactos de distribuciÃ³n de cada programa estÃ¡n descritos en
+en su mayoría, y una parte residual de software no libre;
+los términos exactos de distribución de cada programa están descritos en
 archivos individuales en /usr/share/doc/*/copyright.
 
-Kademar GNU/Linux viene en ABSOLUTA NO GARANTÃA, en la medida
+Kademar GNU/Linux viene en ABSOLUTA NO GARANTÍA, en la medida
 permitida por la ley actual." > $motd_file.tail
 ;;
 en*|*)

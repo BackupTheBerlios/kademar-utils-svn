@@ -10,7 +10,8 @@ deb http://volatile.debian.org/debian-volatile/ lenny/volatile main
 # deb http://debian.grn.cat/debian-volatile/ squeeze/volatile main
 
 #KDE3 packages
-deb http://ppa.launchpad.net/kde3-maintainers/ppa/ubuntu karmic main 
+deb http://ppa.quickbuild.pearsoncomputing.net/trinity/trinity/debian squeeze main
+deb http://ppa.quickbuild.pearsoncomputing.net/trinity/trinity-builddeps/debian squeeze main
 
 #Backports
 #deb http://backports.org/debian squeeze-backports main

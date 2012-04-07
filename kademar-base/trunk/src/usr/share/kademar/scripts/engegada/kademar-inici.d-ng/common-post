@@ -15,7 +15,7 @@ fi
 
 
 
-#Hack pel IVMAN per detectar correctament els usbdisks. Si no hi ha muntat res en /media/usbdisk, ell munta all√† els discs usb, encara que tinguin dos particions, fent incongru√®ncies el sistema, i fent que no es puguin muntar, ni desmuntar correctament
+#Hack pel IVMAN per detectar correctament els usbdisks. Si no hi ha muntat res en /media/usbdisk, ell munta all‡ els discs usb, encara que tinguin dos particions, fent incongruËncies el sistema, i fent que no es puguin muntar, ni desmuntar correctament
 #[ ! -e /media/usbdisk ] && mkdir /media/usbdisk
 #mount -t tmpfs -o size=1k none /media/usbdisk
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 #  Creat per Adonay Sanz - Octubre 2005 - kademar
-#  Modificat per Marco Antonio Romero - MarÁ 2006
+#  Modificat per Marco Antonio Romero - Mar√ß 2006
 # engega un programa amb el kdesu o sudo depenen si esta livecd o instalada
 #
 
@@ -9,8 +9,8 @@ ordre="$@"
 
 if [ -z "$ordre" ]; then
 	echo I need a parameter
-	echo Necessito un par‡metre
-	echo Necesito un par·metro
+	echo Necessito un par√†metre
+	echo Necesito un par√°metro
 else
 	if [ "`whoami`" = "root" ]; then
 		$ordre

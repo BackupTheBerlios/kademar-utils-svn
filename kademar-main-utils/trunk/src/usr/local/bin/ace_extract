@@ -5,7 +5,7 @@
 # set -x
 
 # echo $1
-#Parem si no li donem cap par‡metre
+#Parem si no li donem cap par√†metre
 [ -z "$1" ] && echo "Need a parameter" && exit 1
 
 #Treiem les variables
@@ -21,7 +21,7 @@ mkdir "UnAce_Extract_Temp_$fitxer"
 #Descomprimeix el fitxer
 xterm -e unace x "$fitxer" "UnAce_Extract_Temp_$fitxer/"
 
-#DÛna permissos per llegir/escriure
+#D√≥na permissos per llegir/escriure
 chmod -R 777 "UnAce_Extract_Temp_$fitxer"
 
 #Movem el contingut extret, al directori on estem

@@ -1,9 +1,9 @@
 #!/bin/bash
-#Execució de programa, amb el seu associat
+#ExecuciÃ³ de programa, amb el seu associat
 #Adonay Sanz - kademar 24 Abril 2006 - GNU/GPL 2
 #Modificat 05-09-06 Adonay
 #set -x #Debug
-#Paràmetre = programa a executar
+#ParÃ metre = programa a executar
 prog="$*"
 
 #Directori de la ruta passada
@@ -18,13 +18,13 @@ cd "$directori"
 chmod +x "$prog" 2>/dev/null
 
 
-#Execució directa
+#ExecuciÃ³ directa
 "$prog" ; result=$?
 
 
-#Si l'execució directa ha fallat, prova-ho amb el programa adequat
+#Si l'execuciÃ³ directa ha fallat, prova-ho amb el programa adequat
 if [ $result != "0" ]; then
-	#Agafa la seva terminació
+	#Agafa la seva terminaciÃ³
 	terminacio=${prog##*.}
 	
 	
@@ -51,10 +51,10 @@ if [ $result != "0" ]; then
 		. /etc/default/locale
 		case "$LANG" in
 		ca*)
-		kdialog  --sorry "No tens el programa 'csh' encarregat d'executar $prog. Necessites tenir 'csh' per utilitzar-lo. \n Instal·la'l i torna-ho a provar."
+		kdialog  --sorry "No tens el programa 'csh' encarregat d'executar $prog. Necessites tenir 'csh' per utilitzar-lo. \n InstalÂ·la'l i torna-ho a provar."
 		;;
 		es*)
-		kdialog  --sorry "No tienes el programa 'csh' encargado de ejecutar $prog. Necesitas tener 'csh' para usarlo. \n Instálalo y vuélvelo a intentar."
+		kdialog  --sorry "No tienes el programa 'csh' encargado de ejecutar $prog. Necesitas tener 'csh' para usarlo. \n InstÃ¡lalo y vuÃ©lvelo a intentar."
 		;;
 		en*|*)
 		kdialog  --sorry "You don't have 'csh' program, wich executes $prog. You need 'csh' to use it. \n Install it and try it again."
@@ -82,10 +82,10 @@ if [ $result != "0" ]; then
 		. /etc/default/locale
 		case "$LANG" in
 		ca*)
-		kdialog  --sorry "No tens el programa 'wine' encarregat d'executar $prog. Necessites tenir 'wine' per utilitzar-lo. \n Instal·la'l i torna-ho a provar."
+		kdialog  --sorry "No tens el programa 'wine' encarregat d'executar $prog. Necessites tenir 'wine' per utilitzar-lo. \n InstalÂ·la'l i torna-ho a provar."
 		;;
 		es*)
-		kdialog  --sorry "No tienes el programa 'wine' encargado de ejecutar $prog. Necesitas tener 'wine' para usarlo. \n Instálalo y vuélvelo a intentar."
+		kdialog  --sorry "No tienes el programa 'wine' encargado de ejecutar $prog. Necesitas tener 'wine' para usarlo. \n InstÃ¡lalo y vuÃ©lvelo a intentar."
 		;;
 		en*|*)
 		kdialog  --sorry "You don't have 'wine' program, wich executes $prog. You need 'wine' to use it. \n Install it and try it again."

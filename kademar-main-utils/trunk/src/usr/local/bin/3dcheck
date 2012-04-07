@@ -1,13 +1,13 @@
 #!/bin/bash
-#ComprobaciÛ de 3d abans d'executar el programa
-#Adonay Sanz - kademar 06 MarÁ 2007 - GNU/GPL 2
+#Comprobaci√≥ de 3d abans d'executar el programa
+#Adonay Sanz - kademar 06 Mar√ß 2007 - GNU/GPL 2
 
 #set -x #Debug
 
-#Par‡metre = programa a executar
+#Par√†metre = programa a executar
 prog="$*"
 
-#Comprobem acceleraciÛ
+#Comprobem acceleraci√≥
 accel=`glxinfo | grep "direct rendering" | awk ' { print $3 } ' | tr A-Z a-z`
 
 if [ "$accel" != "yes" ]; then
@@ -16,12 +16,12 @@ if [ "$accel" != "yes" ]; then
 	
 	case "$LANG" in
 	ca*)
-		title="AcceleraciÛ Gr‡fica"
-		miss="No tens acceleraciÛ gr‡fica.\n L'aplicaciÛ segurament no funcionar‡.\n Vols provar-ho igualment?"
+		title="Acceleraci√≥ Gr√†fica"
+		miss="No tens acceleraci√≥ gr√†fica.\n L'aplicaci√≥ segurament no funcionar√†.\n Vols provar-ho igualment?"
 	;;
 	es*)
-		title="AcceleraciÛn Gr·fica"
-		miss="No tienes aceleraciÛn gr·fica.\n La aplicaciÛn seguramente no funcionar·.\n øQuieres probarlo igualmente?"
+		title="Acceleraci√≥n Gr√°fica"
+		miss="No tienes aceleraci√≥n gr√°fica.\n La aplicaci√≥n seguramente no funcionar√°.\n ¬øQuieres probarlo igualmente?"
 	;;
 	en*|*)
 		title="Graphic Acceleration"

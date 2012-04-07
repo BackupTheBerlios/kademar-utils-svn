@@ -3,8 +3,9 @@ kademarcenter (4.9.2) testing; urgency=low
   * FEATURE: Remove bluetooth start (now on udev rule)
   * LIVE-CD: Detect 32bit kademar on 64bit machine
   * FIX: Now uses squeeze oxygen icons
+  * FEATURE: Configuration to desactivate 32bit system on a 64bit machine warning
 
- -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Thu, 30 Sep 2010 09:10:39 +0200
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Fri, 08 Oct 2010 10:57:49 +0200
 
 kademarcenter (4.9.1) testing; urgency=low
 

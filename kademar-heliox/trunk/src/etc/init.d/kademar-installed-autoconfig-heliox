@@ -196,8 +196,8 @@ locale_file="/etc/default/locale"
 export LANG=$LANG LANG COUNTRY CHARSET TZ
 
 #Refresh console with new parameters
-[ -e /etc/init.d/console-screen.sh ] && /etc/init.d/console-screen.sh restart
-[ -e /etc/init.d/console-setup ] && /etc/init.d/console-setup start
+# [ -e /etc/init.d/console-screen.sh ] && /etc/init.d/console-screen.sh restart
+# [ -e /etc/init.d/console-setup ] && /etc/init.d/console-setup start
 
 #load sysctl.conf params
 /etc/init.d/procps start
@@ -205,13 +205,13 @@ export LANG=$LANG LANG COUNTRY CHARSET TZ
 #Load next messages
 case "$LANG" in
 ca*)
-. /usr/share/kademar/scripts/engegada/kademar-inici_lang-ca
+[ -e /usr/share/kademar/scripts/engegada/kademar-inici_lang-ca ] && . /usr/share/kademar/scripts/engegada/kademar-inici_lang-ca
 ;;
 es*)
-. /usr/share/kademar/scripts/engegada/kademar-inici_lang-es
+[ -e /usr/share/kademar/scripts/engegada/kademar-inici_lang-es ] && . /usr/share/kademar/scripts/engegada/kademar-inici_lang-es
 ;;
 *)
-. /usr/share/kademar/scripts/engegada/kademar-inici_lang-en
+[ -e /usr/share/kademar/scripts/engegada/kademar-inici_lang-en ] && . /usr/share/kademar/scripts/engegada/kademar-inici_lang-en
 ;;
 esac
 
@@ -335,11 +335,11 @@ fi
 
 ########### SPLASHY
 #######
-if [ -z "`grep nox /proc/cmdline`" ]; then
-	# [ ! -e /dev/fb0 ] && mknod /dev/fb0 c 29 0
-	[ -e /etc/init.d/splashy ] && /etc/init.d/splashy start
-	[ -e /etc/init.d/splashutils ] && /etc/init.d/splashutils start
-fi
+# if [ -z "`grep nox /proc/cmdline`" ]; then
+# 	# [ ! -e /dev/fb0 ] && mknod /dev/fb0 c 29 0
+# 	[ -e /etc/init.d/splashy ] && /etc/init.d/splashy start
+# 	[ -e /etc/init.d/splashutils ] && /etc/init.d/splashutils start
+# fi
 #######
 ########### SPLASHY
 
@@ -389,7 +389,7 @@ ifconfig lo 127.0.0.1 up
 [ -n "`grep screenread /proc/cmdline`" ] && scrread="true"
 
 #Configuration for Heliox
-if [ -e /etc/init.d/pulseaudio -a -n "`grep heliox /etc/kademar/config-livecd`" ]; then
+if [ -e /etc/init.d/pulseaudio -a -n "`grep -i heliox /etc/kademar/config-livecd`" ]; then
     [ -e /etc/init.d/pulseaudio ] && su -c "pulseaudio -D" $user
     [ -e /etc/init.d/festival ] && /etc/init.d/festival start
 #     if [ -e /etc/init.d/speech-dispatcher ]; then
@@ -411,6 +411,9 @@ if [ -e /etc/init.d/pulseaudio -a -n "`grep heliox /etc/kademar/config-livecd`" 
     [ -n "$pidofpulse" ] && renice -5 $pidofpulse
     [ -n "$pidoffestival" ] && renice -5 $pidoffestival
     [ -n "$pidofspeech" ] && renice -5 $pidofspeech
+
+    #fix volumes
+    sh /usr/share/kademar/scripts/engegada/volums >/dev/null 
 
 fi
 

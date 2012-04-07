@@ -56,6 +56,9 @@ case "$1" in
                 rm -f /usr/share/kademar/utils/instalador/scripts/make-grub_menu-version1
                 dpkg-divert --package kademar-heliox --remove --divert /usr/share/kademar/utils/instalador/scripts/make-grub_menu-version1.orig --rename /usr/share/kademar/utils/instalador/scripts/make-grub_menu-version1
 
+                rm -f /usr/share/kademar/utils/instalador-nano/scripts/bootinst.sh
+                dpkg-divert --package kademar-heliox --remove --divert /usr/share/kademar/utils/instalador-nano/scripts/bootinst.sh.orig --rename /usr/share/kademar/utils/instalador-nano/scripts/bootinst.sh
+
 
                 rm -f /usr/share/kademar/utils/kademarcenter/html/equip_ca.html
                 dpkg-divert --package kademar-heliox --remove --divert /usr/share/kademar/utils/kademarcenter/html/equip_ca.html.orig --rename /usr/share/kademar/utils/kademarcenter/html/equip_ca.html
@@ -69,12 +72,22 @@ case "$1" in
                 rm -f /usr/share/kademar/utils/kademarcenter/ui_kademarstart.py
                 dpkg-divert --package kademar-heliox --remove --divert /usr/share/kademar/utils/kademarcenter/ui_kademarstart.py.orig --rename /usr/share/kademar/utils/kademarcenter/ui_kademarstart.py
 
+                rm -f /usr/share/kademar/utils/kademarcenter/kademarcenter.py
+                dpkg-divert --package kademar-heliox --remove --divert /usr/share/kademar/utils/kademarcenter/kademarcenter.py.orig --rename /usr/share/kademar/utils/kademarcenter/kademarcenter.py
+
                 rm -f /usr/share/wallpapers/kademar.png
                 dpkg-divert --package kademar-heliox --remove --divert /usr/share/wallpapers/kademar.png.orig --rename /usr/share/wallpapers/kademar.png
 
-                rm -f /usr/share/wallpapers/kademar-anoramic.png
+                rm -f /usr/share/wallpapers/kademar-panoramic.png
                 dpkg-divert --package kademar-heliox --remove --divert /usr/share/wallpapers/kademar-panoramic.png.orig --rename /usr/share/wallpapers/kademar-panoramic.png
 
+                rm -f /usr/share/wallpapers/kademar-black.png
+                dpkg-divert --package kademar-heliox --remove --divert /usr/share/wallpapers/kademar-black.png.orig --rename /usr/share/wallpapers/kademar-black.png
+
+                rm -f /usr/share/kademar/utils/kademarcenter/img/banda.png
+                dpkg-divert --package kademar-heliox --remove --divert /usr/share/kademar/utils/kademarcenter/img/banda.png.orig --rename /usr/share/kademar/utils/kademarcenter/img/banda.png
+
+                dpkg-divert --package kademar-heliox --remove --divert /usr/share/kademar/kademarcenter.desktop --rename /usr/share/applications/kademarcenter.desktop
 
         fi
 

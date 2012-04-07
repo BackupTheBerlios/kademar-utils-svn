@@ -22,3 +22,5 @@ desktop_max=lxde
 
 #Detecta velocitat per definir desktop
 detecta_desktop="no"
+
+desktop_selector="no"

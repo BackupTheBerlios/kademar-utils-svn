@@ -8,7 +8,8 @@ Homepage: http://www.kademar.org
 
 Package: kademar-heliox
 Architecture: all
-Depends: kademar-base, kademar-accessibility, imagemagick, 
+Depends: kademar-base, imagemagick,
+#kademar-accessibility,
 Provides: kademar-desktop-config,
 Description: kademar Heliox package
  kademar Heliox package

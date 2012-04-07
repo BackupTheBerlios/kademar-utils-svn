@@ -51,6 +51,9 @@ case "$1" in
     dpkg-divert --package kademar-heliox --add --divert /usr/share/kademar/utils/instalador/scripts/make-grub_menu-version1.orig --rename /usr/share/kademar/utils/instalador/scripts/make-grub_menu-version1
     [ ! -e /usr/share/kademar/utils/instalador/scripts/make-grub_menu-version1 ] && ln -s /usr/share/kademar/utils/instalador/scripts/make-grub_menu-version1.heliox /usr/share/kademar/utils/instalador/scripts/make-grub_menu-version1
 
+    dpkg-divert --package kademar-heliox --add --divert /usr/share/kademar/utils/instalador-nano/scripts/bootinst.sh.orig --rename /usr/share/kademar/utils/instalador-nano/scripts/bootinst.sh
+    [ ! -e /usr/share/kademar/utils/instalador-nano/scripts/bootinst.sh ] && ln -s /usr/share/kademar/utils/instalador-nano/scripts/bootinst.sh.heliox /usr/share/kademar/utils/instalador-nano/scripts/bootinst.sh
+
     dpkg-divert --package kademar-heliox --add --divert /usr/share/kademar/utils/kademarcenter/html/equip_ca.html.orig --rename /usr/share/kademar/utils/kademarcenter/html/equip_ca.html
     [ ! -e /usr/share/kademar/utils/kademarcenter/html/equip_ca.html ] && ln -s /usr/share/kademar/utils/kademarcenter/html/equip_ca.html.heliox /usr/share/kademar/utils/kademarcenter/html/equip_ca.html
 
@@ -63,12 +66,22 @@ case "$1" in
     dpkg-divert --package kademar-heliox --add --divert /usr/share/kademar/utils/kademarcenter/ui_kademarstart.py.orig --rename /usr/share/kademar/utils/kademarcenter/ui_kademarstart.py
     [ ! -e /usr/share/kademar/utils/kademarcenter/ui_kademarstart.py ] && ln -s /usr/share/kademar/utils/kademarcenter/ui_kademarstart.py.heliox /usr/share/kademar/utils/kademarcenter/ui_kademarstart.py
 
+    dpkg-divert --package kademar-heliox --add --divert /usr/share/kademar/utils/kademarcenter/kademarcenter.py.orig --rename /usr/share/kademar/utils/kademarcenter/kademarcenter.py
+    [ ! -e /usr/share/kademar/utils/kademarcenter/kademarcenter.py ] && ln -s /usr/share/kademar/utils/kademarcenter/kademarcenter.py.heliox /usr/share/kademar/utils/kademarcenter/kademarcenter.py
+
     dpkg-divert --package kademar-heliox --add --divert /usr/share/wallpapers/kademar.png.orig --rename /usr/share/wallpapers/kademar.png
     [ ! -e /usr/share/wallpapers/kademar.png ] && ln -s /usr/share/wallpapers/kademar_heliox.png /usr/share/wallpapers/kademar.png
 
     dpkg-divert --package kademar-heliox --add --divert /usr/share/wallpapers/kademar-panoramic.png.orig --rename /usr/share/wallpapers/kademar-panoramic.png
     [ ! -e /usr/share/wallpapers/kademar-panoramic.png ] && ln -s /usr/share/wallpapers/kademar-panoramic_heliox.png /usr/share/wallpapers/kademar-panoramic.png
 
+    dpkg-divert --package kademar-heliox --add --divert /usr/share/wallpapers/kademar-black.png.orig --rename /usr/share/wallpapers/kademar-black.png
+    [ ! -e /usr/share/wallpapers/kademar-black.png ] && ln -s /usr/share/wallpapers/kademar-black_heliox.png /usr/share/wallpapers/kademar-black.png
+
+    dpkg-divert --package kademar-heliox --add --divert /usr/share/kademar/utils/kademarcenter/img/banda.png.orig --rename /usr/share/kademar/utils/kademarcenter/img/banda.png
+    [ ! -e /usr/share/kademar/utils/kademarcenter/img/banda.png ] && ln -s /usr/share/kademar/utils/kademarcenter/img/banda.png.heliox /usr/share/kademar/utils/kademarcenter/img/banda.png
+
+    dpkg-divert --package kademar-heliox --add --divert /usr/share/kademar/kademarcenter.desktop --rename /usr/share/applications/kademarcenter.desktop
 
     ;;
 

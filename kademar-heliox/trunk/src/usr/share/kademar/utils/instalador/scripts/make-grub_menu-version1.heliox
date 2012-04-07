@@ -394,91 +394,9 @@ $initrd
 #Write menu & first entry
 echo $template > $menulist
 
-
-#
-#  Add other SO to menu.lst
-#
-
-#Agafem tots els SO menys el de la particio en la que l'hem instal·lat.
-# os-prober
-# cat $particions_arrancables 
-cat $particions_arrancables  | grep -v $particioarrel | grep -vi "No volume groups" | while read line
-do
-	echo "$line"| cut -d: -f1
-	device=`echo "$line" | cut -d: -f1`  #device=/dev/sda1
-	name=`echo "$line" | cut -d: -f2`  #name=MS Windows xp
-	shortname=`echo "$line" | cut -d: -f4 | tr '[A-Z]' '[a-z]'`  #name=windows
-	case "$shortname" in
-		linux*)
-			addlinuxtomenu "$device" "$name" "$shortname"
-		;;
-		chain*|windows*|mac*|*)
-			addwinmactomenu "$device" "$name" "$shortname"
-		;;
-	esac
-done
-
-#Finish adding automagick kernel list kopt option, compatibility with debian   update-grub  command
-
-finish="
-#Heliox
-title -----------------------------
-title Mas Opciones de Accesibilidad
-configfile /boot/grub/menu_heliox.lst
-
-### BEGIN AUTOMAGIC KERNELS LIST
-## lines between the AUTOMAGIC KERNELS LIST markers will be modified
-## by the debian update-grub script except for the default options below
-
-## DO NOT UNCOMMENT THEM, Just edit them to your needs
-
-## ## Start Default Options ##
-## default kernel options
-## default kernel options for automagic boot options
-## If you want special options for specific kernels use kopt_x_y_z
-## where x.y.z is kernel version. Minor versions can be omitted.
-## e.g. kopt=root=/dev/hda1 ro
-##      kopt_2_6_8=root=/dev/hdc1 ro
-##      kopt_2_6_8_2_686=root=/dev/hdc2 ro
-# kopt=root=$root $user_params_no_accessibility $vga
-
-### END DEBIAN AUTOMAGIC KERNELS LIST
-"
-
-echo $finish >> $menulist
-
-#Config grub2
-echo "# This file is sourced by update-grub, and its variables are propagated
-# to its children in /etc/grub.d/
-GRUB_DEFAULT=0
-GRUB_TIMEOUT=5
-GRUB_DISTRIBUTOR=\`lsb_release -i -s 2> /dev/null || echo Debian\`
-GRUB_CMDLINE_LINUX=\"$user_params_no_accessibility $vga\"
-
-# Uncomment to disable graphical terminal (grub-pc only)
-#GRUB_TERMINAL=console
-
-# Uncomment if you don't want GRUB to pass \"root=UUID=xxx\" parameter to Linux
-#GRUB_DISABLE_LINUX_UUID=true" > "$DESTI/etc/default/grub"
-
-
-
-
-
-
-
 echo "HELIOX PART"
 
-heliox="# See www.gnu.org/software/grub for details
-# By default, boot the first entry
-default 0
-# Boot automatically after 5 seconds
-timeout 10
-
-# Pretty colours
-color cyan/blue white/blue
-
-$gfxgrub
+heliox="
 
 title	Dificultades en la vision sin resto visual util
 root $boot
@@ -515,9 +433,79 @@ root $boot
 kernel $image root=$root $user_params_no_accessibility $vga startcsicappgroup4
 $initrd
 
-title ---   Retroceder   ---
-configfile /boot/grub/menu.lst
+title -----------------------------
+
+
 "
 
-echo $heliox >> $DESTI/boot/grub/menu_heliox.lst
+echo $heliox >> $menulist
+
+
+
+
+
+#
+#  Add other SO to menu.lst
+#
+
+#Agafem tots els SO menys el de la particio en la que l'hem instal·lat.
+# os-prober
+# cat $particions_arrancables 
+cat $particions_arrancables  | grep -v $particioarrel | grep -vi "No volume groups" | while read line
+do
+	echo "$line"| cut -d: -f1
+	device=`echo "$line" | cut -d: -f1`  #device=/dev/sda1
+	name=`echo "$line" | cut -d: -f2`  #name=MS Windows xp
+	shortname=`echo "$line" | cut -d: -f4 | tr '[A-Z]' '[a-z]'`  #name=windows
+	case "$shortname" in
+		linux*)
+			addlinuxtomenu "$device" "$name" "$shortname"
+		;;
+		chain*|windows*|mac*|*)
+			addwinmactomenu "$device" "$name" "$shortname"
+		;;
+	esac
+done
+
+#Finish adding automagick kernel list kopt option, compatibility with debian   update-grub  command
+
+finish="
+### BEGIN AUTOMAGIC KERNELS LIST
+## lines between the AUTOMAGIC KERNELS LIST markers will be modified
+## by the debian update-grub script except for the default options below
+
+## DO NOT UNCOMMENT THEM, Just edit them to your needs
+
+## ## Start Default Options ##
+## default kernel options
+## default kernel options for automagic boot options
+## If you want special options for specific kernels use kopt_x_y_z
+## where x.y.z is kernel version. Minor versions can be omitted.
+## e.g. kopt=root=/dev/hda1 ro
+##      kopt_2_6_8=root=/dev/hdc1 ro
+##      kopt_2_6_8_2_686=root=/dev/hdc2 ro
+# kopt=root=$root $user_params_no_accessibility $vga
+
+### END DEBIAN AUTOMAGIC KERNELS LIST
+"
+
+echo $finish >> $menulist
+
+#Config grub2
+echo "# This file is sourced by update-grub, and its variables are propagated
+# to its children in /etc/grub.d/
+GRUB_DEFAULT=0
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR=\`lsb_release -i -s 2> /dev/null || echo Debian\`
+GRUB_CMDLINE_LINUX=\"$user_params_no_accessibility $vga\"
+
+# Uncomment to disable graphical terminal (grub-pc only)
+#GRUB_TERMINAL=console
+
+# Uncomment if you don't want GRUB to pass \"root=UUID=xxx\" parameter to Linux
+#GRUB_DISABLE_LINUX_UUID=true" > "$DESTI/etc/default/grub"
+
+
+#fix concurrency problems on reboot/halt
+sed s.CONCURRENCY=startpar.CONCURRENCY=none.g -i $DESTI/etc/default/rcS.kademar
 

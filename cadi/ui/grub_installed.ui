@@ -1,57 +1,64 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>FormGrub</class>
- <widget class="QWidget" name="FormGrub" >
-  <property name="geometry" >
+ <widget class="QWidget" name="FormGrub">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>550</height>
    </rect>
   </property>
-  <property name="minimumSize" >
+  <property name="minimumSize">
    <size>
     <width>800</width>
-    <height>600</height>
+    <height>550</height>
    </size>
   </property>
-  <property name="windowTitle" >
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>550</height>
+   </size>
+  </property>
+  <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label_2" >
-   <property name="geometry" >
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>600</height>
+     <height>550</height>
     </rect>
    </property>
-   <property name="text" >
+   <property name="text">
     <string/>
    </property>
-   <property name="pixmap" >
+   <property name="pixmap">
     <pixmap>../../../../../usr/share/kademar/utils/cadi/img/bg/cadi.png</pixmap>
    </property>
-   <property name="scaledContents" >
+   <property name="scaledContents">
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QStackedWidget" name="pageWidget" >
-   <property name="geometry" >
+  <widget class="QStackedWidget" name="pageWidget">
+   <property name="geometry">
     <rect>
      <x>230</x>
      <y>80</y>
      <width>491</width>
-     <height>481</height>
+     <height>421</height>
     </rect>
    </property>
-   <property name="currentIndex" >
+   <property name="currentIndex">
     <number>0</number>
    </property>
-   <widget class="QWidget" name="software" >
-    <widget class="QLabel" name="label_4" >
-     <property name="geometry" >
+   <widget class="QWidget" name="software">
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
       <rect>
        <x>9</x>
        <y>10</y>
@@ -59,22 +66,22 @@
        <height>21</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <pointsize>13</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Configure Boot Sector - Grub</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="label" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label">
+     <property name="geometry">
       <rect>
        <x>40</x>
        <y>70</y>
@@ -82,18 +89,18 @@
        <height>41</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>You may configure Boot Manager here.</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
-     <property name="wordWrap" >
+     <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLabel" name="l_logo_blth" >
-     <property name="geometry" >
+    <widget class="QLabel" name="l_logo_blth">
+     <property name="geometry">
       <rect>
        <x>300</x>
        <y>210</y>
@@ -101,15 +108,15 @@
        <height>141</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="pixmap" >
+     <property name="pixmap">
       <pixmap>../../../../../usr/share/kademar/utils/cadi/img/hdd_unmount.png</pixmap>
      </property>
     </widget>
-    <widget class="QPushButton" name="b_expert" >
-     <property name="geometry" >
+    <widget class="QPushButton" name="b_expert">
+     <property name="geometry">
       <rect>
        <x>70</x>
        <y>360</y>
@@ -117,12 +124,12 @@
        <height>30</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Expert Mode</string>
      </property>
     </widget>
-    <widget class="QComboBox" name="cb_boot" >
-     <property name="geometry" >
+    <widget class="QComboBox" name="cb_boot">
+     <property name="geometry">
       <rect>
        <x>80</x>
        <y>160</y>
@@ -131,8 +138,8 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLabel" name="label_6" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
       <rect>
        <x>40</x>
        <y>130</y>
@@ -140,12 +147,12 @@
        <height>16</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Default Boot Selection</string>
      </property>
     </widget>
-    <widget class="QFrame" name="frame" >
-     <property name="geometry" >
+    <widget class="QFrame" name="frame">
+     <property name="geometry">
       <rect>
        <x>40</x>
        <y>220</y>
@@ -153,14 +160,14 @@
        <height>91</height>
       </rect>
      </property>
-     <property name="frameShape" >
+     <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
-     <property name="frameShadow" >
+     <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QSpinBox" name="sb_timeout" >
-      <property name="geometry" >
+     <widget class="QSpinBox" name="sb_timeout">
+      <property name="geometry">
        <rect>
         <x>90</x>
         <y>40</y>
@@ -168,12 +175,12 @@
         <height>22</height>
        </rect>
       </property>
-      <property name="minimum" >
+      <property name="minimum">
        <number>1</number>
       </property>
      </widget>
-     <widget class="QCheckBox" name="ch_timeout" >
-      <property name="geometry" >
+     <widget class="QCheckBox" name="ch_timeout">
+      <property name="geometry">
        <rect>
         <x>20</x>
         <y>10</y>
@@ -181,12 +188,12 @@
         <height>21</height>
        </rect>
       </property>
-      <property name="text" >
+      <property name="text">
        <string>Timeout</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_5" >
-      <property name="geometry" >
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
        <rect>
         <x>150</x>
         <y>43</y>
@@ -194,15 +201,23 @@
         <height>16</height>
        </rect>
       </property>
-      <property name="text" >
+      <property name="text">
        <string>Seconds</string>
       </property>
      </widget>
     </widget>
+    <zorder>label_4</zorder>
+    <zorder>label</zorder>
+    <zorder>l_logo_blth</zorder>
+    <zorder>b_expert</zorder>
+    <zorder>cb_boot</zorder>
+    <zorder>label_6</zorder>
+    <zorder>frame</zorder>
+    <zorder>label_2</zorder>
    </widget>
   </widget>
-  <widget class="QLabel" name="label_3" >
-   <property name="geometry" >
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
     <rect>
      <x>20</x>
      <y>10</y>
@@ -210,18 +225,18 @@
      <height>90</height>
     </rect>
    </property>
-   <property name="text" >
+   <property name="text">
     <string/>
    </property>
-   <property name="pixmap" >
+   <property name="pixmap">
     <pixmap>../../../../../usr/share/kademar/utils/cadi/img/kademar.png</pixmap>
    </property>
-   <property name="scaledContents" >
+   <property name="scaledContents">
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="b_sortir" >
-   <property name="geometry" >
+  <widget class="QPushButton" name="b_sortir">
+   <property name="geometry">
     <rect>
      <x>10</x>
      <y>430</y>
@@ -229,19 +244,19 @@
      <height>41</height>
     </rect>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>Back</string>
    </property>
-   <property name="icon" >
+   <property name="icon">
     <iconset>
      <normaloff>../../../../../usr/share/kademar/utils/cadi/img/enrera.png</normaloff>../../../../../usr/share/kademar/utils/cadi/img/enrera.png</iconset>
    </property>
   </widget>
-  <widget class="QPushButton" name="b_SaX" >
-   <property name="enabled" >
+  <widget class="QPushButton" name="b_SaX">
+   <property name="enabled">
     <bool>false</bool>
    </property>
-   <property name="geometry" >
+   <property name="geometry">
     <rect>
      <x>10</x>
      <y>380</y>
@@ -249,10 +264,10 @@
      <height>41</height>
     </rect>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>Save &amp;&amp; Exit</string>
    </property>
-   <property name="icon" >
+   <property name="icon">
     <iconset>
      <normaloff>../../../../../usr/share/kademar/utils/cadi/img/enrera.png</normaloff>../../../../../usr/share/kademar/utils/cadi/img/enrera.png</iconset>
    </property>

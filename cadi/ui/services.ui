@@ -7,13 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>550</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>800</width>
-    <height>600</height>
+    <height>550</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>550</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -25,8 +31,14 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>600</height>
+     <height>550</height>
     </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>800</width>
+     <height>550</height>
+    </size>
    </property>
    <property name="text">
     <string/>
@@ -35,16 +47,16 @@
     <pixmap>../../../../../../usr/share/kademar/utils/cadi/img/bg/cadi.png</pixmap>
    </property>
    <property name="scaledContents">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QStackedWidget" name="pageWidget">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>200</x>
      <y>50</y>
      <width>571</width>
-     <height>501</height>
+     <height>441</height>
     </rect>
    </property>
    <property name="currentIndex">
@@ -94,7 +106,7 @@
      <property name="geometry">
       <rect>
        <x>380</x>
-       <y>200</y>
+       <y>160</y>
        <width>131</width>
        <height>141</height>
       </rect>
@@ -103,14 +115,14 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>/usr/share/kademar/utils/cadi/img/services.png</pixmap>
+      <pixmap>../../../../../usr/share/kademar/utils/cadi/img/services.png</pixmap>
      </property>
     </widget>
     <widget class="QGroupBox" name="groupBox">
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>160</y>
+       <y>130</y>
        <width>331</width>
        <height>211</height>
       </rect>
@@ -188,7 +200,7 @@
      <property name="geometry">
       <rect>
        <x>90</x>
-       <y>414</y>
+       <y>390</y>
        <width>211</width>
        <height>31</height>
       </rect>
@@ -198,7 +210,7 @@
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>/usr/share/kademar/utils/cadi/img/services.png</normaloff>/usr/share/kademar/utils/cadi/img/services.png</iconset>
+       <normaloff>../../../../../usr/share/kademar/utils/cadi/img/services.png</normaloff>../../../../../usr/share/kademar/utils/cadi/img/services.png</iconset>
      </property>
     </widget>
    </widget>
@@ -226,7 +238,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>530</y>
+     <y>480</y>
      <width>121</width>
      <height>41</height>
     </rect>
@@ -243,7 +255,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>470</y>
+     <y>420</y>
      <width>121</width>
      <height>41</height>
     </rect>

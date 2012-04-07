@@ -1,57 +1,64 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>FormBluetooth</class>
- <widget class="QWidget" name="FormBluetooth" >
-  <property name="geometry" >
+ <widget class="QWidget" name="FormBluetooth">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>550</height>
    </rect>
   </property>
-  <property name="minimumSize" >
+  <property name="minimumSize">
    <size>
     <width>800</width>
-    <height>600</height>
+    <height>550</height>
    </size>
   </property>
-  <property name="windowTitle" >
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>550</height>
+   </size>
+  </property>
+  <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label_2" >
-   <property name="geometry" >
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>600</height>
+     <height>550</height>
     </rect>
    </property>
-   <property name="text" >
+   <property name="text">
     <string/>
    </property>
-   <property name="pixmap" >
+   <property name="pixmap">
     <pixmap>../../../../../usr/share/kademar/utils/cadi/img/bg/cadi.png</pixmap>
    </property>
-   <property name="scaledContents" >
+   <property name="scaledContents">
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QStackedWidget" name="pageWidget" >
-   <property name="geometry" >
+  <widget class="QStackedWidget" name="pageWidget">
+   <property name="geometry">
     <rect>
      <x>240</x>
      <y>70</y>
      <width>491</width>
-     <height>481</height>
+     <height>421</height>
     </rect>
    </property>
-   <property name="currentIndex" >
+   <property name="currentIndex">
     <number>0</number>
    </property>
-   <widget class="QWidget" name="software" >
-    <widget class="QLabel" name="label_4" >
-     <property name="geometry" >
+   <widget class="QWidget" name="software">
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
       <rect>
        <x>9</x>
        <y>30</y>
@@ -59,22 +66,22 @@
        <height>21</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <pointsize>13</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Bluetooth</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="label" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label">
+     <property name="geometry">
       <rect>
        <x>40</x>
        <y>80</y>
@@ -82,15 +89,15 @@
        <height>41</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>You can change the Bluetooth connection PIN to your PC.</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
     </widget>
-    <widget class="QLabel" name="l_logo_blth" >
-     <property name="geometry" >
+    <widget class="QLabel" name="l_logo_blth">
+     <property name="geometry">
       <rect>
        <x>300</x>
        <y>200</y>
@@ -98,15 +105,15 @@
        <height>141</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="pixmap" >
+     <property name="pixmap">
       <pixmap>../../../../../usr/share/kademar/utils/cadi/img/bluetooth.png</pixmap>
      </property>
     </widget>
-    <widget class="QGroupBox" name="groupBox" >
-     <property name="geometry" >
+    <widget class="QGroupBox" name="groupBox">
+     <property name="geometry">
       <rect>
        <x>70</x>
        <y>210</y>
@@ -114,11 +121,11 @@
        <height>121</height>
       </rect>
      </property>
-     <property name="title" >
+     <property name="title">
       <string>Bluetooth PIN</string>
      </property>
-     <widget class="QLineEdit" name="le_pin" >
-      <property name="geometry" >
+     <widget class="QLineEdit" name="le_pin">
+      <property name="geometry">
        <rect>
         <x>70</x>
         <y>50</y>
@@ -126,18 +133,18 @@
         <height>26</height>
        </rect>
       </property>
-      <property name="inputMask" >
+      <property name="inputMask">
        <string>9999; </string>
       </property>
-      <property name="text" >
+      <property name="text">
        <string/>
       </property>
-      <property name="maxLength" >
+      <property name="maxLength">
        <number>4</number>
       </property>
      </widget>
-     <widget class="QLabel" name="label_5" >
-      <property name="geometry" >
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
        <rect>
         <x>19</x>
         <y>53</y>
@@ -145,18 +152,18 @@
         <height>20</height>
        </rect>
       </property>
-      <property name="text" >
+      <property name="text">
        <string>PIN</string>
       </property>
-      <property name="alignment" >
+      <property name="alignment">
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
       </property>
      </widget>
     </widget>
    </widget>
   </widget>
-  <widget class="QLabel" name="label_3" >
-   <property name="geometry" >
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
     <rect>
      <x>20</x>
      <y>10</y>
@@ -164,35 +171,18 @@
      <height>90</height>
     </rect>
    </property>
-   <property name="text" >
+   <property name="text">
     <string/>
    </property>
-   <property name="pixmap" >
+   <property name="pixmap">
     <pixmap>../../../../../usr/share/kademar/utils/cadi/img/kademar.png</pixmap>
    </property>
-   <property name="scaledContents" >
+   <property name="scaledContents">
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="b_sortir" >
-   <property name="geometry" >
-    <rect>
-     <x>20</x>
-     <y>530</y>
-     <width>131</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text" >
-    <string>Back</string>
-   </property>
-   <property name="icon" >
-    <iconset>
-     <normaloff>../../../../../usr/share/kademar/utils/cadi/img/enrera.png</normaloff>../../../../../usr/share/kademar/utils/cadi/img/enrera.png</iconset>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="b_SaX" >
-   <property name="geometry" >
+  <widget class="QPushButton" name="b_sortir">
+   <property name="geometry">
     <rect>
      <x>20</x>
      <y>480</y>
@@ -200,10 +190,27 @@
      <height>41</height>
     </rect>
    </property>
-   <property name="text" >
+   <property name="text">
+    <string>Back</string>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../usr/share/kademar/utils/cadi/img/enrera.png</normaloff>../../../../../usr/share/kademar/utils/cadi/img/enrera.png</iconset>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="b_SaX">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>430</y>
+     <width>131</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
     <string>Save &amp;&amp; Exit</string>
    </property>
-   <property name="icon" >
+   <property name="icon">
     <iconset>
      <normaloff>../../../../../usr/share/kademar/utils/cadi/img/enrera.png</normaloff>../../../../../usr/share/kademar/utils/cadi/img/enrera.png</iconset>
    </property>

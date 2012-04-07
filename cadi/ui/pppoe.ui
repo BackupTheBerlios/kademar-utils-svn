@@ -1,57 +1,70 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>FormPPPoE</class>
- <widget class="QWidget" name="FormPPPoE" >
-  <property name="geometry" >
+ <widget class="QWidget" name="FormPPPoE">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>550</height>
    </rect>
   </property>
-  <property name="minimumSize" >
+  <property name="minimumSize">
    <size>
     <width>800</width>
-    <height>600</height>
+    <height>550</height>
    </size>
   </property>
-  <property name="windowTitle" >
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>550</height>
+   </size>
+  </property>
+  <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label_2" >
-   <property name="geometry" >
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>600</height>
+     <height>550</height>
     </rect>
    </property>
-   <property name="text" >
+   <property name="maximumSize">
+    <size>
+     <width>800</width>
+     <height>550</height>
+    </size>
+   </property>
+   <property name="text">
     <string/>
    </property>
-   <property name="pixmap" >
+   <property name="pixmap">
     <pixmap>../../../../../../usr/share/kademar/utils/cadi/img/bg/cadi.png</pixmap>
    </property>
-   <property name="scaledContents" >
+   <property name="scaledContents">
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QStackedWidget" name="pages" >
-   <property name="geometry" >
+  <widget class="QStackedWidget" name="pages">
+   <property name="geometry">
     <rect>
      <x>210</x>
      <y>70</y>
      <width>561</width>
-     <height>481</height>
+     <height>421</height>
     </rect>
    </property>
-   <property name="currentIndex" >
+   <property name="currentIndex">
     <number>1</number>
    </property>
-   <widget class="QWidget" name="software" >
-    <widget class="QLabel" name="label_4" >
-     <property name="geometry" >
+   <widget class="QWidget" name="software">
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
       <rect>
        <x>19</x>
        <y>20</y>
@@ -59,22 +72,22 @@
        <height>21</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <pointsize>13</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>ADSL/PPPoE</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="label" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label">
+     <property name="geometry">
       <rect>
        <x>30</x>
        <y>80</y>
@@ -82,18 +95,18 @@
        <height>51</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Here you can configure ADSL PPP over Ethernet.</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
-     <property name="wordWrap" >
+     <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLabel" name="l_logo_blth" >
-     <property name="geometry" >
+    <widget class="QLabel" name="l_logo_blth">
+     <property name="geometry">
       <rect>
        <x>350</x>
        <y>240</y>
@@ -101,15 +114,15 @@
        <height>141</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="pixmap" >
+     <property name="pixmap">
       <pixmap>../../../../../usr/share/kademar/utils/cadi/img/pppoe.png</pixmap>
      </property>
     </widget>
-    <widget class="QPushButton" name="b_inicia" >
-     <property name="geometry" >
+    <widget class="QPushButton" name="b_inicia">
+     <property name="geometry">
       <rect>
        <x>60</x>
        <y>280</y>
@@ -117,13 +130,13 @@
        <height>71</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Start PPPoE Detection
 (Can take a while, be patient)</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_6" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
       <rect>
        <x>30</x>
        <y>130</y>
@@ -131,28 +144,28 @@
        <height>71</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <italic>true</italic>
       </font>
      </property>
-     <property name="frameShape" >
+     <property name="frameShape">
       <enum>QFrame::Box</enum>
      </property>
-     <property name="frameShadow" >
+     <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>This isn't the normal connection way. So, if you aren't sure that you need this kind of connection, we recommend to quit from this module</string>
      </property>
-     <property name="wordWrap" >
+     <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="page" >
-    <widget class="QLabel" name="label_5" >
-     <property name="geometry" >
+   <widget class="QWidget" name="page">
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
       <rect>
        <x>60</x>
        <y>70</y>
@@ -160,12 +173,12 @@
        <height>20</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Select Net Device</string>
      </property>
     </widget>
-    <widget class="QListWidget" name="list_net_dev" >
-     <property name="geometry" >
+    <widget class="QListWidget" name="list_net_dev">
+     <property name="geometry">
       <rect>
        <x>60</x>
        <y>110</y>
@@ -173,42 +186,42 @@
        <height>211</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <pointsize>10</pointsize>
       </font>
      </property>
     </widget>
-    <widget class="QPushButton" name="b_finish" >
-     <property name="geometry" >
+    <widget class="QPushButton" name="b_finish">
+     <property name="geometry">
       <rect>
        <x>380</x>
-       <y>370</y>
+       <y>360</y>
        <width>71</width>
        <height>61</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Next</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="b_disconfigure" >
-     <property name="geometry" >
+    <widget class="QPushButton" name="b_disconfigure">
+     <property name="geometry">
       <rect>
        <x>70</x>
-       <y>370</y>
+       <y>360</y>
        <width>71</width>
        <height>61</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Disconfig</string>
      </property>
     </widget>
    </widget>
   </widget>
-  <widget class="QLabel" name="label_3" >
-   <property name="geometry" >
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
     <rect>
      <x>20</x>
      <y>10</y>
@@ -216,29 +229,29 @@
      <height>90</height>
     </rect>
    </property>
-   <property name="text" >
+   <property name="text">
     <string/>
    </property>
-   <property name="pixmap" >
+   <property name="pixmap">
     <pixmap>../../../../../usr/share/kademar/utils/cadi/img/kademar.png</pixmap>
    </property>
-   <property name="scaledContents" >
+   <property name="scaledContents">
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="b_sortir" >
-   <property name="geometry" >
+  <widget class="QPushButton" name="b_sortir">
+   <property name="geometry">
     <rect>
      <x>20</x>
-     <y>530</y>
+     <y>480</y>
      <width>131</width>
      <height>41</height>
     </rect>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>Back</string>
    </property>
-   <property name="icon" >
+   <property name="icon">
     <iconset>
      <normaloff>../../../../../usr/share/kademar/utils/cadi/img/enrera.png</normaloff>../../../../../usr/share/kademar/utils/cadi/img/enrera.png</iconset>
    </property>

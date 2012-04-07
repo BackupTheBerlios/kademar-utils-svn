@@ -103,7 +103,7 @@ Check your permissions or use another folder</translation>
     <message>
         <location filename="audioconversor.py" line="296"/>
         <source>&#xa1;&#xa1;&#xa1;Conversion Completed!!!</source>
-        <translation>¡¡¡Conversion Completed!!!</translation>
+        <translation type="obsolete">¡¡¡Conversion Completed!!!</translation>
     </message>
     <message>
         <location filename="audioconversor.py" line="296"/>
@@ -147,6 +147,11 @@ Check your permissions or use another folder</translation>
         <location filename="audioconversor.py" line="113"/>
         <source>recursivelly?</source>
         <translation>recursivelly?</translation>
+    </message>
+    <message>
+        <location filename="audioconversor.py" line="296"/>
+        <source>&#xc2;&#xa1;&#xc2;&#xa1;&#xc2;&#xa1;Conversion Completed!!!</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

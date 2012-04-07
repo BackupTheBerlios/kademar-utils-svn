@@ -41,6 +41,10 @@ fi
 # kill all processes which can be killed
 killall_unneeded $(pidof cleanup)
 
+#kademar
+# be sure that device will exists eventhough umount $UNION/dev
+cp -a $UNION/dev/* /dev
+
 echo "unmounting union"
 fumount -l $UNION/dev/pts
 fumount -l $UNION/dev
@@ -81,7 +85,7 @@ if [ ! -e /copy2ram -a ! -e /usb ]; then
     eject -m /dev/$(cat /data)   
     #if isn't a laptop, wait for close CD tray
     if [ -z "$LAPTOP" ]; then
-        echo "La platina del CD serÃ¡ cerrada en 10 segundos..."
+        echo "La platina del CD será cerrada en 10 segundos..."
         sleep 10
         /bin/eject -t /dev/$(cat /data) >/dev/null 2>&1
     fi

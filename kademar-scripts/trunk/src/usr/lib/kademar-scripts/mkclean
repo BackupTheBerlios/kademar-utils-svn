@@ -36,6 +36,16 @@ chroot . /root/$SCRIPT > /dev/null || exit 9
 rm -f  root/$SCRIPT  > /dev/null
 
 
+tip "Removing /root folder and replacing by /home/kademar"
+rm -fr $BURNIX_ROOT/root/*
+rm -fr $BURNIX_ROOT/root/.??*
+cp -a  $BURNIX_ROOT/home/kademar/* $BURNIX_ROOT/root/
+cp -a  $BURNIX_ROOT/home/kademar/.??* $BURNIX_ROOT/root/
+chmod 700 /root
+chmod 700 -R /root
+
+
+
 if [ ! -z "$SERVICES_TO_REMOVE" ]; then
 
 	tip "Deleting unwanted services"

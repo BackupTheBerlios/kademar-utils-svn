@@ -1,3 +1,11 @@
+kademar-scripts (3.2.2) testing; urgency=low
+
+  * FEATURE: Support mksquash XZ (lzma2) compression
+  * EVOLVED: Chmod +x /etc/rc.local (fix possible errors)
+  * EVOLVED: Initrd Udev not try to load duplicate modules with verbose output
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Wed, 18 May 2011 14:45:26 +0200
+
 kademar-scripts (3.2) testing; urgency=low
 
   * Update to Linux-Live Scripts 6.3.0

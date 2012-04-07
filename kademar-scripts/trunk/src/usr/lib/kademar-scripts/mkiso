@@ -22,7 +22,12 @@ else
     o=boot/grub/stage2_eltorito
 fi
 
-mkisofs -q -pad -l -r -J -v -V "kademar" \
+mkiso=`which mkisofs`
+[ -z "$mkiso" ] && mkiso=`which genisoimage`
+
+[ -z "$mkiso" ] && error "No trobo el creador de ISO mkisofs/genisoimage"
+
+$mkiso -q -pad -l -r -J -v -V "kademar" \
 	-no-emul-boot \
         -b $o \
 	-boot-load-size 4 \

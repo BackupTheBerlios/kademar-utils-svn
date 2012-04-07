@@ -1174,10 +1174,10 @@ fstab_update()
 # es la funcion que necesitabamos
 udev_casero_kademar(){
 k=$(uname -r)
-for i in $(lspci -n | cut -f4 -d: | cut -d\( -f1) 
+for i in $(lspci -n | cut -f4 -d: | cut -d\( -f1 | sort -u ) 
 do
 
-    for j in $(grep $i /lib/modules/$k/modules.pcimap | cut -f1 -d " " | grep -i pata)
+    for j in $(grep $i /lib/modules/$k/modules.pcimap | cut -f1 -d " " | grep -i pata | sort -u )
     do
         for l in $j
         do
@@ -1189,20 +1189,19 @@ do
 done
 
 
-for i in $(lspci -n | cut -f4 -d: | cut -d\( -f1) 
+for i in $(lspci -n | cut -f4 -d: | cut -d\( -f1 | sort -u   ) 
 do
 
-    for j in $(grep $i /lib/modules/$k/modules.pcimap | cut -f1 -d " ")
+    for j in $(grep $i /lib/modules/$k/modules.pcimap | cut -f1 -d " " | grep -v snd | sort -u )
     do
         for l in $j
         do
-            modprobe $(echo $l)
+            modprobe $(echo $l) 2>/dev/null >&2
             debug_log "  Normal $l"
         done
     done
 
 done
-
 
 #and last, load generic modules
 modprobe ata-generic 2>/dev/null

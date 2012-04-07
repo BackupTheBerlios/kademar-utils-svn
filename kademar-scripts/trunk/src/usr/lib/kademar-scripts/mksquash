@@ -42,6 +42,16 @@ if [ -e /usr/bin/mksquashfs-lzma ]; then
 else
 	SQUASHER=mksquashfs
 fi
+if [ -e /usr/bin/mksquashfs-xz ]; then
+	if [ "$SQUASH" = xz ]; then
+		SQUASHER=mksquashfs-xz
+		COMP="-comp xz"
+	else
+		SQUASHER=mksquashfs
+	fi
+else
+	SQUASHER=mksquashfs
+fi
 
 
 mkdir -p $MASTER_ROOT/kademar/base/
@@ -59,5 +69,5 @@ SQUASHIMAGE_PATH=$MASTER_ROOT/kademar/base/kademar.lzm
 tip "Compressing with: $SQUASHER"
 
 #Create squashfs image, with final live-cd filesystem
-$SQUASHER $BURNIX_ROOT $SQUASHIMAGE_PATH $SQUASH_BLOCK_SIZE
+$SQUASHER $BURNIX_ROOT $SQUASHIMAGE_PATH $SQUASH_BLOCK_SIZE $COMP
 

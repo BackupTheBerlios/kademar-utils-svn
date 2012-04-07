@@ -110,16 +110,16 @@ modprobe_pcmcia_modules
 debug_shell
 
 #kademar  compcache
-ccachedir="/lib/modules/`uname -r`/kernel/fs/compcache"
-if [ -e "$ccachedir" ]; then
-   echolog "$msg_compcache"
-   for i in lzo1x_compress.ko lzo1x_decompress.ko tlsf.ko xvmalloc.ko compcache.ko
-   do
-      [ -e "$ccachedir/$i" ] && insmod "$ccachedir/$i"
-   done
+#ccachedir="/lib/modules/`uname -r`/kernel/fs/compcache"
+#if [ -e "$ccachedir" ]; then
+#   echolog "$msg_compcache"
+#   for i in lzo1x_compress.ko lzo1x_decompress.ko tlsf.ko xvmalloc.ko compcache.ko
+#   do
+#      [ -e "$ccachedir/$i" ] && insmod "$ccachedir/$i"
+#   done
    #insmod "$ccachedir/compcache.ko" ccache_size_kbytes=128000
    #debug_shell
-fi
+#fi
 
 
 # make sure ext3 partitions are not mounted using ext2 driver,
@@ -196,9 +196,29 @@ debug_log "using $LIVECDNAME data from $DATA"
 
 echo $DATA | cut -d/ -f3 > /data
 
+# New Compcache 0.6.3 (hg repository)
 #kademar  compcache
-[ -e /dev/ramzswap0 ] && swapon /dev/ramzswap0 && echolog "$msg_ccache"
+#[ -e /dev/ramzswap0 ] && swapon /dev/ramzswap0 && echolog "$msg_ccache"
+#if [ -e "/lib/modules/`uname -r`/kernel/fs/compcache" ]; then
+   #echo "Found CompCache"
+   #modprobe zram
 
+   #This creates 4 devices: /dev/zram{0,1,2,3}   
+   #modprobe zram num_devices=4
+
+   #Set disk size by writing the value to sysfs node 'disksize'
+   #(in bytes). If disksize is not given, default value of 25% of RAM is used.
+
+   # Set disksize of 50MB for /dev/zram0
+   #echo $((50*1024*1024)) > /sys/block/zram0/disksize
+
+   #Activate:
+   #mkswap /dev/zram0
+   #swapon /dev/zram0
+
+   #mkfs.ext4 /dev/zram1
+   #mount /dev/zram1 /tmp
+#fi
 
 debug_shell
 
@@ -382,6 +402,7 @@ cp /inittab$adriane etc/inittab
 #kademar
 #change CONCURRENCY for live-cd
 sed s.CONCURRENCY=startpar.CONCURRENCY=none.g -i etc/default/rcS.kademar
+[ -e etc/rc.local.kademar ] && chmod +x etc/rc.local.kademar
 
 # If a boot parameter nohotplug is used, copy all dev files (found by mdev)
 # to the unioned dev directory, your Linux may need them since most likely

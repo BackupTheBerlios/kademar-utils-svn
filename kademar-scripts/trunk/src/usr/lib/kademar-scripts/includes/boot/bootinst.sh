@@ -30,7 +30,8 @@ if [ "$(cat /proc/mounts | grep "^$TARGET" | grep noexec)" ]; then
 fi
 
 MBR=$(echo "$TARGET" | sed -r "s/[0-9]+\$//g")
-NUM=${TARGET:${#MBR}}
+# NUM=${TARGET:${#MBR}}
+NUM=`echo "$TARGET" | sed s.$MBR..g`
 cd "$MYMNT"
 
 clear
@@ -65,7 +66,7 @@ fi
 
 echo "Setting up boot record for $TARGET..."
 # ./boot/syslinux/syslinux -d boot/syslinux $TARGET
-grub-install --no-floppy --root-directory=$MYMNT $TARGET  
+grub-install --no-floppy --root-directory=$MYMNT $MBR
 
 echo "Disk $TARGET should be bootable now. Installation finished."
 

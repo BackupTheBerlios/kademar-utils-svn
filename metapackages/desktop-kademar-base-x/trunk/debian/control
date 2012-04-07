@@ -8,7 +8,8 @@ Homepage: http://www.kademar.org
 
 Package: desktop-kademar-base-x
 Architecture: all
-Depends: desktop-kademar-base, kademar-desktop-config, xorg, xserver-xorg, xserver-xorg-video-all, xserver-xorg-input-all, xfonts-100dpi, xfonts-75dpi, xfonts-scalable, libgl1-mesa-dri|xlibmesa-dri, libgl1-mesa-glx|xlibmesa-gl, libglu1-mesa|xlibmesa-glu, gsfonts-x11, x-ttcidfont-conf, ttf-freefont, gsfonts, xfonts-100dpi, xfonts-75dpi, xfonts-base, ttf-freefont, gsfonts-x11, xfonts-75dpi-transcoded, xfonts-100dpi-transcoded, xdg-utils, dbus-x11, xkb-data, ladspa-sdk, swh-plugins, procmeter3, x11-utils, language-env
+Depends: desktop-kademar-base, kademar-desktop-config, xorg, xserver-xorg, xserver-xorg-video-all, xserver-xorg-input-all, xfonts-100dpi, xfonts-75dpi, xfonts-scalable, libgl1-mesa-dri|xlibmesa-dri, libgl1-mesa-glx|xlibmesa-gl, libglu1-mesa|xlibmesa-glu, gsfonts-x11, x-ttcidfont-conf, ttf-freefont, gsfonts, xfonts-100dpi, xfonts-75dpi, xfonts-base, ttf-freefont, gsfonts-x11, xdg-utils, dbus-x11, xkb-data, ladspa-sdk, swh-plugins, procmeter3, x11-utils, language-env
+Recommends: xfonts-75dpi-transcoded, xfonts-100dpi-transcoded,
 Description: Metapackage to install base for all desktops (X.org)
  This is for kademar Linux desktop
  .

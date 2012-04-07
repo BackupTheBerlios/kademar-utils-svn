@@ -8,10 +8,10 @@ Homepage: http://www.kademar.org
 
 Package: desktop-kademar-kde3-core
 Architecture: all
-Depends: desktop-kademar-utils, kademar-kde3-core, ksmserver-kde3, kdesktop-kde3, kdm-kde3, kde-i18n-ca-kde3, kde-i18n-es-kde3, konqueror-kde3, kpdf-kde3, ark-kde3, kppp-kde3, kdeprint-kde3, ksplash-kde3,  kcalc-kde3, konsole-kde3, kate-kde3, kpowersave-kde3, kpat-kde3, kmines-kde3, klipper-kde3, kmenuedit-kde3, kmix-kde3, ksysguard-kde3, kappfinder-kde3, kpackage-kde3, kmilo-kde3, network-manager-kde|wicd|network-manager-gnome, ksplash-engine-moodin-kde3, kwalletmanager-kde3, oxygen-icon-theme|kde-icons-oxygen, kgamma-kde3, gnome-themes, kolourpaint-kde3
+Depends: desktop-kademar-utils, kademar-kde3-core, network-manager-kde|wicd|network-manager-gnome, oxygen-icon-theme|kde-icons-oxygen, ksmserver-trinity|ksmserver-kde3, kdesktop-trinity|kdesktop-kde3, kdm-trinity|kdm-kde3, kde-i18n-ca-trinity|kde-i18n-ca-kde3, kde-i18n-es-trinity|kde-i18n-es-kde3, konqueror-trinity|konqueror-kde3, kpdf-trinity|kpdf-kde3, ark-trinity|ark-kde3, kppp-trinity|kppp-kde3, kdeprint-trinity|kdeprint-kde3, ksplash-trinity|ksplash-kde3, kcalc-trinity|kcalc-kde3, konsole-trinity|konsole-kde3, kate-trinity|kate-kde3, kpowersave-trinity|kpowersave-kde3, kpat-trinity|kpat-kde3, kmines-trinity|kmines-kde3, klipper-trinity|klipper-kde3, kmenuedit-trinity|kmenuedit-kde3, kmix-trinity|kmix-kde3, ksysguard-trinity|ksysguard-kde3, kappfinder-trinity|kappfinder-kde3, kpackage-trinity|kpackage-kde3, kmilo-trinity|kmilo-kde3, ksplash-engine-moodin-trinity|ksplash-engine-moodin-kde3, kwalletmanager-trinity|kwalletmanager-kde3, kgamma-trinity|kgamma-kde3, gnome-themes|gnome-themes, kolourpaint-trinity|kolourpaint-kde3
 #, keybled-kde3, kde-style-klearlook,
 #kademar-kde3-core, desktop-kademar-kde3, 
-#,
+# depends: desktop-kademar-utils, kademar-kde3-core, ksmserver-kde3, kdesktop-kde3, kdm-kde3, kde-i18n-ca-kde3, kde-i18n-es-kde3, konqueror-kde3, kpdf-kde3, ark-kde3, kppp-kde3, kdeprint-kde3, ksplash-kde3,  kcalc-kde3, konsole-kde3, kate-kde3, kpowersave-kde3, kpat-kde3, kmines-kde3, klipper-kde3, kmenuedit-kde3, kmix-kde3, ksysguard-kde3, kappfinder-kde3, kpackage-kde3, kmilo-kde3, network-manager-kde|wicd|network-manager-gnome, oxygen-icon-theme|kde-icons-oxygen ksplash-engine-moodin-kde3, kwalletmanager-kde3, , kgamma-kde3, gnome-themes, kolourpaint-kde3
 Description: Metapackage to install KDE 3 Desktop Mimimal packages
  This is for kademar Linux desktop
  .

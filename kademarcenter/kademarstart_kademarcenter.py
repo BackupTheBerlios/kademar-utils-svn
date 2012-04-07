@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: utf-8 -*-
+# -*- coding: iso-8859-15 -*-
 
 import sys
 from PyQt4.QtGui import *
@@ -91,6 +91,20 @@ class kademarstart(QWidget):
         versiokademar=funcions_k.versiokademar()
         tipuskademar=funcions_k.tipuskademar()
         self.ui_kademarstart.l_kademar.setText("kademar "+tipuskademar+" "+versiokademar+" GNU/Linux")
+        
+        locale = QLocale.system().name()
+        idioma=locale.split("_")[0]
+
+        if path.exists("file:///usr/share/kademar/utils/kademarcenter/html/equip_"+idioma+".html"):
+            self.ui_kademarstart.web_equip.setUrl(QUrl("file:///usr/share/kademar/utils/kademarcenter/html/equip_"+idioma+".html"))
+        else:
+            self.ui_kademarstart.web_equip.setUrl(QUrl("file:///usr/share/kademar/utils/kademarcenter/html/equip_es.html"))
+
+        if path.exists("file:///usr/share/kademar/utils/kademarcenter/html/notesversio_"+idioma+".html"):
+            self.ui_kademarstart.web_notes.setUrl(QUrl("file:///usr/share/kademar/utils/kademarcenter/html/notesversio_"+idioma+".html"))
+        else:
+            self.ui_kademarstart.web_notes.setUrl(QUrl("file:///usr/share/kademar/utils/kademarcenter/html/notesversio_es.html"))
+
 
         #if idioma=="ca":
             #self.boto_cat()
@@ -110,7 +124,10 @@ class kademarstart(QWidget):
         system("x-www-browser http://www.kademar.org/kademarstart/boto_email.php &")
 
     def boto_kcontrol(self):
-        system("kcontrol &")
+        if funcions_k.kdeversion() == 4:
+            system("systemsettings &")
+        else:
+            system("kcontrol &")
 
     def boto_cadi(self):
         system("cadi &")
@@ -161,8 +178,7 @@ class kademarstart(QWidget):
         qtTranslator.load("/usr/share/kademar/utils/kademarcenter/tr/"+idioma+".qm")
         app.installTranslator(qtTranslator)
         self.ui_kademarstart.retranslateUi(self)
-        self.ui_kademarstart.web_equip.setUrl(QUrl(self.tr("file:///usr/share/kademar/utils/kademarcenter/html/equip_ca.html")))
-        self.ui_kademarstart.web_notes.setUrl(QUrl(self.tr("file:///usr/share/kademar/utils/kademarcenter/html/notesversio_ca.html")))
+        
         #Set kademar Label
         versiokademar=funcions_k.versiokademar()
         tipuskademar=funcions_k.tipuskademar()

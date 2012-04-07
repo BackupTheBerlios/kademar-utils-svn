@@ -1,3 +1,3 @@
-FORMS        = ui/kademarcenter.ui ui/usbtray.ui ui/hotplugactions.ui ui/usbtray_warn.ui ui/kademarstart.ui
-SOURCES      = kademarcenter.py usbtray.py usbtray_warn.py HardwareDetect.py hotplugactions.py kademarstart.py kademarstart_kademarcenter.py
+FORMS        = ui/kademarcenter.ui ui/usbtray.ui ui/hotplugactions.ui ui/usbtray_warn.ui ui/kademarstart.ui ui/settings.ui
+SOURCES      = kademarcenter.py usbtray.py usbtray_warn.py HardwareDetect.py hotplugactions.py kademarstart.py kademarstart_kademarcenter.py Settings.py
 TRANSLATIONS = tr/es.ts tr/ca.ts tr/en.ts

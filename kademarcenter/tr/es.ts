@@ -437,27 +437,27 @@ Puedes configurar internet, sino está funcionando ya en &quot;Configurar Sistem
     <message>
         <location filename="ui/hotplugactions.ui" line="25"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="ui/hotplugactions.ui" line="69"/>
         <source>D&apos;Accord</source>
-        <translation type="unfinished">De acuerdo</translation>
+        <translation>De acuerdo</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="ui/hotplugactions.ui" line="87"/>
         <source>Cancel·la</source>
-        <translation type="unfinished">Cancelar</translation>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <location filename="ui/hotplugactions.ui" line="105"/>
         <source>Recordar siempre para este tipo</source>
-        <translation type="unfinished">Recordar siempre para este tipo</translation>
+        <translation>Recordar siempre para este tipo</translation>
     </message>
     <message>
         <location filename="ui/hotplugactions.ui" line="149"/>
         <source>Nou Medi Inserit</source>
-        <translation type="unfinished">Nuevo Medio Introducido</translation>
+        <translation>Nuevo Medio Introducido</translation>
     </message>
 </context>
 <context>
@@ -503,12 +503,12 @@ Puedes configurar internet, sino está funcionando ya en &quot;Configurar Sistem
         <translation>CPU info</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="208"/>
+        <location filename="ui/kademarcenter.ui" line="211"/>
         <source>CPU</source>
         <translation>CPU</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="221"/>
+        <location filename="ui/kademarcenter.ui" line="224"/>
         <source>hostname</source>
         <translation>hostname</translation>
     </message>
@@ -518,12 +518,12 @@ Puedes configurar internet, sino está funcionando ya en &quot;Configurar Sistem
         <translation type="obsolete">Sistema:</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="250"/>
+        <location filename="ui/kademarcenter.ui" line="253"/>
         <source>System:</source>
         <translation>Sistema:</translation>
     </message>
     <message>
-        <location filename="ui/kademarcenter.ui" line="263"/>
+        <location filename="ui/kademarcenter.ui" line="266"/>
         <source>Settings</source>
         <translation>Preferencias</translation>
     </message>
@@ -560,7 +560,7 @@ Puedes empezar a usar el sistema o, si quieres, puedes ver las novedades, config
         <translation>No volver a ejecutar al inicio</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="441"/>
+        <location filename="ui/kademarstart.ui" line="469"/>
         <source>Suport i Manuals</source>
         <translation>Soporte y Manuales</translation>
     </message>
@@ -587,7 +587,7 @@ Puedes empezar a usar el sistema o, si quieres, puedes ver las novedades, config
         <translation>Configurar el Sistema</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="ui/kademarstart.ui" line="412"/>
+        <location filename="ui/kademarstart.ui" line="421"/>
         <source>Menú K   -&gt;</source>
         <translation>Menú K   -&gt;</translation>
     </message>
@@ -597,7 +597,7 @@ Puedes empezar a usar el sistema o, si quieres, puedes ver las novedades, config
         <translation>Centro de Control</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="ui/kademarstart.ui" line="336"/>
+        <location filename="ui/kademarstart.ui" line="345"/>
         <source>kademar ser personalitzada completament, tan en aparença, com els diferents programes que conté.
 
 La major part de les configuracions visuals es poden fer des del Centre de Control.</source>
@@ -606,49 +606,49 @@ La major part de les configuracions visuals es poden fer des del Centre de Contr
 La mayor parte de las configuraciones visuales se pueden hacer desde el Centro de Control.</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="354"/>
+        <location filename="ui/kademarstart.ui" line="363"/>
         <source>Engegar Kcontrol ara</source>
         <translation>Iniciar Kcontrol ahora</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="367"/>
+        <location filename="ui/kademarstart.ui" line="376"/>
         <source>Engegar CADI ara</source>
         <translation>Iniciar CADI ahora</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="ui/kademarstart.ui" line="380"/>
+        <location filename="ui/kademarstart.ui" line="389"/>
         <source>Les configuracions del sistema, així com instal·lar impressores, configurar internet,  gestionar usuaris, configurar els teclats multimèdia o instal·lar nous programes; es fan des del CADI. </source>
         <translation>Las configuraciones del sistema, así como instalar impresoras, configurar internet, gestionar usuarios, configurar los teclados multimedia o instalar nuevos programas; se hacen desde el CADI.</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="432"/>
+        <location filename="ui/kademarstart.ui" line="447"/>
         <source>CADI</source>
         <translation>CADI</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="ui/kademarstart.ui" line="469"/>
+        <location filename="ui/kademarstart.ui" line="497"/>
         <source>FAQ
 (Preguntas más frecuentes)</source>
         <translation>FAQ
 (Preguntas más frecuentes)</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="493"/>
+        <location filename="ui/kademarstart.ui" line="521"/>
         <source>Foro de kademar</source>
         <translation>Foro de kademar</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="516"/>
+        <location filename="ui/kademarstart.ui" line="544"/>
         <source>eMail</source>
         <translation>eMail</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="ui/kademarstart.ui" line="539"/>
+        <location filename="ui/kademarstart.ui" line="567"/>
         <source>Documentación en Linea</source>
         <translation>Documentación en Linea</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="ui/kademarstart.ui" line="562"/>
+        <location filename="ui/kademarstart.ui" line="590"/>
         <source>El soporte de kademar principalmente es a través de internet.
 
 Puedes configurar internet, sino está funcionando ya en &quot;Configurar Sistema&quot; 
@@ -661,7 +661,7 @@ Puedes configurar internet, sino está funcionando ya en &quot;Configurar Sistem
  Una vez tengas conexión, puedes acceder a los servicios de soporte en linea que ofrecemos.</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="575"/>
+        <location filename="ui/kademarstart.ui" line="603"/>
         <source>Equip kademar</source>
         <translation>Equipo kademar</translation>
     </message>
@@ -673,12 +673,12 @@ Puedes configurar internet, sino está funcionando ya en &quot;Configurar Sistem
     <message>
         <location filename="ui/kademarstart.ui" line="248"/>
         <source>file:///usr/share/kademar/utils/kademarcenter/html/notesversio_ca.html</source>
-        <translation type="unfinished">file:///usr/share/kademar/utils/kademarcenter/html/notesversio_es.html</translation>
+        <translation>file:///usr/share/kademar/utils/kademarcenter/html/notesversio_es.html</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="588"/>
+        <location filename="ui/kademarstart.ui" line="616"/>
         <source>file:///usr/share/kademar/utils/kademarcenter/html/equip_ca.html</source>
-        <translation type="unfinished">file:///usr/share/kademar/utils/kademarcenter/html/equip_es.html</translation>
+        <translation>file:///usr/share/kademar/utils/kademarcenter/html/equip_es.html</translation>
     </message>
     <message>
         <location filename="ui/kademarstart.ui" line="93"/>
@@ -686,8 +686,106 @@ Puedes configurar internet, sino está funcionando ya en &quot;Configurar Sistem
         <translation>Bienvenidos a</translation>
     </message>
     <message>
-        <location filename="ui/kademarstart.ui" line="680"/>
+        <location filename="ui/kademarstart.ui" line="708"/>
         <source>kademar GNU/Linux</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context encoding="UTF-8">
+    <name>Form_settings</name>
+    <message>
+        <location filename="ui/settings.ui" line="25"/>
+        <source>kademarcenter Settings</source>
+        <translation>kademarcenter Preferencias</translation>
+    </message>
+    <message>
+        <location filename="ui/settings.ui" line="217"/>
+        <source>Settings kademarcenter</source>
+        <translation>Preferencias kademarcenter</translation>
+    </message>
+    <message>
+        <location filename="ui/settings.ui" line="96"/>
+        <source>Open Action Panel on a device/media plug</source>
+        <translation>Abrir panel de Acciones al conectar un dispositivo/medio</translation>
+    </message>
+    <message>
+        <location filename="ui/settings.ui" line="109"/>
+        <source>Use a balloon to warn for a pluged device</source>
+        <translation>Avisar con una nube cuando se conecte un dispositivo</translation>
+    </message>
+    <message>
+        <location filename="ui/settings.ui" line="122"/>
+        <source>Use a sound warn for a pluged device</source>
+        <translation>Avisar con un sonido cuando se conecte un dispositivo</translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="ui/settings.ui" line="163"/>
+        <source>Temps d&apos;actualització del sistema (en Hores)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ui/settings.ui" line="176"/>
+        <source>No Actualitzar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="ui/settings.ui" line="189"/>
+        <source>Actualitzar el Sistema Automàticament (Recomanat)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ui/settings.ui" line="202"/>
+        <source>Solament avisar dels nous paquets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="ui/settings.ui" line="258"/>
+        <source>Preferència de les aplicacions usades automàticament</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="ui/settings.ui" line="245"/>
+        <source>Preferències de cercar espai de disc lliure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ui/settings.ui" line="271"/>
+        <source>Cercar i avisar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <location filename="ui/settings.ui" line="284"/>
+        <source>Cercar i Esborrar automàticament les carpetes:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ui/settings.ui" line="298"/>
+        <source>Esborrar?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ui/settings.ui" line="303"/>
+        <source>Directori</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ui/settings.ui" line="338"/>
+        <source>General</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ui/settings.ui" line="351"/>
+        <source>Updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ui/settings.ui" line="364"/>
+        <source>Disc Lliure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ui/settings.ui" line="377"/>
+        <source>USB</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -957,6 +1055,19 @@ Asegúrate de que no hay ningún programa accediendo al dispositivo.</translatio
     </message>
 </context>
 <context>
+    <name>Settings</name>
+    <message>
+        <location filename="Settings.py" line="72"/>
+        <source>Exit</source>
+        <translation>Salir</translation>
+    </message>
+    <message>
+        <location filename="Settings.py" line="72"/>
+        <source>Do you want to save settings?</source>
+        <translation>Quiere guardar los cambios?</translation>
+    </message>
+</context>
+<context>
     <name>UsbTray</name>
     <message>
         <location filename="usbtray.py" line="60"/>
@@ -976,12 +1087,12 @@ Asegúrate de que no hay ningún programa accediendo al dispositivo.</translatio
     <message>
         <location filename="usbtray.py" line="262"/>
         <source>Ejecuci&#xf3;n</source>
-        <translation type="obsolete">Ejecución</translation>
+        <translation>Ejecución</translation>
     </message>
     <message>
         <location filename="usbtray.py" line="358"/>
         <source>UsbTray sigue funcionando aqu&#xed;</source>
-        <translation type="obsolete">UsbTray sigue funcionando aquí</translation>
+        <translation>UsbTray sigue funcionando aquí</translation>
     </message>
     <message>
         <location filename="usbtray.py" line="300"/>
@@ -1039,16 +1150,6 @@ Asegúrate de que no hay ningún programa accediendo al dispositivo.</translatio
     <message>
         <location filename="usbtray.py" line="358"/>
         <source>UsbTray</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="usbtray.py" line="262"/>
-        <source>Ejecuci&#xc3;&#xb3;n</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="usbtray.py" line="358"/>
-        <source>UsbTray sigue funcionando aqu&#xc3;&#xad;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1330,22 +1431,22 @@ Asegúrate de que no hay ningún programa accediendo al dispositivo.</translatio
     <message>
         <location filename="hotplugactions.py" line="391"/>
         <source>Play with Kaffeine</source>
-        <translation type="unfinished"></translation>
+        <translation>Reproducir con Kaffeine</translation>
     </message>
     <message>
         <location filename="hotplugactions.py" line="344"/>
         <source>Extract with Grip</source>
-        <translation type="unfinished"></translation>
+        <translation>Extraer con Grip</translation>
     </message>
     <message>
         <location filename="hotplugactions.py" line="376"/>
         <source>Open with dolphin</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir con Dolphin</translation>
     </message>
     <message>
         <location filename="hotplugactions.py" line="376"/>
         <source>Open with PCManFM</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir con PCManFM</translation>
     </message>
 </context>
 <context>
@@ -1361,17 +1462,17 @@ Asegúrate de que no hay ningún programa accediendo al dispositivo.</translatio
         <translation type="obsolete">Hay disponibles para actualizar %s paquetes.</translation>
     </message>
     <message>
-        <location filename="kademarcenter.py" line="243"/>
+        <location filename="kademarcenter.py" line="249"/>
         <source>Closed, there&apos;s no remaining massive storage devices.</source>
         <translation>Cerrado, no hay más dispositivos de almacenamiento masivo.</translation>
     </message>
     <message>
-        <location filename="kademarcenter.py" line="226"/>
+        <location filename="kademarcenter.py" line="232"/>
         <source>Updade Available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="kademarcenter.py" line="226"/>
+        <location filename="kademarcenter.py" line="232"/>
         <source>Update available for %s packages.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1386,12 +1487,12 @@ Asegúrate de que no hay ningún programa accediendo al dispositivo.</translatio
         <translation>Configurar</translation>
     </message>
     <message>
-        <location filename="kademarcenter.py" line="162"/>
+        <location filename="kademarcenter.py" line="168"/>
         <source>Executing 32bit kademar on a 64bit Machine</source>
         <translation>Ejecutando kademar de 32bit en una Máquina de 64bit</translation>
     </message>
     <message>
-        <location filename="kademarcenter.py" line="162"/>
+        <location filename="kademarcenter.py" line="168"/>
         <source>Your computer is a 64bit capable, but you are executing a 32bit kademar.
 This can cause performance issues and kademar experience could be reduced.
 
@@ -1405,14 +1506,14 @@ Para usarla en live-cd no hay ningún problema, pero si desea instalar kademar e
 <context>
     <name>kademarstart</name>
     <message>
-        <location filename="kademarstart_kademarcenter.py" line="164"/>
+        <location filename="kademarstart_kademarcenter.py" line="167"/>
         <source>file:///usr/share/kademar/utils/kademarcenter/html/equip_ca.html</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">file:///usr/share/kademar/utils/kademarcenter/html/equip_es.html</translation>
     </message>
     <message>
-        <location filename="kademarstart_kademarcenter.py" line="165"/>
+        <location filename="kademarstart_kademarcenter.py" line="168"/>
         <source>file:///usr/share/kademar/utils/kademarcenter/html/notesversio_ca.html</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">file:///usr/share/kademar/utils/kademarcenter/html/notesversio_es.html</translation>
     </message>
 </context>
 </TS>

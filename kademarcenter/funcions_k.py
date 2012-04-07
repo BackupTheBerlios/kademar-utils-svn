@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: utf-8 -*-
+# -*- coding: iso-8859-15 -*-
 
 # Modul de funcions i variables per us itern de kademar
 
@@ -103,3 +103,11 @@ def configdir():
     from os import system
     system("[ ! -e \"$HOME/.kademar\" ] && mkdir -p \"$HOME/.kademar\" ")
 
+
+def kdeversion():
+    from os import getenv
+    if int(getenv("KDE_SESSION_VERSION"))==4:
+        return 4
+    else:
+        if str(getenv("DESKTOP_SESSION")) == "kde3":
+            return 3

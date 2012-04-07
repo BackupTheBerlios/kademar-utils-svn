@@ -52,6 +52,60 @@ fi
 # END FUNCTION GREP HAL INFO#
 #############################
 
+##########
+# FUNCTION TO KNOW IF DEVICE IS REMOVABLE
+##########
+isRemovable(){
+#Function to know if a device is removable or not
+
+hd=$1
+
+for i in `hal-find-by-property --key block.device --string "$hd"`
+do
+ firstone=$i
+ break
+done
+
+# if not found, try to hack it
+if [ -z "$firstone" ]; then
+	hd=`echo $1 | sed s:"sr":"scd":g | sed s:dvd:sr0:g`
+	for i in `hal-find-by-property --key block.device --string "$hd"`
+	do
+		firstone=$i
+		break
+	done
+	capab=$(hal-get-property --udi "$firstone"  --key info.capabilities)
+fi
+
+capab=$(hal-get-property --udi "$firstone"  --key info.capabilities)
+
+
+#then check if cdrom if no have been cought a disk (volume) instead the block-device
+if [ "$(hal-get-property --udi `hal-find-by-property --key block.device --string "$hd"`  --key block.is_volume)" = true ]; then
+# echo parent_hack $1
+	parent=$(hal-get-property --udi `hal-find-by-property --key block.device --string "$hd"`  --key info.parent)
+	capab=$(hal-get-property --udi $parent --key info.capabilities)
+fi
+
+a=$(hal-get-property --udi `hal-find-by-property --key block.device --string "$hd"`  --key storage.bus)
+
+# echo $capab
+
+# echo $capab
+if [ -n "`echo "$capab" | grep -i cdrom`" -o -n "`echo "$capab" | grep -i scsi`" ]; then
+#si es cdrom = YES
+	echo yes
+else
+#si es de usb = YES
+	if [ "$a" = usb ]; then
+		echo yes
+	else
+		echo no
+	fi
+fi
+}
+
+
 
 ##########
 # FUNCTION TO WRITE SO NAME WITH NAME OF PARTITION
@@ -75,7 +129,6 @@ case "$1" in
 		else
 			ln -s -n "/mnt/$i" "/Pc/$halinfovar - kademar $versio $on $i"
 		fi
-
 	;;
 
 	noname)
@@ -97,6 +150,46 @@ case "$1" in
 
 esac
 
+es_removable=$(isRemovable /dev/$i 2>/dev/null)
+
+
+if [ "$es_removable" = "no" ]; then
+	#write icon config
+	case "$1" in
+	kademar)
+		echo "[Desktop Entry]
+Icon=/usr/share/kademar/icons/drive-harddisk-kademar.png" > "/mnt/$i/.directory" 
+	;;
+	*noname*)
+		echo "[Desktop Entry]
+Icon=drive-harddisk" > "/mnt/$i/.directory" 
+	;;
+	*Win*)
+		echo "[Desktop Entry]
+Icon=/usr/share/kademar/icons/drive-harddisk-win.png" > "/mnt/$i/.directory" 
+	;;
+	*Mac*)
+		echo "[Desktop Entry]
+Icon=/usr/share/kademar/icons/drive-harddisk-mac.png" > "/mnt/$i/.directory" 
+	;;
+	*)
+		echo "[Desktop Entry]
+Icon=/usr/share/kademar/icons/drive-harddisk-linux.png" > "/mnt/$i/.directory" 
+	;;
+		
+	esac
+
+else
+
+var=`echo $i | sed s:"sr":"scd":g | sed s:dvd:sr0:g`
+
+  #es un cdrom
+  if [ -n "`ls /sys/block/$var/device/bus/drivers 2>/dev/null | grep -i cdrom`" -o "`cat /sys/block/$var/device/type 2>/dev/null`" = 5 ]; then
+  echo "[Desktop Entry]
+Icon=media-optical" > "/mnt/$i/.directory" 
+  fi
+
+fi
 }
 
 ##########
@@ -125,7 +218,7 @@ es*)
 ;;
 *)
 	on="on"
-	hd="Disc Partition"
+	hd="Partition Disk"
 ;;
 esac
 
@@ -134,7 +227,10 @@ esac
 #############################
 ls /Pc -1 2>/dev/null | while read line
 do
-	[ ! -e "/Pc/$line" ] && rm -f "/Pc/$line"
+	if [ ! -e "/Pc/$line" ]; then
+	    rm -f "/Pc/$line/.directory"
+	    rm -f "/Pc/$line"
+	fi
 done
 #################################
 # END DELETE BUGGY LINKS ON /Pc #
@@ -158,6 +254,7 @@ do
 		elif [ -n "`grep 'Shell=' "/Pc/$line/config.sys" 2>/dev/null`" ]; then
 			continue
 		else
+			rm -f "/Pc/$line/.directory"
 			rm -f "/Pc/$line"
 		fi
 		;;
@@ -168,13 +265,16 @@ do
 				distrib=`grep DISTRIB_ID "/Pc/$line/etc/lsb-release" 2>/dev/null | cut -d= -f2`
 				if [ -e "/Pc/$line/lib/modules" ]; then
 					if [ -e "/Pc/$line/etc/kademar-release" -o -e "/Pc/$line/usr/share/kademar/CADI/info.txt" -o -e "/Pc/$line/usr/share/kademar/Pc.txt" -o "$distrib" = "kademar" ]; then
+						rm -f "/Pc/$line/.directory"
 						rm -f "/Pc/$line"
 					fi
 				else
+					rm -f "/Pc/$line/.directory"
 					rm -f "/Pc/$line"
 				fi
 				
 				if [ -n "$distrib" -a -z "`echo "$line" | grep "$distrib"`" ]; then
+					rm -f "/Pc/$line/.directory"
 					rm -f "/Pc/$line"
 				fi
 
@@ -184,13 +284,17 @@ do
 				if [ ! -e "/Pc/$line/etc/kademar-release" -a ! -e "/Pc/$line/usr/share/kademar/CADI/info.txt" ]; then
 					#kademar sense versio
 					if [ ! -e "/mnt/$i/usr/share/kademar/Pc.txt" -a "$distrib" != "kademar" ]; then
+						rm -f "/Pc/$line/.directory"
 						rm -f "/Pc/$line"
 					fi
 				fi
 			fi
 		;;
 		*'Mac OS X'*)
-			[ ! -e "/Pc/$line/Applications" -a ! -e "/Pc/$line/Volumes" ] && rm -f "/Pc/$line"
+			if [ ! -e "/Pc/$line/Applications" -a ! -e "/Pc/$line/Volumes" ]; then
+			    rm -f "/Pc/$line/.directory"
+			    rm -f "/Pc/$line" 
+			fi
 		;;
 		*cdrom*|*floppy*|fd?|disque*|*dvd*)
 		#No comprovem el SO si es un disquet/cdrom
@@ -200,16 +304,21 @@ do
 			ntdetect="" ; ntdetect=`ls "/Pc/$line" | grep -i ntdetect.com`
 			ntldr="" ; ntldr=`ls "/Pc/$line" | grep -i ntldr`
 			if [ -n "$ntldr" -a -n "$ntdetect" ]; then
+				rm -f "/Pc/$line/.directory"
 				rm -f "/Pc/$line"
 			elif [ -e "/Pc/$line/command.com" ]; then
+				rm -f "/Pc/$line/.directory"
 				rm -f "/Pc/$line"
 			elif [ -n "`grep 'Shell=' "/mnt/$i/config.sys" 2>/dev/null`" ]; then
+				rm -f "/Pc/$line/.directory"
 				rm -f "/Pc/$line"
 			# Mac OS X
 			elif [ -e "/Pc/$line/Applications" -a -e "/Pc/$line/Volumes" ]; then
+				rm -f "/Pc/$line/.directory"
 				rm -f "/Pc/$line"
 			# Linux
 			elif [ -e "/Pc/$line/lib/modules" ]; then
+				rm -f "/Pc/$line/.directory"
 				rm -f "/Pc/$line"
 			else
 				continue
@@ -333,13 +442,22 @@ done
 #############################
 ls -1 /Pc | while read line
 do
-	[ ! -e "/Pc/$line" ] && rm -f "/Pc/$line" && echo $line
+	if [ ! -e "/Pc/$line" ]; then
+	    rm -f "/Pc/$line/.directory"
+	    rm -f "/Pc/$line"
+	    echo $line
+	fi
 done
 
 cd /Pc
 ls -1 *USB* 2>/dev/null | grep USB | sed s,:,,g | while read line
 do
-	[ -z "$(mount | grep "`readlink "/Pc/$line"`")" ] && rm -f "/Pc/$line" && rm -f "/mnt/$line" && echo "$line"
+	if [ -z "$(mount | grep "`readlink "/Pc/$line"`")" ]; then
+	    rm -f "/Pc/$line/.directory"
+	    rm -f "/Pc/$line"
+	    rm -f "/mnt/$line"
+	    echo "$line"
+	fi
 done
 #################################
 # END REMOVE /Pc ORPHAN FOLDERS #

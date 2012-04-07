@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: utf-8 -*-
+# -*- coding: iso-8859-15 -*-
 
 #
 # Function to manage Recent Hotplugged Hardware
@@ -139,8 +139,8 @@ class hotplugaction(QWidget):
         #print "medi"
         #print medi
 
-        #Si el programa de execuciÃ³  estÃ  definit, i existeix (no s'ha desinstalat)
-        #   executa el programa selÂ·leccionat.
+        #Si el programa de execució  està definit, i existeix (no s'ha desinstalat)
+        #   executa el programa sel·leccionat.
         #   
         self.programafer=None
         if continua:
@@ -151,13 +151,13 @@ class hotplugaction(QWidget):
                     self.programafer=prog
                     self.fesaccio()
                 else:
-                    #Si no, mostra la finestra de selÂ·lecciÃ³
+                    #Si no, mostra la finestra de sel·lecció
                     print "mostrafinestra"
                     self.mostrafinestra()
                     self.raise_()
                     self.activateWindow()  #I posala davant de tot
 
-        #Function de ensenyar la finestra de selÂ·lecciÃ³
+        #Function de ensenyar la finestra de sel·lecció
     def mostrafinestra(self):
         #Standar name to window
         windowlabel=self.nom.replace("$mnt$",self.mnt).replace("$blk$",self.blk).replace("$part$",self.blk.replace("/dev/","")).replace("$label$",self.label)
@@ -177,14 +177,14 @@ class hotplugaction(QWidget):
 	#compared list
         #1 3
 
-	#list object nÂº 2 does not exists
+	#list object nº 2 does not exists
         #2
 
-	#so, list object nÂº3 becomes object 2
+	#so, list object nº3 becomes object 2
         #2 -> 3
 
         self.llistatreball=[]
-	#De les possibles accions, crea la llista de treball amb els programes que realment estiguin instalÂ·lats
+	#De les possibles accions, crea la llista de treball amb els programes que realment estiguin instal·lats
         for i in self.program:
             if getoutput("which "+i[2].split(" ")[0]):
                 self.llistatreball.append(i)
@@ -261,7 +261,7 @@ class hotplugaction(QWidget):
         programa=self.llistatreball[self.ui.listWidget.currentRow()][2]
         #print "Saved config", self.media, programa
 
-#Posar aquÃ­ tots els self.tipus ordenats per igual, aixÃ­ amb el nÃºmero de la "i" accedim al mateix per tots
+#Posar aquí tots els self.tipus ordenats per igual, així amb el número de la "i" accedim al mateix per tots
 #  Tenim el que s'ha d'escriure: self.nom del medi per comparar, programa pel medi (constant) i el programa real a utilitzar
 #    Llest per posar a la config amb el for
         self.tipus=["cdrom", "dvddata", "dvd", "vcd", "audiocd", "pen", "dvb", "wlan", "eth", "fwcam"]
@@ -325,7 +325,7 @@ class hotplugaction(QWidget):
         # DVD  Pelicula
         #######
         self.dvd=(
-            ["/usr/share/icons/hicolor/48x48/apps/kaffeine.png", self.tr("Play with Kaffeine"), "kaffeine DVD"],
+            ["/usr/share/icons/hicolor/48x48/apps/kaffeine.png", self.tr("Play with Kaffeine"), "kaffeine --dvd"],
             ["/usr/share/pixmaps/vlc.png", self.tr("Play with VLC") ,"vlc dvd://%s" %(blk)],
             ["/usr/share/icons/hicolor/48x48/apps/k9copy.png", self.tr("Copy with K9Copy"), "k9copy --input %s" %(blk)],
             ["/usr/share/icons/default.kde/48x48/apps/system-file-manager.png", self.tr("Open with dolphin"), "dolphin %s" %(mnt)],

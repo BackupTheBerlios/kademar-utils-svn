@@ -165,7 +165,7 @@ Pot començar a utilitzar el sistema o, si vols, pots veure les novetats, config
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/html/img/equip1.png</normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/html/img/equip1.png</iconset>
+       <normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/img/equip1.png</normaloff>../../../../../../usr/share/kademar/utils/kademarcenter/img/equip1.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -188,7 +188,7 @@ Pot començar a utilitzar el sistema o, si vols, pots veure les novetats, config
      </property>
      <property name="icon">
       <iconset>
-	      <normaloff>/usr/share/icons/oxygen/48x48/categories/preferences-system.png</normaloff>/usr/share/icons/oxygen/48x48/categories/preferences-system.png</iconset>
+       <normaloff>../../../../../usr/share/icons/oxygen/48x48/categories/preferences-system.png</normaloff>../../../../../usr/share/icons/oxygen/48x48/categories/preferences-system.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -317,11 +317,20 @@ Pot començar a utilitzar el sistema o, si vols, pots veure les novetats, config
         </property>
        </widget>
       </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
      </layout>
-     <zorder>label_5</zorder>
-     <zorder>label</zorder>
-     <zorder>label_4</zorder>
-     <zorder>label_6</zorder>
     </widget>
     <widget class="QLabel" name="label_7">
      <property name="geometry">
@@ -389,7 +398,7 @@ La major part de les configuracions visuals es poden fer des del Centre de Contr
        <x>70</x>
        <y>270</y>
        <width>281</width>
-       <height>71</height>
+       <height>130</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -415,6 +424,12 @@ La major part de les configuracions visuals es poden fer des del Centre de Contr
       </item>
       <item>
        <widget class="QLabel" name="label_11">
+        <property name="maximumSize">
+         <size>
+          <width>48</width>
+          <height>48</height>
+         </size>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -432,6 +447,19 @@ La major part de les configuracions visuals es poden fer des del Centre de Contr
          <string>CADI</string>
         </property>
        </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </widget>
@@ -638,7 +666,7 @@ Puedes configurar internet, sino está funcionando ya en &quot;Configurar Sistem
    </property>
    <property name="icon">
     <iconset>
-	    <normaloff>/usr/share/icons/oxygen/16x16/actions/go-previous.png</normaloff>/usr/share/icons/oxygen/16x16/actions/go-previous.png</iconset>
+     <normaloff>../../../../../usr/share/icons/oxygen/16x16/actions/go-previous.png</normaloff>../../../../../usr/share/icons/oxygen/16x16/actions/go-previous.png</iconset>
    </property>
   </widget>
   <widget class="QPushButton" name="b_band_cat">

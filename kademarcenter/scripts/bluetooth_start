@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 #Script per engegar kbluetoothd (0.99) o kbluetooth (1.0-beta8-2)
 
 #Creat per Adonay Sanz 09-10-07
@@ -6,7 +6,9 @@
 #modified 02-05-10 - adonay
 
 #now on udev rule
-# sudo /etc/init.d/bluetooth restart 
+sleep 3
+sudo /etc/init.d/bluetooth restart 
+sleep 3
 
 list="blueman-applet blueman-manager blueman bluetooth-applet"
 

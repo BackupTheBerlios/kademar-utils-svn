@@ -1,8 +1,8 @@
 #!/usr/bin/python
-# -*- coding: utf-8 -*-
+# -*- coding: iso-8859-15 -*-
 
 #############################################
-#         -=|  KADEMARCENTER  |=-            #
+#         -=|  KADEMARCENTER  |=-           #
 #             .Main Program.                #
 #  ---------------------------------------  #
 #     Author: Adonay Sanz Alsina            #
@@ -155,11 +155,17 @@ class kademarcenter(QWidget):
         self.kademarstart()
         
         #if live-cd check if executing 32bit kademar on 64bit Machine
-        if not funcions_k.instalat():
-            check64bit=getoutput(""" for i in `grep cache_alignment /proc/cpuinfo | cut -d: -f2`; do echo $i; break; done """).strip()
-            checkSsse3=getoutput("""  grep -i ssse3 /proc/cpuinfo 2>/dev/null """)
-            if checkSsse3 and int(check64bit) >= 64:
-                QMessageBox.critical(self, self.tr('Executing 32bit kademar on a 64bit Machine'), self.tr("Your computer is a 64bit capable, but you are executing a 32bit kademar.\nThis can cause performance issues and kademar experience could be reduced.\n\nFor live-cd use there's no problem, but if you want to install kademar on this machine, would be better if you download 64bit version from www.kademar.org"))
+        global kademarstartconfig
+        if not funcions_k.instalat() and kademarstartconfig.arch_warning:
+            if getoutput("arch") != "x86_64": #if system kernel ISN'T 64bit
+                #check if machine can support 64 bit system
+                check64bit=getoutput(""" for i in `grep cache_alignment /proc/cpuinfo | cut -d: -f2`; do echo $i; break; done """).strip()
+                checkSse3=getoutput("""  grep -i sse3 /proc/cpuinfo 2>/dev/null """)
+                checkSse4=getoutput("""  grep -i sse4 /proc/cpuinfo 2>/dev/null """)
+                if checkSse3 or checkSse4:  #if have sse3 or 4
+                    if int(check64bit) >= 64:
+                    #warn if it's a machine 64bit capable with a 32bit system
+                        QMessageBox.critical(self, self.tr('Executing 32bit kademar on a 64bit Machine'), self.tr("Your computer is a 64bit capable, but you are executing a 32bit kademar.\nThis can cause performance issues and kademar experience could be reduced.\n\nFor live-cd use there's no problem, but if you want to install kademar on this machine, would be better if you download 64bit version from www.kademar.org"))
 
 
 #############
@@ -268,7 +274,7 @@ class kademarcenter(QWidget):
 
 #Function to start kademarstart if not desactivated
     def kademarstart(self):
-        #global kademarstartconfig, kademarstartlocalfile
+        global kademarstartconfig
         kademarstartconffile="kademarstart_conf.py"
         kademarstartglobalfile="/usr/share/kademar/utils/kademarcenter/cfg/"+kademarstartconffile
         if path.exists(kademarstartglobalfile):
@@ -351,7 +357,7 @@ for i in getoutput("cat /proc/cmdline").split():
     if i == "startcsicappgroup2": #personas mayores
         system("echo hola1")
     if i == "startcsicappgroup3": #Dificultades en la vision con resto visual util
-        system("( easystroke & ) ; ( kmag & )")
+        system("( easystroke & ) ; ( kmag & ) ; ( kttsmgr ; kttsd & )")
     if i == "startcsicappgroup4": #Dificultades de aprendizaje
         system("echo hola2")
 

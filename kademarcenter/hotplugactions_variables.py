@@ -1,5 +1,5 @@
 #!/usr/bin/python 
-# -*- coding: utf-8 -*-
+# -*- coding: iso-8859-15 -*-
 
 from PyQt4.QtGui import *
 #from PyQt4 import *

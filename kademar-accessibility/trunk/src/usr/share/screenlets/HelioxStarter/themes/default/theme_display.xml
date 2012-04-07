@@ -1,6 +1,6 @@
-<display theme="default" width="400" height="350">
+<display theme="default" width="400" height="450">
 	<group background="background">
-		<image src="background" width="400" height="350" />
+		<image src="background" width="400" height="450" />
 	</group>
 
 	<group id="vol" y="33" x="155">
@@ -50,5 +50,19 @@
 		<text x="220" y="12" size="8" color="[0, 0, 0, 1]"><b>Mouse Gestures</b></text>
 	</group>
 
-	
+	<group id="ctrl5" y="350" x="32">
+      <button id="ooffice" src="button_ooffice" src_over="button_ooffice_over" x="0" width="153" height="40" action="prev" on_click="self.event_player_click" text="Abrir suite ofimatica" groups="" />
+		<text x="32" y="12" size="8" color="[0, 0, 0, 1]"><b>Suite Ofimatica</b></text>
+        <button id="firefox" src="button_firefox" src_over="button_firefox_over" x="180" width="153" height="40" action="prev" on_click="self.event_player_click" text="Abrir navegador web" groups="" />
+		<text x="220" y="12" size="8" color="[0, 0, 0, 1]"><b>Navegador Web</b></text>
+	</group>
+
+	<group id="ctrl5" y="400" x="32">
+      <button id="smplayer" src="button_smplayer" src_over="button_smplayer_over" x="0" width="153" height="40" action="prev" on_click="self.event_player_click" text="Abrir reproductor multimedia" groups="" />
+		<text x="32" y="12" size="8" color="[0, 0, 0, 1]"><b>Rep Multimedia</b></text>
+        <button id="pidgin" src="button_pidgin" src_over="button_pidgin_over" x="180" width="153" height="40" action="prev" on_click="self.event_player_click" text="Abrir Cliente de Mensajeria" groups="" />
+		<text x="220" y="12" size="8" color="[0, 0, 0, 1]"><b>Mensajeria</b></text>
+	</group>
+
+
 </display>

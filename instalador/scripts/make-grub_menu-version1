@@ -30,7 +30,15 @@ convert () {
 	fi
     particio=`grep $particio ${device_map}  | sed s-[\(\)]--g | awk ' { print $1 } '`
 
-#     Si existeix la particio, printejala
+  #if it's null it's because device.map now it's written with storage.serial instead block.device
+   if [ -z "$particio" ]; then
+    particio=${param%%[0-9]*} #read again sda
+    halinfo $particio "storage.serial"
+    particio=$halinfovar  #and get result
+    particio=`grep $particio ${device_map}  | sed s-[\(\)]--g | awk ' { print $1 } '`
+   fi
+
+#  If partition exists on device.map, write it
     if [ -n "$particio" ]; then
         if [ -n "$numero" ]; then
             numero=",$(($numero - 1))"
@@ -48,6 +56,8 @@ halinfo(){
 	udi="`hal-find-by-property --key block.device --string $1`"
 	
 	key="volume.uuid"
+
+	[ "$2" = "storage.serial" ] && key="storage.serial"
 	
 	halinfovar="`hal-get-property --udi $udi --key  $key`"
 

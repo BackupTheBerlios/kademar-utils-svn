@@ -31,7 +31,7 @@ if [ -z "$cadi" ]; then
      kernel="`uname -r`"
 else
      cd $DESTI/boot
-     kenrnel=$(for i in `ls -1 vmlinuz* | sed s/vmlinuz-//g`; do echo $i; break ; done) 
+     kernel=$(for i in `ls -1 vmlinuz* | sed s/vmlinuz-//g`; do echo $i; break ; done) 
 fi
 
 #Borrem una possible carpeta grub anterior, i la tornem a crear
@@ -87,12 +87,12 @@ fi
 
 #Si no s'ha definit que NO volem mbr, instala'l
 if [ "$mbr" != "no" ]; then
-	#Si el mbr es "automatic", fem que es busqui la vida, sino el sobreecrivim
-	if [ "$mbr" = "auto" ]; then
-		MBR_SENSE_NUMERO=`cat $DESTI/boot/grub/device.map | grep '(hd0)' | sed s:/dev/::g | awk ' { print $2 } '`
-	else
-		MBR_SENSE_NUMERO=`echo $mbr | awk ' { print $1 } ' | sed s:/dev/::g`
-	fi
+    #Si el mbr es "automatic", fem que es busqui la vida, sino el sobreecrivim
+    if [ "$mbr" = "auto" ]; then
+        MBR_SENSE_NUMERO=`cat $DESTI/boot/grub/device.map | grep '(hd0)' | sed s:/dev/::g | awk ' { print $2 } '`
+    else
+        MBR_SENSE_NUMERO=`echo $mbr | awk ' { print $1 } ' | sed s:/dev/::g`
+    fi
 
     #support to new grubs
     if [ "$grubver" = 2 ]; then
@@ -101,24 +101,25 @@ if [ "$mbr" != "no" ]; then
         lba="--force-lba"
     fi
 
-	grub-install --no-floppy $lba --root-directory=$DESTI /dev/$MBR_SENSE_NUMERO
+    grub-install --no-floppy $lba --root-directory=$DESTI /dev/$MBR_SENSE_NUMERO
 
-	echo "grub-install --no-floppy $lba --root-directory=$DESTI /dev/$MBR_SENSE_NUMERO"
+    echo "grub-install --no-floppy $lba --root-directory=$DESTI /dev/$MBR_SENSE_NUMERO"
+
 fi
 
 # Si el initrd esta marcat per crear-lo
 if [ "$make_initrd" = "yes" ]; then
-	# Mirem quin es el creador de initrd que volem
-	#Creem l'initrd per el kernel
-	if [ -e /usr/sbin/mkinitrd ]; then
-		chroot $DESTI mkinitrd -r $DEV -o /boot/initrd.img-$kernel $kernel
-	else
-		if [ -e /usr/sbin/mkinitramfs ]; then
-			chroot $DESTI mkinitramfs -o /boot/initrd.img-$kernel $kernel
-		else
-			chroot $DESTI yaird -o /boot/initrd.img-$kernel $kernel
-		fi
-	fi
+    # Mirem quin es el creador de initrd que volem
+    #Creem l'initrd per el kernel
+    if [ -e /usr/sbin/mkinitrd ]; then
+        chroot $DESTI mkinitrd -r $DEV -o /boot/initrd.img-$kernel $kernel
+    else
+        if [ -e /usr/sbin/mkinitramfs ]; then
+            chroot $DESTI mkinitramfs -o /boot/initrd.img-$kernel $kernel
+        else
+            chroot $DESTI yaird -o /boot/initrd.img-$kernel $kernel
+        fi
+    fi
 fi
 
 

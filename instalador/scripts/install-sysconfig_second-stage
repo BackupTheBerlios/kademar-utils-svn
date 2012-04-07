@@ -41,6 +41,14 @@ if [ -n "`lsmod | grep slamr`" -o -n "`lsmod | grep slusb`" ]; then
 	echo "update-rc.d sl-modem-daemon defaults 12" >> "$DESTI/serveis"
 fi
 
+#detect virtualbox
+if [ -n "`lspci | grep -i virtualbox`" -o -n "`lshal | grep -i virtualbox`" ]; then
+    echo "update-rc.d vboxadd defaults 30" >> "$DESTI/serveis"
+    echo "update-rc.d vboxadd-x11 defaults 30" >> "$DESTI/serveis"
+    echo "update-rc.d vboxadd-service defaults 35" >> "$DESTI/serveis"
+fi
+
+
 
 #CREEM ELS SERVEIS
 chroot "$DESTI" sh /serveis
@@ -50,19 +58,19 @@ rm -f "$DESTI/serveis"
 
 
 #Creem les entrades pel klik en /etc/fstab
-echo "
+#echo "
 #Klik Lines
-/tmp/app/1/image /tmp/app/1 cramfs,iso9660 user,noauto,ro,loop,exec 0 0
-/tmp/app/2/image /tmp/app/2 cramfs,iso9660 user,noauto,ro,loop,exec 0 0
-/tmp/app/3/image /tmp/app/3 cramfs,iso9660 user,noauto,ro,loop,exec 0 0
-/tmp/app/4/image /tmp/app/4 cramfs,iso9660 user,noauto,ro,loop,exec 0 0
-/tmp/app/5/image /tmp/app/5 cramfs,iso9660 user,noauto,ro,loop,exec 0 0
-/tmp/app/6/image /tmp/app/6 cramfs,iso9660 user,noauto,ro,loop,exec 0 0
-/tmp/app/7/image /tmp/app/7 cramfs,iso9660 user,noauto,ro,loop,exec 0 0" >> "$DESTI$ruta_fstab"
+#/tmp/app/1/image /tmp/app/1 cramfs,iso9660 user,noauto,ro,loop,exec 0 0
+#/tmp/app/2/image /tmp/app/2 cramfs,iso9660 user,noauto,ro,loop,exec 0 0
+#/tmp/app/3/image /tmp/app/3 cramfs,iso9660 user,noauto,ro,loop,exec 0 0
+#/tmp/app/4/image /tmp/app/4 cramfs,iso9660 user,noauto,ro,loop,exec 0 0
+#/tmp/app/5/image /tmp/app/5 cramfs,iso9660 user,noauto,ro,loop,exec 0 0
+#/tmp/app/6/image /tmp/app/6 cramfs,iso9660 user,noauto,ro,loop,exec 0 0
+#/tmp/app/7/image /tmp/app/7 cramfs,iso9660 user,noauto,ro,loop,exec 0 0" >> "$DESTI$ruta_fstab"
 
 #Fem que  www.kademar.org sigui la pagina per defecte del firefox
-[ -e "$DESTI/etc/mozilla-firefox/profile/prefs.js" ] && echo 'user_pref("browser.startup.homepage", "http://www.kademar.org");
-user_pref(\"network.protocol-handler.app.klik\", \"~/.klik\"); >> ' >> "$DESTI/etc/mozilla-firefox/profile/prefs.js"
+#[ -e "$DESTI/etc/mozilla-firefox/profile/prefs.js" ] && echo 'user_pref("browser.startup.homepage", "http://www.kademar.org");
+#user_pref(\"network.protocol-handler.app.klik\", \"~/.klik\"); >> ' >> "$DESTI/etc/mozilla-firefox/profile/prefs.js"
 
 
 #substitution of all wallpapers from configurated monitor (panoramic/normal)
@@ -72,7 +80,7 @@ user_pref(\"network.protocol-handler.app.klik\", \"~/.klik\"); >> ' >> "$DESTI/e
 
 
 if [ "$monitor" = panoramic ]; then
-    for i in  /usr/share/apps/kdm/themes/kademar/background.png /etc/splashy/themes/kademar/background.png
+    for i in  /usr/share/kde4/apps/kdm/themes/kademar-kde4/ /usr/share/apps/kdm/themes/kademar/background.png /etc/splashy/themes/kademar/background.png
     do
         rm -f "$DESTI$i"
         cp "$xsession_background_panoramic" "$DESTI$i"

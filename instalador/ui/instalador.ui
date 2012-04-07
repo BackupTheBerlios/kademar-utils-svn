@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>FormInstall</class>
- <widget class="QWidget" name="FormInstall" >
-  <property name="geometry" >
+ <widget class="QWidget" name="FormInstall">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,33 +10,33 @@
     <height>600</height>
    </rect>
   </property>
-  <property name="sizePolicy" >
-   <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
-  <property name="minimumSize" >
+  <property name="minimumSize">
    <size>
     <width>800</width>
     <height>600</height>
    </size>
   </property>
-  <property name="maximumSize" >
+  <property name="maximumSize">
    <size>
     <width>640</width>
     <height>480</height>
    </size>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Installer</string>
   </property>
-  <property name="windowIcon" >
+  <property name="windowIcon">
    <iconset>
     <normaloff>../../../../../usr/share/kademar/icons/kpackage.png</normaloff>../../../../../usr/share/kademar/icons/kpackage.png</iconset>
   </property>
-  <widget class="QLabel" name="fons" >
-   <property name="geometry" >
+  <widget class="QLabel" name="fons">
+   <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
@@ -43,18 +44,18 @@
      <height>600</height>
     </rect>
    </property>
-   <property name="text" >
+   <property name="text">
     <string/>
    </property>
-   <property name="pixmap" >
+   <property name="pixmap">
     <pixmap>../../../../../usr/share/kademar/utils/instalador/img/bg/instalador.png</pixmap>
    </property>
-   <property name="scaledContents" >
+   <property name="scaledContents">
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QWidget" native="1" name="w_process" >
-   <property name="geometry" >
+  <widget class="QWidget" name="w_process" native="true">
+   <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
@@ -62,8 +63,8 @@
      <height>421</height>
     </rect>
    </property>
-   <widget class="QLabel" name="l_titol" >
-    <property name="geometry" >
+   <widget class="QLabel" name="l_titol">
+    <property name="geometry">
      <rect>
       <x>10</x>
       <y>10</y>
@@ -71,19 +72,19 @@
       <height>41</height>
      </rect>
     </property>
-    <property name="font" >
+    <property name="font">
      <font>
       <pointsize>11</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
-    <property name="text" >
+    <property name="text">
      <string>Installation Process</string>
     </property>
    </widget>
-   <widget class="QLabel" name="led_disc" >
-    <property name="geometry" >
+   <widget class="QLabel" name="led_disc">
+    <property name="geometry">
      <rect>
       <x>10</x>
       <y>60</y>
@@ -91,15 +92,15 @@
       <height>28</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string/>
     </property>
-    <property name="pixmap" >
+    <property name="pixmap">
      <pixmap>../../../../../usr/share/kademar/utils/instalador/img/vermell_p.png</pixmap>
     </property>
    </widget>
-   <widget class="QLabel" name="l_disc" >
-    <property name="geometry" >
+   <widget class="QLabel" name="l_disc">
+    <property name="geometry">
      <rect>
       <x>50</x>
       <y>50</y>
@@ -107,15 +108,15 @@
       <height>51</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string>Disk and Partition</string>
     </property>
-    <property name="wordWrap" >
+    <property name="wordWrap">
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="led_copia" >
-    <property name="geometry" >
+   <widget class="QLabel" name="led_copia">
+    <property name="geometry">
      <rect>
       <x>10</x>
       <y>107</y>
@@ -123,15 +124,15 @@
       <height>28</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string/>
     </property>
-    <property name="pixmap" >
+    <property name="pixmap">
      <pixmap>../../../../../usr/share/kademar/utils/instalador/img/vermell_p.png</pixmap>
     </property>
    </widget>
-   <widget class="QLabel" name="l_copia" >
-    <property name="geometry" >
+   <widget class="QLabel" name="l_copia">
+    <property name="geometry">
      <rect>
       <x>50</x>
       <y>106</y>
@@ -139,15 +140,15 @@
       <height>31</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string>File Copy</string>
     </property>
-    <property name="wordWrap" >
+    <property name="wordWrap">
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="led_license" >
-    <property name="geometry" >
+   <widget class="QLabel" name="led_license">
+    <property name="geometry">
      <rect>
       <x>10</x>
       <y>154</y>
@@ -155,15 +156,15 @@
       <height>28</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string/>
     </property>
-    <property name="pixmap" >
+    <property name="pixmap">
      <pixmap>../../../../../usr/share/kademar/utils/instalador/img/vermell_p.png</pixmap>
     </property>
    </widget>
-   <widget class="QLabel" name="l_sistema" >
-    <property name="geometry" >
+   <widget class="QLabel" name="l_sistema">
+    <property name="geometry">
      <rect>
       <x>50</x>
       <y>154</y>
@@ -171,15 +172,15 @@
       <height>31</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string>License</string>
     </property>
-    <property name="wordWrap" >
+    <property name="wordWrap">
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="led_user" >
-    <property name="geometry" >
+   <widget class="QLabel" name="led_user">
+    <property name="geometry">
      <rect>
       <x>10</x>
       <y>296</y>
@@ -187,15 +188,15 @@
       <height>28</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string/>
     </property>
-    <property name="pixmap" >
+    <property name="pixmap">
      <pixmap>../../../../../usr/share/kademar/utils/instalador/img/vermell_p.png</pixmap>
     </property>
    </widget>
-   <widget class="QLabel" name="l_user" >
-    <property name="geometry" >
+   <widget class="QLabel" name="l_user">
+    <property name="geometry">
      <rect>
       <x>50</x>
       <y>296</y>
@@ -203,15 +204,15 @@
       <height>31</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string>User</string>
     </property>
-    <property name="wordWrap" >
+    <property name="wordWrap">
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="led_mbr" >
-    <property name="geometry" >
+   <widget class="QLabel" name="led_mbr">
+    <property name="geometry">
      <rect>
       <x>10</x>
       <y>343</y>
@@ -219,15 +220,15 @@
       <height>28</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string/>
     </property>
-    <property name="pixmap" >
+    <property name="pixmap">
      <pixmap>../../../../../usr/share/kademar/utils/instalador/img/vermell_p.png</pixmap>
     </property>
    </widget>
-   <widget class="QLabel" name="l_mbr" >
-    <property name="geometry" >
+   <widget class="QLabel" name="l_mbr">
+    <property name="geometry">
      <rect>
       <x>50</x>
       <y>333</y>
@@ -235,15 +236,15 @@
       <height>51</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string>Boot Manager</string>
     </property>
-    <property name="wordWrap" >
+    <property name="wordWrap">
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="led_passwd" >
-    <property name="geometry" >
+   <widget class="QLabel" name="led_passwd">
+    <property name="geometry">
      <rect>
       <x>10</x>
       <y>248</y>
@@ -251,15 +252,15 @@
       <height>28</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string/>
     </property>
-    <property name="pixmap" >
+    <property name="pixmap">
      <pixmap>../../../../../usr/share/kademar/utils/instalador/img/vermell_p.png</pixmap>
     </property>
    </widget>
-   <widget class="QLabel" name="l_passwd" >
-    <property name="geometry" >
+   <widget class="QLabel" name="l_passwd">
+    <property name="geometry">
      <rect>
       <x>50</x>
       <y>228</y>
@@ -267,15 +268,15 @@
       <height>71</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string>Administrator Password</string>
     </property>
-    <property name="wordWrap" >
+    <property name="wordWrap">
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="led_sistema" >
-    <property name="geometry" >
+   <widget class="QLabel" name="led_sistema">
+    <property name="geometry">
      <rect>
       <x>10</x>
       <y>201</y>
@@ -283,15 +284,15 @@
       <height>31</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string/>
     </property>
-    <property name="pixmap" >
+    <property name="pixmap">
      <pixmap>../../../../../usr/share/kademar/utils/instalador/img/vermell_p.png</pixmap>
     </property>
    </widget>
-   <widget class="QLabel" name="l_license" >
-    <property name="geometry" >
+   <widget class="QLabel" name="l_license">
+    <property name="geometry">
      <rect>
       <x>50</x>
       <y>201</y>
@@ -299,16 +300,16 @@
       <height>31</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string>System</string>
     </property>
-    <property name="wordWrap" >
+    <property name="wordWrap">
      <bool>true</bool>
     </property>
    </widget>
   </widget>
-  <widget class="QWidget" native="1" name="w_logo" >
-   <property name="geometry" >
+  <widget class="QWidget" name="w_logo" native="true">
+   <property name="geometry">
     <rect>
      <x>0</x>
      <y>400</y>
@@ -316,18 +317,18 @@
      <height>201</height>
     </rect>
    </property>
-   <property name="palette" >
+   <property name="palette">
     <palette>
      <active/>
      <inactive/>
      <disabled/>
     </palette>
    </property>
-   <property name="autoFillBackground" >
+   <property name="autoFillBackground">
     <bool>false</bool>
    </property>
-   <widget class="QLabel" name="logo_kademar" >
-    <property name="geometry" >
+   <widget class="QLabel" name="logo_kademar">
+    <property name="geometry">
      <rect>
       <x>30</x>
       <y>92</y>
@@ -335,15 +336,15 @@
       <height>90</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string/>
     </property>
-    <property name="pixmap" >
+    <property name="pixmap">
      <pixmap>../../../../../usr/share/kademar/utils/instalador/img/kademar.png</pixmap>
     </property>
    </widget>
-   <widget class="QProgressBar" name="progressBar" >
-    <property name="geometry" >
+   <widget class="QProgressBar" name="progressBar">
+    <property name="geometry">
      <rect>
       <x>10</x>
       <y>38</y>
@@ -351,18 +352,18 @@
       <height>23</height>
      </rect>
     </property>
-    <property name="value" >
+    <property name="value">
      <number>0</number>
     </property>
-    <property name="alignment" >
+    <property name="alignment">
      <set>Qt::AlignLeading</set>
     </property>
-    <property name="textVisible" >
+    <property name="textVisible">
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="l_finished" >
-    <property name="geometry" >
+   <widget class="QLabel" name="l_finished">
+    <property name="geometry">
      <rect>
       <x>10</x>
       <y>41</y>
@@ -370,24 +371,24 @@
       <height>31</height>
      </rect>
     </property>
-    <property name="font" >
+    <property name="font">
      <font>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
-    <property name="text" >
+    <property name="text">
      <string>Copy Finished</string>
     </property>
-    <property name="alignment" >
+    <property name="alignment">
      <set>Qt::AlignHCenter|Qt::AlignTop</set>
     </property>
-    <property name="wordWrap" >
+    <property name="wordWrap">
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="boto_ajuda" >
-    <property name="geometry" >
+   <widget class="QPushButton" name="boto_ajuda">
+    <property name="geometry">
      <rect>
       <x>9</x>
       <y>8</y>
@@ -395,17 +396,17 @@
       <height>26</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string>Help</string>
     </property>
-    <property name="icon" >
+    <property name="icon">
      <iconset>
       <normaloff>../../../../../usr/share/kademar/utils/instalador/img/help.png</normaloff>../../../../../usr/share/kademar/utils/instalador/img/help.png</iconset>
     </property>
    </widget>
   </widget>
-  <widget class="QWidget" native="1" name="w_botons" >
-   <property name="geometry" >
+  <widget class="QWidget" name="w_botons" native="true">
+   <property name="geometry">
     <rect>
      <x>180</x>
      <y>540</y>
@@ -413,8 +414,8 @@
      <height>61</height>
     </rect>
    </property>
-   <widget class="QPushButton" name="boto_back" >
-    <property name="geometry" >
+   <widget class="QPushButton" name="boto_back">
+    <property name="geometry">
      <rect>
       <x>110</x>
       <y>10</y>
@@ -422,22 +423,22 @@
       <height>31</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string>Back</string>
     </property>
-    <property name="icon" >
+    <property name="icon">
      <iconset>
       <normaloff>../../../../../usr/share/kademar/utils/instalador/img/back.png</normaloff>../../../../../usr/share/kademar/utils/instalador/img/back.png</iconset>
     </property>
-    <property name="iconSize" >
+    <property name="iconSize">
      <size>
       <width>20</width>
       <height>20</height>
      </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="boto_next" >
-    <property name="geometry" >
+   <widget class="QPushButton" name="boto_next">
+    <property name="geometry">
      <rect>
       <x>400</x>
       <y>10</y>
@@ -445,28 +446,28 @@
       <height>31</height>
      </rect>
     </property>
-    <property name="layoutDirection" >
+    <property name="layoutDirection">
      <enum>Qt::RightToLeft</enum>
     </property>
-    <property name="text" >
+    <property name="text">
      <string>Next</string>
     </property>
-    <property name="icon" >
+    <property name="icon">
      <iconset>
       <normaloff>../../../../../usr/share/kademar/utils/instalador/img/next.png</normaloff>../../../../../usr/share/kademar/utils/instalador/img/next.png</iconset>
     </property>
-    <property name="iconSize" >
+    <property name="iconSize">
      <size>
       <width>20</width>
       <height>20</height>
      </size>
     </property>
-    <property name="default" >
+    <property name="default">
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="boto_exit" >
-    <property name="geometry" >
+   <widget class="QPushButton" name="boto_exit">
+    <property name="geometry">
      <rect>
       <x>110</x>
       <y>10</y>
@@ -474,14 +475,14 @@
       <height>31</height>
      </rect>
     </property>
-    <property name="text" >
+    <property name="text">
      <string>Exit</string>
     </property>
-    <property name="icon" >
+    <property name="icon">
      <iconset>
       <normaloff>../../../../../usr/share/kademar/utils/instalador/img/exit.png</normaloff>../../../../../usr/share/kademar/utils/instalador/img/exit.png</iconset>
     </property>
-    <property name="iconSize" >
+    <property name="iconSize">
      <size>
       <width>20</width>
       <height>20</height>
@@ -489,8 +490,8 @@
     </property>
    </widget>
   </widget>
-  <widget class="QStackedWidget" name="pages" >
-   <property name="geometry" >
+  <widget class="QStackedWidget" name="pages">
+   <property name="geometry">
     <rect>
      <x>180</x>
      <y>0</y>
@@ -498,12 +499,12 @@
      <height>541</height>
     </rect>
    </property>
-   <property name="currentIndex" >
-    <number>1</number>
+   <property name="currentIndex">
+    <number>0</number>
    </property>
-   <widget class="QWidget" name="p_principal" >
-    <widget class="QLabel" name="label" >
-     <property name="geometry" >
+   <widget class="QWidget" name="p_principal">
+    <widget class="QLabel" name="label">
+     <property name="geometry">
       <rect>
        <x>30</x>
        <y>60</y>
@@ -511,7 +512,7 @@
        <height>41</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <pointsize>14</pointsize>
        <weight>75</weight>
@@ -521,18 +522,18 @@
        <kerning>false</kerning>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Welcome to kademar Linux Installer</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignHCenter|Qt::AlignTop</set>
      </property>
-     <property name="wordWrap" >
+     <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="boto_ajuda2" >
-     <property name="geometry" >
+    <widget class="QPushButton" name="boto_ajuda2">
+     <property name="geometry">
       <rect>
        <x>470</x>
        <y>400</y>
@@ -540,22 +541,22 @@
        <height>51</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="icon" >
+     <property name="icon">
       <iconset>
        <normaloff>../../../../../usr/share/kademar/utils/instalador/img/help.png</normaloff>../../../../../usr/share/kademar/utils/instalador/img/help.png</iconset>
      </property>
-     <property name="iconSize" >
+     <property name="iconSize">
       <size>
        <width>32</width>
        <height>32</height>
       </size>
      </property>
     </widget>
-    <widget class="QLabel" name="label_3" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
       <rect>
        <x>70</x>
        <y>380</y>
@@ -563,15 +564,15 @@
        <height>91</height>
       </rect>
      </property>
-     <property name="text" >
-      <string>kademar Installer have a help manual, it can be opened by clicking on "Help" button on left bar in any moment, or by clicking now right Information button.</string>
+     <property name="text">
+      <string>kademar Installer have a help manual, it can be opened by clicking on &quot;Help&quot; button on left bar in any moment, or by clicking now right Information button.</string>
      </property>
-     <property name="wordWrap" >
+     <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="Line" name="line" >
-     <property name="geometry" >
+    <widget class="Line" name="line">
+     <property name="geometry">
       <rect>
        <x>90</x>
        <y>350</y>
@@ -579,12 +580,12 @@
        <height>20</height>
       </rect>
      </property>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
-    <widget class="QLabel" name="label_17" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_17">
+     <property name="geometry">
       <rect>
        <x>130</x>
        <y>188</y>
@@ -592,18 +593,18 @@
        <height>80</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="pixmap" >
+     <property name="pixmap">
       <pixmap>../../../../../usr/share/kademar/utils/instalador/img/lyra.png</pixmap>
      </property>
-     <property name="scaledContents" >
+     <property name="scaledContents">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLabel" name="label_18" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_18">
+     <property name="geometry">
       <rect>
        <x>250</x>
        <y>197</y>
@@ -611,15 +612,15 @@
        <height>61</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="pixmap" >
+     <property name="pixmap">
       <pixmap>../../../../../usr/share/kademar/utils/instalador/img/arrow.png</pixmap>
      </property>
     </widget>
-    <widget class="QLabel" name="label_20" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_20">
+     <property name="geometry">
       <rect>
        <x>340</x>
        <y>146</y>
@@ -627,20 +628,20 @@
        <height>160</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="pixmap" >
+     <property name="pixmap">
       <pixmap>../../../../../usr/share/kademar/utils/instalador/img/computer.png</pixmap>
      </property>
-     <property name="scaledContents" >
+     <property name="scaledContents">
       <bool>true</bool>
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="p_information" >
-    <widget class="QLabel" name="l_mng" >
-     <property name="geometry" >
+   <widget class="QWidget" name="p_information">
+    <widget class="QLabel" name="l_mng">
+     <property name="geometry">
       <rect>
        <x>290</x>
        <y>310</y>
@@ -648,15 +649,15 @@
        <height>16</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="pixmap" >
+     <property name="pixmap">
       <pixmap>../../../../../usr/share/kademar/utils/instalador/img/wait.gif</pixmap>
      </property>
     </widget>
-    <widget class="QLabel" name="label_9" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_9">
+     <property name="geometry">
       <rect>
        <x>80</x>
        <y>200</y>
@@ -664,20 +665,20 @@
        <height>81</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Now kademar Installer is retreiving information of your system.
 
 Be patient, please.</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignHCenter|Qt::AlignTop</set>
      </property>
-     <property name="wordWrap" >
+     <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLabel" name="l_titol_9" >
-     <property name="geometry" >
+    <widget class="QLabel" name="l_titol_9">
+     <property name="geometry">
       <rect>
        <x>30</x>
        <y>70</y>
@@ -685,22 +686,22 @@ Be patient, please.</string>
        <height>20</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <pointsize>11</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Retreiving System Information</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="label_7" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
       <rect>
        <x>530</x>
        <y>20</y>
@@ -708,17 +709,17 @@ Be patient, please.</string>
        <height>64</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="pixmap" >
+     <property name="pixmap">
       <pixmap>../../../../../usr/share/kademar/utils/instalador/img/pc.png</pixmap>
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="p_disc" >
-    <widget class="QLabel" name="label_8" >
-     <property name="geometry" >
+   <widget class="QWidget" name="p_disc">
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
       <rect>
        <x>50</x>
        <y>100</y>
@@ -726,28 +727,28 @@ Be patient, please.</string>
        <height>151</height>
       </rect>
      </property>
-     <property name="text" >
-      <string>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
-&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+     <property name="text">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style>&lt;/head>&lt;body style=" font-family:'DejaVu Sans'; font-size:9pt; font-weight:400; font-style:normal;">
-&lt;p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">It's needed at least two partitions:&lt;/p>
-&lt;ul style="-qt-list-indent: 1;">&lt;li style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-style:italic;">Root:&lt;/span> Where kademar will be installed.&lt;/li>
-&lt;li style=" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-style:italic;">Swap:&lt;/span> Space for system management.&lt;/li>&lt;/ul>
-&lt;p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">If you want, you can have your user documents in a separated partition of system partition. To do it, uncheck &lt;span style=" font-style:italic;">"Within the same partition".&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'DejaVu Sans'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;It's needed at least two partitions:&lt;/p&gt;
+&lt;ul style=&quot;-qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Root:&lt;/span&gt; Where kademar will be installed.&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Swap:&lt;/span&gt; Space for system management.&lt;/li&gt;&lt;/ul&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If you want, you can have your user documents in a separated partition of system partition. To do it, uncheck &lt;span style=&quot; font-style:italic;&quot;&gt;&quot;Within the same partition&quot;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
-     <property name="textFormat" >
+     <property name="textFormat">
       <enum>Qt::RichText</enum>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
-     <property name="wordWrap" >
+     <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLabel" name="l_titol_2" >
-     <property name="geometry" >
+    <widget class="QLabel" name="l_titol_2">
+     <property name="geometry">
       <rect>
        <x>30</x>
        <y>70</y>
@@ -755,22 +756,22 @@ p, li { white-space: pre-wrap; }
        <height>20</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <pointsize>11</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Select partitions where install kademar</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QCheckBox" name="ch_tot_en_particio" >
-     <property name="geometry" >
+    <widget class="QCheckBox" name="ch_tot_en_particio">
+     <property name="geometry">
       <rect>
        <x>70</x>
        <y>270</y>
@@ -778,15 +779,15 @@ p, li { white-space: pre-wrap; }
        <height>21</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Within the same partition</string>
      </property>
-     <property name="checked" >
+     <property name="checked">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="boto_particionar" >
-     <property name="geometry" >
+    <widget class="QPushButton" name="boto_particionar">
+     <property name="geometry">
       <rect>
        <x>440</x>
        <y>260</y>
@@ -794,22 +795,22 @@ p, li { white-space: pre-wrap; }
        <height>41</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Partitioning</string>
      </property>
-     <property name="icon" >
+     <property name="icon">
       <iconset>
        <normaloff>../../../../../usr/share/kademar/utils/instalador/img/gparted.png</normaloff>../../../../../usr/share/kademar/utils/instalador/img/gparted.png</iconset>
      </property>
-     <property name="iconSize" >
+     <property name="iconSize">
       <size>
        <width>32</width>
        <height>32</height>
       </size>
      </property>
     </widget>
-    <widget class="QCheckBox" name="ch_adv" >
-     <property name="geometry" >
+    <widget class="QCheckBox" name="ch_adv">
+     <property name="geometry">
       <rect>
        <x>310</x>
        <y>270</y>
@@ -817,12 +818,12 @@ p, li { white-space: pre-wrap; }
        <height>21</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Advanced</string>
      </property>
     </widget>
-    <widget class="QComboBox" name="cb_hd_arrel" >
-     <property name="geometry" >
+    <widget class="QComboBox" name="cb_hd_arrel">
+     <property name="geometry">
       <rect>
        <x>110</x>
        <y>363</y>
@@ -831,8 +832,8 @@ p, li { white-space: pre-wrap; }
       </rect>
      </property>
     </widget>
-    <widget class="QComboBox" name="cb_hd_format_arrel" >
-     <property name="geometry" >
+    <widget class="QComboBox" name="cb_hd_format_arrel">
+     <property name="geometry">
       <rect>
        <x>480</x>
        <y>363</y>
@@ -841,33 +842,33 @@ p, li { white-space: pre-wrap; }
       </rect>
      </property>
      <item>
-      <property name="text" >
+      <property name="text">
        <string>Ext4</string>
       </property>
      </item>
      <item>
-      <property name="text" >
+      <property name="text">
        <string>Reiser FS</string>
       </property>
      </item>
      <item>
-      <property name="text" >
+      <property name="text">
        <string>Ext3</string>
       </property>
      </item>
      <item>
-      <property name="text" >
+      <property name="text">
        <string>Ext2</string>
       </property>
      </item>
      <item>
-      <property name="text" >
+      <property name="text">
        <string>No Format</string>
       </property>
      </item>
     </widget>
-    <widget class="QComboBox" name="cb_hd_swap" >
-     <property name="geometry" >
+    <widget class="QComboBox" name="cb_hd_swap">
+     <property name="geometry">
       <rect>
        <x>110</x>
        <y>403</y>
@@ -876,8 +877,8 @@ p, li { white-space: pre-wrap; }
       </rect>
      </property>
     </widget>
-    <widget class="QComboBox" name="cb_hd_home" >
-     <property name="geometry" >
+    <widget class="QComboBox" name="cb_hd_home">
+     <property name="geometry">
       <rect>
        <x>110</x>
        <y>443</y>
@@ -886,8 +887,8 @@ p, li { white-space: pre-wrap; }
       </rect>
      </property>
     </widget>
-    <widget class="QComboBox" name="cb_hd_format_swap" >
-     <property name="geometry" >
+    <widget class="QComboBox" name="cb_hd_format_swap">
+     <property name="geometry">
       <rect>
        <x>480</x>
        <y>403</y>
@@ -896,13 +897,13 @@ p, li { white-space: pre-wrap; }
       </rect>
      </property>
      <item>
-      <property name="text" >
+      <property name="text">
        <string>Swap FS</string>
       </property>
      </item>
     </widget>
-    <widget class="QComboBox" name="cb_hd_format_home" >
-     <property name="geometry" >
+    <widget class="QComboBox" name="cb_hd_format_home">
+     <property name="geometry">
       <rect>
        <x>480</x>
        <y>443</y>
@@ -911,33 +912,33 @@ p, li { white-space: pre-wrap; }
       </rect>
      </property>
      <item>
-      <property name="text" >
+      <property name="text">
        <string>Ext4</string>
       </property>
      </item>
      <item>
-      <property name="text" >
+      <property name="text">
        <string>Reiser FS</string>
       </property>
      </item>
      <item>
-      <property name="text" >
+      <property name="text">
        <string>Ext3</string>
       </property>
      </item>
      <item>
-      <property name="text" >
+      <property name="text">
        <string>Ext2</string>
       </property>
      </item>
      <item>
-      <property name="text" >
+      <property name="text">
        <string>No Format</string>
       </property>
      </item>
     </widget>
-    <widget class="QLabel" name="label_2" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
       <rect>
        <x>110</x>
        <y>340</y>
@@ -945,19 +946,19 @@ p, li { white-space: pre-wrap; }
        <height>16</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <weight>75</weight>
        <italic>true</italic>
        <bold>true</bold>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Partition</string>
      </property>
     </widget>
-    <widget class="QLabel" name="l_format" >
-     <property name="geometry" >
+    <widget class="QLabel" name="l_format">
+     <property name="geometry">
       <rect>
        <x>480</x>
        <y>340</y>
@@ -965,19 +966,19 @@ p, li { white-space: pre-wrap; }
        <height>16</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <weight>75</weight>
        <italic>true</italic>
        <bold>true</bold>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Format as</string>
      </property>
     </widget>
-    <widget class="QLabel" name="l_part_arrel" >
-     <property name="geometry" >
+    <widget class="QLabel" name="l_part_arrel">
+     <property name="geometry">
       <rect>
        <x>50</x>
        <y>366</y>
@@ -985,20 +986,20 @@ p, li { white-space: pre-wrap; }
        <height>16</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <italic>true</italic>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Root</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="l_part_swap" >
-     <property name="geometry" >
+    <widget class="QLabel" name="l_part_swap">
+     <property name="geometry">
       <rect>
        <x>20</x>
        <y>403</y>
@@ -1006,23 +1007,23 @@ p, li { white-space: pre-wrap; }
        <height>20</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <italic>true</italic>
       </font>
      </property>
-     <property name="locale" >
-      <locale country="UnitedKingdom" language="English" />
+     <property name="locale">
+      <locale language="English" country="UnitedKingdom"/>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Swap</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="l_part_home" >
-     <property name="geometry" >
+    <widget class="QLabel" name="l_part_home">
+     <property name="geometry">
       <rect>
        <x>50</x>
        <y>443</y>
@@ -1030,20 +1031,20 @@ p, li { white-space: pre-wrap; }
        <height>16</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <italic>true</italic>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Home</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="label_6" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
       <rect>
        <x>530</x>
        <y>20</y>
@@ -1051,17 +1052,17 @@ p, li { white-space: pre-wrap; }
        <height>64</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="pixmap" >
+     <property name="pixmap">
       <pixmap>../../../../../usr/share/kademar/utils/instalador/img/hdd.png</pixmap>
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="p_license" >
-    <widget class="QLabel" name="l_titol_10" >
-     <property name="geometry" >
+   <widget class="QWidget" name="p_license">
+    <widget class="QLabel" name="l_titol_10">
+     <property name="geometry">
       <rect>
        <x>30</x>
        <y>70</y>
@@ -1069,22 +1070,22 @@ p, li { white-space: pre-wrap; }
        <height>20</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <pointsize>12</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>License</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="label_28" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_28">
+     <property name="geometry">
       <rect>
        <x>50</x>
        <y>100</y>
@@ -1092,28 +1093,28 @@ p, li { white-space: pre-wrap; }
        <height>321</height>
       </rect>
      </property>
-     <property name="text" >
-      <string>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
-&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+     <property name="text">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style>&lt;/head>&lt;body style=" font-family:'DejaVu Sans'; font-size:9pt; font-weight:400; font-style:normal;">
-&lt;p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-weight:600;">kademar Linux is free software, and this won't change.&lt;/span> &lt;/p>
-&lt;p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">In order to improve your user experience with kademar, kademar Team have decided to include non 100% free software. Resume of those non-free licenses included in kademar are:&lt;/p>
-&lt;ul style="-qt-list-indent: 1;">&lt;li style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">You cannot modify those programs.&lt;/li>
-&lt;li style=" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">You can redistribute it without any source modification&lt;/li>&lt;/ul>
-&lt;p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">You can read more about non-free licenses included on kademar, on kademar's webpage. &lt;/p>
-&lt;p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">If you doesn't accept it, all non-free software such as: DivX support, MP3 support, nVidia drivers, device firmwares, flash, java, etc. will be completly removed of your system, and kademar Linux would be converted to a Linux 100% free distribution, as in freedom. &lt;/p>
-&lt;p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Do you agree terms of non-free licenses included on kademar to maximize user experience?&lt;/p>&lt;/body>&lt;/html></string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'DejaVu Sans'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;kademar Linux is free software, and this won't change.&lt;/span&gt; &lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;In order to improve your user experience with kademar, kademar Team have decided to include non 100% free software. Resume of those non-free licenses included in kademar are:&lt;/p&gt;
+&lt;ul style=&quot;-qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;You cannot modify those programs.&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;You can redistribute it without any source modification&lt;/li&gt;&lt;/ul&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;You can read more about non-free licenses included on kademar, on kademar's webpage. &lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If you doesn't accept it, all non-free software such as: DivX support, MP3 support, nVidia drivers, device firmwares, flash, java, etc. will be completly removed of your system, and kademar Linux would be converted to a Linux 100% free distribution, as in freedom. &lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Do you agree terms of non-free licenses included on kademar to maximize user experience?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
-     <property name="wordWrap" >
+     <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QRadioButton" name="rb_license_yes" >
-     <property name="geometry" >
+    <widget class="QRadioButton" name="rb_license_yes">
+     <property name="geometry">
       <rect>
        <x>80</x>
        <y>430</y>
@@ -1121,12 +1122,12 @@ p, li { white-space: pre-wrap; }
        <height>21</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Yes, I accept non-free license terms</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="rb_license_no" >
-     <property name="geometry" >
+    <widget class="QRadioButton" name="rb_license_no">
+     <property name="geometry">
       <rect>
        <x>80</x>
        <y>460</y>
@@ -1134,12 +1135,12 @@ p, li { white-space: pre-wrap; }
        <height>21</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>No, please remove all non-free software of kademar Linux</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_4" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
       <rect>
        <x>530</x>
        <y>20</y>
@@ -1147,17 +1148,17 @@ p, li { white-space: pre-wrap; }
        <height>64</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="pixmap" >
+     <property name="pixmap">
       <pixmap>../../../../../usr/share/kademar/utils/instalador/img/license.png</pixmap>
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="p_sistema" >
-    <widget class="QLineEdit" name="t_pc" >
-     <property name="geometry" >
+   <widget class="QWidget" name="p_sistema">
+    <widget class="QLineEdit" name="t_pc">
+     <property name="geometry">
       <rect>
        <x>190</x>
        <y>240</y>
@@ -1165,18 +1166,18 @@ p, li { white-space: pre-wrap; }
        <height>24</height>
       </rect>
      </property>
-     <property name="inputMask" >
+     <property name="inputMask">
       <string/>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>kademar</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="label_27" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_27">
+     <property name="geometry">
       <rect>
        <x>50</x>
        <y>100</y>
@@ -1184,20 +1185,20 @@ p, li { white-space: pre-wrap; }
        <height>91</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Now you have to configure your PC name. It's used on local network identification.
 
 Also you have to define you default language of your system. You can change it later on CADI.</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
-     <property name="wordWrap" >
+     <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="b_cat" >
-     <property name="geometry" >
+    <widget class="QPushButton" name="b_cat">
+     <property name="geometry">
       <rect>
        <x>90</x>
        <y>301</y>
@@ -1205,25 +1206,25 @@ Also you have to define you default language of your system. You can change it l
        <height>41</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Català</string>
      </property>
-     <property name="icon" >
+     <property name="icon">
       <iconset>
        <normaloff>../../../../../usr/share/kademar/utils/instalador/img/cat.png</normaloff>../../../../../usr/share/kademar/utils/instalador/img/cat.png</iconset>
      </property>
-     <property name="iconSize" >
+     <property name="iconSize">
       <size>
        <width>22</width>
        <height>22</height>
       </size>
      </property>
-     <property name="checkable" >
+     <property name="checkable">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLabel" name="l_pc" >
-     <property name="geometry" >
+    <widget class="QLabel" name="l_pc">
+     <property name="geometry">
       <rect>
        <x>50</x>
        <y>210</y>
@@ -1231,12 +1232,12 @@ Also you have to define you default language of your system. You can change it l
        <height>16</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>PC Name (for local network identification, if you have it.)</string>
      </property>
     </widget>
-    <widget class="QLabel" name="l_titol_3" >
-     <property name="geometry" >
+    <widget class="QLabel" name="l_titol_3">
+     <property name="geometry">
       <rect>
        <x>30</x>
        <y>70</y>
@@ -1244,22 +1245,22 @@ Also you have to define you default language of your system. You can change it l
        <height>20</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <pointsize>12</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>System Configurations</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QPushButton" name="b_eng" >
-     <property name="geometry" >
+    <widget class="QPushButton" name="b_eng">
+     <property name="geometry">
       <rect>
        <x>410</x>
        <y>300</y>
@@ -1267,25 +1268,25 @@ Also you have to define you default language of your system. You can change it l
        <height>41</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>English</string>
      </property>
-     <property name="icon" >
+     <property name="icon">
       <iconset>
        <normaloff>../../../../../usr/share/kademar/utils/instalador/img/eng.png</normaloff>../../../../../usr/share/kademar/utils/instalador/img/eng.png</iconset>
      </property>
-     <property name="iconSize" >
+     <property name="iconSize">
       <size>
        <width>22</width>
        <height>22</height>
       </size>
      </property>
-     <property name="checkable" >
+     <property name="checkable">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="b_esp" >
-     <property name="geometry" >
+    <widget class="QPushButton" name="b_esp">
+     <property name="geometry">
       <rect>
        <x>250</x>
        <y>301</y>
@@ -1293,25 +1294,25 @@ Also you have to define you default language of your system. You can change it l
        <height>41</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Castellano</string>
      </property>
-     <property name="icon" >
+     <property name="icon">
       <iconset>
        <normaloff>../../../../../usr/share/kademar/utils/instalador/img/esp.png</normaloff>../../../../../usr/share/kademar/utils/instalador/img/esp.png</iconset>
      </property>
-     <property name="iconSize" >
+     <property name="iconSize">
       <size>
        <width>22</width>
        <height>22</height>
       </size>
      </property>
-     <property name="checkable" >
+     <property name="checkable">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLabel" name="l_bandera" >
-     <property name="geometry" >
+    <widget class="QLabel" name="l_bandera">
+     <property name="geometry">
       <rect>
        <x>250</x>
        <y>370</y>
@@ -1319,18 +1320,18 @@ Also you have to define you default language of your system. You can change it l
        <height>121</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="pixmap" >
+     <property name="pixmap">
       <pixmap>../../../../../usr/share/kademar/utils/instalador/img/cat.png</pixmap>
      </property>
-     <property name="scaledContents" >
+     <property name="scaledContents">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLabel" name="label_5" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
       <rect>
        <x>530</x>
        <y>20</y>
@@ -1338,17 +1339,17 @@ Also you have to define you default language of your system. You can change it l
        <height>64</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="pixmap" >
+     <property name="pixmap">
       <pixmap>../../../../../usr/share/kademar/utils/instalador/img/system.png</pixmap>
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="p_passwd" >
-    <widget class="QLineEdit" name="t_root_passwd1" >
-     <property name="geometry" >
+   <widget class="QWidget" name="p_passwd">
+    <widget class="QLineEdit" name="t_root_passwd1">
+     <property name="geometry">
       <rect>
        <x>140</x>
        <y>300</y>
@@ -1356,15 +1357,15 @@ Also you have to define you default language of your system. You can change it l
        <height>24</height>
       </rect>
      </property>
-     <property name="maxLength" >
+     <property name="maxLength">
       <number>12</number>
      </property>
-     <property name="echoMode" >
+     <property name="echoMode">
       <enum>QLineEdit::Password</enum>
      </property>
     </widget>
-    <widget class="QLabel" name="l_root_passwd2" >
-     <property name="geometry" >
+    <widget class="QLabel" name="l_root_passwd2">
+     <property name="geometry">
       <rect>
        <x>100</x>
        <y>360</y>
@@ -1372,12 +1373,12 @@ Also you have to define you default language of your system. You can change it l
        <height>16</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Reenter Administrator Password, to confirm it.</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_10" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_10">
+     <property name="geometry">
       <rect>
        <x>50</x>
        <y>100</y>
@@ -1385,28 +1386,28 @@ Also you have to define you default language of your system. You can change it l
        <height>161</height>
       </rect>
      </property>
-     <property name="text" >
-      <string>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
-&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+     <property name="text">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style>&lt;/head>&lt;body style=" font-family:'DejaVu Sans'; font-size:9pt; font-weight:400; font-style:normal;">
-&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Now have to set the Adminstrator User password.&lt;/p>
-&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
-&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Administration User is the one with privileges and authorization to do any task on the system, even delete all the files.&lt;/p>
-&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
-&lt;p align="center" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Enter the password twice to confirm it and Remember it!&lt;/p>
-&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
-&lt;p align="center" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-weight:600; font-style:italic;">(Keep this password in a safety place)&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'DejaVu Sans'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Now have to set the Adminstrator User password.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Administration User is the one with privileges and authorization to do any task on the system, even delete all the files.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Enter the password twice to confirm it and Remember it!&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; font-style:italic;&quot;&gt;(Keep this password in a safety place)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
-     <property name="wordWrap" >
+     <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLabel" name="l_root_passwd1" >
-     <property name="geometry" >
+    <widget class="QLabel" name="l_root_passwd1">
+     <property name="geometry">
       <rect>
        <x>100</x>
        <y>270</y>
@@ -1414,12 +1415,12 @@ p, li { white-space: pre-wrap; }
        <height>16</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Enter Administration Password</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="t_root_passwd2" >
-     <property name="geometry" >
+    <widget class="QLineEdit" name="t_root_passwd2">
+     <property name="geometry">
       <rect>
        <x>140</x>
        <y>390</y>
@@ -1427,15 +1428,15 @@ p, li { white-space: pre-wrap; }
        <height>24</height>
       </rect>
      </property>
-     <property name="maxLength" >
+     <property name="maxLength">
       <number>12</number>
      </property>
-     <property name="echoMode" >
+     <property name="echoMode">
       <enum>QLineEdit::Password</enum>
      </property>
     </widget>
-    <widget class="QLabel" name="l_titol_4" >
-     <property name="geometry" >
+    <widget class="QLabel" name="l_titol_4">
+     <property name="geometry">
       <rect>
        <x>30</x>
        <y>70</y>
@@ -1443,22 +1444,22 @@ p, li { white-space: pre-wrap; }
        <height>20</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <pointsize>12</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Contrassenya d'Administrador (root)</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="label_11" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_11">
+     <property name="geometry">
       <rect>
        <x>530</x>
        <y>20</y>
@@ -1466,17 +1467,17 @@ p, li { white-space: pre-wrap; }
        <height>64</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="pixmap" >
+     <property name="pixmap">
       <pixmap>../../../../../usr/share/kademar/utils/instalador/img/root.png</pixmap>
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="p_usuari" >
-    <widget class="QLabel" name="l_user_account" >
-     <property name="geometry" >
+   <widget class="QWidget" name="p_usuari">
+    <widget class="QLabel" name="l_user_account">
+     <property name="geometry">
       <rect>
        <x>60</x>
        <y>340</y>
@@ -1484,19 +1485,19 @@ p, li { white-space: pre-wrap; }
        <height>16</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <weight>75</weight>
        <italic>true</italic>
        <bold>true</bold>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Account name</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_19" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_19">
+     <property name="geometry">
       <rect>
        <x>50</x>
        <y>100</y>
@@ -1504,25 +1505,25 @@ p, li { white-space: pre-wrap; }
        <height>151</height>
       </rect>
      </property>
-     <property name="autoFillBackground" >
+     <property name="autoFillBackground">
       <bool>false</bool>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Now you have to enter a user to be able to use the system.
 Username can be your name, to create the accout that you'll use as default.
 
 For more security, you have to enter a password for the user.
 If you don't want to be asked for it every time you start, check User Autostart checkbox.</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
-     <property name="wordWrap" >
+     <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLineEdit" name="t_user_account" >
-     <property name="geometry" >
+    <widget class="QLineEdit" name="t_user_account">
+     <property name="geometry">
       <rect>
        <x>80</x>
        <y>360</y>
@@ -1530,15 +1531,15 @@ If you don't want to be asked for it every time you start, check User Autostart 
        <height>24</height>
       </rect>
      </property>
-     <property name="maxLength" >
+     <property name="maxLength">
       <number>20</number>
      </property>
-     <property name="echoMode" >
+     <property name="echoMode">
       <enum>QLineEdit::Normal</enum>
      </property>
     </widget>
-    <widget class="QLabel" name="l_user_passwd2" >
-     <property name="geometry" >
+    <widget class="QLabel" name="l_user_passwd2">
+     <property name="geometry">
       <rect>
        <x>300</x>
        <y>410</y>
@@ -1546,19 +1547,19 @@ If you don't want to be asked for it every time you start, check User Autostart 
        <height>16</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <weight>75</weight>
        <italic>true</italic>
        <bold>true</bold>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Reenter User Password</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="t_nom" >
-     <property name="geometry" >
+    <widget class="QLineEdit" name="t_nom">
+     <property name="geometry">
       <rect>
        <x>80</x>
        <y>290</y>
@@ -1566,15 +1567,15 @@ If you don't want to be asked for it every time you start, check User Autostart 
        <height>24</height>
       </rect>
      </property>
-     <property name="maxLength" >
+     <property name="maxLength">
       <number>50</number>
      </property>
-     <property name="echoMode" >
+     <property name="echoMode">
       <enum>QLineEdit::Normal</enum>
      </property>
     </widget>
-    <widget class="QLineEdit" name="t_user_passwd2" >
-     <property name="geometry" >
+    <widget class="QLineEdit" name="t_user_passwd2">
+     <property name="geometry">
       <rect>
        <x>320</x>
        <y>430</y>
@@ -1582,15 +1583,15 @@ If you don't want to be asked for it every time you start, check User Autostart 
        <height>24</height>
       </rect>
      </property>
-     <property name="maxLength" >
+     <property name="maxLength">
       <number>20</number>
      </property>
-     <property name="echoMode" >
+     <property name="echoMode">
       <enum>QLineEdit::Password</enum>
      </property>
     </widget>
-    <widget class="QLabel" name="l_nom" >
-     <property name="geometry" >
+    <widget class="QLabel" name="l_nom">
+     <property name="geometry">
       <rect>
        <x>60</x>
        <y>270</y>
@@ -1598,19 +1599,19 @@ If you don't want to be asked for it every time you start, check User Autostart 
        <height>16</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <weight>75</weight>
        <italic>true</italic>
        <bold>true</bold>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Enter your name</string>
      </property>
     </widget>
-    <widget class="QLabel" name="l_titol_7" >
-     <property name="geometry" >
+    <widget class="QLabel" name="l_titol_7">
+     <property name="geometry">
       <rect>
        <x>30</x>
        <y>70</y>
@@ -1618,22 +1619,22 @@ If you don't want to be asked for it every time you start, check User Autostart 
        <height>20</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <pointsize>12</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>User Configuration</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QCheckBox" name="cb_autologin" >
-     <property name="geometry" >
+    <widget class="QCheckBox" name="cb_autologin">
+     <property name="geometry">
       <rect>
        <x>320</x>
        <y>350</y>
@@ -1641,13 +1642,13 @@ If you don't want to be asked for it every time you start, check User Autostart 
        <height>41</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>User Autostart
  without ask your password.</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="t_user_passwd1" >
-     <property name="geometry" >
+    <widget class="QLineEdit" name="t_user_passwd1">
+     <property name="geometry">
       <rect>
        <x>80</x>
        <y>430</y>
@@ -1655,15 +1656,15 @@ If you don't want to be asked for it every time you start, check User Autostart 
        <height>24</height>
       </rect>
      </property>
-     <property name="maxLength" >
+     <property name="maxLength">
       <number>20</number>
      </property>
-     <property name="echoMode" >
+     <property name="echoMode">
       <enum>QLineEdit::Password</enum>
      </property>
     </widget>
-    <widget class="QLabel" name="l_user_passwd1" >
-     <property name="geometry" >
+    <widget class="QLabel" name="l_user_passwd1">
+     <property name="geometry">
       <rect>
        <x>60</x>
        <y>410</y>
@@ -1671,19 +1672,19 @@ If you don't want to be asked for it every time you start, check User Autostart 
        <height>16</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <weight>75</weight>
        <italic>true</italic>
        <bold>true</bold>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>User Password</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_12" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_12">
+     <property name="geometry">
       <rect>
        <x>490</x>
        <y>10</y>
@@ -1691,103 +1692,103 @@ If you don't want to be asked for it every time you start, check User Autostart 
        <height>71</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="pixmap" >
+     <property name="pixmap">
       <pixmap>../../../../../usr/share/kademar/utils/instalador/img/users.png</pixmap>
      </property>
-     <property name="scaledContents" >
+     <property name="scaledContents">
       <bool>true</bool>
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="p_mbr" >
-    <widget class="QLabel" name="label_30" >
-     <property name="geometry" >
+   <widget class="QWidget" name="p_mbr">
+    <widget class="QLabel" name="label_30">
+     <property name="geometry">
       <rect>
        <x>50</x>
        <y>100</y>
        <width>511</width>
-       <height>111</height>
+       <height>171</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Here you have to indicate a disk where install Grub Boot Manager.
 By default this selection is automatic, but you can set it manually.
 Also you can bypass, setting not to install, but use it only if you know what you are doing.
 
 Grub will make you able to start kademar Linux on your machine and other operating systems.</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
-     <property name="wordWrap" >
+     <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QRadioButton" name="rb_man" >
-     <property name="geometry" >
+    <widget class="QRadioButton" name="rb_man">
+     <property name="geometry">
       <rect>
        <x>100</x>
-       <y>350</y>
+       <y>370</y>
        <width>381</width>
        <height>22</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <italic>true</italic>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Manual - Advanced Selecction</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="rb_auto" >
-     <property name="geometry" >
+    <widget class="QRadioButton" name="rb_auto">
+     <property name="geometry">
       <rect>
        <x>100</x>
-       <y>260</y>
+       <y>280</y>
        <width>331</width>
        <height>22</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <weight>75</weight>
        <italic>true</italic>
        <bold>true</bold>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Automatic - Recomended</string>
      </property>
-     <property name="checked" >
+     <property name="checked">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QRadioButton" name="rb_no" >
-     <property name="geometry" >
+    <widget class="QRadioButton" name="rb_no">
+     <property name="geometry">
       <rect>
        <x>100</x>
-       <y>290</y>
+       <y>310</y>
        <width>411</width>
        <height>51</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <italic>true</italic>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Do not install boot manager - NOT RECOMMENDED
  (Only do it if you know what are doing)</string>
      </property>
     </widget>
-    <widget class="QLabel" name="l_titol_6" >
-     <property name="geometry" >
+    <widget class="QLabel" name="l_titol_6">
+     <property name="geometry">
       <rect>
        <x>30</x>
        <y>70</y>
@@ -1795,45 +1796,45 @@ Grub will make you able to start kademar Linux on your machine and other operati
        <height>20</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <pointsize>12</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Boot Configuration</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QComboBox" name="cb_mbr" >
-     <property name="geometry" >
+    <widget class="QComboBox" name="cb_mbr">
+     <property name="geometry">
       <rect>
        <x>150</x>
-       <y>390</y>
+       <y>410</y>
        <width>311</width>
        <height>22</height>
       </rect>
      </property>
     </widget>
-    <widget class="QCheckBox" name="ch_initrd" >
-     <property name="geometry" >
+    <widget class="QCheckBox" name="ch_initrd">
+     <property name="geometry">
       <rect>
        <x>100</x>
-       <y>450</y>
+       <y>460</y>
        <width>411</width>
        <height>31</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Initrd (Activate if you receive an error when start)</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_13" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_13">
+     <property name="geometry">
       <rect>
        <x>530</x>
        <y>20</y>
@@ -1841,17 +1842,17 @@ Grub will make you able to start kademar Linux on your machine and other operati
        <height>64</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="pixmap" >
+     <property name="pixmap">
       <pixmap>../../../../../usr/share/kademar/utils/instalador/img/reboot.png</pixmap>
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="p_final" >
-    <widget class="QLabel" name="l_titol_5" >
-     <property name="geometry" >
+   <widget class="QWidget" name="p_final">
+    <widget class="QLabel" name="l_titol_5">
+     <property name="geometry">
       <rect>
        <x>30</x>
        <y>70</y>
@@ -1859,22 +1860,22 @@ Grub will make you able to start kademar Linux on your machine and other operati
        <height>20</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <pointsize>12</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Ending Installation Tasks</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="label_32" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_32">
+     <property name="geometry">
       <rect>
        <x>60</x>
        <y>170</y>
@@ -1882,21 +1883,21 @@ Grub will make you able to start kademar Linux on your machine and other operati
        <height>171</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Some installation tasks are pending.
 
 You have to wait while process is finishing.
 You can see tasks status on left bar.</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
-     <property name="wordWrap" >
+     <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLabel" name="label_14" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_14">
+     <property name="geometry">
       <rect>
        <x>530</x>
        <y>20</y>
@@ -1904,15 +1905,15 @@ You can see tasks status on left bar.</string>
        <height>64</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="pixmap" >
+     <property name="pixmap">
       <pixmap>../../../../../usr/share/kademar/utils/instalador/img/flag_yellow.png</pixmap>
      </property>
     </widget>
-    <widget class="QLabel" name="l_clock" >
-     <property name="geometry" >
+    <widget class="QLabel" name="l_clock">
+     <property name="geometry">
       <rect>
        <x>270</x>
        <y>330</y>
@@ -1920,20 +1921,20 @@ You can see tasks status on left bar.</string>
        <height>100</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="pixmap" >
+     <property name="pixmap">
       <pixmap>../../../../../usr/share/kademar/utils/instalador/img/wait2.gif</pixmap>
      </property>
-     <property name="scaledContents" >
+     <property name="scaledContents">
       <bool>true</bool>
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="p_end" >
-    <widget class="QLabel" name="l_titol_8" >
-     <property name="geometry" >
+   <widget class="QWidget" name="p_end">
+    <widget class="QLabel" name="l_titol_8">
+     <property name="geometry">
       <rect>
        <x>140</x>
        <y>100</y>
@@ -1941,22 +1942,22 @@ You can see tasks status on left bar.</string>
        <height>20</height>
       </rect>
      </property>
-     <property name="font" >
+     <property name="font">
       <font>
        <pointsize>13</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Installation Finished!!!</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="label_33" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_33">
+     <property name="geometry">
       <rect>
        <x>120</x>
        <y>130</y>
@@ -1964,7 +1965,7 @@ You can see tasks status on left bar.</string>
        <height>251</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>kademar Linux it's installed on your PC
 
 Now you can close installer and continue using kademar on Live mode, or you can reboot you computer and start on the installed system.
@@ -1975,15 +1976,15 @@ Remember to go to our webpage if you have some trouble.
 
 Thanks for choosing kademar Linux</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
-     <property name="wordWrap" >
+     <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QCheckBox" name="cb_reboot" >
-     <property name="geometry" >
+    <widget class="QCheckBox" name="cb_reboot">
+     <property name="geometry">
       <rect>
        <x>220</x>
        <y>410</y>
@@ -1991,12 +1992,12 @@ Thanks for choosing kademar Linux</string>
        <height>21</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Reboot Computer</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_15" >
-     <property name="geometry" >
+    <widget class="QLabel" name="label_15">
+     <property name="geometry">
       <rect>
        <x>530</x>
        <y>20</y>
@@ -2004,10 +2005,10 @@ Thanks for choosing kademar Linux</string>
        <height>64</height>
       </rect>
      </property>
-     <property name="text" >
+     <property name="text">
       <string/>
      </property>
-     <property name="pixmap" >
+     <property name="pixmap">
       <pixmap>../../../../../usr/share/kademar/utils/instalador/img/flag.png</pixmap>
      </property>
     </widget>

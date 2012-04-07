@@ -90,6 +90,41 @@ chroot "$DESTI" sh /usr/share/kademar/scripts/engegada/kademar-inici.d-standalon
 #Documents
 # chroot "$DESTI" sh /usr/share/kademar/scripts/documents
 
+#####
+#Detect Session and configure session manager to start the same desktop that user started on live-cd
+#####
+[ -e /var/tmp/xserver ] && . /var/tmp/xserver
+
+#KDE4
+if [ "$KDE_SESSION_VERSION" = 4 -o "$DESKTOP" = "kde4" ]; then
+	dk=kde
+	found=ok
+fi
+
+#KDE3
+if [ -z "$found" ]; then
+	if [ "$DESKTOP_SESSION" = "kde3" -o "$DESKTOP" = "kde3" ]; then
+		dk=kde3
+		found=ok
+	fi
+fi 
+
+#lxde
+if [ -z "$found" ]; then
+	if [ "$XDG_CURRENT_DESKTOP" = "LXDE" -o  "$DESKTOP" = "lxde" ]; then
+		dk=LXDE
+		found=ok
+	fi
+fi 
+
+if [ "$found" = "ok" ]; then
+      echo "[Desktop]
+Session=$dk" > "$DESTI/home/$login/.dmrc"
+fi
+####
+# END DESKTOP DETECT
+####
+
 
 echo "Fixing user permissions"
 chroot "$DESTI" sh /usr/share/kademar/utils/instalador/scripts/install-usuaris-fix-permissions 2>/dev/null

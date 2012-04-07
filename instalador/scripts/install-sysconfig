@@ -24,13 +24,14 @@ rm -f /usr/local/bin/instalador-dialog
 ruta_fstab="/etc/fstab"
 
 #Borrem els serveis de la kademar especifics per live-cd
-rm -f "$DESTI/etc/rc0.d/*kademar-livecd-halt"
-rm -f "$DESTI/etc/rc6.d/*kademar-livecd-reboot"
-rm -f "$DESTI/etc/rcS.d/*kademar-livecd-autoconfig"
-rm -f $DESTI/etc/rc?.d/[SK][0-9][0-9]kademar-livecd-xsession
-rm -f $DESTI/etc/rc?.d/S98kademar_arranc_live-cd
-rm -f "$DESTI/etc/rcS.d/S00splashy"
-rm -f "$DESTI/etc/rc6.d/S22kademar-reboot"
+# DEPRECATED now on inittab
+# rm -f "$DESTI/etc/rc0.d/*kademar-livecd-halt"
+# rm -f "$DESTI/etc/rc6.d/*kademar-livecd-reboot"
+# rm -f "$DESTI/etc/rcS.d/*kademar-livecd-autoconfig"
+# rm -f $DESTI/etc/rc?.d/[SK][0-9][0-9]kademar-livecd-xsession
+# rm -f $DESTI/etc/rc?.d/S98kademar_arranc_live-cd
+# rm -f "$DESTI/etc/rcS.d/S00splashy"
+# rm -f "$DESTI/etc/rc6.d/S22kademar-reboot"
 
 
 # en rc1 K20hotkey-setup S89atd
@@ -105,11 +106,11 @@ fi
 #And put actual live-cd config if all OK
 [ -e "/etc/X11/xorg.conf" -a "$gfx" = "ok" ] && cp -a "/etc/X11/xorg.conf" "$DESTI/etc/X11/xorg.conf"
 
-#Creacio de la configuraciÃ³ grÃ fica, juntament amb l'acceleraciÃ³ modificada
+#Creacio de la configuració gràfica, juntament amb l'acceleració modificada
 #Utilitzant el driver amb el que ha lograt engegar
 # cp /var/tmp/xserver "$DESTI/var/tmp/xserver"
 
-#correcciÃ³ de acceleraciÃ³
+#correcció de acceleració
 chroot "$DESTI" sh /usr/share/kademar/utils/instalador/scripts/xorg-correccio_acceleracio
 
 #####
@@ -117,7 +118,7 @@ chroot "$DESTI" sh /usr/share/kademar/utils/instalador/scripts/xorg-correccio_ac
 # aixo fara k en instalada no es torni a generar el xorg.conf fins que no es canvii la grafica o el nucli
 #####
 
-#Posem el nom a la mÃ quina
+#Posem el nom a la màquina
 echo "$NOM_PC" > "$DESTI/etc/hostname"
 
 cat > "$DESTI/etc/hosts" << EOF
@@ -152,12 +153,12 @@ snd-seq-device" >> "$DESTI/etc/modules"
 #Canviem el rellotge / Hack per la hora correcta
 echo "Europe/Madrid" > "$DESTI/etc/timezone"
 
-#Afegim la cÃ rrega del mÃ²dul d'APM
+#Afegim la càrrega del mòdul d'APM
 if [ ! -e /proc/acpi ]; then
 	echo "apm power_off=1" > "$DESTI/etc/modules"
 fi
 
-#Desactivem el bloqueig de teclat numÃ¨ric, si Ã©s un portÃ til.
+#Desactivem el bloqueig de teclat numèric, si és un portàtil.
 if [ "`laptop-detect ; echo $?`" = 0 ]; then
 #Portatil Zone
 	rm -fr "$DESTI/etc/X11/Xsession.d/55numlockx"
@@ -174,7 +175,7 @@ if [ -e "$DESTI/etc/samba/smb.conf" ]; then
 	sed s:\""$find0"\":"   workgroup = kademar":g -i "$DESTI/etc/samba/smb.conf"
 fi
 
-#Definim la descripciÃ³ del servidor - Treiem el NÃºmero de versiÃ³ del samba per preveure possibles exploits
+#Definim la descripció del servidor - Treiem el Número de versió del samba per preveure possibles exploits
 find0=`cat "/etc/samba/smb.conf"  | grep "server string" | grep -i "="`
 sed s:\""$find0"\":"   server string = kademar Server (Samba)":g -i "$DESTI/etc/samba/smb.conf"
 
@@ -216,10 +217,10 @@ if [ -n "`echo $CMDLINE | grep -i csin`" -o -n "`echo $CMDLINE | grep -i csex`" 
 	
 fi
 
-#Borrem l'entrada a l'escript d'instalÂ·laciÃ³
+#Borrem l'entrada a l'escript d'instal·lació
 #rm -fr "$DESTI/usr/local/bin/instalador" #DEPRECATED
 
-#Permisos d'execuciÃ³ a  pmount
+#Permisos d'execució a  pmount
 chmod ugo+x "$DESTI/usr/bin/pmount"
 chmod ugo+x "$DESTI/usr/bin/pumount"
 
@@ -227,8 +228,8 @@ chmod ugo+x "$DESTI/usr/bin/pumount"
 # [ -e "$DESTI/etc/network/options" ] && mv "$DESTI/etc/network/options" "$DESTI/etc/network/options.old"
 
 #Fem que  www.kademar.org sigui la pagina per defecte del firefox
-echo 'user_pref("browser.startup.homepage", "http://www.kademar.org");
-user_pref(\"network.protocol-handler.app.klik\", \"~/.klik\"); >> ' >> "$DESTI/etc/mozilla-firefox/profile/prefs.js"
+#echo 'user_pref("browser.startup.homepage", "http://www.kademar.org");
+#user_pref(\"network.protocol-handler.app.klik\", \"~/.klik\"); >> ' >> "$DESTI/etc/mozilla-firefox/profile/prefs.js"
 
 #Copiem els wallpapers al nou sistema, per tal de treure els .desktop i els .svg k sobren
 mkdir -p "$DESTI/usr/share/kademar/media_sample/wallpapers"
@@ -299,7 +300,7 @@ ca*)
 	echo "
 Els programes inclosos en Kademar GNU/Linux son programari lliure
 en la seva majoria, i una part residual de programari no lliure;
-els termes exactes de distribuciÃ³ de cada programa estan descrits en
+els termes exactes de distribució de cada programa estan descrits en
 fitxers individuals en /usr/share/doc/*/copyright.
 
 kademar GNU/Linux ve en ABSOLUTA NO GARANTIA, en la mesura
@@ -308,11 +309,11 @@ permesa per la llei actual." > $motd_file.tail
 es*)
 		echo "
 Los programas incluidos en Kademar GNU/Linux son software libre
-en su mayorÃ­a, y una parte residual de software no libre;
-los tÃ©rminos exactos de distribuciÃ³n de cada programa estÃ¡n descritos en
+en su mayoría, y una parte residual de software no libre;
+los términos exactos de distribución de cada programa están descritos en
 archivos individuales en /usr/share/doc/*/copyright.
 
-Kademar GNU/Linux viene en ABSOLUTA NO GARANTÃA, en la medida
+Kademar GNU/Linux viene en ABSOLUTA NO GARANTÍA, en la medida
 permitida por la ley actual." > $motd_file.tail
 ;;
 en*|*)
@@ -343,7 +344,7 @@ echo >> $issue_file #blank file at end
 # ln -s "/usr/share/keymaps/i386/qwerty/es.kmap.gz" "$DESTI/etc/console/boottime.kmap.gz"
 
 
-#Si s'ha configurat particioswap, configura la particiÃ³ de resume
+#Si s'ha configurat particioswap, configura la partició de resume
 if [ -n "$particioswap" ]; then
 	echo "# /etc/uswsusp.conf(8) -- Configuration file for s2disk/s2both 
 resume device = $particioswap
@@ -376,6 +377,6 @@ fi
 # detect monitor
 sh /usr/share/kademar/scripts/engegada/detect-monitor "$DESTI"
 
-#Executa la configuraciÃ³ Modular
+#Executa la configuració Modular
 [ -e /usr/share/kademar/utils/instalador/scripts/install-sysconfig_second-stage ] && sh /usr/share/kademar/utils/instalador/scripts/install-sysconfig_second-stage
 

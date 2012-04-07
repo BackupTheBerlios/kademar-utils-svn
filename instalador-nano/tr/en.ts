@@ -460,7 +460,7 @@ Or you can reboot the computer.</translation>
     <message>
         <location filename="instalador.py" line="335"/>
         <source>Les particions sel&#xb7;leccionades no poden estar buides. S&apos;ha de seleccionar una partici&#xf3; per arrel i swap</source>
-        <translation>The selected partitions can&apos;t be empty. Select one partition for root and one for swap</translation>
+        <translation type="obsolete">The selected partitions can&apos;t be empty. Select one partition for root and one for swap</translation>
     </message>
     <message>
         <location filename="instalador.py" line="337"/>
@@ -588,6 +588,11 @@ During the installation process, you&apos;ll cannot acces on the USB device,
  will DELETE, the content of &apos;boot&apos;, &apos;kademar&apos; and &apos;html&apos; folder in case of exists. Be care.
 
 For more security, we recommend you to make a backup of all the data.</translation>
+    </message>
+    <message>
+        <location filename="instalador.py" line="335"/>
+        <source>Les particions sel&#xb7;leccionades no poden estar buides. S&apos;ha de seleccionar una partici&#xf3;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

@@ -332,7 +332,7 @@ class instalador(QDialog):
                 error=2
 
 	    if error==1:
-	        self.showwarnmsg("critical", self.tr("Error: Partició Buida"), self.tr("Les particions sel·leccionades no poden estar buides. S'ha de seleccionar una partició per arrel i swap"))
+	        self.showwarnmsg("critical", self.tr("Error: Partició Buida"), self.tr("Les particions sel·leccionades no poden estar buides. S'ha de seleccionar una partició"))
 	    elif error==2:
 	        self.showwarnmsg("critical", self.tr("Error: Disc Escollit"), self.tr("Enlloc de triar una partició, s'ha escollit un disc i aquesta no és una entrada vàlida."))
 
@@ -445,7 +445,7 @@ class instalador(QDialog):
         # BOOTLOADER #
         ##############
         system('rm -f '+target+'/install-nano-bootinst.sh')
-        system('cp -a scripts/bootinst.sh '+target+'/install-nano-bootinst.sh')
+        system('cp scripts/bootinst.sh '+target+'/install-nano-bootinst.sh') #without cp -a to be sure that don't copy a link
         system('sh '+target+'/install-nano-bootinst.sh')
         system('rm -f '+target+'/install-nano-bootinst.sh')
         QApplication.processEvents()

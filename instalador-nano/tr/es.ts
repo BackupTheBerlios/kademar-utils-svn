@@ -492,7 +492,7 @@ O si quiere, puede reiniciar el ordenador.</translation>
     <message>
         <location filename="instalador.py" line="335"/>
         <source>Les particions sel&#xb7;leccionades no poden estar buides. S&apos;ha de seleccionar una partici&#xf3; per arrel i swap</source>
-        <translation>Las particiones seleccionadas no puede estar vacias. Se ha de seleccionar una partición para la raíz y otra para la swap</translation>
+        <translation type="obsolete">Las particiones seleccionadas no puede estar vacias. Se ha de seleccionar una partición para la raíz y otra para la swap</translation>
     </message>
     <message>
         <location filename="instalador.py" line="337"/>
@@ -637,6 +637,11 @@ Durante el proceso de instalación no podrá acceder a su dispositivo USB,
  Se BORRARÁ el contenido de las carpetas &apos;boot&apos;, &apos;kademar&apos; y &apos;html&apos; en caso de existir. Tenga cuidado.
 
 Para más seguridad, se recomienda tener una copia de seguridad de los datos.</translation>
+    </message>
+    <message>
+        <location filename="instalador.py" line="335"/>
+        <source>Les particions sel&#xb7;leccionades no poden estar buides. S&apos;ha de seleccionar una partici&#xf3;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

@@ -22,6 +22,7 @@ public slots:
     void startDesktopLxde();
     void startDesktopIcewm();
     void askForShutdown();
+    void writeSettings(QString *desk);
 
 protected:
     void changeEvent(QEvent *e);

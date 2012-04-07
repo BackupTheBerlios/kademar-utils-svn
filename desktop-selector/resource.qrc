@@ -5,6 +5,7 @@
         <file alias="kde4">img/kde4.png</file>
         <file alias="lxde">img/lxde.png</file>
         <file alias="quit">img/quit.png</file>
+        <file alias="title">img/title.png</file>
     </qresource>
     <qresource prefix="/tr">
         <file>tr/es.qm</file>

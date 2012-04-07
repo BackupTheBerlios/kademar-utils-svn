@@ -1,18 +1,21 @@
 #include "desktopselector.h"
 #include "ui_desktopselector.h"
-#include "qdesktopwidget.h"
-#include "qpixmap.h"
-#include "qfile.h"
-#include "qmessagebox.h"
-#include "qstring.h"
-#include <qtextstream.h>
-#include <qprocess.h>
+#include "QDesktopWidget"
+#include "QPixmap"
+#include "QMessageBox"
+#include "QString"
+#include "QTextStream"
+#include "QFile"
+#include "QProcess"
+#include "QDebug"
 
-
+bool speech;
 DesktopSelector::DesktopSelector(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::DesktopSelector)
 {
+
+this->close();
     ui->setupUi(this);
     this->setConnects();
     this->setMaxResolution();
@@ -20,13 +23,30 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
     //Use detect-monitor to configure it
     QProcess *dresol = new QProcess();
     dresol->start(QString("/usr/share/kademar/scripts/engegada/detect-monitor"));
-    //configure Volumes (usefull to screenreader)
-    QProcess *volumes = new QProcess();
-    volumes->start(QString("/usr/share/kademar/scripts/engegada/volums"));
-    volumes->waitForFinished();
     QString label = tr("Select the desktop you want to use");
-    QProcess *readcommand = new QProcess();
-    readcommand->start(QString("spd-say \"%1\"").arg(label));
+
+    //Detect if want speech-dispatcher use
+    extern bool speech;
+    speech=0;
+    QFile *cmdline = new QFile("/proc/cmdline");
+    cmdline->open(QIODevice::ReadOnly);
+    QString *cmdlineContent = new QString(cmdline->readAll());
+    if ( (cmdlineContent->contains("scrread")) || (cmdlineContent->contains("screenread")) )
+    {
+        speech=1;
+    }
+
+    //qDebug() << "after: " << speech;
+
+    if ( speech == 1 ){
+        //configure Volumes (usefull to screenreader)
+        QProcess *volumes = new QProcess();
+        volumes->start(QString("/usr/share/kademar/scripts/engegada/volums"));
+        volumes->waitForFinished();
+
+        QProcess *readcommand = new QProcess();
+        readcommand->start(QString("spd-say \"%1\"").arg(label));
+    }
 }
 
 
@@ -62,8 +82,11 @@ void DesktopSelector::setConnects()
 void DesktopSelector::askForShutdown()
 {
     QString label = tr("Are you sure to shutdown the computer?");
-    QProcess *readcommand = new QProcess();
-    readcommand->start(QString("spd-say \"%1\"").arg(label));
+    extern bool speech;
+    if ( speech == 1 ){
+        QProcess *readcommand = new QProcess();
+        readcommand->start(QString("spd-say \"%1\"").arg(label));
+    }
     QMessageBox *dial = new QMessageBox();
     dial->setWindowTitle(tr("Shutdown Computer"));
     dial->setText(label);
@@ -99,10 +122,10 @@ void DesktopSelector::setMaxResolution()
     //qDebug() << screenSize.width();
     DesktopSelector::setGeometry(0,0,screenSize.width(),screenSize.height());
     ui->background->setGeometry(0,0,screenSize.width(),screenSize.height());
-    QFile *filebg = new QFile(QString("/usr/share/wallpapers/Ethais/contents/images/%1x%2.png").arg(screenSize.width()).arg(screenSize.height()) );
+    QFile *filebg = new QFile(QString("/usr/share/wallpapers/Gota de Gebrada/contents/images/%1x%2.png").arg(screenSize.width()).arg(screenSize.height()) );
     if  (!(filebg->exists())) {
 
-        filebg->setFileName(QString("/usr/share/wallpapers/Ethais/contents/images/1280x1024.png"));
+        filebg->setFileName(QString("/usr/share/wallpapers/Gota de Gebrada/contents/images/1280x1024.png"));
     }
 
     if  (!(filebg->exists())) {
@@ -112,13 +135,14 @@ void DesktopSelector::setMaxResolution()
 
     ui->background->setPixmap(QPixmap(filebg->fileName()));
 
+    //qDebug() << filebg->fileName();
 }
 
 void DesktopSelector::removeDesktops()
 {
     QFile *desktop = new QFile();
     //KDE3
-    desktop->setFileName(QString("/opt/kde3/bin/startkde"));
+    desktop->setFileName(QString("/opt/trinity/bin/startkde"));
     if  (!(desktop->exists())) {
             ui->b_kde3->setVisible(0);
             ui->l_kde3->setVisible(0);
@@ -150,69 +174,44 @@ void DesktopSelector::removeDesktops()
 }
 
 
+void DesktopSelector::writeSettings(QString *desk){
+    //QString *varDesktop = new QString("DESKTOP=" + *desk + "\n");
+    QFile *file = new QFile("/var/tmp/xserver");
+    //QTextStream *stream = new QTextStream();
+    if ( file->open( QIODevice::Append ) )
+    {
+        QTextStream stream( file );
+        stream <<QString("DESKTOP=" + *desk + "\n");
+        //stream << QString("DESKTOP=%1\n").arg(*desk);
+    }
+    file->close();
+    this->close();
+}
+
 
 // Desktop Starter
 void DesktopSelector::startDesktopKde3()
 {
-    QFile *file = new QFile("/var/tmp/xserver");
-    //QTextStream *stream = new QTextStream();
-    if ( file->open( QIODevice::Append ) )
-    {
-        QTextStream stream( file );
-        stream << "DESKTOP=kde3\n";
-    }
-    file->close();
-    this->close();
+    writeSettings(new QString ("kde3"));
 }
 
 void DesktopSelector::startDesktopKde4()
 {
-    QFile *file = new QFile("/var/tmp/xserver");
-    //QTextStream *stream = new QTextStream();
-    if ( file->open( QIODevice::Append ) )
-    {
-        QTextStream stream( file );
-        stream << "DESKTOP=kde4\n";
-    }
-    file->close();
-    this->close();
+
+    this->writeSettings(new QString("kde4"));
 }
 
 void DesktopSelector::startDesktopGnome()
 {
-    QFile *file = new QFile("/var/tmp/xserver");
-    //QTextStream *stream = new QTextStream();
-    if ( file->open( QIODevice::Append ) )
-    {
-        QTextStream stream( file );
-        stream << "DESKTOP=gnome\n";
-    }
-    file->close();
-    this->close();
+    this->writeSettings(new QString("gnome"));
 }
 
 void DesktopSelector::startDesktopLxde()
 {
-    QFile *file = new QFile("/var/tmp/xserver");
-    //QTextStream *stream = new QTextStream();
-    if ( file->open( QIODevice::Append ) )
-    {
-        QTextStream stream( file );
-        stream << "DESKTOP=lxde\n";
-    }
-    file->close();
-    this->close();
+    this->writeSettings(new QString("lxde"));
 }
 
 void DesktopSelector::startDesktopIcewm()
 {
-    QFile *file = new QFile("/var/tmp/xserver");
-    //QTextStream *stream = new QTextStream();
-    if ( file->open( QIODevice::Append ) )
-    {
-        QTextStream stream( file );
-        stream << "DESKTOP=icewm\n";
-    }
-    file->close();
-    this->close();
+    this->writeSettings(new QString("icewm"));
 }

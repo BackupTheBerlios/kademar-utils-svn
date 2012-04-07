@@ -16,6 +16,7 @@ public slots:
 
 private:
     void enterEvent( QEvent * event );
+    void focusInEvent( QFocusEvent * event );
 
 };
 

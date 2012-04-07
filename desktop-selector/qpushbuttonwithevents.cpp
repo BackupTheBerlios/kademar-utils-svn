@@ -5,6 +5,9 @@
 #include <QProcess>
 #include <QString>
 #include <QEvent>
+#include <QDebug>
+#include <QFocusEvent>
+
 
 QPushButtonWithEvents::QPushButtonWithEvents(QWidget *parent) :
     QPushButton(parent)
@@ -21,10 +24,26 @@ void QPushButtonWithEvents::readCaption( QString * label )
 void QPushButtonWithEvents::enterEvent( QEvent * event )
 {
     event->accept();
-    QString *txt = new QString(this->text());
-    this->readCaption(txt);
+    extern bool speech;
+    if ( speech == 1 ){
+        QString *txt = new QString(this->text());
+        this->readCaption(txt);
+    }
+    qDebug() << "parlant";
 
 }
 
 //TODO: on key focus, use readCaption function
 //void QPushButtonWithEvents::
+
+void QPushButtonWithEvents::focusInEvent( QFocusEvent * event )
+{
+    event->accept();
+    extern bool speech;
+    if ( speech == 1 ){
+        QString *txt = new QString(this->text());
+        this->readCaption(txt);
+    }
+    qDebug() << "parlant per focus" << QString(this->text());
+
+}

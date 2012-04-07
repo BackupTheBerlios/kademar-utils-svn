@@ -1,4 +1,10 @@
-cadi (9.5.1.2) testing; urgency=low
+cadi (4.9.2) testing; urgency=low
+
+  * Resolution 800x550 (to fix in all screens)
+
+ -- Adonay Sanz Alsina <adonay@kademar.org>  Wed, 19 Oct 2011 23:01:50 +0200
+
+cadi (4.9.1.2) testing; urgency=low
 
   * FIX: Force resolution on displayFunctions
   * NEW: Added Google Open DNS

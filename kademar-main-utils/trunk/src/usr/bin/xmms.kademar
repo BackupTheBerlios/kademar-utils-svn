@@ -1,7 +1,0 @@
-#!/bin/bash
-
-#Engegada de Audacius, fent-lo passar per XMMS
-
-#Creat per Adonay Sanz - 30-09-07
-
-( /usr/bin/audacious "$@" ) &

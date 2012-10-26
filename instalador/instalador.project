@@ -1,3 +1,0 @@
-FORMS        = ui/instalador.ui
-SOURCES      = instalador.py
-TRANSLATIONS = tr/es.ts tr/ca.ts tr/en.ts

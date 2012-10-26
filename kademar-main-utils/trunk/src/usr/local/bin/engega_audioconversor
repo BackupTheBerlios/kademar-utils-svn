@@ -1,3 +1,0 @@
-#!/bin/sh
-cd /usr/share/kademar/utils/conversor_audio
-export XLIB_SKIP_ARGB_VISUALS=1 && python2.4 Conversor_audio.py

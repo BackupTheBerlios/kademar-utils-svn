@@ -1,5 +1,0 @@
-if [ ! -e "$HOME/.kademar/xdg-dirs-kademar" ]; then
-	sh /usr/share/kademar/scripts/documents
-	[ ! -e "$HOME/.kademar/" ] && mkdir -p "$HOME/.kademar/"
-	touch "$HOME/.kademar/xdg-dirs-kademar"
-fi

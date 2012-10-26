@@ -1,5 +1,0 @@
-#!/bin/sh
-
-#Start AudioConversor
-
-python /usr/share/kademar/utils/audioconversor/audioconversor.py

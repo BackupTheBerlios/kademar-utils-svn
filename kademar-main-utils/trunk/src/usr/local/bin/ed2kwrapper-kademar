@@ -1,9 +1,0 @@
-#!/bin/bash
-
-# echo "$1" > $HOME/provalog
-
-echo ed2k \""$1"\" > /tmp/ed2k-tmp
-
-sh /tmp/ed2k-tmp
-
-rm -f /tmp/ed2k-tmp

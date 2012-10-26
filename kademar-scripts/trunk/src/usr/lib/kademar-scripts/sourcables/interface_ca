@@ -1,7 +1,0 @@
-#Definició del Idioma Català
-load_config_read_profile="llegint perfil"
-load_config_no_exists_profile="perfil no trobat"
-load_config_no_profile="no s'ha especificat cap perfil, utilitzant la configuració per defecte"
-
-
-start_qemu_error="Qemu no es troba instal·lat en el sistema"

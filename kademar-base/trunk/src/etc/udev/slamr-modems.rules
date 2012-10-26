@@ -1,5 +1,0 @@
-ACTION=="add", KERNEL=="slamr", RUN+="/bin/sh -c '[ -x /etc/init.d/sl-modem-daemon ] && /etc/init.d/sl-modem-daemon restart >/dev/null'"
-ACTION=="add", KERNEL=="slusb", RUN+="/bin/sh -c '[ -x /etc/init.d/sl-modem-daemon ] && /etc/init.d/sl-modem-daemon restart >/dev/null'"
-
-ACTION=="remove", KERNEL=="slamr", RUN+="/bin/sh -c '[ -x /etc/init.d/sl-modem-daemon ] && /etc/init.d/sl-modem-daemon stop >/dev/null'"
-ACTION=="remove", KERNEL=="slusb", RUN+="/bin/sh -c '[ -x /etc/init.d/sl-modem-daemon ] && /etc/init.d/sl-modem-daemon stop >/dev/null'"

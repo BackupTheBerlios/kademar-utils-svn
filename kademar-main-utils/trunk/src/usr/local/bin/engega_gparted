@@ -1,6 +1,0 @@
-#!/bin/sh
-#
-# Creat per Adonay Sanz Alsina - Abril 2007
-
-gparted
-regenerapc

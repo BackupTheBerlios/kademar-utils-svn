@@ -1,0 +1,5 @@
+squashfs-tools-xz (4.2) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Adonay Jonay Sanz Alsina <adonay@kademar.org>  Wed, 18 May 2011 13:09:25 +0200

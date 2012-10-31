@@ -1,0 +1,49 @@
+# Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+pkgname=kademar-meta-desktop-lxde-full
+pkgver=1.0
+pkgrel=1
+epoch=
+pkgdesc="kademar Metapackage Desktop LXDE Full"
+arch=(any)
+url="http://www.kademar.org"
+license=('GPL')
+groups=()
+depends=('kademar-meta-common-utils' 'kademar-meta-desktop-lxde-core' 'kademar-meta-pidgin' 'abiword' 'abiword-plugins' 'gnumeric' 'wicd-gtk' 'gnome-icon-theme' 'vlc' 'mtpaint' 'transmission-gtk' 'amule' 'xsane' 'grip' 'easytag' 'quodlibet' 'quodlibet-plugins'  'ltris' 'lbreakout2' 'xpacman' 'mirage' 'unison'  'xpdf' 'xpdf-arabic' 'xpdf-chinese-simplified' 'xpdf-chinese-traditional' 'xpdf-cyrillic' 'xpdf-greek' 'xpdf-hebrew' 'xpdf-japanese' 'xpdf-korean' 'xpdf-latin2' 'xpdf-thai' 'xpdf-turkish' )
+#audacious, mozplugger, efax, xscreensaver-gl, xscreensaver-gl-extra, xscreensaver-data-extra,  xscreensaver-data, icedove|mozilla-thunderbird|thunderbird, icedove-l10n-ca, icedove-l10n-es-es, icedove-l10n-en-gb,
+#'gnomebaker'
+makedepends=()
+checkdepends=()
+optdepends=('ytree: ncourses filemanager'
+'emesene: Messenger alternative'
+'amsn: Messenger alternative'
+'farsight2: for video conferencing library'
+'xdigger: Game Boulderdash clone'
+'mrxvt: Multitabbed X terminal'
+'ace-of-penguins: Solitarie games'
+'xgalaga: Classic starship game'
+'icebreaker: Clone of Jezzball'
+'gnomebaker: CD toaster')
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+#source=($pkgname-$pkgver.tar.gz)
+noextract=()
+#md5sums=('a1be535e26c780470e3c599b44e7d6bc') #generate with 'makepkg -g'
+
+build() {
+  cd "$srcdir"
+}
+
+# package() {
+#   mkdir -p "$pkgdir/usr/bin"
+#   cp $srcdir/apt* $srcdir/dpkg "$pkgdir/usr/bin"
+#   find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+#   find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+#   find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+# }
+
+# vim:set ts=2 sw=2 et:

@@ -1,0 +1,41 @@
+# Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+pkgname=kademar-meta-desktop-kde4-full
+pkgver=1.7
+pkgrel=1
+epoch=
+pkgdesc="kademar Metapackage Desktop KDE4 Full"
+arch=(any)
+url="http://www.kademar.org"
+license=('GPL')
+groups=()
+depends=('kademar-meta-common-utils' 'kademar-meta-desktop-kde4-core' 'kde-meta-kdepim' 'kdeutils-kcalc' 'kdeutils-ark' 'kde-meta-kdeplasma-addons' 'kdemultimedia-kmix' 'kdenetwork-filesharing' 'kdeplasma-applets-networkmanagement' 'skanlite' 'k3b' 'vcdimager' 'emovix' 'transcode'  'kdegraphics-gwenview' 'kipi-plugins' 'kdeadmin-system-config-printer-kde' 'kdeutils-printer-applet' 'k9copy' 'kdewebdev-kfilereplace' 'krusader' 'krename' 'kdiff3' 'kdewebdev-kommander' 'digikam'  'konversation' 'basket' 'kdegraphics-okular'  'strigi' 'kdesdk-strigi-analyzer' 'kdegraphics-strigi-analyzer' 'kdesdk-kioslave' 'oxygen-gtk2' 'oxygen-gtk3' 'kdegames-ksnakeduel' 'kdenetwork-kopete' 'kdeplasma-addons-runners-kopete' 'yakuake' 'kdesdk-dolphin-plugins' 'kdegames-kblocks' 'kdeedu-ktouch' 'kdegames-kolf' 'kdegames-katomic' 'kdegames-kjumpingcube' 'hugin' 'kdegraphics-ksnapshot' 'kdegraphics-ksaneplugin' 'kdegraphics-svgpart' 'kdegraphics-thumbnailers' 'kdegraphics-kamera' 'grub2-editor' 'kdemultimedia-ffmpegthumbs'  'samba')
+#kspaceduel, kgoldrunner kblackox konquest, kbattleship, 
+#nspluginwrapper
+makedepends=()
+checkdepends=()
+optdepends=('kdesudo: replace su password by sudo'
+'okularplugin-git: plugin for firefox')
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=kademar-meta-desktop-kde4-full.install
+changelog=
+#source=($pkgname-$pkgver.tar.gz)
+noextract=()
+#md5sums=('a1be535e26c780470e3c599b44e7d6bc') #generate with 'makepkg -g'
+
+build() {
+  cd "$srcdir"
+}
+
+# package() {
+#   mkdir -p "$pkgdir/usr/bin"
+#   cp $srcdir/apt* $srcdir/dpkg "$pkgdir/usr/bin"
+#   find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+#   find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+#   find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+# }
+
+# vim:set ts=2 sw=2 et:

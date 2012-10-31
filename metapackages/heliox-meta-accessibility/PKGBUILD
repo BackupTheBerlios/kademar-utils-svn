@@ -1,0 +1,40 @@
+# Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+pkgname=heliox-meta-accessibility
+pkgver=1.5
+pkgrel=1
+epoch=
+pkgdesc="Heliox Metapackage to Accessibility"
+arch=(any)
+url="http://www.proyectoheliox.org"
+license=('GPL')
+groups=()
+#kdemod3-base group
+depends=('kademar-meta-common-utils' 'helioxhelper' 'kdeaccessibility-jovie' 'eviacam' 'dasher' 'keytouch' 'keytouch-editor' 'speech-dispatcher' 'orca' 'gnome-terminal' 'kdegraphics-okular' 'kdeaccessibility-kmag' 'kdeaccessibility-kmousetool' 'kdeaccessibility-kmouth' 'kde-meta-kdeaccessibility' 'qt-at-spi-git' 'pidgin-imaqua-git' 'xvkbd' 'cellwriter' 'easystroke' 'simon' 'speakup-utils' 'festival' 'festival-freebsoft-utils' 'festvox-palpc16k' 'festvox-sflpc16k' 'sound-icons' 'nela' 'scaut' 'gok' 'kde-l10n-es' 'ekiga' 'poedit' 'brltty')
+#pidgin-festival, adrian e
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+#source=($pkgname-$pkgver.tar.gz)
+noextract=()
+#md5sums=('a1be535e26c780470e3c599b44e7d6bc') #generate with 'makepkg -g'
+
+build() {
+  cd "$srcdir"
+}
+
+# package() {
+#   mkdir -p "$pkgdir/usr/bin"
+#   cp $srcdir/apt* $srcdir/dpkg "$pkgdir/usr/bin"
+#   find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+#   find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+#   find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+# }
+
+# vim:set ts=2 sw=2 et:

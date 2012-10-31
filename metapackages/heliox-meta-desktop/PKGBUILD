@@ -1,0 +1,39 @@
+# Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+pkgname=heliox-meta-desktop
+pkgver=1.7
+pkgrel=1
+epoch=
+pkgdesc="Heliox Metapackage Desktop LXDE"
+arch=(any)
+url="http://www.proyectoheliox.org"
+license=('GPL')
+groups=()
+depends=('kademar-meta-common-utils' 'heliox-livecd' 'heliox-meta-accessibility' 'kademar-meta-libreoffice' 'kademar-meta-pidgin' 'lxappearance' 'lxde-common' 'lxde-icon-theme' 'gdm' 'lxlauncher' 'lxmenu-data' 'lxpanel' 'lxrandr' 'lxsession' 'lxtask' 'lxterminal' 'gpicview' 'menu-cache' 'openbox' 'pcmanfm' 'file-roller' 'leafpad' 'xorg-xcalc' 'firefox' 'firefox-i18n-ca' 'firefox-i18n-es-es' 'thunderbird-i18n-es' 'thunderbird-i18n-ca' 'thunderbird' 'gnome-themes-standard' 'gnome-alsamixer' 'vlc' 'gtk-recordmydesktop' 'amule' 'transmission-gtk' 'flac' 'libdvdcss' 'libavc1394' 'libdc1394' 'libbluray' 'libgme' 'librsvg' 'libmtp' 'vcdimager' 'appset-qt' 'truecrypt' 'cheese' 'brasero' 'wine' 'winetricks' 'wine_gecko' 'avidemux-gtk' 'openshot' )
+#gtk-aurora-theme
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+#source=($pkgname-$pkgver.tar.gz)
+noextract=()
+#md5sums=('a1be535e26c780470e3c599b44e7d6bc') #generate with 'makepkg -g'
+
+build() {
+  cd "$srcdir"
+}
+
+# package() {
+#   mkdir -p "$pkgdir/usr/bin"
+#   cp $srcdir/apt* $srcdir/dpkg "$pkgdir/usr/bin"
+#   find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+#   find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+#   find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+# }
+
+# vim:set ts=2 sw=2 et:

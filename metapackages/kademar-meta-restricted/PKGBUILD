@@ -1,0 +1,38 @@
+#Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+pkgname=kademar-meta-restricted
+pkgver=1.7
+pkgrel=1
+epoch=
+pkgdesc="kademar Metapackage with Restricted Apps"
+arch=(any)
+url="http://www.kademar.org"
+license=('GPL' 'custom:Multiple Licenses')
+groups=()
+depends=('kademar-meta-firmware-restricted' 'kademar-restricted' 'flashplugin' 'jre7-openjdk-headless' 'icedtea-web-java7' 'skype' 'amd-ucode' 'intel-ucode' 'b43-firmware' 'b43-firmware-legacy' 'virtualbox' 'virtualbox-host-modules' 'virtualbox-guest-iso ' 'virtualbox-guest-utils' 'virtualbox-guest-modules' )
+makedepends=() 
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+#source=($pkgname-$pkgver.tar.gz)
+noextract=()
+#md5sums=('a1be535e26c780470e3c599b44e7d6bc') #generate with 'makepkg -g'
+
+build() {
+  cd "$srcdir"
+}
+
+# package() {
+#   mkdir -p "$pkgdir/usr/bin"
+#   cp $srcdir/apt* $srcdir/dpkg "$pkgdir/usr/bin"
+#   find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+#   find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+#   find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+# }
+
+# vim:set ts=2 sw=2 et:

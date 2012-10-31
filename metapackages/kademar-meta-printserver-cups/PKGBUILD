@@ -1,0 +1,38 @@
+# Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+pkgname=kademar-meta-printserver-cups
+pkgver=1.1
+pkgrel=1
+epoch=
+pkgdesc="kademar Metapackage Print Server Cups"
+arch=(any)
+url="http://www.kademar.org"
+license=('GPL')
+groups=()
+depends=('cups' 'ghostscript' 'gsfonts' 'hpoj' 'gutenprint' 'foomatic-db' 'foomatic-db-engine' 'foomatic-db-nonfree' 'foomatic-filters' 'hplip' 'splix' 'cups-pdf' 'foomatic-filters' 'samsung-unified-driver')
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+#source=($pkgname-$pkgver.tar.gz)
+noextract=()
+#md5sums=('a1be535e26c780470e3c599b44e7d6bc') #generate with 'makepkg -g'
+
+build() {
+  cd "$srcdir"
+}
+
+# package() {
+#   mkdir -p "$pkgdir/usr/bin"
+#   cp $srcdir/apt* $srcdir/dpkg "$pkgdir/usr/bin"
+#   find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+#   find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+#   find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+# }
+
+# vim:set ts=2 sw=2 et:

@@ -1,0 +1,38 @@
+#Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+pkgname=kademar-meta-firmware-restricted-extra
+pkgver=1.0
+pkgrel=1
+epoch=
+pkgdesc="kademar Metapackage with Firmwares restricted or not - some extras compiled from AUR"
+arch=(any)
+url="http://www.kademar.org"
+license=('GPL' 'custom:Multiple Licenses')
+groups=()
+depends=('kademar-meta-firmware-restricted' 'b43-fwcutter' 'ipw2100-fw' 'ipw2200-fw' 'linux-firmware' 'zd1211-firmware' 'alsa-firmware' 'bluez-firmware' 'efibootmgr' 'sane-gt68xx-firmware' 'a800-fw' 'af9005-firmware' 'at76_usb-firmware' 'b43-firmware-legacy' 'crystalhd-firmware' 'dvb-fe-tda10048-1.0.fw' 'dvb-tevii-fw' 'dvb-usb-af9015-fw' 'dvb-usb-bluebird-fw' 'dvb-usb-dw2102' 'dvb-usb-wt220u-fc03-fw' 'ec168-firmware' 'firmware-addon-dell' 'fwtool-git' 'fxload' 'gobi-loader' 'isight-firmware-tools' 'isl3887usb-firmware' 'isl3890-firmware' 'midisport-firmware' 'rtl8192se-firmware' 'sane-lf9452-firmware' 'tiacx-firmware' 'xc3028-fw')
+makedepends=() 
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+#source=($pkgname-$pkgver.tar.gz)
+noextract=()
+#md5sums=('a1be535e26c780470e3c599b44e7d6bc') #generate with 'makepkg -g'
+
+build() {
+  cd "$srcdir"
+}
+
+# package() {
+#   mkdir -p "$pkgdir/usr/bin"
+#   cp $srcdir/apt* $srcdir/dpkg "$pkgdir/usr/bin"
+#   find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+#   find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+#   find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+# }
+
+# vim:set ts=2 sw=2 et:

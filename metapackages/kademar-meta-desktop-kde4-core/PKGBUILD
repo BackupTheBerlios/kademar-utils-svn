@@ -1,0 +1,38 @@
+# Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+pkgname=kademar-meta-desktop-kde4-core
+pkgver=1.3
+pkgrel=3
+epoch=
+pkgdesc="kademar Metapackage Desktop KDE4 Core"
+arch=(any)
+url="http://www.kademar.org"
+license=('GPL')
+groups=()
+depends=('kademar-meta-common-utils' 'kde-wallpapers' 'kdebase-dolphin' 'kdebase-kdepasswd' 'kdebase-kdialog' 'kdebase-keditbookmarks' 'kdebase-kfind' 'kdebase-konsole' 'kdebase-kwrite' 'kdebase-plasma' 'kdemultimedia-kmix' 'kdeutils-kcalc' 'kdeutils-ark' 'kdegraphics-kolourpaint' 'kdegames-kpatience' 'kdegames-kmines' 'kde-l10n-ca' 'kde-l10n-es' 'gtk-engines' 'kdenetwork-kppp' 'kdeplasma-applets-networkmanagement' 'oxygen-gtk2' 'oxygen-gtk3' 'kdegraphics-ksnapshot' 'kdegraphics-ksaneplugin' 'kdegraphics-svgpart' 'kdegraphics-thumbnailers' 'kdegraphics-kamera')
+makedepends=()
+checkdepends=()
+optdepends=('kdesudo: replace su password by sudo')
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=kademar-meta-desktop-kde4-core.install
+changelog=
+#source=($pkgname-$pkgver.tar.gz)
+noextract=()
+#md5sums=('a1be535e26c780470e3c599b44e7d6bc') #generate with 'makepkg -g'
+
+build() {
+  cd "$srcdir"
+}
+
+# package() {
+#   mkdir -p "$pkgdir/usr/bin"
+#   cp $srcdir/apt* $srcdir/dpkg "$pkgdir/usr/bin"
+#   find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+#   find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+#   find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+# }
+
+# vim:set ts=2 sw=2 et:

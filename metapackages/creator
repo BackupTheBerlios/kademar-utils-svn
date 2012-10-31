@@ -1,0 +1,13 @@
+for i in `ls | grep -v creator`; do cd $i; makepkg -d -f; cd ..; done
+
+echo "
+  *  Enter folder to put pakages *"
+read key
+
+mkdir -p $key
+mv */*xz $key
+
+
+
+
+#repo-add /pkgserver/kademar.db.tar.gz /pkgserver/*.xz

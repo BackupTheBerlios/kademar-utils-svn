@@ -1,0 +1,53 @@
+# Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+pkgname=kademar-meta-apps-full
+pkgver=1.9
+pkgrel=1
+epoch=
+pkgdesc="kademar Metapackage Full Applications - Complete Install with KDE4"
+arch=(any)
+url="http://www.kademar.org"
+license=('GPL')
+groups=()
+depends=('kademar-meta-desktop-kde4-full' 'kademar-meta-pidgin' 'kademar-meta-libreoffice' 'kademar-meta-libreoffice-extensions' 'kademar-meta-gimp' 'grub2-editor' 'truecrypt' 'amsn' 'aircrack-ng' 'amule' 'firefox' 'firefox-multiprofile' 'firefox-i18n-ca' 'firefox-i18n-es-es' 'ekiga' 'audacity' 'gksu' 'transmission-gtk' 'thunderbird' 'thunderbird-i18n-ca' 'thunderbird-i18n-es' 'kino' 'blender' 'shared-color-profiles' 'oxygen-icons' 'scribus' 'kdenlive' 'stellarium' 'gltron' 'mysql' 'unison' 'qt-recordmydesktop' 'avidemux-gtk' 'kaffeine' 'me-tv' 'devede' 'gtkpod' 'inkscape' 'gstreamer0.10-good' 'gstreamer0.10-good-plugins' 'gstreamer0.10-ugly-plugins' 'gstreamer0.10-base' 'gstreamer0.10-base-plugins' 'wine' 'wine_gecko' 'winetricks' 'winestuff' 'gsynaptics' 'playonlinux' 'rdesktop' 'wammu' 'bluedevil' 'blueman' 'clementine' 'gnome-icon-theme' 'teamviewer' 'wesnoth' 'wesnoth-data' 'frozen-bubble' 'extremetuxracer' 'crack-attack' 'crack-attack-sounds' 'pingus' 'astromenace' 'supertux' 'ltris' 'clementine' ' gstreamer0.10-base-plugins' 'gstreamer0.10-good-plugins' 'gstreamer0.10-bad-plugins' 'gstreamer0.10-ugly-plugins' 'gstreamer0.10-ffmpeg' 'xbmc' 'me-tv' 'lcms' ' irda-utils' 'appset-qt' 'gsmartcontrol' 'chromium')
+#gtk-theme-switch2/gtk-kde4 - qtcurve geramik
+#'gtk-aurora-engine' 
+#kdenlive/kino
+#smplayer smplayer-themes
+# 'audacious' 'audacious-plugins'
+#tuxtype
+#playonlinux/winetricks/winegames
+#gltron/armagetron
+#css-miami
+#ttf tf-wqy-zenhei
+#bluedevil / blueman
+#rdesktop?
+#netpanzer?  millor akell online hexagonal?
+#timidity timidity-freepats?
+#package sound-station-creation
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+#source=($pkgname-$pkgver.tar.gz)
+noextract=()
+#md5sums=('a1be535e26c780470e3c599b44e7d6bc') #generate with 'makepkg -g'
+
+build() {
+  cd "$srcdir"
+}
+
+# package() {
+#   mkdir -p "$pkgdir/usr/bin"
+#   cp $srcdir/apt* $srcdir/dpkg "$pkgdir/usr/bin"
+#   find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+#   find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+#   find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+# }
+
+# vim:set ts=2 sw=2 et:

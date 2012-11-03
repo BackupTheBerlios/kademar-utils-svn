@@ -1,0 +1,11 @@
+[unit]
+Description="Kademar Services (old rc.local)"
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/etc/rc.d/kademar-services &
+
+[Install]
+WantedBy=multi-user.target
+

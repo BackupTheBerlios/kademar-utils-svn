@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#mount all
+mnt-kademar
+
+#Start VirtualBox services if it's virtual session
+[ -n "$(lspci | grep -i virtualbox)" -a -e /etc/rc.d/vboxservice ] && rc.d start vboxservice
+      
+#Process events that we couldn't earlier (udev without dbus started)
+udevadm trigger --action=add
+

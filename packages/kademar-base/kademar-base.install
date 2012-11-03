@@ -21,16 +21,13 @@ HOME_URL="http://www.kademar.org/"
 SUPPORT_URL="http://www.kademar.org/"
 BUG_REPORT_URL="http://bugs.kademar.org/"' > /etc/os-release
     
-    if [ -z "$(grep mnt-kademar /etc/rc.local)" ]; then
-      echo "mnt-kademar" >> /etc/rc.local
-      
-      echo '[ -n "$(lspci | grep -i virtualbox)" -a -e /etc/rc.d/vboxservice ] && rc.d start vboxservice'  >> /etc/rc.local
-      
-      echo "udevadm trigger --action=add"  >> /etc/rc.local
-      
-    fi
-    
     [ -z "$(grep -i kernel.sysrq /etc/sysctl.conf | grep -i 1)" ] && echo "kernel.sysrq = 1" >> /etc/sysctl.conf
+    
+systemctl enable kademar-services
+}
+
+pre_remove() {
+  systemctl disable kademar-services
 }
 
 post_remove() {
@@ -72,4 +69,7 @@ ANSI_COLOR="0;36"
 HOME_URL="http://www.kademar.org/"
 SUPPORT_URL="http://www.kademar.org/"
 BUG_REPORT_URL="http://bugs.kademar.org/"' > /etc/os-release
+
+systemctl enable kademar-services
+
 }

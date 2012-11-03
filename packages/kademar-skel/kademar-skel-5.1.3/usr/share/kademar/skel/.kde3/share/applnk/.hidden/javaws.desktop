@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=java -jar
+InitialPreference=3
+MimeType=application/java;application/x-jar
+Name=javaws
+Terminal=false
+Type=Application

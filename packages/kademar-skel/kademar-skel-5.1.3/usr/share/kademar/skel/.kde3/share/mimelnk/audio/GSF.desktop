@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=Sintetitzador
+Hidden=false
+Icon=sound
+MimeType=audio/GSF
+Patterns=*.GSF;*.gsf
+Type=MimeType

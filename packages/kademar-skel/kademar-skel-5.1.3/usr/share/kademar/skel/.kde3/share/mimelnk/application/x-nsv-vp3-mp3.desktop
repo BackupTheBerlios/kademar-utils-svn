@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=MimeType
+MimeType=application/x-nsv-vp3-mp3
+Icon=netscape_doc
+Comment=Netscape mplayerplug-in 3.31
+X-KDE-AutoEmbed=true
+X-KDE-nsplugin=true
+Patterns=*.nsv
+Name=Nullsoft Streaming Video

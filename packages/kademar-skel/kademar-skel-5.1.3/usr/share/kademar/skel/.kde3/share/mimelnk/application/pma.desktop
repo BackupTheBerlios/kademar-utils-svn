@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=
+Hidden=false
+Icon=/usr/local/bin/mandvdico.png
+MimeType=application/pma
+Patterns=*.PMA;*.pma
+Type=MimeType

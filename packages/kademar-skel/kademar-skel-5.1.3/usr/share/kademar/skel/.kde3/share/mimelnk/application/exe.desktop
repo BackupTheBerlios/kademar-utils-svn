@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=Windows Executable
+Hidden=false
+Icon=wabi
+MimeType=application/exe
+Patterns=*.EXE;*.exe;*.Exe
+Type=MimeType

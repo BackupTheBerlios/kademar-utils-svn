@@ -1,0 +1,6 @@
+if [ ! -e "$HOME/.kademar/xdg-dirs-kademar" ]; then
+	xdg-user-dirs-update
+	sh /usr/bin/xdg-user-dirs-update-icons
+	[ ! -e "$HOME/.kademar/" ] && mkdir -p "$HOME/.kademar/"
+	touch "$HOME/.kademar/xdg-dirs-kademar"
+fi

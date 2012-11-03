@@ -1,0 +1,6 @@
+prog "CADI" "/usr/share/icons/crystalsvg/32x32/apps/package_settings.png" executa cadi
+prog "XTerm" "/usr/kdemar/png/konsole.png" xterm
+prog "Fitxers Personals" "/usr/share/icons/crystalsvg/32x32/apps/kfm_home.png" konqueror $HOME
+prog "Pc" "/usr/kdemar/png/Pc.png" konqueror $HOME/Pc
+prog "Mozilla Firefox" "/usr/kdemar/png/firefox-logo.png" firefox
+prog "OpenOffice.org Writer - Document de Text" "/usr/share/icons/hicolor/32x32/apps/openofficeorg-20-writer.png" /usr/bin/oowriter

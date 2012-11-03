@@ -1,0 +1,8 @@
+[Desktop Entry]
+Comment=Sintetitzador
+Hidden=false
+Icon=sound
+MimeType=audio/SPC
+Patterns=*.SPC;*.spc
+Type=MimeType
+X-KDE-AutoEmbed=false

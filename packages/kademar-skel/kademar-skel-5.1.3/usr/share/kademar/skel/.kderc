@@ -1,0 +1,13 @@
+[General]
+StandardFont=Sans Serif,10,-1,5,50,0,0,0,0,0
+activeFont=Sans Serif,10,-1,5,75,0,0,0,0,0
+background=234,233,232
+fixed=Monospace,10,-1,5,50,0,0,0,0,0
+font=Sans Serif,10,-1,5,50,0,0,0,0,0
+menuFont=Sans Serif,10,-1,5,50,0,0,0,0,0
+selectBackground=169,209,255
+selectForeground=3,3,3
+taskbarFont=Sans Serif,10,-1,5,50,0,0,0,0,0
+toolBarFont=Sans Serif,10,-1,5,50,0,0,0,0,0
+windowBackground=255,255,255
+windowForeground=0,0,0

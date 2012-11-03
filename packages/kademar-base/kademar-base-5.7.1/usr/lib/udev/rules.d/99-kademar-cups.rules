@@ -1,0 +1,2 @@
+ACTION=="add", KERNEL=="printer", RUN+="/bin/sh -c '[ -x /etc/rc.d/cupsd -a ! -e /var/run/daemons/cupsd ] && rc.d start cupsd >/dev/null'"
+ACTION=="add", KERNEL=="lp*", RUN+="/bin/sh -c '[ -x /etc/rc.d/cupsd -a ! -e /var/run/daemons/cupsd ] && rc.d start cupsd >/dev/null'"

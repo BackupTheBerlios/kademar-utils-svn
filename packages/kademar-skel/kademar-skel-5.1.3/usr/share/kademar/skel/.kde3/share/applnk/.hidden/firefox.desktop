@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=firefox
+InitialPreference=1
+MimeType=application/xpi
+Name=xpi
+Terminal=false
+Type=Application

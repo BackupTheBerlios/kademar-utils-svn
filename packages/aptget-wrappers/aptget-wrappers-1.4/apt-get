@@ -1,0 +1,71 @@
+#!/bin/bash
+# Bash wrapper for pacman for debian users
+#
+# Usage extracted from https://wiki.archlinux.org/index.php/Pacman_Rosetta
+#
+# Adonay Sanz Alsina - 23 sept 2011
+# License GNU/GPL 3 or higher
+#
+
+var="${@:2}"
+
+var=`echo $var | sed s."--reinstall"..g | sed s."--download-only"..g `
+#avoid use of  repo/package
+var="`echo $var | cut -d/ -f2`"
+
+
+pacman=pacman
+[ -n "`which pacman-color 2>/dev/null`" ] && pacman=pacman-color
+
+case "$1" in
+"update")
+$pacman -Sy
+# [ -n "$yaourt" ] && yaourt -Sy
+;;
+"clean")
+$pacman -Sc
+;;
+"autoclean")
+$pacman -Scc
+;;
+"list-upgrade")
+$pacman -Qu
+;;
+"autoremove")
+$pacman -Qdtq | pacman -Rs -
+;;
+"install --download-only"|"--download-only")
+$pacman -Sw $var
+;;
+"--fix-broken")
+$pacman dep level -testdb
+;;
+"install --reinstall")
+$pacman -S $var
+;;
+"dist-upgrade"|"upgrade")
+$pacman -Su
+  if [ -n "`which packer 2>/dev/null`" ]; then
+    packer --auronly -Syu
+  else
+    [ -n "`which yaourt 2>/dev/null`" ] && yaourt -Syu --aur
+  fi
+;;
+"install")
+$pacman -S $var
+if [ "$?" != 0 ]; then
+  if [ -n "`which packer 2>/dev/null`" ]; then
+    packer  --auronly -S $var
+  else  
+    [ -n "`which yaourt 2>/dev/null`" ] && yaourt -S --aur $var
+  fi
+
+fi
+;;
+"remove")
+$pacman -R $var
+;;
+*)
+echo "Command not recognised"
+;;
+esac

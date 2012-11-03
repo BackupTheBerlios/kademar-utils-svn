@@ -1,0 +1,18 @@
+[Desktop Entry]
+Comment=Navegue por la web
+Comment[es]=Navegue por la web
+Exec=iceweasel -browser %u
+GenericName=Navegador web
+GenericName[es]=Navegador web
+Icon=iceweasel
+MimeType=application/vnd.mozilla.xul+xml;application/xhtml+xml;application/xml;image/gif;image/jpeg;image/png;text/html;text/xml
+Name=Navegador web Iceweasel
+Name[es]=Navegador web Iceweasel
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DCOP-ServiceType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

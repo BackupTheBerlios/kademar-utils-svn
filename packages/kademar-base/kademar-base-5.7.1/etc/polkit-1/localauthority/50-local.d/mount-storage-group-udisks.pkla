@@ -1,0 +1,6 @@
+[Mount system internal media for group storage udisks]
+Identity=unix-group:storage
+Action=org.freedesktop.udisks.filesystem-*
+ResultAny=yes
+ResultInactive=yes
+ResultActive=yes

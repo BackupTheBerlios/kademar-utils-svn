@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<config>
+   <entry>
+      <attribute>receiveddir</attribute>
+      <value>/home/clawlinux/amsn_received</value>
+   </entry>
+   <entry>
+	   <attribute>autocheckver</attribute>
+	   <value>0</value>
+   </entry>
+   <entry>
+	   <attribute>disable_new_ft_protocol</attribute>
+	   <value>1</value>
+   </entry>
+   <entry>
+	   <attribute>soundcommand</attribute>
+	   <value>paplay $sound</value>
+   </entry>
+   <entry>
+	   <attribute>openfilecommand</attribute>
+	   <value>xdg-open $file</value>
+   </entry>
+   <entry>
+	   <attribute>browser</attribute>
+	   <value>iceweasel $url</value>
+   </entry>
+   
+</config>

@@ -1,0 +1,39 @@
+# Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+pkgname=aptget-wrappers
+pkgver=1.4
+pkgrel=1
+epoch=
+pkgdesc="Apt-get wrappers for pacman"
+arch=(any)
+url="http://www.kademar.org"
+license=('GPL')
+groups=('kademar')
+depends=('bash' 'pacman')
+makedepends=()
+checkdepends=()
+optdepends=('packer: Support for AUR packages (better)'
+'yaourt: Support for AUR packages')
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=($pkgname-$pkgver.tar.gz)
+noextract=()
+md5sums=('3333662fdf59d385bc9c45737eb36085') #generate with 'makepkg -g'
+
+build() {
+  cd "$srcdir"
+}
+
+package() {
+  mkdir -p "$pkgdir/usr/bin"
+  cp $srcdir/$pkgname-$pkgver/* "$pkgdir/usr/bin"
+  find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+  find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+  find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+}
+
+# vim:set ts=2 sw=2 et:

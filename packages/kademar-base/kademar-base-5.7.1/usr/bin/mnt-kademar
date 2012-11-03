@@ -1,0 +1,8 @@
+#!/bin/bash
+#udisks --mount /dev/sda1 --mount-options umask=0000
+
+for DEVICE in `udisks --dump | tr -d ' ' | grep 'device-file' | cut -d ':' -f2`
+do
+  udisks --mount "$DEVICE" --mount-options umask=0000 >/dev/null
+  udisks --mount "$DEVICE" >/dev/null
+done

@@ -1,0 +1,34 @@
+# Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+pkgname=heliox-livecd
+pkgver=5.4
+pkgrel=1
+epoch=
+pkgdesc="Heliox Linux basic LiveCD package and utilities - remove on install"
+arch=('any')
+url="http://www.proyectoheliox.org"
+license=('GPL')
+groups=()
+depends=('kademar-livecd')
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=heliox-livecd.install
+changelog=
+source=("$pkgname-$pkgver.tar.gz")
+noextract=()
+md5sums=('402fa9c02bd4e59d2ebe79074b4d10e3') #generate with 'makepkg -g'
+
+
+package() {
+  cp -a $srcdir/$pkgname-$pkgver/* ${pkgdir}
+  cd ${pkgdir} && rm -fr `find . -name ".svn"` && rm -fr `find . -name "*.pyc"` && rm -f `find . -name "*~"`
+  find "$pkgdir"/etc/ -type f -exec chmod 644 "{}" \;
+  find "$pkgdir"/etc/ -type d -exec chmod 755 "{}" \;
+#   find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+#   find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+}

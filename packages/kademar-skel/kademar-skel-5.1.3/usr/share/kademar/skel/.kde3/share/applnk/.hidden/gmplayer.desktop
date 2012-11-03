@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=smplayer
+InitialPreference=10
+MimeType=uri/pnm;uri/mms;uri/rtspt;uri/rtspu;uri/mmst;uri/mmsu;audio/basic;audio/x-flac;audio/aac;audio/ac3;audio/x-aiff;audio/x-musepack;video/m2t;audio/x-wav;video/x-flv;video/x-flic
+Name=smplayer
+Terminal=false
+Type=Application

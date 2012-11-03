@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="sudo-mode" mtime="1249692980" type="bool" value="true"/>
+	<entry name="disable-grab" mtime="1233026179" type="bool" value="true"/>
+</gconf>

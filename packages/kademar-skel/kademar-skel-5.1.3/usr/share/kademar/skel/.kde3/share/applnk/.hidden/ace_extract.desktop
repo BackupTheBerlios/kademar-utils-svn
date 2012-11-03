@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=/usr/kdemar/scripts/ace_extract
+InitialPreference=2
+MimeType=application/x-ace
+Name=ace_extract
+Terminal=false
+Type=Application

@@ -1,0 +1,5 @@
+[Desktop Entry]
+Comment=Gráficos vectoriales escalables
+Hidden=false
+Patterns=*.svg;*.SVG;*.svgz;*.SVGZ
+X-KDE-AutoEmbed=false

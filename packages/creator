@@ -1,0 +1,58 @@
+#!/bin/bash
+ls --ignore=creator* -1 | while read i
+ do
+ if [ -d "$i" ]; then
+ 
+ cd $i
+  
+  #for j in `ls $i*`
+  #do
+  #  if [ ! -d "$j" ]; then
+  #    echo deleting $j
+  #  fi
+  #done
+
+  rm -fr src pkg build
+  rm -fr *xz
+  rm -fr *gz
+  rm -f *~
+  
+  
+  ls -1 | while read j
+  do
+    if [ -d "$j" -a -e "PKGBUILD" ]; then
+      tar -cf "$j.tar" "$j"
+      gzip -9 "$j.tar"
+      num=${j##*-}
+
+      sed "s~pkgver=.*~pkgver=$num~g" -i PKGBUILD
+      md5sum=$(makepkg -g 2>/dev/null| cut -d\' -f2)
+      md5sumorig=$(grep -i md5sums PKGBUILD | cut -d\' -f2)
+      sed s."$md5sumorig"."$md5sum".g -i PKGBUILD
+
+     # sed "s~md5sums=.*~"$md5sum"~g" -i PKGBUILD; a=$j
+     
+      makepkg -d
+    fi
+  done
+  
+cd ..  
+fi
+
+ done
+
+
+
+#for i in `ls | grep -v creator`; do cd $i; makepkg -d -f; cd ..; done
+
+echo "
+  *  Enter folder to put pakages *"
+read key
+
+mkdir -p $key
+mv */*xz $key
+
+
+
+
+#repo-add /pkgserver/kademar.db.tar.gz /pkgserver/*.xz

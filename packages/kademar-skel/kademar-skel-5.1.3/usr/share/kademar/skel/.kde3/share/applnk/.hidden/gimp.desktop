@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=gimp
+InitialPreference=2
+MimeType=image/x-wmf;image/x-xcf-gimp
+Name=gimp
+Terminal=false
+Type=Application

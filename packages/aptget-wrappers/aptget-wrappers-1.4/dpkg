@@ -1,0 +1,40 @@
+#!/bin/bash
+# Bash wrapper for pacman for debian users
+#
+# Usage extracted from https://wiki.archlinux.org/index.php/Pacman_Rosetta
+#
+# Adonay Sanz Alsina - 23 sept 2011
+# License GNU/GPL 3 or higher
+#
+
+pacman=pacman
+
+var="${@:2}"
+[ -n "`which pacman-color 2>/dev/null`" ] && pacman=pacman-color
+
+#if [ -n "`which pacman-color`" ]; then
+# pacman=pacman-color
+#else
+# pacman=pacman
+#fi
+
+#avoid use of  repo/package
+var="`echo $var | cut -d/ -f2`"
+
+case "$1" in
+"-i")
+$pacman -U $var
+;;
+"-L")
+$pacman -Ql $var
+;;
+"-l")
+$pacman -Q
+;;
+"-S")
+$pacman -Ql | grep -i $var
+;;
+*)
+echo "Command not recognised"
+;;
+esac

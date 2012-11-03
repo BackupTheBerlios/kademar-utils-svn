@@ -1,0 +1,36 @@
+[core_display]
+active_plugins=core,ccp,water,widget,workarounds,annotate,resize,zoom,splash,neg,shift,fadedesktop,mousepoll,move,thumbnail,firepaint,regex,decoration,png,place,imgjpeg,snow,animation,loginout,reflex,wobbly,fade,cube,mag,rotate,scale,showmouse,addhelper,group,3d,expo,ezoom,switcher,bench
+
+[core_screen0]
+hsize=4
+
+[cube_screen0]
+images=/usr/share/wallpapers/kdemar48.png
+scale_image=false
+skydome=true
+skydome_animated=true
+skydome_gradient_end_color=#feffc775
+skydome_image=
+
+[cubecaps_screen0]
+bottom_images=/usr/share/wallpapers/kdemar48.png
+top_images=/usr/share/wallpapers/kdemar48.png
+
+[decoration_display]
+command=kde-window-decorator --replace
+
+[shift_screen0]
+mode=1
+
+[showmouse_screen0]
+radius=61
+
+[snap_screen0]
+snap_distance (Integrated)=30
+
+[snow_display]
+snow_direction=0
+
+[splash_display]
+background=/usr/share/kdemar/icons/kdemar_logo_nou.png
+logo=/usr/share/kdemar/icons/kdemar_logo_nou.png

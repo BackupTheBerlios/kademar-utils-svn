@@ -1,0 +1,18 @@
+[Auto Actions]
+media/audiocd=#NothinAction
+media/blankcd=#NothinAction
+media/blankdvd=#NothinAction
+media/camera_mounted=#NothinAction
+media/camera_unmounted=#NothinAction
+media/cdrom_mounted=#NothinAction
+media/cdrom_unmounted=#NothinAction
+media/cdwriter_mounted=#NothinAction
+media/cdwriter_unmounted=#NothinAction
+media/dvd_mounted=#NothinAction
+media/dvd_unmounted=#NothinAction
+media/dvdvideo=#NothinAction
+media/gphoto2camera=#NothinAction
+media/removable_mounted=#NothinAction
+media/removable_unmounted=#NothinAction
+media/svcd=#NothinAction
+media/vcd=#NothinAction

@@ -1,0 +1,35 @@
+# Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+pkgname=kademar-restricted
+pkgver=5.0.2
+pkgrel=1
+epoch=
+pkgdesc="Kademar Linux restricted Package with firmwares"
+arch=('any')
+url="http://www.kademar.org"
+license=('Custom: Multiple licenses')
+groups=()
+depends=()
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("$pkgname-$pkgver.tar.gz")
+noextract=()
+md5sums=('1649ff5b990cb82401ed140aa18e6a24') #generate with 'makepkg -g'
+
+
+package() {
+  cp -a $startdir/src/$pkgname-$pkgver/* ${pkgdir}
+  cd ${pkgdir} && rm -fr `find . -name ".svn"` && rm -fr `find . -name "*.pyc"` && rm -f `find . -name "*~"`
+  find "$pkgdir"/etc/ -type f -exec chmod 644 "{}" \;
+  find "$pkgdir"/etc/ -type d -exec chmod 755 "{}" \;
+  find "$pkgdir"/usr/lib/ -type f -exec chmod 644 "{}" \;
+  find "$pkgdir"/usr/lib/ -type d -exec chmod 755 "{}" \;
+  #find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+}

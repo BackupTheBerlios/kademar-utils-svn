@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=msiexec /i
+InitialPreference=2
+MimeType=application/msi
+Name=wine_msi
+Terminal=false
+Type=Application

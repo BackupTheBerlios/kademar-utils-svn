@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=Executable
+Hidden=false
+Icon=shellscript
+MimeType=application/run
+Patterns=*.RUN;*.run;*.package;*.Package;*.PACKAGE;*.Run
+Type=MimeType

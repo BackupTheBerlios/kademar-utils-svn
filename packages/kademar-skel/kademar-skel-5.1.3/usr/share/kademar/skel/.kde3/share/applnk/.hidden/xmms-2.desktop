@@ -1,0 +1,19 @@
+[Desktop Entry]
+Comment=
+Comment[es]=
+Exec=audacious -e %U
+GenericName=
+GenericName[es]=
+Icon=
+InitialPreference=2
+MimeType=audio/SPC;audio/mpegurl;audio/vorbis;audio/x-oggflac;audio/x-wav;audio/x-mp2;audio/x-mp3;audio/x-vorbis;audio/x-mod;audio/x-ms-wma;audio/x-scpls;application/ogg
+Name=XMMS encola
+Name[es]=XMMS encola
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DCOP-ServiceType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

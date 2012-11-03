@@ -1,0 +1,10 @@
+[Desktop Entry]
+Comment=Netscape mplayerplug-in 3.55
+Hidden=false
+Icon=netscape_doc
+MimeType=video/x-flv
+Name=Flash Video
+Patterns=*.flv
+Type=MimeType
+X-KDE-AutoEmbed=false
+X-KDE-nsplugin=true

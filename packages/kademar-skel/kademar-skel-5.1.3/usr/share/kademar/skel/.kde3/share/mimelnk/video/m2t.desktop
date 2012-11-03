@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=Video Gravat
+Hidden=false
+Icon=video
+MimeType=video/m2t
+Patterns=*.m2t;*.M2T
+Type=MimeType

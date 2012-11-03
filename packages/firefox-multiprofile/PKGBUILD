@@ -1,0 +1,32 @@
+# Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+pkgname=firefox-multiprofile
+pkgver=1.0
+pkgrel=1
+epoch=
+pkgdesc="Show profiles of firefox in on main menu"
+arch=('any')
+url="http://www.kademar.org"
+license=('GPL')
+groups=()
+depends=("firefox")
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("$pkgname-$pkgver.tar.gz")
+noextract=()
+md5sums=('3ccbef132e0250147bd7de35a7aee63e') #generate with 'makepkg -g'
+
+
+package() {
+  cp -a $startdir/src/$pkgname-$pkgver/* ${pkgdir}
+  cd ${pkgdir} && rm -fr `find . -name ".svn"` && rm -fr `find . -name "*.pyc"` && rm -f `find . -name "*~"`
+  find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+  find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+}

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=quanta
+InitialPreference=6
+MimeType=text/html
+Name=quanta
+Terminal=false
+Type=Application

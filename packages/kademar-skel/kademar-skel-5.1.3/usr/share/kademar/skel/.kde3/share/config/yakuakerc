@@ -1,0 +1,16 @@
+[General]
+ShowAlternativeShortcutConfig=false
+
+[Options]
+background=false
+focus=false
+height=50
+location=50
+screen=1
+steps=20
+tabs=true
+width=100
+
+[Shortcuts]
+add_tab=Alt+Ctrl+N
+remove_tab=Ctrl+W

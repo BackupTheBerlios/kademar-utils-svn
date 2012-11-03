@@ -1,0 +1,12 @@
+[Calendar]
+Size=251,184
+
+[Date]
+Font=Sans Serif,11,-1,0,50,0,0,0,0,0
+
+[Digital]
+Show_Date=true
+
+[General]
+Initial_TZ=0
+RemoteZones=

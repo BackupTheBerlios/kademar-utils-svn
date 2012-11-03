@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# Adonay Sanz
+# License GNU/GPL v3 or higher
+#
+# http://www.runasimipi.org
+#
+#
+old=$LANG
+LANG="ayc_BO.UTF-8"
+export LANG
+abiword &
+LANG=$old
+export LANG

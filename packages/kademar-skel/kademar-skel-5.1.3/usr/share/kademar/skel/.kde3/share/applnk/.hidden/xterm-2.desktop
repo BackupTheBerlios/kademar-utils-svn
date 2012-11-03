@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=xterm -e "playgsf %U"
+InitialPreference=2
+MimeType=
+Name=xterm
+Terminal=false
+Type=Application

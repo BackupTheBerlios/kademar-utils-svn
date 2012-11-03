@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=k3b
+InitialPreference=2
+MimeType=application/x-iso
+Name=k3b
+Terminal=false
+Type=Application

@@ -1,0 +1,75 @@
+post_install() {
+    echo "Kademar Linux \r (\l)
+    
+*******
+
+ If you are here because you had a problem (probably you changed graphic card of your computer), you can install graphic drivers, after login, with:
+ 
+   - Nvidia Cards, run:  sudo install-nvidia-drivers
+   - Ati    Cards, run:  sudo install-ati-drivers
+   - Other  Cards, run:  sudo install-other-drivers
+
+*******
+
+" > /etc/issue
+
+    echo 'NAME="Kademar Linux"
+ID=kademar
+PRETTY_NAME="Kademar Linux"
+ANSI_COLOR="0;36"
+HOME_URL="http://www.kademar.org/"
+SUPPORT_URL="http://www.kademar.org/"
+BUG_REPORT_URL="http://bugs.kademar.org/"' > /etc/os-release
+    
+    if [ -z "$(grep mnt-kademar /etc/rc.local)" ]; then
+      echo "mnt-kademar" >> /etc/rc.local
+      
+      echo '[ -n "$(lspci | grep -i virtualbox)" -a -e /etc/rc.d/vboxservice ] && rc.d start vboxservice'  >> /etc/rc.local
+      
+      echo "udevadm trigger --action=add"  >> /etc/rc.local
+      
+    fi
+    
+    [ -z "$(grep -i kernel.sysrq /etc/sysctl.conf | grep -i 1)" ] && echo "kernel.sysrq = 1" >> /etc/sysctl.conf
+}
+
+post_remove() {
+    echo "Arch Linux \r (\l)
+
+" > /etc/issue
+
+    echo 'NAME="Arch Linux"
+ID=arch
+PRETTY_NAME="Arch Linux"
+ANSI_COLOR="0;36"
+HOME_URL="http://www.archlinux.org/"
+SUPPORT_URL="http://bbs.archlinux.org/"
+BUG_REPORT_URL="http://bugs.archlinux.org/"' > /etc/os-release
+
+}
+
+
+
+post_update() {
+    echo "Kademar Linux \r (\l)
+    
+*******
+
+ If you are here because you had a problem (probably you changed graphic card of your computer), you can install graphic drivers, after login, with:
+ 
+   - Nvidia Cards, run:  sudo install-nvidia-drivers
+   - Ati    Cards, run:  sudo install-ati-drivers
+   - Other  Cards, run:  sudo install-other-drivers
+
+*******
+
+" > /etc/issue
+
+    echo 'NAME="Kademar Linux"
+ID=kademar
+PRETTY_NAME="Kademar Linux"
+ANSI_COLOR="0;36"
+HOME_URL="http://www.kademar.org/"
+SUPPORT_URL="http://www.kademar.org/"
+BUG_REPORT_URL="http://bugs.kademar.org/"' > /etc/os-release
+}

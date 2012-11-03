@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=kdenlive
+InitialPreference=2
+MimeType=application/kdenlive
+Name=kdenlive
+Terminal=false
+Type=Application

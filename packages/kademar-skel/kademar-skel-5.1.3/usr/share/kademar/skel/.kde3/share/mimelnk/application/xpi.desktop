@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=IceWeasel-Firefox Plugin
+Hidden=false
+Icon=iceweasel
+MimeType=application/xpi
+Patterns=*.XPI;*.Xpi;*.xpi
+Type=MimeType

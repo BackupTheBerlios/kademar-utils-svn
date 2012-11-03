@@ -1,0 +1,18 @@
+[Desktop Entry]
+Comment=Crear y editar texto y gráficos de cartas, informes, documentos y páginas Web con Writer.
+Comment[es]=Crear y editar texto y gráficos de cartas, informes, documentos y páginas Web con Writer.
+Exec=oowriter
+GenericName=
+GenericName[es]=
+Icon=ooo-writer
+MimeType=application/msword;application/rtf;application/vnd.ms-word;application/vnd.oasis.opendocument.text;application/vnd.oasis.opendocument.text-template;application/vnd.stardivision.writer;application/vnd.sun.xml.writer;application/vnd.sun.xml.writer.global;application/vnd.sun.xml.writer.template;application/wordperfect
+Name=OpenOffice.org Writer
+Name[es]=OpenOffice.org Writer
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DCOP-ServiceType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

@@ -1,0 +1,33 @@
+# Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+pkgname=heliox-abiword-ethnic
+pkgver=1.1
+pkgrel=1
+epoch=
+pkgdesc="Abiword Ethnic languages"
+arch=('any')
+url="http://www.runasimipi.org"
+license=('GPL')
+groups=()
+depends=('bash' 'abiword' )
+makedepends=()
+checkdepends=()
+optdepends=('abiword-plugins: Additional plugins for Abiword')
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("$pkgname-$pkgver.tar.gz")
+noextract=()
+md5sums=('4cbcfdb279822cbc7482abf5a1683f8b') #generate with 'makepkg -g'
+
+
+package() {
+  cp -a $startdir/src/$pkgname-$pkgver/* ${pkgdir}
+  cd ${pkgdir} && rm -fr `find . -name ".svn"` && rm -fr `find . -name "*.pyc"` && rm -f `find . -name "*~"`
+  find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+  find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+  find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+}

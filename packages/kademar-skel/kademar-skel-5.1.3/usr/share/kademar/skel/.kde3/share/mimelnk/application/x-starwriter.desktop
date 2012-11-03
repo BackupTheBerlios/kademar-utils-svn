@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=MimeType
+MimeType=application/x-starwriter
+Icon=netscape_doc
+Comment=Netscape MozPlugger 1.7.3 handles QuickTime Windows Media Player Plugin
+X-KDE-AutoEmbed=true
+X-KDE-nsplugin=true
+Name=StarWriter 4.x documents

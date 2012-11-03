@@ -1,0 +1,4 @@
+SendUserAgent=true
+
+[mail.google.com]
+UserAgent=Mozilla/5.0 (X11; U; i686 Linux; ca, en_US; rv:1.9.0.5) Gecko/2008120121 Firefox/3.0.5

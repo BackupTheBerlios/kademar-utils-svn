@@ -1,0 +1,5 @@
+if [ ! -e "$HOME/.kademar/initial-soundcard-volumes" ]; then
+	sh /usr/bin/soundcard-volume-fix
+	[ ! -e "$HOME/.kademar/" ] && mkdir -p "$HOME/.kademar/"
+	touch "$HOME/.kademar/initial-soundcard-volumes"
+fi

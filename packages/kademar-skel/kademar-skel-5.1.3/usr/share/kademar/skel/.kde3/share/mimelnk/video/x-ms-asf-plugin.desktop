@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=MimeType
+MimeType=video/x-ms-asf-plugin
+Icon=netscape_doc
+Comment=Netscape Windows Media Player Plugin
+X-KDE-AutoEmbed=true
+X-KDE-nsplugin=true
+Name=Media Files

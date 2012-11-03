@@ -1,0 +1,22 @@
+[statusicon]
+ew_visib_prevstatus=FALSE
+pw_visib_prevstatus=FALSE
+mw_visib_prevstatus=FALSE
+scroll_action=0
+rclick_menu=0
+[audacious]
+url_history_length=0
+enabled_gplugins=aosd.so (#0),statusicon.so (#0),hotkey.so (#0),gnomeshortcuts.so (#0)
+output_plugin=/usr/lib/audacious/Output/pulse_audio.so (#0)
+allow_multiple_instances=FALSE
+[aosd]
+position_placement=5
+position_offset_x=0
+position_offset_y=0
+position_maxsize_width=0
+position_multimon_id=-1
+decoration_code=1
+trigger_active=0
+transparency_mode=0
+[skins]
+skin=/usr/share/audacious/Skins/Almond_steel_rounded.wsz

@@ -1,0 +1,40 @@
+# Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+pkgname=heliox-imageset
+pkgver=20120220
+pkgrel=1
+epoch=
+pkgdesc="Custom Heliox Imageset package"
+arch=(any)
+url="http://www.proyectoheliox.org"
+license=('GPL')
+groups=()
+depends=()
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=('kademar-imageset')
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=($pkgname-$pkgver.tar.gz)
+noextract=()
+md5sums=('714a74111f3d48177421c625926ce608') #generate with 'makepkg -g'
+
+#  build() {
+#    cd "$srcdir"
+#  }
+
+package() {
+#   mkdir -p "$pkgdir/usr/bin"
+   cp -a $srcdir/$pkgname-$pkgver/* "$pkgdir"
+#   
+#    cd $(pkgdir) && rm -fr `find . -name ".svn"` && rm -fr `find . -name "*.pyc"` && rm -f `find . -name "*~"`
+#    find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+#    find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+#    find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+}
+
+# vim:set ts=2 sw=2 et:

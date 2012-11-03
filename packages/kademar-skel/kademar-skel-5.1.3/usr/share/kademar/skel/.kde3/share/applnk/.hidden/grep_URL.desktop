@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=/usr/kdemar/utils/grep_URL
+InitialPreference=2
+MimeType=text/x-mswinurl
+Name=grep_URL
+Terminal=false
+Type=Application

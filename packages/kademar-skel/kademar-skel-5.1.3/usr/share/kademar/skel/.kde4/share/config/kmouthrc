@@ -1,0 +1,5 @@
+[TTS System]
+Codec=Local
+Command[$e]=/usr/bin/spd-say
+StdIn=True
+useKttsd=true

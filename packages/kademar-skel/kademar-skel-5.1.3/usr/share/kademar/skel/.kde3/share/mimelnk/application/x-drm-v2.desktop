@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=MimeType
+MimeType=application/x-drm-v2
+Icon=netscape_doc
+Comment=Netscape Windows Media Player Plugin
+X-KDE-AutoEmbed=true
+X-KDE-nsplugin=true
+Name=Windows Media

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=Instalador MSI Windows
+Hidden=false
+Icon=exec_wine
+MimeType=application/msi
+Patterns=*.MSI;*.Msi;*.msi
+Type=MimeType

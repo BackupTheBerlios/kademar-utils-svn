@@ -1,0 +1,19 @@
+[Desktop Entry]
+Comment=
+Comment[es]=
+Exec=kmdr-executor '/opt/acetoneiso/AcetoneISO.kmdr'
+GenericName=
+GenericName[es]=
+Icon=/usr/share/pixmaps/aiso.png
+InitialPreference=2
+MimeType=application/cdrom-image
+Name=acetoneiso
+Name[es]=acetoneiso
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DCOP-ServiceType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

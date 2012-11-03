@@ -1,0 +1,37 @@
+# Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+pkgname=kademar-base
+pkgver=5.7.1
+pkgrel=1
+epoch=
+pkgdesc="Kademar Linux basic package and utilities"
+arch=('any')
+url="http://www.kademar.org"
+license=('GPL')
+groups=()
+depends=('bash')
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=kademar-base.install
+changelog=
+source=("$pkgname-$pkgver.tar.gz")
+noextract=()
+md5sums=('a1d0d2318f04712b7475619fb70ed8ec') #generate with 'makepkg -g'
+
+
+package() {
+  cp -a $startdir/src/$pkgname-$pkgver/* ${pkgdir}
+  cd ${pkgdir} && rm -fr `find . -name ".svn"` && rm -fr `find . -name "*.pyc"` && rm -f `find . -name "*~"`
+  find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+  find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+  find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+  find "$pkgdir"/etc/ -type d -exec chmod 755 "{}" \;
+  find "$pkgdir"/etc/ -type f -exec chmod 644 "{}" \;
+  chmod 700 "$pkgdir"/etc/polkit-1/localauthority
+
+}

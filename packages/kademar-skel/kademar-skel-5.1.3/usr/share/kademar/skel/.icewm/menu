@@ -1,0 +1,152 @@
+menu "Editors" "/usr/share/icons/default.kde/32x32/apps/package_editors.png" {
+    prog "Kwrite" "/usr/share/icons/crystalsvg/32x32/apps/kwrite.png" kwrite
+    prog "Kate" "/usr/share/icons/crystalsvg/32x32/apps/kwrite.png" kate
+}
+menu "Educació" "/usr/share/icons/default.kde/32x32/apps/package_edutainment.png" {
+    prog "Kstars - Planetari 2D" "kstars" 
+}
+menu "Internet" "/usr/share/icons/default.kde/32x32/apps/package_network.png" {
+    prog "Azureus - Client de Bittorrent" "/usr/kdemar/azureus/Azureus.png" /usr/kdemar/azureus/azureus
+    prog "Amsn - Client de MSN" "/usr/share/amsn/icons/32x32/msn.png" amsn
+    prog "aMule - Client d'eMule" "/usr/kdemar/png/amule.png" amule
+    prog "Kopete - Client Multiprotocol" "/usr/share/icons/default.kde/48x48/apps/kopete.png" kopete
+    prog "Gnomemeeting - Videoconferència" "/usr/share/icons/default.kde/32x32/apps/gnomemeeting.png" gnomemeeting
+    prog "gFTP - Client FTP" "/usr/share/pixmaps/gftp.png" gftp
+    prog "KMail - Lector de Mail" "/usr/share/icons/default.kde/32x32/apps/kmail.png" kmail -caption "%c" %i %m
+    prog "Thunderbird - Client de Correu " "/usr/share/pixmaps/mozilla-thunderbird-menu.xpm" mozilla-thunderbird
+    prog "Konqueror - Navegador" "/usr/share/icons/default.kde/32x32/apps/konqueror.png" kfmclient openProfile webbrowsing
+    prog "Mozilla Firefox - Navegador" "/usr/kdemar/png/firefox-logo.png" firefox %u
+    prog "XChat - Client de IRC" "/usr/share/icons/default.kde/32x32/apps/xchat.png" xchat
+    menu "New submenu" "folder" {
+    }
+}
+menu "Jocs" "/usr/share/icons/default.kde/32x32/apps/package_games.png" {
+    menu "Tetris" "/usr/share/icons/default.kde/32x32/apps/package_games.png" {
+        prog "LTris" "file" /usr/games/ltris
+    }
+    menu "Arcade" "/usr/share/icons/default.kde/32x32/apps/package_games_arcade.png" {
+        prog "Frozen Bubble - Similar a Tètris" "/usr/share/pixmaps/frozen-bubble-icon-32x32.png" frozen-bubble
+        prog "KBounce - Joc d'acció" "/usr/share/icons/default.kde/32x32/apps/kbounce.png" /usr/games/kbounce %i %m -caption "%c"
+        prog "XKoules - Joc d'acció" "/usr/X11R6/include/X11/pixmaps/koules-icon.xpm" xkoules
+        prog "LBreakout2 - Trenca Rajoles" "/usr/share/games/lbreakout2/gfx/win_icon.png" lbreakout2
+    }
+    menu "Jocs de cartes" "/usr/share/icons/default.kde/32x32/apps/package_games_card.png" {
+        prog "Kpat - Solitari" "/usr/share/icons/default.kde/32x32/apps/kpat.png" /usr/games/kpat
+    }
+    menu "Jocs de taula" "/usr/share/icons/default.kde/32x32/apps/package_games_board.png" {
+        prog "KMahjongg - Joc Xinès" "/usr/share/icons/default.kde/32x32/apps/kmahjongg.png" /usr/games/kmahjongg
+        prog "Reversi - Othello" "/usr/share/icons/default.kde/32x32/apps/kreversi.png" /usr/games/kreversi
+    }
+    menu "Puzzles" "/usr/share/icons/default.kde/32x32/apps/package_games.png" {
+        prog "Gtans - Tàngram" "/usr/share/pixmaps/gtans_icon.xpm" /usr/games/gtans
+    }
+    menu "Tàctiques i estratègia" "/usr/share/icons/default.kde/32x32/apps/package_games_strategy.png" {
+        prog "KMines - Buscamines" "/usr/share/icons/default.kde/32x32/apps/kmines.png" /usr/games/kmines
+    }
+}
+menu "Multimèdia" "/usr/share/icons/default.kde/32x32/apps/package_multimedia.png" {
+    menu "Gràfics" "/usr/share/icons/default.kde/32x32/mimetypes/image.png" {
+        prog "Gimp - Retoc Fotogràfic" "/usr/share/gimp/2.0/images/wilber-icon.png" gimp
+        prog "Blender - Modelador 3D" "/usr/share/icons/crystalsvg/32x32/apps/blender.png" blender
+        prog "Blender - Mode Finestra" "/usr/share/icons/crystalsvg/32x32/apps/blender.png" blender -windowed
+        prog "Inkscape - Dibuix Vectorial" "/usr/share/pixmaps/inkscape.png" inkscape
+        prog "Kooka - Escàner" "/usr/share/icons/crystalsvg/32x32/devices/scanner.png" kooka
+        prog "digiKam - Càmera Fotogràfica" "/usr/share/icons/crystalsvg/32x32/apps/digikam.png" digikam
+        prog "KIconEdit - Editor d'icones" "/usr/share/icons/crystalsvg/32x32/apps/kiconedit.png" kiconedit
+	prog "KolourPaint - Dibuix per a Nens" "/usr/share/icons/hicolor/48x48/apps/kolourpaint.png" kolourpaint
+        prog "Ksnapshot - Capturar la Pantalla" "/usr/share/icons/crystalsvg/32x32/apps/ksnapshot.png" ksnapshot
+        prog "Xaos - Fractals" "/usr/share/icons/crystalsvg/32x32/apps/xload.png" xaos
+    }
+    menu "So" "/usr/share/icons/default.kde/32x32/mimetypes/sound.png" {
+        prog "Audacity - Editor de So" "/usr/share/audacity/audacity.xpm" audacity
+        prog "Grip - Extractor de CD d'àudio" "/usr/share/pixmaps/gripicon.png" grip
+        prog "Reproduir CD d'àudio" "/usr/share/icons/default.kde/32x32/devices/cdaudio_unmount.png" audio_cd
+        prog "Conversor de formats d'àudio" "/usr/share/icons/crystalsvg/32x32/apps/kcmmidi.png" audio_conversor
+        prog "Timidity - Reprodutor MIDI" "/usr/kdemar/png/timidity.xpm" timidiy -ig
+    }
+    menu "Video" "/usr/share/icons/default.kde/32x32/mimetypes/video.png" {
+        prog "Avidemux - Edició de Vídeo" "/usr/share/icons/default.kde/32x32/devices/camera_unmount.png" avidemux
+        prog "AleVT - Teletext" "/usr/share/icons/default.kde/32x32/apps/alevt.png" alevt
+        prog "Kdetv - TV" "/usr/share/icons/default.kde/32x32/devices/tv.png" kdetv
+    }
+    menu "Visors" "/usr/share/icons/default.kde/32x32/mimetypes/video.png" {
+        prog "Gwenview - Visor d'Imatges" "/usr/share/pixmaps/gwenview.xpm" gwenview
+        prog "Kpdf - Visor PDF" "/usr/share/icons/default.kde/32x32/apps/kpdf.png" kpdf
+        prog "KFax - Visor de Fax" "/usr/share/icons/default.kde/32x32/apps/kfax.png" kfax
+    }
+    prog "Kmix - Volum" "/usr/share/icons/default.kde/32x32/apps/kmix.png" kmix
+    prog "XMMS - Reprodutor de So" "/usr/share/icons/default.kde/32x32/apps/xmms.png" /usr/bin/xmms
+    prog "K3b - Gravar CD/DVD" "/usr/kdemar/png/k3b.png" k3b %U
+    prog "MPlayer - Reproductor Multiformat" "/usr/share/pixmaps/mplayer-desktop.xpm" gmplayer -zoom
+}
+menu "Oficina" "/usr/share/icons/default.kde/32x32/apps/package_wordprocessing.png" {
+    menu "OpenOffice.org" "/usr/kdemar/png/openoffice.png" {
+        prog "Administració d'impressó d'OpenOffice.org" "/usr/share/icons/hicolor/32x32/apps/501_printeradmin.xpm" /usr/bin/oopadmin
+        prog "Des d'una plantilla d'OpenOffice.org" "/usr/share/icons/hicolor/48x48/apps/ximian-openoffice-template.png" /usr/bin/ooffice slot:5500
+        prog "OpenOffice.org Math - Editor de Fòrmules" "/usr/share/icons/hicolor/32x32/apps/015_math_document.xpm" /usr/bin/oomath %U
+        prog "OpenOffice.org Calc - Fulla de Càlcul" "/usr/share/icons/hicolor/32x32/apps/ooo_calc.xpm" /usr/bin/oocalc %U
+        prog "OpenOffice.org Draw - Dibuix Vectorial" "/usr/share/icons/hicolor/32x32/apps/ooo_draw.xpm" /usr/bin/oodraw %U
+        prog "OpenOffice.org Impress - Presentacions" "/usr/share/icons/hicolor/32x32/apps/ooo_impress.xpm" /usr/bin/ooimpress %U
+        prog "OpenOffice.org Writer - Document de Text" "/usr/share/icons/hicolor/32x32/apps/ooo_writer.xpm" /usr/bin/oowriter %U
+        prog "OpenOffice.org Writer/Web - Editor Web" "/usr/share/icons/hicolor/32x32/apps/ooo_web.xpm" /usr/bin/ooweb %U
+    }
+    separator
+    prog "Kontact - Suite d'Oficina" "/usr/share/icons/default.kde/32x32/apps/kontact.png" kontact
+    prog "KAddressBook" "/usr/share/icons/default.kde/32x32/apps/kaddressbook.png" kaddressbook %u
+    prog "KNode - Lector de notícies" "/usr/share/icons/default.kde/32x32/apps/knode2.png" knode
+    prog "KdeprintFax - Enviar Fax" "/usr/share/icons/default.kde/32x32/apps/kdeprintfax.png" kdeprintfax -caption "%c" %i %m %u
+    prog "KOrganizer - Agenda" "/usr/share/icons/default.kde/32x32/apps/korganizer.png" korganizer %u
+}
+menu "Sistema" "/usr/share/icons/crystalsvg/32x32/apps/kthememgr.png" {
+    menu "Preferències" "/usr/share/icons/crystalsvg/32x32/apps/package_settings.png" {
+        prog "KInfoCenter" "/usr/share/icons/crystalsvg/48x48/apps/hwinfo.png" kinfocenter 
+        prog "Editor del menú" "/usr/share/icons/crystalsvg/48x48/apps/kmenuedit.png" iceme
+        prog "Vigilant del sistema KDE" "/usr/share/icons/crystalsvg/48x48/apps/ksysguard.png" ksysguard %U
+        prog "Gestor de la impressió" "/usr/share/icons/crystalsvg/48x48/apps/printmgr.png" kcmshell printmgr
+        prog "Salvapantalles" "/usr/share/icons/crystalsvg/128x128/apps/kscreensaver.png" xscreensaver-demo
+    }
+    menu "Utilitats de Sistema" "/usr/share/icons/crystalsvg/32x32/apps/kthememgr.png" {
+        prog "Ethereal - Analitzador de xarxa" "/usr/share/pixmaps/eicon3d32.xpm" executa.py ethereal
+        prog "KWifimanager - Gestió de Xarxes inalàmbriques" "/usr/share/icons/crystalsvg/32x32/apps/kwifimanager.png" executa.py kwifimanager
+        prog "SWScanner - Xarxes Inalàmbriques" "/usr/share/icons/hicolor/32x32/apps/swscanner.png" swscanner
+        prog "Firestarter - Firewall" "/usr/share/pixmaps/firestarter.png" executa.py /usr/sbin/firestarter
+        prog "MySQLcc - Control de Mysql" "/usr/share/pixmaps/mysqlcc.xpm" executa.py /usr/bin/mysqlcc
+        prog "Vigilant del sistema KDE (mode root)" "/usr/share/icons/crystalsvg/32x32/apps/ksysguard.png" executa.py ksysguard %U
+        prog "KPackage - Gestor de paquets" "/usr/share/icons/crystalsvg/32x32/apps/kpackage.png" executa.py kpackage -caption "%c" %i %m %u
+        prog "QTParted - Particionador" "/usr/share/pixmaps/qtparted.xpm" executa.py /usr/sbin/qtparted
+        prog "KCron - Planificador de tasques" "/usr/share/pixmaps/kcron.xpm" kcron %i %m -caption "%c"
+    }
+    menu "Ajuda" "/usr/share/pixmaps/khelpcenter.xpm" {
+        prog "Info" "/usr/share/pixmaps/khelpcenter.xpm" info
+        prog "Ajuda" "/usr/share/pixmaps/khelpcenter.xpm" khelpcenter
+        prog "Xman" "/usr/share/pixmaps/khelpcenter.xpm" xman
+    }
+    separator
+    menu "Més aplicacions" "/usr/share/icons/crystalsvg/32x32/apps/package.png" {
+        prog "Akregator - Lector RSS" "/usr/share/icons/crystalsvg/48x48/apps/akregator.png" akregator %i %m -caption "%c"
+        prog "KGet" "/usr/share/icons/crystalsvg/48x48/apps/kget.png" kget -caption "%c" %i %m
+        prog "Gestor de perfils del Thunderbird" "/usr/share/pixmaps/mozilla-thunderbird-pm-menu.xpm" mozilla-thunderbird -P
+        prog "LinNeighborhood - Xarxa" "/usr/share/icons/LinNeighborhood.xpm" /usr/bin/LinNeighborhood
+        prog "KDat - Còpia en cintes de seguretat" "/usr/share/icons/crystalsvg/32x32/apps/kdat.png" kdat %i %m -caption "%c"
+        prog "Kandy - Eina per a telèfons mòbils" "/usr/share/icons/crystalsvg/48x48/apps/remote.png" kandy %i %m -caption "%c"
+        prog "KArm - Cronòmetre" "/usr/share/icons/crystalsvg/48x48/apps/karm.png" karm  -caption "%c" %i %m
+        prog "KCharSelect" "/usr/share/icons/crystalsvg/48x48/apps/kcharselect.png" kcharselect -caption "%c" %i %m
+        prog "KTimer" "/usr/share/icons/crystalsvg/48x48/apps/ktimer.png" ktimer
+    }
+}
+menu "Utilitats" "/usr/share/icons/crystalsvg/32x32/apps/package_utilities.png" {
+    prog "GKrellM - Monitor" "/usr/share/pixmaps/gkrellm.xpm" /usr/bin/gkrellm
+    prog "Ark - Compressor" "/usr/share/icons/crystalsvg/32x32/apps/ark.png" ark -caption "%c" %i %m %U
+    prog "KCalc - Calculadora" "/usr/share/icons/crystalsvg/32x32/apps/kcalc.png" kcalc  -caption "%c" %i %m
+    prog "KFloppy - Formatador" "/usr/share/icons/crystalsvg/32x32/apps/kfloppy.png" kfloppy -caption "%c" %i %m
+    prog "Klipper - Portapapers" "/usr/share/icons/crystalsvg/32x32/apps/klipper.png" klipper
+    prog "KNotes - Notes emergents" "/usr/share/icons/crystalsvg/32x32/apps/knotes.png" knotes
+    prog "Konsole - Consola" "/usr/share/icons/crystalsvg/32x32/apps/konsole.png" konsole
+    prog "KAlarm - Alarmes personals" "/usr/share/icons/crystalsvg/32x32/apps/kalarm.png" kalarm -caption "%c" %i
+    prog "KPilot - Eina Palm" "/usr/share/icons/crystalsvg/32x32/apps/kpilot.png" kpilot
+    prog "KJobViewer - Treballs d'impressió" "/usr/share/icons/crystalsvg/32x32/apps/printmgr.png" kjobviewer --all --show %i %m
+}
+prog "Centre de control" "/usr/share/icons/crystalsvg/32x32/apps/kcontrol.png" icepref
+prog "CADI - Configurar Sistema" "/usr/share/icons/crystalsvg/32x32/apps/package_settings.png" executa.py cadi
+prog "Fitxers Personals" "/usr/share/icons/crystalsvg/32x32/apps/kfm_home.png" konqueror $HOME
+prog "Pc" "/usr/kdemar/png/Pc.png" konqueror $HOME/Pc

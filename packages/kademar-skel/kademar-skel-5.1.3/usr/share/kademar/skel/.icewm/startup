@@ -1,0 +1,4 @@
+idesk > /dev/null & # start idesk - desktop icon manager
+ivman > /dev/null & # start ivman - event controller
+xscreensaver -no-splash  > /dev/null & # start  Screensaver
+sh /usr/kdemar/scripts/device_initial_check > /dev/null &  # Initial Mounter

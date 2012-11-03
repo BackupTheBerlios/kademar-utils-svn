@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<config>
+   <entry>
+      <attribute>disableprofiles</attribute>
+      <value>0</value>
+   </entry>
+   <entry>
+      <attribute>skin</attribute>
+      <value>Emerald-1.0</value>
+   </entry>
+   <entry>
+      <attribute>basefont</attribute>
+      <value>Helvetica 11 normal</value>
+   </entry>
+   <entry>
+      <attribute>last_client_version</attribute>
+      <value>0.97.1</value>
+   </entry>
+</config>

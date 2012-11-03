@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=MimeType
+MimeType=application/vnd.sun.xml.math
+Icon=netscape_doc
+Comment=Netscape MozPlugger 1.7.3 handles QuickTime Windows Media Player Plugin
+X-KDE-AutoEmbed=true
+X-KDE-nsplugin=true
+Patterns=*.sxm
+Name=OpenOffice Math 6.0 documents

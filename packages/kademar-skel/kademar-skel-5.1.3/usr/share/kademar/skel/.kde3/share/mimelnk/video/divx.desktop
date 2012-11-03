@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=MimeType
+MimeType=video/divx
+Icon=netscape_doc
+Comment=Netscape DivX Browser Plug-In
+X-KDE-AutoEmbed=true
+X-KDE-nsplugin=true
+Patterns=*.divx
+Name=DivX Media Format

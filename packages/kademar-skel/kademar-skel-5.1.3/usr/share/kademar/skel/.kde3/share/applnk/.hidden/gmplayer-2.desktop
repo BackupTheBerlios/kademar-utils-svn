@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=smplayer
+InitialPreference=3
+MimeType=
+Name=smplayer
+Terminal=false
+Type=Application

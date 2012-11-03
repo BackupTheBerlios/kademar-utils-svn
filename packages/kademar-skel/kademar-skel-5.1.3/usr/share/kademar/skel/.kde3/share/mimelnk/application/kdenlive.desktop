@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=Kdenlive Video
+Hidden=false
+Icon=video
+MimeType=application/kdenlive
+Patterns=*.kdenlive;*.KDENLIVE;*.Kdenlive
+Type=MimeType

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=audacious %U
+InitialPreference=11
+MimeType=
+Name=xmms
+Terminal=false
+Type=Application

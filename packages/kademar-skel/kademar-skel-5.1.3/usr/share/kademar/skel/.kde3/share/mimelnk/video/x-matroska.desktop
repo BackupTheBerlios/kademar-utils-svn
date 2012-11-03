@@ -1,0 +1,5 @@
+[Desktop Entry]
+Comment=Vídeo Matroska
+Hidden=false
+Patterns=*.mkv;*.MKV
+X-KDE-AutoEmbed=false

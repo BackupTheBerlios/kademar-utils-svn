@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=MimeType
+MimeType=audio/ogg
+Icon=netscape_doc
+Comment=Netscape mplayerplug-in 3.31
+X-KDE-AutoEmbed=true
+X-KDE-nsplugin=true
+Name=Ogg Vorbis Audio

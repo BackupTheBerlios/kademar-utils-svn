@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=timidity -ig
+InitialPreference=2
+MimeType=audio/midi
+Name=timidity
+Terminal=false
+Type=Application

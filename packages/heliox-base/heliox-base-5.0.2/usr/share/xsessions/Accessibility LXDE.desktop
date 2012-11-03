@@ -1,0 +1,15 @@
+[Desktop Entry]
+Encoding=UTF-8
+# The names/descriptions should really be better
+Name=Accessibility LXDE
+Comment=LXDE - Lightweight X11 desktop environment with accessibility
+Comment[ca]=LXDE - Escritori lleuger X11 amb opcions d'accessibilitat
+Comment[es]=LXDE - Escritorio ligero X11 con opciones de acesibilidad
+Comment[de]=LXDE - Leichtgewichtige X11 Desktop-Umgebung with accessibility
+Comment[fi]=LXDE - kevyt X11-työpöytäympäristö with accessibility
+Comment[ja]=LXDE - 軽量な X11 デスクトップ環境 with accessibility
+Comment[pt]=LXDE - Ambiente de trabalho X11 leve with accessibility
+Comment[zh_TW]=LXDE - 輕量級的 X11 桌面環境 with accessibility
+Exec=/usr/bin/startlxdeaccessibility
+# Icon=
+Type=Application

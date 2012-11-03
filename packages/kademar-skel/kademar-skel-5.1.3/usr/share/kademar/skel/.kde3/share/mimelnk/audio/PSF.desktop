@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=PlayStation Sound
+Hidden=false
+Icon=sound
+MimeType=audio/PSF
+Patterns=*.psf;*.PSF
+Type=MimeType

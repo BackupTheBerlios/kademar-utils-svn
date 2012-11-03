@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=Imatge CD
+Hidden=false
+Icon=cdtrack
+MimeType=application/cdrom-image
+Patterns=*.BIN;*.bin;*.MDF;*.mdf;*.IMG;*.img;*.CDI;*.cdi;*.b5i;*.B5I;*.BWI;*.bwi;*.XBX;*.xbx;*.PDI;*.pdi;*.DAA;*.daa
+Type=MimeType

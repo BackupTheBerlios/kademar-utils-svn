@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=MimeType
+MimeType=video/x-ms-wvx
+Icon=netscape_doc
+Comment=Netscape Windows Media Player Plugin
+X-KDE-AutoEmbed=true
+X-KDE-nsplugin=true
+Patterns=*.wvx
+Name=Windows Media

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=Registro Windows
+Hidden=false
+Icon=exec_wine
+MimeType=application/reg
+Patterns=*.REG;*.Reg;*.reg
+Type=MimeType

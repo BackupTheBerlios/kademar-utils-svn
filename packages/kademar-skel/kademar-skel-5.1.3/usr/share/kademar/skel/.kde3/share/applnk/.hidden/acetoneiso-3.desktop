@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=kmdr-executor '/opt/acetoneiso/AcetoneISO.kmdr'
+InitialPreference=3
+MimeType=application/x-iso
+Name=acetoneiso
+Terminal=false
+Type=Application

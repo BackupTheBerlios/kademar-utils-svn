@@ -1,0 +1,19 @@
+[Desktop Entry]
+Categories=GNOME;System;Filesystem;
+Comment=Creeu, reorganitzeu i suprimiu particions
+Exec=gparted-pkexec
+GenericName[ca]=Editor de particions
+GenericName=Partition Editor
+Icon=gparted
+Name[ca]=GParted
+Name=GParted
+NoDisplay=false
+Path[$e]=
+StartupNotify=true
+Terminal=0
+TerminalOptions=
+Type=Application
+X-GNOME-FullName[ca]=Editor de particions GParted
+X-GNOME-FullName=GParted Partition Editor
+X-KDE-SubstituteUID=true
+X-KDE-Username=root

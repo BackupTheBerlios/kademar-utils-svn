@@ -1,0 +1,1 @@
+application/mspowerpoint; /usr/bin/soffice '%s'; description=Microsoft PowerPoint Document; test=test -n "$DISPLAY"

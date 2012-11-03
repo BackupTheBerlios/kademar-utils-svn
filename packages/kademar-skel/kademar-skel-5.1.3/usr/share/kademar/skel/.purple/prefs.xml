@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<pref version='1' name='/'>
+	<pref name='plugins'>
+		<pref name='core'>
+			<pref name='imaqua'>
+				<pref name='with_message' type='bool' value='0'/>
+				<pref name='silent_when_present' type='bool' value='0'/>
+				<pref name='synth_voices' type='string' value='default'/>
+			</pref>
+			<pref name='core-plugin_pack-autoaccept'>
+				<pref name='reject_stranger' type='bool' value='1'/>
+				<pref name='notify' type='bool' value='1'/>
+				<pref name='newdir' type='bool' value='1'/>
+			</pref>
+			<pref name='joinpart'>
+				<pref name='delay' type='int' value='10'/>
+				<pref name='threshold' type='int' value='20'/>
+				<pref name='hide_buddies' type='bool' value='0'/>
+			</pref>
+			<pref name='newline'>
+				<pref name='im' type='bool' value='1'/>
+				<pref name='chat' type='bool' value='1'/>
+			</pref>
+			<pref name='core-plugin_pack-offlinemsg'>
+				<pref name='always' type='bool' value='0'/>
+			</pref>
+			<pref name='psychic'>
+				<pref name='buddies_only' type='bool' value='0'/>
+				<pref name='show_notice' type='bool' value='1'/>
+				<pref name='activate_online' type='bool' value='1'/>
+			</pref>
+			<pref name='statenotify'>
+				<pref name='notify_away' type='bool' value='1'/>
+				<pref name='notify_idle' type='bool' value='1'/>
+				<pref name='notify_signon' type='bool' value='1'/>
+			</pref>
+			<pref name='vvconfig'>
+				<pref name='audio'>
+					<pref name='src'>
+						<pref name='plugin' type='string' value=''/>
+						<pref name='device' type='string' value=''/>
+					</pref>
+					<pref name='sink'>
+						<pref name='plugin' type='string' value=''/>
+						<pref name='device' type='string' value=''/>
+					</pref>
+				</pref>
+				<pref name='video'>
+					<pref name='src'>
+						<pref name='plugin' type='string' value=''/>
+						<pref name='device' type='string' value=''/>
+					</pref>
+				</pref>
+			</pref>
+		</pref>
+	</pref>
+	<pref name='pidgin'>
+		<pref name='plugins'>
+			<pref name='loaded' type='pathlist'>
+				<item value='/usr/lib/purple-2/autoaccept.so'/>
+				<item value='/usr/lib/pidgin/imaqua.so'/>
+				<item value='/usr/lib/pidgin/markerline.so'/>
+				<item value='/usr/lib/pidgin/notify.so'/>
+				<item value='/usr/lib/pidgin/gestures.so'/>
+				<item value='/usr/lib/purple-2/ssl-nss.so'/>
+				<item value='/usr/lib/purple-2/ssl.so'/>
+				<item value='/usr/lib/pidgin/sendbutton.so'/>
+				<item value='/usr/lib/pidgin/vvconfig.so'/>
+			</pref>
+		</pref>
+	</pref>
+</pref>

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=MimeType
+MimeType=application/vnd.rn-realaudio
+Icon=netscape_doc
+Comment=Netscape RealPlayer 9
+X-KDE-AutoEmbed=true
+X-KDE-nsplugin=true
+Name=RealAudio

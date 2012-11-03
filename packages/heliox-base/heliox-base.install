@@ -1,0 +1,63 @@
+post_install() {
+    echo "Heliox Linux \r (\l)
+    
+*******
+
+ If you are here because you had a problem (probably you changed graphic card of your computer), you can install graphic drivers, after login, with:
+ 
+   - Nvidia Cards, run:  sudo install-nvidia-drivers
+   - Ati    Cards, run:  sudo install-ati-drivers
+   - Other  Cards, run:  sudo install-other-drivers
+
+*******
+
+" > /etc/issue
+
+    echo 'NAME="Heliox Linux"
+ID=heliox
+PRETTY_NAME="Heliox Linux"
+ANSI_COLOR="0;36"
+HOME_URL="http://www.proyectoheliox.org/"
+SUPPORT_URL="http://www.proyectoheliox.org/"
+BUG_REPORT_URL="http://www.proyectoheliox.org/"' > /etc/os-release
+
+}
+
+post_remove() {
+    echo "Kademar Linux \r (\l)
+
+" > /etc/issue
+
+    echo 'NAME="Kademar Linux"
+ID=kademar
+PRETTY_NAME="Kademar Linux"
+ANSI_COLOR="0;36"
+HOME_URL="http://www.kademar.org/"
+SUPPORT_URL="http://www.kademar.org/"
+BUG_REPORT_URL="http://bugs.kademar.org/"' > /etc/os-release
+
+}
+
+post_update() {
+    echo "Heliox Linux \r (\l)
+    
+*******
+
+ If you are here because you had a problem (probably you changed graphic card of your computer), you can install graphic drivers, after login, with:
+ 
+   - Nvidia Cards, run:  sudo install-nvidia-drivers
+   - Ati    Cards, run:  sudo install-ati-drivers
+   - Other  Cards, run:  sudo install-other-drivers
+
+*******
+
+" > /etc/issue
+
+    echo 'NAME="Heliox Linux"
+ID=heliox
+PRETTY_NAME="Heliox Linux"
+ANSI_COLOR="0;36"
+HOME_URL="http://www.proyectoheliox.org/"
+SUPPORT_URL="http://www.proyectoheliox.org/"
+BUG_REPORT_URL="http://www.proyectoheliox.org/"' > /etc/os-release
+}

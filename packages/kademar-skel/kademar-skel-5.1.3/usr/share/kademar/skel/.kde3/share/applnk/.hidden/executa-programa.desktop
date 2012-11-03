@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=executa-programa
+InitialPreference=2
+MimeType=application/exe;application/x-python;application/x-shellscript;application/x-executable-script;application/run
+Name=executa-programa
+Terminal=false
+Type=Application

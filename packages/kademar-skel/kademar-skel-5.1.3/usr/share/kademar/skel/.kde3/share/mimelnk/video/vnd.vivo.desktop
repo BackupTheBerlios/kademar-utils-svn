@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=MimeType
+MimeType=video/vnd.vivo
+Icon=netscape_doc
+Comment=Netscape mplayerplug-in 3.31
+X-KDE-AutoEmbed=true
+X-KDE-nsplugin=true
+Patterns=*.viv;*.vivo
+Name=VivoActive

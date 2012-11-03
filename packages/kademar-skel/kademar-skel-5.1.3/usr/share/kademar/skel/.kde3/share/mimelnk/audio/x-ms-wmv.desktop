@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=MimeType
+MimeType=audio/x-ms-wmv
+Icon=netscape_doc
+Comment=Netscape Windows Media Player Plugin
+X-KDE-AutoEmbed=true
+X-KDE-nsplugin=true
+Name=Windows Media

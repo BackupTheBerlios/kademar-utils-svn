@@ -1,0 +1,3033 @@
+[application/cdrom-image - 1]
+AllowAsDefault=true
+Application=kde-acetoneiso-2.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=application/cdrom-image
+
+[application/exe - 1]
+AllowAsDefault=true
+Application=kde-executa-programa.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=application/exe
+
+[application/java - 1]
+AllowAsDefault=true
+Application=kde-javaws.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=application/java
+
+[application/java - 2]
+AllowAsDefault=true
+Application=kjavaappletviewer.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=application/java
+
+[application/kdenlive - 1]
+AllowAsDefault=true
+Application=kde-kdenlive.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=application/kdenlive
+
+[application/mspowerpoint - 1]
+AllowAsDefault=true
+Application=ooo-impress.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=application/mspowerpoint
+
+[application/mspowerpoint - 2]
+AllowAsDefault=true
+Application=kde-kpresenter.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=application/mspowerpoint
+
+[application/mspowerpoint - 3]
+AllowAsDefault=true
+Application=kpresenterpart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=application/mspowerpoint
+
+[application/mspowerpoint - 4]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=application/mspowerpoint
+
+[application/msword - 1]
+AllowAsDefault=true
+Application=ooo-writer.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=application/msword
+
+[application/msword - 2]
+AllowAsDefault=true
+Application=kwordpart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=application/msword
+
+[application/msword - 3]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=application/msword
+
+[application/ogg - 1]
+AllowAsDefault=true
+Application=audacious.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=application/ogg
+
+[application/ogg - 2]
+AllowAsDefault=true
+Application=kde-xmms-2.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=application/ogg
+
+[application/ogg - 3]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=application/ogg
+
+[application/ogg - 4]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=application/ogg
+
+[application/ogg - 5]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=application/ogg
+
+[application/ogg - 6]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=application/ogg
+
+[application/pdf - 1]
+AllowAsDefault=true
+Application=kde-kpdf.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=application/pdf
+
+[application/pdf - 2]
+AllowAsDefault=true
+Application=kpdf_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=application/pdf
+
+[application/pdf - 3]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=application/pdf
+
+[application/pma - 1]
+AllowAsDefault=true
+Application=mandvd.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=application/pma
+
+[application/postscript - 1]
+AllowAsDefault=true
+Application=kde-karbon.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=application/postscript
+
+[application/postscript - 2]
+AllowAsDefault=true
+Application=karbonpart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=application/postscript
+
+[application/reg - 1]
+AllowAsDefault=true
+Application=kde-wine_reg.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=application/reg
+
+[application/run - 1]
+AllowAsDefault=true
+Application=kde-executa-programa.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=application/run
+
+[application/vnd.oasis.opendocument.graphics - 1]
+AllowAsDefault=true
+Application=ooo-draw.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=application/vnd.oasis.opendocument.graphics
+
+[application/vnd.oasis.opendocument.graphics - 2]
+AllowAsDefault=true
+Application=kde-karbon.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=application/vnd.oasis.opendocument.graphics
+
+[application/vnd.oasis.opendocument.graphics - 3]
+AllowAsDefault=true
+Application=karbonpart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=application/vnd.oasis.opendocument.graphics
+
+[application/x-executable-script - 1]
+AllowAsDefault=true
+Application=kde-executa-programa.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=application/x-executable-script
+
+[application/x-executable-script - 2]
+AllowAsDefault=true
+Application=kde-kwrite.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=application/x-executable-script
+
+[application/x-executable-script - 3]
+AllowAsDefault=true
+Application=kde-kword.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=application/x-executable-script
+
+[application/x-executable-script - 4]
+AllowAsDefault=true
+Application=kde-kate.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=application/x-executable-script
+
+[application/x-executable-script - 5]
+AllowAsDefault=true
+Application=katepart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=3
+ServiceType=application/x-executable-script
+
+[application/x-executable-script - 6]
+AllowAsDefault=true
+Application=kde-kwrite.desktop
+Preference=0
+ServiceType=application/x-executable-script
+
+[application/x-executable-script - 7]
+AllowAsDefault=true
+Application=kde-kwrite.desktop
+Preference=0
+ServiceType=application/x-executable-script
+
+[application/x-executable-script - 8]
+AllowAsDefault=true
+Application=kwordpart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=application/x-executable-script
+
+[application/x-executable-script - 9]
+AllowAsDefault=true
+Application=klinkstatus_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=application/x-executable-script
+
+[application/x-iso - 1]
+AllowAsDefault=true
+Application=kde-k3b-2.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=application/x-iso
+
+[application/x-jar - 1]
+AllowAsDefault=true
+Application=kde-javaws.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=application/x-jar
+
+[application/x-jar - 2]
+AllowAsDefault=true
+Application=sun-java5-java.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=application/x-jar
+
+[application/x-jar - 3]
+AllowAsDefault=true
+Application=kde-ark.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=application/x-jar
+
+[application/x-jar - 4]
+AllowAsDefault=true
+Application=ark_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=application/x-jar
+
+[application/x-javascript - 1]
+AllowAsDefault=true
+Application=kde-kwrite.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=application/x-javascript
+
+[application/x-javascript - 2]
+AllowAsDefault=true
+Application=kde-kword.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=application/x-javascript
+
+[application/x-javascript - 3]
+AllowAsDefault=true
+Application=kde-kate.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=application/x-javascript
+
+[application/x-javascript - 4]
+AllowAsDefault=true
+Application=katepart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=3
+ServiceType=application/x-javascript
+
+[application/x-javascript - 5]
+AllowAsDefault=true
+Application=kwordpart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=application/x-javascript
+
+[application/x-javascript - 6]
+AllowAsDefault=true
+Application=kde-kwrite.desktop
+Preference=0
+ServiceType=application/x-javascript
+
+[application/x-javascript - 7]
+AllowAsDefault=true
+Application=kde-kwrite.desktop
+Preference=0
+ServiceType=application/x-javascript
+
+[application/x-javascript - 8]
+AllowAsDefault=true
+Application=klinkstatus_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=application/x-javascript
+
+[application/x-javascript - 9]
+AllowAsDefault=true
+Application=kde-executa-programa.desktop
+Preference=0
+ServiceType=application/x-javascript
+
+[application/x-ogg - 1]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=application/x-ogg
+
+[application/x-ogg - 2]
+AllowAsDefault=true
+Application=vlc.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=application/x-ogg
+
+[application/x-ogg - 3]
+AllowAsDefault=true
+Application=xmms.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=application/x-ogg
+
+[application/x-ogg - 4]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=application/x-ogg
+
+[application/x-ogg - 5]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=application/x-ogg
+
+[application/x-perl - 1]
+AllowAsDefault=true
+Application=kde-kwrite.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=application/x-perl
+
+[application/x-perl - 2]
+AllowAsDefault=true
+Application=kde-kword.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=application/x-perl
+
+[application/x-perl - 3]
+AllowAsDefault=true
+Application=kde-kate.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=application/x-perl
+
+[application/x-perl - 4]
+AllowAsDefault=true
+Application=katepart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=3
+ServiceType=application/x-perl
+
+[application/x-perl - 5]
+AllowAsDefault=true
+Application=kwordpart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=application/x-perl
+
+[application/x-perl - 6]
+AllowAsDefault=true
+Application=kde-kwrite.desktop
+Preference=0
+ServiceType=application/x-perl
+
+[application/x-perl - 7]
+AllowAsDefault=true
+Application=kde-kwrite.desktop
+Preference=0
+ServiceType=application/x-perl
+
+[application/x-perl - 8]
+AllowAsDefault=true
+Application=klinkstatus_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=application/x-perl
+
+[application/x-perl - 9]
+AllowAsDefault=true
+Application=kde-executa-programa.desktop
+Preference=0
+ServiceType=application/x-perl
+
+[application/x-php - 1]
+AllowAsDefault=true
+Application=katepart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=application/x-php
+
+[application/x-python - 1]
+AllowAsDefault=true
+Application=kde-kwrite.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=application/x-python
+
+[application/x-python - 10]
+AllowAsDefault=true
+Application=kde-kword.desktop
+Preference=0
+ServiceType=application/x-python
+
+[application/x-python - 2]
+AllowAsDefault=true
+Application=kde-executa-programa.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=application/x-python
+
+[application/x-python - 3]
+AllowAsDefault=true
+Application=kde-kate.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=application/x-python
+
+[application/x-python - 4]
+AllowAsDefault=true
+Application=katepart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=3
+ServiceType=application/x-python
+
+[application/x-python - 5]
+AllowAsDefault=true
+Application=kwordpart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=application/x-python
+
+[application/x-python - 6]
+AllowAsDefault=true
+Application=klinkstatus_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=application/x-python
+
+[application/x-python - 7]
+AllowAsDefault=true
+Application=kde-kwrite.desktop
+Preference=0
+ServiceType=application/x-python
+
+[application/x-python - 8]
+AllowAsDefault=true
+Application=kde-kwrite.desktop
+Preference=0
+ServiceType=application/x-python
+
+[application/x-python - 9]
+AllowAsDefault=true
+Application=kde-kword.desktop
+Preference=0
+ServiceType=application/x-python
+
+[application/x-ruby - 1]
+AllowAsDefault=true
+Application=kde-kwrite.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=application/x-ruby
+
+[application/x-ruby - 2]
+AllowAsDefault=true
+Application=kde-kword.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=application/x-ruby
+
+[application/x-ruby - 3]
+AllowAsDefault=true
+Application=kde-kate.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=application/x-ruby
+
+[application/x-ruby - 4]
+AllowAsDefault=true
+Application=katepart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=3
+ServiceType=application/x-ruby
+
+[application/x-ruby - 5]
+AllowAsDefault=true
+Application=kwordpart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=application/x-ruby
+
+[application/x-ruby - 6]
+AllowAsDefault=true
+Application=klinkstatus_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=application/x-ruby
+
+[application/x-ruby - 7]
+AllowAsDefault=true
+Application=kde-executa-programa.desktop
+Preference=0
+ServiceType=application/x-ruby
+
+[application/x-shellscript - 1]
+AllowAsDefault=true
+Application=kde-executa-programa.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=application/x-shellscript
+
+[application/x-shellscript - 2]
+AllowAsDefault=true
+Application=kde-kwrite.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=application/x-shellscript
+
+[application/x-shellscript - 3]
+AllowAsDefault=true
+Application=kde-kword.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=application/x-shellscript
+
+[application/x-shellscript - 4]
+AllowAsDefault=true
+Application=kde-kate.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=application/x-shellscript
+
+[application/x-shellscript - 5]
+AllowAsDefault=true
+Application=katepart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=3
+ServiceType=application/x-shellscript
+
+[application/x-shellscript - 6]
+AllowAsDefault=true
+Application=kwordpart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=application/x-shellscript
+
+[application/x-shellscript - 7]
+AllowAsDefault=true
+Application=klinkstatus_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=application/x-shellscript
+
+[application/xml - 1]
+AllowAsDefault=true
+Application=kde-kwrite.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=application/xml
+
+[application/xml - 2]
+AllowAsDefault=true
+Application=kde-kfmclient_html.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=application/xml
+
+[application/xml - 3]
+AllowAsDefault=true
+Application=iceweasel.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=application/xml
+
+[application/xml - 4]
+AllowAsDefault=true
+Application=khtml.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=application/xml
+
+[application/xml - 5]
+AllowAsDefault=true
+Application=katepart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=application/xml
+
+[audio/GSF - 1]
+AllowAsDefault=true
+Application=kde-xterm-2.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/GSF
+
+[audio/SPC - 1]
+AllowAsDefault=true
+Application=audacious.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/SPC
+
+[audio/SPC - 2]
+AllowAsDefault=true
+Application=kde-xmms-2.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/SPC
+
+[audio/aac - 1]
+AllowAsDefault=true
+Application=kde-gmplayer.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/aac
+
+[audio/aac - 2]
+AllowAsDefault=true
+Application=kde-amarok.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/aac
+
+[audio/ac3 - 1]
+AllowAsDefault=true
+Application=kde-gmplayer.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/ac3
+
+[audio/ac3 - 2]
+AllowAsDefault=true
+Application=kde-amarok.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/ac3
+
+[audio/basic - 1]
+AllowAsDefault=true
+Application=kde-gmplayer.desktop
+GenericServiceType=Application
+Preference=5
+ServiceType=audio/basic
+
+[audio/basic - 2]
+AllowAsDefault=true
+Application=kde-amarok.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=audio/basic
+
+[audio/basic - 3]
+AllowAsDefault=true
+Application=kaffeine.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=audio/basic
+
+[audio/basic - 4]
+AllowAsDefault=true
+Application=audacity.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/basic
+
+[audio/basic - 5]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/basic
+
+[audio/basic - 6]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=audio/basic
+
+[audio/basic - 7]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=audio/basic
+
+[audio/mid - 1]
+AllowAsDefault=true
+Application=kde-timidity.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/mid
+
+[audio/mid - 2]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=audio/mid
+
+[audio/mp3 - 1]
+AllowAsDefault=true
+Application=audacious.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/mp3
+
+[audio/mp3 - 2]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/mp3
+
+[audio/mp3 - 3]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=audio/mp3
+
+[audio/mp4 - 1]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=6
+ServiceType=audio/mp4
+
+[audio/mp4 - 10]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=audio/mp4
+
+[audio/mp4 - 2]
+AllowAsDefault=true
+Application=kde-amarok.desktop
+GenericServiceType=Application
+Preference=5
+ServiceType=audio/mp4
+
+[audio/mp4 - 3]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=audio/mp4
+
+[audio/mp4 - 4]
+AllowAsDefault=true
+Application=vlc.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=audio/mp4
+
+[audio/mp4 - 5]
+AllowAsDefault=true
+Application=xine.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/mp4
+
+[audio/mp4 - 6]
+AllowAsDefault=true
+Application=kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/mp4
+
+[audio/mp4 - 7]
+AllowAsDefault=true
+Application=mplayer.desktop
+Preference=0
+ServiceType=audio/mp4
+
+[audio/mp4 - 8]
+AllowAsDefault=true
+Application=mplayer.desktop
+Preference=0
+ServiceType=audio/mp4
+
+[audio/mp4 - 9]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=audio/mp4
+
+[audio/mpeg - 1]
+AllowAsDefault=true
+Application=audacious.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/mpeg
+
+[audio/mpeg - 2]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/mpeg
+
+[audio/mpeg - 3]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=audio/mpeg
+
+[audio/mpegurl - 1]
+AllowAsDefault=true
+Application=audacious.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=audio/mpegurl
+
+[audio/mpegurl - 2]
+AllowAsDefault=true
+Application=kde-xmms-2.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=audio/mpegurl
+
+[audio/mpegurl - 3]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/mpegurl
+
+[audio/mpegurl - 4]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/mpegurl
+
+[audio/mpegurl - 5]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=audio/mpegurl
+
+[audio/mpegurl - 6]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=audio/mpegurl
+
+[audio/vnd.rn-realaudio - 1]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=5
+ServiceType=audio/vnd.rn-realaudio
+
+[audio/vnd.rn-realaudio - 2]
+AllowAsDefault=true
+Application=kde-amarok.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=audio/vnd.rn-realaudio
+
+[audio/vnd.rn-realaudio - 3]
+AllowAsDefault=true
+Application=kaffeine.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=audio/vnd.rn-realaudio
+
+[audio/vnd.rn-realaudio - 4]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/vnd.rn-realaudio
+
+[audio/vnd.rn-realaudio - 5]
+AllowAsDefault=true
+Application=vlc.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/vnd.rn-realaudio
+
+[audio/vnd.rn-realaudio - 6]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=audio/vnd.rn-realaudio
+
+[audio/vnd.rn-realaudio - 7]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=audio/vnd.rn-realaudio
+
+[audio/vorbis - 1]
+AllowAsDefault=true
+Application=audacious.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=audio/vorbis
+
+[audio/vorbis - 2]
+AllowAsDefault=true
+Application=kde-xmms-2.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=audio/vorbis
+
+[audio/vorbis - 3]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/vorbis
+
+[audio/vorbis - 4]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/vorbis
+
+[audio/vorbis - 5]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=audio/vorbis
+
+[audio/vorbis - 6]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=audio/vorbis
+
+[audio/x-aiff - 1]
+AllowAsDefault=true
+Application=kde-gmplayer.desktop
+GenericServiceType=Application
+Preference=5
+ServiceType=audio/x-aiff
+
+[audio/x-aiff - 2]
+AllowAsDefault=true
+Application=kde-amarok.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=audio/x-aiff
+
+[audio/x-aiff - 3]
+AllowAsDefault=true
+Application=kaffeine.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=audio/x-aiff
+
+[audio/x-aiff - 4]
+AllowAsDefault=true
+Application=audacity.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/x-aiff
+
+[audio/x-aiff - 5]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/x-aiff
+
+[audio/x-aiff - 6]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=audio/x-aiff
+
+[audio/x-flac - 1]
+AllowAsDefault=true
+Application=audacious.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=audio/x-flac
+
+[audio/x-flac - 2]
+AllowAsDefault=true
+Application=kde-gmplayer.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/x-flac
+
+[audio/x-flac - 3]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/x-flac
+
+[audio/x-flac - 4]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=audio/x-flac
+
+[audio/x-mod - 1]
+AllowAsDefault=true
+Application=audacious.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/x-mod
+
+[audio/x-mod - 2]
+AllowAsDefault=true
+Application=kde-xmms-2.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/x-mod
+
+[audio/x-mod - 3]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=audio/x-mod
+
+[audio/x-mp2 - 1]
+AllowAsDefault=true
+Application=audacious.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=audio/x-mp2
+
+[audio/x-mp2 - 2]
+AllowAsDefault=true
+Application=kde-xmms-2.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/x-mp2
+
+[audio/x-mp2 - 3]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/x-mp2
+
+[audio/x-mp2 - 4]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=audio/x-mp2
+
+[audio/x-mp3 - 1]
+AllowAsDefault=true
+Application=audacious.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=audio/x-mp3
+
+[audio/x-mp3 - 2]
+AllowAsDefault=true
+Application=kde-xmms-2.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=audio/x-mp3
+
+[audio/x-mp3 - 3]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/x-mp3
+
+[audio/x-mp3 - 4]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/x-mp3
+
+[audio/x-mp3 - 5]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=audio/x-mp3
+
+[audio/x-mp3 - 6]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=audio/x-mp3
+
+[audio/x-mpeg - 1]
+AllowAsDefault=true
+Application=audacious.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=audio/x-mpeg
+
+[audio/x-mpeg - 2]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/x-mpeg
+
+[audio/x-mpeg - 3]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/x-mpeg
+
+[audio/x-mpeg - 4]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=audio/x-mpeg
+
+[audio/x-mpeg - 5]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=audio/x-mpeg
+
+[audio/x-mpegurl - 1]
+AllowAsDefault=true
+Application=audacious.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=audio/x-mpegurl
+
+[audio/x-mpegurl - 2]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/x-mpegurl
+
+[audio/x-mpegurl - 3]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/x-mpegurl
+
+[audio/x-mpegurl - 4]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=audio/x-mpegurl
+
+[audio/x-mpegurl - 5]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=audio/x-mpegurl
+
+[audio/x-ms-wma - 1]
+AllowAsDefault=true
+Application=audacious.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=audio/x-ms-wma
+
+[audio/x-ms-wma - 2]
+AllowAsDefault=true
+Application=kde-xmms-2.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=audio/x-ms-wma
+
+[audio/x-ms-wma - 3]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/x-ms-wma
+
+[audio/x-ms-wma - 4]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/x-ms-wma
+
+[audio/x-ms-wma - 5]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=audio/x-ms-wma
+
+[audio/x-ms-wma - 6]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=audio/x-ms-wma
+
+[audio/x-musepack - 1]
+AllowAsDefault=true
+Application=audacious.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=audio/x-musepack
+
+[audio/x-musepack - 2]
+AllowAsDefault=true
+Application=kde-gmplayer.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/x-musepack
+
+[audio/x-musepack - 3]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/x-musepack
+
+[audio/x-musepack - 4]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=audio/x-musepack
+
+[audio/x-oggflac - 1]
+AllowAsDefault=true
+Application=audacious.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=audio/x-oggflac
+
+[audio/x-oggflac - 2]
+AllowAsDefault=true
+Application=kde-xmms-2.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=audio/x-oggflac
+
+[audio/x-oggflac - 3]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/x-oggflac
+
+[audio/x-oggflac - 4]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/x-oggflac
+
+[audio/x-oggflac - 5]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=audio/x-oggflac
+
+[audio/x-oggflac - 6]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=audio/x-oggflac
+
+[audio/x-pn-realaudio - 1]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=audio/x-pn-realaudio
+
+[audio/x-pn-realaudio - 2]
+AllowAsDefault=true
+Application=kde-amarok.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=audio/x-pn-realaudio
+
+[audio/x-pn-realaudio - 3]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/x-pn-realaudio
+
+[audio/x-pn-realaudio - 4]
+AllowAsDefault=true
+Application=vlc.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/x-pn-realaudio
+
+[audio/x-pn-realaudio - 5]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=audio/x-pn-realaudio
+
+[audio/x-pn-realaudio - 6]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=audio/x-pn-realaudio
+
+[audio/x-scpls - 1]
+AllowAsDefault=true
+Application=audacious.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=audio/x-scpls
+
+[audio/x-scpls - 2]
+AllowAsDefault=true
+Application=kde-xmms-2.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=audio/x-scpls
+
+[audio/x-scpls - 3]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/x-scpls
+
+[audio/x-scpls - 4]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/x-scpls
+
+[audio/x-scpls - 5]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=audio/x-scpls
+
+[audio/x-vorbis - 1]
+AllowAsDefault=true
+Application=audacious.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=audio/x-vorbis
+
+[audio/x-vorbis - 2]
+AllowAsDefault=true
+Application=kde-xmms-2.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=audio/x-vorbis
+
+[audio/x-vorbis - 3]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/x-vorbis
+
+[audio/x-vorbis - 4]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/x-vorbis
+
+[audio/x-vorbis - 5]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=audio/x-vorbis
+
+[audio/x-vorbis - 6]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=audio/x-vorbis
+
+[audio/x-wav - 1]
+AllowAsDefault=true
+Application=audacious.desktop
+GenericServiceType=Application
+Preference=5
+ServiceType=audio/x-wav
+
+[audio/x-wav - 2]
+AllowAsDefault=true
+Application=kde-xmms-2.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=audio/x-wav
+
+[audio/x-wav - 3]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=audio/x-wav
+
+[audio/x-wav - 4]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=audio/x-wav
+
+[audio/x-wav - 5]
+AllowAsDefault=true
+Application=kde-gmplayer.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=audio/x-wav
+
+[audio/x-wav - 6]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=audio/x-wav
+
+[audio/x-wav - 7]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=audio/x-wav
+
+[image/jpg - 1]
+AllowAsDefault=true
+Application=kde-gwenview.desktop
+GenericServiceType=Application
+Preference=7
+ServiceType=image/jpg
+
+[image/jpg - 2]
+AllowAsDefault=true
+Application=gimp-2.2.desktop
+GenericServiceType=Application
+Preference=6
+ServiceType=image/jpg
+
+[image/jpg - 3]
+AllowAsDefault=true
+Application=kde-kiconedit.desktop
+GenericServiceType=Application
+Preference=5
+ServiceType=image/jpg
+
+[image/jpg - 4]
+AllowAsDefault=true
+Application=kde-krita_jpeg.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=image/jpg
+
+[image/jpg - 5]
+AllowAsDefault=true
+Application=iceweasel.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=image/jpg
+
+[image/jpg - 6]
+AllowAsDefault=true
+Application=kde-kolourpaint.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=image/jpg
+
+[image/jpg - 7]
+AllowAsDefault=true
+Application=kde-showfoto.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=image/jpg
+
+[image/jpg - 8]
+AllowAsDefault=true
+Application=gvimagepart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=image/jpg
+
+[image/jpg - 9]
+AllowAsDefault=true
+Application=khtmlimage.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=image/jpg
+
+[image/pjpeg - 1]
+AllowAsDefault=true
+Application=kde-gwenview.desktop
+GenericServiceType=Application
+Preference=7
+ServiceType=image/pjpeg
+
+[image/pjpeg - 2]
+AllowAsDefault=true
+Application=gimp-2.2.desktop
+GenericServiceType=Application
+Preference=6
+ServiceType=image/pjpeg
+
+[image/pjpeg - 3]
+AllowAsDefault=true
+Application=kde-kiconedit.desktop
+GenericServiceType=Application
+Preference=5
+ServiceType=image/pjpeg
+
+[image/pjpeg - 4]
+AllowAsDefault=true
+Application=kde-krita_jpeg.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=image/pjpeg
+
+[image/pjpeg - 5]
+AllowAsDefault=true
+Application=iceweasel.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=image/pjpeg
+
+[image/pjpeg - 6]
+AllowAsDefault=true
+Application=kde-kolourpaint.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=image/pjpeg
+
+[image/pjpeg - 7]
+AllowAsDefault=true
+Application=kde-showfoto.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=image/pjpeg
+
+[image/pjpeg - 8]
+AllowAsDefault=true
+Application=gvimagepart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=image/pjpeg
+
+[image/pjpeg - 9]
+AllowAsDefault=true
+Application=khtmlimage.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=image/pjpeg
+
+[image/svg+xml - 1]
+AllowAsDefault=true
+Application=inkscape.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=image/svg+xml
+
+[image/svg+xml - 2]
+AllowAsDefault=true
+Application=kde-kfmclient_html.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=image/svg+xml
+
+[image/svg+xml - 3]
+AllowAsDefault=true
+Application=iceweasel.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=image/svg+xml
+
+[image/svg+xml - 4]
+AllowAsDefault=true
+Application=ksvgplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=3
+ServiceType=image/svg+xml
+
+[image/svg+xml - 5]
+AllowAsDefault=true
+Application=khtml.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=image/svg+xml
+
+[image/svg+xml - 6]
+AllowAsDefault=true
+Application=katepart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=image/svg+xml
+
+[image/svg-xml - 1]
+AllowAsDefault=true
+Application=inkscape.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=image/svg-xml
+
+[image/svg-xml - 2]
+AllowAsDefault=true
+Application=kde-kfmclient_html.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=image/svg-xml
+
+[image/svg-xml - 3]
+AllowAsDefault=true
+Application=iceweasel.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=image/svg-xml
+
+[image/svg-xml - 4]
+AllowAsDefault=true
+Application=ksvgplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=3
+ServiceType=image/svg-xml
+
+[image/svg-xml - 5]
+AllowAsDefault=true
+Application=khtml.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=image/svg-xml
+
+[image/svg-xml - 6]
+AllowAsDefault=true
+Application=katepart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=image/svg-xml
+
+[image/x-xcf-gimp - 1]
+AllowAsDefault=true
+Application=kde-gimp.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=image/x-xcf-gimp
+
+[image/x-xcf-gimp - 2]
+AllowAsDefault=true
+Application=kde-krita_magick.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=image/x-xcf-gimp
+
+[image/x-xcf-gimp - 3]
+AllowAsDefault=true
+Application=kde-kolourpaint.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=image/x-xcf-gimp
+
+[text/css - 1]
+AllowAsDefault=true
+Application=kde-kwrite.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=text/css
+
+[text/css - 2]
+AllowAsDefault=true
+Application=katepart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=text/css
+
+[text/html - 1]
+AllowAsDefault=true
+Application=kde-kfmclient_html.desktop
+GenericServiceType=Application
+Preference=8
+ServiceType=text/html
+
+[text/html - 10]
+AllowAsDefault=true
+Application=katepart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=text/html
+
+[text/html - 2]
+AllowAsDefault=true
+Application=iceweasel.desktop
+GenericServiceType=Application
+Preference=7
+ServiceType=text/html
+
+[text/html - 3]
+AllowAsDefault=true
+Application=kde-quanta.desktop
+GenericServiceType=Application
+Preference=6
+ServiceType=text/html
+
+[text/html - 4]
+AllowAsDefault=true
+Application=kde-quanta.desktop
+GenericServiceType=Application
+Preference=5
+ServiceType=text/html
+
+[text/html - 5]
+AllowAsDefault=true
+Application=kde-kwrite.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=text/html
+
+[text/html - 6]
+AllowAsDefault=true
+Application=kwrite.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=text/html
+
+[text/html - 7]
+AllowAsDefault=true
+Application=kde-kate.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=text/html
+
+[text/html - 8]
+AllowAsDefault=true
+Application=kde-links.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=text/html
+
+[text/html - 9]
+AllowAsDefault=true
+Application=khtml.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=text/html
+
+[text/plain - 1]
+AllowAsDefault=true
+Application=kde-kwrite.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=text/plain
+
+[text/plain - 2]
+AllowAsDefault=true
+Application=kde-kate.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=text/plain
+
+[text/plain - 3]
+AllowAsDefault=true
+Application=katepart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=3
+ServiceType=text/plain
+
+[text/plain - 4]
+AllowAsDefault=true
+Application=kwordpart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=text/plain
+
+[text/plain - 5]
+AllowAsDefault=true
+Application=klinkstatus_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=text/plain
+
+[text/x-diff - 1]
+AllowAsDefault=true
+Application=kde-kompare.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=text/x-diff
+
+[text/x-diff - 10]
+AllowAsDefault=true
+Application=kde-kword.desktop
+Preference=0
+ServiceType=text/x-diff
+
+[text/x-diff - 2]
+AllowAsDefault=true
+Application=kde-kwrite.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=text/x-diff
+
+[text/x-diff - 3]
+AllowAsDefault=true
+Application=kde-kate.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=text/x-diff
+
+[text/x-diff - 4]
+AllowAsDefault=true
+Application=komparepart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=6
+ServiceType=text/x-diff
+
+[text/x-diff - 5]
+AllowAsDefault=true
+Application=katepart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=5
+ServiceType=text/x-diff
+
+[text/x-diff - 6]
+AllowAsDefault=true
+Application=kwordpart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=4
+ServiceType=text/x-diff
+
+[text/x-diff - 7]
+AllowAsDefault=true
+Application=komparenavtreepart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=3
+ServiceType=text/x-diff
+
+[text/x-diff - 8]
+AllowAsDefault=true
+Application=kdiff3part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=text/x-diff
+
+[text/x-diff - 9]
+AllowAsDefault=true
+Application=klinkstatus_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=text/x-diff
+
+[text/x-hex - 1]
+AllowAsDefault=true
+Application=kde-kwrite.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=text/x-hex
+
+[text/x-hex - 2]
+AllowAsDefault=true
+Application=kde-kate.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=text/x-hex
+
+[text/x-hex - 3]
+AllowAsDefault=true
+Application=katepart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=3
+ServiceType=text/x-hex
+
+[text/x-hex - 4]
+AllowAsDefault=true
+Application=kwordpart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=text/x-hex
+
+[text/x-hex - 5]
+AllowAsDefault=true
+Application=klinkstatus_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=text/x-hex
+
+[text/x-hex - 6]
+AllowAsDefault=true
+Application=kde-kword.desktop
+Preference=0
+ServiceType=text/x-hex
+
+[text/x-log - 1]
+AllowAsDefault=true
+Application=kde-kwrite.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=text/x-log
+
+[text/x-log - 2]
+AllowAsDefault=true
+Application=kde-kate.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=text/x-log
+
+[text/x-log - 3]
+AllowAsDefault=true
+Application=katepart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=3
+ServiceType=text/x-log
+
+[text/x-log - 4]
+AllowAsDefault=true
+Application=kwordpart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=text/x-log
+
+[text/x-log - 5]
+AllowAsDefault=true
+Application=klinkstatus_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=text/x-log
+
+[text/x-log - 6]
+AllowAsDefault=true
+Application=kde-kword.desktop
+Preference=0
+ServiceType=text/x-log
+
+[text/x-pascal - 1]
+AllowAsDefault=true
+Application=kde-kwrite.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=text/x-pascal
+
+[text/x-pascal - 2]
+AllowAsDefault=true
+Application=kde-kate.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=text/x-pascal
+
+[text/x-pascal - 3]
+AllowAsDefault=true
+Application=katepart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=3
+ServiceType=text/x-pascal
+
+[text/x-pascal - 4]
+AllowAsDefault=true
+Application=kwordpart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=text/x-pascal
+
+[text/x-pascal - 5]
+AllowAsDefault=true
+Application=klinkstatus_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=text/x-pascal
+
+[text/x-pascal - 6]
+AllowAsDefault=true
+Application=kde-kword.desktop
+Preference=0
+ServiceType=text/x-pascal
+
+[text/xml - 1]
+AllowAsDefault=true
+Application=kde-kwrite.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=text/xml
+
+[text/xml - 2]
+AllowAsDefault=true
+Application=kde-kfmclient_html.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=text/xml
+
+[text/xml - 3]
+AllowAsDefault=true
+Application=iceweasel.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=text/xml
+
+[text/xml - 4]
+AllowAsDefault=true
+Application=khtml.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=text/xml
+
+[text/xml - 5]
+AllowAsDefault=true
+Application=katepart.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=text/xml
+
+[uri/mms - 1]
+AllowAsDefault=true
+Application=kde-gmplayer.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=uri/mms
+
+[uri/mmst - 1]
+AllowAsDefault=true
+Application=kde-gmplayer.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=uri/mmst
+
+[uri/mmsu - 1]
+AllowAsDefault=true
+Application=kde-gmplayer.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=uri/mmsu
+
+[uri/pnm - 1]
+AllowAsDefault=true
+Application=kde-gmplayer.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=uri/pnm
+
+[uri/rtspt - 1]
+AllowAsDefault=true
+Application=kde-gmplayer.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=uri/rtspt
+
+[uri/rtspu - 1]
+AllowAsDefault=true
+Application=kde-gmplayer.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=uri/rtspu
+
+[video/3gpp - 1]
+AllowAsDefault=true
+Application=kde-gmplayer.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=video/3gpp
+
+[video/3gpp - 2]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=video/3gpp
+
+[video/avi - 1]
+AllowAsDefault=true
+Application=smplayer.desktop
+GenericServiceType=Application
+Preference=6
+ServiceType=video/avi
+
+[video/avi - 10]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=video/avi
+
+[video/avi - 2]
+AllowAsDefault=true
+Application=smplayer_enqueue.desktop
+GenericServiceType=Application
+Preference=5
+ServiceType=video/avi
+
+[video/avi - 3]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=video/avi
+
+[video/avi - 4]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=video/avi
+
+[video/avi - 5]
+AllowAsDefault=true
+Application=mplayer-2.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=video/avi
+
+[video/avi - 6]
+AllowAsDefault=true
+Application=mplayer.desktop
+Preference=0
+ServiceType=video/avi
+
+[video/avi - 7]
+AllowAsDefault=true
+Application=mplayer.desktop
+Preference=0
+ServiceType=video/avi
+
+[video/avi - 8]
+AllowAsDefault=true
+Application=kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=video/avi
+
+[video/avi - 9]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=video/avi
+
+[video/m2t - 1]
+AllowAsDefault=true
+Application=kde-gmplayer.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=video/m2t
+
+[video/m2t - 2]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=video/m2t
+
+[video/m2t - 3]
+AllowAsDefault=true
+Application=xine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=video/m2t
+
+[video/mp4 - 1]
+AllowAsDefault=true
+Application=smplayer.desktop
+GenericServiceType=Application
+Preference=6
+ServiceType=video/mp4
+
+[video/mp4 - 10]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=video/mp4
+
+[video/mp4 - 2]
+AllowAsDefault=true
+Application=smplayer_enqueue.desktop
+GenericServiceType=Application
+Preference=5
+ServiceType=video/mp4
+
+[video/mp4 - 3]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=video/mp4
+
+[video/mp4 - 4]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=video/mp4
+
+[video/mp4 - 5]
+AllowAsDefault=true
+Application=mplayer-2.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=video/mp4
+
+[video/mp4 - 6]
+AllowAsDefault=true
+Application=mplayer.desktop
+Preference=0
+ServiceType=video/mp4
+
+[video/mp4 - 7]
+AllowAsDefault=true
+Application=mplayer.desktop
+Preference=0
+ServiceType=video/mp4
+
+[video/mp4 - 8]
+AllowAsDefault=true
+Application=kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=video/mp4
+
+[video/mp4 - 9]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=video/mp4
+
+[video/mpeg - 1]
+AllowAsDefault=true
+Application=smplayer.desktop
+GenericServiceType=Application
+Preference=6
+ServiceType=video/mpeg
+
+[video/mpeg - 2]
+AllowAsDefault=true
+Application=smplayer_enqueue.desktop
+GenericServiceType=Application
+Preference=5
+ServiceType=video/mpeg
+
+[video/mpeg - 3]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=video/mpeg
+
+[video/mpeg - 4]
+AllowAsDefault=true
+Application=mplayer-2.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=video/mpeg
+
+[video/mpeg - 5]
+AllowAsDefault=true
+Application=kaffeine.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=video/mpeg
+
+[video/mpeg - 6]
+AllowAsDefault=true
+Application=avidemux-gtk.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=video/mpeg
+
+[video/mpeg - 7]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=video/mpeg
+
+[video/mpeg - 8]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=video/mpeg
+
+[video/msvideo - 1]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=video/msvideo
+
+[video/msvideo - 2]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=video/msvideo
+
+[video/msvideo - 3]
+AllowAsDefault=true
+Application=vlc.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=video/msvideo
+
+[video/msvideo - 4]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=video/msvideo
+
+[video/msvideo - 5]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=video/msvideo
+
+[video/quicktime - 1]
+AllowAsDefault=true
+Application=smplayer.desktop
+GenericServiceType=Application
+Preference=5
+ServiceType=video/quicktime
+
+[video/quicktime - 2]
+AllowAsDefault=true
+Application=smplayer_enqueue.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=video/quicktime
+
+[video/quicktime - 3]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=video/quicktime
+
+[video/quicktime - 4]
+AllowAsDefault=true
+Application=mplayer-2.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=video/quicktime
+
+[video/quicktime - 5]
+AllowAsDefault=true
+Application=kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=video/quicktime
+
+[video/quicktime - 6]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=video/quicktime
+
+[video/quicktime - 7]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=video/quicktime
+
+[video/vnd.rn-realvideo - 1]
+AllowAsDefault=true
+Application=smplayer.desktop
+GenericServiceType=Application
+Preference=5
+ServiceType=video/vnd.rn-realvideo
+
+[video/vnd.rn-realvideo - 2]
+AllowAsDefault=true
+Application=smplayer_enqueue.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=video/vnd.rn-realvideo
+
+[video/vnd.rn-realvideo - 3]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=video/vnd.rn-realvideo
+
+[video/vnd.rn-realvideo - 4]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=video/vnd.rn-realvideo
+
+[video/vnd.rn-realvideo - 5]
+AllowAsDefault=true
+Application=kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=video/vnd.rn-realvideo
+
+[video/vnd.rn-realvideo - 6]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=video/vnd.rn-realvideo
+
+[video/x-fli - 1]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=video/x-fli
+
+[video/x-fli - 2]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=video/x-fli
+
+[video/x-fli - 3]
+AllowAsDefault=true
+Application=vlc.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=video/x-fli
+
+[video/x-fli - 4]
+AllowAsDefault=true
+Application=kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=video/x-fli
+
+[video/x-fli - 5]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=video/x-fli
+
+[video/x-fli - 6]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=video/x-fli
+
+[video/x-flic - 1]
+AllowAsDefault=true
+Application=kde-gmplayer.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=video/x-flic
+
+[video/x-flic - 2]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=video/x-flic
+
+[video/x-flic - 3]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=video/x-flic
+
+[video/x-flv - 1]
+AllowAsDefault=true
+Application=kde-gmplayer.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=video/x-flv
+
+[video/x-flv - 2]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=video/x-flv
+
+[video/x-matroska - 1]
+AllowAsDefault=true
+Application=smplayer.desktop
+GenericServiceType=Application
+Preference=6
+ServiceType=video/x-matroska
+
+[video/x-matroska - 2]
+AllowAsDefault=true
+Application=smplayer_enqueue.desktop
+GenericServiceType=Application
+Preference=5
+ServiceType=video/x-matroska
+
+[video/x-matroska - 3]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=video/x-matroska
+
+[video/x-matroska - 4]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=video/x-matroska
+
+[video/x-matroska - 5]
+AllowAsDefault=true
+Application=kaffeine.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=video/x-matroska
+
+[video/x-matroska - 6]
+AllowAsDefault=true
+Application=mplayer-2.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=video/x-matroska
+
+[video/x-matroska - 7]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=video/x-matroska
+
+[video/x-mpeg - 1]
+AllowAsDefault=true
+Application=smplayer.desktop
+GenericServiceType=Application
+Preference=5
+ServiceType=video/x-mpeg
+
+[video/x-mpeg - 2]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=video/x-mpeg
+
+[video/x-mpeg - 3]
+AllowAsDefault=true
+Application=vlc.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=video/x-mpeg
+
+[video/x-mpeg - 4]
+AllowAsDefault=true
+Application=mplayer-2.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=video/x-mpeg
+
+[video/x-mpeg - 5]
+AllowAsDefault=true
+Application=avidemux-gtk.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=video/x-mpeg
+
+[video/x-mpeg - 6]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=video/x-mpeg
+
+[video/x-mpeg-system - 1]
+AllowAsDefault=true
+Application=smplayer.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=video/x-mpeg-system
+
+[video/x-mpeg-system - 2]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=video/x-mpeg-system
+
+[video/x-mpeg2 - 1]
+AllowAsDefault=true
+Application=smplayer.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=video/x-mpeg2
+
+[video/x-mpeg2 - 2]
+AllowAsDefault=true
+Application=mplayer-2.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=video/x-mpeg2
+
+[video/x-mpeg2 - 3]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=video/x-mpeg2
+
+[video/x-ms-asf - 1]
+AllowAsDefault=true
+Application=smplayer.desktop
+GenericServiceType=Application
+Preference=5
+ServiceType=video/x-ms-asf
+
+[video/x-ms-asf - 2]
+AllowAsDefault=true
+Application=smplayer_enqueue.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=video/x-ms-asf
+
+[video/x-ms-asf - 3]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=video/x-ms-asf
+
+[video/x-ms-asf - 4]
+AllowAsDefault=true
+Application=mplayer-2.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=video/x-ms-asf
+
+[video/x-ms-asf - 5]
+AllowAsDefault=true
+Application=kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=video/x-ms-asf
+
+[video/x-ms-asf - 6]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=video/x-ms-asf
+
+[video/x-ms-asf - 7]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=video/x-ms-asf
+
+[video/x-ms-wmv - 1]
+AllowAsDefault=true
+Application=smplayer.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=video/x-ms-wmv
+
+[video/x-ms-wmv - 2]
+AllowAsDefault=true
+Application=smplayer_enqueue.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=video/x-ms-wmv
+
+[video/x-ms-wmv - 3]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=video/x-ms-wmv
+
+[video/x-ms-wmv - 4]
+AllowAsDefault=true
+Application=kde-gmplayer-6.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=video/x-ms-wmv
+
+[video/x-ms-wmv - 5]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=video/x-ms-wmv
+
+[video/x-ms-wmv - 6]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=video/x-ms-wmv
+
+[video/x-msvideo - 1]
+AllowAsDefault=true
+Application=smplayer.desktop
+GenericServiceType=Application
+Preference=5
+ServiceType=video/x-msvideo
+
+[video/x-msvideo - 2]
+AllowAsDefault=true
+Application=smplayer_enqueue.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=video/x-msvideo
+
+[video/x-msvideo - 3]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=video/x-msvideo
+
+[video/x-msvideo - 4]
+AllowAsDefault=true
+Application=mplayer-2.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=video/x-msvideo
+
+[video/x-msvideo - 5]
+AllowAsDefault=true
+Application=kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=video/x-msvideo
+
+[video/x-msvideo - 6]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=video/x-msvideo
+
+[video/x-msvideo - 7]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=video/x-msvideo
+
+[video/x-ogm - 1]
+AllowAsDefault=true
+Application=smplayer.desktop
+GenericServiceType=Application
+Preference=11
+ServiceType=video/x-ogm
+
+[video/x-ogm - 10]
+AllowAsDefault=true
+Application=vlc.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=video/x-ogm
+
+[video/x-ogm - 11]
+AllowAsDefault=true
+Application=audacious-2.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=video/x-ogm
+
+[video/x-ogm - 12]
+AllowAsDefault=true
+Application=kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=video/x-ogm
+
+[video/x-ogm - 13]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=video/x-ogm
+
+[video/x-ogm - 14]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=video/x-ogm
+
+[video/x-ogm - 2]
+AllowAsDefault=true
+Application=smplayer_enqueue.desktop
+GenericServiceType=Application
+Preference=10
+ServiceType=video/x-ogm
+
+[video/x-ogm - 3]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=9
+ServiceType=video/x-ogm
+
+[video/x-ogm - 4]
+AllowAsDefault=true
+Application=audacious.desktop
+GenericServiceType=Application
+Preference=8
+ServiceType=video/x-ogm
+
+[video/x-ogm - 5]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=7
+ServiceType=video/x-ogm
+
+[video/x-ogm - 6]
+AllowAsDefault=true
+Application=kde-xmms-2.desktop
+GenericServiceType=Application
+Preference=6
+ServiceType=video/x-ogm
+
+[video/x-ogm - 7]
+AllowAsDefault=true
+Application=xmms.desktop
+Preference=0
+ServiceType=video/x-ogm
+
+[video/x-ogm - 8]
+AllowAsDefault=true
+Application=mplayer-2.desktop
+GenericServiceType=Application
+Preference=5
+ServiceType=video/x-ogm
+
+[video/x-ogm - 9]
+AllowAsDefault=true
+Application=audacity.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=video/x-ogm
+
+[video/x-theora - 1]
+AllowAsDefault=true
+Application=smplayer.desktop
+GenericServiceType=Application
+Preference=11
+ServiceType=video/x-theora
+
+[video/x-theora - 10]
+AllowAsDefault=true
+Application=vlc.desktop
+GenericServiceType=Application
+Preference=3
+ServiceType=video/x-theora
+
+[video/x-theora - 11]
+AllowAsDefault=true
+Application=audacious-2.desktop
+GenericServiceType=Application
+Preference=2
+ServiceType=video/x-theora
+
+[video/x-theora - 12]
+AllowAsDefault=true
+Application=kaffeine.desktop
+GenericServiceType=Application
+Preference=1
+ServiceType=video/x-theora
+
+[video/x-theora - 13]
+AllowAsDefault=true
+Application=xine_part.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=2
+ServiceType=video/x-theora
+
+[video/x-theora - 14]
+AllowAsDefault=true
+Application=nsplugin.desktop
+GenericServiceType=KParts/ReadOnlyPart
+Preference=1
+ServiceType=video/x-theora
+
+[video/x-theora - 2]
+AllowAsDefault=true
+Application=smplayer_enqueue.desktop
+GenericServiceType=Application
+Preference=10
+ServiceType=video/x-theora
+
+[video/x-theora - 3]
+AllowAsDefault=true
+Application=mplayer.desktop
+GenericServiceType=Application
+Preference=9
+ServiceType=video/x-theora
+
+[video/x-theora - 4]
+AllowAsDefault=true
+Application=kde-kaffeine.desktop
+GenericServiceType=Application
+Preference=8
+ServiceType=video/x-theora
+
+[video/x-theora - 5]
+AllowAsDefault=true
+Application=audacious.desktop
+GenericServiceType=Application
+Preference=7
+ServiceType=video/x-theora
+
+[video/x-theora - 6]
+AllowAsDefault=true
+Application=kde-xmms-2.desktop
+GenericServiceType=Application
+Preference=6
+ServiceType=video/x-theora
+
+[video/x-theora - 7]
+AllowAsDefault=true
+Application=xmms.desktop
+Preference=0
+ServiceType=video/x-theora
+
+[video/x-theora - 8]
+AllowAsDefault=true
+Application=mplayer-2.desktop
+GenericServiceType=Application
+Preference=5
+ServiceType=video/x-theora
+
+[video/x-theora - 9]
+AllowAsDefault=true
+Application=audacity.desktop
+GenericServiceType=Application
+Preference=4
+ServiceType=video/x-theora

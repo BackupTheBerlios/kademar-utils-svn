@@ -1,0 +1,1 @@
+application/x-debian-package;	kpackage -caption "Package Manager" %s;	nametemplate=%s.deb;	test=test "$DISPLAY" != "";	priority=7

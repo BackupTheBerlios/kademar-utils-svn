@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=wine_reg
+InitialPreference=2
+MimeType=application/reg
+Name=wine_reg
+Terminal=false
+Type=Application

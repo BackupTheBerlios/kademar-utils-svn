@@ -1,0 +1,6 @@
+[Manage Modem 3G network manager for group network]
+Identity=unix-group:network
+Action=org.freedesktop.ModemManager*
+ResultAny=yes
+ResultInactive=yes
+ResultActive=yes

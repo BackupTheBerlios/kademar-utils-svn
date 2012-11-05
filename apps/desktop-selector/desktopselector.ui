@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1321</width>
+    <width>1135</width>
     <height>570</height>
    </rect>
   </property>
@@ -147,6 +147,29 @@
          </property>
         </widget>
        </item>
+       <item row="0" column="0">
+        <widget class="QPushButtonWithEvents" name="b_previous">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Previous</string>
+         </property>
+         <property name="icon">
+          <iconset resource="resource.qrc">
+           <normaloff>:/img/img/go-previous.png</normaloff>:/img/img/go-previous.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+        </widget>
+       </item>
        <item row="0" column="4">
         <widget class="QPushButtonWithEvents" name="b_displayConfiguration">
          <property name="minimumSize">
@@ -176,7 +199,7 @@
     <item row="2" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>4</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="desktopPage">
        <layout class="QGridLayout" name="gridLayout_4">
@@ -366,6 +389,58 @@
           </property>
          </widget>
         </item>
+        <item row="5" column="1">
+         <spacer name="verticalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>447</width>
+            <height>104</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="4" column="0">
+         <spacer name="horizontalSpacer_8">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="4" column="2">
+         <spacer name="horizontalSpacer_7">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="1">
+         <spacer name="verticalSpacer_6">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
         <item row="4" column="1">
          <widget class="QFrame" name="displayFrame">
           <property name="minimumSize">
@@ -381,39 +456,25 @@
            <enum>QFrame::Raised</enum>
           </property>
           <layout class="QGridLayout" name="gridLayout_7">
-           <item row="6" column="3">
-            <spacer name="horizontalSpacer_9">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
+           <item row="0" column="0" colspan="6">
+            <widget class="QLabel" name="displayDetectedLabel">
+             <property name="maximumSize">
               <size>
-               <width>40</width>
-               <height>20</height>
+               <width>16777215</width>
+               <height>50</height>
               </size>
              </property>
-            </spacer>
-           </item>
-           <item row="6" column="2">
-            <widget class="QPushButtonWithEvents" name="b_previous">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>32</height>
-              </size>
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
              </property>
              <property name="text">
-              <string>Previous</string>
+              <string>Detected</string>
              </property>
-             <property name="icon">
-              <iconset resource="resource.qrc">
-               <normaloff>:/img/img/go-previous.png</normaloff>:/img/img/go-previous.png</iconset>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>32</width>
-               <height>22</height>
-              </size>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
@@ -442,7 +503,7 @@
              </property>
             </widget>
            </item>
-           <item row="3" column="1" colspan="4">
+           <item row="3" column="1" colspan="5">
             <widget class="QFrame" name="driverFrame">
              <property name="frameShape">
               <enum>QFrame::StyledPanel</enum>
@@ -471,29 +532,47 @@
              </layout>
             </widget>
            </item>
-           <item row="0" column="0" colspan="5">
-            <widget class="QLabel" name="displayDetectedLabel">
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>50</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
+           <item row="6" column="5">
+            <widget class="QPushButtonWithEvents" name="b_startDesktop">
              <property name="text">
-              <string>Detected</string>
+              <string>Start LiveCD Desktop</string>
              </property>
-             <property name="alignment">
-              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             <property name="icon">
+              <iconset resource="resource.qrc">
+               <normaloff>:/img/img/ok.png</normaloff>:/img/img/ok.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>32</width>
+               <height>32</height>
+              </size>
              </property>
             </widget>
            </item>
-           <item row="4" column="0" colspan="5">
+           <item row="6" column="4">
+            <widget class="QPushButtonWithEvents" name="b_displayAccept">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>32</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Accept</string>
+             </property>
+             <property name="icon">
+              <iconset resource="resource.qrc">
+               <normaloff>:/img/img/ok.png</normaloff>:/img/img/ok.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>32</width>
+               <height>32</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0" colspan="6">
             <widget class="QFrame" name="advancedConfigurationFrame">
              <property name="frameShape">
               <enum>QFrame::StyledPanel</enum>
@@ -543,19 +622,6 @@
                  <set>Qt::AlignCenter</set>
                 </property>
                </widget>
-              </item>
-              <item row="3" column="2">
-               <spacer name="horizontalSpacer_6">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
               </item>
               <item row="3" column="5">
                <widget class="QLabel" name="l_resol">
@@ -615,17 +681,49 @@
                 </property>
                </widget>
               </item>
+              <item row="3" column="2">
+               <spacer name="horizontalSpacer_6">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
              </layout>
             </widget>
            </item>
-           <item row="6" column="4">
-            <widget class="QPushButtonWithEvents" name="b_startDesktop">
+           <item row="6" column="3">
+            <spacer name="horizontalSpacer_9">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="6" column="0" colspan="3">
+            <widget class="QPushButtonWithEvents" name="b_displayPrevious">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>32</height>
+              </size>
+             </property>
              <property name="text">
-              <string>Start LiveCD Desktop</string>
+              <string>Previous</string>
              </property>
              <property name="icon">
               <iconset resource="resource.qrc">
-               <normaloff>:/img/img/ok.png</normaloff>:/img/img/ok.png</iconset>
+               <normaloff>:/img/img/go-previous.png</normaloff>:/img/img/go-previous.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -637,58 +735,6 @@
            </item>
           </layout>
          </widget>
-        </item>
-        <item row="5" column="1">
-         <spacer name="verticalSpacer_5">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>447</width>
-            <height>104</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="4" column="2">
-         <spacer name="horizontalSpacer_7">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="4" column="0">
-         <spacer name="horizontalSpacer_8">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="0" column="1">
-         <spacer name="verticalSpacer_6">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
         </item>
        </layout>
       </widget>
@@ -752,33 +798,7 @@
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
           </property>
-          <layout class="QGridLayout" name="gridLayout_16">
-           <item row="2" column="0">
-            <widget class="QLabel" name="displayChipetLabel_2">
-             <property name="minimumSize">
-              <size>
-               <width>64</width>
-               <height>64</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>68</width>
-               <height>68</height>
-              </size>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="pixmap">
-              <pixmap resource="resource.qrc">:/img/img/display.png</pixmap>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
+          <layout class="QGridLayout" name="gridLayout_16"/>
          </widget>
         </item>
         <item row="2" column="2">
@@ -1424,7 +1444,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1321</width>
+     <width>1135</width>
      <height>20</height>
     </rect>
    </property>

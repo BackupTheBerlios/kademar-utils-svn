@@ -17,24 +17,11 @@
 
 bool speech;
 
-QList< QGridLayout* > listGridLayout;
-QList< QPushButtonWithEvents* > listDesktopButtons;
-QList< QLabel* > listDesktopImage;
-
-QList< QHBoxLayout* > listHorizontalLayout;
-QList< QPushButtonWithEvents* > listLangButtons;
-
-QHash<QString, QString> dict;
-
-QList< QWidget* > listPages;
-
-QList<QString> graphicResolutions;
-
 QSettings settings("/etc/kademar/desktop-selector.ini", QSettings::IniFormat);
 
-QList< QActionWithEvents* > listLangActions;
-QList< QActionWithEvents* > listDesktopActions;
 //QMenu *languageMenu = new QMenu;
+
+QList<QString> graphicResolutions;
 
 
 extern QTranslator *appTranslator;
@@ -57,6 +44,7 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
     numlanguage=0;
     numpages=0;
     detectedAti=false;
+    selectedUser="";
     detectedNvidia=false;
     languageMenu->addSeparator();
 
@@ -136,7 +124,7 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
     }
 
 
- //   qDebug() << "selectedLang" << selectedLang;
+   // qDebug() << "selectedLang" << selectedLang;
 
    // qDebug() << "selectedDesktop" << selectedDesktop;
 }
@@ -203,8 +191,6 @@ void DesktopSelector::prepareGui()
     languageMenu->setStyle( new WideIconsMenu( iconswidth ) );
     desktopMenu->setStyle( new WideIconsMenu( iconswidth ) );
 
-
-
     ui->l_shutdown->setStyleSheet("QLabel { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #7d7d7d, stop: 1 white) ; border-style: outset; border-width: 1px; border-radius: 5px; border-color: beige; font: bold 14px; min-width: 10em; padding: 6px; margin-bottom: 10px;}");
 
     //StyleSheet for frames
@@ -239,7 +225,8 @@ void DesktopSelector::prepareGui()
     connect(ui->b_accessibilityPrevious2, SIGNAL(clicked()), this, SLOT(returnToUseSelectionPageFromAccessibility()));
     connect(ui->b_accessibilityAccept1, SIGNAL(clicked()), this, SLOT(returnToUseSelectionPageFromAccessibility()));
     connect(ui->b_accessibilityAccept2, SIGNAL(clicked()), this, SLOT(returnToUseSelectionPageFromAccessibility()));
-
+    connect(ui->b_displayAccept, SIGNAL(clicked()), this, SLOT(returnToUseSelectionPageFromDisplay()));
+    connect(ui->b_displayPrevious, SIGNAL(clicked()), this, SLOT(returnToUseSelectionPageFromDisplay()));
 
     //Define if it's on assistant mode or not
     extern QSettings settings;
@@ -249,9 +236,14 @@ void DesktopSelector::prepareGui()
         ui->b_language->setVisible(false);
         ui->b_desktop->setVisible(false);
         ui->b_displayConfiguration->setVisible(false);
+        ui->b_displayPrevious->setVisible(false);
+        ui->b_accessibilityPrevious1->setVisible(false);
+        ui->b_accessibilityPrevious2->setVisible(false);
 
     } else {
         // KDM/GDM like
+        ui->b_startDesktop->setVisible(false);
+        ui->b_previous->setVisible(false);
 
     }
 
@@ -380,7 +372,7 @@ void DesktopSelector::setupPages()
 {
     extern QSettings settings;
 
-    extern QList< QWidget* > listPages;
+    //extern QList< QWidget* > listPages;
 
 
 
@@ -519,6 +511,14 @@ void DesktopSelector::setupPages()
     //qDebug() << listPages.size();
 
 
+    // User page
+    QString *users = new QString(execShellProcess(QString("/bin/sh"), QString("-c"), QString("ls /home")));
+    foreach (QString user, users->split("")){
+        this->createUserButton(new QString(user));
+    }
+
+
+
     //Define if it's on assistant mode or not
     extern QSettings settings;
     if (settings.value("assistantMode").toBool() == true){
@@ -551,7 +551,7 @@ void DesktopSelector::nextPage()
     if (settings.value("assistantMode").toBool()){
         //Assistant Mode
         numpages=numpages+1;
-        extern QList< QWidget* > listPages;
+        //extern QList< QWidget* > listPages;
         ui->stackedWidget->setCurrentWidget(listPages[numpages]);
         //Make visible previousButton if it's the case
         if (!(ui->b_previous->isVisible())){
@@ -570,7 +570,7 @@ void DesktopSelector::previousPage()
     if (settings.value("assistantMode").toBool()){
         //Assistant Mode
         numpages=numpages-1;
-        extern QList< QWidget* > listPages;
+        //extern QList< QWidget* > listPages;
         ui->stackedWidget->setCurrentWidget(listPages[numpages]);
         if (numpages == 0){
             ui->b_previous->setVisible(false);
@@ -699,7 +699,7 @@ void DesktopSelector::cancelShutdown()
     extern QSettings settings;
     if (settings.value("assistantMode").toBool()){
         //return to previous page
-        extern QList< QWidget* > listPages;
+        //extern QList< QWidget* > listPages;
         ui->stackedWidget->setCurrentWidget(listPages[numpages]);
     } else {
         // KDM/GDM like
@@ -778,9 +778,9 @@ void DesktopSelector::createDesktopButton(QString *desk, QString *recommended)
 {
     // Create Desktop Buttons on GUI
     //extern int numdesktop;
-    extern QList< QGridLayout* > listGridLayout;
-    extern QList< QPushButtonWithEvents* > listDesktopButtons;
-    extern QList< QLabel* > listDesktopImage;
+    //extern QList< QGridLayout* > listGridLayout;
+    //extern QList< QPushButtonWithEvents* > listDesktopButtons;
+    //extern QList< QLabel* > listDesktopImage;
 
     //Add new button with objectname and minimum size
     listDesktopButtons << new QPushButtonWithEvents(ui->desktopFrame);
@@ -818,7 +818,7 @@ void DesktopSelector::createDesktopButton(QString *desk, QString *recommended)
     connect(listDesktopButtons[numdesktop], SIGNAL( buttonClicked(QString, QString)), this, SLOT(writeSettings(QString, QString)));
 
 
-    extern QList< QActionWithEvents* > listDesktopActions;
+    // extern QList< QActionWithEvents* > listDesktopActions;
     //listDesktopActions << new QActionWithEvents(QIcon(QString(":/img/%1").arg(*desk))),*desk, this);
     listDesktopActions << new QActionWithEvents(this);
     listDesktopActions[numdesktop]->setIcon(QIcon(QString(":/img/%1").arg(*desk)));
@@ -862,7 +862,7 @@ void DesktopSelector::createDesktopButton(QString *desk, QString *recommended)
 */
 void DesktopSelector::defineLanguageDictionary()
 {
-    extern QHash<QString, QString> dict;
+    //extern QHash<QString, QString> dict;
     dict["ca"] = "Català";     dict["ca_ES"] = "Català";
     dict["es"] = "Castellano";     dict["es_ES"] = "Castellano";
 
@@ -894,9 +894,9 @@ void DesktopSelector::changeLanguage(QString *lang){
 void DesktopSelector::createLanguageButton(QString *lang)
 {
     // Create Desktop Buttons on GUI
-    extern QList< QHBoxLayout* > listHorizontalLayout;
-    extern QList< QPushButtonWithEvents* > listLangButtons;
-    extern QHash<QString, QString> dict;  //real language names
+    //extern QList< QHBoxLayout* > listHorizontalLayout;
+   // extern QList< QPushButtonWithEvents* > listLangButtons;
+   // extern QHash<QString, QString> dict;  //real language names
 
     //Add new button with objectname and minimum size
     listLangButtons << new QPushButtonWithEvents(ui->languageFrame);
@@ -936,7 +936,7 @@ void DesktopSelector::createLanguageButton(QString *lang)
 
     //create menu entry
     listLangActions << new QActionWithEvents(this);
-    extern QList< QActionWithEvents* > listLangActions;
+    //extern QList< QActionWithEvents* > listLangActions;
     QFile *filebg = new QFile(QString(":/img/img/lang/%1.png").arg(*lang) );
     if  (filebg->exists()) {
         listLangActions[numlanguage]->setIcon(QIcon(QString(":/img/img/lang/%1.png").arg(*lang)));
@@ -1187,7 +1187,6 @@ void DesktopSelector::finalSteps()
     }
 
 
-
 }
 
 /*
@@ -1234,26 +1233,49 @@ void DesktopSelector::showSimpleAccessibilityConfiguration(){
 
 
 /*
+**************************
+***                    ***
+***  User Select Part  ***
+***                    ***
+**************************
+*/
+
+void DesktopSelector::createUserButton(QString *user)
+{
+
+
+}
+
+
+/*
+**************************
+***       E  N  D      ***
+***  User Select Part  ***
+***       E  N  D      ***
+**************************
+*/
+
+
+/*
  *MENUS
  */
 
 void DesktopSelector::showLanguageMenu(){
     languageMenu->exec(QCursor::pos());
-
 }
-
 
 void DesktopSelector::showDesktopMenu(){
     desktopMenu->exec(QCursor::pos());
-
 }
-
 
 void DesktopSelector::showAdvancedConfiguration(){
     ui->stackedWidget->setCurrentWidget(ui->displayPage);
-
 }
 
 void DesktopSelector::showAccessibilityOptions(){
     ui->stackedWidget->setCurrentWidget(ui->accessibilityPage);
+}
+
+void DesktopSelector::returnToUseSelectionPageFromDisplay(){
+    ui->stackedWidget->setCurrentWidget(ui->selectUserPage);
 }

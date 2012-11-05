@@ -8,6 +8,12 @@
 #include <QAction>
 #include "wideiconsmenu.h"
 #include <qactionwithevents.h>
+#include <qpushbuttonwithevents.h>
+#include <QGridLayout>
+#include <QLabel>
+#include <QHBoxLayout>
+//#include <>
+
 
 
 namespace Ui {
@@ -56,7 +62,8 @@ public slots:
     void showAdvancedAccessibilityConfiguration();
     void returnToUseSelectionPageFromAccessibility();
     void showSimpleAccessibilityConfiguration();
-
+    void returnToUseSelectionPageFromDisplay();
+    void createUserButton(QString *user);
 
 protected:
     void changeEvent(QEvent *e);
@@ -74,8 +81,22 @@ private:
     QString selectedDesktop;
     QString selectedDriver;
     QString selectedResol;
+    QString selectedUser;
     bool detectedNvidia;
     bool detectedAti;
+    QList< QActionWithEvents* > listLangActions;
+    QList< QActionWithEvents* > listDesktopActions;
+    QList< QGridLayout* > listGridLayout;
+    QList< QPushButtonWithEvents* > listDesktopButtons;
+    QList< QLabel* > listDesktopImage;
+
+    QList< QHBoxLayout* > listHorizontalLayout;
+    QList< QPushButtonWithEvents* > listLangButtons;
+
+    QHash<QString, QString> dict;
+
+    QList< QWidget* > listPages;
+
 
 
     QMenu *languageMenu;

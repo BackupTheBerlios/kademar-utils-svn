@@ -681,10 +681,10 @@ void HelioxHelper::createActions()
      if (settings->value("General/languages").toBool() == true){
          languageButtonSelection = new QToolButtonWithEvents(this, settings1, settings2, selectedLanguage);
          languageButtonSelection->setIcon(QIcon(":/images/language.png"));
-         if ((numlanguage != 0) && (numlanguage != 1)){
+        // if ((numlanguage != 0) && (numlanguage != 1)){
             ui->gridLayout->addWidget(languageButtonSelection, numRow, numCol, 1, 1);
             connect(languageButtonSelection, SIGNAL(buttonClicked(QString,QString)), this, SLOT(showLanguageMenu()));
-         }
+        // }
 
      }
 

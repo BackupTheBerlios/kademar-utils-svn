@@ -61,6 +61,11 @@ void QToolButtonWithEvents::readCaption( QString * label )
     QFile *filespeechFull = new QFile(QString("%1/%2.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue)) );
     QFile *filespeechFullLang = new QFile(QString("%1/%2_%3.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue)).arg(selectedLanguage) );
 
+/*
+    qDebug() << filespeechFullLang->fileName();
+    qDebug() << filespeechFull->fileName();
+    qDebug() << filespeechStripLang->fileName();
+    qDebug() << filespeechStrip->fileName();*/
 
     if  (filespeechFullLang->exists()) {
         readcommand->start(QString("ogg123 \"%1\"").arg(filespeechFullLang->fileName()));

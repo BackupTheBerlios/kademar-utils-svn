@@ -1,0 +1,35 @@
+# Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+pkgname=helioxstarter-screenlet
+pkgver=1.5.3
+pkgrel=1
+epoch=
+pkgdesc="Screenlet with accessibility options"
+arch=('any')
+url="http://www.proyectoheliox.org"
+license=('GPL')
+groups=()
+depends=('screenlets')
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("$pkgname-$pkgver.tar.gz")
+noextract=()
+md5sums=('234f48af09bdabd91e0a06bdbeb4824f') #generate with 'makepkg -g'
+
+
+package() {
+  cp -a $startdir/src/$pkgname-$pkgver/* ${pkgdir}
+  cd ${pkgdir} && rm -fr `find . -name ".svn"` && rm -fr `find . -name "*.pyc"` && rm -f `find . -name "*~"`
+#  find "$pkgdir"/etc/ -type f -exec chmod 644 "{}" \;
+#  find "$pkgdir"/etc/ -type d -exec chmod 755 "{}" \;
+  find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+  find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+  find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+}

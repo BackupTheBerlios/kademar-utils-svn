@@ -1,0 +1,68 @@
+<display theme="default" width="400" height="450">
+	<group background="background">
+		<image src="background" width="400" height="450" />
+	</group>
+
+	<group id="vol" y="33" x="155">
+
+      <button id="vol_down" src="vol_down_button" src_over="vol_down_button_over" x="0" width="30" height="30" action="prev" on_click="self.event_player_click" text="Bajar Volumen" groups="" />
+		
+        <button id="vol_up" src="vol_up_button" src_over="vol_up_button_over" x="50" width="30" height="30" action="prev" on_click="self.event_player_click" text="Subir Volumen" groups="" />
+
+	</group>
+	
+	<group id="ctrl1" y="100" x="32">
+      <button id="orca -n" src="button_orca" src_over="button_orca_over" x="0" width="153" height="40" action="prev" on_click="self.event_player_click" text="Activar lector de pantalla orca" groups="startcsicappgroup3"/>
+		<text x="32" y="12" size="8" color="[0, 0, 0, 1]"><b>Lector de Pantalla</b></text>
+        <button id="kmag" src="button_xmag" src_over="button_xmag_over" x="180" width="153" height="40" action="prev" on_click="self.event_player_click" text="Activar ayuda de magnificador de pantalla" groups="startcsicappgroup3"  />
+		<text x="220" y="12" size="8" color="[0, 0, 0, 1]"><b>Magnificador</b></text>
+	</group>
+
+	
+	<group id="ctrl2" y="150" x="32">
+      <button id="dasher" src="button_dasher" src_over="button_dasher_over" x="0" width="153" height="40" action="prev" on_click="self.event_player_click" text="Abrir programa de texto predictivo" groups="" />
+		<text x="32" y="12" size="8" color="[0, 0, 0, 1]"><b>Texto Predictivo</b></text>
+        <button id="eviacam" src="button_eviacam" src_over="button_eviacam_over" x="180" width="153" height="40" action="prev" on_click="self.event_player_click" text="Activar ayuda de puntero con webcam" groups="startcsicappgroup1" />
+		<text x="220" y="12" size="8" color="[0, 0, 0, 1]"><b>Asist. webcam</b></text>
+	</group>
+
+	
+	<group id="ctrl3" y="200" x="32">
+      <button id="gok" src="button_gok" src_over="button_gok_over" x="0" width="153" height="40" action="prev" on_click="self.event_player_click" text="Abrir ayuda de mobilidad en ventanas" groups="startcsicappgroup1" />
+		<text x="32" y="12" size="8" color="[0, 0, 0, 1]"><b>Ayuda en Ventana</b></text>
+        <button id="xvkbd" src="button_keyb" src_over="button_keyb_over" x="180" width="153" height="40" action="prev" on_click="self.event_player_click" text="Abrir teclado virtual en pantalla" groups="startcsicappgroup1" />
+		<text x="220" y="12" size="8" color="[0, 0, 0, 1]"><b>Teclado Virtual</b></text>
+	</group>
+
+	
+	<group id="ctrl4" y="250" x="32">
+      <button id="keytouch" src="button_keytouch" src_over="button_keytouch_over" x="0" width="153" height="40" action="prev" on_click="self.event_player_click" text="Abrir asistente de teclado" groups="startcsicappgroup1" />
+		<text x="32" y="12" size="8" color="[0, 0, 0, 1]"><b>Teclados Mmedia</b></text>
+        <button id="kmousetool" src="button_kmousetool" src_over="button_kmousetool_over" x="180" width="153" height="40" action="prev" on_click="self.event_player_click" text="Abrir asistente de raton" groups="startcsicappgroup1" />
+		<text x="220" y="12" size="8" color="[0, 0, 0, 1]"><b>Asist. Puntero</b></text>
+	</group>
+	
+
+	<group id="ctrl5" y="300" x="32">
+      <button id="cellwriter" src="button_cellwriter" src_over="button_cellwriter_over" x="0" width="153" height="40" action="prev" on_click="self.event_player_click" text="Abrir reconocimiento de escritura" groups="startcsicappgroup3" />
+		<text x="32" y="12" size="8" color="[0, 0, 0, 1]"><b>Escritura Manual</b></text>
+        <button id="easystroke" src="button_easystroke" src_over="button_easystroke_over" x="180" width="153" height="40" action="prev" on_click="self.event_player_click" text="Abrir configurador de gestos del raton" groups="startcsicappgroup3, startcsicappgroup1" />
+		<text x="220" y="12" size="8" color="[0, 0, 0, 1]"><b>Mouse Gestures</b></text>
+	</group>
+
+	<group id="ctrl5" y="350" x="32">
+      <button id="ooffice" src="button_ooffice" src_over="button_ooffice_over" x="0" width="153" height="40" action="prev" on_click="self.event_player_click" text="Abrir suite ofimatica" groups="" />
+		<text x="32" y="12" size="8" color="[0, 0, 0, 1]"><b>Suite Ofimatica</b></text>
+        <button id="firefox" src="button_firefox" src_over="button_firefox_over" x="180" width="153" height="40" action="prev" on_click="self.event_player_click" text="Abrir navegador web" groups="" />
+		<text x="220" y="12" size="8" color="[0, 0, 0, 1]"><b>Navegador Web</b></text>
+	</group>
+
+	<group id="ctrl5" y="400" x="32">
+      <button id="smplayer" src="button_smplayer" src_over="button_smplayer_over" x="0" width="153" height="40" action="prev" on_click="self.event_player_click" text="Abrir reproductor multimedia" groups="" />
+		<text x="32" y="12" size="8" color="[0, 0, 0, 1]"><b>Rep Multimedia</b></text>
+        <button id="pidgin" src="button_pidgin" src_over="button_pidgin_over" x="180" width="153" height="40" action="prev" on_click="self.event_player_click" text="Abrir Cliente de Mensajeria" groups="" />
+		<text x="220" y="12" size="8" color="[0, 0, 0, 1]"><b>Mensajeria</b></text>
+	</group>
+
+
+</display>

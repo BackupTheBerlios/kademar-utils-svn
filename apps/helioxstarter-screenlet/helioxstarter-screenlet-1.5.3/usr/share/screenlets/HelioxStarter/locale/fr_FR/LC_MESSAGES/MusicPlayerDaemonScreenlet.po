@@ -1,0 +1,339 @@
+# French translation for MusicPlayerDaemonScreenlet
+# This file is distributed under the same license as the PACKAGE package.
+# Krzysztof Magusiak <chrmag@poczta.onet.pl>, 2009.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.2.0\n"
+"Report-Msgid-Bugs-To: chrmag@poczta.onet.pl\n"
+"POT-Creation-Date: 2009-07-06 16:39+0200\n"
+"PO-Revision-Date: 2009-07-06 18:00+0200\n"
+"Last-Translator: Krzysztof Magusiak <chrmag@poczta.onet.pl>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: MusicPlayerDaemonScreenlet.py:141 MusicPlayerDaemonScreenlet.py:145
+msgid "Invalid string!"
+msgstr "Chaine de caractères invalide."
+
+#: MusicPlayerDaemonScreenlet.py:565
+msgid "MPD Add..."
+msgstr "Ajouter..."
+
+#: MusicPlayerDaemonScreenlet.py:598
+msgid "File"
+msgstr "Fichier"
+
+#: MusicPlayerDaemonScreenlet.py:631
+msgid "No type selected"
+msgstr "Aucun type selectionné"
+
+#: MusicPlayerDaemonScreenlet.py:727
+#, python-format
+msgid "Connected to MPD server (version: %s)"
+msgstr "Connecté au serveur MPD (version: %s)"
+
+#: MusicPlayerDaemonScreenlet.py:950
+msgid "Request full playlist"
+msgstr "Charge la playliste en entier"
+
+#: MusicPlayerDaemonScreenlet.py:954
+msgid "Parse playlist changes"
+msgstr "Identifie les changements dans la playliste"
+
+#: MusicPlayerDaemonScreenlet.py:956
+msgid "Request playlist search"
+msgstr "Recherche dans la playliste"
+
+#: MusicPlayerDaemonScreenlet.py:971
+msgid "Request library search"
+msgstr "Recherche dans la bibliotheque"
+
+#: MusicPlayerDaemonScreenlet.py:1154
+#, python-format
+msgid "[MPD] %s"
+msgstr ""
+
+#: MusicPlayerDaemonScreenlet.py:1155
+#, python-format
+msgid "Artist: %s"
+msgstr "Artiste: %s"
+
+#: MusicPlayerDaemonScreenlet.py:1156
+#, python-format
+msgid "Status: %s"
+msgstr "Statut: %s"
+
+#: MusicPlayerDaemonScreenlet.py:1222
+msgid "MPD Connection"
+msgstr "MPD Connexion"
+
+#: MusicPlayerDaemonScreenlet.py:1223
+msgid "MPD Screenlet Options - connection"
+msgstr "MPD Screenlet - connexion"
+
+#: MusicPlayerDaemonScreenlet.py:1224
+msgid "MPD Host"
+msgstr "Hote"
+
+#: MusicPlayerDaemonScreenlet.py:1224
+msgid "Address to connect to (ex: 127.0.0.1)"
+msgstr "Adresse à laquelle on va se connecter (ex: 127.0.0.1)"
+
+#: MusicPlayerDaemonScreenlet.py:1225
+msgid "MPD Port"
+msgstr "Port"
+
+#: MusicPlayerDaemonScreenlet.py:1225
+#, python-format
+msgid "Port to connect to (default: %d)"
+msgstr "Le port utilisé pour se connecter (défaut: %d)"
+
+#: MusicPlayerDaemonScreenlet.py:1226
+msgid "MPD Password"
+msgstr "Mot de passe"
+
+#: MusicPlayerDaemonScreenlet.py:1226
+msgid "Password"
+msgstr "Mot de passe"
+
+#: MusicPlayerDaemonScreenlet.py:1227
+msgid "Refresh rate"
+msgstr "Rafrechissement"
+
+#: MusicPlayerDaemonScreenlet.py:1227
+msgid "MPD information update rate (in ms)"
+msgstr "Mets à jour les informations tous les x ms"
+
+#: MusicPlayerDaemonScreenlet.py:1228
+msgid "MPD Display"
+msgstr "MPD Affichage"
+
+#: MusicPlayerDaemonScreenlet.py:1229
+msgid "MPD Screenlet Options - display & colors"
+msgstr "MPD Screenlet - affichage et couleurs"
+
+#: MusicPlayerDaemonScreenlet.py:1230
+msgid "Song format"
+msgstr "Le format de la chanson"
+
+#: MusicPlayerDaemonScreenlet.py:1230
+msgid ""
+"The format of the displayed song. Parts like \"${name}\" will be replaced, "
+"where name is one of the following: artist, album, date, genre, title, track"
+msgstr ""
+"Le format de la chanson. Les parties comme \"${name}\" seraont remplacées, "
+"où name est dans: artist, album, date, genre, title, track"
+
+#: MusicPlayerDaemonScreenlet.py:1231
+msgid "Redraw check rate"
+msgstr "Rafrechissement du affichage"
+
+#: MusicPlayerDaemonScreenlet.py:1231
+msgid "How often check if the interface has to be redrawn (in ms)"
+msgstr "La fréquence à laquelle l'interface sera rafrechie (en ms)"
+
+#: MusicPlayerDaemonScreenlet.py:1232
+msgid "Remaining timer"
+msgstr "Temps restant"
+
+#: MusicPlayerDaemonScreenlet.py:1232
+msgid "Whether the remaining timer is the default"
+msgstr "Afficher le temps restant par défaut"
+
+#: MusicPlayerDaemonScreenlet.py:1233
+msgid "Display over images"
+msgstr "Afficher les images \"survolés\""
+
+#: MusicPlayerDaemonScreenlet.py:1233
+msgid "Display mouse-over images"
+msgstr "Afficher les images lors du effet de survol"
+
+#: MusicPlayerDaemonScreenlet.py:1234
+msgid "Font face"
+msgstr "Fonte"
+
+#: MusicPlayerDaemonScreenlet.py:1234
+msgid "Default font"
+msgstr "La fonte utilisée par défaut"
+
+#: MusicPlayerDaemonScreenlet.py:1235
+msgid "Font color"
+msgstr "Couleur du texte"
+
+#: MusicPlayerDaemonScreenlet.py:1235
+msgid "Default font color"
+msgstr "La couleur du texte par défaut"
+
+#: MusicPlayerDaemonScreenlet.py:1236
+msgid "Playlist position numbers"
+msgstr "Poisitions dans la playliste"
+
+#: MusicPlayerDaemonScreenlet.py:1236
+msgid "Display the position of the song in the playlist"
+msgstr "Afficher la position de la chanson dans la playliste"
+
+#: MusicPlayerDaemonScreenlet.py:1237
+msgid "Playlist timers"
+msgstr "Timers dans la playliste"
+
+#: MusicPlayerDaemonScreenlet.py:1237
+msgid "Display the timer for each song in the playlist"
+msgstr "Afficher les timers pour chaque chanson de la playliste"
+
+#: MusicPlayerDaemonScreenlet.py:1238
+msgid "MPD Cover Art"
+msgstr ""
+
+#: MusicPlayerDaemonScreenlet.py:1239
+msgid "MPD Screenlet Options - cover art options"
+msgstr "MPD Screenlet - cover art"
+
+#: MusicPlayerDaemonScreenlet.py:1240
+msgid "Cover art path"
+msgstr "Chemin vers les cover art"
+
+#: MusicPlayerDaemonScreenlet.py:1240
+msgid "Path to the cover art files"
+msgstr "Chemin vers les fichiers cover art"
+
+#: MusicPlayerDaemonScreenlet.py:1241
+msgid "Save the covers"
+msgstr "Sauvegarder les couvertures"
+
+#: MusicPlayerDaemonScreenlet.py:1241
+msgid "Whether the cover art should be saved on the disk"
+msgstr "Est-ce que les couvertures sont sauvegardées sur le disque"
+
+#: MusicPlayerDaemonScreenlet.py:1242
+msgid "Force get cover"
+msgstr "Forcer le chargement"
+
+#: MusicPlayerDaemonScreenlet.py:1242
+msgid "Always try to get the cover art, even if the album is not specified"
+msgstr "Essaie de charger une couverture même si l'album n'est pas specifié"
+
+#: MusicPlayerDaemonScreenlet.py:1243
+msgid "MPD Other"
+msgstr "MPD Autres"
+
+#: MusicPlayerDaemonScreenlet.py:1245
+msgid "Control with keys"
+msgstr "Controler avec les touches"
+
+#: MusicPlayerDaemonScreenlet.py:1245
+msgid "Allow to control the player using keys"
+msgstr "Permet de controler l'interface avec les touches"
+
+#: MusicPlayerDaemonScreenlet.py:1246
+msgid "Playlist jump"
+msgstr "Sauts dans la playliste"
+
+#: MusicPlayerDaemonScreenlet.py:1246
+msgid ""
+"Jump in the playlist to the entry that matches the typed text ([Control with "
+"keys] must be checked)"
+msgstr ""
+"Saute dans la playliste jusqu'à rencontrer une entrée qui match le texte entré "
+"([Controler avec les touches] doit être activé)"
+
+#: MusicPlayerDaemonScreenlet.py:1247
+msgid "Filter playlist"
+msgstr "Filtrer la playliste"
+
+#: MusicPlayerDaemonScreenlet.py:1247
+msgid ""
+"Filter the playlist instead of jumping ([Playlist jump] must be checked)"
+msgstr ""
+"Filtrer la playliste à la place de sauter ([Sauts dans la playliste] doit être activé"
+
+#: MusicPlayerDaemonScreenlet.py:1248
+msgid "Enable notifications"
+msgstr "Activer les notifications"
+
+#: MusicPlayerDaemonScreenlet.py:1248
+#, python-format
+msgid "Uses pynotify to display the notifications (Installed: %s)"
+msgstr "Utiliser pynotify pour afficher les notifications (Installé: %s)"
+
+#: MusicPlayerDaemonScreenlet.py:1249
+msgid "Notification on state change"
+msgstr "Notification au changement d'état"
+
+#: MusicPlayerDaemonScreenlet.py:1249
+msgid "Shows the notifications also when the state changes"
+msgstr "Affiche les notifications aussi quand le statut change"
+
+#: MusicPlayerDaemonScreenlet.py:1260
+#, python-format
+msgid "MPD refresh rate set to %dms"
+msgstr "Rafrechissement changé en %dms"
+
+#: MusicPlayerDaemonScreenlet.py:1265
+#, python-format
+msgid "Paint check rate set to %dms"
+msgstr "Rafrechissement d'affichage changé en %dms"
+
+#: MusicPlayerDaemonScreenlet.py:1268 MusicPlayerDaemonScreenlet.py:1274
+msgid "MPD Password changed"
+msgstr "MPD mot de passe changé"
+
+#: MusicPlayerDaemonScreenlet.py:1271
+msgid "MPD Port changed"
+msgstr "MPD port changé"
+
+#: MusicPlayerDaemonScreenlet.py:1314
+msgid "Interface not loaded..."
+msgstr "Interface non chargée..."
+
+#: MusicPlayerDaemonScreenlet.py:1317
+#, python-format
+msgid "Loading the screenlet interface: %s"
+msgstr "Chargement de l'interface: %s"
+
+#: MusicPlayerDaemonScreenlet.py:1322
+msgid "Error: Invalid theme display (xml file)"
+msgstr "Erreur: Fichier theme invalide (fichier xml)"
+
+#: MusicPlayerDaemonScreenlet.py:1575
+msgid "Request new coverart..."
+msgstr "Demande une nouvelle couverture..."
+
+#: MusicPlayerDaemonScreenlet.py:1587
+#, python-format
+msgid "Setting cover path: %s"
+msgstr "Défini la couverture: %s"
+
+#: MusicPlayerDaemonScreenlet.py:1603
+#, python-format
+msgid "The cover art directory does not exist (%s)"
+msgstr "Le dossier des couvertures n'existe pas (%s)"
+
+#: MusicPlayerDaemonScreenlet.py:1605
+#, python-format
+msgid "Cannot save, the cover aleady exists (%s)"
+msgstr "Impossible de sauvegarder, la couverure existe déjà (%s)"
+
+#: MusicPlayerDaemonScreenlet.py:1609
+#, python-format
+msgid "Cover saved as: %s"
+msgstr "Couverture sauvegardée: %s"
+
+#: MusicPlayerDaemonScreenlet.py:1611
+#, python-format
+msgid "Could not copy the cover file to: %s"
+msgstr "Impossible de copier la couverture vers: %s"
+
+#: MusicPlayerDaemonScreenlet.py:1989 MusicPlayerDaemonScreenlet.py:2033
+#: MusicPlayerDaemonScreenlet.py:2047 MusicPlayerDaemonScreenlet.py:2066
+#: MusicPlayerDaemonScreenlet.py:2124 MusicPlayerDaemonScreenlet.py:2184
+#: MusicPlayerDaemonScreenlet.py:2211 MusicPlayerDaemonScreenlet.py:2218
+#, python-format
+msgid "Cannot execute: %s"
+msgstr "Impossible d'executer: %s"
+
+#: MusicPlayerDaemonScreenlet.py:2173
+msgid "Cannot change the volume"
+msgstr "Impossible de changer le volume"

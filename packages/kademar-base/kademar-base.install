@@ -23,11 +23,19 @@ BUG_REPORT_URL="http://bugs.kademar.org/"' > /etc/os-release
     
     [ -z "$(grep -i kernel.sysrq /etc/sysctl.conf | grep -i 1)" ] && echo "kernel.sysrq = 1" >> /etc/sysctl.conf
     
-systemctl enable kademar-services
+  #systemctl enable kademar-services
+  if [ ! -e /etc/systemd/system/multi-user.target.wants/kademar-services.service ]; then
+    ln -s '/usr/lib/systemd/system/kademar-services.service' '/etc/systemd/system/multi-user.target.wants/kademar-services.service'
+  fi  
+
 }
 
 pre_remove() {
-  systemctl disable kademar-services
+  #systemctl disable kademar-services
+  if [ -e /etc/systemd/system/multi-user.target.wants/kademar-services.service ]; then
+    rm -f /etc/systemd/system/multi-user.target.wants/kademar-services.service
+  fi 
+
 }
 
 post_remove() {
@@ -70,6 +78,8 @@ HOME_URL="http://www.kademar.org/"
 SUPPORT_URL="http://www.kademar.org/"
 BUG_REPORT_URL="http://bugs.kademar.org/"' > /etc/os-release
 
-systemctl enable kademar-services
-
+  #systemctl enable kademar-services
+  if [ ! -e /etc/systemd/system/multi-user.target.wants/kademar-services.service ]; then
+    ln -s '/usr/lib/systemd/system/kademar-services.service' '/etc/systemd/system/multi-user.target.wants/kademar-services.service'
+  fi  
 }

@@ -21,7 +21,7 @@ install=heliox-base.install
 changelog=
 source=($pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('13f31d786faafc46e2f7e46d28326150') #generate with 'makepkg -g'
+md5sums=('1974b7e0eccedfb0cd0e6564e2183586') #generate with 'makepkg -g'
 
 
 package() {

@@ -21,7 +21,7 @@ install=kademar-skel.install
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('1b3663c4340fbcd2f791261e2898eb5a') #generate with 'makepkg -g'
+md5sums=('cb7daa6f33f1da31aa6b8874d5fedbac') #generate with 'makepkg -g'
 
 
 package() {

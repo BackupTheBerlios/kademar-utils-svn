@@ -8,7 +8,7 @@ arch=('any')
 url="http://www.proyectoheliox.org"
 license=('GPL')
 groups=()
-depends=('kademar-livecd')
+depends=('kademar-livecd' 'desktop-selector')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -21,7 +21,7 @@ install=heliox-livecd.install
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('402fa9c02bd4e59d2ebe79074b4d10e3') #generate with 'makepkg -g'
+md5sums=('0512b23b6d8df7e19128efab6ade25d9') #generate with 'makepkg -g'
 
 
 package() {

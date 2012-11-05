@@ -1,0 +1,26 @@
+<RCC>
+  <qresource prefix="/img">
+    <file>img/dialog-cancel.png</file>
+    <file alias="gnome">img/gnome.png</file>
+    <file alias="kde3">img/kde3.png</file>
+    <file alias="kde4">img/kde4.png</file>
+    <file alias="lxde">img/lxde.png</file>
+    <file alias="quit">img/quit.png</file>
+    <file>img/system-shutdown.png</file>
+    <file>img/go-next.png</file>
+    <file>img/go-previous.png</file>
+    <file>img/system-reboot.png</file>
+    <file>img/display.png</file>
+    <file>img/lang/ca.png</file>
+    <file>img/lang/en.png</file>
+    <file>img/lang/es.png</file>
+    <file>img/lang/mx.png</file>
+    <file>img/display-ati.png</file>
+    <file>img/display-nvidia.png</file>
+    <file>img/ok.png</file>
+  </qresource>
+  <qresource prefix="/tr">
+    <file>tr/es.qm</file>
+    <file>tr/ca.qm</file>
+  </qresource>
+</RCC>

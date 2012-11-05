@@ -1,0 +1,38 @@
+TODO
+----
+
+DONE: better look&feel
+DONE: si detectadesktop posa la recommended TAG
+DONE: screenread on focus with key
+DONE: screenread radiobutton
+DONE: screenread qpushbutton
+DONE: screenread checkbox
+DONE: screenread combobox
+DONE: choose language configure app & system
+DONE: screenread slider
+DONE: messagebox shutdown with qpushbuttonswithevents
+DONE: read label on open page
+DONE: choose language configure system
+DONE: numlockx & laptop-detect
+DONE: Install nvidia drivers
+DONE: Qhash acentuation words losed codification on Qhash
+DONE: parameters defined on settings.ini:
+      START(bool) LANG DESKTOP XMODULE DRIVER_ADVANCED(bool) LANGLIST SPEECH(bool)  FREE_DRIVER(bool) ACCESSIBILITY
+      RESOL(1024x768) WALLPAPER(path)
+
+default resolution
+
+if heliox/keyboardstart -> activate keyboard on screen if needed
+
+
+
+si detectadesktop i cmdline diu desktop=   -> override
+ati/nvidia driver (sabayon 4)  - free driver - force resolution/driver
+
+start recommended desktop (detected) at 10 seconds
+no load detectadesktop if not needed - on bash startx scripts inittab
+
+
+keyboard screen - heliox
+ http://qt-apps.org/content/show.php/Widget+Virtual+Keyboard?content=111054
+ http://qt-apps.org/content/show.php?content=107388

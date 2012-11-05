@@ -1,0 +1,21 @@
+#Restore original QT Theme on the end
+if [ -e /tmp/qt-theme-orig ]; then
+  . /tmp/qt-theme-orig
+  sed "s~style=.*~style=$style~g" -i $HOME/.config/Trolltech.conf
+fi
+
+
+. /etc/kademar/functions
+set_environment_variables
+
+for script in /etc/X11/Xsession.d/*; do
+  sh $script
+done
+unset script
+
+mkdir -p "$HOME/.kde4/share/apps/kfileplaces"
+cat /usr/share/kademar/kde4-hacks/bookmarks.xml > "$HOME/.kde4/share/apps/kfileplaces/bookmarks.xml"
+
+export XDM_MANAGED="/var/tmp/xsession-commands,maysd,mayfn,sched,method=classic"
+
+exec ck-launch-session dbus-launch startkde >> $HOME/.xsession-errors 2>&1

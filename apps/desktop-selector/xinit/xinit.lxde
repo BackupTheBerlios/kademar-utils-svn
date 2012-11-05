@@ -1,0 +1,16 @@
+#Restore original QT Theme on the end
+if [ -e /tmp/qt-theme-orig ]; then
+  . /tmp/qt-theme-orig
+  sed "s~style=.*~style=$style~g" -i $HOME/.config/Trolltech.conf
+fi
+
+
+. /etc/kademar/functions
+set_environment_variables
+
+for script in /etc/X11/Xsession.d/*; do
+  sh $script
+done
+unset script
+
+exec ck-launch-session dbus-launch startlxdeaccessibility

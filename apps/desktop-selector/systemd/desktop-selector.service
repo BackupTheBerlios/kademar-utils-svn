@@ -1,0 +1,11 @@
+[unit]
+Description="Kademar LiveCD Xsession - Desktop-Selector"
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/etc/rc.d/kademar-livecd-xsession &
+
+[Install]
+WantedBy=multi-user.target
+

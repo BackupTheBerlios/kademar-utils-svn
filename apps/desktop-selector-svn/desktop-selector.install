@@ -1,0 +1,55 @@
+ 
+post_install() {
+  update_files
+}
+
+post_upgrade() {
+  update_files
+}
+
+pre_remove() {
+    #systemctl disable desktop-selector
+    if [ ! -e /etc/systemd/system/multi-user.target.wants/desktop-selector.services ]; then
+      rm -f /etc/systemd/system/multi-user.target.wants/desktop-selector.services
+    fi
+    
+}
+
+post_remove(){
+    #remove desktop-selector packages
+    rm -fr /usr/share/desktop-selector/
+}
+
+update_files() {
+  if chrooted; then
+
+    mkdir -p /usr/share/desktop-selector/pacmandb /usr/share/desktop-selector/drivers
+    rm /var/cache/pacman/pkg/*catalyst* /var/cache/pacman/pkg/nvidia-* 2>/dev/null
+    pacman --dbpath /usr/share/desktop-selector/pacmandb --cachedir /usr/share/desktop-selector/drivers/nvidia --noconfirm -Sywdd nvidia nvidia-utils opencl-nvidia libcl
+    pacman --dbpath /usr/share/desktop-selector/pacmandb --cachedir /usr/share/desktop-selector/drivers/catalyst --noconfirm -Sywdd catalyst-dkms catalyst-utils opencl-catalyst netkit-bsd-finger dkms patch xinetd
+    [ "$(uname -m)" != "i686" ] && pacman --dbpath /usr/share/desktop-selector/pacmandb --cachedir /usr/share/desktop-selector/drivers/catalyst --noconfirm -Sywdd lib32-catalyst-utils
+    rm -fr /usr/share/desktop-selector/pacmandb
+
+    #systemctl enable desktop-selector
+    if [ ! -e /etc/systemd/system/multi-user.target.wants/desktop-selector.services ]; then
+      ln -s /usr/lib/systemd/system/desktop-selector.services /etc/systemd/system/multi-user.target.wants/desktop-selector.services
+    fi
+  
+  fi
+
+
+
+
+}
+
+#Udev Stolen Function :-[
+chrooted() {
+  if [ "$(stat -c %d/%i /)" = "$(stat -Lc %d/%i /proc/1/root 2>/dev/null)" ];
+  then
+    # the devicenumber/inode pair of / is the same as that of /sbin/init's
+    # root, so we're *not* in a chroot and hence return false.
+    return 1
+  fi
+  echo " * Live-CD Creation environment detected. Doing file changes"
+  return 0
+}

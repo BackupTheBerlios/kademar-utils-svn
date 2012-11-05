@@ -9,6 +9,7 @@ license=('GPL3')
 groups=('kademar')
 depends=('qt')
 makedepends=('subversion')
+install=desktop-selector.install
 provides=('desktop-selector')
 options=(!strip !docs !libtool !emptydirs !zipman makeflags)
 _svntrunk="svn://svn.berlios.de/kademar-utils/apps"

@@ -12,21 +12,14 @@ pre_remove() {
       cp -af /usr/share/kademar/livecd-recover/* /
     fi
     
-    #systemctl disable desktop-selector
+    #systemctl disable kademar-swap
     if [ -e /etc/systemd/system/multi-user.target.wants/kademar-swap.services ]; then
       rm -f /etc/systemd/system/multi-user.target.wants/kademar-swap.services
     fi
   
-    #systemctl disable desktop-selector
-    if [ ! -e /etc/systemd/system/multi-user.target.wants/desktop-selector.services ]; then
-      rm -f /etc/systemd/system/multi-user.target.wants/desktop-selector.services
-    fi
-    
 }
 
 post_remove(){
-    #remove desktop-selector packages
-    rm -fr /usr/share/desktop-selector/
     rm -fr /etc/X11/Xsession.d
 }
 
@@ -40,13 +33,6 @@ update_files() {
     chown root:root /etc/sudoers
     chmod 440 /etc/sudoers
 
-    mkdir -p /usr/share/desktop-selector/pacmandb /usr/share/desktop-selector/drivers
-    rm /var/cache/pacman/pkg/*catalyst* /var/cache/pacman/pkg/nvidia-* 2>/dev/null
-    pacman --dbpath /usr/share/desktop-selector/pacmandb --cachedir /usr/share/desktop-selector/drivers/nvidia --noconfirm -Sywdd nvidia nvidia-utils opencl-nvidia libcl
-#    pacman --dbpath /usr/share/desktop-selector/pacmandb --cachedir /usr/share/desktop-selector/drivers/catalyst --noconfirm -Sywdd catalyst-dkms catalyst-utils opencl-catalyst netkit-bsd-finger dkms patch xinetd
-#    [ "$(uname -m)" != "i686" ] && pacman --dbpath /usr/share/desktop-selector/pacmandb --cachedir /usr/share/desktop-selector/drivers/catalyst --noconfirm -Sywdd lib32-catalyst-utils
-    rm -fr /usr/share/desktop-selector/pacmandb
-
     rm -fr /etc/X11/Xsession.d
     cp -a /etc/X11/xinit/xinitrc.d/ /etc/X11/Xsession.d
 
@@ -54,19 +40,14 @@ update_files() {
       ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
     fi
 
-  fi
-
-  #systemctl enable kademar-swap
-  if [ ! -e /etc/systemd/system/multi-user.target.wants/kademar-swap.services ]; then
-    ln -s /usr/lib/systemd/system/kademar-swap.services /etc/systemd/system/multi-user.target.wants/kademar-swap.services
-  fi
+    #systemctl enable kademar-swap
+    if [ ! -e /etc/systemd/system/multi-user.target.wants/kademar-swap.services ]; then
+      ln -s /usr/lib/systemd/system/kademar-swap.services /etc/systemd/system/multi-user.target.wants/kademar-swap.services
+    fi
   
-  #systemctl enable desktop-selector
-  if [ ! -e /etc/systemd/system/multi-user.target.wants/desktop-selector.services ]; then
-    ln -s /usr/lib/systemd/system/desktop-selector.services /etc/systemd/system/multi-user.target.wants/desktop-selector.services
   fi
 
-
+  
 }
 
 #Udev Stolen Function :-[

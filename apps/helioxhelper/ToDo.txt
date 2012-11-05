@@ -1,0 +1,56 @@
+config file
+V Tamaño
+V esquinas redondas
+V px rounded
+V fondo
+V Donde se situa
+V alwais on top
+V alwais on bottom
+V show on tray or not
+V fullscreen
+V Button image size
+V button min height size
+V button max height size
+V button min width size
+V button max width size
+V button image below or side of text
+V left click contextual menu (if in desktop mode)
+V context icon: minimize
+V context icon: restore
+V context icon: exit
+V programas, iconos, descr-speech (per parlar i tooltip-hint)
+V speech or not speech
+V speech ogg description if exists on path
+V autostart
+V button pixels border when normal
+V button pixels border when focused and hovered
+V button pixels rounded
+V button gradient begin color
+V button gradient end color
+V button border pixel size
+V button border color when normal
+V button border color when focused
+V button border color when hovered
+V button showlabels bool
+V button font size
+V One single Instance
+V show tooltip con keyboard
+V Computación no invasiva (By Roberto'X Machine) first button no talk & no tooltip
+
+
+
+write/update configuration file
+
+
+
+V button color hover
+
+ context icon: settings
+ configurador de .ini
+
+
+
+
+confirmación de salida
+
+

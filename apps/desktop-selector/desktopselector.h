@@ -50,6 +50,8 @@ public slots:
     void resolSliderValueChanged(int);
     void changeForcedState(int);
     void previousPage();
+    void showAccessibilityOptions();
+    void showAdvancedConfiguration();
 
 
 protected:

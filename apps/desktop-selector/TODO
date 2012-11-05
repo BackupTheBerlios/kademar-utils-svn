@@ -20,6 +20,8 @@ DONE: parameters defined on settings.ini:
       START(bool) LANG DESKTOP XMODULE DRIVER_ADVANCED(bool) LANGLIST SPEECH(bool)  FREE_DRIVER(bool) ACCESSIBILITY
       RESOL(1024x768) WALLPAPER(path)
 
+DONE: Autodetect languages on system by /etc/locale.gen
+
 default resolution
 
 if heliox/keyboardstart -> activate keyboard on screen if needed

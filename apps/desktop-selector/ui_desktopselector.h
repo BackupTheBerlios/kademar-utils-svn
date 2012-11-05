@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'desktopselector.ui'
 **
-** Created: Mon Jul 30 23:01:01 2012
+** Created: Tue Jul 31 20:14:41 2012
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -84,6 +84,16 @@ public:
     QSpacerItem *horizontalSpacer_7;
     QSpacerItem *horizontalSpacer_8;
     QSpacerItem *verticalSpacer_6;
+    QWidget *selectUserPage;
+    QGridLayout *gridLayout_19;
+    QSpacerItem *verticalSpacer_13;
+    QLabel *userLabel;
+    QSpacerItem *horizontalSpacer_19;
+    QFrame *userFrame;
+    QGridLayout *gridLayout_16;
+    QLabel *displayChipetLabel_2;
+    QSpacerItem *horizontalSpacer_20;
+    QSpacerItem *verticalSpacer_14;
     QWidget *accessibilityPage;
     QGridLayout *gridLayout_15;
     QLabel *accessibilityLabel;
@@ -414,6 +424,57 @@ public:
         gridLayout_8->addItem(verticalSpacer_6, 0, 1, 1, 1);
 
         stackedWidget->addWidget(displayPage);
+        selectUserPage = new QWidget();
+        selectUserPage->setObjectName(QString::fromUtf8("selectUserPage"));
+        gridLayout_19 = new QGridLayout(selectUserPage);
+        gridLayout_19->setSpacing(6);
+        gridLayout_19->setContentsMargins(11, 11, 11, 11);
+        gridLayout_19->setObjectName(QString::fromUtf8("gridLayout_19"));
+        verticalSpacer_13 = new QSpacerItem(20, 34, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_19->addItem(verticalSpacer_13, 0, 1, 1, 1);
+
+        userLabel = new QLabel(selectUserPage);
+        userLabel->setObjectName(QString::fromUtf8("userLabel"));
+        userLabel->setFont(font);
+        userLabel->setAlignment(Qt::AlignCenter);
+
+        gridLayout_19->addWidget(userLabel, 1, 1, 1, 1);
+
+        horizontalSpacer_19 = new QSpacerItem(200, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_19->addItem(horizontalSpacer_19, 2, 0, 1, 1);
+
+        userFrame = new QFrame(selectUserPage);
+        userFrame->setObjectName(QString::fromUtf8("userFrame"));
+        userFrame->setMinimumSize(QSize(450, 250));
+        userFrame->setFrameShape(QFrame::StyledPanel);
+        userFrame->setFrameShadow(QFrame::Raised);
+        gridLayout_16 = new QGridLayout(userFrame);
+        gridLayout_16->setSpacing(6);
+        gridLayout_16->setContentsMargins(11, 11, 11, 11);
+        gridLayout_16->setObjectName(QString::fromUtf8("gridLayout_16"));
+        displayChipetLabel_2 = new QLabel(userFrame);
+        displayChipetLabel_2->setObjectName(QString::fromUtf8("displayChipetLabel_2"));
+        displayChipetLabel_2->setMinimumSize(QSize(64, 64));
+        displayChipetLabel_2->setMaximumSize(QSize(68, 68));
+        displayChipetLabel_2->setPixmap(QPixmap(QString::fromUtf8(":/img/img/display.png")));
+        displayChipetLabel_2->setScaledContents(true);
+
+        gridLayout_16->addWidget(displayChipetLabel_2, 2, 0, 1, 1);
+
+
+        gridLayout_19->addWidget(userFrame, 2, 1, 1, 1);
+
+        horizontalSpacer_20 = new QSpacerItem(200, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_19->addItem(horizontalSpacer_20, 2, 2, 1, 1);
+
+        verticalSpacer_14 = new QSpacerItem(20, 35, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_19->addItem(verticalSpacer_14, 3, 1, 1, 1);
+
+        stackedWidget->addWidget(selectUserPage);
         accessibilityPage = new QWidget();
         accessibilityPage->setObjectName(QString::fromUtf8("accessibilityPage"));
         gridLayout_15 = new QGridLayout(accessibilityPage);
@@ -756,7 +817,7 @@ public:
 
         retranslateUi(DesktopSelector);
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(DesktopSelector);
@@ -778,6 +839,8 @@ public:
         rb_propietaryDriver->setText(QApplication::translate("DesktopSelector", "Use Propietary Graphic Driver (Recommended)", 0, QApplication::UnicodeUTF8));
         rb_freeDriver->setText(QApplication::translate("DesktopSelector", "Use Free Graphic Driver", 0, QApplication::UnicodeUTF8));
         b_previous->setText(QApplication::translate("DesktopSelector", "Previous", 0, QApplication::UnicodeUTF8));
+        userLabel->setText(QApplication::translate("DesktopSelector", "Select your user", 0, QApplication::UnicodeUTF8));
+        displayChipetLabel_2->setText(QString());
         accessibilityLabel->setText(QApplication::translate("DesktopSelector", "Select Accessibility Options", 0, QApplication::UnicodeUTF8));
         advancedAccessibilityGroupBox->setTitle(QApplication::translate("DesktopSelector", "Advanced Selection", 0, QApplication::UnicodeUTF8));
         checkBox->setText(QApplication::translate("DesktopSelector", "Screenreader", 0, QApplication::UnicodeUTF8));

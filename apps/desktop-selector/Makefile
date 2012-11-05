@@ -258,11 +258,7 @@ qrc_resource.cpp: resource.qrc \
 		img/ati.png \
 		img/accessibility.png \
 		img/language.png \
-		img/go-next.png \
-		img/lang/en.png \
-		img/lang/mx.png \
-		img/lang/es.png \
-		img/lang/ca.png
+		img/go-next.png 
 	/usr/bin/rcc -name resource resource.qrc -o qrc_resource.cpp
 
 compiler_image_collection_make_all: qmake_image_collection.cpp

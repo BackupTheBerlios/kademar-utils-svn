@@ -48,7 +48,7 @@ void QSliderWithEvents::readSlider(int value)
 
     //int num = this->value();
     QString *txt = new QString(graphicResolutions[value]);
-    QList<QString> *list1 = new QList<QString>;
+    //QList<QString> *list1 = new QList<QString>;
     //*list1 = txt->split("x");
 
     //*txt = "%1 "+tr("per")+" %2";//.arg(*list1[0]);

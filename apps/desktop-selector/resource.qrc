@@ -11,10 +11,6 @@
         <file>img/go-previous.png</file>
         <file>img/system-reboot.png</file>
         <file>img/display.png</file>
-        <file>img/lang/ca.png</file>
-        <file>img/lang/en.png</file>
-        <file>img/lang/es.png</file>
-        <file>img/lang/mx.png</file>
         <file>img/display-ati.png</file>
         <file>img/display-nvidia.png</file>
         <file>img/ok.png</file>
@@ -24,6 +20,12 @@
         <file>img/desktop.png</file>
         <file>img/language.png</file>
         <file>img/nvidia.png</file>
+        <file>img/lang/ca_ES.png</file>
+        <file>img/lang/en_GB.png</file>
+        <file>img/lang/en_IE.png</file>
+        <file>img/lang/en_US.png</file>
+        <file>img/lang/es_ES.png</file>
+        <file>img/lang/es_MX.png</file>
     </qresource>
     <qresource prefix="/tr">
         <file>tr/es.qm</file>

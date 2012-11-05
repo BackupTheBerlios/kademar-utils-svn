@@ -77,8 +77,6 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
     this->createLanguageButton(new QString("en"));
     this->createLanguageButton(new QString("mx"));
     */
-    this->createLanguageButton(new QString("mx"));
-    this->createLanguageButton(new QString("fr"));
 
     this->setupPages(); //setup pages after know actual situation
 
@@ -187,6 +185,8 @@ void DesktopSelector::prepareGui()
     ui->languageLabel->setStyleSheet("QLabel { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #7d7d7d, stop: 1 white) ; border-style: outset; border-width: 1px; border-radius: 5px; border-color: beige; font: bold 14px; min-width: 10em; padding: 6px; margin-bottom: 10px;}");
     ui->displayLabel->setStyleSheet("QLabel { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #7d7d7d, stop: 1 white) ; border-style: outset; border-width: 1px; border-radius: 5px; border-color: beige; font: bold 14px; min-width: 10em; padding: 6px; margin-bottom: 10px;}");
     ui->accessibilityLabel->setStyleSheet("QLabel { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #7d7d7d, stop: 1 white) ; border-style: outset; border-width: 1px; border-radius: 5px; border-color: beige; font: bold 14px; min-width: 10em; padding: 6px; margin-bottom: 10px;}");
+    ui->userLabel->setStyleSheet("QLabel { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #7d7d7d, stop: 1 white) ; border-style: outset; border-width: 1px; border-radius: 5px; border-color: beige; font: bold 14px; min-width: 10em; padding: 6px; margin-bottom: 10px;}");
+
     //languageMenu->setStyleSheet("QMenu { width: 150px; } QMenu::item {padding-top: 10px;padding-bottom: 10px; width: 150px;};");
         //languageMenu->set
     //languageMenu->setStyleSheet("QMenu::item{ padding-top: 4px; padding-left: 5px; padding-right: 15px; padding-bottom: 4px; }");
@@ -207,6 +207,7 @@ void DesktopSelector::prepareGui()
     //StyleSheet for frames
     ui->controlFrame->setStyleSheet("QWidget#controlFrame { background-color: qlineargradient(x1: 0, y1: 1, x2: 0, y2: 0, stop: 0 #939494, stop: 1 white) ; border-style: outset; border-width: 1px; border-radius: 5px; border-color: beige; font: bold 14px; min-width: 10em;}");
     ui->displayFrame->setStyleSheet("QFrame#displayFrame  { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #dadada, stop: 1 white) ; border-style: outset; border-width: 1px; border-radius: 5px; border-color: beige; font: bold 14px; min-width: 10em; padding: 6px;}");
+    ui->userFrame->setStyleSheet("QFrame#userFrame  { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #dadada, stop: 1 white) ; border-style: outset; border-width: 1px; border-radius: 5px; border-color: beige; font: bold 14px; min-width: 10em; padding: 6px;}");
     ui->languageFrame->setStyleSheet("QFrame#languageFrame { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #dadada, stop: 1 white) ; border-style: outset; border-width: 1px; border-radius: 5px; border-color: beige; font: bold 14px; min-width: 10em; padding: 6px;}");
     ui->desktopFrame->setStyleSheet("QFrame#desktopFrame  { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #dadada, stop: 1 white) ; border-style: outset; border-width: 1px; border-radius: 5px; border-color: beige; font: bold 14px; min-width: 10em; padding: 6px;}");
     ui->shutdownFrame->setStyleSheet("QFrame#shutdownFrame  { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #dadada, stop: 1 white) ; border-style: outset; border-width: 1px; border-radius: 5px; border-color: beige; font: bold 14px; min-width: 10em; padding: 6px;}");
@@ -227,6 +228,23 @@ void DesktopSelector::prepareGui()
     connect(ui->b_startDesktop, SIGNAL(clicked()), this, SLOT(finalSteps()));
     connect(ui->b_language, SIGNAL(clicked()), this, SLOT(showLanguageMenu()));
     connect(ui->b_desktop, SIGNAL(clicked()), this, SLOT(showDesktopMenu()));
+    connect(ui->b_accessibility, SIGNAL(clicked()), this, SLOT(showAccessibilityOptions()));
+    connect(ui->b_configuration, SIGNAL(clicked()), this, SLOT(showAdvancedConfiguration()));
+
+
+    //Define if it's on assistant mode or not
+    extern QSettings settings;
+    if (settings.value("General/assistantMode").toBool()){
+        //Assistant Mode
+        ui->b_accessibility->setVisible(false);
+        ui->b_language->setVisible(false);
+        ui->b_desktop->setVisible(false);
+        ui->b_configuration->setVisible(false);
+
+    } else {
+        // KDM/GDM like
+
+    }
 
 
     //stethic tune
@@ -242,6 +260,9 @@ void DesktopSelector::prepareGui()
     this->defineGraphicList();
 
     this->detectGraphicCard();
+
+
+
 }
 
 void DesktopSelector::readCaptionConst( QString & label )
@@ -289,7 +310,6 @@ void DesktopSelector::writeSettings(QString string, QString prop, int next)
         //qDebug() << string << prop;
         selectedDesktop=prop;
     } else if (*name == "displayPage") {
-        qDebug() << string << prop;
         if (ui->ch_forceDriver->isChecked())
         {
             selectedDriver=ui->cb_chipset->currentText();
@@ -347,9 +367,16 @@ void DesktopSelector::setupPages()
     //if not pre-configured language, look on langlist
         //if not pre-configured langlist to select, use default langlist
         if (settings.value("LANGLIST").toString() == ""){
-            this->createLanguageButton(new QString("ca"));
-            this->createLanguageButton(new QString("es"));
-            this->createLanguageButton(new QString("en"));
+            //this->createLanguageButton(new QString("ca"));
+            //this->createLanguageButton(new QString("es"));
+            //this->createLanguageButton(new QString("en"));
+
+            //find witch languages are on system
+            QString *langs = new QString(execShellProcess(QString("/bin/sh"), QString("-c"), QString("grep -v \\# /etc/locale.gen | awk ' { print $1 } ' | sed s.@euro..g | sed s_.UTF-8__g | sort -u")));
+
+            foreach (QString lang, langs->split("\n")){
+                this->createLanguageButton(new QString(lang));
+            }
 
             //and load page
             listPages << ui->languagePage;
@@ -438,18 +465,28 @@ void DesktopSelector::setupPages()
 
     //qDebug() << listPages.size();
 
-    //Load first page
-    if (listPages.size() > 0 ){
-        ui->stackedWidget->setCurrentWidget(listPages[numpages]);
-    } else {
-       qDebug() << "exiting";
-       finalSteps();  //process final steps of all
-       QCoreApplication::processEvents();
-       deleteLater(); //put on list the app to be removed
 
-        //app->exit();
-        //this->closeEvent();
+    //Define if it's on assistant mode or not
+    extern QSettings settings;
+    if (settings.value("General/assistantMode").toBool()){
+        //Assistant Mode
+        //Load first page
+        if (listPages.size() > 0 ){
+            ui->stackedWidget->setCurrentWidget(listPages[numpages]);
+        } else {
+           qDebug() << "exiting";
+           finalSteps();  //process final steps of all
+           QCoreApplication::processEvents();
+           deleteLater(); //put on list the app to be removed
+
+            //app->exit();
+            //this->closeEvent();
+        }
+    } else {
+        // KDM/GDM like
+        ui->stackedWidget->setCurrentWidget(ui->selectUserPage);
     }
+
 
 
 }
@@ -595,10 +632,17 @@ void DesktopSelector::askForShutdown()
 
 void DesktopSelector::cancelShutdown()
 {
-    //return to previous page
-    extern QList< QWidget* > listPages;
-    ui->stackedWidget->setCurrentWidget(listPages[numpages]);
+    extern QSettings settings;
+    if (settings.value("General/assistantMode").toBool()){
+        //return to previous page
+        extern QList< QWidget* > listPages;
+        ui->stackedWidget->setCurrentWidget(listPages[numpages]);
+    } else {
+        // KDM/GDM like
+        ui->stackedWidget->setCurrentWidget(ui->selectUserPage);
+    }
     ui->controlFrame->setVisible(true);
+
 }
 
 
@@ -752,15 +796,15 @@ void DesktopSelector::defineLanguageDictionary()
     dict["ca"] = "Català";     dict["ca_ES"] = "Català";
     dict["es"] = "Castellano";     dict["es_ES"] = "Castellano";
 
-    dict["en"] = "English";
-    dict["fr"] = "French";
-    dict["it"] = "Italiano";
-    dict["de"] = "Deuche";
-    dict["pt"] = "Português";
-    dict["gl"] = "Galego";
+    dict["en"] = "English"; dict["en_GB"] = "English"; dict["en_US"] = "English"; dict["en_IE"] = "English";
+    dict["fr"] = "French"; dict["fr_FR"] = "French";
+    dict["it"] = "Italiano"; dict["it_IT"] = "Italiano";
+    dict["de"] = "Deuche"; dict["de_DE"] = "Deuche";
+    dict["pt"] = "Português"; dict["pt_PT"] = "Português"; dict["pt_BR"] = "Português";
+    dict["gl"] = "Galego"; dict["gl_ES"] = "Galego";
 
     //Derivados en Mexico
-    dict["mx"] = "Mexicano";
+    dict["mx"] = "Mexicano"; dict["es_MX"] = "Mexicano";
     dict["myn"] = "Maya"; dict["mx_myn"] = "Maya";
 }
 
@@ -802,7 +846,15 @@ void DesktopSelector::createLanguageButton(QString *lang)
     //listDesktopImage[numdesktop]->setStyleSheet("QLabel#label1 {margin-left: 50px; background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #5E5E5E, stop: 1 white) ;}");
     listLangButtons[numlanguage]->setMinimumSize(QSize(64,  64));
     //listLangButtons[numlanguage]->setMaximumSize(QSize(64, 64));
-    listLangButtons[numlanguage]->setIcon(QPixmap(QString(":/img/img/lang/%1.png").arg(*lang)));
+
+    QFile *icon = new QFile(QString(":/img/img/lang/%1.png").arg(*lang) );
+    if  (icon->exists()) {
+        listLangButtons[numlanguage]->setIcon(QPixmap(QString(":/img/img/lang/%1.png").arg(*lang)));
+    } else {
+        listLangButtons[numlanguage]->setIcon(QPixmap(QString(":/img/img/lang/%1.png").arg(QString(*lang).split("_")[0])));
+    }
+
+
     listLangButtons[numlanguage]->setIconSize(QSize(48,48));
     //listLangButtons[numlanguage]->setStyleSheet(QString("QPushButtonWithEvents %1").arg(buttonStyleSheet));
     //listLangButtons[numlanguage]->setStyleSheet("QPushButtonWithEvents:hover  { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #f0efee, stop: 1 #d4d3d2) ; border-style: outset; border-width: 1px; border-radius: 3px; border-color: #444444; font: bold 14px; min-width: 10em; padding: 6px; margin-bottom: 10px;}");
@@ -814,7 +866,13 @@ void DesktopSelector::createLanguageButton(QString *lang)
 
     //create menu entry
     extern QList< QAction* > listLangActions;
-    listLangActions << new QAction(QIcon(QPixmap(QString(":/img/img/lang/%1.png").arg(*lang))),realLanguageNameTrans, this);
+    QFile *filebg = new QFile(QString(":/img/img/lang/%1.png").arg(*lang) );
+    if  (filebg->exists()) {
+        listLangActions << new QAction(QIcon(QPixmap(QString(":/img/img/lang/%1.png").arg(*lang))),realLanguageNameTrans, this);
+    } else {
+        listLangActions << new QAction(QIcon(QPixmap(QString(":/img/img/lang/%1.png").arg(QString(*lang).split("_")[0]))),realLanguageNameTrans, this);
+    }
+
     languageMenu->addAction(listLangActions[numlanguage]);
 
 
@@ -1080,6 +1138,11 @@ void DesktopSelector::showDesktopMenu(){
 }
 
 
-//void DesktopSelector::showAdvancedConfiguration(){
+void DesktopSelector::showAdvancedConfiguration(){
+    ui->stackedWidget->setCurrentWidget(ui->displayPage);
 
-//}
+}
+
+void DesktopSelector::showAccessibilityOptions(){
+    ui->stackedWidget->setCurrentWidget(ui->accessibilityPage);
+}

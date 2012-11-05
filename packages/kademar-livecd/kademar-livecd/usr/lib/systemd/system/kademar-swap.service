@@ -1,0 +1,11 @@
+[unit]
+Description="Kademar Load HDD Swap Partitions"
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/etc/rc.d/kademar-swap &
+
+[Install]
+WantedBy=multi-user.target
+

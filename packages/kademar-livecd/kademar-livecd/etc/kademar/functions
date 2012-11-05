@@ -1,0 +1,40 @@
+# vim: set ft=sh: Arch Linux (archiso) functions
+
+# kernel_cmdline <param> <default> Looks for a parameter on the kernel's boot-time command line.
+#
+# returns: 0 if param was found. Also prints its value if it was a K=V param.
+#          1 if it was not. Also prints value passed as <default>
+#
+kernel_cmdline () {
+    for param in $(/bin/cat /proc/cmdline); do
+        case "${param}" in
+            $1=*) echo "${param##*=}"; return 0 ;;
+            $1) return 0 ;;
+            *) continue ;;
+        esac
+    done
+    [ -n "${2}" ] && echo "${2}"
+    return 1
+}
+
+
+set_hostname () {
+    . /etc/kademar/config-livecd
+    if [ "$kademar_type" = "Heliox" -o "$kademar_type" = "heliox" ]; then
+      echo Heliox ; return 0
+    else
+      echo Kademar ; return 0
+    fi
+}
+
+
+set_environment_variables () {
+. $1/etc/rc.conf
+. $1/etc/rc.d/functions
+export PATH=$PATH
+
+. $1/etc/locale.conf 
+TZ=`cat $1/etc/timezone`
+
+export LANG=$LANG LC_ALL=$LANG LANGUAGE=$LANG TIMEZONE=$TZ TZ=$TZ
+}

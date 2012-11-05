@@ -1,0 +1,82 @@
+post_install() {
+  update_files
+}
+
+post_upgrade() {
+  update_files
+}
+
+pre_remove() {
+    if [ -e "/usr/share/kademar/livecd-recover/" ]; then
+      echo "Recovering files modified for livecd"
+      cp -af /usr/share/kademar/livecd-recover/* /
+    fi
+    
+    #systemctl disable desktop-selector
+    if [ -e /etc/systemd/system/multi-user.target.wants/kademar-swap.services ]; then
+      rm -f /etc/systemd/system/multi-user.target.wants/kademar-swap.services
+    fi
+  
+    #systemctl disable desktop-selector
+    if [ ! -e /etc/systemd/system/multi-user.target.wants/desktop-selector.services ]; then
+      rm -f /etc/systemd/system/multi-user.target.wants/desktop-selector.services
+    fi
+    
+}
+
+post_remove(){
+    #remove desktop-selector packages
+    rm -fr /usr/share/desktop-selector/
+    rm -fr /etc/X11/Xsession.d
+}
+
+update_files() {
+  if chrooted; then
+
+    if [ -e "/usr/share/kademar/livecd-files/" ]; then
+      echo "Replacing files for livecd start"
+      cp -af /usr/share/kademar/livecd-files/* /    
+    fi
+    chown root:root /etc/sudoers
+    chmod 440 /etc/sudoers
+
+    mkdir -p /usr/share/desktop-selector/pacmandb /usr/share/desktop-selector/drivers
+    rm /var/cache/pacman/pkg/*catalyst* /var/cache/pacman/pkg/nvidia-* 2>/dev/null
+    pacman --dbpath /usr/share/desktop-selector/pacmandb --cachedir /usr/share/desktop-selector/drivers/nvidia --noconfirm -Sywdd nvidia nvidia-utils opencl-nvidia libcl
+#    pacman --dbpath /usr/share/desktop-selector/pacmandb --cachedir /usr/share/desktop-selector/drivers/catalyst --noconfirm -Sywdd catalyst-dkms catalyst-utils opencl-catalyst netkit-bsd-finger dkms patch xinetd
+#    [ "$(uname -m)" != "i686" ] && pacman --dbpath /usr/share/desktop-selector/pacmandb --cachedir /usr/share/desktop-selector/drivers/catalyst --noconfirm -Sywdd lib32-catalyst-utils
+    rm -fr /usr/share/desktop-selector/pacmandb
+
+    rm -fr /etc/X11/Xsession.d
+    cp -a /etc/X11/xinit/xinitrc.d/ /etc/X11/Xsession.d
+
+    if [ -n "$(grep es_ES /etc/locale.conf)" -a ! -e /etc/localtime ]; then
+      ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
+    fi
+
+  fi
+
+  #systemctl enable kademar-swap
+  if [ ! -e /etc/systemd/system/multi-user.target.wants/kademar-swap.services ]; then
+    ln -s /usr/lib/systemd/system/kademar-swap.services /etc/systemd/system/multi-user.target.wants/kademar-swap.services
+  fi
+  
+  #systemctl enable desktop-selector
+  if [ ! -e /etc/systemd/system/multi-user.target.wants/desktop-selector.services ]; then
+    ln -s /usr/lib/systemd/system/desktop-selector.services /etc/systemd/system/multi-user.target.wants/desktop-selector.services
+  fi
+
+
+}
+
+#Udev Stolen Function :-[
+chrooted() {
+  if [ "$(stat -c %d/%i /)" = "$(stat -Lc %d/%i /proc/1/root 2>/dev/null)" ];
+  then
+    # the devicenumber/inode pair of / is the same as that of /sbin/init's
+    # root, so we're *not* in a chroot and hence return false.
+    return 1
+  fi
+  echo " * Live-CD Creation environment detected. Doing file changes"
+  return 0
+}

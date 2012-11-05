@@ -1,0 +1,220 @@
+#!/bin/bash
+# /etc/init.d/xsession: start or stop the X display manager on Live-CD
+# Script originally stolen from the kdm & xdm package
+#
+# description: Start de Xsession
+#
+
+# 8-9-09 - Added support to cmdline "nox"
+
+# [ "`arch`" = "x86_64" ] && arch="-x86_64"
+
+#export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+
+#Detect No X cmdline
+for i in `cat /proc/cmdline`
+do
+    [ "$i" = "nox" ] &&  nox="true"
+    [ "$i" = "server" ] &&  nox="true"
+    
+done
+
+web=www.kademar.org
+[ -e /etc/kademar/config-livecd.heliox ] && web=www.proyectoheliox.org
+
+
+#remove nouveau module if requested
+kernel=`ls /usr/lib/modules/ --ignore=extramodules*`
+mv /usr/lib/modules/$kernel/kernel/drivers/gpu/drm/nouveau /tmp
+mv /usr/lib/modules/$kernel/kernel/drivers/gpu/drm/radeon /tmp
+
+# Check boot commandline for specified option,
+# echo last found argument, or return false.
+getbootparam(){
+ local result="" i CMDLINE
+ read CMDLINE < /proc/cmdline
+ for i in $CMDLINE; do
+  case "$i" in $1=*) result="${i#*=}" ;; esac
+ done
+ [ -n "$result" ] || return 1
+ echo "$result"
+ return 0
+}
+
+# # Switch to default language
+# [ -e /etc/default/locale ] && . /etc/default/locale
+# 
+# 
+# 
+# [ -n "$LANG" ] && export LANG
+# [ -n "$LANGUAGE" ] && export LANGUAGE
+# [ -n "$LC_MESSAGES" ] && export LC_MESSAGES
+# [ -n "$LC_ALL" ] && export LC_ALL
+# 
+
+
+# Start function
+start(){
+
+ # Read default from /etc/default (Debian) and/or /etc/sysconfig (Knoppix)
+. /etc/kademar/config-livecd
+ GROUP="users"
+ 
+ XMODULE=""
+xsesson_commands_file=/var/tmp/xsession-commands
+
+user_file=/var/tmp/user
+
+# XSERVER=Xorg
+XCONFIG="/etc/X11/xorg.conf"
+
+xserver_file=/var/tmp/xserver
+touch $xserver_file
+[ -e $xserver_file ] && . $xserver_file
+
+#full acces for desktop-selector
+chmod 777 $xserver_file
+
+KVER="`uname -r`"
+
+ [ -n "$DESKTOP" ] || DESKTOP="$(getbootparam desktop)"
+  
+#   oldtime="$(date +'%s')"
+  # Older compiz versions start gtk-window-decorator only if GNOME_DESKTOP_SESSION_ID is set.
+#   sessreg -a -l :0 -x /etc/X11/xdm/Xservers $user
+
+while true; do
+
+	#start  Desktop Selector if requested
+	if [ "$desktop_selector" != "no" -a "$nox" != "true" ]; then
+	  su -l -c "XINITRC=/usr/share/kademar/xinit.desktop-selector xinit" "root" ; RC="$?"
+	## xserver_file is filled on  kademar-livecd-autoconfig
+	fi
+
+	[ -e $xserver_file ] && . $xserver_file
+	
+	#configure language and system with desktop-selector variables
+	sh /usr/share/desktop-selector/scripts/locale_configurator $LANG
+
+	. /etc/locale.conf
+	export LANG=$LANG
+	export LANGUAGE=$LANG
+	export LC_MESSAGES=$LANG
+	export LC_ALL=$LANG
+# 
+	# Restore Nouveau driver if requested
+	kernel=`ls /usr/lib/modules/ --ignore=extramodules*`
+	if [ -z "`grep nvidiaDriver=true /etc/kademar/desktop-selector.ini`" ]; then
+	    mv /tmp/nouveau /usr/lib/modules/$kernel/kernel/drivers/gpu/drm
+	    if [ -n "$(lspci | grep -i [vV][Gg][Aa] | sed s.'VGA compatible controller: '..g | sed s,'[0-9][0-9]:[0-9][0-9].[0-9]',,g | cut -d'(' -f1 | grep -i " [Nn][Vv][Ii][Dd][Ii][Aa] ")" ]; then
+		modprobe nouveau
+	    fi
+	  
+	fi
+	
+	if [ -z "`grep atiDriver=true /etc/kademar/desktop-selector.ini`" ]; then
+	    mv /tmp/radeon /usr/lib/modules/$kernel/kernel/drivers/gpu/drm
+# 	    If detected ati, load it. If not can have problems
+	    if [ -n "$(lspci | grep -i [vV][Gg][Aa] | sed s.'VGA compatible controller: '..g | sed s,'[0-9][0-9]:[0-9][0-9].[0-9]',,g | cut -d'(' -f1 | grep -i " [Aa][Tt][Ii] ")" ]; then
+		modprobe radeon
+	    fi
+	fi
+
+	 if [ "$RC" = "0" -a "$DESKTOP" != "none" ]; then
+		
+		rm -f $xsesson_commands_file
+		touch $xsesson_commands_file
+		chown $user:$GROUP $xsesson_commands_file
+		
+		[ -e $user_file ] && . $user_file
+
+	
+		case "$DESKTOP" in
+			[Kk][Dd][Ee]4) 
+			  echo "kde_restart" > $xsesson_commands_file
+			  su -l -c "XINITRC=/usr/share/kademar/xinit.kde4 xinit" "$user"
+			;;
+
+			[Ll][Xx][Dd][Ee]) 
+			  su -l -c "XINITRC=/usr/share/kademar/xinit.lxde xinit" "$user"
+			;;
+		esac
+		
+	# 	su -c "/usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/common-configure_wallpapers" - "$user"
+		
+	  fi
+	
+	#   sessreg -d -l :0 -x /etc/X11/xdm/Xservers $user
+	  # Temporary workaround for missing KDE/Gnome shutdown button
+	  if tail -1 /home/"$user"/.xsession-errors 2>/dev/null | egrep -q -e '(startkde: Done|^gnome)'; then
+	   /sbin/init 0
+	  fi
+	#   newtime="$(date +'%s')"
+	#   if [ "$((newtime - oldtime))" -lt 30 ]; then
+	   # If X stays up no longer than 30 secs, it crashed, probably.
+	#    [ "$RC" = "0" ] || continue
+	#    tail /var/log/Xorg.0.log | egrep -q "(^Fatal server error:|[Ss]egmentation)" && continue
+	#   fi
+	
+	 if [ "$RC" = "0" ]; then
+	  echo "${BLUE}$miss_acabat_sense${NORMAL}"
+	  		XSESSION_COMMAND=$(cat $xsesson_commands_file)
+		#	NEXT_RUNLEVEL=0
+		
+			[ "$DESKTOP" = "icewm" ] && NEXT_RUNLEVEL=0
+	
+			if [ -n "$XSESSION_COMMAND" ]; then
+				case "$XSESSION_COMMAND" in
+				shutdown*halt*)
+					NEXT_RUNLEVEL=0
+				;;
+				shutdown*reboot*)
+					NEXT_RUNLEVEL=6
+				;;
+				*)
+					/etc/rc.d/kademar-livecd-xsession restart
+				;;
+				esac
+			fi
+			#init $NEXT_RUNLEVEL
+#	  return "$RC"
+	 else
+	 	error_msg
+	 fi
+done
+}
+
+stop(){
+ killall startx >/dev/null 2>&1
+}
+
+error_msg(){
+ # Shutdown or failure messages
+ case "$LANG" in
+ *)
+#   ERRORMSG="[1mThe graphical subsystem could not be startet\nor terminated unexpectedly.\nMaybe your graphics adapter or monitor are not auto-configurable.\n\nPlease try to reboot and give some of the Knoppix-Cheatcodes\nat the initial boot:-prompt, which match your graphics adapter.\nExamples:\n   kademar xmodule=radeon (or ati, nv, cirrus, ...)\n   kademar xmodule=fbdev\n   kademar xmodule=vesa\n"
+ esac
+#  echo -e "$ERRORMSG"
+  echo -e "Error iniciando el sistema gráfico. Entre 'halt' para apagar el ordenador y visite la página web $web para más información."
+}
+
+### MAIN
+
+case "$1" in
+ start)
+	if [ -z "$nox" ]; then
+		start
+	else
+		#Configure some services - taken of kademarcenter
+		sh /usr/share/kademar/scripts/services_nox
+	fi
+ ;;
+
+ stop)  stop  ;;
+ restart) stop; sleep 4; start;;
+ *)
+	echo "command not recognized $1"
+ ;;
+esac
+
+exit $?

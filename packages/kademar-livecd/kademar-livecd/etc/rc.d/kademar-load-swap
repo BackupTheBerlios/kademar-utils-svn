@@ -1,0 +1,53 @@
+#!/bin/bash
+# /etc/rc.d/kademar-load-swap: load swap partitions to use on livecd
+#
+# description: use swap partitions on livecd to improve performance
+#
+
+#export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+
+
+
+# Start function
+start(){
+
+echo -n "Loading all swap partitions: "
+ 
+ cd /sys/class/block ; for i in `ls --ignore=loop* --ignore=zram* --ignore=sr*
+`; do
+
+ if [ "`blkid -o value -s TYPE /dev/$i`" = "swap" ]; then
+ 
+ 
+  echo -n " $i "
+  
+  echo "UUID=`blkid -o value -s UUID /dev/$i`       swap    swap    pri=0   0       0" >> /etc/fstab
+
+ fi
+
+done
+ 
+ echo
+ swapon -a
+}
+
+stop(){
+ swapoff -a
+}
+
+
+### MAIN
+
+case "$1" in
+ start)
+	start
+ ;;
+
+ stop)  stop  ;;
+ restart) stop; sleep 4; start;;
+ *)
+	echo "command not recognized $1"
+ ;;
+esac
+
+exit $?

@@ -1,0 +1,41 @@
+# Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+pkgname=kademar-livecd
+pkgver=5.7.19
+pkgrel=1
+epoch=
+pkgdesc="Kademar Linux basic LiveCD package and utilities - remove on install"
+arch=('any')
+url="http://www.kademar.org"
+license=('GPL')
+groups=()
+depends=('bash' 'zramswap' 'numlockx' 'laptop-detect' 'desktop-selector')
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=kademar-livecd.install
+changelog=
+source=("$pkgname-$pkgver.tar.gz")
+noextract=()
+md5sums=('050e2f55b9accf194d43f787c8a6d0cc') #generate with 'makepkg -g'
+
+
+package() {
+  cp -a $startdir/src/$pkgname-$pkgver/* ${pkgdir}
+  cd ${pkgdir} && rm -fr `find . -name ".svn"` && rm -fr `find . -name "*.pyc"` && rm -f `find . -name "*~"`
+  find "$pkgdir"/etc/ -type f -exec chmod 644 "{}" \;
+  find "$pkgdir"/etc/ -type d -exec chmod 755 "{}" \;
+  find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+  find "$pkgdir"/etc/sudoers.d -type d -exec chmod 750 "{}" \;
+  find "$pkgdir"/etc/sudoers.d -type f -exec chmod 440 "{}" \;
+  find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+  find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+  find "$pkgdir"/etc/rc.d -type f -exec chmod 744 "{}" \;
+  find "$pkgdir"/etc/profile.d -type f -exec chmod 755 "{}" \;
+  chmod +x "$pkgdir"/usr/share/desktop-selector/scripts/*
+
+}

@@ -14,13 +14,15 @@
 #include <QApplication>
 #include <QTimer>
 
-QToolButtonWithEvents::QToolButtonWithEvents(QWidget *parent) :
+QToolButtonWithEvents::QToolButtonWithEvents(QWidget *parent, QString settings1, QString settings2) :
     QToolButton(parent)
 {
     connect(this, SIGNAL(clicked()),
                  this, SLOT(buttonClickedFunction()));
     m_property = QString("");
     blockedSignals=false;
+
+    settings = new QSettings("ProyectoHeliox", "HelioxHelper");
 
     setVisualStyle();
 
@@ -32,14 +34,14 @@ QToolButtonWithEvents::QToolButtonWithEvents(QWidget *parent) :
 void QToolButtonWithEvents::readCaption( QString * label )
 {
     QProcess *readcommand = new QProcess();
-    extern QSettings settings;
+    //extern QSettings settings;
     //qDebug() << "talking" << *label;
 
-    if (settings.value("General/speechPath").toString() == ""){
-        settings.setValue("General/speechPath", "/usr/share/helioxhelper/speech");
+    if (settings->value("General/speechPath").toString() == ""){
+        settings->setValue("General/speechPath", "/usr/share/helioxhelper/speech");
     }
 
-    QString lang = settings.value("General/Language").toString();
+    QString lang = settings->value("General/Language").toString();
 
     // Read or play buttons in case of
     /*   button exec=firefox http://www.inali.com
@@ -52,10 +54,10 @@ void QToolButtonWithEvents::readCaption( QString * label )
              screeenread  */
 
 
-    QFile *filespeechStrip = new QFile(QString("%1/%2.ogg").arg(settings.value("General/speechPath").toString()).arg(QString(m_propertyValue).split(" ")[0]) );
-    QFile *filespeechStripLang = new QFile(QString("%1/%2_%3.ogg").arg(settings.value("General/speechPath").toString()).arg(QString(m_propertyValue).split(" ")[0]).arg(lang) );
-    QFile *filespeechFull = new QFile(QString("%1/%2.ogg").arg(settings.value("General/speechPath").toString()).arg(QString(m_propertyValue)) );
-    QFile *filespeechFullLang = new QFile(QString("%1/%2_%3.ogg").arg(settings.value("General/speechPath").toString()).arg(QString(m_propertyValue)).arg(lang) );
+    QFile *filespeechStrip = new QFile(QString("%1/%2.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue).split(" ")[0]) );
+    QFile *filespeechStripLang = new QFile(QString("%1/%2_%3.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue).split(" ")[0]).arg(lang) );
+    QFile *filespeechFull = new QFile(QString("%1/%2.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue)) );
+    QFile *filespeechFullLang = new QFile(QString("%1/%2_%3.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue)).arg(lang) );
 
 
     if  (filespeechFullLang->exists()) {
@@ -166,17 +168,17 @@ bool QToolButtonWithEvents::eventFilter(QObject* object,QEvent* event)
 
 void QToolButtonWithEvents::setVisualStyle()
 {
-    QSettings settings("ProyectoHeliox", "HelioxHelper");
+    //QSettings settings("ProyectoHeliox", "HelioxHelper");
 
-    QString pixelsBorderNormal = settings.value("App Buttons/pixelsBorderNormal").toString();
-    QString pixelsBorderFocused = settings.value("App Buttons/pixelsBorderFocused").toString();
-    QString pixelsRoundedBorder = settings.value("App Buttons/pixelsRoundedBorder").toString();
-    QString borderColorNormal = settings.value("App Buttons/borderColorNormal").toString();
-    QString borderColorFocused = settings.value("App Buttons/borderColorFocused").toString();
-    QString borderColorHovered = settings.value("App Buttons/borderColorHovered").toString();
-    QString gradientBeginColor = settings.value("App Buttons/gradientBeginColor").toString();
-    QString gradientEndColor = settings.value("App Buttons/gradientEndColor").toString();
-    QString fontSize = settings.value("App Buttons/fontSize").toString();
+    QString pixelsBorderNormal = settings->value("App Buttons/pixelsBorderNormal").toString();
+    QString pixelsBorderFocused = settings->value("App Buttons/pixelsBorderFocused").toString();
+    QString pixelsRoundedBorder = settings->value("App Buttons/pixelsRoundedBorder").toString();
+    QString borderColorNormal = settings->value("App Buttons/borderColorNormal").toString();
+    QString borderColorFocused = settings->value("App Buttons/borderColorFocused").toString();
+    QString borderColorHovered = settings->value("App Buttons/borderColorHovered").toString();
+    QString gradientBeginColor = settings->value("App Buttons/gradientBeginColor").toString();
+    QString gradientEndColor = settings->value("App Buttons/gradientEndColor").toString();
+    QString fontSize = settings->value("App Buttons/fontSize").toString();
 
 
     bNormal = QString("QToolButtonWithEvents {background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 %1, stop: 1 %2); border-style: solid ;"

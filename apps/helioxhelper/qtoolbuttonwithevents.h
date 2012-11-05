@@ -2,12 +2,12 @@
 #define QTOOLBUTTONWITHEVENTS_H
 
 #include <QToolButton>
-
+#include <QSettings>
 class QToolButtonWithEvents : public QToolButton
 {
     Q_OBJECT
 public:
-    explicit QToolButtonWithEvents(QWidget *parent = 0);
+    explicit QToolButtonWithEvents(QWidget *parent = 0, QString settings1="", QString settings2="");
     void setTextProperty( QString *prop, QString *value);
     //bool isRecommended() const { return m_isRecommended; }
     //void setIsRecommended(bool isRecommended) { m_isRecommended = isRecommended; }
@@ -42,6 +42,7 @@ private:
     QString bPressed;
     QString toolTipText;
     bool blockedSignals;
+    QSettings *settings;
 
 
 //protected:

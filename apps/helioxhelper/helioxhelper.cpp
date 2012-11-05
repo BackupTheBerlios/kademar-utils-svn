@@ -6,7 +6,14 @@
 bool speech;
 //extern QSettings settings;
 
-QSettings settings("ProyectoHeliox", "HelioxHelper");
+//QSettings *settings("ProyectoHeliox", "HelioxHelper");
+//QSettings settings = new Qsettings("ProyectoHeliox", "HelioxHelper");
+
+//QCoreApplication::setOrganizationName("ProyectoHeliox");
+     //QCoreApplication::setOrganizationDomain("mysoft.com");
+  //   QCoreApplication::setApplicationName("HelioxHelper");
+
+//settings = new QSettings;
 
 //QList< QLabel* > listApplicationImage;
 
@@ -19,7 +26,9 @@ HelioxHelper::HelioxHelper(QWidget *parent) :
 {
 
     //char *user = getenv("USER");
-    QSettings settings("ProyectoHeliox", "HelioxHelper");
+    settings1 = "ProyectoHeliox";
+    settings2 = "HelioxHelper";
+    settings = new QSettings(settings1, settings2);
 
     //loadConfig();
     numCol=0;
@@ -31,7 +40,7 @@ HelioxHelper::HelioxHelper(QWidget *parent) :
     createLanguageButtons();
 
 
-    position = settings.value("General/whereIsPlacedWindow").toInt();
+    position = settings->value("General/whereIsPlacedWindow").toInt();
 
 
     ui->setupUi(this);
@@ -40,7 +49,7 @@ HelioxHelper::HelioxHelper(QWidget *parent) :
     extern bool speech;
     speech=0;
 
-    if (settings.value("General/speechText").toString() == ""){
+    if (settings->value("General/speechText").toString() == ""){
 
         QFile *cmdline = new QFile("/proc/cmdline");
         cmdline->open(QIODevice::ReadOnly);
@@ -52,7 +61,7 @@ HelioxHelper::HelioxHelper(QWidget *parent) :
         }
         //qDebug() << "speech activated by speech-dispatcher detection. Result:" << speech;
     } else {
-        speech=bool(settings.value("General/speechText").toBool());
+        speech=bool(settings->value("General/speechText").toBool());
         //qDebug() << "speech activated by config file. Result:" << speech;
     }
 
@@ -68,7 +77,7 @@ HelioxHelper::HelioxHelper(QWidget *parent) :
 
     setGuiLookAndFeel();
 
-    if (settings.value("Tray Icon/showTrayIcon").toBool() == true ){
+    if (settings->value("Tray Icon/showTrayIcon").toBool() == true ){
         trayIcon->show();
     }
 
@@ -102,7 +111,7 @@ void HelioxHelper::iconActivated(QSystemTrayIcon::ActivationReason reason)
     case QSystemTrayIcon::Trigger:
         //qDebug() << "hola";
 
-        if (settings.value("Tray Icon/leftClickContextualMenu").toBool() == false) {
+        if (settings->value("Tray Icon/leftClickContextualMenu").toBool() == false) {
             troggleShowMainWindow();
         } else {
             //trayIcon->contextMenu();
@@ -142,7 +151,7 @@ void HelioxHelper::createActions()
      minimizeAction = new QAction(QIcon(":/images/minimize.png"),tr("Mi&nimize"), this);
      connect(minimizeAction, SIGNAL(triggered()), this, SLOT(minimizeWindow()));
 
-//     settingsAction = new QAction(QIcon(":/images/settings.png"),tr("&Settings"), this);
+//     settingsAction = new QAction(QIcon(":/images/settings->png"),tr("&Settings"), this);
 //     connect(settingsAction, SIGNAL(triggered()), this, SLOT(settingsWindow()));
 
 //     restoreAction = new QAction(tr("&Restore"), this);
@@ -155,26 +164,26 @@ void HelioxHelper::createActions()
  {
 
      trayIconMenu = new QMenu(this);
-     if (settings.value("Contextual Menu/showRestore").toBool() == true){
+     if (settings->value("Contextual Menu/showRestore").toBool() == true){
          trayIconMenu->addAction(normalAction);
          trayIconMenu->addSeparator();
      }
 
-     if (settings.value("Contextual Menu/showMinimize").toBool() == true){
+     if (settings->value("Contextual Menu/showMinimize").toBool() == true){
          trayIconMenu->addAction(minimizeAction);
          trayIconMenu->addSeparator();
      }
 
-     if (settings.value("Contextual Menu/showExit").toBool() == true){
+     if (settings->value("Contextual Menu/showExit").toBool() == true){
          trayIconMenu->addAction(quitAction);
      }
 
-//     if (settings.value("Contextual Menu/showSettings").toBool() == true){
+//     if (settings->value("Contextual Menu/showSettings").toBool() == true){
 //         trayIconMenu->addAction(quitSettings);
 //     }
 
 
-     if (settings.value("Contextual Menu/showExit").toBool() == true){
+     if (settings->value("Contextual Menu/showExit").toBool() == true){
          trayIconMenu->addAction(quitAction);
      }
 
@@ -223,8 +232,8 @@ void HelioxHelper::createActions()
       screenSize = qDesktopWidget.availableGeometry();
 
 
-      if (settings.value("General/fullscreen").toBool() == true) {
-          if (settings.value("General/completeFullscreen").toBool() == true) {
+      if (settings->value("General/fullscreen").toBool() == true) {
+          if (settings->value("General/completeFullscreen").toBool() == true) {
               screenSize = qDesktopWidget.screenGeometry();
           }
 
@@ -236,9 +245,9 @@ void HelioxHelper::createActions()
           QString size;
           QString percentage;
           QString align;
-          size = settings.value("Panel/size").toString();
-          align = settings.value("Panel/align").toString();
-          percentage = settings.value("Panel/percentage").toString();
+          size = settings->value("Panel/size").toString();
+          align = settings->value("Panel/align").toString();
+          percentage = settings->value("Panel/percentage").toString();
           //qDebug() << screenSize;
 
           int xVar; int yVar; int yHeight; int xWidth;
@@ -380,8 +389,8 @@ void HelioxHelper::createActions()
          // qDebug() << xVar.toInt();
           /*
           qDebug() << "sreen width" << screenSize.width();
-          qDebug() << "x width position substracted size" << screenSize.width()-settings.value("Panel/size").toInt();
-          qDebug() << "settings size variable" <<  settings.value("Panel/size").toInt();
+          qDebug() << "x width position substracted size" << screenSize.width()-settings->value("Panel/size").toInt();
+          qDebug() << "settings size variable" <<  settings->value("Panel/size").toInt();
           qDebug() << "screen height" << screenSize.height();
           */
       }
@@ -392,8 +401,8 @@ void HelioxHelper::createActions()
  {
      //ui->pushButton->setStyleSheet("QToolButton {background-color: transparent;}");
     // this->setAttribute(Qt::WA_TranslucentBackground, true);
-     if (settings.value("General/fullscreen").toBool() == false) {
-         setMask(roundedRect(this->rect(), settings.value("Round Corners/roundedMargin").toInt()));
+     if (settings->value("General/fullscreen").toBool() == false) {
+         setMask(roundedRect(this->rect(), settings->value("Round Corners/roundedMargin").toInt()));
      }
 
 
@@ -401,22 +410,22 @@ void HelioxHelper::createActions()
      //QRegion* region = new QRegion(*(new QRect(this->x()+5,this->y()+5,190,190)),QRegion::Ellipse);
      //setMask(*region);
 
-     if (settings.value("Background/wallpaperBackground").toBool() == true){
-         if (settings.value("Background/backgroundPath").toString() != ""){
+     if (settings->value("Background/wallpaperBackground").toBool() == true){
+         if (settings->value("Background/backgroundPath").toString() != ""){
 
            //Backround Image path
-            QString imgPath = settings.value("Background/backgroundPath").toString();
+            QString imgPath = settings->value("Background/backgroundPath").toString();
 //            qDebug() << imgPath;
 //            setStyleSheet(QString("QWidget#HelioxHelper {background-image: url(%1);}").arg(imgPath));
              QPalette palette;
              palette.setBrush(this->backgroundRole(), QBrush(QImage(imgPath)));
              this->setPalette(palette);
          }
-     } else if (settings.value("Background/gradientBackground").toBool() == true) {
+     } else if (settings->value("Background/gradientBackground").toBool() == true) {
 
-         QString beginColor = settings.value("Background/gradientBeginColor").toString();
-         QString endColor = settings.value("Background/gradientEndColor").toString();
-         if (settings.value("Background/gradientOrientation").toInt() == 1) {
+         QString beginColor = settings->value("Background/gradientBeginColor").toString();
+         QString endColor = settings->value("Background/gradientEndColor").toString();
+         if (settings->value("Background/gradientOrientation").toInt() == 1) {
             //Horitzontal Gradient Orientation
              setStyleSheet(QString("QWidget#HelioxHelper {background-color: qlineargradient(x1: 0, y1: 1, x2: 1, y2: 1, stop: 0 %1, stop: 1 %2);}").arg(beginColor).arg(endColor));
          } else {
@@ -426,7 +435,7 @@ void HelioxHelper::createActions()
 
      } else {
        //Plain color, using first color of gradient
-         QString beginColor = settings.value("Background/gradientbeginColor").toString();
+         QString beginColor = settings->value("Background/gradientbeginColor").toString();
          setStyleSheet(QString("QWidget#HelioxHelper {background-color: %1;}").arg(beginColor));
      }
 
@@ -469,7 +478,7 @@ void HelioxHelper::createActions()
      QRegion::RegionType bottomLeft;
      QRegion::RegionType bottomRight;
 
-     if (settings.value("Round Corners/autoBorders").toBool() == true) {
+     if (settings->value("Round Corners/autoBorders").toBool() == true) {
 
          if (position == 0) {
            //left position
@@ -500,22 +509,22 @@ void HelioxHelper::createActions()
              bottomRight = QRegion::Rectangle;
          }
      } else {
-         if (settings.value("Round Corners/top-left").toBool() == true){
+         if (settings->value("Round Corners/top-left").toBool() == true){
              topLeft = QRegion::Ellipse;
          } else {
              topLeft = QRegion::Rectangle;
          }
-         if (settings.value("Round Corners/top-right").toBool() == true){
+         if (settings->value("Round Corners/top-right").toBool() == true){
              topRight = QRegion::Ellipse;
          } else {
              topRight = QRegion::Rectangle;
          }
-         if (settings.value("Round Corners/bottom-left").toBool() == true){
+         if (settings->value("Round Corners/bottom-left").toBool() == true){
              bottomLeft = QRegion::Ellipse;
          } else {
              bottomLeft = QRegion::Rectangle;
          }
-         if (settings.value("Round Corners/bottom-right").toBool() == true){
+         if (settings->value("Round Corners/bottom-right").toBool() == true){
              bottomRight = QRegion::Ellipse;
          } else {
              bottomRight= QRegion::Rectangle;
@@ -550,6 +559,8 @@ void HelioxHelper::createActions()
 
  void HelioxHelper::createApplicationButtons()
  {
+     qDebug() << settings->applicationName();
+
      //delete (listApplicationButtons);
 extern QList< QToolButtonWithEvents* > listApplicationButtons;
   //   qDebug() << "creatin";
@@ -557,21 +568,21 @@ extern QList< QToolButtonWithEvents* > listApplicationButtons;
 //     extern QList< QToolButtonWithEvents* > listApplicationButtons;
 
      //extern QList< QLabel* > listApplicationImage;
-     int imageSize = settings.value("App Buttons/imageSize").toInt();
-     int buttonMinHeight = settings.value("App Buttons/minimumHeight").toInt();
-     int buttonMaxHeight = settings.value("App Buttons/maximumHeight").toInt();
-     bool iconAbove = settings.value("App Buttons/iconAbove").toBool();
-     int buttonMinWidth = settings.value("App Buttons/minimumWidth").toInt();
-     int buttonMaxWidth = settings.value("App Buttons/maximumWidth").toInt();
-     bool showLabel =  settings.value("App Buttons/showLabels").toBool();
+     int imageSize = settings->value("App Buttons/imageSize").toInt();
+     int buttonMinHeight = settings->value("App Buttons/minimumHeight").toInt();
+     int buttonMaxHeight = settings->value("App Buttons/maximumHeight").toInt();
+     bool iconAbove = settings->value("App Buttons/iconAbove").toBool();
+     int buttonMinWidth = settings->value("App Buttons/minimumWidth").toInt();
+     int buttonMaxWidth = settings->value("App Buttons/maximumWidth").toInt();
+     bool showLabel =  settings->value("App Buttons/showLabels").toBool();
 
      //QList<Applications> apps;
-     int size = settings.beginReadArray("Applications/app");
+     int size = settings->beginReadArray("Applications/app");
 
      //qDebug() << size;
      for (int i = 0; i < size; ++i) {
-        settings.setArrayIndex(i);
-        QString name = settings.value("name").toString();
+        settings->setArrayIndex(i);
+        QString name = settings->value("name").toString();
 
         if ((name == "newRow") || (name == "newCol") || (name == "newLine")) {
 
@@ -587,17 +598,17 @@ extern QList< QToolButtonWithEvents* > listApplicationButtons;
                 //qDebug() << "horitzontal";
 
             }
-            listApplicationButtons << new QToolButtonWithEvents(this);
+            listApplicationButtons << new QToolButtonWithEvents(this, settings1, settings2);
             listApplicationButtons[numApp]->setVisible(0);
 
         } else {
 
-            QString name = settings.value("name").toString();
-            QString icon = settings.value("icon").toString();
-            QString desc = settings.value("desc").toString();
-            QString exec = settings.value("exec").toString();
+            QString name = settings->value("name").toString();
+            QString icon = settings->value("icon").toString();
+            QString desc = settings->value("desc").toString();
+            QString exec = settings->value("exec").toString();
 
-            listApplicationButtons << new QToolButtonWithEvents(this);
+            listApplicationButtons << new QToolButtonWithEvents(this, settings1, settings2);
             listApplicationButtons[numApp]->setObjectName(QString("b_%1").arg(name));
             listApplicationButtons[numApp]->setText(name);
 
@@ -683,10 +694,10 @@ extern QList< QToolButtonWithEvents* > listApplicationButtons;
 
      }
      //qDebug() << numCol << numRow;
-     settings.endArray();
+     settings->endArray();
 
-     if (settings.value("General/languages").toBool() == true){
-         languageButtonSelection = new QToolButtonWithEvents;
+     if (settings->value("General/languages").toBool() == true){
+         languageButtonSelection = new QToolButtonWithEvents(this, settings1, settings2);
          languageButtonSelection->setIcon(QIcon(":/images/language.png"));
          if ((numlanguage != 0) && (numlanguage != 1)){
             ui->gridLayout->addWidget(languageButtonSelection, numRow, numCol, 1, 1);
@@ -732,7 +743,7 @@ extern QList< QToolButtonWithEvents* > listApplicationButtons;
  void HelioxHelper::createLanguageButtons()
  {
 
- if (settings.value("General/LANGLIST").toString() == ""){
+ if (settings->value("General/LANGLIST").toString() == ""){
      //find witch languages are on system
      QString *langs = new QString(execShellProcess(QString("/bin/sh"), QString("-c"), QString("grep -v \\# /etc/locale.gen | awk ' { print $1 } ' | sed s.@euro..g | sed s_.UTF-8__g | sort -u")));
 
@@ -741,11 +752,11 @@ extern QList< QToolButtonWithEvents* > listApplicationButtons;
          this->createLanguageButton(new QString(lang));
      }
 
-     //qDebug() << settings.value("General/LANGLIST").toString();
+     //qDebug() << settings->value("General/LANGLIST").toString();
    } else {
-      //qDebug() << QString(settings.value("General/LANGLIST").toString()).split(" ");
+      //qDebug() << QString(settings->value("General/LANGLIST").toString()).split(" ");
      //create languages of langlist
-     foreach (QString lang, settings.value("General/LANGLIST").toString().split(" ")){
+     foreach (QString lang, settings->value("General/LANGLIST").toString().split(" ")){
          //qDebug() << lang;
          this->createLanguageButton(new QString(lang));
      }
@@ -848,28 +859,44 @@ extern QList< QToolButtonWithEvents* > listApplicationButtons;
 
  void HelioxHelper::changeLanguage(QString prop, QString value){
      //qDebug () << prop << value;
+     //int size=0;
+    // settings->sync();
      extern QList< QToolButtonWithEvents* > listApplicationButtons;
-     foreach (QToolButtonWithEvents *button, listApplicationButtons){
-         //qDebug() << lang;
-         //listApplicationButtons
-     //listApplicationButtons[0]->disconnect();
-                 //<< new QToolButtonWithEvents(this);
-       //  button->setVisible(false);
-         delete(button);
-     }
-     delete(languageButtonSelection);
-     listApplicationButtons.clear();
-     //delete(listApplicationButtons[0]);
-     //listApplicationButtons.takeFirst();
-     //listApplicationButtons.removeLast();
+
+    while (listApplicationButtons.size() != 0){
+        for (int i = 0; i < listApplicationButtons.size(); ++i)  {
+                 //if (listApplicationButtons.at(i) == "Jane")
+                     //cout << "Found Jane at position " << i << endl;
+          //   qDebug() << listApplicationButtons.at(i)->text();
+             // First, remove the widget from the layout:
+                 //ui->gridLayout -> removeWidget(listApplicationButtons.at(i));
+             delete (listApplicationButtons.at(i));
+                 // Now call the destructor:
+                 //listApplicationButtons.at(i) -> ~QToolButtonWithEvents();
+                 // Now delete the pointer:
+                  listApplicationButtons.removeAt(i);
+                 // Finally, refresh the layout once again...
+             }
+      //   qDebug() << listApplicationButtons.size();
+      }
+     //delete(languageButtonSelection);
+
 
      //languageButtonSelection->setVisible(false);
      numRow=0;
      numCol=0;
      numApp=0;
-     //QSettings settings("ProyectoHeliox", QString("HelioxHelper_%1").arg(value));
+
+
+     //extern QSettings settings;
+     delete (settings);
+
+     //QSettings settings = new Qsettings("ProyectoHeliox", QString("HelioxHelper_%1").arg(value));
+     ////settings->setPath();
+     //qDebug() << settings->applicationName();
+     //settings->sync();
 
      //listApplicationButtons << new QToolButtonWithEvents(this);
 
-     createApplicationButtons();
+//     createApplicationButtons();
  }

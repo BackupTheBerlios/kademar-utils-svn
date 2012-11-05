@@ -56,11 +56,17 @@ private:
     QAction *quitAction;
     QAction *normalAction;
     QAction *minimizeAction;
+    QSettings *settings;
+    QString settings1;
+    QString settings2;
+    QString selectedLang;
     void setWindowSize();
     void createConnections();
     void setWidgetSize();
     void setStyleClass();
     QToolButtonWithEvents *languageButtonSelection;
+
+
 
     QRegion roundedRect(const QRect& rect, int r);
     //QSettings settings("ProyectoHeliox", "HelioxHeper");

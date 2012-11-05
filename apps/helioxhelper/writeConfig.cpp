@@ -46,8 +46,8 @@ void writeConfig()
         settings.endGroup();
 
         settings.beginGroup("Panel");
-        settings.setValue("widthSize", "150");
-        settings.setValue("heightSize", "95%");
+        settings.setValue("widthSize", "350");
+        settings.setValue("percentage", "90%");
         settings.setValue("align", "center");
         settings.endGroup();
 

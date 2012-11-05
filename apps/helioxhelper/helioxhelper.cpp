@@ -226,42 +226,156 @@ void HelioxHelper::createActions()
       } else {
 
           QString widthSize;
-          QString heightSize;
+          QString percentage;
+          QString align;
           widthSize = settings.value("Panel/widthSize").toString();
-          heightSize = settings.value("Panel/heigthSize").toString();
-         // qDebug() << size.toInt();
+          align = settings.value("Panel/align").toString();
+          percentage = settings.value("Panel/percentage").toString();
+          qDebug() << screenSize;
 
           int xVar; int yVar; int yHeight; int xWidth;
          // QString xVar;
           if (position == 0) {
               //left position
+              if (percentage == QString("0") ){
+                  yVar = widthSize.toInt();
+                  yHeight = screenSize.height();
+              } else {
+                  int size;
+                  size = percentage.replace("%","").toInt();
+                  int num;
+                  int y = screenSize.height();
+                  num = (size * y);
+                  num = num/100;
+                  //qDebug() << num;
+                  //qDebug() << *size)/100;
+
+                  yHeight = num;
+                  if (align == "center"){
+                      num = (y-num)/2;
+                      qDebug() << num;
+                  } else if (align == "top") {
+                      num = 0;
+                  } else if (align == "bottom") {
+                      num = 0+num;
+                  }
+
+                  yVar = num;
+              }
               xVar = 0;
-              yVar = widthSize.toInt();
               xWidth = widthSize.toInt();
-              yHeight = screenSize.height();
+
 
 
           } else if (position == 1) {
               //top position
-              xVar = 0;
+
+              if (percentage == QString("0") ){
+                  xVar = 0;
+                  xWidth = screenSize.width();
+              } else {
+
+
+                  int size;
+                  size = percentage.replace("%","").toInt();
+                  int num;
+                  int x = screenSize.width();
+                  num = (size * x);
+                  num = num/100;
+                  //qDebug() << num;
+                  //qDebug() << *size)/100;
+
+                  xWidth = num;
+                  if (align == "center"){
+                      num = (x-num)/2;
+                      qDebug() << num;
+                  } else if (align == "left") {
+                      num = 0;
+                  } else if (align == "right") {
+                      num = 0+num;
+                  }
+
+                  xVar = num;
+
+
+              }
               yVar = 0;
-              xWidth = screenSize.width();
               yHeight = widthSize.toInt();
+
 
           } else if (position == 2) {
               //right position
               xVar = screenSize.width()-widthSize.toInt();
-              yVar = 0;
+            //  yVar = 0;
               xWidth = widthSize.toInt();
-              yHeight = screenSize.height();
+            //  yHeight = screenSize.height();
+
+              if (percentage == QString("0") ){
+                  yVar = widthSize.toInt();
+                  yHeight = screenSize.height();
+              } else {
+                  int size;
+                  size = percentage.replace("%","").toInt();
+                  int num;
+                  int y = screenSize.height();
+                  num = (size * y);
+                  num = num/100;
+                  //qDebug() << num;
+                  //qDebug() << *size)/100;
+
+                  yHeight = num;
+                  if (align == "center"){
+                      num = (y-num)/2;
+                      qDebug() << num;
+                  } else if (align == "top") {
+                      num = 0;
+                  } else if (align == "bottom") {
+                      num = 0+num;
+                  }
+
+                  yVar = num;
+              }
+
+
+
 
 
           } else if (position == 3) {
               //bottom position
-              xVar = 0;
-              yVar = screenSize.height()-widthSize.toInt();
-              xWidth = screenSize.width();
+
+              if (percentage == QString("0") ){
+                  xVar = 0;
+                  xWidth = screenSize.width();
+              } else {
+
+
+                  int size;
+                  size = percentage.replace("%","").toInt();
+                  int num;
+                  int x = screenSize.width();
+                  num = (size * x);
+                  num = num/100;
+                  //qDebug() << num;
+                  //qDebug() << *size)/100;
+
+                  xWidth = num;
+                  if (align == "center"){
+                      num = (x-num)/2;
+                      qDebug() << num;
+                  } else if (align == "left") {
+                      num = 0;
+                  } else if (align == "right") {
+                      num = 0+num;
+                  }
+
+                  xVar = num;
+
+
+              }
               yHeight = widthSize.toInt();
+              yVar = screenSize.height()-widthSize.toInt();
+
+
           }
           setGeometry(xVar , yVar , xWidth ,yHeight);
 

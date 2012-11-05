@@ -43,8 +43,6 @@ private slots:
     void changeLanguage(QString prop, QString value);
     void showLanguageMenu();
 
-
-
 private:
     Ui::HelioxHelper *ui;
     QSystemTrayIcon *trayIcon;
@@ -77,6 +75,7 @@ private:
     int numlanguage;
     int numApp;
     QToolButtonWithEvents *languageButtonSelection;
+    void blockAllApplicationButtonSignals(bool value);
 
 
     struct Applications {

@@ -25,6 +25,7 @@ QToolButtonWithEvents::QToolButtonWithEvents(QWidget *parent, QString settings1,
     //QString settings2 = "HelioxHelper";
     settings = new QSettings(settings1, settings2);
     selectedLanguage=lang;
+    speeching=false;
 
     setVisualStyle();
 
@@ -35,7 +36,13 @@ QToolButtonWithEvents::QToolButtonWithEvents(QWidget *parent, QString settings1,
 
 void QToolButtonWithEvents::readCaption( QString * label )
 {
+    speeching = true;
     QProcess *readcommand = new QProcess();
+
+    connect(readcommand, SIGNAL(error(QProcess::ProcessError)), this, SLOT(setFalseSpeechingVar()));
+    connect(readcommand, SIGNAL(destroyed()), this, SLOT(setFalseSpeechingVar()));
+    connect(readcommand, SIGNAL(finished(int)), this, SLOT(setFalseSpeechingVar()));
+
     //extern QSettings settings;
     //qDebug() << "talking" << *label;
 
@@ -49,23 +56,24 @@ void QToolButtonWithEvents::readCaption( QString * label )
     /*   button exec=firefox http://www.inali.com
     Will search and use by this order (stop if found)
 
-  "firefox http://www.inali.com_idoma.ogg"
-    "firefox http://www.inali.com.ogg"
+  "firefox http://www.inali.com_idoma.ogg" ==> "firefox http:--www.inali.com_idoma.ogg"
+    "firefox http://www.inali.com.ogg" ==> "firefox http:--www.inali.com.ogg"
         firefox_lang.ogg
           firefox.ogg
              screeenread  */
 
 
-    QFile *filespeechStrip = new QFile(QString("%1/%2.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue).split(" ")[0]) );
-    QFile *filespeechStripLang = new QFile(QString("%1/%2_%3.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue).split(" ")[0]).arg(selectedLanguage) );
-    QFile *filespeechFull = new QFile(QString("%1/%2.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue)) );
-    QFile *filespeechFullLang = new QFile(QString("%1/%2_%3.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue)).arg(selectedLanguage) );
+    QFile *filespeechStrip = new QFile(QString("%1/%2.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue).replace("/","-").split(" ")[0]) );
+    QFile *filespeechStripLang = new QFile(QString("%1/%2_%3.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue).replace("/","-").split(" ")[0]).arg(selectedLanguage) );
+    QFile *filespeechFull = new QFile(QString("%1/%2.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue).replace("/","-")));
+    QFile *filespeechFullLang = new QFile(QString("%1/%2_%3.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue).replace("/","-")).arg(selectedLanguage));
 
 /*
-    qDebug() << filespeechFullLang->fileName();
-    qDebug() << filespeechFull->fileName();
+    qDebug() << filespeechStrip->fileName();
     qDebug() << filespeechStripLang->fileName();
-    qDebug() << filespeechStrip->fileName();*/
+    qDebug() << filespeechFull->fileName();
+    qDebug() << filespeechFullLang->fileName();
+*/
 
     if  (filespeechFullLang->exists()) {
         readcommand->start(QString("ogg123 \"%1\"").arg(filespeechFullLang->fileName()));
@@ -84,6 +92,7 @@ void QToolButtonWithEvents::readCaption( QString * label )
         readcommand->start(QString("spd-say \"%1\"").arg(*label));
         //qDebug() << "talking" << *label;
     }
+
 }
 
 void QToolButtonWithEvents::buttonClickedFunction()
@@ -99,17 +108,23 @@ void QToolButtonWithEvents::enterEvent( QEvent * event )
     if ( speech == 1 ){
         QString *txt = new QString(this->text());
         QString *desc = new QString(toolTipText);
-        txt->append(". ");
-        txt->append(desc);
-
         if (blockedSignals == false) {
-            this->readCaption(txt);
-       //    qDebug() << blockedSignals;
-        }// else {
+            if (speeching == false){
+                if (this->isVisible() == true){
+                    if (*desc != ""){
+                        this->readCaption(desc);
+                   //    qDebug() << blockedSignals;
+                    } else {
+                        this->readCaption(txt);
+                    }
+                }
+            }
+        }
+// else {
         //    qDebug() << "Shhh! No puedo hablar";
           //  qDebug() << blockedSignals;
       //  }
-        // qDebug() << "talking by mouse enter... " << txt->toLocal8Bit();
+         //qDebug() << "talking by mouse enter... " << txt->toLocal8Bit()  << desc->toLocal8Bit();;
     }
 }
 
@@ -121,18 +136,32 @@ void QToolButtonWithEvents::focusInEvent( QFocusEvent * event )
     if ( speech == 1 ){
         QString *txt = new QString(this->text());
         QString *desc = new QString(toolTipText);
-        txt->append(". ");
-        txt->append(desc);
-
         if (blockedSignals == false) {
-            this->readCaption(txt);
-          //  qDebug() << blockedSignals;
-        } //else {
-           // qDebug() << blockedSignals;
-         //   qDebug() << "Shhh! No puedo hablar";
-       // }
+            if (speeching == false){
+                if (this->isVisible() == true){
+                    if (*desc != ""){
+                        this->readCaption(desc);
+                   //    qDebug() << blockedSignals;
+                    } else {
+                        this->readCaption(txt);
+                    }
+                }
+            }
+        }
+    //    txt->append(". ");
+      //  txt->append(desc);
+
+        //if (blockedSignals == false) {
+          //  this->readCaption(txt);
+         // //  qDebug() << blockedSignals;
+       // } //else {
+       //    // qDebug() << blockedSignals;
+       //  //   qDebug() << "Shhh! No puedo hablar";
+       //// }
        // qDebug() << "es este";
       //  qDebug() << event->type();
+
+
   //      qDebug() << "talking by focus event... " << txt->toLocal8Bit();
 
     }
@@ -240,4 +269,12 @@ void QToolButtonWithEvents::setBlockedSignals(int value)
 
 void QToolButtonWithEvents::reactivateBlockedSignals(){
     blockedSignals = false;
+}
+
+void QToolButtonWithEvents::setSimpleBlockedSignals(bool value){
+    blockedSignals = value;
+}
+
+void QToolButtonWithEvents::setFalseSpeechingVar(){
+    speeching=false;
 }

@@ -17,6 +17,7 @@ public:
     void setToolTip(QString &label);
     void showToolTip();
     void setBlockedSignals(int value);
+    void setSimpleBlockedSignals(bool value);
 
 
 signals:
@@ -27,6 +28,8 @@ public slots:
     void readCaption( QString * label );
     void buttonClickedFunction();
     void reactivateBlockedSignals();
+    void setFalseSpeechingVar();
+
 
 
 private:
@@ -44,7 +47,7 @@ private:
     bool blockedSignals;
     QSettings *settings;
     QString selectedLanguage;
-
+    bool speeching;
 
 
 //protected:

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Categories=QT;KDE;GNOME;Utility;Accessibility;
+Exec=HelioxHelper autostart
+GenericName=Heliox Helper
+Icon=/usr/share/helioxhelper/icon.png
+MimeType=
+Name=Heliox Helper
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application

@@ -199,8 +199,10 @@ void HelioxHelper::createActions()
  void HelioxHelper::troggleShowMainWindow()
  {
      if (this->isVisible() == false){
+         //blockAllApplicationButtonSignals();
                       this->setVisible(!(this->isVisible()));
      } else {
+        // blockAllApplicationButtonSignals();
          // if window is visible (but down other windows)
  //        this->raise();
          //QApplication::setActiveWindow(this);
@@ -211,7 +213,13 @@ void HelioxHelper::createActions()
 
  void HelioxHelper::minimizeWindow()
  {
+    // blockAllApplicationButtonSignals(true);
+     //qDebug() << "min";
+
      this->setVisible(false);
+
+     //blockAllApplicationButtonSignals(false);
+
  }
 
  void HelioxHelper::setWidgetSize()
@@ -679,12 +687,20 @@ void HelioxHelper::createActions()
      }
      settings->endArray();
      if (settings->value("General/languages").toBool() == true){
+          if ((numlanguage != 0) && (numlanguage != 1)){
          languageButtonSelection = new QToolButtonWithEvents(this, settings1, settings2, selectedLanguage);
          languageButtonSelection->setIcon(QIcon(":/images/language.png"));
-        // if ((numlanguage != 0) && (numlanguage != 1)){
+
+         QString desc;
+         desc ="Configura el idioma";
+         QByteArray byteArray = desc.toAscii();
+         const char * processingString = byteArray.data();
+         QString realdesc = QString::fromLocal8Bit(processingString);
+
+         languageButtonSelection->setToolTip(realdesc);
             ui->gridLayout->addWidget(languageButtonSelection, numRow, numCol, 1, 1);
             connect(languageButtonSelection, SIGNAL(buttonClicked(QString,QString)), this, SLOT(showLanguageMenu()));
-        // }
+         }
 
      }
 
@@ -878,4 +894,25 @@ void HelioxHelper::createActions()
 
  void HelioxHelper::showLanguageMenu(){
      languageMenu->exec(QCursor::pos());
+ }
+
+
+ void HelioxHelper::blockAllApplicationButtonSignals(bool value){
+
+     while (listApplicationButtons.size() != 0){
+         for (int i = 0; i < listApplicationButtons.size(); ++i)  {
+             qDebug() << "desac" << listApplicationButtons[i]->text();
+             listApplicationButtons[i]->setSimpleBlockedSignals(value);
+         }
+     }
+
+  //   QListIterator<QToolButtonWithEvents*> i(listApplicationButtons);
+  //   while (i.hasNext()){
+         //i.next();
+
+         //qDebug() << i.next();
+  //       qDebug() << listApplicationButtons[i]->text();
+
+  //   }
+
  }

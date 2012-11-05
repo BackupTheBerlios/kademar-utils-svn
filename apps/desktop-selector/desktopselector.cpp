@@ -31,6 +31,11 @@ QList<QString> graphicResolutions;
 
 QSettings settings("/etc/kademar/desktop-selector.ini", QSettings::IniFormat);
 
+QList< QAction* > listLangActions;
+QList< QAction* > listDesktopActions;
+//QMenu *languageMenu = new QMenu;
+
+
 extern QTranslator *appTranslator;
 
 extern QTranslator *qtTranslator;
@@ -42,6 +47,9 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
 {
     extern QSettings settings;
 
+    languageMenu = new QMenu(this);
+    desktopMenu = new QMenu(this);
+
     ui->setupUi(this);
     ui->hslider_resolutions->blockSignals(true);  //block read before configure
     numdesktop=0;
@@ -49,6 +57,7 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
     numpages=0;
     detectedAti=false;
     detectedNvidia=false;
+    languageMenu->addSeparator();
 
     //No comments... :)
     this->prepareGui();
@@ -68,6 +77,8 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
     this->createLanguageButton(new QString("en"));
     this->createLanguageButton(new QString("mx"));
     */
+    this->createLanguageButton(new QString("mx"));
+    this->createLanguageButton(new QString("fr"));
 
     this->setupPages(); //setup pages after know actual situation
 
@@ -176,6 +187,20 @@ void DesktopSelector::prepareGui()
     ui->languageLabel->setStyleSheet("QLabel { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #7d7d7d, stop: 1 white) ; border-style: outset; border-width: 1px; border-radius: 5px; border-color: beige; font: bold 14px; min-width: 10em; padding: 6px; margin-bottom: 10px;}");
     ui->displayLabel->setStyleSheet("QLabel { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #7d7d7d, stop: 1 white) ; border-style: outset; border-width: 1px; border-radius: 5px; border-color: beige; font: bold 14px; min-width: 10em; padding: 6px; margin-bottom: 10px;}");
     ui->accessibilityLabel->setStyleSheet("QLabel { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #7d7d7d, stop: 1 white) ; border-style: outset; border-width: 1px; border-radius: 5px; border-color: beige; font: bold 14px; min-width: 10em; padding: 6px; margin-bottom: 10px;}");
+    //languageMenu->setStyleSheet("QMenu { width: 150px; } QMenu::item {padding-top: 10px;padding-bottom: 10px; width: 150px;};");
+        //languageMenu->set
+    //languageMenu->setStyleSheet("QMenu::item{ padding-top: 4px; padding-left: 5px; padding-right: 15px; padding-bottom: 4px; }");
+    languageMenu->setStyleSheet("QMenu { border-radius: 10px; border: 1px solid rgb(110, 110, 110); font: bold 14px; }  QMenu::item {font-weight: bold; }");
+    desktopMenu->setStyleSheet("QMenu { border-radius: 10px; border: 1px solid rgb(110, 110, 110); font: bold 14px; }  QMenu::item {font-weight: bold; }");
+
+
+    //languageMenu->setStyle(new myStyle);
+    int iconswidth = 16+4+16;
+
+    languageMenu->setStyle( new WideIconsMenu( iconswidth ) );
+    desktopMenu->setStyle( new WideIconsMenu( iconswidth ) );
+
+
 
     ui->l_shutdown->setStyleSheet("QLabel { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #7d7d7d, stop: 1 white) ; border-style: outset; border-width: 1px; border-radius: 5px; border-color: beige; font: bold 14px; min-width: 10em; padding: 6px; margin-bottom: 10px;}");
 
@@ -200,6 +225,8 @@ void DesktopSelector::prepareGui()
     connect(ui->ch_forceResol, SIGNAL(stateChanged(int)), this, SLOT(changeForcedState(int)));
     connect(ui->stackedWidget, SIGNAL(currentChanged(int)), this, SLOT(readLabelOnEnterPage(int)));
     connect(ui->b_startDesktop, SIGNAL(clicked()), this, SLOT(finalSteps()));
+    connect(ui->b_language, SIGNAL(clicked()), this, SLOT(showLanguageMenu()));
+    connect(ui->b_desktop, SIGNAL(clicked()), this, SLOT(showDesktopMenu()));
 
 
     //stethic tune
@@ -682,6 +709,13 @@ void DesktopSelector::createDesktopButton(QString *desk, QString *recommended)
 
     connect(listDesktopButtons[numdesktop], SIGNAL( buttonClicked(QString, QString)), this, SLOT(writeSettings(QString, QString)));
 
+
+    extern QList< QAction* > listDesktopActions;
+    //listDesktopActions << new QAction(QIcon(QString(":/img/%1").arg(*desk))),*desk, this);
+    listDesktopActions << new QAction(QIcon(QString(":/img/%1").arg(*desk)),*desk,this);
+    desktopMenu->addAction(listDesktopActions[numdesktop]);
+
+
     numdesktop=numdesktop+1;
     //qDebug() << numdesktop;
 }
@@ -753,7 +787,7 @@ void DesktopSelector::createLanguageButton(QString *lang)
     //Add new button with objectname and minimum size
     listLangButtons << new QPushButtonWithEvents(ui->languageFrame);
     listLangButtons[numlanguage]->setObjectName(QString("b_%1").arg(*lang));
-    listLangButtons[numlanguage]->setMinimumSize(QSize(170, 40));
+    listLangButtons[numlanguage]->setMinimumSize(QSize(170, 40));    
 
     QString realLanguageName = dict.value(*lang);
 
@@ -777,6 +811,13 @@ void DesktopSelector::createLanguageButton(QString *lang)
     listHorizontalLayout[0]->addWidget(listLangButtons[numlanguage]);
 
     connect(listLangButtons[numlanguage], SIGNAL( buttonClicked(QString, QString)), this, SLOT(writeSettings(QString, QString)));
+
+    //create menu entry
+    extern QList< QAction* > listLangActions;
+    listLangActions << new QAction(QIcon(QPixmap(QString(":/img/img/lang/%1.png").arg(*lang))),realLanguageNameTrans, this);
+    languageMenu->addAction(listLangActions[numlanguage]);
+
+
 
     numlanguage=numlanguage+1;
     //qDebug() << numlanguage;
@@ -1021,3 +1062,24 @@ void DesktopSelector::finalSteps()
 ***        E  N  D          ***
 *******************************
 */
+
+
+/*
+ *MENUS
+ */
+
+void DesktopSelector::showLanguageMenu(){
+    languageMenu->exec(QCursor::pos());
+
+}
+
+
+void DesktopSelector::showDesktopMenu(){
+    desktopMenu->exec(QCursor::pos());
+
+}
+
+
+//void DesktopSelector::showAdvancedConfiguration(){
+
+//}

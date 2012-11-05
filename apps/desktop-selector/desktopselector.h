@@ -4,6 +4,10 @@
 #include <QMainWindow>
 //#include "process.h"
 #include <QSettings>
+#include <QMenu>
+#include <QAction>
+#include "wideiconsmenu.h"
+
 
 namespace Ui {
     class DesktopSelector;
@@ -38,6 +42,8 @@ public slots:
     void rebootButton();
     void readLabelOnEnterPage(int);
     void finalSteps();
+    void showLanguageMenu();
+    void showDesktopMenu();
 
     //void startDesktop(const int &m_listNumber);
     //void startDesktop(QString m_property);
@@ -64,6 +70,11 @@ private:
     QString selectedResol;
     bool detectedNvidia;
     bool detectedAti;
+
+
+    QMenu *languageMenu;
+    QMenu *desktopMenu;
+
     //Process pro;
 
 

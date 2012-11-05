@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'desktopselector.ui'
 **
-** Created: Mon Jul 16 15:20:00 2012
+** Created: Mon Jul 30 23:01:01 2012
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -62,6 +62,8 @@ public:
     QLabel *displayLabel;
     QFrame *displayFrame;
     QGridLayout *gridLayout_7;
+    QSpacerItem *horizontalSpacer_9;
+    QLabel *displayDetectedLabel;
     QFrame *advancedConfigurationFrame;
     QGridLayout *gridLayout_5;
     QComboBoxWithEvents *cb_chipset;
@@ -73,12 +75,11 @@ public:
     QCheckBoxWithEvents *ch_forceDriver;
     QPushButtonWithEvents *b_startDesktop;
     QLabel *displayChipetLabel;
-    QSpacerItem *horizontalSpacer_9;
-    QLabel *displayDetectedLabel;
     QFrame *driverFrame;
     QGridLayout *gridLayout_6;
     QRadioButtonWithEvents *rb_propietaryDriver;
     QRadioButtonWithEvents *rb_freeDriver;
+    QPushButtonWithEvents *b_previous;
     QSpacerItem *verticalSpacer_5;
     QSpacerItem *horizontalSpacer_7;
     QSpacerItem *horizontalSpacer_8;
@@ -136,9 +137,12 @@ public:
     QSpacerItem *verticalSpacer_10;
     QFrame *controlFrame;
     QGridLayout *gridLayout_2;
-    QPushButtonWithEvents *b_previous;
+    QPushButtonWithEvents *b_accessibility;
+    QPushButtonWithEvents *b_desktop;
     QPushButtonWithEvents *b_shutdown;
     QSpacerItem *horizontalSpacer_3;
+    QPushButtonWithEvents *b_language;
+    QPushButtonWithEvents *b_configuration;
     QMenuBar *menuBar;
     QStatusBar *statusBar;
 
@@ -146,7 +150,7 @@ public:
     {
         if (DesktopSelector->objectName().isEmpty())
             DesktopSelector->setObjectName(QString::fromUtf8("DesktopSelector"));
-        DesktopSelector->resize(757, 738);
+        DesktopSelector->resize(884, 484);
         centralWidget = new QWidget(DesktopSelector);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -256,6 +260,21 @@ public:
         gridLayout_7->setSpacing(6);
         gridLayout_7->setContentsMargins(11, 11, 11, 11);
         gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
+        horizontalSpacer_9 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_7->addItem(horizontalSpacer_9, 6, 3, 1, 1);
+
+        displayDetectedLabel = new QLabel(displayFrame);
+        displayDetectedLabel->setObjectName(QString::fromUtf8("displayDetectedLabel"));
+        displayDetectedLabel->setMaximumSize(QSize(16777215, 50));
+        QFont font1;
+        font1.setBold(true);
+        font1.setWeight(75);
+        displayDetectedLabel->setFont(font1);
+        displayDetectedLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+
+        gridLayout_7->addWidget(displayDetectedLabel, 0, 0, 1, 5);
+
         advancedConfigurationFrame = new QFrame(displayFrame);
         advancedConfigurationFrame->setObjectName(QString::fromUtf8("advancedConfigurationFrame"));
         advancedConfigurationFrame->setFrameShape(QFrame::StyledPanel);
@@ -279,11 +298,11 @@ public:
         label = new QLabel(advancedConfigurationFrame);
         label->setObjectName(QString::fromUtf8("label"));
         label->setMaximumSize(QSize(16777215, 70));
-        QFont font1;
-        font1.setPointSize(11);
-        font1.setBold(true);
-        font1.setWeight(75);
-        label->setFont(font1);
+        QFont font2;
+        font2.setPointSize(11);
+        font2.setBold(true);
+        font2.setWeight(75);
+        label->setFont(font2);
         label->setAlignment(Qt::AlignCenter);
 
         gridLayout_5->addWidget(label, 0, 1, 1, 5);
@@ -312,21 +331,18 @@ public:
 
         ch_forceResol = new QCheckBoxWithEvents(advancedConfigurationFrame);
         ch_forceResol->setObjectName(QString::fromUtf8("ch_forceResol"));
-        QFont font2;
-        font2.setBold(true);
-        font2.setWeight(75);
-        ch_forceResol->setFont(font2);
+        ch_forceResol->setFont(font1);
 
         gridLayout_5->addWidget(ch_forceResol, 1, 4, 1, 3);
 
         ch_forceDriver = new QCheckBoxWithEvents(advancedConfigurationFrame);
         ch_forceDriver->setObjectName(QString::fromUtf8("ch_forceDriver"));
-        ch_forceDriver->setFont(font2);
+        ch_forceDriver->setFont(font1);
 
         gridLayout_5->addWidget(ch_forceDriver, 1, 0, 1, 3);
 
 
-        gridLayout_7->addWidget(advancedConfigurationFrame, 4, 0, 1, 3);
+        gridLayout_7->addWidget(advancedConfigurationFrame, 4, 0, 1, 5);
 
         b_startDesktop = new QPushButtonWithEvents(displayFrame);
         b_startDesktop->setObjectName(QString::fromUtf8("b_startDesktop"));
@@ -335,7 +351,7 @@ public:
         b_startDesktop->setIcon(icon);
         b_startDesktop->setIconSize(QSize(32, 32));
 
-        gridLayout_7->addWidget(b_startDesktop, 6, 2, 1, 1);
+        gridLayout_7->addWidget(b_startDesktop, 6, 4, 1, 1);
 
         displayChipetLabel = new QLabel(displayFrame);
         displayChipetLabel->setObjectName(QString::fromUtf8("displayChipetLabel"));
@@ -345,18 +361,6 @@ public:
         displayChipetLabel->setScaledContents(true);
 
         gridLayout_7->addWidget(displayChipetLabel, 3, 0, 1, 1);
-
-        horizontalSpacer_9 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_7->addItem(horizontalSpacer_9, 6, 0, 1, 2);
-
-        displayDetectedLabel = new QLabel(displayFrame);
-        displayDetectedLabel->setObjectName(QString::fromUtf8("displayDetectedLabel"));
-        displayDetectedLabel->setMaximumSize(QSize(16777215, 50));
-        displayDetectedLabel->setFont(font2);
-        displayDetectedLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
-
-        gridLayout_7->addWidget(displayDetectedLabel, 0, 0, 1, 3);
 
         driverFrame = new QFrame(displayFrame);
         driverFrame->setObjectName(QString::fromUtf8("driverFrame"));
@@ -378,7 +382,17 @@ public:
         gridLayout_6->addWidget(rb_freeDriver, 1, 0, 1, 1);
 
 
-        gridLayout_7->addWidget(driverFrame, 3, 1, 1, 2);
+        gridLayout_7->addWidget(driverFrame, 3, 1, 1, 4);
+
+        b_previous = new QPushButtonWithEvents(displayFrame);
+        b_previous->setObjectName(QString::fromUtf8("b_previous"));
+        b_previous->setMinimumSize(QSize(0, 32));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/img/img/go-previous.png"), QSize(), QIcon::Normal, QIcon::Off);
+        b_previous->setIcon(icon1);
+        b_previous->setIconSize(QSize(32, 22));
+
+        gridLayout_7->addWidget(b_previous, 6, 2, 1, 1);
 
 
         gridLayout_8->addWidget(displayFrame, 4, 1, 1, 1);
@@ -450,8 +464,6 @@ public:
 
         pushButton = new QPushButton(advancedAccessibilityGroupBox);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/img/img/go-previous.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton->setIcon(icon1);
 
         gridLayout_11->addWidget(pushButton, 12, 0, 1, 1);
@@ -677,13 +689,25 @@ public:
         gridLayout_2->setSpacing(6);
         gridLayout_2->setContentsMargins(11, 11, 11, 11);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        b_previous = new QPushButtonWithEvents(controlFrame);
-        b_previous->setObjectName(QString::fromUtf8("b_previous"));
-        b_previous->setMinimumSize(QSize(0, 32));
-        b_previous->setIcon(icon1);
-        b_previous->setIconSize(QSize(32, 22));
+        b_accessibility = new QPushButtonWithEvents(controlFrame);
+        b_accessibility->setObjectName(QString::fromUtf8("b_accessibility"));
+        b_accessibility->setMinimumSize(QSize(0, 32));
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8(":/img/img/accessibility.png"), QSize(), QIcon::Normal, QIcon::Off);
+        b_accessibility->setIcon(icon6);
+        b_accessibility->setIconSize(QSize(32, 32));
 
-        gridLayout_2->addWidget(b_previous, 0, 0, 1, 1);
+        gridLayout_2->addWidget(b_accessibility, 0, 3, 1, 1);
+
+        b_desktop = new QPushButtonWithEvents(controlFrame);
+        b_desktop->setObjectName(QString::fromUtf8("b_desktop"));
+        b_desktop->setMinimumSize(QSize(0, 32));
+        QIcon icon7;
+        icon7.addFile(QString::fromUtf8(":/img/img/desktop.png"), QSize(), QIcon::Normal, QIcon::Off);
+        b_desktop->setIcon(icon7);
+        b_desktop->setIconSize(QSize(32, 32));
+
+        gridLayout_2->addWidget(b_desktop, 0, 2, 1, 1);
 
         b_shutdown = new QPushButtonWithEvents(controlFrame);
         b_shutdown->setObjectName(QString::fromUtf8("b_shutdown"));
@@ -692,11 +716,31 @@ public:
         b_shutdown->setIcon(icon4);
         b_shutdown->setIconSize(QSize(32, 22));
 
-        gridLayout_2->addWidget(b_shutdown, 0, 2, 1, 1);
+        gridLayout_2->addWidget(b_shutdown, 0, 6, 1, 1);
 
         horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout_2->addItem(horizontalSpacer_3, 0, 1, 1, 1);
+        gridLayout_2->addItem(horizontalSpacer_3, 0, 5, 1, 1);
+
+        b_language = new QPushButtonWithEvents(controlFrame);
+        b_language->setObjectName(QString::fromUtf8("b_language"));
+        b_language->setMinimumSize(QSize(0, 32));
+        QIcon icon8;
+        icon8.addFile(QString::fromUtf8(":/img/img/language.png"), QSize(), QIcon::Normal, QIcon::Off);
+        b_language->setIcon(icon8);
+        b_language->setIconSize(QSize(32, 32));
+
+        gridLayout_2->addWidget(b_language, 0, 1, 1, 1);
+
+        b_configuration = new QPushButtonWithEvents(controlFrame);
+        b_configuration->setObjectName(QString::fromUtf8("b_configuration"));
+        b_configuration->setMinimumSize(QSize(0, 32));
+        QIcon icon9;
+        icon9.addFile(QString::fromUtf8(":/img/img/advanced-configuration.png"), QSize(), QIcon::Normal, QIcon::Off);
+        b_configuration->setIcon(icon9);
+        b_configuration->setIconSize(QSize(32, 32));
+
+        gridLayout_2->addWidget(b_configuration, 0, 4, 1, 1);
 
 
         gridLayout->addWidget(controlFrame, 3, 0, 1, 2);
@@ -704,7 +748,7 @@ public:
         DesktopSelector->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(DesktopSelector);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 757, 20));
+        menuBar->setGeometry(QRect(0, 0, 884, 20));
         DesktopSelector->setMenuBar(menuBar);
         statusBar = new QStatusBar(DesktopSelector);
         statusBar->setObjectName(QString::fromUtf8("statusBar"));
@@ -724,15 +768,16 @@ public:
         desktopLabel->setText(QApplication::translate("DesktopSelector", "Select the desktop you want to use", 0, QApplication::UnicodeUTF8));
         languageLabel->setText(QApplication::translate("DesktopSelector", "Select language you want to use", 0, QApplication::UnicodeUTF8));
         displayLabel->setText(QApplication::translate("DesktopSelector", "Select your display configuration", 0, QApplication::UnicodeUTF8));
+        displayDetectedLabel->setText(QApplication::translate("DesktopSelector", "Detected", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("DesktopSelector", "Advanced Configuration", 0, QApplication::UnicodeUTF8));
         l_resol->setText(QApplication::translate("DesktopSelector", "TextLabel", 0, QApplication::UnicodeUTF8));
         ch_forceResol->setText(QApplication::translate("DesktopSelector", "Force Display Resolution", 0, QApplication::UnicodeUTF8));
         ch_forceDriver->setText(QApplication::translate("DesktopSelector", "Force Display Driver", 0, QApplication::UnicodeUTF8));
         b_startDesktop->setText(QApplication::translate("DesktopSelector", "Start LiveCD Desktop", 0, QApplication::UnicodeUTF8));
         displayChipetLabel->setText(QString());
-        displayDetectedLabel->setText(QApplication::translate("DesktopSelector", "Detected", 0, QApplication::UnicodeUTF8));
         rb_propietaryDriver->setText(QApplication::translate("DesktopSelector", "Use Propietary Graphic Driver (Recommended)", 0, QApplication::UnicodeUTF8));
         rb_freeDriver->setText(QApplication::translate("DesktopSelector", "Use Free Graphic Driver", 0, QApplication::UnicodeUTF8));
+        b_previous->setText(QApplication::translate("DesktopSelector", "Previous", 0, QApplication::UnicodeUTF8));
         accessibilityLabel->setText(QApplication::translate("DesktopSelector", "Select Accessibility Options", 0, QApplication::UnicodeUTF8));
         advancedAccessibilityGroupBox->setTitle(QApplication::translate("DesktopSelector", "Advanced Selection", 0, QApplication::UnicodeUTF8));
         checkBox->setText(QApplication::translate("DesktopSelector", "Screenreader", 0, QApplication::UnicodeUTF8));
@@ -760,8 +805,11 @@ public:
         b_shutdownComputer->setText(QApplication::translate("DesktopSelector", "Shutdown Computer", 0, QApplication::UnicodeUTF8));
         b_cancel->setText(QApplication::translate("DesktopSelector", "Cancel", 0, QApplication::UnicodeUTF8));
         label_2->setText(QString());
-        b_previous->setText(QApplication::translate("DesktopSelector", "Previous", 0, QApplication::UnicodeUTF8));
+        b_accessibility->setText(QApplication::translate("DesktopSelector", "Accessibility", 0, QApplication::UnicodeUTF8));
+        b_desktop->setText(QApplication::translate("DesktopSelector", "Desktop", 0, QApplication::UnicodeUTF8));
         b_shutdown->setText(QApplication::translate("DesktopSelector", "Shutdown Computer", 0, QApplication::UnicodeUTF8));
+        b_language->setText(QApplication::translate("DesktopSelector", "Language", 0, QApplication::UnicodeUTF8));
+        b_configuration->setText(QApplication::translate("DesktopSelector", "Configuration", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

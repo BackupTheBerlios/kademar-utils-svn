@@ -33,18 +33,45 @@ void QToolButtonWithEvents::readCaption( QString * label )
 {
     QProcess *readcommand = new QProcess();
     extern QSettings settings;
-    qDebug() << "talking" << *label;
+    //qDebug() << "talking" << *label;
 
     if (settings.value("General/speechPath").toString() == ""){
         settings.setValue("General/speechPath", "/usr/share/helioxhelper/speech");
     }
-    //if file exists play file with recorded description
-     QFile *filespeech = new QFile(QString("%1/%2.ogg").arg(settings.value("General/speechPath").toString()).arg(QString(m_propertyValue)) );
-    if  (filespeech->exists()) {
-        readcommand->start(QString("ogg123 \"%1\"").arg(filespeech->fileName()));
+
+    QString lang = settings.value("General/Language").toString();
+
+    // Read or play buttons in case of
+    /*   button exec=firefox http://www.inali.com
+    Will search and use by this order (stop if found)
+
+  "firefox http://www.inali.com_idoma.ogg"
+    "firefox http://www.inali.com.ogg"
+        firefox_lang.ogg
+          firefox.ogg
+             screeenread  */
+
+
+    QFile *filespeechStrip = new QFile(QString("%1/%2.ogg").arg(settings.value("General/speechPath").toString()).arg(QString(m_propertyValue).split(" ")[0]) );
+    QFile *filespeechStripLang = new QFile(QString("%1/%2_%3.ogg").arg(settings.value("General/speechPath").toString()).arg(QString(m_propertyValue).split(" ")[0]).arg(lang) );
+    QFile *filespeechFull = new QFile(QString("%1/%2.ogg").arg(settings.value("General/speechPath").toString()).arg(QString(m_propertyValue)) );
+    QFile *filespeechFullLang = new QFile(QString("%1/%2_%3.ogg").arg(settings.value("General/speechPath").toString()).arg(QString(m_propertyValue)).arg(lang) );
+
+
+    if  (filespeechFullLang->exists()) {
+        readcommand->start(QString("ogg123 \"%1\"").arg(filespeechFullLang->fileName()));
+        //qDebug() << filespeech->fileName() << "playing";
+    } else if (filespeechFull->exists()) {
+        readcommand->start(QString("ogg123 \"%1\"").arg(filespeechFull->fileName()));
+        //qDebug() << filespeech->fileName() << "playing";
+    } else if (filespeechStripLang->exists()) {
+        readcommand->start(QString("ogg123 \"%1\"").arg(filespeechStripLang->fileName()));
+        //qDebug() << filespeech->fileName() << "playing";
+    } else if (filespeechStrip->exists()) {
+        readcommand->start(QString("ogg123 \"%1\"").arg(filespeechStrip->fileName()));
         //qDebug() << filespeech->fileName() << "playing";
     } else {
-    //if file doesn't exists read with speech-dispatcher
+    //if file doesn't exists any fallback OGG, read with speech-dispatcher
         readcommand->start(QString("spd-say \"%1\"").arg(*label));
         //qDebug() << "talking" << *label;
     }
@@ -68,11 +95,11 @@ void QToolButtonWithEvents::enterEvent( QEvent * event )
 
         if (blockedSignals == false) {
             this->readCaption(txt);
-            qDebug() << blockedSignals;
-        } else {
-            qDebug() << "Shhh! No puedo hablar";
-            qDebug() << blockedSignals;
-        }
+       //    qDebug() << blockedSignals;
+        }// else {
+        //    qDebug() << "Shhh! No puedo hablar";
+          //  qDebug() << blockedSignals;
+      //  }
         // qDebug() << "talking by mouse enter... " << txt->toLocal8Bit();
     }
 }
@@ -91,12 +118,12 @@ void QToolButtonWithEvents::focusInEvent( QFocusEvent * event )
         if (blockedSignals == false) {
             this->readCaption(txt);
           //  qDebug() << blockedSignals;
-        } else {
+        } //else {
            // qDebug() << blockedSignals;
-            qDebug() << "Shhh! No puedo hablar";
-        }
+         //   qDebug() << "Shhh! No puedo hablar";
+       // }
        // qDebug() << "es este";
-        qDebug() << event->type();
+      //  qDebug() << event->type();
   //      qDebug() << "talking by focus event... " << txt->toLocal8Bit();
 
     }
@@ -109,7 +136,7 @@ void QToolButtonWithEvents::setTextProperty( QString *prop, QString *value)
 }
 
 //workarround of  stylesheet  widget:focus  doesn't work
-bool QToolButtonWithEvents::eventFilter(QObject* object,QEvent* event)
+void QToolButtonWithEvents::eventFilter(QEvent* event)
 {
 
 

@@ -45,6 +45,11 @@ void writeConfig()
         settings.setValue("speechPath", "/usr/share/helioxhelper/speech");
         settings.endGroup();
 
+        settings.beginGroup("Panel");
+        settings.setValue("widthSize", "150");
+        settings.setValue("heightSize", "95%");
+        settings.setValue("align", "center");
+        settings.endGroup();
 
         settings.beginGroup("Tray Icon");
         settings.setValue("showTrayIcon", "1");

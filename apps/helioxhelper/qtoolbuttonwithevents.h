@@ -48,7 +48,7 @@ private:
 //    void keyPressEvent(QEvent *event);
 
 protected:
-    bool eventFilter(QObject* object,QEvent* event);
+    void eventFilter(QEvent* event);
 };
 
 #endif // QTOOLBUTTONWITHEVENTS_H

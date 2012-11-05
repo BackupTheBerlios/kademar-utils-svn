@@ -33,24 +33,28 @@ V button border color when focused
 V button border color when hovered
 V button showlabels bool
 V button font size
+V button color hover
 V One single Instance
 V show tooltip con keyboard
 V Computación no invasiva (By Roberto'X Machine) first button no talk & no tooltip
+V Grabaciones  PROGRAMA completo_LANG.ogg fallback  PROGRAMA completo.ogg fallback PROGRAMA_LANG.ogg fallback PROGRAMA.ogg fallback lector de pantalla
+V Hide buttons without exec
+V Possibility to move vertical or horizontal (newrow)
 
 
 
 write/update configuration file
 
 
+ botones de volumen
 
-V button color hover
+ config   idioma.conf   fallback  .conf
+ cambiar idioma -> reload config (delete buttons)
+ bar size
 
  context icon: settings
  configurador de .ini
 
 
 
-
 confirmación de salida
-
-

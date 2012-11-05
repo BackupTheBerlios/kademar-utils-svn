@@ -23,6 +23,9 @@ HelioxHelper::HelioxHelper(QWidget *parent) :
     numCol=0;
     numRow=0;
 
+    position = settings.value("General/whereIsPlacedWindow").toInt();
+
+
     ui->setupUi(this);
   //  loadConfig();
 
@@ -222,44 +225,43 @@ void HelioxHelper::createActions()
 
       } else {
 
-          QString *position = new QString(settings.value("General/whereIsPlacedWindow").toString());
-          QString size;
-          size = settings.value("General/size").toString();
+          QString widthSize;
+          QString heightSize;
+          widthSize = settings.value("Panel/widthSize").toString();
+          heightSize = settings.value("Panel/heigthSize").toString();
          // qDebug() << size.toInt();
 
           int xVar; int yVar; int yHeight; int xWidth;
          // QString xVar;
-          if (position == QString("0")) {
+          if (position == 0) {
               //left position
               xVar = 0;
-              yVar = size.toInt();;
-              xWidth = settings.value("General/size").toInt();
+              yVar = widthSize.toInt();
+              xWidth = widthSize.toInt();
               yHeight = screenSize.height();
 
 
-          } else if (position == QString("1")) {
+          } else if (position == 1) {
               //top position
               xVar = 0;
               yVar = 0;
               xWidth = screenSize.width();
-              yHeight = size.toInt();
+              yHeight = widthSize.toInt();
 
-
-
-          } else if (position == QString("2")) {
+          } else if (position == 2) {
               //right position
-              xVar = screenSize.width()-size.toInt();
+              xVar = screenSize.width()-widthSize.toInt();
               yVar = 0;
-              xWidth = settings.value("General/size").toInt();
+              xWidth = widthSize.toInt();
               yHeight = screenSize.height();
 
 
-          } else if (position == QString("3")) {
+          } else if (position == 3) {
               //bottom position
               xVar = 0;
-              yVar = screenSize.height()-size.toInt();
+              yVar = screenSize.height()-widthSize.toInt();
               xWidth = screenSize.width();
-              yHeight = size.toInt();
+              yHeight = widthSize.toInt();
           }
           setGeometry(xVar , yVar , xWidth ,yHeight);
 
@@ -267,8 +269,8 @@ void HelioxHelper::createActions()
          // qDebug() << xVar.toInt();
           /*
           qDebug() << "sreen width" << screenSize.width();
-          qDebug() << "x width position substracted size" << screenSize.width()-settings.value("General/size").toInt();
-          qDebug() << "settings size variable" <<  settings.value("General/size").toInt();
+          qDebug() << "x width position substracted size" << screenSize.width()-settings.value("Panel/widthSize").toInt();
+          qDebug() << "settings size variable" <<  settings.value("Panel/widthSize").toInt();
           qDebug() << "screen height" << screenSize.height();
           */
       }
@@ -345,7 +347,7 @@ void HelioxHelper::createActions()
 
 
  QRegion HelioxHelper::roundedRect(const QRect& rect, int r)
-     {
+{
 
      QRegion::RegionType topLeft;
      QRegion::RegionType topRight;
@@ -354,30 +356,28 @@ void HelioxHelper::createActions()
 
      if (settings.value("Round Corners/autoBorders").toBool() == true) {
 
-         QString *position = new QString(settings.value("General/whereIsPlacedWindow").toString());
-
-         if (position == QString("0")) {
+         if (position == 0) {
            //left position
              topLeft = QRegion::Rectangle;
              topRight = QRegion::Ellipse;
              bottomLeft = QRegion::Rectangle;
              bottomRight = QRegion::Ellipse;
 
-         } else if (position == QString("1")) {
+         } else if (position == 1) {
            //top position
              topLeft = QRegion::Rectangle;
              topRight = QRegion::Rectangle;
              bottomLeft = QRegion::Ellipse;
              bottomRight = QRegion::Ellipse;
 
-         } else if (position == QString("2")) {
+         } else if (position == 2) {
            //right position
              topLeft = QRegion::Ellipse;
              topRight = QRegion::Rectangle;
              bottomLeft = QRegion::Ellipse;
              bottomRight = QRegion::Rectangle;
 
-         } else if (position == QString("3")) {
+         } else if (position == 3) {
            //bottom position
              topLeft = QRegion::Ellipse;
              topRight = QRegion::Ellipse;
@@ -429,13 +429,15 @@ void HelioxHelper::createActions()
      region += QRegion(corner, bottomRight );
 
      return region;
-     }
+ }
+
 
 
  void HelioxHelper::createApplicationButtons()
  {
 
      extern QList< QToolButtonWithEvents* > listApplicationButtons;
+
      //extern QList< QLabel* > listApplicationImage;
      int imageSize = settings.value("App Buttons/imageSize").toInt();
      int buttonMinHeight = settings.value("App Buttons/minimumHeight").toInt();
@@ -447,15 +449,29 @@ void HelioxHelper::createActions()
 
      //QList<Applications> apps;
      int size = settings.beginReadArray("Applications/app");
+
      //qDebug() << size;
      for (int i = 0; i < size; ++i) {
         settings.setArrayIndex(i);
+        QString name = settings.value("name").toString();
 
-        if (settings.value("name").toString() == "newRow") {
-            numRow=numRow+1;
-            numCol=0;
+        if ((name == "newRow") || (name == "newCol") || (name == "newLine")) {
+
+            if ((position == 0) || (position == 2)) {
+                //Vertical orientation
+                numCol=numCol++;
+                numRow=0;
+                //qDebug() << "vertical";
+             } else {
+                //Horizontal Orientation
+                numRow=numRow++;
+                numCol=0;
+                //qDebug() << "horitzontal";
+
+            }
             listApplicationButtons << new QToolButtonWithEvents(this);
             listApplicationButtons[i]->setVisible(0);
+
         } else {
 
             QString name = settings.value("name").toString();
@@ -512,12 +528,33 @@ void HelioxHelper::createActions()
             if (showLabel == false){
                 listApplicationButtons[i]->setToolButtonStyle(Qt::ToolButtonIconOnly);
             }
+
+            //Don't show buttons that don't do nothing
+            if (exec == ""){
+                listApplicationButtons[i]->setVisible(false);
+            }
+
             //Put property on button wich will be written on configuration file
             listApplicationButtons[i]->setTextProperty(new QString("EXEC"), new QString(exec)); //set text button property to write on file
 
             connect(listApplicationButtons[i], SIGNAL( buttonClicked(QString, QString)), this, SLOT(startApplication(QString, QString)));
 
-            numCol=numCol+1;
+
+            if ((position == 0) || (position == 2) ) {
+                //Vertical orientation
+            //    qDebug() << "vertical";
+                numRow=numRow++;
+
+             } else {
+                //Horizontal Orientation
+                numCol=numCol++;
+
+            //    qDebug() << "horitzontal";
+
+            }
+
+
+
         }
 
      }

@@ -70,6 +70,7 @@ private:
 
     int numCol;
     int numRow;
+    int position;
 
 //protected:
 //    bool eventFilter(QObject* object,QEvent* event);

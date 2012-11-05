@@ -14,15 +14,17 @@
 #include <QApplication>
 #include <QTimer>
 
-QToolButtonWithEvents::QToolButtonWithEvents(QWidget *parent, QString settings1, QString settings2) :
+QToolButtonWithEvents::QToolButtonWithEvents(QWidget *parent, QString settings1, QString settings2, QString lang) :
     QToolButton(parent)
 {
     connect(this, SIGNAL(clicked()),
                  this, SLOT(buttonClickedFunction()));
     m_property = QString("");
     blockedSignals=false;
-
-    settings = new QSettings("ProyectoHeliox", "HelioxHelper");
+    //QString settings1 = "ProyectoHeliox";
+    //QString settings2 = "HelioxHelper";
+    settings = new QSettings(settings1, settings2);
+    selectedLanguage=lang;
 
     setVisualStyle();
 
@@ -41,7 +43,7 @@ void QToolButtonWithEvents::readCaption( QString * label )
         settings->setValue("General/speechPath", "/usr/share/helioxhelper/speech");
     }
 
-    QString lang = settings->value("General/Language").toString();
+//    QString lang = settings->value("General/Language").toString();
 
     // Read or play buttons in case of
     /*   button exec=firefox http://www.inali.com
@@ -55,9 +57,9 @@ void QToolButtonWithEvents::readCaption( QString * label )
 
 
     QFile *filespeechStrip = new QFile(QString("%1/%2.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue).split(" ")[0]) );
-    QFile *filespeechStripLang = new QFile(QString("%1/%2_%3.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue).split(" ")[0]).arg(lang) );
+    QFile *filespeechStripLang = new QFile(QString("%1/%2_%3.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue).split(" ")[0]).arg(selectedLanguage) );
     QFile *filespeechFull = new QFile(QString("%1/%2.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue)) );
-    QFile *filespeechFullLang = new QFile(QString("%1/%2_%3.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue)).arg(lang) );
+    QFile *filespeechFullLang = new QFile(QString("%1/%2_%3.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue)).arg(selectedLanguage) );
 
 
     if  (filespeechFullLang->exists()) {
@@ -92,12 +94,11 @@ void QToolButtonWithEvents::enterEvent( QEvent * event )
     if ( speech == 1 ){
         QString *txt = new QString(this->text());
         QString *desc = new QString(toolTipText);
-        //txt->append(". ");
-        //txt->append(desc);
+        txt->append(". ");
+        txt->append(desc);
 
         if (blockedSignals == false) {
-            this->readCaption(desc);
-            //this->readCaption(txt);
+            this->readCaption(txt);
        //    qDebug() << blockedSignals;
         }// else {
         //    qDebug() << "Shhh! No puedo hablar";
@@ -115,12 +116,11 @@ void QToolButtonWithEvents::focusInEvent( QFocusEvent * event )
     if ( speech == 1 ){
         QString *txt = new QString(this->text());
         QString *desc = new QString(toolTipText);
-        //txt->append(". ");
-        //txt->append(desc);
+        txt->append(". ");
+        txt->append(desc);
 
         if (blockedSignals == false) {
-            this->readCaption(desc);
-            //this->readCaption(txt);
+            this->readCaption(txt);
           //  qDebug() << blockedSignals;
         } //else {
            // qDebug() << blockedSignals;
@@ -168,7 +168,7 @@ bool QToolButtonWithEvents::eventFilter(QObject* object,QEvent* event)
 
 void QToolButtonWithEvents::setVisualStyle()
 {
-    //QSettings settings("ProyectoHeliox", "HelioxHelper");
+   //QSettings settings("ProyectoHeliox", "HelioxHelper");
 
     QString pixelsBorderNormal = settings->value("App Buttons/pixelsBorderNormal").toString();
     QString pixelsBorderFocused = settings->value("App Buttons/pixelsBorderFocused").toString();

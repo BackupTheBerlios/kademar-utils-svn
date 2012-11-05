@@ -18,9 +18,8 @@
 #include <QProcess>
 #include <qtoolbuttonwithevents.h>
 //#include <qtsingleclass
-#include <wideiconsmenu.h>
 #include <qactionwithevents.h>
-
+#include <wideiconsmenu.h>
 
 namespace Ui {
 class HelioxHelper;
@@ -41,8 +40,9 @@ private slots:
     void minimizeWindow();
     void startApplication(QString string, QString prop);
     void activateWindowSignal(QString string);
-    void showLanguageMenu();
     void changeLanguage(QString prop, QString value);
+    void showLanguageMenu();
+
 
 
 private:
@@ -56,25 +56,27 @@ private:
     QAction *quitAction;
     QAction *normalAction;
     QAction *minimizeAction;
-    QSettings *settings;
-    QString settings1;
-    QString settings2;
-    QString selectedLang;
     void setWindowSize();
     void createConnections();
     void setWidgetSize();
     void setStyleClass();
-    QToolButtonWithEvents *languageButtonSelection;
-
-
-
+    QSettings *settings;
+    QString settings1;
+    QString settings2;
     QRegion roundedRect(const QRect& rect, int r);
     //QSettings settings("ProyectoHeliox", "HelioxHeper");
     QList <QProcess* > startedApps;
+    QList< QToolButtonWithEvents* > listApplicationButtons;
+    QMenu *languageMenu;
     QHash<QString, QString> dict;
     void defineLanguageDictionary();
     QList< QActionWithEvents* > listLangActions;
-
+    QString execShellProcess(QString idCommand, QString idParam, QString idParam2);
+    void createLanguageButton(QString *lang);
+    void createLanguageButtons();
+    int numlanguage;
+    int numApp;
+    QToolButtonWithEvents *languageButtonSelection;
 
 
     struct Applications {
@@ -87,18 +89,10 @@ private:
 
     void createApplicationButtons();
 
-    void createLanguageButton(QString *lang);
-    void createLanguageButtons();
-    QString execShellProcess(QString idCommand, QString idParam, QString idParam2);
-
-
-    QMenu *languageMenu;
-
     int numCol;
     int numRow;
-    int numApp;
     int position;
-    int numlanguage;
+    QString selectedLanguage;
 
 //protected:
 //    bool eventFilter(QObject* object,QEvent* event);

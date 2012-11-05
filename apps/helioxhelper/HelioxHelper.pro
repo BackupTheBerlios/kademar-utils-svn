@@ -19,15 +19,15 @@ SOURCES += main.cpp\
     writeConfig.cpp \
     qtoolbuttonwithevents.cpp \
     SingleApplication.cpp \
-    wideiconsmenu.cpp \
-    qactionwithevents.cpp
+    qactionwithevents.cpp \
+    wideiconsmenu.cpp
 
 HEADERS  += helioxhelper.h \
     writeConfig.h \
     qtoolbuttonwithevents.h \
     SingleApplication.h \
-    wideiconsmenu.h \
-    qactionwithevents.h
+    qactionwithevents.h \
+    wideiconsmenu.h
 
 FORMS    += helioxhelper.ui
 

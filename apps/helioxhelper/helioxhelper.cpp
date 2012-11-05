@@ -1,23 +1,14 @@
 #include "helioxhelper.h"
 #include "ui_helioxhelper.h"
 #include <QToolButton>
-#include <QDir>
 
 bool speech;
 //extern QSettings settings;
 
-//QSettings *settings("ProyectoHeliox", "HelioxHelper");
-//QSettings settings = new Qsettings("ProyectoHeliox", "HelioxHelper");
+//QSettings settings("ProyectoHeliox", "HelioxHelper");
 
-//QCoreApplication::setOrganizationName("ProyectoHeliox");
-     //QCoreApplication::setOrganizationDomain("mysoft.com");
-  //   QCoreApplication::setApplicationName("HelioxHelper");
-
-//settings = new QSettings;
-
+//QList< QToolButtonWithEvents* > listApplicationButtons;
 //QList< QLabel* > listApplicationImage;
-
-QList< QToolButtonWithEvents* > listApplicationButtons;
 
 
 HelioxHelper::HelioxHelper(QWidget *parent) :
@@ -25,7 +16,7 @@ HelioxHelper::HelioxHelper(QWidget *parent) :
     ui(new Ui::HelioxHelper)
 {
 
-    //char *user = getenv("USER");
+    selectedLanguage="";
     settings1 = "ProyectoHeliox";
     settings2 = "HelioxHelper";
     settings = new QSettings(settings1, settings2);
@@ -33,15 +24,14 @@ HelioxHelper::HelioxHelper(QWidget *parent) :
     //loadConfig();
     numCol=0;
     numRow=0;
-    numlanguage=0;
-
-    languageMenu = new QMenu(this);
-    defineLanguageDictionary();
-    createLanguageButtons();
-
 
     position = settings->value("General/whereIsPlacedWindow").toInt();
 
+    languageMenu = new QMenu(this);
+    numlanguage=0;
+    numApp=0;
+    defineLanguageDictionary();
+    createLanguageButtons();
 
     ui->setupUi(this);
   //  loadConfig();
@@ -448,6 +438,8 @@ void HelioxHelper::createActions()
 
      trayIconMenu->setStyleSheet("QWidget {border: 10px; border-radius 10px;}");
 
+     trayIconMenu->setStyleSheet("QWidget {border: 10px; border-radius 10px;}");
+
      /*QPainter painter(this);
      qDebug() << rect();
              painter.setRenderHint(QPainter::Antialiasing); // we need this in order to get correct rounded corners
@@ -559,11 +551,6 @@ void HelioxHelper::createActions()
 
  void HelioxHelper::createApplicationButtons()
  {
-     qDebug() << settings->applicationName();
-
-     //delete (listApplicationButtons);
-extern QList< QToolButtonWithEvents* > listApplicationButtons;
-  //   qDebug() << "creatin";
 
 //     extern QList< QToolButtonWithEvents* > listApplicationButtons;
 
@@ -598,8 +585,8 @@ extern QList< QToolButtonWithEvents* > listApplicationButtons;
                 //qDebug() << "horitzontal";
 
             }
-            listApplicationButtons << new QToolButtonWithEvents(this, settings1, settings2);
-            listApplicationButtons[numApp]->setVisible(0);
+            listApplicationButtons << new QToolButtonWithEvents(this, settings1, settings2, selectedLanguage);
+            listApplicationButtons[i]->setVisible(0);
 
         } else {
 
@@ -608,9 +595,9 @@ extern QList< QToolButtonWithEvents* > listApplicationButtons;
             QString desc = settings->value("desc").toString();
             QString exec = settings->value("exec").toString();
 
-            listApplicationButtons << new QToolButtonWithEvents(this, settings1, settings2);
-            listApplicationButtons[numApp]->setObjectName(QString("b_%1").arg(name));
-            listApplicationButtons[numApp]->setText(name);
+            listApplicationButtons << new QToolButtonWithEvents(this, settings1, settings2, selectedLanguage);
+            listApplicationButtons[i]->setObjectName(QString("b_%1").arg(name));
+            listApplicationButtons[i]->setText(name);
 
             listApplicationButtons[0]->setBlockedSignals(1);
 
@@ -621,59 +608,57 @@ extern QList< QToolButtonWithEvents* > listApplicationButtons;
             const char * processingString = byteArray.data();
             QString realdesc = QString::fromLocal8Bit(processingString);
 
-            listApplicationButtons[numApp]->setToolTip(realdesc);
-            listApplicationButtons[numApp]->setAccessibleName(name);
-            listApplicationButtons[numApp]->setAccessibleDescription(desc);
+            listApplicationButtons[i]->setToolTip(realdesc);
+            listApplicationButtons[i]->setAccessibleName(name);
+            listApplicationButtons[i]->setAccessibleDescription(desc);
             //listApplicationButtons[i]->setMinimumHeight(buttonMinHeight);
-            listApplicationButtons[numApp]->setIconSize(QSize(imageSize, imageSize));
-            listApplicationButtons[numApp]->setIcon(QPixmap(QString("%1").arg(icon)));
+            listApplicationButtons[i]->setIconSize(QSize(imageSize, imageSize));
+            listApplicationButtons[i]->setIcon(QPixmap(QString("%1").arg(icon)));
 
-            ui->gridLayout->addWidget(listApplicationButtons[numApp], numRow, numCol, 1, 1);
+            ui->gridLayout->addWidget(listApplicationButtons[i], numRow, numCol, 1, 1);
 
             if (buttonMaxHeight == 0){
-                buttonMaxHeight=listApplicationButtons[numApp]->maximumHeight();
+                buttonMaxHeight=listApplicationButtons[i]->maximumHeight();
             }
 
             if (buttonMaxWidth == 0){
-               buttonMaxWidth=listApplicationButtons[numApp]->maximumWidth();
+               buttonMaxWidth=listApplicationButtons[i]->maximumWidth();
             }
 
             if (buttonMinHeight == 0){
-                buttonMinHeight=listApplicationButtons[numApp]->minimumHeight();
+                buttonMinHeight=listApplicationButtons[i]->minimumHeight();
             }
 
             if (buttonMinWidth == 0){
-               buttonMinWidth=listApplicationButtons[numApp]->minimumWidth();
+               buttonMinWidth=listApplicationButtons[i]->minimumWidth();
             }
 
-            listApplicationButtons[numApp]->setMinimumSize(QSize(buttonMinWidth,buttonMinHeight));
+            listApplicationButtons[i]->setMinimumSize(QSize(buttonMinWidth,buttonMinHeight));
             listApplicationButtons[i]->setMaximumSize(QSize(buttonMaxWidth,buttonMaxHeight));
 
           //  qDebug() << "min Size " << QSize(buttonMinWidth,buttonMinHeight);
           //  qDebug() << "max Size " << QSize(buttonMaxWidth,buttonMaxHeight);
             if (iconAbove == true){
-                //listApplicationButtons[numApp]->setStyleSheet(QString("background: url(%1) top center no-repeat; padding-top: %2px; padding-bottom: 4px;").arg(icon).arg(imageSize+(imageSize/5)*3));
-                  listApplicationButtons[numApp]->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+                //listApplicationButtons[i]->setStyleSheet(QString("background: url(%1) top center no-repeat; padding-top: %2px; padding-bottom: 4px;").arg(icon).arg(imageSize+(imageSize/5)*3));
+                  listApplicationButtons[i]->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 
             } else {
-                listApplicationButtons[numApp]->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+                listApplicationButtons[i]->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
             }
 
             if (showLabel == false){
-                listApplicationButtons[numApp]->setToolButtonStyle(Qt::ToolButtonIconOnly);
+                listApplicationButtons[i]->setToolButtonStyle(Qt::ToolButtonIconOnly);
             }
 
             //Don't show buttons that don't do nothing
             if (exec == ""){
-                listApplicationButtons[numApp]->setVisible(false);
-            } else {
-                listApplicationButtons[numApp]->setVisible(true);
+                listApplicationButtons[i]->setVisible(false);
             }
 
             //Put property on button wich will be written on configuration file
-            listApplicationButtons[numApp]->setTextProperty(new QString("EXEC"), new QString(exec)); //set text button property to write on file
+            listApplicationButtons[i]->setTextProperty(new QString("EXEC"), new QString(exec)); //set text button property to write on file
 
-            connect(listApplicationButtons[numApp], SIGNAL( buttonClicked(QString, QString)), this, SLOT(startApplication(QString, QString)));
+            connect(listApplicationButtons[i], SIGNAL( buttonClicked(QString, QString)), this, SLOT(startApplication(QString, QString)));
 
 
             if ((position == 0) || (position == 2) ) {
@@ -688,16 +673,13 @@ extern QList< QToolButtonWithEvents* > listApplicationButtons;
             //    qDebug() << "horitzontal";
 
             }
-            numApp=numApp+1;
 
         }
 
      }
-     //qDebug() << numCol << numRow;
      settings->endArray();
-
      if (settings->value("General/languages").toBool() == true){
-         languageButtonSelection = new QToolButtonWithEvents(this, settings1, settings2);
+         languageButtonSelection = new QToolButtonWithEvents(this, settings1, settings2, selectedLanguage);
          languageButtonSelection->setIcon(QIcon(":/images/language.png"));
          if ((numlanguage != 0) && (numlanguage != 1)){
             ui->gridLayout->addWidget(languageButtonSelection, numRow, numCol, 1, 1);
@@ -705,7 +687,6 @@ extern QList< QToolButtonWithEvents* > listApplicationButtons;
          }
 
      }
-
 
  }
 
@@ -738,6 +719,56 @@ extern QList< QToolButtonWithEvents* > listApplicationButtons;
      //this->set
      troggleShowMainWindow();
  }
+
+
+ void HelioxHelper::defineLanguageDictionary()
+ {
+     //extern QHash<QString, QString> dict;
+     dict["ca"] = "Català";     dict["ca_ES"] = "Català";
+     dict["es"] = "Castellano";     dict["es_ES"] = "Castellano";
+
+     dict["en"] = "English"; dict["en_GB"] = "English"; dict["en_US"] = "English"; dict["en_IE"] = "English";
+     dict["fr"] = "French"; dict["fr_FR"] = "French";
+     dict["it"] = "Italiano"; dict["it_IT"] = "Italiano";
+     dict["de"] = "Deuche"; dict["de_DE"] = "Deuche";
+     dict["pt"] = "Português"; dict["pt_PT"] = "Português"; dict["pt_BR"] = "Português";
+     dict["gl"] = "Galego"; dict["gl_ES"] = "Galego";
+
+     //Derivados en Mexico
+     dict["mx"] = "Mexicano"; dict["es_MX"] = "Mexicano";
+     dict["myn"] = "Maya"; dict["mx_myn"] = "Maya";
+ }
+
+
+ QString HelioxHelper::execShellProcess(QString idCommand, QString idParam = "", QString idParam2 = ""){
+     QString result, command;
+     QProcess *pro = NULL;
+
+     //Get command
+     //command = QString(idCommand+" "+idParam);
+     QStringList slArgs;
+     slArgs << idParam << idParam2;
+     //Process command
+     pro = new QProcess();
+     pro->setProcessChannelMode(QProcess::MergedChannels);
+     pro->start(idCommand, slArgs);
+     if (pro->waitForFinished()) {
+         result = QString(pro->readAll());
+         //Trim
+         if (result != NULL && result.isEmpty() == false){
+             result = result.trimmed();
+         }
+     }
+     pro->close();
+
+     //Free mem
+     if (pro != NULL){
+         delete pro;
+     }
+
+     return result;
+ }
+
 
 
  void HelioxHelper::createLanguageButtons()
@@ -803,100 +834,48 @@ extern QList< QToolButtonWithEvents* > listApplicationButtons;
 
 
 
-
- QString HelioxHelper::execShellProcess(QString idCommand, QString idParam = "", QString idParam2 = ""){
-     QString result, command;
-     QProcess *pro = NULL;
-
-     //Get command
-     //command = QString(idCommand+" "+idParam);
-     QStringList slArgs;
-     slArgs << idParam << idParam2;
-     //Process command
-     pro = new QProcess();
-     pro->setProcessChannelMode(QProcess::MergedChannels);
-     pro->start(idCommand, slArgs);
-     if (pro->waitForFinished()) {
-         result = QString(pro->readAll());
-         //Trim
-         if (result != NULL && result.isEmpty() == false){
-             result = result.trimmed();
-         }
-     }
-     pro->close();
-
-     //Free mem
-     if (pro != NULL){
-         delete pro;
-     }
-
-     return result;
- }
-
- void HelioxHelper::showLanguageMenu(){
-     languageMenu->exec(QCursor::pos());
- }
-
-
- void HelioxHelper::defineLanguageDictionary()
- {
-     //extern QHash<QString, QString> dict;
-     dict["ca"] = "Català";     dict["ca_ES"] = "Català";
-     dict["es"] = "Castellano";     dict["es_ES"] = "Castellano";
-
-     dict["en"] = "English"; dict["en_GB"] = "English"; dict["en_US"] = "English"; dict["en_IE"] = "English";
-     dict["fr"] = "French"; dict["fr_FR"] = "French";
-     dict["it"] = "Italiano"; dict["it_IT"] = "Italiano";
-     dict["de"] = "Deuche"; dict["de_DE"] = "Deuche";
-     dict["pt"] = "Português"; dict["pt_PT"] = "Português"; dict["pt_BR"] = "Português";
-     dict["gl"] = "Galego"; dict["gl_ES"] = "Galego";
-
-     //Derivados en Mexico
-     dict["mx"] = "Mexicano"; dict["es_MX"] = "Mexicano";
-     dict["myn"] = "Maya"; dict["mx_myn"] = "Maya";
- }
-
-
  void HelioxHelper::changeLanguage(QString prop, QString value){
      //qDebug () << prop << value;
      //int size=0;
     // settings->sync();
-     extern QList< QToolButtonWithEvents* > listApplicationButtons;
+     //extern QList< QToolButtonWithEvents* > listApplicationButtons;
 
+     //qDebug() << listApplicationButtons.size();
     while (listApplicationButtons.size() != 0){
         for (int i = 0; i < listApplicationButtons.size(); ++i)  {
-                 //if (listApplicationButtons.at(i) == "Jane")
-                     //cout << "Found Jane at position " << i << endl;
-          //   qDebug() << listApplicationButtons.at(i)->text();
-             // First, remove the widget from the layout:
-                 //ui->gridLayout -> removeWidget(listApplicationButtons.at(i));
-             delete (listApplicationButtons.at(i));
-                 // Now call the destructor:
-                 //listApplicationButtons.at(i) -> ~QToolButtonWithEvents();
-                 // Now delete the pointer:
-                  listApplicationButtons.removeAt(i);
-                 // Finally, refresh the layout once again...
-             }
-      //   qDebug() << listApplicationButtons.size();
-      }
-     //delete(languageButtonSelection);
+            delete(listApplicationButtons[i]);
+            listApplicationButtons.removeAt(i);
+        }
+
+    }
+   // qDebug() << listApplicationButtons.size();
+    delete(languageButtonSelection);
 
 
-     //languageButtonSelection->setVisible(false);
-     numRow=0;
-     numCol=0;
-     numApp=0;
+    //languageButtonSelection->setVisible(false);
+    numRow=0;
+    numCol=0;
+    numApp=0;
 
 
-     //extern QSettings settings;
-     delete (settings);
+    //extern QSettings settings;
+    delete (settings);
+    selectedLanguage=value;
+    settings1="ProyectoHeliox";
+    settings2=QString("HelioxHelper_%1").arg(selectedLanguage);
 
-     //QSettings settings = new Qsettings("ProyectoHeliox", QString("HelioxHelper_%1").arg(value));
-     ////settings->setPath();
-     //qDebug() << settings->applicationName();
-     //settings->sync();
+
+    settings = new QSettings("ProyectoHeliox", QString("HelioxHelper_%1").arg(value));
+    ////settings->setPath();
+    //qDebug() << settings->applicationName();
+    //settings->sync();
 
      //listApplicationButtons << new QToolButtonWithEvents(this);
 
-//     createApplicationButtons();
+     createApplicationButtons();
+ }
+
+
+ void HelioxHelper::showLanguageMenu(){
+     languageMenu->exec(QCursor::pos());
  }

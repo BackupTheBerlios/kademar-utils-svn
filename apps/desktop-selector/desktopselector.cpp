@@ -13,6 +13,7 @@
 #include "QTranslator"
 #include "QLocale"
 #include "QApplication"
+#include <qactionwithevents.h>
 
 bool speech;
 
@@ -31,8 +32,8 @@ QList<QString> graphicResolutions;
 
 QSettings settings("/etc/kademar/desktop-selector.ini", QSettings::IniFormat);
 
-QList< QAction* > listLangActions;
-QList< QAction* > listDesktopActions;
+QList< QActionWithEvents* > listLangActions;
+QList< QActionWithEvents* > listDesktopActions;
 //QMenu *languageMenu = new QMenu;
 
 
@@ -88,6 +89,8 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
     //Detect if want speech-dispatcher use if isn't on configuration file
     extern bool speech;
     speech=0;
+
+    //qDebug() << settings.value("assistantMode").toString();
 
     if (settings.value("SPEECH").toString() == ""){
 
@@ -221,7 +224,7 @@ void DesktopSelector::prepareGui()
     connect(ui->b_shutdownComputer, SIGNAL(clicked()), this, SLOT(shutdownButton()));
     connect(ui->b_rebootComputer, SIGNAL(clicked()), this, SLOT(rebootButton()));
     connect(ui->b_previous, SIGNAL(clicked()), this, SLOT(previousPage()));
-    connect(this->ui->hslider_resolutions, SIGNAL(valueChanged(int)), this, SLOT(resolSliderValueChanged(int)));
+    connect(ui->hslider_resolutions, SIGNAL(valueChanged(int)), this, SLOT(resolSliderValueChanged(int)));
     connect(ui->ch_forceDriver, SIGNAL(stateChanged(int)), this, SLOT(changeForcedState(int)));
     connect(ui->ch_forceResol, SIGNAL(stateChanged(int)), this, SLOT(changeForcedState(int)));
     connect(ui->stackedWidget, SIGNAL(currentChanged(int)), this, SLOT(readLabelOnEnterPage(int)));
@@ -229,17 +232,23 @@ void DesktopSelector::prepareGui()
     connect(ui->b_language, SIGNAL(clicked()), this, SLOT(showLanguageMenu()));
     connect(ui->b_desktop, SIGNAL(clicked()), this, SLOT(showDesktopMenu()));
     connect(ui->b_accessibility, SIGNAL(clicked()), this, SLOT(showAccessibilityOptions()));
-    connect(ui->b_configuration, SIGNAL(clicked()), this, SLOT(showAdvancedConfiguration()));
+    connect(ui->b_displayConfiguration, SIGNAL(clicked()), this, SLOT(showAdvancedConfiguration()));
+    connect(ui->b_advancedAccessibility, SIGNAL(clicked()), this, SLOT(showAdvancedAccessibilityConfiguration()));
+    connect(ui->b_accessibilitySimpleSelection, SIGNAL(clicked()), this, SLOT(showSimpleAccessibilityConfiguration()));
+    connect(ui->b_accessibilityPrevious1, SIGNAL(clicked()), this, SLOT(returnToUseSelectionPageFromAccessibility()));
+    connect(ui->b_accessibilityPrevious2, SIGNAL(clicked()), this, SLOT(returnToUseSelectionPageFromAccessibility()));
+    connect(ui->b_accessibilityAccept1, SIGNAL(clicked()), this, SLOT(returnToUseSelectionPageFromAccessibility()));
+    connect(ui->b_accessibilityAccept2, SIGNAL(clicked()), this, SLOT(returnToUseSelectionPageFromAccessibility()));
 
 
     //Define if it's on assistant mode or not
     extern QSettings settings;
-    if (settings.value("General/assistantMode").toBool()){
+    if (settings.value("assistantMode").toBool() == true ){
         //Assistant Mode
         ui->b_accessibility->setVisible(false);
         ui->b_language->setVisible(false);
         ui->b_desktop->setVisible(false);
-        ui->b_configuration->setVisible(false);
+        ui->b_displayConfiguration->setVisible(false);
 
     } else {
         // KDM/GDM like
@@ -279,6 +288,8 @@ void DesktopSelector::readCaptionConst( QString & label )
 //Write settings to file to start with your options
 void DesktopSelector::writeSettings(QString string, QString prop, int next)
 {
+
+
     /*
     if (string == "")
     {
@@ -297,29 +308,54 @@ void DesktopSelector::writeSettings(QString string, QString prop, int next)
     */
 
 
-    //Process funtions of actual page
-    //qDebug() << listPages[numpages]->objectName();
-    QString *name = new QString(listPages[numpages]->objectName());
-    if (*name == "languagePage") {
-        //qDebug() << string << prop;
-        this->changeLanguage(new QString(prop));
-        selectedLang=prop;
-       // qDebug() << "selectedLang" << selectedLang;
+    extern QSettings settings;
+    if (settings.value("assistantMode").toBool() == true){
+        //Assistant Mode
+        //Process funtions of actual page
+        //qDebug() << listPages[numpages]->objectName();
+        QString *name = new QString(listPages[numpages]->objectName());
+        if (*name == "languagePage") {
+            //qDebug() << string << prop;
+            this->changeLanguage(new QString(prop));
+            selectedLang=prop;
 
-    } else if (*name == "desktopPage") {
-        //qDebug() << string << prop;
-        selectedDesktop=prop;
-    } else if (*name == "displayPage") {
-        if (ui->ch_forceDriver->isChecked())
-        {
-            selectedDriver=ui->cb_chipset->currentText();
+
+           // qDebug() << "selectedLang" << selectedLang;
+
+        } else if (*name == "desktopPage") {
+            //qDebug() << string << prop;
+            selectedDesktop=prop;
+        } else if (*name == "displayPage") {
+            if (ui->ch_forceDriver->isChecked())
+            {
+                selectedDriver=ui->cb_chipset->currentText();
+            }
+            if (ui->ch_forceResol->isChecked())
+            {
+                extern QList<QString> graphicResolutions;
+                selectedResol=graphicResolutions[ui->hslider_resolutions->value()];
+            }
         }
-        if (ui->ch_forceResol->isChecked())
+    } else {
+        // KDM/GDM like
+        if (string == "LANG")
         {
-            extern QList<QString> graphicResolutions;
-            selectedResol=graphicResolutions[ui->hslider_resolutions->value()];
+            this->changeLanguage(new QString(prop));
+            selectedLang=prop;
+            QFile *icon = new QFile(QString(":/img/img/lang/%1.png").arg(selectedLang) );
+            if  (icon->exists()) {
+                ui->b_language->setIcon(QPixmap(QString(":/img/img/lang/%1.png").arg(selectedLang)));
+            } else {
+                ui->b_language->setIcon(QPixmap(QString(":/img/img/lang/%1.png").arg(QString(selectedLang).split("_")[0])));
+            }
+        } else if (string == "DESKTOP") {
+            selectedDesktop=prop;
+            ui->b_desktop->setIcon(QPixmap(QString(":/img/%1").arg(selectedDesktop)));
         }
     }
+
+
+
 
     //Write settings
     //extern QSettings settings;
@@ -328,13 +364,16 @@ void DesktopSelector::writeSettings(QString string, QString prop, int next)
     //settings.sync();
 
 
-    //qDebug() << string << prop;
- //   value
-   //         if (settings.value("LANGLIST").toString() == ""){
-
-    if (next == 1){
-        this->nextPage();
+    extern QSettings settings;
+    if (settings.value("assistantMode").toBool() == true){
+        //Assistant Mode
+        if (next == 1){
+            this->nextPage();
+        }
+    } else {
+        // KDM/GDM like
     }
+
 }
 
 void DesktopSelector::setupPages()
@@ -363,6 +402,12 @@ void DesktopSelector::setupPages()
     if (settings.value("LANG").toString() != ""){
         this->changeLanguage(new QString(settings.value("LANG").toString()));
         selectedLang=QString(settings.value("LANG").toString());
+        QFile *icon = new QFile(QString(":/img/img/lang/%1.png").arg(selectedLang) );
+        if  (icon->exists()) {
+            ui->b_language->setIcon(QPixmap(QString(":/img/img/lang/%1.png").arg(selectedLang)));
+        } else {
+            ui->b_language->setIcon(QPixmap(QString(":/img/img/lang/%1.png").arg(QString(selectedLang).split("_")[0])));
+        }
     } else{
     //if not pre-configured language, look on langlist
         //if not pre-configured langlist to select, use default langlist
@@ -396,6 +441,12 @@ void DesktopSelector::setupPages()
                 this->changeLanguage(new QString(settings.value("LANGLIST").toString()));
                 //this->writeSettings("LANG",settings.value("LANGLIST").toString(), 0);
                 selectedLang=QString(settings.value("LANGLIST").toString());
+                QFile *icon = new QFile(QString(":/img/img/lang/%1.png").arg(selectedLang) );
+                if  (icon->exists()) {
+                    ui->b_language->setIcon(QPixmap(QString(":/img/img/lang/%1.png").arg(selectedLang)));
+                } else {
+                    ui->b_language->setIcon(QPixmap(QString(":/img/img/lang/%1.png").arg(QString(selectedLang).split("_")[0])));
+                }
             } else {
                 //and load page
                 listPages << ui->languagePage;
@@ -413,6 +464,8 @@ void DesktopSelector::setupPages()
                 listPages << ui->desktopPage;
         } else {
             selectedDesktop=listDesktopButtons[0]->textPropertyValue();
+            ui->b_desktop->setIcon(QPixmap(QString(":/img/%1").arg(selectedDesktop)));
+
         }
         //Other possibilities to not be added
             //listPages << ui->desktopPage;
@@ -468,7 +521,7 @@ void DesktopSelector::setupPages()
 
     //Define if it's on assistant mode or not
     extern QSettings settings;
-    if (settings.value("General/assistantMode").toBool()){
+    if (settings.value("assistantMode").toBool() == true){
         //Assistant Mode
         //Load first page
         if (listPages.size() > 0 ){
@@ -494,26 +547,37 @@ void DesktopSelector::setupPages()
 //Move along stacked widget pages
 void DesktopSelector::nextPage()
 {
-    numpages=numpages+1;
-    extern QList< QWidget* > listPages;
-    ui->stackedWidget->setCurrentWidget(listPages[numpages]);
-    //Make visible previousButton if it's the case
-    if (!(ui->b_previous->isVisible())){
-        ui->b_previous->setVisible(true);
+    extern QSettings settings;
+    if (settings.value("assistantMode").toBool()){
+        //Assistant Mode
+        numpages=numpages+1;
+        extern QList< QWidget* > listPages;
+        ui->stackedWidget->setCurrentWidget(listPages[numpages]);
+        //Make visible previousButton if it's the case
+        if (!(ui->b_previous->isVisible())){
+            ui->b_previous->setVisible(true);
+        }
+    } else {
+        // KDM/GDM like
+        ui->stackedWidget->setCurrentWidget(ui->selectUserPage);
     }
-
-
-
 }
 
 //Move along stacked widget pages
 void DesktopSelector::previousPage()
 {
-    numpages=numpages-1;
-    extern QList< QWidget* > listPages;
-    ui->stackedWidget->setCurrentWidget(listPages[numpages]);
-    if (numpages == 0){
-        ui->b_previous->setVisible(false);
+    extern QSettings settings;
+    if (settings.value("assistantMode").toBool()){
+        //Assistant Mode
+        numpages=numpages-1;
+        extern QList< QWidget* > listPages;
+        ui->stackedWidget->setCurrentWidget(listPages[numpages]);
+        if (numpages == 0){
+            ui->b_previous->setVisible(false);
+        }
+    } else {
+        // KDM/GDM like
+        ui->stackedWidget->setCurrentWidget(ui->selectUserPage);
     }
 
 }
@@ -633,7 +697,7 @@ void DesktopSelector::askForShutdown()
 void DesktopSelector::cancelShutdown()
 {
     extern QSettings settings;
-    if (settings.value("General/assistantMode").toBool()){
+    if (settings.value("assistantMode").toBool()){
         //return to previous page
         extern QList< QWidget* > listPages;
         ui->stackedWidget->setCurrentWidget(listPages[numpages]);
@@ -754,9 +818,15 @@ void DesktopSelector::createDesktopButton(QString *desk, QString *recommended)
     connect(listDesktopButtons[numdesktop], SIGNAL( buttonClicked(QString, QString)), this, SLOT(writeSettings(QString, QString)));
 
 
-    extern QList< QAction* > listDesktopActions;
-    //listDesktopActions << new QAction(QIcon(QString(":/img/%1").arg(*desk))),*desk, this);
-    listDesktopActions << new QAction(QIcon(QString(":/img/%1").arg(*desk)),*desk,this);
+    extern QList< QActionWithEvents* > listDesktopActions;
+    //listDesktopActions << new QActionWithEvents(QIcon(QString(":/img/%1").arg(*desk))),*desk, this);
+    listDesktopActions << new QActionWithEvents(this);
+    listDesktopActions[numdesktop]->setIcon(QIcon(QString(":/img/%1").arg(*desk)));
+    listDesktopActions[numdesktop]->setText(*desk);
+    listDesktopActions[numdesktop]->setTextProperty(new QString("DESKTOP"), new QString(*desk)); //set text button property to write on file
+    connect(listDesktopActions[numdesktop], SIGNAL( actionClicked(QString, QString)), this, SLOT(writeSettings(QString, QString)));
+    //qDebug() << listDesktopActions[numdesktop]->textProperty() << listDesktopActions[numdesktop]->textPropertyValue();
+
     desktopMenu->addAction(listDesktopActions[numdesktop]);
 
 
@@ -865,15 +935,22 @@ void DesktopSelector::createLanguageButton(QString *lang)
     connect(listLangButtons[numlanguage], SIGNAL( buttonClicked(QString, QString)), this, SLOT(writeSettings(QString, QString)));
 
     //create menu entry
-    extern QList< QAction* > listLangActions;
+    listLangActions << new QActionWithEvents(this);
+    extern QList< QActionWithEvents* > listLangActions;
     QFile *filebg = new QFile(QString(":/img/img/lang/%1.png").arg(*lang) );
     if  (filebg->exists()) {
-        listLangActions << new QAction(QIcon(QPixmap(QString(":/img/img/lang/%1.png").arg(*lang))),realLanguageNameTrans, this);
+        listLangActions[numlanguage]->setIcon(QIcon(QString(":/img/img/lang/%1.png").arg(*lang)));
+        listLangActions[numlanguage]->setText(realLanguageNameTrans);
+//        listLangActions << new QActionWithEvents(QIcon(QPixmap(QString(":/img/img/lang/%1.png").arg(*lang))),realLanguageNameTrans, this);
     } else {
-        listLangActions << new QAction(QIcon(QPixmap(QString(":/img/img/lang/%1.png").arg(QString(*lang).split("_")[0]))),realLanguageNameTrans, this);
+        listLangActions[numlanguage]->setIcon(QIcon(QString(":/img/img/lang/%1.png").arg(*lang).split("_")[0]));
+        listLangActions[numlanguage]->setText(realLanguageNameTrans);
+        //listLangActions << new QActionWithEvents(QIcon(QPixmap(QString(":/img/img/lang/%1.png").arg(QString(*lang).split("_")[0]))),realLanguageNameTrans, this);
     }
 
     languageMenu->addAction(listLangActions[numlanguage]);
+    listLangActions[numlanguage]->setTextProperty(new QString("LANG"), new QString(*lang)); //set text button property to write on file
+    connect(listLangActions[numlanguage], SIGNAL( actionClicked(QString, QString)), this, SLOT(writeSettings(QString, QString)));
 
 
 
@@ -1120,6 +1197,40 @@ void DesktopSelector::finalSteps()
 ***        E  N  D          ***
 *******************************
 */
+
+
+/*
+***********************************
+***                             ***
+***  Accessibility Select Part  ***
+***                             ***
+***********************************
+*/
+
+
+void DesktopSelector::showAdvancedAccessibilityConfiguration(){
+    ui->advancedAccessibilityGroupBox->setVisible(true);
+    ui->simpleAccessibilityGroupBox->setVisible(false);
+}
+
+void DesktopSelector::returnToUseSelectionPageFromAccessibility(){
+    ui->stackedWidget->setCurrentWidget(ui->selectUserPage);
+}
+
+void DesktopSelector::showSimpleAccessibilityConfiguration(){
+    ui->advancedAccessibilityGroupBox->setVisible(false);
+    ui->simpleAccessibilityGroupBox->setVisible(true);
+}
+
+
+/*
+***********************************
+***          E  N  D            ***
+***  Accessibility Select Part  ***
+***          E  N  D            ***
+***********************************
+*/
+
 
 
 /*

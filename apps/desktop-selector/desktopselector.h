@@ -7,6 +7,7 @@
 #include <QMenu>
 #include <QAction>
 #include "wideiconsmenu.h"
+#include <qactionwithevents.h>
 
 
 namespace Ui {
@@ -52,6 +53,9 @@ public slots:
     void previousPage();
     void showAccessibilityOptions();
     void showAdvancedConfiguration();
+    void showAdvancedAccessibilityConfiguration();
+    void returnToUseSelectionPageFromAccessibility();
+    void showSimpleAccessibilityConfiguration();
 
 
 protected:

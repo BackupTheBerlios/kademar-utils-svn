@@ -10,14 +10,16 @@ SOURCES += main.cpp \
     qcomboboxwithevents.cpp \
     qcheckboxwithevents.cpp \
     qsliderwithevents.cpp \
-    wideiconsmenu.cpp
+    wideiconsmenu.cpp \
+    qactionwithevents.cpp
 HEADERS += desktopselector.h \
     qpushbuttonwithevents.h \
     qradiobuttonwithevents.h \
     qcomboboxwithevents.h \
     qcheckboxwithevents.h \
     qsliderwithevents.h \
-    wideiconsmenu.h
+    wideiconsmenu.h \
+    qactionwithevents.h
 FORMS += desktopselector.ui
 RESOURCES += resource.qrc
 TRANSLATIONS = tr/es.ts tr/ca.ts tr/en.ts

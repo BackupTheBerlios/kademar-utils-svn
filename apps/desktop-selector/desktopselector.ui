@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>884</width>
-    <height>484</height>
+    <width>1321</width>
+    <height>570</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,10 +15,168 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
+    <item row="3" column="0" colspan="2">
+     <widget class="QFrame" name="controlFrame">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>70</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>70</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="3">
+        <widget class="QPushButtonWithEvents" name="b_accessibility">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Accessibility</string>
+         </property>
+         <property name="icon">
+          <iconset resource="resource.qrc">
+           <normaloff>:/img/img/accessibility.png</normaloff>:/img/img/accessibility.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="5">
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="2">
+        <widget class="QPushButtonWithEvents" name="b_desktop">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Desktop</string>
+         </property>
+         <property name="icon">
+          <iconset resource="resource.qrc">
+           <normaloff>:/img/img/desktop.png</normaloff>:/img/img/desktop.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="6">
+        <widget class="QPushButtonWithEvents" name="b_shutdown">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>300</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Shutdown Computer</string>
+         </property>
+         <property name="icon">
+          <iconset resource="resource.qrc">
+           <normaloff>:/img/img/system-shutdown.png</normaloff>:/img/img/system-shutdown.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>32</width>
+           <height>22</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButtonWithEvents" name="b_language">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Language</string>
+         </property>
+         <property name="icon">
+          <iconset resource="resource.qrc">
+           <normaloff>:/img/img/language.png</normaloff>:/img/img/language.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4">
+        <widget class="QPushButtonWithEvents" name="b_displayConfiguration">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Configuration</string>
+         </property>
+         <property name="icon">
+          <iconset resource="resource.qrc">
+           <normaloff>:/img/img/advanced-configuration.png</normaloff>:/img/img/advanced-configuration.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
     <item row="2" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>3</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="desktopPage">
        <layout class="QGridLayout" name="gridLayout_4">
@@ -236,6 +394,83 @@
              </property>
             </spacer>
            </item>
+           <item row="6" column="2">
+            <widget class="QPushButtonWithEvents" name="b_previous">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>32</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Previous</string>
+             </property>
+             <property name="icon">
+              <iconset resource="resource.qrc">
+               <normaloff>:/img/img/go-previous.png</normaloff>:/img/img/go-previous.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>32</width>
+               <height>22</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="displayChipetLabel">
+             <property name="minimumSize">
+              <size>
+               <width>64</width>
+               <height>64</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>68</width>
+               <height>68</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="resource.qrc">:/img/img/display.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1" colspan="4">
+            <widget class="QFrame" name="driverFrame">
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_6">
+              <item row="0" column="0">
+               <widget class="QRadioButtonWithEvents" name="rb_propietaryDriver">
+                <property name="text">
+                 <string>Use Propietary Graphic Driver (Recommended)</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QRadioButtonWithEvents" name="rb_freeDriver">
+                <property name="text">
+                 <string>Use Free Graphic Driver</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
            <item row="0" column="0" colspan="5">
             <widget class="QLabel" name="displayDetectedLabel">
              <property name="maximumSize">
@@ -396,83 +631,6 @@
               <size>
                <width>32</width>
                <height>32</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="displayChipetLabel">
-             <property name="minimumSize">
-              <size>
-               <width>64</width>
-               <height>64</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>68</width>
-               <height>68</height>
-              </size>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="pixmap">
-              <pixmap resource="resource.qrc">:/img/img/display.png</pixmap>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1" colspan="4">
-            <widget class="QFrame" name="driverFrame">
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_6">
-              <item row="0" column="0">
-               <widget class="QRadioButtonWithEvents" name="rb_propietaryDriver">
-                <property name="text">
-                 <string>Use Propietary Graphic Driver (Recommended)</string>
-                </property>
-                <property name="checked">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QRadioButtonWithEvents" name="rb_freeDriver">
-                <property name="text">
-                 <string>Use Free Graphic Driver</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item row="6" column="2">
-            <widget class="QPushButtonWithEvents" name="b_previous">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>32</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>Previous</string>
-             </property>
-             <property name="icon">
-              <iconset resource="resource.qrc">
-               <normaloff>:/img/img/go-previous.png</normaloff>:/img/img/go-previous.png</iconset>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>32</width>
-               <height>22</height>
               </size>
              </property>
             </widget>
@@ -671,208 +829,18 @@
           </property>
          </widget>
         </item>
-        <item row="2" column="1">
-         <widget class="QFrame" name="accessibilityFrame">
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
+        <item row="2" column="0">
+         <spacer name="horizontalSpacer_14">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
           </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
           </property>
-          <layout class="QGridLayout" name="gridLayout_14">
-           <item row="1" column="1">
-            <widget class="QGroupBox" name="advancedAccessibilityGroupBox">
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="title">
-              <string>Advanced Selection</string>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_11">
-              <item row="0" column="0" colspan="4">
-               <widget class="QCheckBox" name="checkBox">
-                <property name="text">
-                 <string>Screenreader</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0" colspan="4">
-               <widget class="QCheckBox" name="checkBox_2">
-                <property name="text">
-                 <string>Screen Magnifier</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="0" colspan="4">
-               <widget class="QCheckBox" name="checkBox_4">
-                <property name="text">
-                 <string>Mouse Assistant</string>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="0" colspan="4">
-               <widget class="QCheckBox" name="checkBox_5">
-                <property name="text">
-                 <string>Mouse Gestures</string>
-                </property>
-               </widget>
-              </item>
-              <item row="12" column="0">
-               <widget class="QPushButton" name="pushButton">
-                <property name="text">
-                 <string>Simple Selection</string>
-                </property>
-                <property name="icon">
-                 <iconset resource="resource.qrc">
-                  <normaloff>:/img/img/go-previous.png</normaloff>:/img/img/go-previous.png</iconset>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="0" colspan="4">
-               <widget class="QCheckBox" name="checkBox_6">
-                <property name="text">
-                 <string>Handwritten Write</string>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="0" colspan="4">
-               <widget class="QCheckBox" name="checkBox_7">
-                <property name="text">
-                 <string>Webcam Mouse Movement</string>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="0" colspan="4">
-               <widget class="QCheckBox" name="checkBox_8">
-                <property name="text">
-                 <string>Window Assistant</string>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="0" colspan="4">
-               <widget class="QCheckBox" name="checkBox_9">
-                <property name="text">
-                 <string>Predictive Text</string>
-                </property>
-               </widget>
-              </item>
-              <item row="10" column="0" colspan="4">
-               <widget class="QCheckBox" name="checkBox_10">
-                <property name="text">
-                 <string>Multimedia Keyboard Assistant</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0" colspan="4">
-               <widget class="QCheckBox" name="checkBox_3">
-                <property name="text">
-                 <string>Virtual Keyboard</string>
-                </property>
-               </widget>
-              </item>
-              <item row="12" column="1" colspan="2">
-               <spacer name="horizontalSpacer_15">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item row="12" column="3">
-               <widget class="QPushButton" name="pushButton_2">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Next</string>
-                </property>
-                <property name="icon">
-                 <iconset resource="resource.qrc">
-                  <normaloff>:/img/img/go-next.png</normaloff>:/img/img/go-next.png</iconset>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QGroupBox" name="groupBox">
-             <property name="title">
-              <string>Simple Selection</string>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_13">
-              <item row="0" column="0" colspan="3">
-               <widget class="QPushButton" name="pushButton_4">
-                <property name="text">
-                 <string>Sight difficults without useful part</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0" colspan="3">
-               <widget class="QPushButton" name="pushButton_9">
-                <property name="text">
-                 <string>Reduced mobility on arms and hands</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0" colspan="3">
-               <widget class="QPushButton" name="pushButton_6">
-                <property name="text">
-                 <string>Old people</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="0" colspan="3">
-               <widget class="QPushButton" name="pushButton_7">
-                <property name="text">
-                 <string>Sight difficults with useful part</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="0" colspan="3">
-               <widget class="QPushButton" name="pushButton_8">
-                <property name="text">
-                 <string>Learning difficults</string>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="0" colspan="2">
-               <spacer name="horizontalSpacer_16">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>128</width>
-                  <height>22</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item row="6" column="2">
-               <widget class="QPushButton" name="pushButton_3">
-                <property name="text">
-                 <string>Advanced Selection</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0" colspan="3">
-               <widget class="QPushButton" name="pushButton_5">
-                <property name="text">
-                 <string>Without difficults</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-          </layout>
-         </widget>
+         </spacer>
         </item>
         <item row="0" column="1">
          <spacer name="verticalSpacer_11">
@@ -913,18 +881,340 @@
           </property>
          </spacer>
         </item>
-        <item row="2" column="0">
-         <spacer name="horizontalSpacer_14">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
+        <item row="2" column="1">
+         <widget class="QFrame" name="accessibilityFrame">
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
           </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
           </property>
-         </spacer>
+          <layout class="QGridLayout" name="gridLayout_14">
+           <item row="1" column="3">
+            <widget class="QGroupBox" name="advancedAccessibilityGroupBox">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="title">
+              <string>Advanced Selection</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_11">
+              <item row="9" column="0" colspan="4">
+               <widget class="QCheckBox" name="checkBox_9">
+                <property name="text">
+                 <string>Predictive Text</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="4">
+               <widget class="QCheckBox" name="checkBox">
+                <property name="text">
+                 <string>Screenreader</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0" colspan="4">
+               <widget class="QCheckBox" name="checkBox_2">
+                <property name="text">
+                 <string>Screen Magnifier</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0" colspan="4">
+               <widget class="QCheckBox" name="checkBox_4">
+                <property name="text">
+                 <string>Mouse Assistant</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="0" colspan="4">
+               <widget class="QCheckBox" name="checkBox_5">
+                <property name="text">
+                 <string>Mouse Gestures</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0" colspan="4">
+               <widget class="QCheckBox" name="checkBox_6">
+                <property name="text">
+                 <string>Handwritten Write</string>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="0" colspan="4">
+               <widget class="QCheckBox" name="checkBox_7">
+                <property name="text">
+                 <string>Webcam Mouse Movement</string>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="0" colspan="4">
+               <widget class="QCheckBox" name="checkBox_8">
+                <property name="text">
+                 <string>Window Assistant</string>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="0" colspan="4">
+               <widget class="QCheckBox" name="checkBox_10">
+                <property name="text">
+                 <string>Multimedia Keyboard Assistant</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0" colspan="4">
+               <widget class="QCheckBox" name="checkBox_3">
+                <property name="text">
+                 <string>Virtual Keyboard</string>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="0">
+               <widget class="QPushButton" name="b_accessibilitySimpleSelection">
+                <property name="text">
+                 <string>Simple Selection</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="resource.qrc">
+                  <normaloff>:/img/img/accessibility.png</normaloff>:/img/img/accessibility.png</iconset>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="3">
+               <spacer name="horizontalSpacer_18">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="12" column="0" colspan="4">
+               <widget class="QFrame" name="frame_2">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_20">
+                 <item row="0" column="1">
+                  <spacer name="horizontalSpacer_21">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QPushButtonWithEvents" name="b_accessibilityPrevious2">
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Previous</string>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="resource.qrc">
+                     <normaloff>:/img/img/go-previous.png</normaloff>:/img/img/go-previous.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>32</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="2">
+                  <widget class="QPushButtonWithEvents" name="b_accessibilityAccept2">
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Accept</string>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="resource.qrc">
+                     <normaloff>:/img/img/ok.png</normaloff>:/img/img/ok.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>32</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="3">
+            <widget class="QGroupBox" name="simpleAccessibilityGroupBox">
+             <property name="title">
+              <string>Simple Selection</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_13">
+              <item row="0" column="0" colspan="4">
+               <widget class="QPushButton" name="pushButton_4">
+                <property name="text">
+                 <string>Sight difficults without useful part</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0" colspan="4">
+               <widget class="QPushButton" name="pushButton_9">
+                <property name="text">
+                 <string>Reduced mobility on arms and hands</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0" colspan="4">
+               <widget class="QPushButton" name="pushButton_6">
+                <property name="text">
+                 <string>Old people</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0" colspan="4">
+               <widget class="QPushButton" name="pushButton_7">
+                <property name="text">
+                 <string>Sight difficults with useful part</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0" colspan="4">
+               <widget class="QPushButton" name="pushButton_8">
+                <property name="text">
+                 <string>Learning difficults</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="0" colspan="2">
+               <spacer name="horizontalSpacer_16">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>128</width>
+                  <height>22</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="2" column="0" colspan="4">
+               <widget class="QPushButton" name="pushButton_5">
+                <property name="text">
+                 <string>Without difficults</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="3">
+               <widget class="QPushButton" name="b_advancedAccessibility">
+                <property name="text">
+                 <string>Advanced Selection</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="resource.qrc">
+                  <normaloff>:/img/img/advanced-configuration.png</normaloff>:/img/img/advanced-configuration.png</iconset>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="0" colspan="4">
+               <widget class="QFrame" name="frame">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_18">
+                 <item row="0" column="1">
+                  <spacer name="horizontalSpacer_15">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QPushButtonWithEvents" name="b_accessibilityPrevious1">
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Previous</string>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="resource.qrc">
+                     <normaloff>:/img/img/go-previous.png</normaloff>:/img/img/go-previous.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>32</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="2">
+                  <widget class="QPushButtonWithEvents" name="b_accessibilityAccept1">
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Accept</string>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="resource.qrc">
+                     <normaloff>:/img/img/ok.png</normaloff>:/img/img/ok.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>32</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -1127,164 +1417,6 @@
       </widget>
      </widget>
     </item>
-    <item row="3" column="0" colspan="2">
-     <widget class="QFrame" name="controlFrame">
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>70</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>70</height>
-       </size>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="3">
-        <widget class="QPushButtonWithEvents" name="b_accessibility">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Accessibility</string>
-         </property>
-         <property name="icon">
-          <iconset resource="resource.qrc">
-           <normaloff>:/img/img/accessibility.png</normaloff>:/img/img/accessibility.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>32</width>
-           <height>32</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QPushButtonWithEvents" name="b_desktop">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Desktop</string>
-         </property>
-         <property name="icon">
-          <iconset resource="resource.qrc">
-           <normaloff>:/img/img/desktop.png</normaloff>:/img/img/desktop.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>32</width>
-           <height>32</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="6">
-        <widget class="QPushButtonWithEvents" name="b_shutdown">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>300</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Shutdown Computer</string>
-         </property>
-         <property name="icon">
-          <iconset resource="resource.qrc">
-           <normaloff>:/img/img/system-shutdown.png</normaloff>:/img/img/system-shutdown.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>32</width>
-           <height>22</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="5">
-        <spacer name="horizontalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="0" column="1">
-        <widget class="QPushButtonWithEvents" name="b_language">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Language</string>
-         </property>
-         <property name="icon">
-          <iconset resource="resource.qrc">
-           <normaloff>:/img/img/language.png</normaloff>:/img/img/language.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>32</width>
-           <height>32</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="4">
-        <widget class="QPushButtonWithEvents" name="b_configuration">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Configuration</string>
-         </property>
-         <property name="icon">
-          <iconset resource="resource.qrc">
-           <normaloff>:/img/img/advanced-configuration.png</normaloff>:/img/img/advanced-configuration.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>32</width>
-           <height>32</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -1292,7 +1424,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>884</width>
+     <width>1321</width>
      <height>20</height>
     </rect>
    </property>

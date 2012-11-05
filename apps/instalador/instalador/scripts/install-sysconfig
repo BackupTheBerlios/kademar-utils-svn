@@ -27,6 +27,9 @@ ln -s /proc/mounts "$DESTI/etc/mtab"
 #Remove non-free software licenses if not accepted
 [ "$license" = "no" ] && chroot "$DESTI" sh /usr/share/kademar/utils/instalador/scripts/remove-nonfree-license
 
+#Keep X11 configurations
+[ -e "/etc/X11/xorg.conf.d/10-driver.conf" ] && cp "/etc/X11/xorg.conf.d/10-driver.conf" "$DESTI/etc/X11/xorg.conf.d/"
+[ -e "/etc/X11/xorg.conf.d/10-monitor.conf" ] && cp "/etc/X11/xorg.conf.d/10-monitor.conf" "$DESTI/etc/X11/xorg.conf.d/"
 
 # List metapackages on system
 a=$(LANG=C LOCALE=C LANGUAGE=C LC_ALL=C pacman --root $DESTI -Qi | awk '/^Name/ {print $3}' | grep -i kademar-meta)
@@ -38,11 +41,17 @@ chroot $DESTI pacman --noconfirm -R kademar-skel
 chroot $DESTI pacman --noconfirm -R heliox-livecd
 
 #Install nvidia drivers before delete it
-if [ "$license" != "no" -a -e "/var/tmp/nvidia-installed" ]; then
+if [ "$license" != "no" -a -n "$(grep nvidiaDriver /etc/kademar/desktop-selector.ini | grep -i true)" ]; then
   chroot $DESTI sh /usr/share/desktop-selector/scripts/nvidia-installer-offline.sh
 fi
 
+#Install ati drivers before delete it
+if [ "$license" != "no" -a -n "$(grep atiDriver /etc/kademar/desktop-selector.ini | grep -i true)" ]; then
+  chroot $DESTI sh /usr/share/desktop-selector/scripts/ati-installer-offline.sh
+fi
+
 chroot $DESTI pacman --noconfirm -R kademar-livecd
+chroot $DESTI pacman --noconfirm -R desktop-selector
 
 # remove instalador package
 chroot $DESTI pacman --noconfirm -R instalador
@@ -155,9 +164,9 @@ fi
 #####
 
 #Posem el nom a la màquina
-# echo "$NOM_PC" > "$DESTI/etc/hostname"
+echo "$NOM_PC" > "$DESTI/etc/hostname"
 # sed s/$( sed -e '/HOSTNAME\=*/ !d' /etc/rc.conf)/HOSTNAME=$NOM_PC/g -i /etc/rc.conf
-sed "s~HOSTNAME=.*~HOSTNAME=$NOM_PC~g" -i $DESTI/etc/rc.conf 
+#sed "s~HOSTNAME=.*~HOSTNAME=$NOM_PC~g" -i $DESTI/etc/rc.conf 
 
 cat > "$DESTI/etc/hosts" << EOF
 #
@@ -320,10 +329,22 @@ if [ -e "$DESTI/usr/share/config/kdm/kdmrc" ]; then
   sed "s~BootManager=.*~BootManager=Grub2~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
   sed "s~#BootManager=.*~BootManager=Grub2~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
 
-#configure if Numlock activated (table) or not (laptop)
+#allow root login
+  sed "s~AllowRootLogin=.*~AllowRootLogin=true~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
+  sed "s~#AllowRootLogin=.*~AllowRootLogin=true~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
 
+#Hide root user from kdm
+  sed "s~HiddenUsers=.*~HiddenUsers=root,uuidd,dnsmasq~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
+  sed "s~#HiddenUsers=.*~HiddenUsers=root,uuidd,dnsmasq~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
+
+#configure if Numlock activated (table) or not (laptop)
   sed "s~NumLock=.*~NumLock=$lap~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
   sed "s~#NumLock=.*~NumLock=$lap~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
+  
+#add /usr/share/xsessions path (to be able to start MATE)
+  sessions=$(grep SessionsDirs= "$DESTI/usr/share/config/kdm/kdmrc")
+  sed s."$sessions"."$sessions,/usr/share/xsessions".g -i "$DESTI/usr/share/config/kdm/kdmrc"
+
 fi
 
 if [ -e "$DESTI/etc/slim.conf" ]; then

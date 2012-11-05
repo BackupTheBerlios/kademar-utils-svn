@@ -22,10 +22,10 @@ from threadCheckspace import *
 
 #Funcio de Format i Còpia de fitxers
 class copyfiles(QThread):
-    def __init__(self, a, b, c, d ,e, f, g):
+    def __init__(self, a, b, c, d ,e, f, g, h):
         QThread.__init__(self)
         
-        global target, inicial, copiant, mkfilesystems, filesystems, particioarrel, particioswap, particiohome
+        global target, inicial, copiant, mkfilesystems, filesystems, particioarrel, particioswap, particiohome, labelfilesystems
 
 	target=a
 	inicial=b
@@ -34,9 +34,10 @@ class copyfiles(QThread):
         particioarrel=e
         particioswap=f
         particiohome=g
+        labelfilesystems=h
 
     def run(self):
-        global target, inicial, copiant, mkfilesystems, filesystems, particioarrel, particioswap, particiohome
+        global target, inicial, copiant, mkfilesystems, filesystems, particioarrel, particioswap, particiohome, labelfilesystems
         from os import system
         from commands import getoutput
         print "Zona de Format"
@@ -51,6 +52,7 @@ class copyfiles(QThread):
         if mkfilesystems[particioarrel[1]]<>"":
             print "Formatant ARREL  /dev/"+particioarrel[0]+" amb "+mkfilesystems[particioarrel[1]]
             system(mkfilesystems[particioarrel[1]]+" /dev/"+particioarrel[0])
+            system(labelfilesystems[particioarrel[1]].replace("$LABEL$",'"kademar 5"').replace('$DISK$','"/dev/'+particioarrel[0]+'"'))
             print  mkfilesystems[particioarrel[1]]+" /dev/"+particioarrel[0]+" Arrel"
         if mkfilesystems[particioswap[1]]<>"":
             print "Formatant SWAP  /dev/"+particioswap[0]+" amb "+mkfilesystems[particioswap[1]]
@@ -60,6 +62,7 @@ class copyfiles(QThread):
             if mkfilesystems[particiohome[1]]<>"":
                 print "Formatant HOME  /dev/"+particiohome[0]+" amb "+mkfilesystems[particiohome[1]]
                 system(mkfilesystems[particiohome[1]]+" /dev/"+particiohome[0])
+                system(labelfilesystems[particiohome[1]].replace("$LABEL$",'"kademar 5 Home"').replace('$DISK$','"/dev/'+particiohome[0]+'"'))
                 print  mkfilesystems[particiohome[1]]+" /dev/"+particiohome[0]+" Home"
         print "Comença copia de Fitxers"
 

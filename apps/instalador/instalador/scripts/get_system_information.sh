@@ -7,11 +7,11 @@
 
 
 #sudo python /usr/kademar/utils/instalador_utils/canvi_lilo.py 1
-sh /usr/share/kademar/utils/kademarcenter/scripts/update_fstab >>/tmp/kademar-install.log 2>&1  #old regenerapc
+#sh /usr/share/kademar/utils/kademarcenter/scripts/update_fstab >>/tmp/kademar-install.log 2>&1  #old regenerapc
 sh /usr/share/kademar/utils/instalador/scripts/linux-arrancables >>/tmp/kademar-install.log 2>&1 #copia linux arrancables
-chmod 777 /tmp/particions* 2>&1
 cd /usr/share/kademar/utils/instalador
 swapoff -a
 umnt-kademar >>/tmp/kademar-install.log 2>&1
 os-prober > /tmp/particions-arrancables 2>&1
+chmod 777 /tmp/particions* 2>&1
 #sh /usr/share/kademar/utils/instalador/scripts/particions-arrancables2 >>/tmp/kademar-install.log 2>&1

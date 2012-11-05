@@ -1,0 +1,5 @@
+#!/bin/bash
+
+rm -f PKGBUILD
+cp PKGBUILD.svn PKGBUILD
+makepkg -d

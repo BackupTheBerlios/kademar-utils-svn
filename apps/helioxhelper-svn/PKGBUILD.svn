@@ -1,0 +1,54 @@
+# Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+pkgname=helioxhelper-svn
+pkgver=1
+pkgrel=1
+pkgdesc="Desktop widget higly customizable written in QT and accessible"
+arch=('i686' 'x86_64')
+url="http://www.kademar.org"
+license=('GPL3')
+groups=('kademar')
+depends=('qt' 'vorbis-tools')
+makedepends=('subversion')
+provides=('helioxhelper')
+optdepends=('speech-dispatcher: speech synthesis interface')
+options=(!strip !docs !libtool !emptydirs !zipman makeflags)
+_svntrunk="svn://svn.berlios.de/kademar-utils/apps"
+_svnmod="helioxhelper"
+
+build() {
+  cd "${srcdir}"
+  if [ -d ${_svnmod}/.svn ]; then
+    (cd ${_svnmod} && svn up -r ${pkgver})
+  else
+    svn co ${_svntrunk}/${_svnmod} --config-dir ./ -r ${pkgver} ${_svnmod}
+  fi
+  msg "SVN checkout done or server timeout"
+
+  msg "Starting make"
+  cd "${srcdir}/${_svnmod}"
+
+
+  rm -rf "${srcdir}/${_svnmod}-build"
+  svn export "${srcdir}/${_svnmod}" "${srcdir}/${_svnmod}-build"
+  cd "${srcdir}/${_svnmod}-build"
+  #make ${_options} definitions=TEXTATOR_VERSION=rev${pkgver} -C src
+  
+  lrelease ${_svnmod}.pro
+  qmake
+  make
+}
+
+package() {
+  cd "${srcdir}/${_svnmod}-build"
+  mkdir -p ${pkgdir}/usr/bin ${pkgdir}/usr/share/applications ${pkgdir}/usr/share/autostart ${pkgdir}/usr/share/helioxhelper
+  cp -a HelioxHelper ${pkgdir}/usr/bin
+  
+  cp -a {speech,icon.png} ${pkgdir}/usr/share/helioxhelper
+  
+  cp -a helioxhelper.desktop ${pkgdir}/usr/share/applications
+  cp -a helioxhelper-autostart.desktop ${pkgdir}/usr/share/autostart
+  cd ${pkgdir} && rm -fr `find . -name ".svn"` && rm -fr `find . -name "*.pyc"` && rm -f `find . -name "*~"`
+  find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+  find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+  find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+} 

@@ -90,11 +90,12 @@ void QToolButtonWithEvents::enterEvent( QEvent * event )
     if ( speech == 1 ){
         QString *txt = new QString(this->text());
         QString *desc = new QString(toolTipText);
-        txt->append(". ");
-        txt->append(desc);
+        //txt->append(". ");
+        //txt->append(desc);
 
         if (blockedSignals == false) {
-            this->readCaption(txt);
+            this->readCaption(desc);
+            //this->readCaption(txt);
        //    qDebug() << blockedSignals;
         }// else {
         //    qDebug() << "Shhh! No puedo hablar";
@@ -112,11 +113,12 @@ void QToolButtonWithEvents::focusInEvent( QFocusEvent * event )
     if ( speech == 1 ){
         QString *txt = new QString(this->text());
         QString *desc = new QString(toolTipText);
-        txt->append(". ");
-        txt->append(desc);
+        //txt->append(". ");
+        //txt->append(desc);
 
         if (blockedSignals == false) {
-            this->readCaption(txt);
+            this->readCaption(desc);
+            //this->readCaption(txt);
           //  qDebug() << blockedSignals;
         } //else {
            // qDebug() << blockedSignals;

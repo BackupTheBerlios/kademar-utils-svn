@@ -1,5 +1,0 @@
-post_install() {
-    echo "Kademar Linux \r (\l)
-
-" > /etc/issue
-}

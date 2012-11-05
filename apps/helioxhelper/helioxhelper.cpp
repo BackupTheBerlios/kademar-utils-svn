@@ -459,12 +459,12 @@ void HelioxHelper::createActions()
 
             if ((position == 0) || (position == 2)) {
                 //Vertical orientation
-                numCol=numCol++;
+                numCol=numCol+1;
                 numRow=0;
                 //qDebug() << "vertical";
              } else {
                 //Horizontal Orientation
-                numRow=numRow++;
+                numRow=numRow+1;
                 numCol=0;
                 //qDebug() << "horitzontal";
 
@@ -543,11 +543,11 @@ void HelioxHelper::createActions()
             if ((position == 0) || (position == 2) ) {
                 //Vertical orientation
             //    qDebug() << "vertical";
-                numRow=numRow++;
+                numRow=numRow+1;
 
              } else {
                 //Horizontal Orientation
-                numCol=numCol++;
+                numCol=numCol+1;
 
             //    qDebug() << "horitzontal";
 

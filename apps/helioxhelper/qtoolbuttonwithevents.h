@@ -30,7 +30,7 @@ public slots:
 
 
 private:
-    void enterEvent( QEvent * event );
+    void enterEvent(QEvent * event );
     void focusInEvent( QFocusEvent * event );
     QString m_property;
     QString m_propertyValue;
@@ -48,7 +48,7 @@ private:
 //    void keyPressEvent(QEvent *event);
 
 protected:
-    void eventFilter(QEvent* event);
+    bool eventFilter(QObject* object,QEvent* event);
 };
 
 #endif // QTOOLBUTTONWITHEVENTS_H

@@ -136,10 +136,9 @@ void QToolButtonWithEvents::setTextProperty( QString *prop, QString *value)
 }
 
 //workarround of  stylesheet  widget:focus  doesn't work
-void QToolButtonWithEvents::eventFilter(QEvent* event)
+bool QToolButtonWithEvents::eventFilter(QObject* object,QEvent* event)
+
 {
-
-
     if( event->type( ) == QEvent::FocusIn )
        {
            setStyleSheet(bNormalFocused+bHover+bPressed);
@@ -203,15 +202,23 @@ void QToolButtonWithEvents::setToolTip(QString &label){
     toolTipText = label;
 }
 
-void QToolButtonWithEvents::showToolTip(){
-    int x = this->mapToGlobal(QPoint()).x();
-    int y = this->mapToGlobal(QPoint()).y();
+void QToolButtonWithEvents::showToolTip()
+{
+//    qDebug() << this->geometry();
+//    qDebug() << this->geometry().y();
+   // int x = this->mapToGlobal( QPoint() ).x();
+   // int y = this->mapToGlobal(QPoint()).y();
+
+    int x = this->geometry().x()+this->geometry().width()/2;
+    int y = this->geometry().y()+this->geometry().height()/2;
+
     //int gy = this->geometry().height();
     //y = y + gy;
     QToolTip::showText(QPoint(x,y),toolTipText);
 }
 
-void QToolButtonWithEvents::setBlockedSignals(int value){
+void QToolButtonWithEvents::setBlockedSignals(int value)
+{
     blockedSignals = true;
     QTimer *timer = new QTimer;
     timer->setSingleShot(true);

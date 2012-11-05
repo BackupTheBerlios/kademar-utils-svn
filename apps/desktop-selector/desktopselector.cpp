@@ -14,6 +14,7 @@
 #include "QLocale"
 #include "QApplication"
 #include <qactionwithevents.h>
+#include <qtoolbuttonwithevents.h>
 
 bool speech;
 
@@ -43,10 +44,12 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
     numdesktop=0;
     numlanguage=0;
     numpages=0;
+    numusers=0;
     detectedAti=false;
     selectedUser="";
     detectedNvidia=false;
-    languageMenu->addSeparator();
+    installingDrivers=false;
+ //   languageMenu->addSeparator();
 
     //No comments... :)
     this->prepareGui();
@@ -239,6 +242,7 @@ void DesktopSelector::prepareGui()
         ui->b_displayPrevious->setVisible(false);
         ui->b_accessibilityPrevious1->setVisible(false);
         ui->b_accessibilityPrevious2->setVisible(false);
+        ui->b_displayAccept->setVisible(false);
 
     } else {
         // KDM/GDM like
@@ -343,6 +347,10 @@ void DesktopSelector::writeSettings(QString string, QString prop, int next)
         } else if (string == "DESKTOP") {
             selectedDesktop=prop;
             ui->b_desktop->setIcon(QPixmap(QString(":/img/%1").arg(selectedDesktop)));
+        } else if (string == "USER") {
+            selectedUser=prop;
+            finalSteps();
+            close();
         }
     }
 
@@ -513,7 +521,8 @@ void DesktopSelector::setupPages()
 
     // User page
     QString *users = new QString(execShellProcess(QString("/bin/sh"), QString("-c"), QString("ls /home")));
-    foreach (QString user, users->split("")){
+    foreach (QString user, users->split("\n")){
+        //qDebug() << user;
         this->createUserButton(new QString(user));
     }
 
@@ -538,6 +547,7 @@ void DesktopSelector::setupPages()
     } else {
         // KDM/GDM like
         ui->stackedWidget->setCurrentWidget(ui->selectUserPage);
+        listUserButtons[0]->setFocus();
     }
 
 
@@ -1005,7 +1015,7 @@ void DesktopSelector::defineGraphicList()
 
     //prepare chipset list and fill driver combobox
     QList<QString> graphicChipset;
-    graphicChipset << "vesa" << "apm" << "ark" << "chips" << "cirrus" << "cyrix" << "ati" << "fglrx" << "radeonhd" << "radeon" << "glint" << "i128" << "i740" << "imstt" << "intel" << "mga" << "neomagic" << "newport" << "nsc" << "nv" << "nvidia" << "rendition" << "s3" << "s3virge" << "savage" << "siliconmotion" << "sis" << "tdfx" << "tga" << "trident" << "tseng" << "vboxvideo" << "via" << "vmware";
+    graphicChipset << "vesa" << "apm" << "ark" << "chips" << "cirrus" << "cyrix" << "ati" << "fglrx" << "radeonhd" << "radeon" << "glint" << "i128" << "i740" << "imstt" << "intel" << "mga" << "neomagic" << "newport" << "nsc" << "nouveau" << "nv" << "nvidia" << "rendition" << "s3" << "s3virge" << "savage" << "siliconmotion" << "sis" << "tdfx" << "tga" << "trident" << "tseng" << "vboxvideo" << "via" << "vmware";
     int num=0;
     foreach( QString label, graphicChipset )  {
         ui->cb_chipset->addItem("");
@@ -1046,15 +1056,20 @@ void DesktopSelector::detectGraphicCard()
     QString *grafic = new QString(execShellProcess(QString("/bin/sh"), QString("-c"), QString("lspci | grep -i [vV][Gg][Aa] | sed s.'VGA compatible controller: '..g | sed s,'[0-9][0-9]:[0-9][0-9].[0-9]',,g | cut -d'(' -f1")));
 
     //put lspci | grep -i vga  on detected label
-    this->ui->displayDetectedLabel->setText(tr("Detected: ")+" "+*grafic);
+    this->ui->displayDetectedLabel->setText(tr("Detected:")+"  "+*grafic);
 
     //put nvidia or ati chipset logo on display logo or disable radiobutton choose
     if (grafic->contains(QRegExp("[Nn][Vv][Ii][Dd][Ii][Aa]"))) {
         this->ui->displayChipetLabel->setPixmap(QPixmap(QString(":/img/img/display-nvidia.png")));
+        QString *text = new QString(this->ui->rb_propietaryDriver->text() + " " + tr("(Recommended)"));
+        this->ui->rb_propietaryDriver->setText(*text);
         detectedNvidia=true;
-    } else if (grafic->contains(QRegExp(" [Aa][Tt][Ii] "))) {
+  /*  } else if (grafic->contains(QRegExp(" [Aa][Tt][Ii] "))) {
         this->ui->displayChipetLabel->setPixmap(QPixmap(QString(":/img/img/display-ati.png")));
         detectedAti=true;
+        this->ui->rb_freeDriver->setChecked(true);
+        QString *text = new QString(this->ui->rb_freeDriver->text() + " " + tr("(Recommended)"));
+        this->ui->rb_freeDriver->setText(*text); */
     } else {
         //this->ui->rb_propietaryDriver->setVisible(false);
         //this->ui->rb_freeDriver->setVisible(false);
@@ -1139,31 +1154,46 @@ void DesktopSelector::finalSteps()
         file1->remove();
     }
 
-    if ((detectedNvidia) && (settings.value("nvidia").toBool() == false))
+    if (selectedUser != "") {
+        QFile *fileU = new QFile("/var/tmp/user");
+        if ( fileU->open( QIODevice::WriteOnly ) )
+        {
+            QTextStream stream( fileU );
+            stream <<QString("user=" + selectedUser + "\n");
+        }
+        fileU->close();
+
+    }
+
+    if ((detectedNvidia) && (settings.value("nvidiaDriver").toBool() == false))
     {
         if (!(settings.value("FREE_DRIVER").toBool() == true)){
             if ((ui->rb_propietaryDriver->isChecked()) || !(ui->rb_freeDriver->isChecked()))
             {
-                extern QSettings settings;
-                settings.setValue("nvidia", "true");
-                QProcess* nvidia = new QProcess();
-                connect(nvidia, SIGNAL(error(QProcess::ProcessError)), this, SLOT(close()));
-                connect(nvidia, SIGNAL(destroyed()), this, SLOT(close()));
-                connect(nvidia, SIGNAL(finished(int)), this, SLOT(close()));
-                ui->b_startDesktop->setEnabled(false);
-                ui->advancedConfigurationFrame->setVisible(false);
-                ui->driverFrame->setVisible(false);
-                ui->displayLabel->setVisible(false);
-                ui->b_startDesktop->setVisible(false);
-                ui->displayDetectedLabel->setText(tr("Installing Nvidia Drivers"));
-                ui->displayDetectedLabel->setAlignment(Qt::AlignHCenter);
-                ui->controlFrame->setVisible(false);
-                ui->gridLayout_7->removeItem(ui->horizontalSpacer_9);
-                ui->displayChipetLabel->setVisible(false);
-                nvidia->start(QString("/usr/share/desktop-selector/scripts/nvidia-installer-offline.sh"));
+                installVideoDriver("nvidia");
             }
         }
     }
+
+    if (ui->ch_forceDriver->isChecked() && selectedDriver == "nvidia" ){
+        installVideoDriver("nvidia");
+    }
+
+    /*
+    if ((detectedAti) && (settings.value("atiDriver").toBool() == false))
+    {
+        if (!(settings.value("FREE_DRIVER").toBool() == true)){
+            if ((ui->rb_propietaryDriver->isChecked()) || !(ui->rb_freeDriver->isChecked()))
+            {
+                installVideoDriver("ati");
+            }
+        }
+    }
+
+    if (ui->ch_forceDriver->isChecked() && selectedDriver == "fglrx" ){
+        installVideoDriver("ati");
+    }*/
+
 
     //qDebug() << detectedNvidia;
     //qDebug() << detectedAti;
@@ -1171,21 +1201,47 @@ void DesktopSelector::finalSteps()
 
     //if not install propietary drivers, close
     // if detected nvidia or ati but using free driver, close
-    //  else install propietary driver, it will close alone
-    if ( detectedNvidia && (settings.value("FREE_DRIVER").toBool() == false)) {
-        if ((ui->rb_freeDriver->isChecked()) || !(ui->rb_propietaryDriver->isChecked()))
-        {
+    //  else install propietary driver, it will close alone when finish install
+    if (!(installingDrivers == true)){
             this->close();
-        }
-    } else if ( detectedAti && (settings.value("FREE_DRIVER").toBool() == false)) {
-        if ((ui->rb_freeDriver->isChecked()) || !(ui->rb_propietaryDriver->isChecked()))
-        {
-            this->close();
-        }
-    } else {
-        this->close();
     }
 
+
+}
+
+
+void DesktopSelector::installVideoDriver(QString driver){
+    //Prevent start twice
+    if (installingDrivers == false){
+        installingDrivers=true;  //usefull too to not close application while installing
+
+        QString *install = new QString(tr("<p><b>Installing %1 Drivers</b></p><p>Be patient, it may take a while...</p>"));
+
+        //qDebug() << "installing " << driver;
+        extern QSettings settings;
+        if (driver == "nvidia"){
+            settings.setValue("nvidiaDriver", "true");
+        } else {
+            settings.setValue("atiDriver", "true");
+        }
+
+        QProcess* process = new QProcess();
+        connect(process, SIGNAL(error(QProcess::ProcessError)), this, SLOT(close()));
+        connect(process, SIGNAL(destroyed()), this, SLOT(close()));
+        connect(process, SIGNAL(finished(int)), this, SLOT(close()));
+        ui->b_startDesktop->setEnabled(false);
+        ui->advancedConfigurationFrame->setVisible(false);
+        ui->driverFrame->setVisible(false);
+        ui->displayLabel->setVisible(false);
+        ui->b_startDesktop->setVisible(false);
+        ui->displayDetectedLabel->setText(install->arg(driver.toUpper()));
+        ui->displayDetectedLabel->setAlignment(Qt::AlignHCenter);
+        ui->controlFrame->setVisible(false);
+        ui->gridLayout_7->removeItem(ui->horizontalSpacer_9);
+        ui->displayChipetLabel->setVisible(false);
+        //qDebug() << QString("/usr/share/desktop-selector/scripts/%1-installer-offline.sh").arg(driver);
+        process->start(QString("/usr/share/desktop-selector/scripts/%1-installer-offline.sh").arg(driver));
+    }
 
 }
 
@@ -1243,6 +1299,43 @@ void DesktopSelector::showSimpleAccessibilityConfiguration(){
 void DesktopSelector::createUserButton(QString *user)
 {
 
+    //qDebug() << *user;
+    //horizontalLayout->addWidget(listUserButtons);
+    //Add new button with objectname and minimum size
+    listUserButtons << new QPushButtonWithEvents(this);
+    listUserButtons[numusers]->setVisible(true);
+
+    //listUserButtons[numusers]->setObjectName(QString("b_%1").arg(*desk));
+    listUserButtons[numusers]->setMinimumSize(QSize(128, 128));
+    listUserButtons[numusers]->setMaximumSize(QSize(150, 150));
+
+    //Put property on button wich will be written on configuration file
+    listUserButtons[numusers]->setTextProperty(new QString("USER"), new QString(*user)); //set text button property to write on file
+
+    listUserButtons[numusers]->setIcon(QIcon(":/img/img/user.png"));
+
+    //listUserButtons[numusers]->setText(QString(*user));
+
+    listUserButtons[numusers]->setIconSize(QSize(100,100));
+
+    listUserLabels << new QLabel;
+
+    listUserLabels[numusers]->setText(*user);
+    listUserLabels[numusers]->setMaximumHeight(15);
+    listUserLabels[numusers]->setAlignment(Qt::AlignHCenter);
+    listUserLabels[numusers]->setStyleSheet("QLabel { font: bold; }");
+
+
+    ui->userGridLayout->addWidget(listUserButtons[numusers],0,numusers,1,1);
+
+    ui->userGridLayout->addWidget(listUserLabels[numusers],1,numusers,1,1);
+
+    //listDesktopButtons[numusers]->setStyleSheet(QString("QPushButtonWithEvents %1").arg(buttonStyleSheet));
+
+    connect(listUserButtons[numusers], SIGNAL( buttonClicked(QString, QString)), this, SLOT(writeSettings(QString, QString)));
+
+
+    numusers=numusers+1;
 
 }
 

@@ -515,7 +515,7 @@
               <item row="0" column="0">
                <widget class="QRadioButtonWithEvents" name="rb_propietaryDriver">
                 <property name="text">
-                 <string>Use Propietary Graphic Driver (Recommended)</string>
+                 <string>Use Propietary Graphic Driver</string>
                 </property>
                 <property name="checked">
                  <bool>true</bool>
@@ -740,19 +740,6 @@
       </widget>
       <widget class="QWidget" name="selectUserPage">
        <layout class="QGridLayout" name="gridLayout_19">
-        <item row="0" column="1">
-         <spacer name="verticalSpacer_13">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>34</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
         <item row="1" column="1">
          <widget class="QLabel" name="userLabel">
           <property name="font">
@@ -784,23 +771,6 @@
           </property>
          </spacer>
         </item>
-        <item row="2" column="1">
-         <widget class="QFrame" name="userFrame">
-          <property name="minimumSize">
-           <size>
-            <width>450</width>
-            <height>250</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_16"/>
-         </widget>
-        </item>
         <item row="2" column="2">
          <spacer name="horizontalSpacer_20">
           <property name="orientation">
@@ -810,6 +780,19 @@
            <size>
             <width>200</width>
             <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="1">
+         <spacer name="verticalSpacer_13">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>34</height>
            </size>
           </property>
          </spacer>
@@ -826,6 +809,23 @@
            </size>
           </property>
          </spacer>
+        </item>
+        <item row="2" column="1">
+         <widget class="QFrame" name="userFrame">
+          <property name="minimumSize">
+           <size>
+            <width>450</width>
+            <height>250</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QGridLayout" name="userGridLayout"/>
+         </widget>
         </item>
        </layout>
       </widget>

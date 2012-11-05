@@ -21,19 +21,19 @@ DONE: parameters defined on settings.ini:
       RESOL(1024x768) WALLPAPER(path)
 
 DONE: Autodetect languages on system by /etc/locale.gen
+DONE: KDM Mode & Assistant Mode
 
-default resolution
+DONE: ati/nvidia driver - free driver - force resolution/driver
+DONE: default resolution
 
 if heliox/keyboardstart -> activate keyboard on screen if needed
 
 
-
+Accessibility stat
 si detectadesktop i cmdline diu desktop=   -> override
-ati/nvidia driver (sabayon 4)  - free driver - force resolution/driver
 
 start recommended desktop (detected) at 10 seconds
 no load detectadesktop if not needed - on bash startx scripts inittab
-
 
 keyboard screen - heliox
  http://qt-apps.org/content/show.php/Widget+Virtual+Keyboard?content=111054

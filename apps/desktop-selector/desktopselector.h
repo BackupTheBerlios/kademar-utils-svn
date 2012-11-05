@@ -12,7 +12,7 @@
 #include <QGridLayout>
 #include <QLabel>
 #include <QHBoxLayout>
-//#include <>
+#include <qtoolbuttonwithevents.h>
 
 
 
@@ -64,6 +64,7 @@ public slots:
     void showSimpleAccessibilityConfiguration();
     void returnToUseSelectionPageFromDisplay();
     void createUserButton(QString *user);
+    void installVideoDriver(QString driver);
 
 protected:
     void changeEvent(QEvent *e);
@@ -76,6 +77,7 @@ private:
     int numdesktop;
     int numlanguage;
     int numpages;
+    int numusers;
     QString buttonStyleSheet;
     QString selectedLang;
     QString selectedDesktop;
@@ -89,6 +91,10 @@ private:
     QList< QGridLayout* > listGridLayout;
     QList< QPushButtonWithEvents* > listDesktopButtons;
     QList< QLabel* > listDesktopImage;
+    QList< QPushButtonWithEvents* > listUserButtons;
+    QList< QLabel* > listUserLabels;
+    bool installingDrivers;
+
 
     QList< QHBoxLayout* > listHorizontalLayout;
     QList< QPushButtonWithEvents* > listLangButtons;

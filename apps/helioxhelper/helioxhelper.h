@@ -57,6 +57,9 @@ private:
     void setStyleClass();
     QRegion roundedRect(const QRect& rect, int r);
     //QSettings settings("ProyectoHeliox", "HelioxHeper");
+    QList <QProcess* > startedApps;
+    QList< QToolButtonWithEvents* > listApplicationButtons;
+
 
     struct Applications {
          QString appName;

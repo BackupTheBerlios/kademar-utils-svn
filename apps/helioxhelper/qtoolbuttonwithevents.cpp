@@ -206,11 +206,11 @@ void QToolButtonWithEvents::showToolTip()
 {
 //    qDebug() << this->geometry();
 //    qDebug() << this->geometry().y();
-   // int x = this->mapToGlobal( QPoint() ).x();
-   // int y = this->mapToGlobal(QPoint()).y();
+    int x = this->mapToGlobal( QPoint() ).x();
+    int y = this->mapToGlobal(QPoint()).y();
 
-    int x = this->geometry().x()+this->geometry().width()/2;
-    int y = this->geometry().y()+this->geometry().height()/2;
+    //int x = this->geometry().x()+this->geometry().width()/2;
+    //int y = this->geometry().y()+this->geometry().height()/2;
 
     //int gy = this->geometry().height();
     //y = y + gy;

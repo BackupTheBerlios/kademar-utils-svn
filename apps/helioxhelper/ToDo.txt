@@ -40,7 +40,9 @@ V Computación no invasiva (By Roberto'X Machine) first button no talk & no tool
 V Grabaciones  PROGRAMA completo_LANG.ogg fallback  PROGRAMA completo.ogg fallback PROGRAMA_LANG.ogg fallback PROGRAMA.ogg fallback lector de pantalla
 V Hide buttons without exec
 V Possibility to move vertical or horizontal (newrow)
-
+V panel size percentage (0 to full size)
+V panel position: top,bottom,center,left,right
+V configuration descriptions with latin letters like á
 
 
 write/update configuration file
@@ -50,11 +52,9 @@ write/update configuration file
 
  config   idioma.conf   fallback  .conf
  cambiar idioma -> reload config (delete buttons)
- bar size
 
  context icon: settings
  configurador de .ini
-
 
 
 confirmación de salida

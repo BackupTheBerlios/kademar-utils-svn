@@ -10,7 +10,6 @@ QSettings settings("ProyectoHeliox", "HelioxHelper");
 QList< QToolButtonWithEvents* > listApplicationButtons;
 //QList< QLabel* > listApplicationImage;
 
-QList <QProcess* > startedApps;
 
 HelioxHelper::HelioxHelper(QWidget *parent) :
     QWidget(parent),
@@ -225,20 +224,20 @@ void HelioxHelper::createActions()
 
       } else {
 
-          QString widthSize;
+          QString size;
           QString percentage;
           QString align;
-          widthSize = settings.value("Panel/widthSize").toString();
+          size = settings.value("Panel/size").toString();
           align = settings.value("Panel/align").toString();
           percentage = settings.value("Panel/percentage").toString();
-          qDebug() << screenSize;
+          //qDebug() << screenSize;
 
           int xVar; int yVar; int yHeight; int xWidth;
          // QString xVar;
           if (position == 0) {
               //left position
               if (percentage == QString("0") ){
-                  yVar = widthSize.toInt();
+                  yVar = size.toInt();
                   yHeight = screenSize.height();
               } else {
                   int size;
@@ -253,7 +252,7 @@ void HelioxHelper::createActions()
                   yHeight = num;
                   if (align == "center"){
                       num = (y-num)/2;
-                      qDebug() << num;
+                      //qDebug() << num;
                   } else if (align == "top") {
                       num = 0;
                   } else if (align == "bottom") {
@@ -263,7 +262,7 @@ void HelioxHelper::createActions()
                   yVar = num;
               }
               xVar = 0;
-              xWidth = widthSize.toInt();
+              xWidth = size.toInt();
 
 
 
@@ -288,7 +287,7 @@ void HelioxHelper::createActions()
                   xWidth = num;
                   if (align == "center"){
                       num = (x-num)/2;
-                      qDebug() << num;
+                      //qDebug() << num;
                   } else if (align == "left") {
                       num = 0;
                   } else if (align == "right") {
@@ -300,18 +299,18 @@ void HelioxHelper::createActions()
 
               }
               yVar = 0;
-              yHeight = widthSize.toInt();
+              yHeight = size.toInt();
 
 
           } else if (position == 2) {
               //right position
-              xVar = screenSize.width()-widthSize.toInt();
+              xVar = screenSize.width()-size.toInt();
             //  yVar = 0;
-              xWidth = widthSize.toInt();
+              xWidth = size.toInt();
             //  yHeight = screenSize.height();
 
               if (percentage == QString("0") ){
-                  yVar = widthSize.toInt();
+                  yVar = size.toInt();
                   yHeight = screenSize.height();
               } else {
                   int size;
@@ -320,13 +319,9 @@ void HelioxHelper::createActions()
                   int y = screenSize.height();
                   num = (size * y);
                   num = num/100;
-                  //qDebug() << num;
-                  //qDebug() << *size)/100;
-
                   yHeight = num;
                   if (align == "center"){
                       num = (y-num)/2;
-                      qDebug() << num;
                   } else if (align == "top") {
                       num = 0;
                   } else if (align == "bottom") {
@@ -335,10 +330,6 @@ void HelioxHelper::createActions()
 
                   yVar = num;
               }
-
-
-
-
 
           } else if (position == 3) {
               //bottom position
@@ -355,13 +346,10 @@ void HelioxHelper::createActions()
                   int x = screenSize.width();
                   num = (size * x);
                   num = num/100;
-                  //qDebug() << num;
-                  //qDebug() << *size)/100;
 
                   xWidth = num;
                   if (align == "center"){
                       num = (x-num)/2;
-                      qDebug() << num;
                   } else if (align == "left") {
                       num = 0;
                   } else if (align == "right") {
@@ -372,8 +360,8 @@ void HelioxHelper::createActions()
 
 
               }
-              yHeight = widthSize.toInt();
-              yVar = screenSize.height()-widthSize.toInt();
+              yHeight = size.toInt();
+              yVar = screenSize.height()-size.toInt();
 
 
           }
@@ -383,8 +371,8 @@ void HelioxHelper::createActions()
          // qDebug() << xVar.toInt();
           /*
           qDebug() << "sreen width" << screenSize.width();
-          qDebug() << "x width position substracted size" << screenSize.width()-settings.value("Panel/widthSize").toInt();
-          qDebug() << "settings size variable" <<  settings.value("Panel/widthSize").toInt();
+          qDebug() << "x width position substracted size" << screenSize.width()-settings.value("Panel/size").toInt();
+          qDebug() << "settings size variable" <<  settings.value("Panel/size").toInt();
           qDebug() << "screen height" << screenSize.height();
           */
       }
@@ -550,7 +538,7 @@ void HelioxHelper::createActions()
  void HelioxHelper::createApplicationButtons()
  {
 
-     extern QList< QToolButtonWithEvents* > listApplicationButtons;
+//     extern QList< QToolButtonWithEvents* > listApplicationButtons;
 
      //extern QList< QLabel* > listApplicationImage;
      int imageSize = settings.value("App Buttons/imageSize").toInt();
@@ -601,7 +589,12 @@ void HelioxHelper::createActions()
 
 
             //listApplicationButtons[numButtons]->setMinimumSize(QSize(170, 40));
-            listApplicationButtons[i]->setToolTip(desc);
+            // good characters lost on .config
+            QByteArray byteArray = desc.toAscii();
+            const char * processingString = byteArray.data();
+            QString realdesc = QString::fromLocal8Bit(processingString);
+
+            listApplicationButtons[i]->setToolTip(realdesc);
             listApplicationButtons[i]->setAccessibleName(name);
             listApplicationButtons[i]->setAccessibleDescription(desc);
             //listApplicationButtons[i]->setMinimumHeight(buttonMinHeight);
@@ -667,8 +660,6 @@ void HelioxHelper::createActions()
 
             }
 
-
-
         }
 
      }
@@ -680,11 +671,14 @@ void HelioxHelper::createActions()
  {
      //qDebug() << "Starting" << prop;
 
-     extern QList <QProcess* > startedApps;
+     //extern QList <QProcess* > startedApps;
 
   //   qDebug() << prop.split(" ")[1];
-     startedApps << new QProcess();
-     startedApps[startedApps.size()-1]->start(prop);
+     if (string == "EXEC")
+     {
+         startedApps << new QProcess();
+         startedApps[startedApps.size()-1]->start(prop);
+     }
 
 //     myProcess->start(prop);
 

@@ -53,7 +53,7 @@ class instalador(QDialog):
         ######
         #  VARIABLES
         ######
-        global led_order, page_order, icona_verda, icona_taronja, icona_vermella, icona_blava, band_cat, band_esp, band_eng, copiant, fs_detector, grephalinfo, target, inicial, inicialfs, icona_hd, icona_partition, mkfilesystems, filesystems, varcopiaacabada, pathinstaller, posicioprogress, labelfilesystems
+        global led_order, page_order, icona_verda, icona_taronja, icona_vermella, icona_blava, band_cat, band_esp, band_eng, copiant, fs_detector, grephalinfo, target, inicial, inicialfs, icona_hd, icona_partition, mkfilesystems, filesystems, varcopiaacabada, pathinstaller, posicioprogress
 
         #suport a linux-live i els burnix
         #if path.exists("/run/archiso/sfs/root-image/root-image.fs"):
@@ -96,8 +96,6 @@ class instalador(QDialog):
 
         mkfilesystems=["mkfs.ext4","mkfs.reiserfs -q", "mkfs.ext3", "mkfs.ext2", "", "mkswap"]
         filesystems=["ext4", "reiserfs", "ext3", "ext2", "", "reiserfs"]
-        labelfilesystems=["e2label $DISK$ $LABEL$","reiserfstune -l $LABEL$ $DISK$", "e2label $DISK$ $LABEL$", "e2label $DISK$ $LABEL$", "", ""]
-
 
         posicioprogress=0
 
@@ -223,7 +221,7 @@ class instalador(QDialog):
         #Borrem tota la info
         for i in self.ui.cb_hd_arrel, self.ui.cb_hd_swap, self.ui.cb_hd_home, self.ui.cb_mbr:
             i.clear()
-        hddtotal=getoutput(fs_detector+" 0 2>/dev/null | grep -v zram | sort").split()  #get out all rubbish
+        hddtotal=getoutput(fs_detector+" 0 2>/dev/null").split()
         discs=[]
         particions=[]
         #print discos
@@ -695,7 +693,7 @@ class instalador(QDialog):
 		system("mkdir -p "+inicial)
                 system("mount "+inicialfs+" "+inicial)
                 
-                self.copyfiles=copyfiles(target, inicial, mkfilesystems, filesystems, particioarrel, particioswap, particiohome, labelfilesystems)
+                self.copyfiles=copyfiles(target, inicial, mkfilesystems, filesystems, particioarrel, particioswap, particiohome)
                 # FUNCIO COPIA
                 self.connect(self.copyfiles, SIGNAL("acabat"), self.copiaacabada)
                 self.connect(self.copyfiles, SIGNAL("progress"), self.posaprogressbar)
@@ -936,7 +934,7 @@ class instalador(QDialog):
             
             if default_user<>login:
                 print "Deleting LiveCD default user"
-                system("chroot "+target+" /usr/sbin/userdel "+default_user)
+                system("/usr/sbin/chroot "+target+" /usr/sbin/userdel "+default_user)
                 system("rm -fr "+target+"/home/"+default_user)
 
 

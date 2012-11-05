@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#Remove non-free from packages
+for i in 'kademar-restricted' 'flashplugin' 'virtualbox' 'jre7-openjdk-headless' 'icedtea-web-java7' 'b43-fwcutter' 'ipw2100-fw' 'ipw2200-fw' 'linux-firmware' 'zd1211-firmware' 'alsa-firmware' 'bluez-firmware' 'efibootmgr' 'sane-gt68xx-firmware' 'bluez-firmware'  
+do
+  pacman --noconfirm -R $i
+done
+
+#Remove Flash player
+# rm -fr /usr/lib/mozilla/plugins/*flash*
+
+#Remove  nVidia
+# rm -fr /usr/bin/nvidia* /usr/share/doc/NVIDIA-GLX* /usr/lib/*nvidia* /usr/lib/*NVIDIA* /usr/share/man/man1/nvidia* /usr/share/applications/nvidia-settings.desktop /usr/lib/tls/*nvidia* /usr/lib/libGL.so.??*.* /usr/lib/xorg/modules/extensions/*libglx*.??*.* /usr/lib/xorg/modules/*nvidia*.*
+
+# rm -fr /home/*/.local/share/applications/*ightscribe*
+
+#use sources.list free
+# if [ -e /etc/apt/src-free ]; then
+# 	rm -f /etc/apt/sources.list
+# 	cp /etc/apt/src-free /etc/apt/sources.list
+# fi

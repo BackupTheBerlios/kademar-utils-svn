@@ -346,17 +346,10 @@ esac
 
 ################ //  END OF LOCALE DEFINITION  \\  ####################
 
-echo "LANG=$LANG" > "$DESTI/etc/locale.conf"
-
-echo "$TZ" > "$DESTI/etc/timezone"
-
-rm -f "$DESTI/etc/localtime"
-ln -s "/usr/share/zoneinfo/$TZ" "$DESTI/etc/localtime"
-
-echo "KEYMAP=$KEYTABLE" > "$DESTI/etc/vconsole.conf"
-echo "FONT=" >> "$DESTI/etc/vconsole.conf"
-
-
+sed "s~LOCALE=.*~LOCALE=\"$LANG\"~g" -i $DESTI/etc/rc.conf 
+sed "s~TIMEZONE=.*~TIMEZONE=\"$TZ\"~g" -i $DESTI/etc/rc.conf 
+sed "s~KEYMAP=.*~KEYMAP=\"$KEYTABLE\"~g" -i $DESTI/etc/rc.conf 
+sed "s~DAEMON_LOCALE=.*~DAEMON_LOCALE=\"no\"~g" -i $DESTI/etc/rc.conf 
 
 
  # UTF-8: Default is "on" in newer kernels, but for practical reasons,

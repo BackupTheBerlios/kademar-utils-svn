@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=instalador
-pkgver=4.9.17
+pkgver=4.9.9.8
 pkgrel=1
 epoch=
 pkgdesc="The Installer"

@@ -1,0 +1,47 @@
+#!/bin/bash
+
+#
+# Script to fix ALL user permisions
+# Feb 09 - Adonay - GNU/GPL 2.0 or higher
+#
+
+##
+# Normal Users
+##
+
+#canvia permisos inicials del /home
+for user in `ls /home --ignore=Pc --ignore=anonymous`
+do
+    chown -R $user.users /home/$user
+    chown -R $user.users /home/$user/.??*
+    chmod -R 700 /home/$user
+    chmod -R 700 /home/$user/.??*
+    chown $user.users /home/$user
+    chown $user.users /home/$user/.??*
+    chmod 700 /home/$user
+    chmod 700 /home/$user/.??*
+done
+
+
+##
+# Root
+##
+
+
+#canvi de permisos
+chown -R root.root /root
+chown -R root.root /root/.??*
+chmod -R 700 /root
+chmod -R 700 /root/.??*
+
+
+
+##
+# Skel User
+##
+
+chown -R root.root /etc/skel
+chown -R root.root /etc/skel/.??*
+chmod -R 700 /etc/skel
+chmod -R 700 /etc/skel/.??*
+

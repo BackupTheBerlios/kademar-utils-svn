@@ -1,0 +1,159 @@
+#!/bin/bash
+
+#################################################
+# Script per Configurar els usuaris a la nova   #
+#         -------------------------             #
+#    Preparat per la kademar 4.0 - 3 Nov 2005   #
+#    Llicenciat Sota GNU/GPL 2.0 o Superiors    #
+#    Modificat                -  24 Març 2008   #
+#    Modificat kademar5       -  24 Març 2008   #
+#    Modificat kademar4.6 (5) -  13 Juliol 2008 #
+#    Modificat kademar 5.0    -  9 Abril 2012   #
+#################################################
+
+
+. /tmp/instalador-environment
+. /etc/kademar/config-livecd
+
+
+default_user="$user"
+
+# inicial="/run/archiso/root-image/"
+
+
+
+#Copiem el home modificat, i el substituïm pel que hi hagi al  skel
+# rm -fr "$DESTI/etc/skel"
+# mkdir -p "$DESTI/etc/skel"
+# cp -a $inicial/home/$default_user/* "$DESTI/etc/skel"
+# cp -a $inicial/home/$default_user/.??* "$DESTI/etc/skel"
+
+# rm -fr "$DESTI/root"
+# mkdir -p "$DESTI/root"
+# cp -a $inicial/home/kademar/* "$DESTI/root"
+# cp -a $inicial/home/kademar/.??* "$DESTI/root"
+
+
+#Borrem l'usuari kademar si encara resideix en el pc, i si no n'existeix cap més
+# if [ "$default_user" != "$login" ]; then
+# 	echo "els usuaris son diferents _"$default_user"_  _"$login"_ "
+# 	chroot "$DESTI" deluser "$default_user"
+# 	rm -fr "$DESTI/home/$default_user"
+# 	chroot "$DESTI" delgroup "$default_user"
+# else   #Si es default user = login  vol dir que ha assignat  kademar de nom d'usuari
+#     crea_home="creahome_si"
+# 	echo "els usuaris son iguals _"$default_user"_  _"$login"_ "
+# fi
+# 
+# #Borrem els PASSWD-SHADOWS-GROUP sobrants
+# rm -fr $DESTI/etc/passwd?*
+# rm -fr $DESTI/etc/shadow?*
+# rm -fr $DESTI/etc/group?*
+
+
+#Borrem arxius de configuració de l'openoffice
+# rm -fr $DESTI/home/$usuari_nom/.openoffice* $DESTI/home/$usuari_nom/.sversionrc
+
+#Canvi del HTML d'engegada del SKEL - la única cosa que modifikem del skel (tot lo demés es fa amb el CADI)
+# [ -z "$LANG" ] && . /etc/default/locale
+# case "$LANG" in
+# ca*)
+# 	lang=ca
+# 	lang_firefox=cakademar
+# 	documents=Documents
+# ;;
+# es*)
+# 	#Firefox  pagina d'inici
+# 	lang=es
+# 	lang_firefox=es
+# 	documents=Documentos
+# ;;
+# en*)
+# 	#Firefox  pagina d'inici
+# 	lang=en
+# 	lang_firefox=ca
+# 	documents=Documents
+# ;;
+# esac
+
+#Firefox  pagina d'inici al profile, si existeix
+# [ -e "$DESTI/etc/mozilla-firefox/profile/prefs.js" ] && echo 'user_pref("browser.startup.homepage", "http://www.kademar.org/index.php?lang='$lang_firefox'");
+# user_pref("browser.download.dir", "/home/'$user'/'$documents'");' >> "$DESTI/etc/mozilla-firefox/profile/prefs.js"
+
+
+#default session lxde with accessibility
+if [ "$kademar_type" = "Heliox" ]; then
+  [ ! -e $DESTI/var/lib/AccountsService/users ] && mkdir -p $DESTI/var/lib/AccountsService/users
+  echo "
+
+[User]
+Language=
+XSession=Accessibility LXDE" > $DESTI/var/lib/AccountsService/users/$login
+  
+  chmod 644 $DESTI/var/lib/AccountsService/users/$login
+fi
+
+
+
+
+#Activem el autologin en el KDM si es demana
+if [ "$AUTOLOGIN" = "si" ]; then
+# 	[ -e /usr/share/kademar/utils/common/autologin_slim ] && sh /usr/share/kademar/utils/common/autologin_slim autologin_si "$login" "$DESTI"
+# 	[ -e /usr/share/kademar/utils/common/autologin_gdm ] && sh /usr/share/kademar/utils/common/autologin_gdm autologin_si "$login" "$DESTI"
+#    "$login" "$DESTI"
+
+#KDM Support
+  if [ -e "$DESTI/usr/share/config/kdm/kdmrc" ]; then
+    sed "s~AutoLoginEnable=.*~AutoLoginEnable=true~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
+    sed "s~#AutoLoginEnable=.*~AutoLoginEnable=true~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
+    sed "s~AutoLoginUser=.*~AutoLoginUser=$login~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
+    sed "s~#AutoLoginUser=.*~AutoLoginUser=$login~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
+  fi
+  
+#GDM Support
+#  en /var/lib/accountsservice
+fi
+
+# #skel & language
+# chroot "$DESTI" sh /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/kde-canvikdeglobals skel # canvi de kdeglobals
+# chroot "$DESTI" sh /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/common-canvillengua "skel" "/"
+# chroot "$DESTI" sh /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/common-canvillengua "system"
+
+#####
+#Detect Session and configure session manager to start the same desktop that user started on live-cd
+#####
+# [ -e /var/tmp/xserver ] && . /var/tmp/xserver
+# 
+# #KDE4
+# if [ "$KDE_SESSION_VERSION" = 4 -o "$DESKTOP" = "kde4" ]; then
+# 	dk=kde
+# 	found=ok
+# fi
+# 
+# #KDE3
+# if [ -z "$found" ]; then
+# 	if [ "$DESKTOP_SESSION" = "kde3" -o "$DESKTOP" = "kde3" ]; then
+# 		dk=kde3
+# 		found=ok
+# 	fi
+# fi 
+# 
+# #lxde
+# if [ -z "$found" ]; then
+# 	if [ "$XDG_CURRENT_DESKTOP" = "LXDE" -o  "$DESKTOP" = "lxde" ]; then
+# 		dk=LXDE
+# 		found=ok
+# 	fi
+# fi 
+# 
+# if [ "$found" = "ok" ]; then
+#       echo "[Desktop]
+# Session=$dk" > "$DESTI/home/$login/.dmrc"
+# fi
+# ####
+# # END DESKTOP DETECT
+# ####
+# 
+# 
+# echo "Fixing user permissions"
+# chroot "$DESTI" sh /usr/share/kademar/utils/instalador/scripts/install-usuaris-fix-permissions 2>/dev/null

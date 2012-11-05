@@ -1,0 +1,83 @@
+#!/usr/bin/python2
+# Adonay Jonay Sanz Alsina - adonay@kademar.org
+# License GNU/GPL 3.0 or higer
+# 24 abril 2012
+
+import dbus
+import sys
+
+if len(sys.argv)>1:
+    #print sys.argv[1]
+    pass
+else:
+    print "Need parameter 0 to list HDD. Or HDD to list partitions"
+    sys.exit(1)
+
+if str(sys.argv[1])=="0":
+    bus = dbus.SystemBus()
+    ud_manager_obj = bus.get_object("org.freedesktop.UDisks", "/org/freedesktop/UDisks")
+    ud_manager = dbus.Interface(ud_manager_obj, 'org.freedesktop.UDisks')
+
+    for dev in ud_manager.EnumerateDevices():
+	device_obj = bus.get_object("org.freedesktop.UDisks", dev)
+	#print dev
+	device_props = dbus.Interface(device_obj, dbus.PROPERTIES_IFACE)
+	isDrive=device_props.Get('org.freedesktop.UDisks.Device', "DeviceIsDrive")
+	devicefile=device_props.Get('org.freedesktop.UDisks.Device', "DeviceFile")
+	size=device_props.Get('org.freedesktop.UDisks.Device', "PartitionSize")
+	isEjectable=device_props.Get('org.freedesktop.UDisks.Device', "DriveIsMediaEjectable")
+
+	#print "DriveVendor",device_props.Get('org.freedesktop.UDisks.Device', "DriveVendor")
+	#print "DeviceIsDrive", isDrive
+	#print "DriveIsMediaEjectable", device_props.Get('org.freedesktop.UDisks.Device', "DriveIsMediaEjectable")
+	#print device_props.Get('org.freedesktop.UDisks.Device', "DeviceMountPaths")
+	rootimage=str(device_props.Get('org.freedesktop.UDisks.Device', "DeviceFileById"))
+	#print device_props.Get('org.freedesktop.UDisks.Device', "PartitionSize")
+	#print ""
+	if isDrive == 1 and isEjectable==0:
+	    devicefile=devicefile.strip("/dev/")
+            if devicefile.find("loop") == -1 and rootimage.find("root-image") == -1:
+    	        #print isDrive
+  	        size=size/1000000
+	        print devicefile+"-"+str(size)
+
+else:
+    result=""
+    bus = dbus.SystemBus()
+    ud_manager_obj = bus.get_object("org.freedesktop.UDisks", "/org/freedesktop/UDisks")
+    ud_manager = dbus.Interface(ud_manager_obj, 'org.freedesktop.UDisks')
+
+    for dev in ud_manager.EnumerateDevices():
+	device_obj = bus.get_object("org.freedesktop.UDisks", dev)
+	device_props = dbus.Interface(device_obj, dbus.PROPERTIES_IFACE)
+        devicefile=device_props.Get('org.freedesktop.UDisks.Device', "DeviceFile")
+        if str(sys.argv[1]).strip("/dev/")==devicefile.strip("/dev/"):
+	    #print devicefile
+	    disk=dev
+	    break
+	    
+    for dev in ud_manager.EnumerateDevices():
+        device_obj = bus.get_object("org.freedesktop.UDisks", dev)
+	device_props = dbus.Interface(device_obj, dbus.PROPERTIES_IFACE)
+	isDrive=device_props.Get('org.freedesktop.UDisks.Device', "DeviceIsDrive")
+	iduuid=device_props.Get('org.freedesktop.UDisks.Device', "IdUuid")
+
+	if str(dev).find(disk) != -1 and isDrive==0 and iduuid != "":
+            devicefile=device_props.Get('org.freedesktop.UDisks.Device', "DeviceFile")
+            devicefile=devicefile.strip("/dev/")
+            fs=device_props.Get('org.freedesktop.UDisks.Device', "IdType")
+            size=device_props.Get('org.freedesktop.UDisks.Device', "PartitionSize")
+            size=size/1000000
+            if str(fs).find("swap") != -1:
+                result=result+" "+str(devicefile)+"-"+str(fs)+"-"+str(size)+"-82"
+            else:
+                result=result+" "+str(devicefile)+"-"+str(fs)+"-"+str(size)
+
+    a=sorted(result.split())
+    print " ".join(a)            
+            
+
+            
+
+	    
+

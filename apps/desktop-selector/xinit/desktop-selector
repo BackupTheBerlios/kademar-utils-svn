@@ -1,5 +1,5 @@
 . /etc/rc.conf
-. /etc/rc.d/functions
+. /etc/kademar/functions
 
 [ -e /etc/locale.conf ] && . /etc/locale.conf
 

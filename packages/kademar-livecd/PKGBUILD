@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=kademar-livecd
-pkgver=5.7.19
+pkgver=5.7.20
 pkgrel=1
 epoch=
 pkgdesc="Kademar Linux basic LiveCD package and utilities - remove on install"
@@ -21,7 +21,7 @@ install=kademar-livecd.install
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('050e2f55b9accf194d43f787c8a6d0cc') #generate with 'makepkg -g'
+md5sums=('c3f98c42e4919d403af1741eb0f60706') #generate with 'makepkg -g'
 
 
 package() {
@@ -33,9 +33,9 @@ package() {
   find "$pkgdir"/etc/sudoers.d -type d -exec chmod 750 "{}" \;
   find "$pkgdir"/etc/sudoers.d -type f -exec chmod 440 "{}" \;
   find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
-  find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+#   find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
   find "$pkgdir"/etc/rc.d -type f -exec chmod 744 "{}" \;
   find "$pkgdir"/etc/profile.d -type f -exec chmod 755 "{}" \;
-  chmod +x "$pkgdir"/usr/share/desktop-selector/scripts/*
+#   chmod +x "$pkgdir"/usr/share/desktop-selector/scripts/*
 
 }

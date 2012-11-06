@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=oneshot
-ExecStart=/etc/rc.d/kademar-swap &
+ExecStart=/etc/rc.d/kademar-swap start &
 
 [Install]
 WantedBy=multi-user.target

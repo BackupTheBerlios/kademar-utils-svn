@@ -13,4 +13,7 @@ for script in /etc/X11/Xsession.d/*; do
 done
 unset script
 
-exec ck-launch-session dbus-launch startlxdeaccessibility
+#exec ck-launch-session dbus-launch startlxdeaccessibility
+
+#new systemd config
+exec ck-launch-session startlxdeaccessibility

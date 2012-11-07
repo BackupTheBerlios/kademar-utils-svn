@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=oneshot
 ExecStart=/etc/rc.d/kademar-livecd-xsession start &
+RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target

@@ -12,15 +12,15 @@ pre_remove() {
       cp -af /usr/share/kademar/livecd-recover/* /
     fi
     
-    #systemctl disable kademar-swap
-    if [ -e /etc/systemd/system/multi-user.target.wants/kademar-swap.service ]; then
-      rm -f /etc/systemd/system/multi-user.target.wants/kademar-swap.service
-    fi
-  
 }
 
 post_remove(){
     rm -fr /etc/X11/Xsession.d
+
+    #systemctl disable kademar-swap
+    if [ -e /etc/systemd/system/multi-user.target.wants/kademar-swap.service ]; then
+      rm -f /etc/systemd/system/multi-user.target.wants/kademar-swap.service
+    fi 
 }
 
 update_files() {

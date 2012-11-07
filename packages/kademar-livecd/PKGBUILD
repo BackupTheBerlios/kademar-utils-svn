@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=kademar-livecd
-pkgver=5.7.20
+pkgver=5.7.21
 pkgrel=1
 epoch=
 pkgdesc="Kademar Linux basic LiveCD package and utilities - remove on install"

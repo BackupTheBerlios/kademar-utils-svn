@@ -30,14 +30,6 @@ BUG_REPORT_URL="http://bugs.kademar.org/"' > /etc/os-release
 
 }
 
-pre_remove() {
-  #systemctl disable kademar-services
-  if [ -e /etc/systemd/system/multi-user.target.wants/kademar-services.service ]; then
-    rm -f /etc/systemd/system/multi-user.target.wants/kademar-services.service
-  fi 
-
-}
-
 post_remove() {
     echo "Arch Linux \r (\l)
 
@@ -50,6 +42,12 @@ ANSI_COLOR="0;36"
 HOME_URL="http://www.archlinux.org/"
 SUPPORT_URL="http://bbs.archlinux.org/"
 BUG_REPORT_URL="http://bugs.archlinux.org/"' > /etc/os-release
+
+  #systemctl disable kademar-services
+  if [ -e /etc/systemd/system/multi-user.target.wants/kademar-services.service ]; then
+    rm -f /etc/systemd/system/multi-user.target.wants/kademar-services.service
+  fi 
+
 
 }
 

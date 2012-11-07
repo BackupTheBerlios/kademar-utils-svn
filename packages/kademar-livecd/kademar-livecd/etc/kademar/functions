@@ -30,7 +30,7 @@ set_hostname () {
 
 set_environment_variables () {
 . $1/etc/rc.conf
-. $1/etc/rc.d/functions
+#. $1/etc/rc.d/functions
 export PATH=$PATH
 
 . $1/etc/locale.conf 

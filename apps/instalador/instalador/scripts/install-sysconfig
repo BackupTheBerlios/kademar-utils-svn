@@ -108,9 +108,7 @@ fi
 for i in kdm slim gdm lxdm xdm
 do
   if [ -n "`chroot $DESTI which $i 2>/dev/null`" ]; then
-      var=$(grep -i $i $DESTI/etc/inittab)
-      var2=$(echo $var | sed s.\#..g)
-      sed s."$var"."$var2".g -i $DESTI/etc/inittab
+      ln -s "'/usr/lib/systemd/system/$i\service" '/etc/systemd/system/display-manager.service'
       break
   fi
 done
@@ -372,6 +370,13 @@ fi" >> "$DESTI/etc/gdm/Init/Default"
 
 fi
 
+
+#enable appset on systemd if exists
+#systemctl enable kademar-kademar-appset-helper
+if [ -e "$DESTI/usr/lib/systemd/system/kademar-appset-helper.service" -a ! -e "$DESTI/etc/systemd/system/multi-user.target.wants/kademar-appset-helper.service" ]; then
+  ln -s /usr/lib/systemd/system/kademar-appset-helper.service "$DESTI/etc/systemd/system/multi-user.target.wants/kademar-appset-helper.service"
+fi
+
 #Actualitzem la versio del nucli
 # uname -r > "$DESTI/etc/kademar/kernel_version"
 
@@ -384,6 +389,8 @@ fi
 # 	echo "[Desktop Entry]
 # Icon=/usr/share/kademar/icons/Pc.png" > "$DESTI/Pc/.directory"
 # fi
+
+
 
 
 #Carreguem les variables de systema

@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=kademar-meta-common-utils
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 epoch=
 pkgdesc="kademar Metapackage Common Utils"
@@ -8,7 +8,7 @@ arch=(any)
 url="http://www.kademar.org"
 license=('GPL')
 groups=()
-depends=('kademar-meta-xorg' 'kademar-meta-network-management' 'kademar-meta-soundserver' 'kademar-meta-printserver-cups'  'cadi-svn' 'hunspell-ca' 'hunspell-es' 'hunspell-en' 'hunspell-fr' 'xdg-utils' 'xdg-user-dirs' 'python2-pyqt' 'os-prober' 'packer')
+depends=('kademar-meta-xorg' 'kademar-meta-network-management' 'kademar-meta-soundserver' 'kademar-meta-printserver-cups'  'cadi-svn' 'hunspell-ca' 'hunspell-es' 'hunspell-en' 'hunspell-fr' 'xdg-utils' 'xdg-user-dirs' 'python2-pyqt' 'os-prober' 'packer' 'systemd-ui')
 makedepends=()
 checkdepends=()
 optdepends=('audioconversor-svn: Multiformats video and music conversor'

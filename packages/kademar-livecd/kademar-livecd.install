@@ -18,9 +18,8 @@ post_remove(){
     rm -fr /etc/X11/Xsession.d
 
     #systemctl disable kademar-swap
-    if [ -e /etc/systemd/system/multi-user.target.wants/kademar-swap.service ]; then
-      rm -f /etc/systemd/system/multi-user.target.wants/kademar-swap.service
-    fi 
+    rm -f /etc/systemd/system/multi-user.target.wants/kademar-swap.service
+
 }
 
 update_files() {
@@ -44,7 +43,26 @@ update_files() {
     if [ ! -e /etc/systemd/system/multi-user.target.wants/kademar-swap.service ]; then
       ln -s /usr/lib/systemd/system/kademar-swap.service /etc/systemd/system/multi-user.target.wants/kademar-swap.service
     fi
-  
+    
+    #systemctl enable NetworkManager
+    if [ ! -e /etc/systemd/system/dbus-org.freedesktop.NetworkManager.service ]; then
+      ln -s '/usr/lib/systemd/system/NetworkManager.service' '/etc/systemd/system/dbus-org.freedesktop.NetworkManager.service'
+    fi
+    
+    if [ ! -e /etc/systemd/system/multi-user.target.wants/NetworkManager.service ]; then
+      ln -s '/usr/lib/systemd/system/NetworkManager.service' '/etc/systemd/system/multi-user.target.wants/NetworkManager.service'
+    fi
+    
+    #systemctl enable kademar-openntpd
+    if [ ! -e /etc/systemd/system/multi-user.target.wants/openntpd.service ]; then
+      ln -s '/usr/lib/systemd/system/openntpd.service' '/etc/systemd/system/multi-user.target.wants/openntpd.service'
+    fi
+
+    if [ ! -e /etc/systemd/system/multi-user.target.wants/zramswap.service ]; then
+      ln -s /usr/lib/systemd/system/zramswap.service /etc/systemd/system/multi-user.target.wants/zramswap.service
+    fi
+    
+    
   fi
 
   

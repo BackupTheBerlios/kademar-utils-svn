@@ -1,7 +1,7 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=kademar-base
-pkgver=5.7.4
-pkgrel=2
+pkgver=5.7.5
+pkgrel=1
 epoch=
 pkgdesc="Kademar Linux basic package and utilities"
 arch=('any')
@@ -21,7 +21,7 @@ install=kademar-base.install
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('72d75c3b88be536c468fef15e0e228c7') #generate with 'makepkg -g'
+md5sums=('d0231659af0366ea89f6db2f278c14c2') #generate with 'makepkg -g'
 
 
 package() {
@@ -34,5 +34,6 @@ package() {
   find "$pkgdir"/etc/ -type f -exec chmod 644 "{}" \;
   find "$pkgdir"/etc/rc.d -type f -exec chmod 755 "{}" \;
   chmod 700 "$pkgdir"/etc/polkit-1/localauthority
+  chmod 700 "$pkgdir"/etc/polkit-1/rules.d
 
 }

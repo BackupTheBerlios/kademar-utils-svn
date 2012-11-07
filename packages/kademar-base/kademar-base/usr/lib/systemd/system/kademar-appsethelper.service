@@ -1,0 +1,12 @@
+[unit]
+Description="Kademar Appset Helper"
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=nice -n 15 appset-helper &
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+

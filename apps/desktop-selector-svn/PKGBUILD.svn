@@ -55,5 +55,6 @@ package() {
   find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
   find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
   find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+  find "$pkgdir"/usr/share/desktop-selector/scripts -type f -exec chmod 755 "{}" \;
 
 } 

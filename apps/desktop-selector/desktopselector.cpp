@@ -1165,30 +1165,42 @@ void DesktopSelector::finalSteps()
 
     }
 
-    if ((detectedNvidia) && (settings.value("nvidiaDriver").toBool() == false))
-    {
-        if (!(settings.value("FREE_DRIVER").toBool() == true)){
-            if ((ui->rb_propietaryDriver->isChecked()) || !(ui->rb_freeDriver->isChecked()))
-            {
-                installVideoDriver("nvidia");
+    //Install drivers part
+    if (ui->ch_forceDriver->isChecked() ){
+        //forced mode
+         if (selectedDriver == "nvidia"){
+             installVideoDriver("nvidia");
+         }
+         if (selectedDriver == "fglrx"){
+             installVideoDriver("ati");
+         }
+
+    } else {
+        //autodetected mode
+        if ((detectedNvidia) && (settings.value("nvidiaDriver").toBool() == false))
+        {
+            if (!(settings.value("FREE_DRIVER").toBool() == true)){
+                if ((ui->rb_propietaryDriver->isChecked()) || !(ui->rb_freeDriver->isChecked()))
+                {
+                    installVideoDriver("nvidia");
+                }
             }
         }
-    }
 
-    if (ui->ch_forceDriver->isChecked() && selectedDriver == "nvidia" ){
-        installVideoDriver("nvidia");
+        if ((detectedAti) && (settings.value("atiDriver").toBool() == false))
+        {
+            if (!(settings.value("FREE_DRIVER").toBool() == true)){
+                if ((ui->rb_propietaryDriver->isChecked()) || !(ui->rb_freeDriver->isChecked()))
+                {
+                    installVideoDriver("ati");
+                }
+            }
+        }
+
     }
 
     /*
-    if ((detectedAti) && (settings.value("atiDriver").toBool() == false))
-    {
-        if (!(settings.value("FREE_DRIVER").toBool() == true)){
-            if ((ui->rb_propietaryDriver->isChecked()) || !(ui->rb_freeDriver->isChecked()))
-            {
-                installVideoDriver("ati");
-            }
-        }
-    }
+
 
     if (ui->ch_forceDriver->isChecked() && selectedDriver == "fglrx" ){
         installVideoDriver("ati");
@@ -1215,6 +1227,7 @@ void DesktopSelector::installVideoDriver(QString driver){
     if (installingDrivers == false){
         installingDrivers=true;  //usefull too to not close application while installing
 
+        qDebug() << "Installing " << driver;
         QString *install = new QString(tr("<p><b>Installing %1 Drivers</b></p><p>Be patient, it may take a while...</p>"));
 
         //qDebug() << "installing " << driver;
@@ -1241,6 +1254,8 @@ void DesktopSelector::installVideoDriver(QString driver){
         ui->displayChipetLabel->setVisible(false);
         //qDebug() << QString("/usr/share/desktop-selector/scripts/%1-installer-offline.sh").arg(driver);
         process->start(QString("/usr/share/desktop-selector/scripts/%1-installer-offline.sh").arg(driver));
+
+  //      installingDrivers=false;
     }
 
 }

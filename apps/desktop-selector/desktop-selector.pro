@@ -32,8 +32,9 @@ OTHER_FILES += \
     tr/ca.ts \
     TODO \
     scripts/nvidia-installer-offline.sh \
-    scripts/nvidia-installer-internet.sh \
-    scripts/locale_configurator
+    scripts/ati-installer-offline.sh \
+    scripts/locale_configurator \
+    scripts/ati-installer-offline.sh
 
 
 

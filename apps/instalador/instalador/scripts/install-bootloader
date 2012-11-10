@@ -209,7 +209,7 @@ done
 
 
 #Define standard User params
-user_params="splash=silent,fadein,fadeout,theme:kademar console=/dev/tty1 fastboot $resume $moreoptions"
+user_params="splash=silent,fadein,fadeout,theme:kademar console=/dev/tty1 fastboot init=/bin/systmd $resume $moreoptions"
 
 
 particions_arrancables=/tmp/particions-arrancables

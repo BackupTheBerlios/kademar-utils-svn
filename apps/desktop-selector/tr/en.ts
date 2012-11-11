@@ -231,6 +231,11 @@
         <source>(Recommended)</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../desktopselector.cpp" line="1231"/>
+        <source>&lt;p&gt;&lt;b&gt;Installing %1 Drivers&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Be patient, it may take a while...&lt;/p&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QCheckBoxWithEvents</name>

@@ -664,6 +664,8 @@ void DesktopSelector::setMaxResolution()
     //qDebug() << screenSize.width();
     DesktopSelector::setGeometry(0,0,screenSize.width(),screenSize.height());
     //ui->background->setGeometry(0,0,screenSize.width(),screenSize.height());
+    DesktopSelector::setMinimumSize(screenSize.width(),screenSize.height());
+
     QFile *filebg = new QFile(QString("%1/%2x%3.png").arg(wallpaper).arg(screenSize.width()).arg(screenSize.height()) );
     if  (!(filebg->exists())) {
 

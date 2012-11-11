@@ -232,8 +232,9 @@
         <translation>(Recomendado)</translation>
     </message>
     <message>
+        <location filename="../desktopselector.cpp" line="1231"/>
         <source>&lt;p&gt;&lt;b&gt;Installing %1 Drivers&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Be patient, it may take a while...&lt;/p&gt;</source>
-        <translation type="obsolete">&lt;p&gt;&lt;b&gt;Instal·lación de %1 Controladores&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Tenga paciencia, puede tardar un tiempo...&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;Instal·lación de %1 Controladores&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Tenga paciencia, puede tardar un tiempo...&lt;/p&gt;</translation>
     </message>
 </context>
 <context>

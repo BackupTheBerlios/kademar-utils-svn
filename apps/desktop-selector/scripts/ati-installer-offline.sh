@@ -10,5 +10,4 @@ done
 pacman --noconfirm -Rdd $packets
 pacman --noconfirm -U /usr/share/desktop-selector/drivers/catalyst/*xz
 
-
-
+rm -fr /tmp/nouveau /tmp/radeon

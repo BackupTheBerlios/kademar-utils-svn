@@ -33,9 +33,7 @@ OTHER_FILES += \
     TODO \
     scripts/nvidia-installer-offline.sh \
     scripts/ati-installer-offline.sh \
-    scripts/locale_configurator \
-    scripts/ati-installer-offline.sh
-
+    scripts/locale_configurator
 
 
 

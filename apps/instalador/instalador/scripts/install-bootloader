@@ -72,17 +72,17 @@ fi
 # [ -z "$DESTI" -o "$DESTI" = "0" ] && DESTI="/instalador/desti"
 
 
-
 # Si el initrd esta marcat per crear-lo
 if [ "$make_initrd" = "yes" ]; then
     #Creem l'initrd per el kernel
     chroot $DESTI mkinitcpio -p linux
 fi
 
+#remove stuff
+rm -fr /boot/syslinux
 
 
-
-# #Versiï¿œ del Kernel
+# #Versió del Kernel
 # if [ -z "$cadi" ]; then
 #      kernel="`uname -r`"
 # else
@@ -108,41 +108,24 @@ mkdir -p $DESTI/boot/$grub
 [ -e $DESTI/boot/$grub/menu.lst ] && rm -f $DESTI/boot/$grub/menu.lst
 [ -e $DESTI/boot/$grub/device.map ] && rm -f $DESTI/boot/$grub/device.map
 
-#Borrem el mtab
-rm -f  $DESTI/etc/mtab
-#I creem una entrada estandar per l'instalador
-echo "/dev/$DEV / $fsparticioarrel defaults 0 0" > $DESTI/etc/mtab
-
-
-# Search for grub version
-# if [ -z "`dpkg -l | grep -i grub-pc | grep -i ii`" ]; then
-#grub 1
-#     echo *** Grub Version 1 ***
-#     grubver=1
-# else
-# grub2
-#     echo *** Grub Version 2 ***
-#     grubver=2
-# fi
-
-#Creem el Device.map amb la informacio dels dispositius
-# if [ -n "`which grub-mkdevicemap`" ]; then
-# grub2 normally  and  grub 1 tunned installations
-/usr/share/kademar/utils/instalador/scripts/mkdevicemap --no-floppy --device-map=$DESTI/boot/$grub/device.map
-# else
-#     echo quit \
-# grub 1
-#       | grub --batch --no-floppy --device-map=$DESTI/boot/grub/device.map
-# fi
-
-
-#chroot $DESTI sed -i "s~# kopt.*~# kopt=root=$DESTI_ROOT $DEF_BOOTPARMS~g" /boot/grub/menu.lst 
-
-#TODO find a way to not have to do that twice
-#chroot $DESTI update-grub -y  
-
 #Si no s'ha definit que NO volem mbr, instala'l
 if [ "$mbr" != "no" ]; then
+
+    #Borrem el mtab
+    rm -f  $DESTI/etc/mtab
+    #I creem una entrada estandar per l'instalador
+    echo "/dev/$DEV / $fsparticioarrel defaults 0 0" > $DESTI/etc/mtab
+
+    #Creem el Device.map amb la informacio dels dispositius
+    # if [ -n "`which grub-mkdevicemap`" ]; then
+    # grub2 normally  and  grub 1 tunned installations
+    /usr/share/kademar/utils/instalador/scripts/mkdevicemap --no-floppy --device-map=$DESTI/boot/$grub/device.map
+    # else
+    #     echo quit \
+    # grub 1
+    #       | grub --batch --no-floppy --device-map=$DESTI/boot/grub/device.map
+    # fi
+
     #Si el mbr es "automatic", fem que es busqui la vida, sino el sobreecrivim
     if [ "$mbr" = "auto" ]; then
         MBR_SENSE_NUMERO=`cat $DESTI/boot/$grub/device.map | grep '(hd0)' | sed s:/dev/::g | awk ' { print $2 } '`
@@ -209,7 +192,8 @@ done
 
 
 #Define standard User params
-user_params="splash=silent,fadein,fadeout,theme:kademar console=/dev/tty1 fastboot init=/bin/systmd $resume $moreoptions"
+user_params="fastboot init=/bin/systemd $resume $moreoptions"
+#splash=silent,fadein,fadeout,theme:kademar console=/dev/tty1
 
 
 particions_arrancables=/tmp/particions-arrancables
@@ -300,22 +284,24 @@ EOF
 ####
 
 
+#Si no s'ha definit que NO volem mbr, instala'l
+if [ "$mbr" != "no" ]; then
+
+    . $DESTI/etc/rc.conf
+
+    # chroot $DESTI LANG=$LANGUAGE $grub-mkconfig -o /boot/$grub/$grub.cfg
+
+    . /etc/kademar/functions
+    set_environment_variables $DESTI
+    chroot $DESTI $grub-mkconfig -o /boot/$grub/$grub.cfg
 
 
-. $DESTI/etc/rc.conf
-
-# chroot $DESTI LANG=$LANGUAGE $grub-mkconfig -o /boot/$grub/$grub.cfg
-
-. /etc/kademar/functions
-set_environment_variables $DESTI
-chroot $DESTI $grub-mkconfig -o /boot/$grub/$grub.cfg
+    #Fix problem with catalan locales on grub
+    sed s."S'està c"."C".g -i $DESTI/boot/$grub/$grub.cfg
 
 
-#Fix problem with catalan locales on grub
-sed s."S'està c"."C".g -i $DESTI/boot/$grub/$grub.cfg
-
-
-#Delete generic entry to install GRUB/BURG
-rm -f $DESTI/etc/mtab
-#Restore original entry
-ln -s /proc/mounts $DESTI/etc/mtab
+    #Delete generic entry to install GRUB/BURG
+    rm -f $DESTI/etc/mtab
+    #Restore original entry
+    ln -s /proc/mounts $DESTI/etc/mtab
+fi

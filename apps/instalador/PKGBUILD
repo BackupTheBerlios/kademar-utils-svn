@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=instalador
-pkgver=4.9.19
+pkgver=4.9.21
 pkgrel=1
 epoch=
 pkgdesc="The Installer"
@@ -9,7 +9,7 @@ url="http://www.kademar.org"
 license=('GPL')
 groups=()
 depends=('kademar-meta-common-utils' 'sudo' 'pacman' 'python2-pyqt' 'os-prober' 'gparted')
-makedepends=()
+makedepends=("python2-pyqt")
 checkdepends=()
 optdepends=()
 provides=()
@@ -21,16 +21,18 @@ install=
 changelog=
 source=($pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('1d0879ae97b9225adebe281462de19db') #generate with 'makepkg -g'
+md5sums=('6a0a70455a7c2c3ff18f3b40b80e29e6') #generate with 'makepkg -g'
 
 build() {
-  cd "$srcdir"
+  cd "$srcdir/$pkgname-$pkgver"
+  sh prepare.sh
+  #lrelease instalador.pro
 }
 
  package() {
    mkdir -p "$pkgdir/usr/share/kademar/utils"
    cp -a $srcdir/$pkgname-$pkgver "$pkgdir/usr/share/kademar/utils/instalador"
-   cd $pkgdir && rm -fr `find . -name ".svn"` && rm -fr `find . -name "*.pyc"` && rm -f `find . -name "*~"` && rm -f `find . -name "todo"` && rm -f `find . -name "*project"` && rm -f `find . -name "*odt"` && rm -f `find . -name "*.ts"` && rm -f `find . -name "*.kate-swp"`
+   cd $pkgdir && rm -fr `find . -name ".svn"` && rm -fr `find . -name "*.pyc"` && rm -fr `find . -name "*.pro"` && rm -f `find . -name "*~"` && rm -f `find . -name "todo"` && rm -f `find . -name "*project"` && rm -f `find . -name "*odt"` && rm -f `find . -name "*.ts"` && rm -f `find . -name "*.kate-swp"`
    mkdir -p "$pkgdir/etc/X11/xinit/xinitrc.d"
    cp -a $srcdir/$pkgname-$pkgver/scripts/80-xsession-instalador-icon "$pkgdir/etc/X11/xinit/xinitrc.d"
    find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;

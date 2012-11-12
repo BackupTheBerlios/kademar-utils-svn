@@ -15,7 +15,7 @@
 if [ ! -e /tmp/instalador-running ]; then
     touch /tmp/instalador-running
 . /etc/rc.conf
-. /etc/rc.d/functions
+#. /etc/rc.d/functions
 . /etc/kademar/functions
 set_environment_variables
 #     touch /tmp/kademarcenter-inicial

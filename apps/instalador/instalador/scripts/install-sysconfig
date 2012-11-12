@@ -52,6 +52,7 @@ fi
 
 chroot $DESTI pacman --noconfirm -R kademar-livecd
 chroot $DESTI pacman --noconfirm -R desktop-selector
+chroot $DESTI pacman --noconfirm -R desktop-selector-svn
 
 # remove instalador package
 chroot $DESTI pacman --noconfirm -R instalador
@@ -72,10 +73,11 @@ sh /usr/share/kademar/utils/instalador/scripts/locale_configurator "$LANGUAGE" "
 
 
 #search for fs if not specified (no format)
-[ -z "$fsparticioarrel" ] && fsparticioarrel=$(blkid $particioarrel -o value -s TYPE)
+# -c /dev/null =  Don't use cache. Sometimes is wrong after format
+[ -z "$fsparticioarrel" ] && fsparticioarrel=$(blkid -c /dev/null $particioarrel -o value -s TYPE)
 
-UUID_arrel=$(blkid $particioarrel -o value -s UUID)
-UUID_swap=$(blkid $particioswap -o value -s UUID)
+UUID_arrel=$(blkid $particioarrel -c /dev/null -o value -s UUID)
+UUID_swap=$(blkid $particioswap -c /dev/null -o value -s UUID)
 
 #Creem un fstab net amb les particions ja configurades
 cat > "$DESTI/etc/fstab" << EOF
@@ -91,7 +93,8 @@ EOF
 
 #Si la particio home esta configurada, posa-la al fstab
 if [ -n "$particiohome" ]; then
-	[ -z "$fsparticiohome" ] && fsparticiohome=$(blkid $particiohome -o value -s TYPE) && UUID_home=$(blkid $particiohome -o value -s )
+	# -c /dev/null =  Don't use cache. Sometimes is wrong after format
+	[ -z "$fsparticiohome" ] && fsparticiohome=$(blkid -c /dev/null $particiohome -o value -s TYPE) && UUID_home=$(blkid -c /dev/null $particiohome -o value -s UUID)
 	echo "UUID=$UUID_home /home  $fsparticiohome defaults  0  2" >> "$DESTI/etc/fstab"
 fi
 
@@ -108,7 +111,7 @@ fi
 for i in kdm slim gdm lxdm xdm
 do
   if [ -n "`chroot $DESTI which $i 2>/dev/null`" ]; then
-      ln -s "'/usr/lib/systemd/system/$i\service" '/etc/systemd/system/display-manager.service'
+      ln -s "/usr/lib/systemd/system/$i.service" "$DESTI/etc/systemd/system/display-manager.service"
       break
   fi
 done
@@ -191,6 +194,11 @@ EOF
 # 
 # snd-seq
 # snd-seq-device" >> "$DESTI/etc/modules"
+
+#Put new issue
+. $DESTI/var/lib/pacman/local/kademar-base*/install 
+put_issue("$DESTI"
+
 
 
 #Afegim la càrrega del mòdul d'APM
@@ -373,8 +381,13 @@ fi
 
 #enable appset on systemd if exists
 #systemctl enable kademar-kademar-appset-helper
-if [ -e "$DESTI/usr/lib/systemd/system/kademar-appset-helper.service" -a ! -e "$DESTI/etc/systemd/system/multi-user.target.wants/kademar-appset-helper.service" ]; then
-  ln -s /usr/lib/systemd/system/kademar-appset-helper.service "$DESTI/etc/systemd/system/multi-user.target.wants/kademar-appset-helper.service"
+if [ -e "$DESTI/usr/lib/systemd/system/kademar-appsethelper.service" -a ! -e "$DESTI/etc/systemd/system/multi-user.target.wants/kademar-appsethelper.service" ]; then
+  ln -s /usr/lib/systemd/system/kademar-appsethelper.service "$DESTI/etc/systemd/system/multi-user.target.wants/kademar-appsethelper.service"
+fi
+
+#Open NTPd
+if [ -e "$DESTI/usr/lib/systemd/system/openntpd.service" -a ! -e "$DESTI/etc/systemd/system/multi-user.target.wants/openntpd.service" ]; then
+  ln -s /usr/lib/systemd/system/openntpd.service "$DESTI/etc/systemd/system/multi-user.target.wants/openntpd.service"
 fi
 
 #Actualitzem la versio del nucli

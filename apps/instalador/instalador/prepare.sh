@@ -10,10 +10,10 @@ echo "########################"
 [ "$0" = "../../instalador/prepare.sh" ] && cd ../../instalador
 
 #Prepare form
-pyuic4 ui/instalador.ui > ui_instalador.py
+python2-pyuic4 ui/instalador.ui > ui_instalador.py
 
 #Prepare Translation
-pylupdate4 instalador.project
+lupdate instalador.pro
 
 #Release translation
-lrelease instalador.project
+lrelease instalador.pro

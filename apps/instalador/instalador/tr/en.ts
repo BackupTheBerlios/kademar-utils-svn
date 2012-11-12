@@ -1,101 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="en_GB" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.0" language="en_GB">
 <context>
     <name>FormInstall</name>
     <message>
-        <location filename="ui/instalador.ui" line="32"/>
+        <location filename="../ui/instalador.ui" line="32"/>
         <source>Installer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="83"/>
+        <location filename="../ui/instalador.ui" line="83"/>
         <source>Installation Process</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="112"/>
+        <location filename="../ui/instalador.ui" line="112"/>
         <source>Disk and Partition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="144"/>
+        <location filename="../ui/instalador.ui" line="144"/>
         <source>File Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1081"/>
+        <location filename="../ui/instalador.ui" line="176"/>
+        <location filename="../ui/instalador.ui" line="1081"/>
         <source>License</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="208"/>
+        <location filename="../ui/instalador.ui" line="208"/>
         <source>User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="240"/>
+        <location filename="../ui/instalador.ui" line="240"/>
         <source>Boot Manager</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="272"/>
+        <location filename="../ui/instalador.ui" line="272"/>
         <source>Administrator Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="304"/>
+        <location filename="../ui/instalador.ui" line="304"/>
         <source>System</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="381"/>
+        <location filename="../ui/instalador.ui" line="381"/>
         <source>Copy Finished</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="400"/>
+        <location filename="../ui/instalador.ui" line="400"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="427"/>
+        <location filename="../ui/instalador.ui" line="427"/>
         <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="453"/>
+        <location filename="../ui/instalador.ui" line="453"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="479"/>
+        <location filename="../ui/instalador.ui" line="479"/>
         <source>Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="526"/>
+        <location filename="../ui/instalador.ui" line="526"/>
         <source>Welcome to kademar Linux Installer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="568"/>
+        <location filename="../ui/instalador.ui" line="568"/>
         <source>kademar Installer have a help manual, it can be opened by clicking on &quot;Help&quot; button on left bar in any moment, or by clicking now right Information button.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="669"/>
+        <location filename="../ui/instalador.ui" line="669"/>
         <source>Now kademar Installer is retreiving information of your system.
 
 Be patient, please.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="697"/>
+        <location filename="../ui/instalador.ui" line="697"/>
         <source>Retreiving System Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="731"/>
+        <location filename="../ui/instalador.ui" line="731"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -107,77 +109,81 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="767"/>
+        <location filename="../ui/instalador.ui" line="767"/>
         <source>Select partitions where install kademar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="783"/>
+        <location filename="../ui/instalador.ui" line="783"/>
         <source>Within the same partition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="799"/>
+        <location filename="../ui/instalador.ui" line="799"/>
         <source>Partitioning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="822"/>
+        <location filename="../ui/instalador.ui" line="822"/>
         <source>Advanced</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="921"/>
+        <location filename="../ui/instalador.ui" line="851"/>
+        <location filename="../ui/instalador.ui" line="921"/>
         <source>Reiser FS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="926"/>
+        <location filename="../ui/instalador.ui" line="856"/>
+        <location filename="../ui/instalador.ui" line="926"/>
         <source>Ext3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="931"/>
+        <location filename="../ui/instalador.ui" line="861"/>
+        <location filename="../ui/instalador.ui" line="931"/>
         <source>Ext2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="936"/>
+        <location filename="../ui/instalador.ui" line="866"/>
+        <location filename="../ui/instalador.ui" line="936"/>
         <source>No Format</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="901"/>
+        <location filename="../ui/instalador.ui" line="901"/>
         <source>Swap FS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="957"/>
+        <location filename="../ui/instalador.ui" line="957"/>
         <source>Partition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="977"/>
+        <location filename="../ui/instalador.ui" line="977"/>
         <source>Format as</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="995"/>
+        <location filename="../ui/instalador.ui" line="995"/>
         <source>Root</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1019"/>
+        <location filename="../ui/instalador.ui" line="1019"/>
         <source>Swap</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1040"/>
+        <location filename="../ui/instalador.ui" line="1040"/>
         <source>Home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1097"/>
+        <location filename="../ui/instalador.ui" line="1097"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -192,59 +198,59 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1126"/>
+        <location filename="../ui/instalador.ui" line="1126"/>
         <source>Yes, I accept non-free license terms</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1139"/>
+        <location filename="../ui/instalador.ui" line="1139"/>
         <source>No, please remove all non-free software of kademar Linux</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1173"/>
+        <location filename="../ui/instalador.ui" line="1173"/>
         <source>kademar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1189"/>
+        <location filename="../ui/instalador.ui" line="1189"/>
         <source>Now you have to configure your PC name. It&apos;s used on local network identification.
 
 Also you have to define you default language of your system. You can change it later on CADI.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
-        <location filename="ui/instalador.ui" line="1210"/>
+    <message utf8="true">
+        <location filename="../ui/instalador.ui" line="1210"/>
         <source>Català</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1236"/>
+        <location filename="../ui/instalador.ui" line="1236"/>
         <source>PC Name (for local network identification, if you have it.)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1256"/>
+        <location filename="../ui/instalador.ui" line="1256"/>
         <source>System Configurations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1272"/>
+        <location filename="../ui/instalador.ui" line="1272"/>
         <source>English</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1298"/>
+        <location filename="../ui/instalador.ui" line="1298"/>
         <source>Castellano</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1377"/>
+        <location filename="../ui/instalador.ui" line="1377"/>
         <source>Reenter Administrator Password, to confirm it.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1390"/>
+        <location filename="../ui/instalador.ui" line="1390"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -259,17 +265,17 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1419"/>
+        <location filename="../ui/instalador.ui" line="1419"/>
         <source>Enter Administration Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1455"/>
+        <location filename="../ui/instalador.ui" line="1455"/>
         <source>Contrassenya d&apos;Administrador (root)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1512"/>
+        <location filename="../ui/instalador.ui" line="1512"/>
         <source>Now you have to enter a user to be able to use the system.
 Username can be your name, to create the accout that you&apos;ll use as default.
 
@@ -278,33 +284,33 @@ If you don&apos;t want to be asked for it every time you start, check User Autos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1558"/>
+        <location filename="../ui/instalador.ui" line="1558"/>
         <source>Reenter User Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1610"/>
+        <location filename="../ui/instalador.ui" line="1610"/>
         <source>Enter your name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1630"/>
+        <location filename="../ui/instalador.ui" line="1630"/>
         <source>User Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1646"/>
+        <location filename="../ui/instalador.ui" line="1646"/>
         <source>User Autostart
  without ask your password.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1683"/>
+        <location filename="../ui/instalador.ui" line="1683"/>
         <source>User Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1717"/>
+        <location filename="../ui/instalador.ui" line="1717"/>
         <source>Here you have to indicate a disk where install Grub Boot Manager.
 By default this selection is automatic, but you can set it manually.
 Also you can bypass, setting not to install, but use it only if you know what you are doing.
@@ -313,38 +319,38 @@ Grub will make you able to start kademar Linux on your machine and other operati
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1745"/>
+        <location filename="../ui/instalador.ui" line="1745"/>
         <source>Manual - Advanced Selecction</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1765"/>
+        <location filename="../ui/instalador.ui" line="1765"/>
         <source>Automatic - Recomended</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1786"/>
+        <location filename="../ui/instalador.ui" line="1786"/>
         <source>Do not install boot manager - NOT RECOMMENDED
  (Only do it if you know what are doing)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1807"/>
+        <location filename="../ui/instalador.ui" line="1807"/>
         <source>Boot Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1833"/>
+        <location filename="../ui/instalador.ui" line="1833"/>
         <source>Initrd (Activate if you receive an error when start)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1871"/>
+        <location filename="../ui/instalador.ui" line="1871"/>
         <source>Ending Installation Tasks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1887"/>
+        <location filename="../ui/instalador.ui" line="1887"/>
         <source>Some installation tasks are pending.
 
 You have to wait while process is finishing.
@@ -352,12 +358,12 @@ You can see tasks status on left bar.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1953"/>
+        <location filename="../ui/instalador.ui" line="1953"/>
         <source>Installation Finished!!!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1969"/>
+        <location filename="../ui/instalador.ui" line="1969"/>
         <source>kademar Linux it&apos;s installed on your PC
 
 Now you can close installer and continue using kademar on Live mode, or you can reboot you computer and start on the installed system.
@@ -370,181 +376,19 @@ Thanks for choosing kademar Linux</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1996"/>
+        <location filename="../ui/instalador.ui" line="1996"/>
         <source>Reboot Computer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="916"/>
+        <location filename="../ui/instalador.ui" line="846"/>
+        <location filename="../ui/instalador.ui" line="916"/>
         <source>Ext4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ui/instalador.ui" line="1496"/>
+        <location filename="../ui/instalador.ui" line="1496"/>
         <source>Account name</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>instalador</name>
-    <message>
-        <location filename="instalador.py" line="243"/>
-        <source>Disk </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="299"/>
-        <source>Installer cannot be closed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="299"/>
-        <source>Installer is working and it cannot be closed until it finish.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="398"/>
-        <source>Character error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="487"/>
-        <source>Same Partitions</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="487"/>
-        <source>Cannot have two assigned functions to the same partition.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="607"/>
-        <source>Disk</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="612"/>
-        <source>Error: Empty Partition</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="612"/>
-        <source>Selected partition cannot be empty. You must select two paritions, for Root and Swap at least.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="614"/>
-        <source>Error: Disk Choosen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="614"/>
-        <source>Instead to select a partition, you have choosed a disk, and is an invalid selection.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="652"/>
-        <source>Start Installation Process!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="658"/>
-        <source>Close all applications</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="658"/>
-        <source>You should close all opened applications with disk access, in order to be able to install sucessfully.
-
-If you want to stop installation process, press &apos;NO&apos;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="700"/>
-        <source>Error: License</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="700"/>
-        <source>Please accept or decline non free licenses.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="711"/>
-        <source>Error on Administrator Password</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="723"/>
-        <source>Check that two passwords are identical.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="711"/>
-        <source>Check that the administrator password is not empty.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="714"/>
-        <source>Security Warning on Administratror Password</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="729"/>
-        <source>For security reasons Administrator password should be longer than 6 characters.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="720"/>
-        <source>Error on User Account</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="720"/>
-        <source>User Account cannot be empty.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="726"/>
-        <source>Error on User Password</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="726"/>
-        <source>Check that the user password is not empty.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="733"/>
-        <source>Security Warning on User Account</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="733"/>
-        <source>For security reasons is recommended to have different password on User and Administrator Account</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="652"/>
-        <source>ALL data of</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="652"/>
-        <source>will be erased!!!
-
-While installator is working, you cannot access to your hard disk,
- please, close opened programs to have full access to your resources.
-
-For security reasons, it&apos;s recomended to have a backup of your data.
-
-If you haven&apos;t selected a format for your partitions, it will be formated as</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="instalador.py" line="398"/>
-        <source>You cannot write special characters as: 
-   &#xc3;&#xa0;, &#xc3;&#xa8;, &#xc3;&#xa9;, &#xc3;&#xad;, &#xc3;&#xb2;, &#xc3;&#xb3;, &#xc3;&#xba;, (, ), &apos; &apos;, &#xc3;&#xa7;, &#xc2;&#xb7;, $, #, etc</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -31,7 +31,9 @@ set_hostname () {
 set_environment_variables () {
 . $1/etc/rc.conf
 #. $1/etc/rc.d/functions
-export PATH=$PATH
+
+PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
+export PATH
 
 . $1/etc/locale.conf 
 TZ=`cat $1/etc/timezone`

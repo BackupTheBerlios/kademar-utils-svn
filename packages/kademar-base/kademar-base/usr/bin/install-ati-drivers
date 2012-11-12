@@ -1,17 +1,53 @@
 #!/bin/bash 
 
 if [ "$(ping www.google.es -c1 2>/dev/null 1>&2 ; echo $?)" = "0" ]; then
-
+  case "$LANG" in
+  ca_ES*)
+    echo "Ara s'intal·laran els controladors gràfics propietaris de les gràfiques ATI "
+    echo "Estàs segur de continuar amb aqust procés? (s/N)"
+  ;;
+  es_ES*)
+    echo "Ahora se intalarán los controladores gráficos propietarios de las gráficas ATI"
+    echo "Estás seguro de continuar con este proceso? (s/N)"
+  ;;
+  *)
+    echo "Now will be installed propietary ATI graphic controllers"
+    echo "Are you sure to continue this process? (y/N)"
+  ;;
+  esac
+  read key
+  case "$key" in
+  y|Y|s|S)
+    ok=ok
+  ;;
+  esac
+  [ "$ok" != "ok" ] && exit
   list=`LANG=C pacman -Sl | grep -i instal`
   packets=""
-  for i in libgl kademar-meta-xorg kademar-meta-xorg-drivers xf86-video-intel-sna xf86-video-intel-uxa xf86-video-ati xf86-video-intel xf86-input-elographics xf86-video-nouveau xf86-video-openchrome xf86-video-sisimedia xf86-video-unichrome xf86-video-apm xf86-video-ark xf86-video-ast xf86-video-chips xf86-video-cirrus xf86-video-dummy xf86-video-fbdev xf86-video-geode xf86-video-glint xf86-video-i128 xf86-video-i740 xf86-video-mach64 xf86-video-mga xf86-video-neomagic xf86-video-nv xf86-video-r128 xf86-video-rendition xf86-video-s3 xf86-video-s3virge xf86-video-savage xf86-video-siliconmotion xf86-video-sis xf86-video-sisusb xf86-video-tdfx xf86-video-trident xf86-video-tseng xf86-video-v4l xf86-video-vesa xf86-video-vmware xf86-video-voodoo ati-dri nouveau-dri mach64-dri mga-dri r128-dri savage-dri tdfx-dri unichrome-dri intel-dri svga-dri sis-dri nvidia nvidia-utils libcl opencl-nvidia
+  for i in libgl kademar-meta-xorg kademar-meta-xorg-drivers xf86-video-intel-sna xf86-video-intel-uxa xf86-video-ati xf86-video-intel xf86-input-elographics xf86-video-nouveau xf86-video-openchrome xf86-video-sisimedia xf86-video-unichrome xf86-video-apm xf86-video-ark xf86-video-ast xf86-video-chips xf86-video-cirrus xf86-video-dummy xf86-video-fbdev xf86-video-geode xf86-video-glint xf86-video-i128 xf86-video-i740 xf86-video-mach64 xf86-video-mga xf86-video-neomagic xf86-video-nv xf86-video-r128 xf86-video-rendition xf86-video-s3 xf86-video-s3virge xf86-video-savage xf86-video-siliconmotion xf86-video-sis xf86-video-sisusb xf86-video-tdfx xf86-video-trident xf86-video-tseng xf86-video-v4l xf86-video-vesa xf86-video-vmware xf86-video-voodoo ati-dri nouveau-dri mach64-dri mga-dri r128-dri savage-dri tdfx-dri unichrome-dri intel-dri svga-dri sis-dri nvidia nvidia-utils libcl opencl-nvidia lib32-libgl lib32-nvidia-utils
   do
     [ -n "$(pacman -Q $i 2>/dev/null)" ] && packets="$packets $i"
   done
 
+ [ "`uname -m`" = "x86_64" ] && bit64="lib32-catalyst-utils"
 
   pacman --noconfirm -Rdd $packets
-  pacman --noconfirm -Syu catalyst-dkms catalyst-utils opencl-catalyst
+  pacman --noconfirm -Syu catalyst-dkms catalyst-utils opencl-catalyst $bit64
+  
+  echo
+  case "$LANG" in
+  ca_ES*)
+    echo "Ara els controladors gràfics ja estan instal·lats. Per usar-los, s'ha de reiniciar la màquina. Ho pots fer amb la comanda:"
+
+  ;;
+  es_ES*)
+    echo "Ahora los controladores gráficos ya estàn instalados. Para usarlos, de debe de reiniciar el ordenador. Lo puedes hacer con el comando:"
+  ;;
+  *)
+    echo "Now graphic controllers are installed. To use it, you should reboot your computer. You can do it with:"
+  ;;
+  esac
+  echo "  sudo reboot"
 else
   echo "I need internet connection"
   echo "Necesito conexión a internet"

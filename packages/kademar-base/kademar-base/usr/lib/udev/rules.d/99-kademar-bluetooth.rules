@@ -1,2 +1,2 @@
-ACTION=="add", KERNEL=="bluetooth", RUN+="/bin/sh -c '[ -x /etc/rc.d/bluetooth -a ! -e /var/run/daemons/bluetooth ] && rc.d start bluetooth >/dev/null'", OPTIONS+="ignore_device"
-ACTION=="add", KERNEL=="hci*", SUBSYSTEM=="bluetooth", RUN+="/bin/sh -c '[ -x /etc/rc.d/bluetooth -a ! -e /var/run/daemons/bluetooth ] && rc.d start bluetooth >/dev/null'", OPTIONS+="ignore_device"
+ACTION=="add", KERNEL=="bluetooth", RUN+="/bin/sh -c '[ -e /usr/lib/systemd/system/bluetooth.service -a -z "$(systemctl status bluetooth | grep -i running)" ] && systemctl start bluetooth >/dev/null'", OPTIONS+="ignore_device"
+ACTION=="add", KERNEL=="hci*", SUBSYSTEM=="bluetooth", RUN+="/bin/sh -c '[ -e /usr/lib/systemd/system/bluetooth.service -a -z "$(systemctl status bluetooth | grep -i running)" ] && systemctl start bluetooth >/dev/null'", OPTIONS+="ignore_device"

@@ -1,2 +1,2 @@
-ACTION=="add", KERNEL=="printer", RUN+="/bin/sh -c '[ -x /etc/rc.d/cupsd -a ! -e /var/run/daemons/cupsd ] && rc.d start cupsd >/dev/null'"
-ACTION=="add", KERNEL=="lp*", RUN+="/bin/sh -c '[ -x /etc/rc.d/cupsd -a ! -e /var/run/daemons/cupsd ] && rc.d start cupsd >/dev/null'"
+ACTION=="add", KERNEL=="printer", RUN+="/bin/sh -c '[ -e /usr/lib/systemd/system/cups.service -a -z "$(systemctl status cups | grep -i running)" ] && systemctl start cups >/dev/null'"
+ACTION=="add", KERNEL=="lp*", RUN+="/bin/sh -c '[ -e /usr/lib/systemd/system/cups.service -a -z "$(systemctl status cups | grep -i running)" ] && systemctl start cups >/dev/null'"

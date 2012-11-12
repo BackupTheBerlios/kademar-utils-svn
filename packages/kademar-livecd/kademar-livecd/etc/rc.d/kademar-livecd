@@ -1,7 +1,7 @@
 #!/bin/bash
-# /etc/rc.d/kademar-load-swap: load swap partitions to use on livecd
+# /etc/rc.d/kademar-livecd: load swap partitions to use on livecd and other livecd fixes
 #
-# description: use swap partitions on livecd to improve performance
+# description: use swap partitions on livecd to improve performance and other livecd workarruonds
 #
 
 #export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
@@ -29,6 +29,11 @@ done
  
  echo
  swapon -a
+ 
+ #workarround fix to dbus & networkmanager permissions
+ sed s-deny-allow-g -i /etc/dbus-1/system.d/org.freedesktop.NetworkManager.conf
+ sed s-deny-allow-g -i /etc/dbus-1/system.d/org.freedesktop.ModemManager.conf
+ 
 }
 
 stop(){

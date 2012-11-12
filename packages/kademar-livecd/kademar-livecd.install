@@ -9,7 +9,7 @@ post_upgrade() {
 pre_remove() {
     if [ -e "/usr/share/kademar/livecd-recover/" ]; then
       echo "Recovering files modified for livecd"
-      cp -af /usr/share/kademar/livecd-recover/* /
+      /bin/cp -af /usr/share/kademar/livecd-recover/* /
     fi
     
 }
@@ -18,8 +18,17 @@ post_remove(){
     rm -fr /etc/X11/Xsession.d
 
     #systemctl disable kademar-swap
-    rm -f /etc/systemd/system/multi-user.target.wants/kademar-swap.service
-
+    rm -f /etc/systemd/system/multi-user.target.wants/kademar-livecd.service
+    
+    #recover normal login
+    rm -f /etc/systemd/system/getty.target.wants/autologin*
+    
+    if [ ! -e '/etc/systemd/system/getty.target.wants/getty@tty1.service' ]; then
+      ln -s '/usr/lib/systemd/system/getty@.service' '/etc/systemd/system/getty.target.wants/getty@tty1.service'
+    fi
+    if [ ! -e '/etc/systemd/system/getty.target.wants/getty@tty2.service' ]; then
+      ln -s '/usr/lib/systemd/system/getty@.service' '/etc/systemd/system/getty.target.wants/getty@tty2.service'
+    fi
 }
 
 update_files() {
@@ -27,21 +36,21 @@ update_files() {
 
     if [ -e "/usr/share/kademar/livecd-files/" ]; then
       echo "Replacing files for livecd start"
-      cp -af /usr/share/kademar/livecd-files/* /    
+      /bin/cp -af /usr/share/kademar/livecd-files/* /    
     fi
     chown root:root /etc/sudoers
     chmod 440 /etc/sudoers
 
     rm -fr /etc/X11/Xsession.d
-    cp -a /etc/X11/xinit/xinitrc.d/ /etc/X11/Xsession.d
+    /bin/cp -a /etc/X11/xinit/xinitrc.d/ /etc/X11/Xsession.d
 
     if [ -n "$(grep es_ES /etc/locale.conf)" -a ! -e /etc/localtime ]; then
       ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
     fi
 
-    #systemctl enable kademar-swap
-    if [ ! -e /etc/systemd/system/multi-user.target.wants/kademar-swap.service ]; then
-      ln -s /usr/lib/systemd/system/kademar-swap.service /etc/systemd/system/multi-user.target.wants/kademar-swap.service
+    #systemctl enable kademar-livecd
+    if [ ! -e /etc/systemd/system/multi-user.target.wants/kademar-livecd.service ]; then
+      ln -s /usr/lib/systemd/system/kademar-livecd.service /etc/systemd/system/multi-user.target.wants/kademar-livecd.service
     fi
     
     #systemctl enable NetworkManager
@@ -62,6 +71,21 @@ update_files() {
       ln -s /usr/lib/systemd/system/zramswap.service /etc/systemd/system/multi-user.target.wants/zramswap.service
     fi
     
+    #prepare for autologin
+    . /etc/kademar/config-livecd
+    sed s.USERNAME."$user".g -i '/usr/lib/systemd/system/autologin@.service'
+    
+    rm -f /etc/systemd/system/getty.target.wants/getty*
+    
+    if [ ! -e '/etc/systemd/system/getty.target.wants/autologin@tty1.service' ]; then
+      ln -s '/usr/lib/systemd/system/autologin@.service' '/etc/systemd/system/getty.target.wants/autologin@tty1.service'
+    fi
+    if [ ! -e '/etc/systemd/system/getty.target.wants/autologin@tty2.service' ]; then
+      ln -s '/usr/lib/systemd/system/autologin@.service' '/etc/systemd/system/getty.target.wants/autologin@tty2.service'
+    fi
+    
+        echo "Kademar Linux \r (\l)
+" > /etc/issue
     
   fi
 

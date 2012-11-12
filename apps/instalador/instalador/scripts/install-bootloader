@@ -79,7 +79,7 @@ if [ "$make_initrd" = "yes" ]; then
 fi
 
 #remove stuff
-rm -fr /boot/syslinux
+rm -fr $DESTI/boot/syslinux
 
 
 # #Versió del Kernel
@@ -90,9 +90,7 @@ rm -fr /boot/syslinux
 #      kernel=$(for i in `ls -1 vmlinuz* | sed s/vmlinuz-//g`; do echo $i; break ; done) 
 # fi
 # 
-# #Borrem una possible carpeta grub anterior, i la tornem a crear
-rm -fr $DESTI/boot/$grub 
-mkdir -p $DESTI/boot/$grub
+
 # 
 # #Suport a gfxboot-grub 
 # cp /boot/grub/message.* $DESTI/boot/grub 2>/dev/null
@@ -110,6 +108,9 @@ mkdir -p $DESTI/boot/$grub
 
 #Si no s'ha definit que NO volem mbr, instala'l
 if [ "$mbr" != "no" ]; then
+    # #Borrem una possible carpeta grub anterior, i la tornem a crear
+    rm -fr $DESTI/boot/$grub 
+    mkdir -p $DESTI/boot/$grub
 
     #Borrem el mtab
     rm -f  $DESTI/etc/mtab

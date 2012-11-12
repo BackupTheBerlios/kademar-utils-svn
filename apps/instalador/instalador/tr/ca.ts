@@ -441,7 +441,7 @@ Gracies per escollir kademar Linux</translation>
     <message>
         <location filename="../ui/instalador.ui" line="1996"/>
         <source>Reboot Computer</source>
-        <translation>Reengegariniciar l&apos;ordinador</translation>
+        <translation>Reengegar l&apos;ordinador</translation>
     </message>
 </context>
 <context>

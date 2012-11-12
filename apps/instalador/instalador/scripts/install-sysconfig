@@ -17,12 +17,8 @@
 
 ruta_fstab="/etc/fstab"
 
-#Creem la carpeta de /etc/kademar
-# mkdir -p "$DESTI/etc/kademar"
-# chmod 777 "$DESTI/etc/kademar"
-
 rm -f "$DESTI/etc/mtab"
-ln -s /proc/mounts "$DESTI/etc/mtab"
+ln -s /proc/self/mounts "$DESTI/etc/mtab"
 
 #Remove non-free software licenses if not accepted
 [ "$license" = "no" ] && chroot "$DESTI" sh /usr/share/kademar/utils/instalador/scripts/remove-nonfree-license
@@ -61,7 +57,7 @@ chroot $DESTI pacman --noconfirm -R instalador
 rm -fr $DESTI/usr/lib/initcpio/install/archiso*
 rm -fr $DESTI/usr/lib/initcpio/hooks/archiso*
 rm -fr $DESTI/usr/lib/initcpio/archiso*
-rm -f $DESTI/etc/mkinitcpio-archiso.config
+rm -f  $DESTI/etc/mkinitcpio-archiso.config
 
 
 #Idioma definit a la plantilla, sino l'agafem del bootparam
@@ -99,14 +95,6 @@ if [ -n "$particiohome" ]; then
 fi
 
 
-#Restaurem el sudoers original, si existeix
-if [ -e "$DESTI/etc/sudoers.orig" ]; then
-	rm -f "$DESTI/etc/sudoers"
-	cp "$DESTI/etc/sudoers.orig" "$DESTI/etc/sudoers"
-	chmod 0440 "$DESTI/etc/sudoers"
-fi
-
-
 #configure good desktop manager
 for i in kdm slim gdm lxdm xdm
 do
@@ -120,6 +108,142 @@ if [ "$kademar_type" != "Heliox" ]; then
   echo "Removing possible network-manager GNOME conflict"
   chroot $DESTI pacman --noconfirm -R network-manager-applet
 fi 
+
+#Posem el nom a la màquina
+echo "$NOM_PC" > "$DESTI/etc/hostname"
+# sed s/$( sed -e '/HOSTNAME\=*/ !d' /etc/rc.conf)/HOSTNAME=$NOM_PC/g -i /etc/rc.conf
+#sed "s~HOSTNAME=.*~HOSTNAME=$NOM_PC~g" -i $DESTI/etc/rc.conf 
+
+cat > "$DESTI/etc/hosts" << EOF
+#
+# /etc/hosts: static lookup table for host names
+#
+
+#<ip-address>   <hostname.domain.org>   <hostname>
+127.0.0.1       $NOM_PC.localdomain localhost.localdomain $NOM_PC localhost
+::1             $NOM_PC.localdomain localhost.localdomain $NOM_PC localhost
+
+# End of files
+EOF
+
+#Put new issue
+. $DESTI/var/lib/pacman/local/kademar-base*/install 
+put_issue "$DESTI"
+
+
+#Copiem els wallpapers al nou sistema, per tal de treure els .desktop i els .svg k sobren
+mkdir -p "$DESTI/usr/share/kademar/media_sample/wallpapers"
+cp $DESTI/usr/share/wallpapers/*.png "$DESTI/usr/share/kademar/media_sample/wallpapers" 2>/dev/null
+cp $DESTI/usr/share/wallpapers/*.jpg "$DESTI/usr/share/kademar/media_sample/wallpapers" 2>/dev/null
+
+###### CONFIGURE LOCALE  ##########
+CMDLINE=`cat /proc/cmdline`
+
+# same for strings
+stringinstring(){
+case "$2" in *$1*) return 0;; esac
+return 1
+}
+
+# Reread boot command line; echo last parameter's argument or return false.
+getbootparam(){
+stringinstring " $1=" "$CMDLINE" || return 1
+result="${CMDLINE##*$1=}"
+result="${result%%[ 	]*}"
+echo "$result"
+return 0
+}
+
+
+##### END CONFIGURE LOCALE  ##########
+
+
+if [ "`laptop-detect 2>/dev/null; echo $?`" = "0" ]; then
+  lap=On
+  lap1=on
+else
+  lap=Off
+  lap1=off
+fi
+
+
+if [ -e "$DESTI/usr/share/config/kdm/kdmrc" ]; then
+#configure GRUB2 on KDM
+  sed "s~BootManager=.*~BootManager=Grub2~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
+  sed "s~#BootManager=.*~BootManager=Grub2~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
+
+#allow root login
+  sed "s~AllowRootLogin=.*~AllowRootLogin=true~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
+  sed "s~#AllowRootLogin=.*~AllowRootLogin=true~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
+
+#Hide root user from kdm
+  sed "s~HiddenUsers=.*~HiddenUsers=root,uuidd,dnsmasq,xbmc~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
+  sed "s~#HiddenUsers=.*~HiddenUsers=root,uuidd,dnsmasq,xbmc~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
+
+#configure if Numlock activated (table) or not (laptop)
+  sed "s~NumLock=.*~NumLock=$lap~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
+  sed "s~#NumLock=.*~NumLock=$lap~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
+  
+#add /usr/share/xsessions path (to be able to start MATE)
+  sessions=$(grep SessionsDirs= "$DESTI/usr/share/config/kdm/kdmrc")
+  sed s."$sessions"."$sessions,/usr/share/xsessions".g -i "$DESTI/usr/share/config/kdm/kdmrc"
+  
+fi
+
+if [ -e "$DESTI/etc/slim.conf" ]; then
+#configure if Numlock activated (table) or not (laptop)
+  sed "s~numlock.*~numlock  $lap1~g"  -i "$DESTI/etc/slim.conf"
+  sed "s~#numLock=.*~numlock  $lap1~g" -i "$DESTI/etc/slim.conf"
+fi
+
+if [ -e "$DESTI/etc/slim.conf" ]; then
+#configure if Numlock activated (table) or not (laptop)
+  sed "s~numlock.*~numlock  $lap1~g"  -i "$DESTI/etc/slim.conf"
+  sed "s~#numLock=.*~numlock  $lap1~g" -i "$DESTI/etc/slim.conf"
+fi
+
+if [ -e "$DESTI/etc/gdm/Init/Default" ]; then
+  if -n "`grep numlock $DESTI/etc/gdm/Init/Default`" ]; then
+    echo "if [ -x /usr/bin/numlockx ]; then
+       /usr/bin/numlockx $lap1
+fi" >> "$DESTI/etc/gdm/Init/Default"
+
+  else
+    sed "s~/usr/bin/numlockx*~/usr/bin/numlockx $lap1~g"  -i "$DESTI/etc/gdm/Init/Default"
+
+  fi
+
+fi
+
+
+#enable appset on systemd if exists
+#systemctl enable kademar-kademar-appset-helper
+if [ -e "$DESTI/usr/lib/systemd/system/kademar-appsethelper.service" -a ! -e "$DESTI/etc/systemd/system/multi-user.target.wants/kademar-appsethelper.service" ]; then
+  ln -s '/usr/lib/systemd/system/kademar-appsethelper.service' "$DESTI/etc/systemd/system/multi-user.target.wants/kademar-appsethelper.service"
+fi
+
+#Open NTPd
+if [ -e "$DESTI/usr/lib/systemd/system/openntpd.service" -a ! -e "$DESTI/etc/systemd/system/multi-user.target.wants/openntpd.service" ]; then
+  ln -s /usr/lib/systemd/system/openntpd.service "$DESTI/etc/systemd/system/multi-user.target.wants/openntpd.service"
+fi
+
+
+#Executa la configuració Modular
+[ -e /usr/share/kademar/utils/instalador/scripts/install-sysconfig_second-stage ] && sh /usr/share/kademar/utils/instalador/scripts/install-sysconfig_second-stage
+
+
+### NOT USED FROM HERE - Remain from Debian Kademar
+
+#Restaurem el sudoers original, si existeix
+# if [ -e "$DESTI/etc/sudoers.orig" ]; then
+# 	rm -f "$DESTI/etc/sudoers"
+# 	cp "$DESTI/etc/sudoers.orig" "$DESTI/etc/sudoers"
+# 	chmod 0440 "$DESTI/etc/sudoers"
+# fi
+
+#Creem la carpeta de /etc/kademar
+# mkdir -p "$DESTI/etc/kademar"
+# chmod 777 "$DESTI/etc/kademar"
 
 #Posem el /etc/network/interfaces, configurat en el live-cd (per si ha gravat a interfaces)
 # rm -f "$DESTI/etc/network/interfaces"
@@ -164,22 +288,6 @@ fi
 # aixo fara k en instalada no es torni a generar el xorg.conf fins que no es canvii la grafica o el nucli
 #####
 
-#Posem el nom a la màquina
-echo "$NOM_PC" > "$DESTI/etc/hostname"
-# sed s/$( sed -e '/HOSTNAME\=*/ !d' /etc/rc.conf)/HOSTNAME=$NOM_PC/g -i /etc/rc.conf
-#sed "s~HOSTNAME=.*~HOSTNAME=$NOM_PC~g" -i $DESTI/etc/rc.conf 
-
-cat > "$DESTI/etc/hosts" << EOF
-#
-# /etc/hosts: static lookup table for host names
-#
-
-#<ip-address>   <hostname.domain.org>   <hostname>
-127.0.0.1       $NOM_PC.localdomain localhost.localdomain $NOM_PC localhost
-::1             $NOM_PC.localdomain localhost.localdomain $NOM_PC localhost
-
-# End of files
-EOF
 #Posem els moduls a carregar
 # echo "fuse
 # floppy
@@ -194,12 +302,6 @@ EOF
 # 
 # snd-seq
 # snd-seq-device" >> "$DESTI/etc/modules"
-
-#Put new issue
-. $DESTI/var/lib/pacman/local/kademar-base*/install 
-put_issue("$DESTI"
-
-
 
 #Afegim la càrrega del mòdul d'APM
 # if [ ! -e /proc/acpi ]; then
@@ -282,12 +384,6 @@ put_issue("$DESTI"
 #echo 'user_pref("browser.startup.homepage", "http://www.kademar.org");
 #user_pref(\"network.protocol-handler.app.klik\", \"~/.klik\"); >> ' >> "$DESTI/etc/mozilla-firefox/profile/prefs.js"
 
-#Copiem els wallpapers al nou sistema, per tal de treure els .desktop i els .svg k sobren
-mkdir -p "$DESTI/usr/share/kademar/media_sample/wallpapers"
-cp $DESTI/usr/share/wallpapers/*.png "$DESTI/usr/share/kademar/media_sample/wallpapers" 2>/dev/null
-cp $DESTI/usr/share/wallpapers/*.jpg "$DESTI/usr/share/kademar/media_sample/wallpapers" 2>/dev/null
-
-
 #Configure SSH Keys
 # chroot "$DESTI" sh /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/common-ssh_keys
 
@@ -297,98 +393,6 @@ cp $DESTI/usr/share/wallpapers/*.jpg "$DESTI/usr/share/kademar/media_sample/wall
 # mkdir -p "$DESTI/var/tmp"
 # ln -s "/var/tmp" "$DESTI/tmp"
 # chmod 777 "$DESTI/var/tmp"
-
-
-###### CONFIGURE LOCALE  ##########
-CMDLINE=`cat /proc/cmdline`
-
-# same for strings
-stringinstring(){
-case "$2" in *$1*) return 0;; esac
-return 1
-}
-
-# Reread boot command line; echo last parameter's argument or return false.
-getbootparam(){
-stringinstring " $1=" "$CMDLINE" || return 1
-result="${CMDLINE##*$1=}"
-result="${result%%[ 	]*}"
-echo "$result"
-return 0
-}
-
-
-##### END CONFIGURE LOCALE  ##########
-
-
-if [ "`laptop-detect 2>/dev/null; echo $?`" = "0" ]; then
-  lap=On
-  lap1=on
-else
-  lap=Off
-  lap1=off
-fi
-
-
-if [ -e "$DESTI/usr/share/config/kdm/kdmrc" ]; then
-#configure GRUB2 on KDM
-  sed "s~BootManager=.*~BootManager=Grub2~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
-  sed "s~#BootManager=.*~BootManager=Grub2~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
-
-#allow root login
-  sed "s~AllowRootLogin=.*~AllowRootLogin=true~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
-  sed "s~#AllowRootLogin=.*~AllowRootLogin=true~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
-
-#Hide root user from kdm
-  sed "s~HiddenUsers=.*~HiddenUsers=root,uuidd,dnsmasq~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
-  sed "s~#HiddenUsers=.*~HiddenUsers=root,uuidd,dnsmasq~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
-
-#configure if Numlock activated (table) or not (laptop)
-  sed "s~NumLock=.*~NumLock=$lap~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
-  sed "s~#NumLock=.*~NumLock=$lap~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
-  
-#add /usr/share/xsessions path (to be able to start MATE)
-  sessions=$(grep SessionsDirs= "$DESTI/usr/share/config/kdm/kdmrc")
-  sed s."$sessions"."$sessions,/usr/share/xsessions".g -i "$DESTI/usr/share/config/kdm/kdmrc"
-
-fi
-
-if [ -e "$DESTI/etc/slim.conf" ]; then
-#configure if Numlock activated (table) or not (laptop)
-  sed "s~numlock.*~numlock  $lap1~g"  -i "$DESTI/etc/slim.conf"
-  sed "s~#numLock=.*~numlock  $lap1~g" -i "$DESTI/etc/slim.conf"
-fi
-
-if [ -e "$DESTI/etc/slim.conf" ]; then
-#configure if Numlock activated (table) or not (laptop)
-  sed "s~numlock.*~numlock  $lap1~g"  -i "$DESTI/etc/slim.conf"
-  sed "s~#numLock=.*~numlock  $lap1~g" -i "$DESTI/etc/slim.conf"
-fi
-
-if [ -e "$DESTI/etc/gdm/Init/Default" ]; then
-  if -n "`grep numlock $DESTI/etc/gdm/Init/Default`" ]; then
-    echo "if [ -x /usr/bin/numlockx ]; then
-       /usr/bin/numlockx $lap1
-fi" >> "$DESTI/etc/gdm/Init/Default"
-
-  else
-    sed "s~/usr/bin/numlockx*~/usr/bin/numlockx $lap1~g"  -i "$DESTI/etc/gdm/Init/Default"
-
-  fi
-
-fi
-
-
-#enable appset on systemd if exists
-#systemctl enable kademar-kademar-appset-helper
-if [ -e "$DESTI/usr/lib/systemd/system/kademar-appsethelper.service" -a ! -e "$DESTI/etc/systemd/system/multi-user.target.wants/kademar-appsethelper.service" ]; then
-  ln -s /usr/lib/systemd/system/kademar-appsethelper.service "$DESTI/etc/systemd/system/multi-user.target.wants/kademar-appsethelper.service"
-fi
-
-#Open NTPd
-if [ -e "$DESTI/usr/lib/systemd/system/openntpd.service" -a ! -e "$DESTI/etc/systemd/system/multi-user.target.wants/openntpd.service" ]; then
-  ln -s /usr/lib/systemd/system/openntpd.service "$DESTI/etc/systemd/system/multi-user.target.wants/openntpd.service"
-fi
 
 #Actualitzem la versio del nucli
 # uname -r > "$DESTI/etc/kademar/kernel_version"
@@ -485,7 +489,3 @@ fi
 
 # detect monitor
 # sh /usr/share/kademar/scripts/engegada/detect-monitor "$DESTI"
-
-#Executa la configuració Modular
-[ -e /usr/share/kademar/utils/instalador/scripts/install-sysconfig_second-stage ] && sh /usr/share/kademar/utils/instalador/scripts/install-sysconfig_second-stage
-

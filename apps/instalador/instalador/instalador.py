@@ -996,9 +996,9 @@ class instalador(QDialog):
                 #system("sh scripts/make-grub_menu")
                 QApplication.processEvents()  # python QT Yield
             # ENTRADA PEL LOG
-                print "sh scripts/install-bootloader-final"
+                #print "sh scripts/install-bootloader-final"
             #Instalem el grub en el  MBR del disc.
-                system("sh scripts/install-bootloader-final")
+                #system("sh scripts/install-bootloader-final")
 
                 led_order[6].setPixmap(QPixmap(icona_verda))
                 QApplication.processEvents()  # python QT Yield

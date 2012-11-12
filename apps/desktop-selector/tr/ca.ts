@@ -234,7 +234,7 @@
     <message>
         <location filename="../desktopselector.cpp" line="1231"/>
         <source>&lt;p&gt;&lt;b&gt;Installing %1 Drivers&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Be patient, it may take a while...&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;Instal·lació de %1 Controladors&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Tingueu paciència, pot trigar una estona...&lt;/p&gt;</translation>
+        <translation type="unfinished">&lt;p&gt;&lt;b&gt;Instal·lant Controladors %1&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Tingueu paciència, pot trigar una estona...&lt;/p&gt;</translation>
     </message>
 </context>
 <context>

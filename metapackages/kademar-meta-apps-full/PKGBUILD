@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=kademar-meta-apps-full
-pkgver=1.9
+pkgver=2.0
 pkgrel=1
 epoch=
 pkgdesc="kademar Metapackage Full Applications - Complete Install with KDE4"
@@ -8,7 +8,7 @@ arch=(any)
 url="http://www.kademar.org"
 license=('GPL')
 groups=()
-depends=('kademar-meta-desktop-kde4-full' 'kademar-meta-pidgin' 'kademar-meta-libreoffice' 'kademar-meta-libreoffice-extensions' 'kademar-meta-gimp' 'grub2-editor' 'truecrypt' 'amsn' 'aircrack-ng' 'amule' 'firefox' 'firefox-multiprofile' 'firefox-i18n-ca' 'firefox-i18n-es-es' 'ekiga' 'audacity' 'gksu' 'transmission-gtk' 'thunderbird' 'thunderbird-i18n-ca' 'thunderbird-i18n-es' 'kino' 'blender' 'shared-color-profiles' 'oxygen-icons' 'scribus' 'kdenlive' 'stellarium' 'gltron' 'mysql' 'unison' 'qt-recordmydesktop' 'avidemux-gtk' 'kaffeine' 'me-tv' 'devede' 'gtkpod' 'inkscape' 'gstreamer0.10-good' 'gstreamer0.10-good-plugins' 'gstreamer0.10-ugly-plugins' 'gstreamer0.10-base' 'gstreamer0.10-base-plugins' 'wine' 'wine_gecko' 'winetricks' 'winestuff' 'gsynaptics' 'playonlinux' 'rdesktop' 'wammu' 'bluedevil' 'blueman' 'clementine' 'gnome-icon-theme' 'teamviewer' 'wesnoth' 'wesnoth-data' 'frozen-bubble' 'extremetuxracer' 'crack-attack' 'crack-attack-sounds' 'pingus' 'astromenace' 'supertux' 'ltris' 'clementine' ' gstreamer0.10-base-plugins' 'gstreamer0.10-good-plugins' 'gstreamer0.10-bad-plugins' 'gstreamer0.10-ugly-plugins' 'gstreamer0.10-ffmpeg' 'xbmc' 'me-tv' 'lcms' ' irda-utils' 'appset-qt' 'gsmartcontrol' 'chromium')
+depends=('kademar-meta-desktop-kde4-full' 'kademar-meta-pidgin' 'kademar-meta-libreoffice' 'kademar-meta-libreoffice-extensions' 'kademar-meta-gimp' 'grub2-editor' 'truecrypt' 'amsn' 'aircrack-ng' 'amule' 'firefox' 'firefox-multiprofile' 'firefox-i18n-ca' 'firefox-i18n-es-es' 'ekiga' 'audacity' 'gksu' 'transmission-gtk' 'thunderbird' 'thunderbird-i18n-ca' 'thunderbird-i18n-es' 'kino' 'blender' 'shared-color-profiles' 'oxygen-icons' 'scribus' 'kdenlive' 'stellarium' 'gltron' 'mysql' 'unison' 'qt-recordmydesktop' 'avidemux-gtk' 'kaffeine' 'me-tv' 'devede' 'gtkpod' 'inkscape' 'gstreamer0.10-good' 'gstreamer0.10-good-plugins' 'gstreamer0.10-ugly-plugins' 'gstreamer0.10-base' 'gstreamer0.10-base-plugins' 'wine' 'wine_gecko' 'winetricks' 'winestuff' 'gsynaptics' 'playonlinux' 'rdesktop' 'wammu' 'bluedevil' 'blueman' 'clementine' 'gnome-icon-theme' 'teamviewer' 'wesnoth' 'wesnoth-data' 'frozen-bubble' 'extremetuxracer' 'crack-attack' 'crack-attack-sounds' 'pingus' 'astromenace' 'supertux' 'ltris' 'clementine' 'gstreamer0.10-base-plugins' 'gstreamer0.10-good-plugins' 'gstreamer0.10-bad-plugins' 'gstreamer0.10-ugly-plugins' 'gstreamer0.10-ffmpeg' 'xbmc' 'me-tv' 'lcms' ' irda-utils' 'appset-qt' 'gsmartcontrol' 'chromium' 'gvfs-afc' 'gvfs-afp' 'gvfs-gphoto2' 'gvfs-obexftp' 'gvfs-smb')
 #gtk-theme-switch2/gtk-kde4 - qtcurve geramik
 #'gtk-aurora-engine' 
 #kdenlive/kino

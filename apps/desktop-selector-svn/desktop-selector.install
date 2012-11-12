@@ -27,8 +27,8 @@ update_files() {
     rm /var/cache/pacman/pkg/*catalyst* /var/cache/pacman/pkg/nvidia-* 2>/dev/null
     pacman --dbpath /usr/share/desktop-selector/pacmandb --cachedir /usr/share/desktop-selector/drivers/nvidia --noconfirm -Sywdd nvidia nvidia-utils opencl-nvidia libcl
     pacman --dbpath /usr/share/desktop-selector/pacmandb --cachedir /usr/share/desktop-selector/drivers/catalyst --noconfirm -Sywdd catalyst-dkms catalyst-utils opencl-catalyst netkit-bsd-finger dkms patch xinetd
-    #[ "$(uname -m)" != "i686" ] && pacman --dbpath /usr/share/desktop-selector/pacmandb --cachedir /usr/share/desktop-selector/drivers/nvidia --noconfirm -Swdd lib32-nvidia-utils
-    #[ "$(uname -m)" != "i686" ] && pacman --dbpath /usr/share/desktop-selector/pacmandb --cachedir /usr/share/desktop-selector/drivers/catalyst --noconfirm -Swdd lib32-catalyst-utils
+    [ "$(uname -m)" != "i686" ] && pacman --dbpath /usr/share/desktop-selector/pacmandb --cachedir /usr/share/desktop-selector/drivers/nvidia --noconfirm -Swdd lib32-nvidia-utils lib32-libxvmc
+    [ "$(uname -m)" != "i686" ] && pacman --dbpath /usr/share/desktop-selector/pacmandb --cachedir /usr/share/desktop-selector/drivers/catalyst --noconfirm -Swdd lib32-catalyst-utils
     rm -fr /usr/share/desktop-selector/pacmandb
 
     #systemctl enable desktop-selector

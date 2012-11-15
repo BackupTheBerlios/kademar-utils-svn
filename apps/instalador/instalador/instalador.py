@@ -933,7 +933,9 @@ class instalador(QDialog):
             default_user=getoutput(". /etc/kademar/config-livecd ; echo $user")
             groups=getoutput('for i in $(grep -i '+default_user+' /etc/group | cut -d: -f1); do echo -n $i,; done')
 
-            
+            #remove xbmc user
+            system("""if [ "`grep xbmc '"""+target+"""/etc/passwd' | grep -i 100`" ]; then  echo "Removing XBMC User" ;  chroot '"""+target+"""' /usr/sbin/userdel xbmc ;   rm -fr '"""+target+"""/home/xbmc' ; fi""")
+
             if default_user<>login:
                 print "Deleting LiveCD default user"
                 system("chroot "+target+" /usr/sbin/userdel "+default_user)

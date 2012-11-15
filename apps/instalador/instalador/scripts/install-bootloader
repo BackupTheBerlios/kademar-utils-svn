@@ -106,10 +106,12 @@ rm -fr $DESTI/boot/syslinux
 [ -e $DESTI/boot/$grub/menu.lst ] && rm -f $DESTI/boot/$grub/menu.lst
 [ -e $DESTI/boot/$grub/device.map ] && rm -f $DESTI/boot/$grub/device.map
 
+#prepare 
+rm -fr $DESTI/boot/$grub
+
 #Si no s'ha definit que NO volem mbr, instala'l
 if [ "$mbr" != "no" ]; then
     # #Borrem una possible carpeta grub anterior, i la tornem a crear
-    rm -fr $DESTI/boot/$grub 
     mkdir -p $DESTI/boot/$grub
 
     #Borrem el mtab
@@ -168,7 +170,9 @@ fi
 # CONFIG CREATION
 ###
 
-resol=`xrandr -q 2>/dev/null  | grep -i \* | awk ' { print $1 } '`
+#print first resol. Hack when 1 monitor is connected by hdmi and vga in the same time
+resol=$(for i in `xrandr -q 2>/dev/null  | grep -i \* | awk ' { print
+$1 } '`; do echo $i; break; done)
 [ -z "$resol" ] && resol="1024x768"
 var32="x32"
 

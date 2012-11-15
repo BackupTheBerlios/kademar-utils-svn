@@ -114,6 +114,14 @@ if [ "$AUTOLOGIN" = "si" ]; then
 #  en /var/lib/accountsservice
 fi
 
+
+#remove xbmc user
+if [ "`grep xbmc $DESTI/etc/passwd | grep -i 100`" ]; then
+  chroot "$DESTI" /usr/sbin/userdel xbmc
+  rm -fr "$DESTI/home/xbmc"
+fi
+
+
 # #skel & language
 # chroot "$DESTI" sh /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/kde-canvikdeglobals skel # canvi de kdeglobals
 # chroot "$DESTI" sh /usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/common-canvillengua "skel" "/"

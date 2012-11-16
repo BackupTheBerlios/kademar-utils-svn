@@ -17,7 +17,7 @@ from PyQt4.QtGui import *
 #from PyQt4 import *
 from PyQt4.QtCore import *
 #from PyQt4 import uic
-
+import unicodedata
 from commands import getoutput
 #from os import getuid
 from os import path
@@ -114,7 +114,13 @@ class instalador(QDialog):
         #Show Principal Page
         self.ui.pages.setCurrentIndex(0)
         #self.ui.pages.setGeometry(150,0,520,420)
-
+        
+        #set impout password
+        self.ui.t_user_passwd1.setEchoMode(QLineEdit.PasswordEchoOnEdit)
+        self.ui.t_user_passwd2.setEchoMode(QLineEdit.PasswordEchoOnEdit)
+        self.ui.t_root_passwd1.setEchoMode(QLineEdit.PasswordEchoOnEdit)
+        self.ui.t_root_passwd2.setEchoMode(QLineEdit.PasswordEchoOnEdit)
+        
         ### System Information
         self.setWaitIcon(self.ui.l_mng)
 
@@ -173,6 +179,10 @@ class instalador(QDialog):
         self.connect(self.ui.b_eng, SIGNAL("clicked()"), self.idiomaeng)
 
         # User
+        self.connect(self.ui.t_root_passwd1, SIGNAL("textChanged (const QString&)"), self.charvalidatorroot1)
+        self.connect(self.ui.t_root_passwd2, SIGNAL("textChanged (const QString&)"), self.charvalidatorroot2)
+        self.connect(self.ui.t_user_passwd1, SIGNAL("textChanged (const QString&)"), self.charvalidatorpass1)
+        self.connect(self.ui.t_user_passwd2, SIGNAL("textChanged (const QString&)"), self.charvalidatorpass2)
         self.connect(self.ui.t_user_account, SIGNAL("textChanged (const QString&)"), self.charvalidatoruser)
         self.connect(self.ui.t_nom, SIGNAL("textChanged (const QString&)"), self.fillaccount)
 
@@ -286,7 +296,7 @@ class instalador(QDialog):
                 parti.append(partsize)       #Juntem tota la info de la particio en una llista
                 particions.append(parti) #Fem llista total de llistes de particions
                 for i in self.ui.cb_hd_arrel, self.ui.cb_hd_swap, self.ui.cb_hd_home:
-                    i.addItem(QIcon(icona_partition),"  Part. "+str(contapart)+" "+part+partfs+str(partsize)+unitat)
+                    i.addItem(QIcon(icona_partition),"  Part. "+part+partfs+str(partsize)+unitat)
                 contapart=contapart+1
 
 
@@ -401,16 +411,24 @@ class instalador(QDialog):
 ## FUNCIONS STANDARS
 #####
     ## CHARACTER VALIDATOR
-    def charvalidator(self, char):
+        def charvalidator(self, char):
         charorig=char
         if char<>"":
             char=char[-1]
-            if char=="à" or char=="á" or char=="è" or char=="é" or char=="í" or char=="ì" or char=="ó" or char=="ò" or char=="ú" or char=="ù" or char=="ç" or char=="·" or char==" " or char=="$" or char=="#" or char=="(" or char==")" or char==" ":
+            if char=="à" or char=="á" or char=="è" or char=="é" or char=="í" or char=="ì" or char=="ó" or char=="ò" or char=="ú" or char=="ù" or char=="ç" or char=="·" or char==" " or char=="$" or char=="#" or char=="(" or char==")" or char==" " or char=="'" or char=='"' or char=='\\' or char=='|'  or char=='^'  or char=='[' or char==']' or char=='{' or char=='}':
                 self.showwarnmsg("critical", self.tr("Character error"), self.tr("You cannot write special characters as: \n   à, è, é, í, ò, ó, ú, (, ), ' ', ç, ·, $, #, mayus, etc"))
                 return charorig[:-1]  #Return modified line without invalid char
 
-            ### TODO: non capital letters for login name
-            
+    ## CHARACTER VALIDATOR
+    def charvalidatoraccounts(self, char):
+        charorig=char
+        if char<>"":
+            char=char[-1]
+            if char=="'" or char=='"' or char=='\\' or char=='|'  or char=='^'  or char=='[' or char==']' or char=='{' or char=='}':
+                self.showwarnmsg("critical", self.tr("Character error"), self.tr("You cannot write special characters as: \n   à, è, é, í, ò, ó, ú, (, ), ' ', ç, ·, $, #, mayus, etc"))
+                return charorig[:-1]  #Return modified line without invalid char
+
+
     ##  FUNCIONS DE WARNING
     def showwarnmsg(self, tipu, miss1, miss2):
         if tipu=="critical":
@@ -418,7 +436,7 @@ class instalador(QDialog):
         if tipu=="warning":
             return QMessageBox.critical(self, miss1, miss2, QMessageBox.Retry, QMessageBox.Ignore)
         if tipu=="infopreg":
-            return QMessageBox.critical(self, miss1, miss2, QMessageBox.No, QMessageBox.Ok)
+            return QMessageBox.critical(self, miss1, miss2, QMessageBox.Yes| QMessageBox.No,  QMessageBox.No)
         if tipu=="info":
             QMessageBox.critical(self, miss1, miss2, QMessageBox.Ok)
 
@@ -557,18 +575,46 @@ class instalador(QDialog):
 ##  FUNCTIONS OF USER FORM
 #####
     def fillaccount(self, char):
-        replacers=[("à","a"),("á","a"),("è","e"),("é","e"),("í","i"),("ì","i"),("ò","o"),("ó","o"),("ú","u"),("ù","u"),("ç","c")]
-        nom=char.split(" ")[0]  #Agafem la primera part del nom
-        for i in replacers:
-            nom=nom.replace(i[0], i[1])
-        self.ui.t_user_account.setText(str(nom).lower())  #Defineix el nom del compte en minuscules
+        #replacers=[("à","a"),("á","a"),("è","e"),("é","e"),("í","i"),("ì","i"),("ò","o"),("ó","o"),("ú","u"),("ù","u"),("ç","c")]
+        #nom=char.split(" ")[0]  #Agafem la primera part del nom
+        #for i in replacers:
+            #nom=nom.replace(i[0], i[1])
+        #self.ui.t_user_account.setText(str(nom).lower())  #Defineix el nom del compte en minusculesç
 
+
+        ret = self.charvalidatoraccounts(self.ui.t_nom.text())
+        if ret or ret=="":
+            self.ui.t_nom.setText(ret)
+        a=self.ui.t_nom.text().split(" ")[0]
+        nkfd_form = unicodedata.normalize('NFKD', unicode(a))
+        self.ui.t_user_account.setText(u"".join([c for c in nkfd_form if not unicodedata.combining(c)]))
+        
     #Use the Character Validator to confirm OK of login user
     def charvalidatoruser(self, line):
         ret = self.charvalidator(line)
         if ret or ret=="":
-            self.ui.t_user_account.setText(str(ret))
+            self.ui.t_user_account.setText(ret)
 
+    #Use the Character Validator to confirm OK of login user
+    def charvalidatorpass1(self, line):
+        ret = self.charvalidatoraccounts(line)
+        if ret or ret=="":
+            self.ui.t_user_passwd1.setText(ret)
+
+    def charvalidatorpass2(self, line):
+        ret = self.charvalidatoraccounts(line)
+        if ret or ret=="":
+            self.ui.t_user_passwd2.setText(ret)
+            
+    def charvalidatorroot1(self, line):
+        ret = self.charvalidatoraccounts(line)
+        if ret or ret=="":
+            self.ui.t_root_passwd1.setText(ret)
+            
+    def charvalidatorroot2(self, line):
+        ret = self.charvalidatoraccounts(line)
+        if ret or ret=="":
+            self.ui.t_root_passwd2.setText(ret)
 
 #####
 ##  FUNCTIONS OF MBR / GRUB  FORM
@@ -647,11 +693,11 @@ class instalador(QDialog):
                 partiswap=4  #Swap solament et pot formatar amb mkswap -> no comprobar res
 
                 #selected_partitions=[,(str(self.ui.cb_hd_swap.currentText()).split()[2], partiswap)]
-                particioarrel=[str(self.ui.cb_hd_arrel.currentText()).split()[2], partiarrel]
-                particioswap=[str(self.ui.cb_hd_swap.currentText()).split()[2], partiswap]
+                particioarrel=[str(self.ui.cb_hd_arrel.currentText()).split()[1], partiarrel]
+                particioswap=[str(self.ui.cb_hd_swap.currentText()).split()[1], partiswap]
 
                 if not self.ui.ch_tot_en_particio.isChecked():
-                    particiohome=[str(self.ui.cb_hd_home.currentText()).split()[2], partihome]
+                    particiohome=[str(self.ui.cb_hd_home.currentText()).split()[1], partihome]
 
                 #if mkfs is selected, then partition will be formated and warn to do it
                 hddtoformat=""
@@ -664,7 +710,7 @@ class instalador(QDialog):
 
                 reply = self.showwarnmsg("infopreg", self.tr("Start Installation Process!"), self.tr("ALL data of")+" "+hddtoformat+" "+self.tr("will be erased!!!\n\nWhile installator is working, you cannot access to your hard disk,\n please, close opened programs to have full access to your resources.\n\nFor security reasons, it's recomended to have a backup of your data.\n\nIf you haven't selected a format for your partitions, it will be formated as")+" "+filesystems[0])
                 
-                if reply==QMessageBox.Ok:
+                if reply==QMessageBox.Yes:
                     if 0<>0:
                         #Si hi ha un error, vol dir que no s'ha desmuntat bé i torna a fer-ho, aviant
                         while True:
@@ -883,9 +929,9 @@ class instalador(QDialog):
 
             f=open(plantillapasswd,'w')
             f.writelines("#Root Password \n")
-            f.writelines('rootpasswd="'+self.ui.t_root_passwd1.text()+'" \n')
+            f.writelines('rootpasswd="'+self.ui.t_root_passwd1.text().toLocal8Bit()+'" \n')
             f.writelines("#User Password \n")
-            f.writelines('passwd="'+self.ui.t_user_passwd1.text()+'" \n')
+            f.writelines('passwd="'+self.ui.t_user_passwd1.text().toLocal8Bit()+'" \n')
             f.close()
 
     #########3   3#######
@@ -955,8 +1001,8 @@ class instalador(QDialog):
                 crea_home="-M"
                 print "Crea Home NO"
 
-            system(str('chroot '+str(target)+' /usr/sbin/useradd '+str(crea_home)+' -p "" -c "'+str(gecos)+'" -g users -G "'+str(groups[:-1])+'" '+str(login)))
-            print str('chroot '+str(target)+' /usr/sbin/useradd '+str(crea_home)+' -p "" -c "'+str(gecos)+'" -g users -G "'+str(groups[:-1])+'" '+str(login))
+            system(str('chroot '+str(target)+' /usr/sbin/useradd '+str(crea_home)+' -p "" -c "'+str(gecos.toLocal8Bit())+'" -g users -G "'+str(groups[:-1])+'" '+str(login)))
+            print str('chroot '+str(target)+' /usr/sbin/useradd '+str(crea_home)+' -p "" -c "'+str(gecos.toLocal8Bit())+'" -g users -G "'+str(groups[:-1])+'" '+str(login))
 
             system("sh scripts/install-user_passwd")
             

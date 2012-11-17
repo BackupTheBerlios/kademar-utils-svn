@@ -1,10 +1,12 @@
 [unit]
 Description="Kademar Load HDD Swap Partitions and livecd workarround"
-After=network.target
+After=basic.target
+Before=multi-user.target
 
 [Service]
 Type=oneshot
 ExecStart=/etc/rc.d/kademar-livecd start &
+ExecStop=swapoff -a
 RemainAfterExit=yes
 
 [Install]

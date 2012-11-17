@@ -10,6 +10,10 @@
 
 # Start function
 start(){
+#remove nouveau module if requested
+kernel=`ls /usr/lib/modules/ --ignore=extramodules*`
+mv /usr/lib/modules/$kernel/kernel/drivers/gpu/drm/nouveau /tmp 2>/dev/null
+mv /usr/lib/modules/$kernel/kernel/drivers/gpu/drm/radeon /tmp 2>/dev/null
 
 echo -n "Loading all swap partitions: "
  
@@ -34,12 +38,13 @@ done
  sed s-deny-allow-g -i /etc/dbus-1/system.d/org.freedesktop.NetworkManager.conf
  sed s-deny-allow-g -i /etc/dbus-1/system.d/org.freedesktop.ModemManager.conf
  
-}
+  #remove nouveau module if requested
+  kernel=`ls /usr/lib/modules/ --ignore=extramodules*`
+  mv /usr/lib/modules/$kernel/kernel/drivers/gpu/drm/nouveau /tmp
+  mv /usr/lib/modules/$kernel/kernel/drivers/gpu/drm/radeon /tmp
 
-stop(){
- swapoff -a
+ 
 }
-
 
 ### MAIN
 

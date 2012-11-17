@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ "`sudo laptop-detect ; echo $?`" = "0" ]; then
+   numlockx off
+else
+   numlockx on
+fi

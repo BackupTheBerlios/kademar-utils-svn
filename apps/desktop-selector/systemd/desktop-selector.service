@@ -1,6 +1,6 @@
 [unit]
 Description="Kademar LiveCD Xsession - Desktop-Selector"
-After=network.target
+After=systemd-user-sessions.service
 
 [Service]
 Type=oneshot
@@ -8,5 +8,5 @@ ExecStart=/etc/rc.d/kademar-livecd-xsession start &
 RemainAfterExit=yes
 
 [Install]
-WantedBy=multi-user.target
+Alias=display-manager.service
 

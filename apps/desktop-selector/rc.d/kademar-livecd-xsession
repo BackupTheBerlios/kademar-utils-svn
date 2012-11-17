@@ -53,8 +53,8 @@ start(){
 
 #remove nouveau module if requested
 kernel=`ls /usr/lib/modules/ --ignore=extramodules*`
-mv /usr/lib/modules/$kernel/kernel/drivers/gpu/drm/nouveau /tmp
-mv /usr/lib/modules/$kernel/kernel/drivers/gpu/drm/radeon /tmp
+mv /usr/lib/modules/$kernel/kernel/drivers/gpu/drm/nouveau /tmp 2>/dev/null
+mv /usr/lib/modules/$kernel/kernel/drivers/gpu/drm/radeon /tmp 2>/dev/null
 
 
  # Read default from /etc/default (Debian) and/or /etc/sysconfig (Knoppix)

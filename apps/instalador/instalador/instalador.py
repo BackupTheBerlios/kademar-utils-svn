@@ -415,12 +415,21 @@ class instalador(QDialog):
         charorig=char
         if char<>"":
             char=char[-1]
-            if char=="à" or char=="á" or char=="è" or char=="é" or char=="í" or char=="ì" or char=="ó" or char=="ò" or char=="ú" or char=="ù" or char=="ç" or char=="·" or char==" " or char=="$" or char=="#" or char=="(" or char==")" or char==" " or char=="'" or char=='"' or char=='\\' or char=='|'  or char=='^'  or char=='[' or char==']' or char=='{' or char=='}':
+            if char=="à" or char=="á" or char=="è" or char=="é" or char=="í" or char=="ì" or char=="ó" or char=="ò" or char=="ú" or char=="ù" or char=="ç" or char=="·" or char==" " or char=="$" or char=="#" or char=="(" or char==")" or char==" " or char=="'" or char=='"' or char=='\\' or char=='|'  or char=='^'  or char=='[' or char==']' or char=='{' or char=='}' or char=='/'  or char=='*' or char=='@':
                 self.showwarnmsg("critical", self.tr("Character error"), self.tr("You cannot write special characters as: \n   à, è, é, í, ò, ó, ú, (, ), ' ', ç, ·, $, #, mayus, etc"))
                 return charorig[:-1]  #Return modified line without invalid char
 
-    ## CHARACTER VALIDATOR
+    ## CHARACTER VALIDATOR FOR ACCOUNT LOGIN and GECKO
     def charvalidatoraccounts(self, char):
+        charorig=char
+        if char<>"":
+            char=char[-1]
+            if char=="'" or char=='"' or char=='\\' or char=='|'  or char=='^'  or char=='[' or char==']' or char=='{' or char=='}' or char=='/'  or char=='*' or char=='@':
+                self.showwarnmsg("critical", self.tr("Character error"), self.tr("You cannot write special characters as: \n   à, è, é, í, ò, ó, ú, (, ), ' ', ç, ·, $, #, mayus, etc"))
+                return charorig[:-1]  #Return modified line without invalid char
+
+    ## CHARACTER VALIDATOR FOR PASSWORD
+    def charvalidatorpassword(self, char):
         charorig=char
         if char<>"":
             char=char[-1]
@@ -574,14 +583,8 @@ class instalador(QDialog):
 #####
 ##  FUNCTIONS OF USER FORM
 #####
+  #fill login with user full name and check full seraching for name barbarian characters
     def fillaccount(self, char):
-        #replacers=[("à","a"),("á","a"),("è","e"),("é","e"),("í","i"),("ì","i"),("ò","o"),("ó","o"),("ú","u"),("ù","u"),("ç","c")]
-        #nom=char.split(" ")[0]  #Agafem la primera part del nom
-        #for i in replacers:
-            #nom=nom.replace(i[0], i[1])
-        #self.ui.t_user_account.setText(str(nom).lower())  #Defineix el nom del compte en minusculesç
-
-
         ret = self.charvalidatoraccounts(self.ui.t_nom.text())
         if ret or ret=="":
             self.ui.t_nom.setText(ret)
@@ -595,24 +598,27 @@ class instalador(QDialog):
         if ret or ret=="":
             self.ui.t_user_account.setText(ret)
 
-    #Use the Character Validator to confirm OK of login user
+    #Use the Character Validator to confirm OK of pass
     def charvalidatorpass1(self, line):
-        ret = self.charvalidatoraccounts(line)
+        ret = self.charvalidatorpassword(line)
         if ret or ret=="":
             self.ui.t_user_passwd1.setText(ret)
 
+    #Use the Character Validator to confirm OK of pass
     def charvalidatorpass2(self, line):
-        ret = self.charvalidatoraccounts(line)
+        ret = self.charvalidatorpassword(line)
         if ret or ret=="":
             self.ui.t_user_passwd2.setText(ret)
             
+    #Use the Character Validator to confirm OK of pass
     def charvalidatorroot1(self, line):
-        ret = self.charvalidatoraccounts(line)
+        ret = self.charvalidatorpassword(line)
         if ret or ret=="":
             self.ui.t_root_passwd1.setText(ret)
             
+    #Use the Character Validator to confirm OK of pass
     def charvalidatorroot2(self, line):
-        ret = self.charvalidatoraccounts(line)
+        ret = self.charvalidatorpassword(line)
         if ret or ret=="":
             self.ui.t_root_passwd2.setText(ret)
 

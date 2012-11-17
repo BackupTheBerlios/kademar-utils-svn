@@ -9,7 +9,8 @@ post_upgrade() {
 
 pre_remove() {
     #systemctl disable desktop-selector
-    rm -f /etc/systemd/system/multi-user.target.wants/desktop-selector.service
+    #rm -f /etc/systemd/system/multi-user.target.wants/desktop-selector.service
+    rm -f /etc/systemd/system/multi-user.target.wants/display-manager.service
 }
 
 post_remove(){
@@ -29,8 +30,8 @@ update_files() {
     rm -fr /usr/share/desktop-selector/pacmandb
 
     #systemctl enable desktop-selector
-    if [ ! -e /etc/systemd/system/multi-user.target.wants/desktop-selector.service ]; then
-      ln -s /usr/lib/systemd/system/desktop-selector.service /etc/systemd/system/multi-user.target.wants/desktop-selector.service
+    if [ ! -e '/etc/systemd/system/display-manager.service' ]; then
+      ln -s /usr/lib/systemd/system/desktop-selector.service '/etc/systemd/system/display-manager.service'
     fi
   
   fi

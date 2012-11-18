@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=oneshot
-ExecStart=nice -n 15 appset-helper &
+ExecStart=/usr/bin/nice -n 15 appset-helper &
 RemainAfterExit=yes
 
 [Install]

@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=kademar-meta-network-management-networkmanager
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 epoch=
 pkgdesc="kademar Metapackage NetworkManager as network management"
@@ -8,7 +8,7 @@ arch=(any)
 url="http://www.kademar.org"
 license=('GPL')
 groups=()
-depends=('kademar-meta-common-utils' 'networkmanager' 'modemmanager' 'mobile-broadband-provider-info' 'networkmanager-dispatcher-openntpd' 'networkmanager-dispatcher-sshd' 'networkmanager-dispatcher-netfs' 'networkmanager-dispatcher-ntpd' 'network-manager-applet' 'networkmanager-openconnect' 'networkmanager-openvpn' 'networkmanager-pptp' 'networkmanager-vpnc' 'dnsmasq' 'bluez' 'iptables' 'usb_modeswitch')
+depends=('kademar-meta-common-utils' 'networkmanager' 'modemmanager' 'mobile-broadband-provider-info' 'networkmanager-dispatcher-openntpd' 'networkmanager-dispatcher-sshd' 'networkmanager-dispatcher-netfs' 'network-manager-applet' 'networkmanager-openconnect' 'networkmanager-openvpn' 'networkmanager-pptp' 'networkmanager-vpnc' 'dnsmasq' 'bluez' 'iptables' 'usb_modeswitch')
 makedepends=()
 checkdepends=()
 optdepends=()

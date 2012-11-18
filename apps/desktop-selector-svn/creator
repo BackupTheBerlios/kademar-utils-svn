@@ -1,5 +1,11 @@
 #!/bin/bash
 
+rm -fr src pkg build
+rm -fr *xz
+rm -fr *gz
+rm -f *~
+
+
 rm -f PKGBUILD
 cp PKGBUILD.svn PKGBUILD
 makepkg -d

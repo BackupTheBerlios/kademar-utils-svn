@@ -10,7 +10,7 @@ post_upgrade() {
 pre_remove() {
     #systemctl disable desktop-selector
     #rm -f /etc/systemd/system/multi-user.target.wants/desktop-selector.service
-    rm -f /etc/systemd/system/multi-user.target.wants/display-manager.service
+    rm -f /etc/systemd/system/display-manager.service
 }
 
 post_remove(){

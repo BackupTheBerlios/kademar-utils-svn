@@ -22,10 +22,10 @@ from threadCheckspace import *
 
 #Funcio de Format i Còpia de fitxers
 class copyfiles(QThread):
-    def __init__(self, a, b, c, d ,e, f, g, h):
+    def __init__(self, a, b, c, d ,e, f, g, h, i):
         QThread.__init__(self)
         
-        global target, inicial, copiant, mkfilesystems, filesystems, particioarrel, particioswap, particiohome, labelfilesystems
+        global target, inicial, copiant, mkfilesystems, filesystems, particioarrel, particioswap, particiohome, labelfilesystems, mktunefilesystems
 
 	target=a
 	inicial=b
@@ -35,9 +35,10 @@ class copyfiles(QThread):
         particioswap=f
         particiohome=g
         labelfilesystems=h
+        mktunefilesystems=i
 
     def run(self):
-        global target, inicial, copiant, mkfilesystems, filesystems, particioarrel, particioswap, particiohome, labelfilesystems
+        global target, inicial, copiant, mkfilesystems, filesystems, particioarrel, particioswap, particiohome, labelfilesystems, mktunefilesystems
         from os import system
         from commands import getoutput
         print "Zona de Format"
@@ -54,6 +55,8 @@ class copyfiles(QThread):
             system(mkfilesystems[particioarrel[1]]+" /dev/"+particioarrel[0])
             system(labelfilesystems[particioarrel[1]].replace("$LABEL$",'"kademar 5"').replace('$DISK$','"/dev/'+particioarrel[0]+'"'))
             print  mkfilesystems[particioarrel[1]]+" /dev/"+particioarrel[0]+" Arrel"
+            if mktunefilesystems[particioarrel[1]]<>"":
+                system(mktunefilesystems[particioarrel[1]].replace("$LABEL$",'"kademar 5"').replace('$DISK$','"/dev/'+particioarrel[0]+'"'))
         if mkfilesystems[particioswap[1]]<>"":
             print "Formatant SWAP  /dev/"+particioswap[0]+" amb "+mkfilesystems[particioswap[1]]
             system(mkfilesystems[particioswap[1]]+" /dev/"+particioswap[0])

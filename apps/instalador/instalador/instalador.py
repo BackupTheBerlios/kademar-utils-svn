@@ -53,7 +53,7 @@ class instalador(QDialog):
         ######
         #  VARIABLES
         ######
-        global led_order, page_order, icona_verda, icona_taronja, icona_vermella, icona_blava, band_cat, band_esp, band_eng, copiant, fs_detector, grephalinfo, target, inicial, inicialfs, icona_hd, icona_partition, mkfilesystems, filesystems, varcopiaacabada, pathinstaller, posicioprogress, labelfilesystems
+        global led_order, page_order, icona_verda, icona_taronja, icona_vermella, icona_blava, band_cat, band_esp, band_eng, copiant, fs_detector, grephalinfo, target, inicial, inicialfs, icona_hd, icona_partition, mkfilesystems, filesystems, varcopiaacabada, pathinstaller, posicioprogress, labelfilesystems, mktunefilesystems
 
         #suport a linux-live i els burnix
         #if path.exists("/run/archiso/sfs/root-image/root-image.fs"):
@@ -94,8 +94,9 @@ class instalador(QDialog):
         grephalinfo="python2 scripts/grepproductinfo"  #Script to grep info from hal
         fs_detector="python2 scripts/fs-detector"         #Script to get hd & partition info
 
-        mkfilesystems=["mkfs.ext4","mkfs.reiserfs -q", "mkfs.ext3", "mkfs.ext2", "", "mkswap"]
         filesystems=["ext4", "reiserfs", "ext3", "ext2", "", "reiserfs"]
+        mkfilesystems=["mkfs.ext4","mkfs.reiserfs -q", "mkfs.ext3", "mkfs.ext2", "", "mkswap"]
+        mktunefilesystems["tune2fs -m 1.0 $DISK$", "reiserfs", "tune2fs -m 1.0 $DISK$", "tune2fs -m 1.0 $DISK$", "", ""]
         labelfilesystems=["e2label $DISK$ $LABEL$","reiserfstune -l $LABEL$ $DISK$", "e2label $DISK$ $LABEL$", "e2label $DISK$ $LABEL$", "", ""]
 
 
@@ -747,7 +748,7 @@ class instalador(QDialog):
 		system("mkdir -p "+inicial)
                 system("mount "+inicialfs+" "+inicial)
                 
-                self.copyfiles=copyfiles(target, inicial, mkfilesystems, filesystems, particioarrel, particioswap, particiohome, labelfilesystems)
+                self.copyfiles=copyfiles(target, inicial, mkfilesystems, filesystems, particioarrel, particioswap, particiohome, labelfilesystems, mktunefilesystems)
                 # FUNCIO COPIA
                 self.connect(self.copyfiles, SIGNAL("acabat"), self.copiaacabada)
                 self.connect(self.copyfiles, SIGNAL("progress"), self.posaprogressbar)

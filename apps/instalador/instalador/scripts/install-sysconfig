@@ -75,6 +75,9 @@ sh /usr/share/kademar/utils/instalador/scripts/locale_configurator "$LANGUAGE" "
 UUID_arrel=$(blkid $particioarrel -c /dev/null -o value -s UUID)
 UUID_swap=$(blkid $particioswap -c /dev/null -o value -s UUID)
 
+#Tune FS only reiserfs
+[ "$fsparticioarrel" = reiserfs ] && fsparticioarrel="reiserfs,notail"
+
 #Creem un fstab net amb les particions ja configurades
 cat > "$DESTI/etc/fstab" << EOF
 #/etc/fstab: static file system information.
@@ -159,11 +162,11 @@ return 0
 
 
 if [ "`laptop-detect 2>/dev/null; echo $?`" = "0" ]; then
-  lap=On
-  lap1=on
-else
   lap=Off
   lap1=off
+else
+  lap=On
+  lap1=on
 fi
 
 
@@ -225,6 +228,11 @@ fi
 #Open NTPd
 if [ -e "$DESTI/usr/lib/systemd/system/openntpd.service" -a ! -e "$DESTI/etc/systemd/system/multi-user.target.wants/openntpd.service" ]; then
   ln -s /usr/lib/systemd/system/openntpd.service "$DESTI/etc/systemd/system/multi-user.target.wants/openntpd.service"
+fi
+
+#Preload
+if [ -e "$DESTI/usr/lib/systemd/system/preload.service" -a ! -e "$DESTI/etc/systemd/system/multi-user.target.wants/preload.service" ]; then
+  ln -s '/usr/lib/systemd/system/preload.service' '/etc/systemd/system/multi-user.target.wants/preload.service'
 fi
 
 

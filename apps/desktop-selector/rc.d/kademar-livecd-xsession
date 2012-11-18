@@ -50,11 +50,10 @@ getbootparam(){
 
 # Start function
 start(){
-
-#remove nouveau module if requested
-kernel=`ls /usr/lib/modules/ --ignore=extramodules*`
-mv /usr/lib/modules/$kernel/kernel/drivers/gpu/drm/nouveau /tmp 2>/dev/null
-mv /usr/lib/modules/$kernel/kernel/drivers/gpu/drm/radeon /tmp 2>/dev/null
+#remove nouveau&radeon module if requested
+kernel=`uname -r`
+[ -e "/usr/lib/modules/$kernel/kernel/drivers/gpu/drm/nouveau" ] && mv /usr/lib/modules/$kernel/kernel/drivers/gpu/drm/nouveau /tmp 2>/dev/null
+[ -e "/usr/lib/modules/$kernel/kernel/drivers/gpu/drm/radeon" ] && mv /usr/lib/modules/$kernel/kernel/drivers/gpu/drm/radeon /tmp 2>/dev/null
 
 
  # Read default from /etc/default (Debian) and/or /etc/sysconfig (Knoppix)

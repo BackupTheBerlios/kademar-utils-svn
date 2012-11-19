@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=kademar-meta-xorg-drivers
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 epoch=
 pkgdesc="kademar Metapackage Xserver Xorg Drivers"
@@ -10,7 +10,10 @@ license=('GPL')
 groups=()
 depends=('xf86-input-acecad' 'xf86-input-aiptek' 'xf86-input-evdev' 'xf86-input-joystick' 'xf86-input-keyboard' 'xf86-input-mouse' 'xf86-input-synaptics' 'xf86-input-vmmouse' 'xf86-input-void' 'xf86-video-apm' 'xf86-video-ark' 'xf86-video-ast' 'xf86-video-ati' 'xf86-video-chips' 'xf86-video-cirrus' 'xf86-video-dummy' 'xf86-video-fbdev' 'xf86-video-glint' 'xf86-video-i128' 'xf86-video-i740' 'xf86-video-intel' 'xf86-video-mach64' 'xf86-video-mga' 'xf86-video-neomagic' 'xf86-video-nv' 'xf86-video-r128' 'xf86-video-rendition' 'xf86-video-s3' 'xf86-video-s3virge' 'xf86-video-savage' 'xf86-video-siliconmotion' 'xf86-video-sis' 'xf86-video-sisusb' 'xf86-video-tdfx' 'xf86-video-trident' 'xf86-video-tseng' 'xf86-video-v4l' 'xf86-video-vesa' 'xf86-video-vmware' 'xf86-video-nouveau' 'xf86-video-voodoo' 'xf86-input-elographics' 'xf86-video-openchrome' 'xf86-video-sisimedia' 'tdfx-dri' 'sis-dri' 'savage-dri' 'r128-dri' 'mga-dri' 'mach64-dri' 'ati-dri' 'intel-dri' 'svga-dri' 'nouveau-dri')
 if test "$CARCH" == i686; then
-  depends=("${depends[@]}" 'xf86-video-geode' 'lib32-ati-dri' 'lib32-intel-dri' 'lib32-nouveau-dri')
+  depends=("${depends[@]}" 'xf86-video-geode')
+fi
+if test "$CARCH" == x86_64; then
+  depends=("${depends[@]}" 'lib32-ati-dri' 'lib32-intel-dri' 'lib32-nouveau-dri')
 fi
 # 'xf86-video-xgi' 'xf86-video-xgixp'
 makedepends=()

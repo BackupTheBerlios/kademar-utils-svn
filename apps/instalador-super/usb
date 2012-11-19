@@ -1,0 +1,16 @@
+cd /media/somefolder/arch/boot/syslinux    #The USB drive's mount point. Do not skip this step.
+extlinux --install .                       #Type it exactly as you see it, including the dot.
+dd bs=440 conv=notrunc count=1 if=/usr/lib/syslinux/mbr.bin of=/dev/sdx
+parted /dev/sdx toggle 1 boot
+
+
+mv /media/somefolder/isolinux to syslinux
+isolinux.conf -> syslinux.conf
+
+
+
+
+Persistent
+
+    dd if=/dev/zero of=casper-rw bs=1M count=1024
+    mkfs.ext3 -F casper-rw

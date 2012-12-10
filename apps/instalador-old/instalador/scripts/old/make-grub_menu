@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#
+# Script per crear el menu del grub a la instalada
+#
+# Adonay Sanz Alsina - 24 March 2010 - GPL 2.0 or higher
+#
+
+path="/usr/share/kademar/utils/instalador/scripts"
+
+if [ -z "`dpkg -l | grep -i grub-pc | grep -i ii`" ]; then
+#grub 1
+    echo *** Grub Version 1 ***
+    sh $path/make-grub_menu-version1 2>&1
+else
+# grub2
+    echo *** Grub Version 2 ***
+    sh $path/make-grub_menu-version2 2>&1
+fi
+

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#Remove non-free from packages
+packets=""
+for i in a800-fw af9005-firmware alsa-firmware amd-ucode at76_usb-firmware b43-firmware b43-firmware-legacy b43-fwcutter bluez-firmware catalyst-dkms catalyst-utils crystalhd-firmware dvb-fe-tda10048-1.0.fw dvb-tevii-fw dvb-usb-af9015-fw dvb-usb-bluebird-fw dvb-usb-dw2102 dvb-usb-wt220u-fc03-fw ec168-firmware efibootmgr firmware-addon-dell flashplugin fwtool-git fxload gobi-loader icedtea-web-java7 intel-ucode ipw2100-fw ipw2200-fw isight-firmware-tools isl3887usb-firmware isl3890-firmware jre7-openjdk-headless kademar-meta-firmware-restricted kademar-restricted lib32-catalyst-utils linux-firmware midisport-firmware nvidia nvidia-utils rtl8192se-firmware sane-gt68xx-firmware sane-lf9452-firmware skype tiacx-firmware virtualbox virtualbox-guest-iso virtualbox-guest-modules virtualbox-guest-utils virtualbox-host-modules xc3028-fw zd1211-firmware
+do
+ [ -n "$(pacman -Q $i 2>/dev/null)" ] && packets="$packets $i"
+done
+
+
+pacman --noconfirm -Rdd $packets
+
+#use sources.list free
+# if [ -e /etc/apt/src-free ]; then
+# 	rm -f /etc/apt/sources.list
+# 	cp /etc/apt/src-free /etc/apt/sources.list
+# fi

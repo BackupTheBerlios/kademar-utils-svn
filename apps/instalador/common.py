@@ -34,6 +34,12 @@ class instalador(QMainWindow):
         self.ui.BRemoteInstall.setVisible(False)
         self.ui.LRemoteInstall.setVisible(False)
         
+        #Detect Removable Devices
+        self.removableDevicesDetected=self.listRemovableDevices()
+        if len(self.removableDevicesDetected) == 0:
+            self.ui.BNanoInstall.setVisible(False)
+            self.ui.LNanoInstall.setVisible(False)
+        
     def prepareGui(self):
         #labelList=[self.ui.LBoot,self.ui.LCopy,self.ui.LCreatingUsers,self.ui.LDisk,self.ui.LFinishedProgress,self.ui.LInstallingProgress,self.ui.LNetConfig,self.ui.LNetwork,self.ui.LPartitioning,self.ui.LProcess,self.ui.LRoot,self.ui.LSoftware,self.ui.LSystem,self.ui.LSystemInfo,self.ui.LTime,self.ui.LUsers]
         #for i in labelList:
@@ -55,6 +61,7 @@ class instalador(QMainWindow):
     def setIconVars(self):
         self.pathinstaller="."
         self.icon_partition=self.pathinstaller+"/img/partition.png"
+        self.icon_device_pendrive=self.pathinstaller+"/img/device-pendrive.png"
 
     def openGparted(self):
         system("gparted-pkexec")
@@ -100,4 +107,55 @@ class instalador(QMainWindow):
         #varReturn.append(varActual)
         return(varReturn)
         
+    def listPartitionsOfDevice(self,device):
+        result=""
+        bus = dbus.SystemBus()
+        ud_manager_obj = bus.get_object("org.freedesktop.UDisks", "/org/freedesktop/UDisks")
+        ud_manager = dbus.Interface(ud_manager_obj, 'org.freedesktop.UDisks')
+        varReturn=[]
+
+        #Get thre Real name (sometimes detected like sr0 -> device real name  /dev/scd0)
+        for dev in ud_manager.EnumerateDevices():
+            device_obj = bus.get_object("org.freedesktop.UDisks", dev)
+            device_props = dbus.Interface(device_obj, dbus.PROPERTIES_IFACE)
+            devicefile=device_props.Get('org.freedesktop.UDisks.Device', "DeviceFile")
+            if str(device).replace("/dev/","")==devicefile.replace("/dev/",""):
+                #print devicefile
+                disk=dev
+                break
+                
+        for dev in ud_manager.EnumerateDevices():
+            varActual=[]
+            device_obj = bus.get_object("org.freedesktop.UDisks", dev)
+            device_props = dbus.Interface(device_obj, dbus.PROPERTIES_IFACE)
+            isDrive=device_props.Get('org.freedesktop.UDisks.Device', "DeviceIsDrive")
+            iduuid=device_props.Get('org.freedesktop.UDisks.Device', "IdUuid")
+            label=device_props.Get('org.freedesktop.UDisks.Device', "IdLabel")
+
+            if str(dev).find(disk) != -1 and isDrive==0 and iduuid != "":
+                devicefile=device_props.Get('org.freedesktop.UDisks.Device', "DeviceFile")
+                devicefile=devicefile.strip("/dev/")
+                fs=device_props.Get('org.freedesktop.UDisks.Device', "IdType")
+                size=device_props.Get('org.freedesktop.UDisks.Device', "PartitionSize")
+                size=size/1000000
+                #if str(fs).find("swap") != -1:
+                    #result=result+" "+str(devicefile)+"-"+str(fs)+"-"+str(size)+"-82"
+                #else:
+                #result=result+" "+str(devicefile)+"-"+str(fs)+"-"+str(size)
+
+                varActual.append(devicefile)
+                varActual.append(str(size))
+                varActual.append(str(fs))
+                varActual.append(str(label))
+                #if str(fs).find("swap") != -1:
+                    #varActual.append("82")
+                #else:
+                    #varActual.append("")
+
+                varReturn.append(varActual)
+
+        #a=sorted(result.split())
+        #print(" ".join(a))
+        return(varReturn)
+
     

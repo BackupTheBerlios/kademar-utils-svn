@@ -26,32 +26,8 @@ class instalador(QMainWindow):
         self.ui.scrollArea_2.setVisible(True)
         self.ui.stackedPages.setCurrentWidget(self.ui.PNano) #go to first nano page
         self.prepareNanoConnections()
-        
-        
-        
-        #self.self.removableDevicesDetected()
-        #hddtotal=self.self.removableDevicesDetected()
-        #for i in range(self.self.removableDevicesDetected()):
-            #print(i)
-            #print hddtotal[i]
-            #hdd=hddtotal[i].split("-")[0]
-            #hddsize=int(hddtotal[i].split("-")[1])  # 20450
-            ##MB support
-            #if len(str(hddsize))<=3:
-                #hddsize=int(hddtotal[i].split("-")[1])  #J
-                #unitat=" Mb"
-            #else:
-                #hddsize=str(hddsize)[:-3]+","+str(hddsize)[-3]
-                #unitat=" Gb"
 
-            #hddsize=str(hddsize).rjust(7)
-            #hd=[]                  #Juntem tota la info del hd en una llista
-            #hd.append(hdd)         #Juntem tota la info del hd en una llista
-            #hd.append(hddsize)     #Juntem tota la info del hd en una llista
-            #CBNanoDevice.append(hd)    #Fem llista total de llistes de HD
-            #print(hd)
-        #print(self.self.removableDevicesDetected())
-        self.removableDevicesDetected=self.listRemovableDevices()
+        #Fill the Removable devices list
         #print(self.removableDevicesDetected)
         for i in range(len(self.removableDevicesDetected)):
             #print(self.removableDevicesDetected[i])
@@ -72,15 +48,37 @@ class instalador(QMainWindow):
                 hddsize1process=str(hddsize1)[:-3]
                 hddsize=hddsize1process+","+hddsize1[-3:-1]
                 unitat="Gb"
-                
-            print(hdd, hddsize,unitat,model,vendor)
+            self.ui.CBNanoDevice.addItem(QIcon(self.icon_device_pendrive),hdd+" "+hddsize+" "+unitat+" "+model+" "+vendor)
+            #print(hdd, hddsize,unitat,model,vendor)
             #hddsize=str(hddsize).rjust(7)
             #hd=[]                  #Juntem tota la info del hd en una llista
             #hd.append(hdd)         #Juntem tota la info del hd en una llista
             #hd.append(hddsize)     #Juntem tota la info del hd en una llista
             #self.ui.CBNanoDevice.append(hd)    #Fem llista total de llistes de HD
-            self.ui.CBNanoDevice.addItem(QIcon(self.icon_partition),hdd+" "+hddsize+" "+unitat+" "+model+" "+vendor)
-            #print(hd)
+
+            parts=self.listPartitionsOfDevice(hdd)
+            for i in range(len(parts)):
+                #print(self.removableDevicesDetected[i])
+                part=parts[i][0]
+                partsize=float(parts[i][1])  # 20450
+                partsize1=str(partsize).split(".")[0]
+                partsize2=str(partsize).split(".")[1]
+                fs=parts[i][2]
+                label=parts[i][3]
+                #swaptype=parts[i][4]
+
+                if len(str(partsize).split(".")[0])<=3:
+                    #print(str(hddsize).split(".")[0][:-3])#hddsize=int(self.parts[i].split("-")[1])  #J
+                    #hddsize1
+                    partsize=partsize1+","+partsize2[:2]
+                    unitat="Mb"
+                else:
+                    #hddsize=str(hddsize)[:-3]+","+str(hddsize)[-3]
+                    partsize1process=str(partsize1)[:-3]
+                    partsize=partsize1process+","+partsize1[-3:-1]
+                    unitat="Gb"
+            self.ui.CBNanoDevice.addItem(QIcon(self.icon_partition),part+" "+partsize+" "+fs+" "+unitat+" "+label)
+                #print(hd)
         
         #disk (sda) samsung bla bla 500,1gb
 	  #part1 sda1 ext4 20,9 gb

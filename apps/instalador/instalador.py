@@ -30,7 +30,6 @@ class instalador(nano.instalador, common.instalador, QMainWindow):
     self.setConnections()
     
     self.prepareNanoPath()
-     # Should print 'foo'
      
 app = QApplication(sys.argv)
 instalador = instalador()

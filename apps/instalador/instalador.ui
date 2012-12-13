@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>944</width>
-    <height>606</height>
+    <width>1045</width>
+    <height>719</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,11 +32,11 @@
          <x>0</x>
          <y>0</y>
          <width>214</width>
-         <height>551</height>
+         <height>664</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_5">
-        <item row="1" column="0">
+        <item row="2" column="0">
          <widget class="QWidget" name="WLogo" native="true">
           <property name="maximumSize">
            <size>
@@ -105,12 +105,21 @@
             </widget>
            </item>
            <item row="3" column="0">
-            <widget class="QFrame" name="FLogo">
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
+            <widget class="QLabel" name="ILogo">
+             <property name="text">
+              <string/>
              </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
+             <property name="pixmap">
+              <pixmap resource="resource.qrc">:/img/img/kademar-logo.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>false</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
@@ -126,8 +135,34 @@
            </size>
           </property>
           <layout class="QGridLayout" name="gridLayout_6">
-           <item row="0" column="0" colspan="2">
+           <item row="10" column="0" colspan="3">
+            <widget class="QLabel" name="LProcess">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Installation Process</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0" colspan="3">
             <widget class="QLabel" name="LInstaller">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>50</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <pointsize>11</pointsize>
@@ -141,22 +176,328 @@
             </widget>
            </item>
            <item row="1" column="0">
-            <widget class="QFrame" name="FSystemInfo">
+            <widget class="QLabel" name="iSystemInfo">
              <property name="maximumSize">
               <size>
                <width>16</width>
                <height>16</height>
               </size>
              </property>
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
+             <property name="text">
+              <string/>
              </property>
             </widget>
            </item>
-           <item row="1" column="1">
+           <item row="3" column="0">
+            <widget class="QLabel" name="iDisk">
+             <property name="maximumSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="iUsers">
+             <property name="maximumSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="iNetwork">
+             <property name="maximumSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="iSystem">
+             <property name="maximumSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="iSoftware">
+             <property name="maximumSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="0">
+            <widget class="QLabel" name="iLInstallingProgress">
+             <property name="maximumSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="0">
+            <widget class="QLabel" name="iLFinishedProgress">
+             <property name="maximumSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="0">
+            <widget class="QLabel" name="iPartitioning">
+             <property name="maximumSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="0">
+            <widget class="QLabel" name="iCopy">
+             <property name="maximumSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="0">
+            <widget class="QLabel" name="iRoot">
+             <property name="maximumSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="0">
+            <widget class="QLabel" name="iCreatingUsers">
+             <property name="maximumSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="16" column="0">
+            <widget class="QLabel" name="iBoot">
+             <property name="maximumSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="15" column="0">
+            <widget class="QLabel" name="iNetConfig">
+             <property name="maximumSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="1" colspan="2">
+            <widget class="QLabel" name="LPartitioning">
+             <property name="text">
+              <string>Partitioning</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="16" column="1" colspan="2">
+            <widget class="QLabel" name="LBoot">
+             <property name="text">
+              <string>Setting Boot Manager</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="15" column="1" colspan="2">
+            <widget class="QLabel" name="LNetConfig">
+             <property name="text">
+              <string>Configuring Network</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="1" colspan="2">
+            <widget class="QLabel" name="LCreatingUsers">
+             <property name="text">
+              <string>Creating users</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="1" colspan="2">
+            <widget class="QLabel" name="LRoot">
+             <property name="text">
+              <string>Setting root password</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="1" colspan="2">
+            <widget class="QLabel" name="LCopy">
+             <property name="text">
+              <string>Copying Files</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="1" colspan="2">
+            <widget class="QLabel" name="LFinishedProgress">
+             <property name="text">
+              <string>Finished</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="1" colspan="2">
+            <widget class="QLabel" name="LInstallingProgress">
+             <property name="text">
+              <string>Installing</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="1" colspan="2">
+            <widget class="QLabel" name="LSoftware">
+             <property name="text">
+              <string>Software</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1" colspan="2">
+            <widget class="QLabel" name="LNetwork">
+             <property name="text">
+              <string>Network</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1" colspan="2">
+            <widget class="QLabel" name="LSystem">
+             <property name="text">
+              <string>System</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1" colspan="2">
+            <widget class="QLabel" name="LUsers">
+             <property name="text">
+              <string>Users</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1" colspan="2">
+            <widget class="QLabel" name="LDisk">
+             <property name="text">
+              <string>Disk Setup</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1" colspan="2">
+            <widget class="QLabel" name="LTime">
+             <property name="text">
+              <string>Time &amp; Region</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1" colspan="2">
             <widget class="QLabel" name="LSystemInfo">
              <property name="text">
               <string>System Information</string>
@@ -167,380 +508,15 @@
             </widget>
            </item>
            <item row="2" column="0">
-            <widget class="QFrame" name="FTime">
+            <widget class="QLabel" name="iTime">
              <property name="maximumSize">
               <size>
                <width>16</width>
                <height>16</height>
               </size>
              </property>
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QLabel" name="LTime">
              <property name="text">
-              <string>Time &amp; Region</string>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QFrame" name="FDisk">
-             <property name="maximumSize">
-              <size>
-               <width>16</width>
-               <height>16</height>
-              </size>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1">
-            <widget class="QLabel" name="LDisk">
-             <property name="text">
-              <string>Disk Setup</string>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="0">
-            <widget class="QFrame" name="FUsers">
-             <property name="maximumSize">
-              <size>
-               <width>16</width>
-               <height>16</height>
-              </size>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="1">
-            <widget class="QLabel" name="LUsers">
-             <property name="text">
-              <string>Users</string>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0">
-            <widget class="QFrame" name="FSystem">
-             <property name="maximumSize">
-              <size>
-               <width>16</width>
-               <height>16</height>
-              </size>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="1">
-            <widget class="QLabel" name="LSystem">
-             <property name="text">
-              <string>System</string>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="0">
-            <widget class="QFrame" name="FNetwork">
-             <property name="maximumSize">
-              <size>
-               <width>16</width>
-               <height>16</height>
-              </size>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="1">
-            <widget class="QLabel" name="LNetwork">
-             <property name="text">
-              <string>Network</string>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="0">
-            <widget class="QFrame" name="FSoft">
-             <property name="maximumSize">
-              <size>
-               <width>16</width>
-               <height>16</height>
-              </size>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="1">
-            <widget class="QLabel" name="LSoftware">
-             <property name="text">
-              <string>Software</string>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="0">
-            <widget class="QFrame" name="FInstalling">
-             <property name="maximumSize">
-              <size>
-               <width>16</width>
-               <height>16</height>
-              </size>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="1">
-            <widget class="QLabel" name="LInstallingProgress">
-             <property name="text">
-              <string>Installing</string>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="9" column="0">
-            <widget class="QFrame" name="FFinished">
-             <property name="maximumSize">
-              <size>
-               <width>16</width>
-               <height>16</height>
-              </size>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="9" column="1">
-            <widget class="QLabel" name="LFinishedProgress">
-             <property name="text">
-              <string>Finished</string>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="10" column="0" colspan="2">
-            <widget class="QLabel" name="LProcess">
-             <property name="font">
-              <font>
-               <pointsize>11</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>Installation Process</string>
-             </property>
-            </widget>
-           </item>
-           <item row="11" column="0">
-            <widget class="QFrame" name="FPartitioning">
-             <property name="maximumSize">
-              <size>
-               <width>16</width>
-               <height>16</height>
-              </size>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="11" column="1">
-            <widget class="QLabel" name="LPartitioning">
-             <property name="text">
-              <string>Partitioning</string>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="12" column="0">
-            <widget class="QFrame" name="FCopy">
-             <property name="maximumSize">
-              <size>
-               <width>16</width>
-               <height>16</height>
-              </size>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="12" column="1">
-            <widget class="QLabel" name="LCopy">
-             <property name="text">
-              <string>Copying Files</string>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="13" column="0">
-            <widget class="QFrame" name="FRoot">
-             <property name="maximumSize">
-              <size>
-               <width>16</width>
-               <height>16</height>
-              </size>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="13" column="1">
-            <widget class="QLabel" name="LRoot">
-             <property name="text">
-              <string>setting root password</string>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="14" column="0">
-            <widget class="QFrame" name="FCreatingUsers">
-             <property name="maximumSize">
-              <size>
-               <width>16</width>
-               <height>16</height>
-              </size>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="14" column="1">
-            <widget class="QLabel" name="LCreatingUsers">
-             <property name="text">
-              <string>Creating users</string>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="15" column="0">
-            <widget class="QFrame" name="FNetConfig">
-             <property name="maximumSize">
-              <size>
-               <width>16</width>
-               <height>16</height>
-              </size>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="15" column="1">
-            <widget class="QLabel" name="LNetConfig">
-             <property name="text">
-              <string>Configuring Network</string>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="16" column="0">
-            <widget class="QFrame" name="FBoot">
-             <property name="maximumSize">
-              <size>
-               <width>16</width>
-               <height>16</height>
-              </size>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="16" column="1">
-            <widget class="QLabel" name="LBoot">
-             <property name="text">
-              <string>Setting Boot Manager</string>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
+              <string/>
              </property>
             </widget>
            </item>
@@ -560,9 +536,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-81</y>
-         <width>691</width>
-         <height>632</height>
+         <y>0</y>
+         <width>807</width>
+         <height>664</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
@@ -588,7 +564,7 @@
              </property>
             </spacer>
            </item>
-           <item row="0" column="3">
+           <item row="0" column="4">
             <widget class="QPushButton" name="BNext">
              <property name="layoutDirection">
               <enum>Qt::RightToLeft</enum>
@@ -607,14 +583,14 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="2">
-            <widget class="QPushButton" name="BBack">
+           <item row="0" column="0">
+            <widget class="QPushButton" name="BExit">
              <property name="text">
-              <string>Back</string>
+              <string>Exit</string>
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>../../usr/share/kademar/utils/instalador/img/back.png</normaloff>../../usr/share/kademar/utils/instalador/img/back.png</iconset>
+               <normaloff>../../usr/share/kademar/utils/instalador/img/exit.png</normaloff>../../usr/share/kademar/utils/instalador/img/exit.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -624,14 +600,14 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="0">
-            <widget class="QPushButton" name="BExit">
+           <item row="0" column="3">
+            <widget class="QPushButton" name="BBack">
              <property name="text">
-              <string>Exit</string>
+              <string>Back</string>
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>../../usr/share/kademar/utils/instalador/img/exit.png</normaloff>../../usr/share/kademar/utils/instalador/img/exit.png</iconset>
+               <normaloff>../../usr/share/kademar/utils/instalador/img/back.png</normaloff>../../usr/share/kademar/utils/instalador/img/back.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -3407,26 +3383,61 @@ p, li { white-space: pre-wrap; }
           </widget>
           <widget class="QWidget" name="PNano">
            <layout class="QGridLayout" name="gridLayout_33">
-            <item row="2" column="2">
-             <widget class="QFrame" name="FPartitionNanoInfo">
+            <item row="4" column="0">
+             <widget class="QPushButton" name="BGpartedNano">
               <property name="minimumSize">
                <size>
-                <width>32</width>
-                <height>32</height>
+                <width>0</width>
+                <height>40</height>
                </size>
               </property>
-              <property name="maximumSize">
+              <property name="text">
+               <string>Partitioning</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>../../usr/share/kademar/utils/instalador/img/gparted.png</normaloff>../../usr/share/kademar/utils/instalador/img/gparted.png</iconset>
+              </property>
+              <property name="iconSize">
                <size>
                 <width>32</width>
                 <height>32</height>
                </size>
               </property>
+             </widget>
+            </item>
+            <item row="7" column="0" colspan="2">
+             <widget class="QCheckBox" name="CHFormatNano">
+              <property name="text">
+               <string>Format the partition (Will erase all data)</string>
+              </property>
+             </widget>
+            </item>
+            <item row="11" column="0" colspan="2">
+             <widget class="QLabel" name="LChangeFilePercent">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>30%</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="1">
+             <widget class="QFrame" name="FChangesFileInfo">
               <property name="frameShape">
                <enum>QFrame::StyledPanel</enum>
               </property>
               <property name="frameShadow">
                <enum>QFrame::Raised</enum>
               </property>
+              <zorder>LChangesFileSize</zorder>
              </widget>
             </item>
             <item row="0" column="0" colspan="3">
@@ -3472,6 +3483,23 @@ p, li { white-space: pre-wrap; }
               </property>
              </widget>
             </item>
+            <item row="8" column="0">
+             <widget class="QCheckBox" name="CHChangesFile">
+              <property name="text">
+               <string>Create a save changes file</string>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="0" colspan="2">
+             <widget class="QComboBox" name="CBNanoDevice">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>40</height>
+               </size>
+              </property>
+             </widget>
+            </item>
             <item row="3" column="0" colspan="3">
              <widget class="QLabel" name="LNanoPartition">
               <property name="maximumSize">
@@ -3482,73 +3510,6 @@ p, li { white-space: pre-wrap; }
               </property>
               <property name="text">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You can create diferents partitions on usb or flash memory&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-              </property>
-              <property name="wordWrap">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="6" column="0" colspan="2">
-             <widget class="QComboBox" name="CBNanoDevice"/>
-            </item>
-            <item row="4" column="0">
-             <widget class="QPushButton" name="BGpartedNano">
-              <property name="text">
-               <string>Partitioning</string>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>../../usr/share/kademar/utils/instalador/img/gparted.png</normaloff>../../usr/share/kademar/utils/instalador/img/gparted.png</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>32</width>
-                <height>32</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item row="7" column="0" colspan="2">
-             <widget class="QCheckBox" name="CBFormatNano">
-              <property name="text">
-               <string>Format the partition (Will erase all data)</string>
-              </property>
-             </widget>
-            </item>
-            <item row="8" column="0">
-             <widget class="QCheckBox" name="CHChangesFile">
-              <property name="text">
-               <string>Create a save changes file</string>
-              </property>
-             </widget>
-            </item>
-            <item row="8" column="1">
-             <widget class="QFrame" name="FChangesFileInfo">
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="11" column="0" colspan="2">
-             <widget class="QLabel" name="LChangeFilePercent">
-              <property name="text">
-               <string>30%</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="9" column="0" colspan="2">
-             <widget class="QLabel" name="LChangesFileSize">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Size&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -3586,10 +3547,57 @@ p, li { white-space: pre-wrap; }
               </property>
              </widget>
             </item>
-            <item row="5" column="0">
+            <item row="9" column="0" colspan="2">
+             <widget class="QLabel" name="LChangesFileSize">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Size&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="0" colspan="2">
              <widget class="QLabel" name="LNanoDevice">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>50</height>
+               </size>
+              </property>
               <property name="text">
                <string>Select the device partition to install</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="2">
+             <widget class="QFrame" name="FPartitionNanoInfo">
+              <property name="minimumSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
               </property>
              </widget>
             </item>
@@ -3975,13 +3983,15 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>944</width>
+     <width>1045</width>
      <height>21</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

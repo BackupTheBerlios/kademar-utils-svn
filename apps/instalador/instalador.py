@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 import sys
@@ -13,25 +13,40 @@ from PyQt4 import uic
 #from threadCopyfiles import *
 
 import common
-import nano
+import mainPage
+import nanoPage
 
 import dbus, dbus.glib
 
 
-class instalador(nano.instalador, common.instalador, QMainWindow):
+class instalador(mainPage.instalador, nanoPage.instalador, common.instalador, QMainWindow):
   def __init__(self):
     QMainWindow.__init__(self)
     self.ui = uic.loadUi("instalador.ui", self)
     #self.ui = Ui_Form()
     #self.ui.setupUi(self)
     self.defineCommons()
-    self.prepareGui()
+    self.prepareMainPage()
     self.setIconVars()
     self.setConnections()
     
     self.prepareNanoPath()
      
 app = QApplication(sys.argv)
+
+locale = QLocale.system().name()   #ca_ES
+qtTranslator = QTranslator()
+if qtTranslator.load("/usr/share/kademar/utils/instalador/tr/"+locale.split("_")[0]+".qm"):
+    app.installTranslator(qtTranslator)
+    #print "Loaded "+locale
+elif qtTranslator.load("/usr/share/kademar/utils/instalador/tr/en.qm"):
+    app.installTranslator(qtTranslator)
+    #print "Loaded "+locale
+
+qtTranslatorQT = QTranslator()
+qtTranslatorQT.load("qt_"+locale, "/usr/share/qt4/translations")
+app.installTranslator(qtTranslatorQT)
+
 instalador = instalador()
 instalador.show()
 	#global args

@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import sys
 from PyQt4.QtGui import *
 #from PyQt4 import *
@@ -20,6 +23,7 @@ class instalador(QMainWindow):
     def defineCommons(self):
         #Define to Zero
         self.choosedPath=[]
+        self.pagePosition=0
       
         #self.pagePathNano=[self.ui.PMain]
         self.ui.stackedPages.setCurrentWidget(self.ui.PMain) #go to fist main page
@@ -40,21 +44,11 @@ class instalador(QMainWindow):
             self.ui.BNanoInstall.setVisible(False)
             self.ui.LNanoInstall.setVisible(False)
         
-    def prepareGui(self):
-        #labelList=[self.ui.LBoot,self.ui.LCopy,self.ui.LCreatingUsers,self.ui.LDisk,self.ui.LFinishedProgress,self.ui.LInstallingProgress,self.ui.LNetConfig,self.ui.LNetwork,self.ui.LPartitioning,self.ui.LProcess,self.ui.LRoot,self.ui.LSoftware,self.ui.LSystem,self.ui.LSystemInfo,self.ui.LTime,self.ui.LUsers]
-        #for i in labelList:
-            #i.setVisible(False)
-        
-        #stateList=[self.ui.FBoot,self.ui.FCopy,self.ui.FCreatingUsers,self.ui.FDisk,self.ui.FFinished,self.ui.FFinished,self.ui.FInstalling,self.ui.FNetConfig,self.ui.FNetwork,self.ui.FPartitioning,self.ui.FRoot,self.ui.FSoft,self.ui.FSystem,self.ui.FSystemInfo,self.ui.FTime,self.ui.FUsers]
-        #for i in stateList:
-            #i.setVisible(False)
-        self.ui.BBack.setVisible(False)
-        self.ui.BNext.setVisible(False)
-        self.ui.scrollArea_2.setVisible(False)
-        
     def setConnections(self):
         self.connect(self.ui.BExit, SIGNAL("clicked()"), self.close)
-        
+        self.connect(self.ui.BBack, SIGNAL("clicked()"), self.backButton)
+        self.connect(self.ui.BNext, SIGNAL("clicked()"), self.nextButton)
+
         self.connect(self.ui.BNanoInstall, SIGNAL("clicked()"), self.prepareNanoPath)
 
         
@@ -157,5 +151,39 @@ class instalador(QMainWindow):
         #a=sorted(result.split())
         #print(" ".join(a))
         return(varReturn)
-
+        
+        
+    def backButton(self):
+        if self.pagePosition>0:
+            self.pagePosition=self.pagePosition-1
+            self.ui.stackedPages.setCurrentWidget(self.choosedPath[self.pagePosition])
+            self.processPageOnEnter()
+        #print(self.choosedPath.indexOf(self.ui.stackedPages.currentWidget()))
+        
+    def nextButton(self):
+        if len(self.choosedPath)-1>self.pagePosition:
+            if self.processPageBeforeNext() == True:
+                self.pagePosition=self.pagePosition+1
+                self.ui.stackedPages.setCurrentWidget(self.choosedPath[self.pagePosition])
+        #print(self.choosedPath.indexOf(self.ui.stackedPages.currentWidget()))
+        
+    def processPageOnEnter(self):
+        if self.choosedPath[self.pagePosition]== self.ui.PMain:
+            self.prepareMainPage()
     
+    def processPageBeforeNext(self):
+        if self.choosedPath[self.pagePosition]== self.ui.PNano:
+            return self.processNanoPageBeforeNext()
+        else:
+            return True
+    
+    ##  FUNCIONS DE WARNING
+    def showWarningMessage(self, tipu, miss1, miss2):
+        if tipu=="critical":
+            QMessageBox.critical(self, miss1, miss2, QMessageBox.Ok)
+        if tipu=="warning":
+            return QMessageBox.critical(self, miss1, miss2, QMessageBox.Retry, QMessageBox.Ignore)
+        if tipu=="infopreg":
+            return QMessageBox.critical(self, miss1, miss2, QMessageBox.Yes| QMessageBox.No,  QMessageBox.No)
+        if tipu=="info":
+            QMessageBox.critical(self, miss1, miss2, QMessageBox.Ok)    

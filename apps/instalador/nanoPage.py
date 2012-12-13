@@ -13,31 +13,37 @@ class instalador(QMainWindow):
       #Inst. Avanç: PMain . PInfo . PTime . PDisk . PUsers . PSystem .
       #PNet . PSoft . PInstalling . PEnd
       #Inst. Nano: PMain . PNano . PInstalling . PEnd
-      
+
     def prepareNanoPath(self):    
+        self.ui.CBNanoDevice.blockSignals(True)
+        self.selectedDeviceToInstall=[]
+
+        self.totalSizeOfKademar=self.getSizeOfMountedDevice("/media/f96f9953-8ea6-4a13-995d-6e7baccf8535/archlive/releng64/out/a")
+        #self.totalSizeOfKademar=self.getSizeOfMountedDevice("/media/Isos")
+        #self.totalSizeOfKademar=self.getSizeOfMountedDevice("/run/archiso/bootmnt")
+
         #Hide from kademar Installer 
         for i in [self.ui.LTime, self.ui.LUsers, self.ui.LSystem, self.ui.LNetwork, self.ui.LSoftware]:
             i.setVisible(False)
-        
+
         for i in [self.ui.iTime, self.ui.iUsers, self.ui.iSystem, self.ui.iNetwork, self.ui.iSoftware]:
             i.setVisible(False)
-            
+
         #hide from installation process
         for i in [self.ui.LPartitioning, self.ui.LRoot, self.ui.LCreatingUsers, self.ui.LNetConfig]:
             i.setVisible(False)
-            
+
         for i in [self.ui.iPartitioning, self.ui.iRoot, self.ui.iCreatingUsers, self.ui.iNetConfig]:
             i.setVisible(False)
-        
-        
-        
+
+
         #labelList=[self.ui.LBoot,self.ui.LCopy,self.ui.LCreatingUsers,self.ui.LDisk,self.ui.LFinishedProgress,self.ui.LInstallingProgress,self.ui.LNetConfig,self.ui.LNetwork,self.ui.LPartitioning,self.ui.LProcess,self.ui.LRoot,self.ui.LSoftware,self.ui.LSystem,self.ui.LSystemInfo,self.ui.LTime,self.ui.LUsers]
         #for i in labelList:
             #i.setVisible(False)
         #stateList=[self.ui.FBoot,self.ui.FCopy,self.ui.FCreatingUsers,self.ui.FDisk,self.ui.FFinished,self.ui.FFinished,self.ui.FInstalling,self.ui.FNetConfig,self.ui.FNetwork,self.ui.FPartitioning,self.ui.FRoot,self.ui.FSoft,self.ui.FSystem,self.ui.FSystemInfo,self.ui.FTime,self.ui.FUsers]
         #for i in stateList:
             #i.setVisible(False)
-            
+
         self.choosedPath=[self.ui.PMain, self.ui.PNano, self.ui.PInstalling, self.ui.PEnd]
         self.ui.CHChangesFile.setChecked(False)
         self.permanentChangesFileCheckboxChanged()
@@ -48,7 +54,6 @@ class instalador(QMainWindow):
         #self.ui.CHChangesFile.setChecked(False)
         self.prepareNanoConnections()
 
-
         self.completeListDevices=[]
         self.itemList=[]
         self.model = QStandardItemModel()
@@ -57,11 +62,11 @@ class instalador(QMainWindow):
         #self.model.setHeaderData(1, Qt.Horizontal, "Size");
         #self.model.setHeaderData(2, Qt.Horizontal, "Information");
         #self.model.setHeaderData(3, Qt.Horizontal, "Fs");
-        
+
         self.view.setModel(self.model)
         parent = self.model.invisibleRootItem()
         self.view.setIconSize(QSize(40,30))
-	
+
 	##Empty Partition&Device ComboBox 
        #self.ui.CBNanoDevice.clear()
         #Fill the Removable devices list
@@ -70,25 +75,15 @@ class instalador(QMainWindow):
             #print(self.removableDevicesDetected[i])
             hdd=self.removableDevicesDetected[i][0]
             hddsize=float(self.removableDevicesDetected[i][1])  # 20450
-            hddsize1=str(hddsize).split(".")[0]
-            hddsize2=str(hddsize).split(".")[1]
             model=self.removableDevicesDetected[i][2]
             vendor=self.removableDevicesDetected[i][3]
 
-            if len(str(hddsize).split(".")[0])<=3:
-                #print(str(hddsize).split(".")[0][:-3])#hddsize=int(self.removableDevicesDetected[i].split("-")[1])  #J
-                #hddsize1
-                hddsize=hddsize1+","+hddsize2[:2]
-                unitat="Mb"
-            else:
-                #hddsize=str(hddsize)[:-3]+","+str(hddsize)[-3]
-                hddsize1process=str(hddsize1)[:-3]
-                hddsize=hddsize1process+","+hddsize1[-3:-1]
-                unitat="Gb"
+            size,unit=self.convertSizeAndUnits(hddsize)
+
             #self.ui.CBNanoDevice.addItem(QIcon(self.icon_device_pendrive),hdd+" "+hddsize+" "+unitat+" "+model+" "+vendor)
-            self.completeListDevices.append([hdd,hddsize,unitat,model,vendor])
+            self.completeListDevices.append([hdd,hddsize,unit,model,vendor])
             self.itemList.append(QStandardItem(QIcon(self.icon_device_pendrive), self.tr("Disk")+" "+hdd))
-            self.itemList.append(QStandardItem(hddsize+" "+unitat))
+            self.itemList.append(QStandardItem(size+" "+unit))
             self.itemList.append(QStandardItem(str(model+" "+vendor)))
             self.itemList.append(QStandardItem(" "))
             self.itemList[len(self.itemList)-4].setSelectable(False)
@@ -104,36 +99,23 @@ class instalador(QMainWindow):
                 #it3,
                 ])
 
-
             actualparent=self.itemList[len(self.itemList)-4]
             parts=self.listPartitionsOfDevice(hdd)
             for i in range(len(parts)):
                 #print(self.removableDevicesDetected[i])
                 part=parts[i][0]
                 partsize=float(parts[i][1])  # 20450
-                partsize1=str(partsize).split(".")[0]
-                partsize2=str(partsize).split(".")[1]
                 fs=parts[i][2]
                 label=parts[i][3]
                 #swaptype=parts[i][4]
 
-                if len(str(partsize).split(".")[0])<=3:
-                    #print(str(hddsize).split(".")[0][:-3])#hddsize=int(self.parts[i].split("-")[1])  #J
-                    #hddsize1
-                    partsize=partsize1+","+partsize2[:2]
-                    unitat="Mb"
-                else:
-                    #hddsize=str(hddsize)[:-3]+","+str(hddsize)[-3]
-                    partsize1process=str(partsize1)[:-3]
-                    partsize=partsize1process+","+partsize1[-3:-1]
-                    unitat="Gb"
+                size,unit=self.convertSizeAndUnits(partsize)
 
-                self.completeListDevices.append([part,partsize,unitat,fs,label])
+                self.completeListDevices.append([part,partsize,unit,fs,label])
                 self.itemList.append(QStandardItem(QIcon(self.icon_partition),  self.tr("Partition")+"  "+part))
-                self.itemList.append(QStandardItem(partsize+" "+unitat))
+                self.itemList.append(QStandardItem(size+" "+unit))
                 self.itemList.append(QStandardItem(str(label)))
                 self.itemList.append(QStandardItem(str(fs)))
-                
 
                 actualparent.appendRow([
                     self.itemList[len(self.itemList)-4],
@@ -144,16 +126,11 @@ class instalador(QMainWindow):
                     ])
             #self.ui.CBNanoDevice.addItem(QIcon(self.icon_partition),part+" "+partsize+" "+fs+" "+unitat+" "+label)
                 #print(hd)
-                
+
         self.view.adjustSize()
         self.view.setAutoExpandDelay(0)
         self.view.header().hide()
-        #self.model.child(1).appendRow([
-                #QStandardItem("besa"),
-                #QStandardItem("hola"),
-                #QStandardItem(),
-                #])
-                
+
         self.ui.CBNanoDevice.setView(self.view)
         self.ui.CBNanoDevice.setModel(self.model)
         self.ui.CBNanoDevice.setCurrentIndex(-1)
@@ -167,30 +144,48 @@ class instalador(QMainWindow):
         self.view.resizeColumnToContents(1)
         self.view.resizeColumnToContents(2)
         self.view.resizeColumnToContents(3)
+        self.ui.CBNanoDevice.blockSignals(False)
         self.nextButton() #go to first nano page
 
-        
     def prepareNanoConnections(self):
         self.connect(self.ui.BGpartedNano, SIGNAL("clicked()"), self.openGparted)
         self.connect(self.ui.SChangeFile, SIGNAL("valueChanged(int)"), self.permanentChangesFileSliderValueChanged)
         self.connect(self.ui.CHChangesFile, SIGNAL("stateChanged(int)"), self.permanentChangesFileCheckboxChanged)
         self.connect(self.ui.CBNanoDevice, SIGNAL("currentIndexChanged(int)"), self.activateOptionsBeforeDeviceIsSelected)
-        
+
     def processNanoPageBeforeNext(self):
-        if self.workingList == []:
+        if self.selectedDeviceToInstall == []:
             self.showWarningMessage("critical", self.tr("Error: No partition selected"), self.tr("You should select a a partition to install"))
             return False
-            
+
         if self.ui.CHFormatNano.isChecked() == True:
-            reply = self.showWarningMessage("infopreg", self.tr("Begin of installation process"), self.tr("Will be erased ALL data of the selected partition!!!\n\nFor more security, it's recommended to have a backup of data of your drive."))
+            reply = self.showWarningMessage("infopreg", self.tr("Begin of installation process!"), self.tr("Caution: Lose data is possible!!!\n\n\nWill be erased ALL data of the selected partition!!!\n\nFor more security, it's recommended to have a backup of your device."))
             if reply != QMessageBox.Yes:
                 return False
+        else:
+            reply = self.showWarningMessage("infopreg", self.tr("Begin of installation process!"), self.tr("Your data from your USB device will remain.\n\nTo be more sure, it's recommended to have a backup of your device."))
+            
+            #Folders with name 'kademar' and '_persistent' will be permanently deleted and overwrite if exists
+            
+            #Les dades del dispositiu USB es CONSERVARAN\n\nDurant el procés d'instal·lació no podrà accedir al seu dispositiu USB,\n  Es BORRARA el contingut de les carpetes 'boot', 'kademar' i 'html' en cas d'existir. Vagi en compte.\n\nPer a més seguretat, es recomana tenir una còpia de seguretat de les dades."))
         
+            if reply != QMessageBox.Yes:
+                return False
+                
         return True
 
     def permanentChangesFileSliderValueChanged(self, int):
-        self.ui.LChangeFilePercent.setText(str(int)+"%")
-        
+        self.totalSizeOfDevice=self.selectedDeviceToInstall[1]
+        #print(self.totalSizeOfDevice)
+        #print(self.totalSizeOfKademar)
+        #print(self.totalSizeOfDevice-self.totalSizeOfKademar)
+        #print(str(self.totalSizeOfDevice-self.totalSizeOfKademar)[0]) #if it's "-" means device it's too small for install kademar
+        self.realChangeFileSize=int*self.totalFreeSizeAfterInstallation/100
+        #print(self.realChangeFileSize)
+        size,unit=self.convertSizeAndUnits(self.realChangeFileSize)
+        self.ui.LChangeFilePercent.setText(str(int)+"%  ("+str(size)+" "+str(unit)+")")
+
+
     def permanentChangesFileCheckboxChanged(self):
         state=self.ui.CHChangesFile.isChecked()
         self.ui.LChangeFilePercent.setVisible(state)
@@ -202,10 +197,9 @@ class instalador(QMainWindow):
         if int!=-1:
             self.ui.CHChangesFile.setEnabled(True)
             self.ui.CHFormatNano.setEnabled(True)
-            
+
             #Select the working sublist of device (contains all partition selected information)
             #print(self.completeListDevices)
-            self.workingList=[]
             search = self.ui.CBNanoDevice.currentText()
             if search != "":
                 search=search.split()[1]
@@ -214,5 +208,17 @@ class instalador(QMainWindow):
                     if sublist[0] == search:
                         #print("Found it!", sublist)
                         #Found it! ['sdc1', '3,96', 'Gb', 'vfat', 'V7']
-                        self.workingList=sublist
+                        self.selectedDeviceToInstall=sublist
                         break
+                self.totalSizeOfDevice=self.selectedDeviceToInstall[1]
+                #print(self.totalSizeOfDevice)
+                #print(self.totalSizeOfDevice-self.totalSizeOfKademar)
+                self.totalFreeSizeAfterInstallation=self.totalSizeOfDevice-self.totalSizeOfKademar
+
+                if str(self.totalFreeSizeAfterInstallation)[0] == "-": #if it's "-" means device it's too small for install kademar
+                    self.showWarningMessage("critical", "Error: The selected partition it's too small", "The selectted partition to install it's too small, choose other.")
+                    self.ui.CBNanoDevice.setCurrentIndex(-1)
+                else:
+                    #self.permanentChangesFileSliderValueChanged(30)
+                    self.ui.SChangeFile.setValue(0)
+                    self.ui.SChangeFile.setValue(30)

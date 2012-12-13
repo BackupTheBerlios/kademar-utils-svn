@@ -13,8 +13,6 @@ import dbus
 
 class instalador(QMainWindow):
     #def __init__(self):
-      #print("juas")
-
       #Inst. rapida: PMain -> PInfo -> PQuickInstall -> PInstalling -> PEnd
       #Inst. Avanç: PMain -> PInfo -> PTime -> PDisk -> PUsers -> PSystem ->
       #PNet -> PSoft -> PInstalling -> PEnd
@@ -152,6 +150,23 @@ class instalador(QMainWindow):
         #print(" ".join(a))
         return(varReturn)
         
+    def getSizeOfMountedDevice(self,var):
+        bus = dbus.SystemBus()
+        ud_manager_obj = bus.get_object("org.freedesktop.UDisks", "/org/freedesktop/UDisks")
+        ud_manager = dbus.Interface(ud_manager_obj, 'org.freedesktop.UDisks')
+        
+        for dev in ud_manager.EnumerateDevices():
+            varActual=[]
+            device_obj = bus.get_object("org.freedesktop.UDisks", dev)
+            #print dev
+            device_props = dbus.Interface(device_obj, dbus.PROPERTIES_IFACE)
+            mount=device_props.Get('org.freedesktop.UDisks.Device', "DeviceMountPaths")
+            matching = [s for s in mount if var in s]
+            if matching:
+                size=device_props.Get('org.freedesktop.UDisks.Device', "PartitionSize")
+                size=size/1000000
+                return size
+        
         
     def backButton(self):
         if self.pagePosition>0:
@@ -176,6 +191,25 @@ class instalador(QMainWindow):
             return self.processNanoPageBeforeNext()
         else:
             return True
+    
+    def convertSizeAndUnits(self,size):
+
+        size1=str(size).split(".")[0]
+        size2=str(size).split(".")[1]
+        #print(size1)
+        #print(size2)
+        if len(str(size).split(".")[0])<=3:
+            #print(str(hddsize).split(".")[0][:-3])#hddsize=int(self.parts[i].split("-")[1])  #J
+            #hddsize1
+            size=size1+","+size2[:2]
+            unit="Mb"
+        else:
+            #hddsize=str(hddsize)[:-3]+","+str(hddsize)[-3]
+            size1process=str(size1)[:-3]
+            size=size1process+","+size1[-3:-1]
+            unit="Gb"
+    
+        return size,unit
     
     ##  FUNCIONS DE WARNING
     def showWarningMessage(self, tipu, miss1, miss2):

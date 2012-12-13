@@ -3531,7 +3531,7 @@ p, li { white-space: pre-wrap; }
                <number>0</number>
               </property>
               <property name="value">
-               <number>30</number>
+               <number>0</number>
               </property>
               <property name="orientation">
                <enum>Qt::Horizontal</enum>

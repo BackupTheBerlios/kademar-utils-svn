@@ -14,14 +14,22 @@ import dbus
 class instalador(QMainWindow):
     #def __init__(self):
       #Inst. rapida: PMain -> PInfo -> PQuickInstall -> PInstalling -> PEnd
-      #Inst. Avanç: PMain -> PInfo -> PTime -> PDisk -> PUsers -> PSystem ->
-      #PNet -> PSoft -> PInstalling -> PEnd
+      #Inst. Avanç: PMain -> PInfo -> PTime -> PDisk -> PUsers -> PSystem -> PNet -> PSoft -> PInstalling -> PEnd
       #Inst. Nano: PMain -> PNano -> PInstalling -> PEnd
       
     def defineCommons(self):
         #Define to Zero
         self.choosedPath=[]
         self.pagePosition=0
+        self.copying=0
+        self.endedCopy=0
+        self.kademarType="Kademar"
+        self.pathInstaller="."        
+        self.bus = dbus.SystemBus()
+        self.ud_manager_obj = self.bus.get_object("org.freedesktop.UDisks", "/org/freedesktop/UDisks")
+        self.ud_manager = dbus.Interface(self.ud_manager_obj, 'org.freedesktop.UDisks')
+      
+        self.lookDeviceUdisksChangesReloadList()
       
         #self.pagePathNano=[self.ui.PMain]
         self.ui.stackedPages.setCurrentWidget(self.ui.PMain) #go to fist main page
@@ -38,9 +46,13 @@ class instalador(QMainWindow):
         
         #Detect Removable Devices
         self.removableDevicesDetected=self.listRemovableDevices()
+        #print("ara", self.removableDevicesDetected)
         if len(self.removableDevicesDetected) == 0:
             self.ui.BNanoInstall.setVisible(False)
             self.ui.LNanoInstall.setVisible(False)
+        else:
+            self.ui.BNanoInstall.setVisible(True)
+            self.ui.LNanoInstall.setVisible(True)
         
     def setConnections(self):
         self.connect(self.ui.BExit, SIGNAL("clicked()"), self.close)
@@ -49,24 +61,25 @@ class instalador(QMainWindow):
 
         self.connect(self.ui.BNanoInstall, SIGNAL("clicked()"), self.prepareNanoPath)
 
-        
+    def closeEvent(self, event):
+        if self.copying:
+            self.showWarningMessage("critical", self.tr("Installer cannot be closed"), self.tr("Installer is working and it cannot be closed until it finish."),)
+            event.ignore()
+            
     def setIconVars(self):
-        self.pathinstaller="."
-        self.icon_partition=self.pathinstaller+"/img/partition.png"
-        self.icon_device_pendrive=self.pathinstaller+"/img/device-pendrive.png"
+        self.icon_partition=":/img/img/partition.png"
+        self.icon_device_pendrive=":/img/img/device-pendrive.png"
 
     def openGparted(self):
         system("gparted-pkexec")
         
     def listRemovableDevices(self):
-        bus = dbus.SystemBus()
-        ud_manager_obj = bus.get_object("org.freedesktop.UDisks", "/org/freedesktop/UDisks")
-        ud_manager = dbus.Interface(ud_manager_obj, 'org.freedesktop.UDisks')
+
         varReturn=[]
         
-        for dev in ud_manager.EnumerateDevices():
+        for dev in self.ud_manager.EnumerateDevices():
             varActual=[]
-            device_obj = bus.get_object("org.freedesktop.UDisks", dev)
+            device_obj = self.bus.get_object("org.freedesktop.UDisks", dev)
             #print dev
             device_props = dbus.Interface(device_obj, dbus.PROPERTIES_IFACE)
             isDrive=device_props.Get('org.freedesktop.UDisks.Device', "DeviceIsDrive")
@@ -101,54 +114,57 @@ class instalador(QMainWindow):
         
     def listPartitionsOfDevice(self,device):
         result=""
-        bus = dbus.SystemBus()
-        ud_manager_obj = bus.get_object("org.freedesktop.UDisks", "/org/freedesktop/UDisks")
-        ud_manager = dbus.Interface(ud_manager_obj, 'org.freedesktop.UDisks')
         varReturn=[]
+        #print (device)
+        disk=""
 
         #Get thre Real name (sometimes detected like sr0 -> device real name  /dev/scd0)
-        for dev in ud_manager.EnumerateDevices():
-            device_obj = bus.get_object("org.freedesktop.UDisks", dev)
+        for dev in self.ud_manager.EnumerateDevices():
+            device_obj = self.bus.get_object("org.freedesktop.UDisks", dev)
             device_props = dbus.Interface(device_obj, dbus.PROPERTIES_IFACE)
             devicefile=device_props.Get('org.freedesktop.UDisks.Device', "DeviceFile")
             if str(device).replace("/dev/","")==devicefile.replace("/dev/",""):
                 #print devicefile
                 disk=dev
-                break
-                
-        for dev in ud_manager.EnumerateDevices():
-            varActual=[]
-            device_obj = bus.get_object("org.freedesktop.UDisks", dev)
-            device_props = dbus.Interface(device_obj, dbus.PROPERTIES_IFACE)
-            isDrive=device_props.Get('org.freedesktop.UDisks.Device', "DeviceIsDrive")
-            iduuid=device_props.Get('org.freedesktop.UDisks.Device', "IdUuid")
-            label=device_props.Get('org.freedesktop.UDisks.Device', "IdLabel")
+        #print(disk)
+        if disk !="":
+            for dev in self.ud_manager.EnumerateDevices():
+                varActual=[]
+                device_obj = self.bus.get_object("org.freedesktop.UDisks", dev)
+                device_props = dbus.Interface(device_obj, dbus.PROPERTIES_IFACE)
+                isDrive=device_props.Get('org.freedesktop.UDisks.Device', "DeviceIsDrive")
+                iduuid=device_props.Get('org.freedesktop.UDisks.Device', "IdUuid")
+                label=device_props.Get('org.freedesktop.UDisks.Device', "IdLabel")
 
-            if str(dev).find(disk) != -1 and isDrive==0 and iduuid != "":
-                devicefile=device_props.Get('org.freedesktop.UDisks.Device', "DeviceFile")
-                devicefile=devicefile.strip("/dev/")
-                fs=device_props.Get('org.freedesktop.UDisks.Device', "IdType")
-                size=device_props.Get('org.freedesktop.UDisks.Device', "PartitionSize")
-                size=size/1000000
-                #if str(fs).find("swap") != -1:
-                    #result=result+" "+str(devicefile)+"-"+str(fs)+"-"+str(size)+"-82"
-                #else:
-                #result=result+" "+str(devicefile)+"-"+str(fs)+"-"+str(size)
+                if str(dev).find(disk) != -1 and isDrive==0 and iduuid != "":
+                    devicefile=device_props.Get('org.freedesktop.UDisks.Device', "DeviceFile")
+                    devicefile=devicefile.strip("/dev/")
+                    fs=device_props.Get('org.freedesktop.UDisks.Device', "IdType")
+                    size=device_props.Get('org.freedesktop.UDisks.Device', "PartitionSize")
+                    size=size/1000000
+                    #if str(fs).find("swap") != -1:
+                        #result=result+" "+str(devicefile)+"-"+str(fs)+"-"+str(size)+"-82"
+                    #else:
+                    #result=result+" "+str(devicefile)+"-"+str(fs)+"-"+str(size)
+                    varActual.append(devicefile)
+                    varActual.append(str(size))
+                    varActual.append(str(fs))
+                    varActual.append(str(label))
+                    #if str(fs).find("swap") != -1:
+                        #varActual.append("82")
+                    #else:
+                        #varActual.append("")
 
-                varActual.append(devicefile)
-                varActual.append(str(size))
-                varActual.append(str(fs))
-                varActual.append(str(label))
-                #if str(fs).find("swap") != -1:
-                    #varActual.append("82")
-                #else:
-                    #varActual.append("")
+                    varReturn.append(varActual)
 
-                varReturn.append(varActual)
-
-        #a=sorted(result.split())
-        #print(" ".join(a))
-        return(varReturn)
+            #a=sorted(result.split())
+            #print(" ".join(a))
+            return(varReturn)
+        
+    def getUsedSpaceOfMountedDevice(self,var):
+        size=self.execShellProcess("/bin/sh", "-c", "df "+var+" | grep -i "+var+" | awk ' { print $3 } '")
+        size=float(size)/1000
+        return rize
         
     def getSizeOfMountedDevice(self,var):
         bus = dbus.SystemBus()
@@ -180,11 +196,24 @@ class instalador(QMainWindow):
             if self.processPageBeforeNext() == True:
                 self.pagePosition=self.pagePosition+1
                 self.ui.stackedPages.setCurrentWidget(self.choosedPath[self.pagePosition])
+                QApplication.processEvents()
+                self.processPageOnEnter()
+                QApplication.processEvents()
         #print(self.choosedPath.indexOf(self.ui.stackedPages.currentWidget()))
         
     def processPageOnEnter(self):
-        if self.choosedPath[self.pagePosition]== self.ui.PMain:
+        actualPage=self.choosedPath[self.pagePosition]
+        if actualPage== self.ui.PMain:
             self.prepareMainPage()
+        elif actualPage == self.ui.PInstalling:
+            if [x for x in range(len(self.choosedPath)) if self.choosedPath[x]==self.ui.PNano]:
+                self.prepareInstallNanoCopy()
+        elif actualPage== self.ui.PEnd:
+            self.prepareEndPage()
+        QApplication.processEvents()
+
+
+            #self.prepareCopy()
     
     def processPageBeforeNext(self):
         if self.choosedPath[self.pagePosition]== self.ui.PNano:
@@ -221,3 +250,30 @@ class instalador(QMainWindow):
             return QMessageBox.critical(self, miss1, miss2, QMessageBox.Yes| QMessageBox.No,  QMessageBox.No)
         if tipu=="info":
             QMessageBox.critical(self, miss1, miss2, QMessageBox.Ok)    
+            
+            
+    def execShellProcess(self, idCommand, idParam = "", idParam2 = ""):
+        param=[]
+        if idParam:
+            param.append(idParam)
+        if idParam2:
+            param.append(idParam2)
+        proc = QProcess()
+        proc.start(idCommand, param)
+        proc.waitForFinished()
+        result = proc.readAll()
+        #print(str(result))
+        proc.close()
+        return str(result)
+
+####
+## HARDWARE CHANGES DETECTOR - RELOAD DEVICE LIST
+####
+
+    def lookDeviceUdisksChangesReloadList(self):
+        self.ud_manager.connect_to_signal('DeviceAdded', self.fillListOfDevicesOnCombobox)
+        self.ud_manager.connect_to_signal('DeviceRemoved', self.fillListOfDevicesOnCombobox)
+
+#####
+##  END HARDWARE CHANGES DETECTOR - RELOAD DEVICE LIST
+#####

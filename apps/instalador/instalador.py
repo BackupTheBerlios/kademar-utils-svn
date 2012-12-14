@@ -15,11 +15,13 @@ from PyQt4 import uic
 import common
 import mainPage
 import nanoPage
-
+import installingPage
+import endPage
+import resource
 import dbus, dbus.glib
 
 
-class instalador(mainPage.instalador, nanoPage.instalador, common.instalador, QMainWindow):
+class instalador(endPage.instalador, installingPage.instalador, mainPage.instalador, nanoPage.instalador, common.instalador, QMainWindow):
   def __init__(self):
     QMainWindow.__init__(self)
     self.ui = uic.loadUi("instalador.ui", self)
@@ -30,7 +32,7 @@ class instalador(mainPage.instalador, nanoPage.instalador, common.instalador, QM
     self.setIconVars()
     self.setConnections()
     
-    self.prepareNanoPath()
+    #self.prepareNanoPath() #remove it later
      
 app = QApplication(sys.argv)
 

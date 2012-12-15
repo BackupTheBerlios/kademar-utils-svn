@@ -22,7 +22,7 @@ class instalador(QMainWindow):
 
         #self.totalSizeOfKademar=self.getSizeOfMountedDevice("/media/f96f9953-8ea6-4a13-995d-6e7baccf8535/archlive/releng64/out/a")
         #self.totalSizeOfKademar=self.getSizeOfMountedDevice("/media/Isos")
-        self.getDeviceKademarIsBootingFrom=self.getDeviceKademarIsBootingFrom("/run/archiso/bootmnt") #know from where kademar is booting
+        self.deviceKademarIsBootingFrom=self.getDeviceKademarIsBootingFrom("/run/archiso/bootmnt") #know from where kademar is booting
         self.totalSizeOfKademar=self.getUsedSpaceOfMountedDevice("/run/archiso/bootmnt") #get size of kademar to check it later if fits on the drvive
 
         #Hide from kademar Installer 
@@ -107,7 +107,7 @@ class instalador(QMainWindow):
                 parts=self.listPartitionsOfDevice(hdd)
                 #print(parts)
                 #Only append all HDD if has partitions (failed show when desconnecting pendrives)
-                if self.getDeviceKademarIsBootingFrom != hdd: #hide from where is booting from
+                if self.deviceKademarIsBootingFrom != hdd: #hide from where is booting from
                     if parts != [] and parts != None:  #put partitions if there are. If not, don't put any thing
                         hddsize=float(self.removableDevicesDetected[i][1])  # 20450
                         model=self.removableDevicesDetected[i][2]

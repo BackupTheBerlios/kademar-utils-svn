@@ -124,7 +124,6 @@ class instalador(QMainWindow):
                 return devicefile
             
             
-            
     def listPartitionsOfDevice(self,device):
         result=""
         varReturn=[]
@@ -143,6 +142,8 @@ class instalador(QMainWindow):
         if disk !="":
             for dev in self.ud_manager.EnumerateDevices():
                 varActual=[]
+                device_obj = self.bus.get_object("org.freedesktop.UDisks", dev)
+                device_props = dbus.Interface(device_obj, dbus.PROPERTIES_IFACE)
                 isDrive=device_props.Get('org.freedesktop.UDisks.Device', "DeviceIsDrive")
                 iduuid=device_props.Get('org.freedesktop.UDisks.Device', "IdUuid")
                 label=device_props.Get('org.freedesktop.UDisks.Device', "IdLabel")
@@ -171,6 +172,7 @@ class instalador(QMainWindow):
             #a=sorted(result.split())
             #print(" ".join(a))
             return(varReturn)
+        
         
     def getUsedSpaceOfMountedDevice(self,var):
         size=self.execShellProcess("/bin/sh", "-c", "df "+var+" | grep -i "+var+" | awk ' { print $3 } '")

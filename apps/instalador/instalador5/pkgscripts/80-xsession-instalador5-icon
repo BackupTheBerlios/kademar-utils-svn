@@ -1,0 +1,19 @@
+. /etc/kademar/config-livecd
+desk=`gettext -d xdg-user-dirs -s "Desktop"`
+
+[ "$kademar_type" = "Heliox" ] && icon="-heliox"
+
+echo "[Desktop Entry]
+Encoding=UTF-8
+Exec=sudo instalador5
+Icon=/usr/share/instalador/instalador$icon.png
+Name=Install on Hard Drive
+Name[ca]=Instal·la al USB
+Name[es]=Instalar al USB
+Name[en]=Install on USB
+StartupNotify=true
+Terminal=false
+Type=Application
+X-KDE-SubstituteUID=false" > /home/$user/$desk/instalador5.desktop
+
+chmod 777 /home/$user/$desk/instalador5.desktop

@@ -1,0 +1,48 @@
+# Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+pkgname=instalador5
+pkgver=4.9.70
+pkgrel=1
+epoch=
+pkgdesc="The Installer"
+arch=(any)
+url="http://www.kademar.org"
+license=('GPL')
+groups=()
+depends=('kademar-meta-common-utils' 'sudo' 'pacman' 'pyqt' 'os-prober' 'gparted' 'instalador')
+makedepends=("pyqt")
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=($pkgname-$pkgver.tar.gz)
+noextract=()
+md5sums=('7cc59fa5c1382eaf216db82920010460') #generate with 'makepkg -g'
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  sh prepare.sh
+  #lrelease instalador.pro
+}
+
+ package() {
+   mkdir -p "$pkgdir/usr/share"
+   cp -a $srcdir/$pkgname-$pkgver "$pkgdir/usr/share/instalador"
+   cd $pkgdir && rm -fr `find . -name ".svn"` && rm -fr `find . -name "*.pyc"` && rm -fr `find . -name "*.pro"` && rm -f `find . -name "*~"` && rm -f `find . -name "todo"` && rm -f `find . -name "*project"` && rm -f `find . -name "*odt"` && rm -f `find . -name "*.ts"` && rm -f `find . -name "*.kate-swp"`
+   mkdir -p "$pkgdir/etc/X11/xinit/xinitrc.d"
+   cp -a $srcdir/$pkgname-$pkgver/pkgscripts/80-xsession-instalador5-icon "$pkgdir/etc/X11/xinit/xinitrc.d"
+   find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+   find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+#    chmod +x "$pkgdir/usr/share/instalador/scripts/mkdevicemap"
+   mkdir -p "$pkgdir/usr/bin"
+   mv "$pkgdir/usr/share/instalador/pkgscripts/instalador5" "$pkgdir/usr/bin"
+   rm -fr $srcdir/$pkgname-$pkgver/pkgscripts
+   find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+   find "$pkgdir"/etc/X11 -type f -exec chmod 755 "{}" \;
+ }
+
+# vim:set ts=2 sw=2 et:

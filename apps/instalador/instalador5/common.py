@@ -24,7 +24,7 @@ class instalador(QMainWindow):
         self.copying=0
         self.endedCopy=0
         self.kademarType="Kademar"
-        self.pathInstaller="."        
+        self.pathInstaller="/usr/share/instalador"        
         self.bus = dbus.SystemBus()
         self.ud_manager_obj = self.bus.get_object("org.freedesktop.UDisks", "/org/freedesktop/UDisks")
         self.ud_manager = dbus.Interface(self.ud_manager_obj, 'org.freedesktop.UDisks')

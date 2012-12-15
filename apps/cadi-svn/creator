@@ -28,6 +28,6 @@
      
       makepkg -d
 #     fi
-  done
+#   done
   
 

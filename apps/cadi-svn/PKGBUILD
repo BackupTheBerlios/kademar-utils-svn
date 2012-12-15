@@ -1,14 +1,14 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=cadi-svn
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="CADI: Advanced Configuration Control"
 arch=('any')
 url="http://www.kademar.org"
 license=('GPL')
 groups=()
-depends=('python2')
+depends=('python')
 makedepends=()
 checkdepends=()
 optdepends=()

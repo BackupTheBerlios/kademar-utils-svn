@@ -28,7 +28,7 @@ class instalador(QMainWindow):
             #print("Formating ", self.selectedDeviceToInstall[0])
             system('dosfslabel /dev/'+self.selectedDeviceToInstall[0]+' "'+self.kademarType+'"')
                 
-        #system("mount -rw /dev/"+self.selectedDeviceToInstall[0]+" "+self.target)
+        system("mount -rw /dev/"+self.selectedDeviceToInstall[0]+" "+self.target)
         print("mounting /dev/"+self.selectedDeviceToInstall[0], " on ",self.target)
    
         
@@ -61,20 +61,20 @@ class instalador(QMainWindow):
         if self.ui.CHChangesFile.isChecked():
             print("INSTALLING CASPER")
             persistemSize=str(self.realChangeFileSize).split(".")[0]
-            arch=self.execShellProcess("uname", "-m").replace("\n","")
-            persistentFilePath=self.target+"/persistent_/"+arch
+            arch=str(self.execShellProcess("uname", "-m").replace("\n",""))
+            persistentFilePath=str(self.target+"/persistent_/"+arch)
         
             system("rm -fr "+self.target+"/persistent_") #deleting old persistent
             system("mkdir -p "+persistentFilePath)
-            system("dd if=/dev/zero of="+persistentFilePath+"/cow-file bs=1M count="+persistemSize)
-            system("mkfs.ext3 -F "+persistentFilePath+"/cow-file")
+            system("dd if=/dev/zero of="+persistentFilePath+"/root-image.cow bs=1M count="+persistemSize)
+            system("mkfs.ext3 -F "+persistentFilePath+"/root-image.cow")
 
         ##############
         # BOOTLOADER #
         ##############
-        system("rm -f "+self.target+"/kademar/boot/syslinux/bootinst.sh")
+        system("rm -f "+self.target+"/kademar/boot/syslinux/usb-bootinst.sh")
         system('cp '+self.pathInstaller+'/scripts/usb-bootinst.sh "'+self.target+'/kademar/boot/syslinux/"') #without cp -a to be sure that don't copy a link
-        system('sh '+self.target+'/kademar/boot/syslinux/bootinst.sh')
+        system('sh '+self.target+'/kademar/boot/syslinux/usb-bootinst.sh')
         #system('rm -f '+self.target+'/install-nano-bootinst.sh')
         QApplication.processEvents()
 
@@ -114,6 +114,7 @@ class copyfiles(QThread):
         # Si s'ha definit el HOME
         #copiant=1
         #borrem per si estem actualitzant un USB
+        print("Begining Copy")
         system('rm -fr '+self.target+'/kademar')
         system('cp -u -a /run/archiso/bootmnt/kademar '+self.target+' ; echo $? > /tmp/instalador-copia')
         #system("sleep 10")

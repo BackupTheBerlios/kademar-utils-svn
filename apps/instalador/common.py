@@ -112,6 +112,19 @@ class instalador(QMainWindow):
         #varReturn.append(varActual)
         return(varReturn)
         
+    def getDeviceKademarIsBootingFrom(self,var):
+        for dev in self.ud_manager.EnumerateDevices():
+            device_obj = self.bus.get_object("org.freedesktop.UDisks", dev)
+            device_props = dbus.Interface(device_obj, dbus.PROPERTIES_IFACE)
+            mount=device_props.Get('org.freedesktop.UDisks.Device', "DeviceMountPaths")
+            matching = [s for s in mount if var in s]
+            if matching:
+                devicefile=str(device_props.Get('org.freedesktop.UDisks.Device', "DeviceFile"))
+                devicefile=devicefile.replace("/dev/","")
+                return devicefile
+            
+            
+            
     def listPartitionsOfDevice(self,device):
         result=""
         varReturn=[]
@@ -130,8 +143,6 @@ class instalador(QMainWindow):
         if disk !="":
             for dev in self.ud_manager.EnumerateDevices():
                 varActual=[]
-                device_obj = self.bus.get_object("org.freedesktop.UDisks", dev)
-                device_props = dbus.Interface(device_obj, dbus.PROPERTIES_IFACE)
                 isDrive=device_props.Get('org.freedesktop.UDisks.Device', "DeviceIsDrive")
                 iduuid=device_props.Get('org.freedesktop.UDisks.Device', "IdUuid")
                 label=device_props.Get('org.freedesktop.UDisks.Device', "IdLabel")
@@ -164,16 +175,13 @@ class instalador(QMainWindow):
     def getUsedSpaceOfMountedDevice(self,var):
         size=self.execShellProcess("/bin/sh", "-c", "df "+var+" | grep -i "+var+" | awk ' { print $3 } '")
         size=float(size)/1000
-        return rize
+        return size
         
     def getSizeOfMountedDevice(self,var):
-        bus = dbus.SystemBus()
-        ud_manager_obj = bus.get_object("org.freedesktop.UDisks", "/org/freedesktop/UDisks")
-        ud_manager = dbus.Interface(ud_manager_obj, 'org.freedesktop.UDisks')
         
         for dev in ud_manager.EnumerateDevices():
             varActual=[]
-            device_obj = bus.get_object("org.freedesktop.UDisks", dev)
+            device_obj = self.bus.get_object("org.freedesktop.UDisks", dev)
             #print dev
             device_props = dbus.Interface(device_obj, dbus.PROPERTIES_IFACE)
             mount=device_props.Get('org.freedesktop.UDisks.Device', "DeviceMountPaths")
@@ -264,7 +272,7 @@ class instalador(QMainWindow):
         result = proc.readAll()
         #print(str(result))
         proc.close()
-        return str(result)
+        return result
 
 ####
 ## HARDWARE CHANGES DETECTOR - RELOAD DEVICE LIST

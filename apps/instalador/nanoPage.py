@@ -20,10 +20,10 @@ class instalador(QMainWindow):
     def prepareNanoPath(self):    
         self.selectedDeviceToInstall=[]
 
-        self.totalSizeOfKademar=self.getSizeOfMountedDevice("/media/f96f9953-8ea6-4a13-995d-6e7baccf8535/archlive/releng64/out/a")
+        #self.totalSizeOfKademar=self.getSizeOfMountedDevice("/media/f96f9953-8ea6-4a13-995d-6e7baccf8535/archlive/releng64/out/a")
         #self.totalSizeOfKademar=self.getSizeOfMountedDevice("/media/Isos")
-        #self.totalSizeOfKademar=self.getSizeOfMountedDevice("/run/archiso/bootmnt")
-        #self.totalSizeOfKademar=self.getUsedSpaceOfMountedDevice("/run/archiso/bootmnt")
+        self.getDeviceKademarIsBootingFrom=self.getDeviceKademarIsBootingFrom("/run/archiso/bootmnt") #know from where kademar is booting
+        self.totalSizeOfKademar=self.getUsedSpaceOfMountedDevice("/run/archiso/bootmnt") #get size of kademar to check it later if fits on the drvive
 
         #Hide from kademar Installer 
         for i in [self.ui.LTime, self.ui.LUsers, self.ui.LSystem, self.ui.LNetwork, self.ui.LSoftware]:
@@ -107,57 +107,58 @@ class instalador(QMainWindow):
                 parts=self.listPartitionsOfDevice(hdd)
                 #print(parts)
                 #Only append all HDD if has partitions (failed show when desconnecting pendrives)
-                if parts != [] and parts != None:
-                    hddsize=float(self.removableDevicesDetected[i][1])  # 20450
-                    model=self.removableDevicesDetected[i][2]
-                    vendor=self.removableDevicesDetected[i][3]
+                if self.getDeviceKademarIsBootingFrom != hdd: #hide from where is booting from
+                    if parts != [] and parts != None:  #put partitions if there are. If not, don't put any thing
+                        hddsize=float(self.removableDevicesDetected[i][1])  # 20450
+                        model=self.removableDevicesDetected[i][2]
+                        vendor=self.removableDevicesDetected[i][3]
 
-                    size,unit=self.convertSizeAndUnits(hddsize)
+                        size,unit=self.convertSizeAndUnits(hddsize)
 
-                    #self.ui.CBNanoDevice.addItem(QIcon(self.icon_device_pendrive),hdd+" "+hddsize+" "+unitat+" "+model+" "+vendor)
-                    self.completeListDevices.append([hdd,hddsize,unit,model,vendor])
-                    self.itemList.append(QStandardItem(QIcon(self.icon_device_pendrive), self.tr("Disk")+" "+hdd))
-                    self.itemList.append(QStandardItem(size+" "+unit))
-                    self.itemList.append(QStandardItem(str(model+" "+vendor)))
-                    self.itemList.append(QStandardItem(" "))
-                    self.itemList[len(self.itemList)-4].setSelectable(False)
-                    self.itemList[len(self.itemList)-3].setSelectable(False)
-                    self.itemList[len(self.itemList)-2].setSelectable(False)
-                    self.itemList[len(self.itemList)-1].setSelectable(False)
-
-                    parent.appendRow([
-                        self.itemList[len(self.itemList)-4],
-                        self.itemList[len(self.itemList)-3],
-                        self.itemList[len(self.itemList)-2],
-                        self.itemList[len(self.itemList)-1],
-                        #it3,
-                        ])
-
-                    actualparent=self.itemList[len(self.itemList)-4]
-                    for i in range(len(parts)):
-                        #print(self.removableDevicesDetected[i])
-                        part=parts[i][0]
-                        partsize=float(parts[i][1])  # 20450
-                        fs=parts[i][2]
-                        label=parts[i][3]
-                        #swaptype=parts[i][4]
-
-                        size,unit=self.convertSizeAndUnits(partsize)
-
-                        self.completeListDevices.append([part,partsize,unit,fs,label])
-                        self.itemList.append(QStandardItem(QIcon(self.icon_partition),  self.tr("Partition")+"  "+part))
+                        #self.ui.CBNanoDevice.addItem(QIcon(self.icon_device_pendrive),hdd+" "+hddsize+" "+unitat+" "+model+" "+vendor)
+                        self.completeListDevices.append([hdd,hddsize,unit,model,vendor])
+                        self.itemList.append(QStandardItem(QIcon(self.icon_device_pendrive), self.tr("Disk")+" "+hdd))
                         self.itemList.append(QStandardItem(size+" "+unit))
-                        self.itemList.append(QStandardItem(str(label)))
-                        self.itemList.append(QStandardItem(str(fs)))
+                        self.itemList.append(QStandardItem(str(model+" "+vendor)))
+                        self.itemList.append(QStandardItem(" "))
+                        self.itemList[len(self.itemList)-4].setSelectable(False)
+                        self.itemList[len(self.itemList)-3].setSelectable(False)
+                        self.itemList[len(self.itemList)-2].setSelectable(False)
+                        self.itemList[len(self.itemList)-1].setSelectable(False)
 
-                        actualparent.appendRow([
+                        parent.appendRow([
                             self.itemList[len(self.itemList)-4],
                             self.itemList[len(self.itemList)-3],
                             self.itemList[len(self.itemList)-2],
                             self.itemList[len(self.itemList)-1],
+                            #it3,
                             ])
-                    #self.ui.CBNanoDevice.addItem(QIcon(self.icon_partition),part+" "+partsize+" "+fs+" "+unitat+" "+label)
-                        #print(hd)
+
+                        actualparent=self.itemList[len(self.itemList)-4]
+                        for i in range(len(parts)):
+                            #print(self.removableDevicesDetected[i])
+                            part=parts[i][0]
+                            partsize=float(parts[i][1])  # 20450
+                            fs=parts[i][2]
+                            label=parts[i][3]
+                            #swaptype=parts[i][4]
+
+                            size,unit=self.convertSizeAndUnits(partsize)
+
+                            self.completeListDevices.append([part,partsize,unit,fs,label])
+                            self.itemList.append(QStandardItem(QIcon(self.icon_partition),  self.tr("Partition")+"  "+part))
+                            self.itemList.append(QStandardItem(size+" "+unit))
+                            self.itemList.append(QStandardItem(str(label)))
+                            self.itemList.append(QStandardItem(str(fs)))
+
+                            actualparent.appendRow([
+                                self.itemList[len(self.itemList)-4],
+                                self.itemList[len(self.itemList)-3],
+                                self.itemList[len(self.itemList)-2],
+                                self.itemList[len(self.itemList)-1],
+                                ])
+                        #self.ui.CBNanoDevice.addItem(QIcon(self.icon_partition),part+" "+partsize+" "+fs+" "+unitat+" "+label)
+                            #print(hd)
 
             self.view.adjustSize()
             self.view.setAutoExpandDelay(0)
@@ -211,7 +212,7 @@ class instalador(QMainWindow):
         while True:
             system("for i in `cat /proc/mounts | grep '"+self.selectedDeviceToInstall[0]+"' | awk ' { print $2 } ' | sort -r`; do umount $i; done")
             system("umount /dev/"+self.selectedDeviceToInstall[0][:-1]+"* 2>/dev/null")
-            if not self.execShellProcess("/bin/sh","-c","mount | grep -i /dev/"+self.selectedDeviceToInstall[0]+"* 2>/dev/null")=="":
+            if not str(self.execShellProcess("/bin/sh","-c","mount | grep -i /dev/"+self.selectedDeviceToInstall[0]+"* 2>/dev/null"))=="":
             ##system("echo mandonguilla")
             #try:
             #if not self.execShellProcess("/bin/sh","-c","echo mandonguilla | grep -i dong"):     

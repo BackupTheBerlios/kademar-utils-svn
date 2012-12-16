@@ -20,23 +20,29 @@ class instalador(QMainWindow):
         self.target="/instalador/nano"
         self.copying=True
         self.ui.WButons_2.setVisible(False)
-        QApplication.processEvents()
-
-        system("mkdir -p "+self.target)
-        if self.ui.CHFormatNano.isChecked():
-            system("mkfs.vfat /dev/"+self.selectedDeviceToInstall[0])
-            #print("Formating ", self.selectedDeviceToInstall[0])
-            system('dosfslabel /dev/'+self.selectedDeviceToInstall[0]+' "'+self.kademarType+'"')
-                
-        system("mount -rw /dev/"+self.selectedDeviceToInstall[0]+" "+self.target)
-        print("mounting /dev/"+self.selectedDeviceToInstall[0], " on ",self.target)
-   
         
-        self.copyfiles=copyfiles(self.target)
+        wantFormat=0
+        if self.ui.CHFormatNano.isChecked():
+            wantFormat=1
+                
+                
+        arch=str(self.execShellProcess("uname", "-m").replace("\n",""))
+        persistentFilePath=str(self.target+"/persistent_/"+arch)
+        if self.ui.CHChangesFile.isChecked():
+            persistemSize=str(self.realChangeFileSize).split(".")[0]
+        else:
+            persistemSize=0
+            
+
+        self.installNanoKademarProcess=installNanoKademarProcess(self.target, self.selectedDeviceToInstall[0], wantFormat, persistentFilePath)
         # FUNCIO COPIA
-        self.connect(self.copyfiles, SIGNAL("ended"), self.nanoEndedCopyProcess)
-        #self.connect(self.copyfiles, SIGNAL("progress"), self.posaprogressbar)
-        self.copyfiles.start()
+        self.connect(self.installNanoKademarProcess, SIGNAL("endedCopy"), self.nanoEndedCopyProcess)
+        self.connect(self.installNanoKademarProcess, SIGNAL("formated"), self.formated)
+        self.connect(self.installNanoKademarProcess, SIGNAL("persistentFileCreated"), self.persistentFileCreated)
+        self.connect(self.installNanoKademarProcess, SIGNAL("bootManagerInstalled"), self.bootManagerInstalled)
+        #self.connect(self.installNanoKademarProcess, SIGNAL("progress"), self.posaprogressbar)
+        self.installNanoKademarProcess.start()
+        self.ui.iDisk.setPixmap(QPixmap(self.icon_greenTick))
         
     def nanoEndedCopyProcess(self):
         #global varcopiaacabada, copiant, led_order, icona_verda, icona_taronja, icona_vermella, currentpage, idioma, autologin, mbr, particioarrel, particioswap, particiohome, filesystems, target, pathinstaller
@@ -45,62 +51,56 @@ class instalador(QMainWindow):
         self.ui.LFinishedLogo.setVisible(1)
         
         #self.ui.logo_kademar.setPixmap(QPixmap(pathinstaller+"/img/kademar.png")) #posa al 100% el logo de kademar
-        QApplication.processEvents()  # python QT Yield
+        #QApplication.processEvents()  # python QT Yield
         self.endedCopy=1
-        QApplication.processEvents()
-
+        print("copia acabada")
+        self.ui.iCopy.setPixmap(QPixmap(self.icon_greenTick))
+        
         #global espaidisc
         #from os import path
         #self.espaidisc.stop()   #Parem el thread de controla el espai en disc
 
         #self.ui.led_copia.setPixmap(QPixmap(icona_verda))
         #QApplication.processEvents()  # python QT Yield
-
-        print("copia acabada")
-
-        if self.ui.CHChangesFile.isChecked():
-            print("INSTALLING CASPER")
-            persistemSize=str(self.realChangeFileSize).split(".")[0]
-            arch=str(self.execShellProcess("uname", "-m").replace("\n",""))
-            persistentFilePath=str(self.target+"/persistent_/"+arch)
         
-            system("rm -fr "+self.target+"/persistent_") #deleting old persistent
-            system("mkdir -p "+persistentFilePath)
-            system("dd if=/dev/zero of="+persistentFilePath+"/root-image.cow bs=1M count="+persistemSize)
-            system("mkfs.ext3 -F "+persistentFilePath+"/root-image.cow")
+    def formated(self):
+        self.ui.iFormating.setPixmap(QPixmap(self.icon_greenTick))
 
-        ##############
-        # BOOTLOADER #
-        ##############
-        system("rm -f "+self.target+"/kademar/boot/syslinux/usb-bootinst.sh")
-        system('cp '+self.pathInstaller+'/scripts/usb-bootinst.sh "'+self.target+'/kademar/boot/syslinux/"') #without cp -a to be sure that don't copy a link
-        system('sh '+self.target+'/kademar/boot/syslinux/usb-bootinst.sh')
-        #system('rm -f '+self.target+'/install-nano-bootinst.sh')
-        QApplication.processEvents()
+    def persistentFileCreated(self):
+        self.ui.iPersistentChangesFile.setPixmap(QPixmap(self.icon_greenTick))
 
-################
-# FINALITZACIO #
-################
-    ##desmunta els directoris si existeixen per una fallida de l'instalador
-    #system("for i in `cat /proc/mounts | grep '"+self.target+"' | awk ' { print $2 } ' | sort -r`; do umount $i; done")
-    ##Muntem sistemes de fitxers virtuals
-    #system("umount "+self.target+"/dev "+self.target+"/proc $DESTI/proc 2>/dev/null")
-
-    ##desmunta els directoris si existeixen per una fallida de l'instalador - FORÇAT
-    #system("for i in `cat /proc/mounts | grep '"+self.target+"' | awk ' { print $2 } ' | sort -r`; do umount -l $i; done")
-    ##Tornem a desmuntaro x tal d'assegurar-nos - FORÇAT
-    #system("umount -l "+self.target+"/dev "+self.target+"/proc "+self.target+"/proc 2>/dev/null")
-    
-    
+    def bootManagerInstalled(self):
+        self.ui.iBoot.setPixmap(QPixmap(self.icon_greenTick))
         self.copying=False
+        
+##################
+# ENDING PROCESS #
+##################
+        #desmunta els directoris si existeixen per una fallida de l'instalador
+        system("for i in `cat /proc/mounts | grep '"+self.target+"' | awk ' { print $2 } ' | sort -r`; do umount $i; done")
+        #Muntem sistemes de fitxers virtuals
+        system("umount "+self.target+"/dev "+self.target+"/proc $DESTI/proc 2>/dev/null")
+
+        #desmunta els directoris si existeixen per una fallida de l'instalador - FORÇAT
+        system("for i in `cat /proc/mounts | grep '"+self.target+"' | awk ' { print $2 } ' | sort -r`; do umount -l $i; done")
+        #Tornem a desmuntaro x tal d'assegurar-nos - FORÇAT
+        system("umount -l "+self.target+"/dev "+self.target+"/proc "+self.target+"/proc 2>/dev/null")
+        
+    
+        #Go to END page
         self.nextButton()
-        
-        
+
+
 #Funcio de Format i Còpia de fitxers
-class copyfiles(QThread):
-    def __init__(self, target):
+class installNanoKademarProcess(QThread):
+    def __init__(self, target, device, wantFormat, pathInstaller, persistentFilePath, persistemSize):
         QThread.__init__(self)
         self.target=target
+        self.wantFormat=wantFormat
+        self.device=device
+        self.pathInstaller=pathInstaller
+        self.persistentFilePath=persistentFilePath
+        self.persistemSize=persistemSize
 
     def run(self):
         #desmunta els directoris si existeixen per una fallida de l'instalador
@@ -109,18 +109,51 @@ class copyfiles(QThread):
         #self.espaidisc=checkspace()
         #self.connect(self.espaidisc, SIGNAL("progress2"), self.enviaprogress)
         #self.espaidisc.start()
-        QApplication.processEvents()
+        #QApplication.processEvents()
         # es creen els directoris home i es munten a les particions seleccionades
         # Si s'ha definit el HOME
         #copiant=1
         #borrem per si estem actualitzant un USB
+        system("mkdir -p "+self.target)
+        if self.wantFormat:
+            system("mkfs.vfat /dev/"+self.device)
+            print("Formating ", self.device)
+            system('dosfslabel /dev/'+self.device+' "'+self.kademarType+'"')
+        self.emit(SIGNAL("formated"))
+            
+        print("mounting /dev/"+self.device, "on",self.target)
+        system("mount -rw /dev/"+self.device+" "+self.target)
+        
         print("Begining Copy")
         system('rm -fr '+self.target+'/kademar')
         system('cp -u -a /run/archiso/bootmnt/kademar '+self.target+' ; echo $? > /tmp/instalador-copia')
         #system("sleep 10")
         #import time
         #time.sleep(15)
-        self.emit(SIGNAL("ended"))
+        self.emit(SIGNAL("endedCopy"))
+
+
+        #PERSISTENT
+        if self.persistemSize != 0:
+            print("INSTALLING CASPER")
+            system("rm -fr "+self.target+"/persistent_") #deleting old persistent
+            system("mkdir -p "+self.persistentFilePath)
+            system("dd if=/dev/zero of="+self.persistentFilePath+"/root-image.cow bs=1M count="+self.persistemSize)
+            system("mkfs.ext3 -F "+self.persistentFilePath+"/root-image.cow")
+        self.emit(SIGNAL("persistentFileCreated"))
+
+
+
+        ##############
+        # BOOTLOADER #
+        ##############
+        
+        system("rm -f "+self.target+"/kademar/boot/syslinux/usb-bootinst.sh")
+        system('cp '+self.pathInstaller+'/scripts/usb-bootinst.sh "'+self.target+'/kademar/boot/syslinux/"') #without cp -a to be sure that don't copy a link
+        system('sh '+self.target+'/kademar/boot/syslinux/usb-bootinst.sh')
+        #system('rm -f '+self.target+'/install-nano-bootinst.sh')
+        self.emit(SIGNAL("bootManagerInstalled"))
+
 
         #print("emit acabat")
 

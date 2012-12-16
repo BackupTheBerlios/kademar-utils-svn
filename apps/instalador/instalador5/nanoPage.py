@@ -26,17 +26,17 @@ class instalador(QMainWindow):
         self.totalSizeOfKademar=self.getUsedSpaceOfMountedDevice("/run/archiso/bootmnt") #get size of kademar to check it later if fits on the drvive
 
         #Hide from kademar Installer 
-        for i in [self.ui.LTime, self.ui.LUsers, self.ui.LSystem, self.ui.LNetwork, self.ui.LSoftware]:
+        for i in [self.ui.LTime, self.ui.LUsers, self.ui.LSystem, self.ui.LNetwork, self.ui.LSoftware, self.ui.LSystemInfo]:
             i.setVisible(False)
 
-        for i in [self.ui.iTime, self.ui.iUsers, self.ui.iSystem, self.ui.iNetwork, self.ui.iSoftware]:
+        for i in [self.ui.iTime, self.ui.iUsers, self.ui.iSystem, self.ui.iNetwork, self.ui.iSoftware, self.ui.iSystemInfo]:
             i.setVisible(False)
 
         #hide from installation process
-        for i in [self.ui.LPartitioning, self.ui.LRoot, self.ui.LCreatingUsers, self.ui.LNetConfig, self.ui.LInstallingProgress, self.ui.LFinishedProgress]:
+        for i in [self.ui.LFormating, self.ui.LRoot, self.ui.LCreatingUsers, self.ui.LNetConfig, self.ui.LInstallingProgress, self.ui.LFinishedProgress]:
             i.setVisible(False)
 
-        for i in [self.ui.iPartitioning, self.ui.iRoot, self.ui.iCreatingUsers, self.ui.iNetConfig, self.ui.iInstallingProgress, self.ui.iFinishedProgress]:
+        for i in [self.ui.iFormating, self.ui.iRoot, self.ui.iCreatingUsers, self.ui.iNetConfig, self.ui.iInstallingProgress, self.ui.iFinishedProgress]:
             i.setVisible(False)
             
         for i in [self.ui.LFinishedLogo, self.ui.PBLogo, self.ui.LInstallFinished]:
@@ -50,10 +50,10 @@ class instalador(QMainWindow):
             i.setVisible(True)
 
 
-        #labelList=[self.ui.LBoot,self.ui.LCopy,self.ui.LCreatingUsers,self.ui.LDisk,self.ui.LFinishedProgress,self.ui.LInstallingProgress,self.ui.LNetConfig,self.ui.LNetwork,self.ui.LPartitioning,self.ui.LProcess,self.ui.LRoot,self.ui.LSoftware,self.ui.LSystem,self.ui.LSystemInfo,self.ui.LTime,self.ui.LUsers]
+        #labelList=[self.ui.LBoot,self.ui.LCopy,self.ui.LCreatingUsers,self.ui.LDisk,self.ui.LFinishedProgress,self.ui.LInstallingProgress,self.ui.LNetConfig,self.ui.LNetwork,self.ui.LFormating,self.ui.LProcess,self.ui.LRoot,self.ui.LSoftware,self.ui.LSystem,self.ui.LSystemInfo,self.ui.LTime,self.ui.LUsers]
         #for i in labelList:
             #i.setVisible(False)
-        #stateList=[self.ui.FBoot,self.ui.FCopy,self.ui.FCreatingUsers,self.ui.FDisk,self.ui.FFinished,self.ui.FFinished,self.ui.FInstalling,self.ui.FNetConfig,self.ui.FNetwork,self.ui.FPartitioning,self.ui.FRoot,self.ui.FSoft,self.ui.FSystem,self.ui.FSystemInfo,self.ui.FTime,self.ui.FUsers]
+        #stateList=[self.ui.FBoot,self.ui.FCopy,self.ui.FCreatingUsers,self.ui.FDisk,self.ui.FFinished,self.ui.FFinished,self.ui.FInstalling,self.ui.FNetConfig,self.ui.FNetwork,self.ui.FFormating,self.ui.FRoot,self.ui.FSoft,self.ui.FSystem,self.ui.FSystemInfo,self.ui.FTime,self.ui.FUsers]
         #for i in stateList:
             #i.setVisible(False)
 

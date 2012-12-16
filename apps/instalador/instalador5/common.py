@@ -24,16 +24,21 @@ class instalador(QMainWindow):
         self.copying=0
         self.endedCopy=0
         self.kademarType="Kademar"
-        self.pathInstaller="/usr/share/instalador"        
+        self.pathInstaller="/usr/share/instalador" 
+        
+        locale = QLocale.system().name()   #ca_ES
+        
+        #Define variables for any dbus connection
         self.bus = dbus.SystemBus()
         self.ud_manager_obj = self.bus.get_object("org.freedesktop.UDisks", "/org/freedesktop/UDisks")
         self.ud_manager = dbus.Interface(self.ud_manager_obj, 'org.freedesktop.UDisks')
+        
       
         self.lookDeviceUdisksChangesReloadList()
       
-        #self.pagePathNano=[self.ui.PMain]
         self.ui.stackedPages.setCurrentWidget(self.ui.PMain) #go to fist main page
       
+        #Show buttons of available installation paths
         self.showYourPaths()
         
     def showYourPaths(self):
@@ -46,7 +51,7 @@ class instalador(QMainWindow):
         
         #Detect Removable Devices
         self.removableDevicesDetected=self.listRemovableDevices()
-        #print("ara", self.removableDevicesDetected)
+        #Enable/Disable nano path
         if len(self.removableDevicesDetected) == 0:
             self.ui.BNanoInstall.setVisible(False)
             self.ui.LNanoInstall.setVisible(False)
@@ -55,10 +60,12 @@ class instalador(QMainWindow):
             self.ui.LNanoInstall.setVisible(True)
         
     def setConnections(self):
+        #Control GUI connections
         self.connect(self.ui.BExit, SIGNAL("clicked()"), self.close)
         self.connect(self.ui.BBack, SIGNAL("clicked()"), self.backButton)
         self.connect(self.ui.BNext, SIGNAL("clicked()"), self.nextButton)
 
+        #Installation Path Connections
         self.connect(self.ui.BNanoInstall, SIGNAL("clicked()"), self.prepareNanoPath)
 
     def closeEvent(self, event):
@@ -69,6 +76,7 @@ class instalador(QMainWindow):
     def setIconVars(self):
         self.icon_partition=":/img/img/partition.png"
         self.icon_device_pendrive=":/img/img/device-pendrive.png"
+        self.icon_greenTick=":/img/img/finish.png"
 
     def openGparted(self):
         system("gparted-pkexec")
@@ -250,19 +258,21 @@ class instalador(QMainWindow):
     
         return size,unit
     
-    ##  FUNCIONS DE WARNING
-    def showWarningMessage(self, tipu, miss1, miss2):
-        if tipu=="critical":
+    def showWarningMessage(self, wantedType, miss1, miss2):
+        #Show dialog function
+        if wantedType=="critical":
             QMessageBox.critical(self, miss1, miss2, QMessageBox.Ok)
-        if tipu=="warning":
+        if wantedType=="warning":
             return QMessageBox.critical(self, miss1, miss2, QMessageBox.Retry, QMessageBox.Ignore)
-        if tipu=="infopreg":
+        if wantedType=="infopreg":
             return QMessageBox.critical(self, miss1, miss2, QMessageBox.Yes| QMessageBox.No,  QMessageBox.No)
-        if tipu=="info":
+        if wantedType=="info":
             QMessageBox.critical(self, miss1, miss2, QMessageBox.Ok)    
-            
-            
+
+
     def execShellProcess(self, idCommand, idParam = "", idParam2 = ""):
+        #Execute a shell order and return the result
+        # for pipe commands use idCommand="/bin/bash" idParam="-c" idParam2="shell | piped command"
         param=[]
         if idParam:
             param.append(idParam)
@@ -281,6 +291,7 @@ class instalador(QMainWindow):
 ####
 
     def lookDeviceUdisksChangesReloadList(self):
+        #If a device is added or removed, refill the combobox again
         self.ud_manager.connect_to_signal('DeviceAdded', self.fillListOfDevicesOnCombobox)
         self.ud_manager.connect_to_signal('DeviceRemoved', self.fillListOfDevicesOnCombobox)
 

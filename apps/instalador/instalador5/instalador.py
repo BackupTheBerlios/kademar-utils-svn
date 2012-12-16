@@ -32,8 +32,11 @@ class instalador(endPage.instalador, installingPage.instalador, mainPage.instala
     self.setIconVars()
     self.setConnections()
     
-    #self.prepareNanoPath() #remove it later
-     
+    #Open completly installer on the screen
+    desktop_widget = QDesktopWidget()
+    geometry = desktop_widget.screenGeometry()
+    self.ui.setGeometry(0,0, geometry.width(),geometry.height())
+    
 app = QApplication(sys.argv)
 
 locale = QLocale.system().name()   #ca_ES

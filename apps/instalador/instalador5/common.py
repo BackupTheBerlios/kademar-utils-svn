@@ -33,6 +33,7 @@ class instalador(QMainWindow):
         self.ud_manager_obj = self.bus.get_object("org.freedesktop.UDisks", "/org/freedesktop/UDisks")
         self.ud_manager = dbus.Interface(self.ud_manager_obj, 'org.freedesktop.UDisks')
         
+        self.deviceKademarIsBootingFrom=self.getDeviceKademarIsBootingFrom("/run/archiso/bootmnt") #know from where kademar is booting
       
         self.lookDeviceUdisksChangesReloadList()
       

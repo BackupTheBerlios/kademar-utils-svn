@@ -22,7 +22,6 @@ class instalador(QMainWindow):
 
         #self.totalSizeOfKademar=self.getSizeOfMountedDevice("/media/f96f9953-8ea6-4a13-995d-6e7baccf8535/archlive/releng64/out/a")
         #self.totalSizeOfKademar=self.getSizeOfMountedDevice("/media/Isos")
-        self.deviceKademarIsBootingFrom=self.getDeviceKademarIsBootingFrom("/run/archiso/bootmnt") #know from where kademar is booting
         self.totalSizeOfKademar=self.getUsedSpaceOfMountedDevice("/run/archiso/bootmnt") #get size of kademar to check it later if fits on the drvive
 
         #Hide from kademar Installer 
@@ -33,10 +32,10 @@ class instalador(QMainWindow):
             i.setVisible(False)
 
         #hide from installation process
-        for i in [self.ui.LFormating, self.ui.LRoot, self.ui.LCreatingUsers, self.ui.LNetConfig, self.ui.LInstallingProgress, self.ui.LFinishedProgress]:
+        for i in [self.ui.LRoot, self.ui.LCreatingUsers, self.ui.LNetConfig, self.ui.LInstallingProgress, self.ui.LFinishedProgress]:
             i.setVisible(False)
 
-        for i in [self.ui.iFormating, self.ui.iRoot, self.ui.iCreatingUsers, self.ui.iNetConfig, self.ui.iInstallingProgress, self.ui.iFinishedProgress]:
+        for i in [self.ui.iRoot, self.ui.iCreatingUsers, self.ui.iNetConfig, self.ui.iInstallingProgress, self.ui.iFinishedProgress]:
             i.setVisible(False)
             
         for i in [self.ui.LFinishedLogo, self.ui.PBLogo, self.ui.LInstallFinished]:
@@ -169,6 +168,10 @@ class instalador(QMainWindow):
             self.ui.CBNanoDevice.setCurrentIndex(-1)
             self.ui.CHChangesFile.setEnabled(False)
             self.ui.CHFormatNano.setEnabled(False)
+            self.ui.LChangeFilePercent.setVisible(False)
+            self.ui.SChangeFile.setVisible(False)
+            self.ui.LChangesFileSize.setVisible(False)
+            self.ui.FChangesFileInfo.setVisible(False)
 
 
             self.view.expandAll()

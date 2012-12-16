@@ -29,12 +29,11 @@ class instalador(QMainWindow):
         arch=str(self.execShellProcess("uname", "-m").replace("\n",""))
         persistentFilePath=str(self.target+"/persistent_/"+arch)
         if self.ui.CHChangesFile.isChecked():
-            persistemSize=str(self.realChangeFileSize).split(".")[0]
+            persistentFileSize=str(self.realChangeFileSize).split(".")[0]
         else:
-            persistemSize=0
+            persistentFileSize=0
             
-
-        self.installNanoKademarProcess=installNanoKademarProcess(self.target, self.selectedDeviceToInstall[0], wantFormat, persistentFilePath)
+        self.installNanoKademarProcess=installNanoKademarProcess(self.target, self.selectedDeviceToInstall[0], wantFormat, self.pathInstaller, self,kademarType, persistentFilePath,persistentFileSize)
         # FUNCIO COPIA
         self.connect(self.installNanoKademarProcess, SIGNAL("endedCopy"), self.nanoEndedCopyProcess)
         self.connect(self.installNanoKademarProcess, SIGNAL("formated"), self.formated)
@@ -93,14 +92,15 @@ class instalador(QMainWindow):
 
 #Funcio de Format i Còpia de fitxers
 class installNanoKademarProcess(QThread):
-    def __init__(self, target, device, wantFormat, pathInstaller, persistentFilePath, persistemSize):
+    def __init__(self, target, device, wantFormat, pathInstaller, kademarType, persistentFilePath, persistentFileSize):
         QThread.__init__(self)
         self.target=target
         self.wantFormat=wantFormat
         self.device=device
         self.pathInstaller=pathInstaller
         self.persistentFilePath=persistentFilePath
-        self.persistemSize=persistemSize
+        self.persistentFileSize=persistentFileSize
+        self.kademarType=kademarType
 
     def run(self):
         #desmunta els directoris si existeixen per una fallida de l'instalador
@@ -134,11 +134,11 @@ class installNanoKademarProcess(QThread):
 
 
         #PERSISTENT
-        if self.persistemSize != 0:
+        if self.persistentFileSize != 0:
             print("INSTALLING CASPER")
             system("rm -fr "+self.target+"/persistent_") #deleting old persistent
             system("mkdir -p "+self.persistentFilePath)
-            system("dd if=/dev/zero of="+self.persistentFilePath+"/root-image.cow bs=1M count="+self.persistemSize)
+            system("dd if=/dev/zero of="+self.persistentFilePath+"/root-image.cow bs=1M count="+self.persistentFileSize)
             system("mkfs.ext3 -F "+self.persistentFilePath+"/root-image.cow")
         self.emit(SIGNAL("persistentFileCreated"))
 

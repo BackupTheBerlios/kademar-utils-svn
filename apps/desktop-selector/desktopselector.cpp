@@ -1017,7 +1017,7 @@ void DesktopSelector::defineGraphicList()
 
     //prepare chipset list and fill driver combobox
     QList<QString> graphicChipset;
-    graphicChipset << "vesa" << "apm" << "ark" << "chips" << "cirrus" << "cyrix" << "ati" << "fglrx" << "radeonhd" << "radeon" << "glint" << "i128" << "i740" << "imstt" << "intel" << "mga" << "neomagic" << "newport" << "nsc" << "nouveau" << "nv" << "nvidia" << "rendition" << "s3" << "s3virge" << "savage" << "siliconmotion" << "sis" << "tdfx" << "tga" << "trident" << "tseng" << "vboxvideo" << "via" << "vmware";
+    graphicChipset << "vesa" << "apm" << "ark" << "chips" << "cirrus" << "cyrix" << "ati" << "fglrx" << "radeonhd" << "radeon" << "glint" << "i128" << "i740" << "imstt" << "intel" << "mga" << "neomagic" << "newport" << "nsc" << "nouveau" << "nv" << "nvidia" << "nvidia-legacy" << "rendition" << "s3" << "s3virge" << "savage" << "siliconmotion" << "sis" << "tdfx" << "tga" << "trident" << "tseng" << "vboxvideo" << "via" << "vmware";
     int num=0;
     foreach( QString label, graphicChipset )  {
         ui->cb_chipset->addItem("");
@@ -1173,6 +1173,9 @@ void DesktopSelector::finalSteps()
          if (selectedDriver == "nvidia"){
              installVideoDriver("nvidia");
          }
+         if (selectedDriver == "nvidia-legacy"){
+             installVideoDriver("nvidia-legacy");
+         }
          if (selectedDriver == "fglrx"){
              installVideoDriver("ati");
          }
@@ -1235,6 +1238,8 @@ void DesktopSelector::installVideoDriver(QString driver){
         //qDebug() << "installing " << driver;
         extern QSettings settings;
         if (driver == "nvidia"){
+            settings.setValue("nvidiaDriver", "true");
+        } else if (driver == "nvidia-legacy") {
             settings.setValue("nvidiaDriver", "true");
         } else {
             settings.setValue("atiDriver", "true");

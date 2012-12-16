@@ -354,7 +354,7 @@
             </widget>
            </item>
            <item row="11" column="1" colspan="2">
-            <widget class="QLabel" name="LPartitioning">
+            <widget class="QLabel" name="LFormating">
              <property name="text">
               <string>Formating</string>
              </property>

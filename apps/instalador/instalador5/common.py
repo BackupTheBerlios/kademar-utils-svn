@@ -20,6 +20,9 @@ class instalador(QMainWindow):
     def defineCommons(self):
         #Define to Zero
         self.choosedPath=[]
+        self.actualPage=""
+
+        
         self.pagePosition=0
         self.copying=0
         self.endedCopy=0
@@ -78,6 +81,7 @@ class instalador(QMainWindow):
         self.icon_partition=":/img/img/partition.png"
         self.icon_device_pendrive=":/img/img/device-pendrive.png"
         self.icon_greenTick=":/img/img/finish.png"
+        self.icon_waitGrey=":/img/img/waitGrey.gif"
 
     def openGparted(self):
         system("gparted-pkexec")
@@ -103,7 +107,7 @@ class instalador(QMainWindow):
             #print device_props.Get('org.freedesktop.UDisks.Device', "PartitionSize")
             if isDrive == 1 and isEjectable==0:
                 devicefile=devicefile.replace("/dev/","")
-                if devicefile.find("loop") == -1 and rootimage.find("root-image") == -1 and devicefile.find("zram") == -1 and isDetachable == 1:
+                if devicefile.find("loop") == -1 and rootimage.find("root-image") == -1 and devicefile.find("zram") == -1 and isDetachable == 1 and devicefile != self.deviceKademarIsBootingFrom:
                         #print isDrive
                     #print(size)
                     size=size/1000000
@@ -130,7 +134,7 @@ class instalador(QMainWindow):
             if matching:
                 devicefile=str(device_props.Get('org.freedesktop.UDisks.Device', "DeviceFile"))
                 devicefile=devicefile.replace("/dev/","")
-                return devicefile
+                return devicefile[:-1]
             
             
     def listPartitionsOfDevice(self,device):
@@ -182,6 +186,11 @@ class instalador(QMainWindow):
             #print(" ".join(a))
             return(varReturn)
         
+    def getSmartHealthOfDevice(self,device):
+        health=self.execShellProcess("/bin/sh", "-c", "LANG=C smartctl -H /dev/"+device+" 2>/dev/null | grep -i overall-health | cut -d: -f2")
+        health=str(health).replace("\n","").replace("'","")[1:]
+        return health
+        
         
     def getUsedSpaceOfMountedDevice(self,var):
         size=self.execShellProcess("/bin/sh", "-c", "df "+var+" | grep -i "+var+" | awk ' { print $3 } '")
@@ -221,13 +230,13 @@ class instalador(QMainWindow):
         #print(self.choosedPath.indexOf(self.ui.stackedPages.currentWidget()))
         
     def processPageOnEnter(self):
-        actualPage=self.choosedPath[self.pagePosition]
-        if actualPage== self.ui.PMain:
+        self.actualPage=self.choosedPath[self.pagePosition]
+        if self.actualPage== self.ui.PMain:
             self.prepareMainPage()
-        elif actualPage == self.ui.PInstalling:
+        elif self.actualPage == self.ui.PInstalling:
             if [x for x in range(len(self.choosedPath)) if self.choosedPath[x]==self.ui.PNano]:
                 self.prepareInstallNanoCopy()
-        elif actualPage== self.ui.PEnd:
+        elif self.actualPage== self.ui.PEnd:
             self.prepareEndPage()
         QApplication.processEvents()
 
@@ -299,3 +308,11 @@ class instalador(QMainWindow):
 #####
 ##  END HARDWARE CHANGES DETECTOR - RELOAD DEVICE LIST
 #####
+
+    def resizeEvent(self, event):
+        #print ("resized")
+        #if self.choosedPath==[]:
+            #event.ignore()
+        if  self.actualPage==self.ui.PNano:
+            #event.accept
+            self.makeFitsRemovableDevicesComboBoxData()

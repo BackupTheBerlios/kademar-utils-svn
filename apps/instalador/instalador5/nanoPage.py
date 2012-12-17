@@ -69,7 +69,7 @@ class instalador(QMainWindow):
         self.ui.CHChangesFile.setEnabled(False)
         self.ui.CHFormatNano.setEnabled(False)
         self.nextButton() #go to first nano page
-
+        self.makeFitsRemovableDevicesComboBoxData()
 
     def fillListOfDevicesOnCombobox(self,dev_path=None):
         if not self.copying:
@@ -111,15 +111,18 @@ class instalador(QMainWindow):
                         hddsize=float(self.removableDevicesDetected[i][1])  # 20450
                         model=self.removableDevicesDetected[i][2]
                         vendor=self.removableDevicesDetected[i][3]
-
+                        health=self.getSmartHealthOfDevice(hdd)
                         size,unit=self.convertSizeAndUnits(hddsize)
 
                         #self.ui.CBNanoDevice.addItem(QIcon(self.icon_device_pendrive),hdd+" "+hddsize+" "+unitat+" "+model+" "+vendor)
-                        self.completeListDevices.append([hdd,hddsize,unit,model,vendor])
+                        self.completeListDevices.append([hdd,hddsize,unit,model,vendor,health])
                         self.itemList.append(QStandardItem(QIcon(self.icon_device_pendrive), self.tr("Disk")+" "+hdd))
                         self.itemList.append(QStandardItem(size+" "+unit))
                         self.itemList.append(QStandardItem(str(model+" "+vendor)))
-                        self.itemList.append(QStandardItem(" "))
+                        if str(health) != "":
+                            self.itemList.append(QStandardItem(self.tr("SMART HEALTH:")+health))
+                        else:
+                            self.itemList.append(QStandardItem(" "))
                         self.itemList[len(self.itemList)-4].setSelectable(False)
                         self.itemList[len(self.itemList)-3].setSelectable(False)
                         self.itemList[len(self.itemList)-2].setSelectable(False)
@@ -172,19 +175,21 @@ class instalador(QMainWindow):
             self.ui.SChangeFile.setVisible(False)
             self.ui.LChangesFileSize.setVisible(False)
             self.ui.FChangesFileInfo.setVisible(False)
+            self.ui.BNext.setEnabled(False)
 
 
             self.view.expandAll()
             combo = QComboBox()
             self.view.setIndexWidget(self.model.indexFromItem(parent), combo )
-            self.view.resizeColumnToContents(0)
-            self.view.resizeColumnToContents(1)
-            self.view.resizeColumnToContents(2)
-            self.view.resizeColumnToContents(3)
+            #self.view.resizeColumnToContents(0)
+            #self.view.resizeColumnToContents(1)
+            #self.view.resizeColumnToContents(2)
+            #self.view.resizeColumnToContents(3)
+            self.makeFitsRemovableDevicesComboBoxData()
             self.ui.CBNanoDevice.blockSignals(False)
-            
+            #self.view.header().setDefaultSectionSize(300)
             self.showYourPaths() #could be changed
-
+            #print("hola")
 
     def prepareNanoConnections(self):
         self.connect(self.ui.BGpartedNano, SIGNAL("clicked()"), self.openGparted)
@@ -228,6 +233,13 @@ class instalador(QMainWindow):
                     break
                 
 
+    def makeFitsRemovableDevicesComboBoxData(self):
+        value=int(str(int(self.ui.CBNanoDevice.width())/8).split(".")[0])
+        self.view.header().resizeSection(0, value*3) #name
+        self.view.header().resizeSection(1, value) #size
+        self.view.header().resizeSection(2, value*2) #model+vendor / label
+        self.view.header().resizeSection(3, value*2) #fs / smart info
+
     def permanentChangesFileSliderValueChanged(self, int):
         self.totalSizeOfDevice=self.selectedDeviceToInstall[1]
         #print(self.totalSizeOfDevice)
@@ -247,9 +259,11 @@ class instalador(QMainWindow):
         self.ui.FChangesFileInfo.setVisible(state)
 
     def activateOptionsBeforeDeviceIsSelected(self,int):
+        #print("holad")
         if int!=-1:
             self.ui.CHChangesFile.setEnabled(True)
             self.ui.CHFormatNano.setEnabled(True)
+            self.ui.BNext.setEnabled(True)
 
             #Select the working sublist of device (contains all partition selected information)
             #print(self.completeListDevices)

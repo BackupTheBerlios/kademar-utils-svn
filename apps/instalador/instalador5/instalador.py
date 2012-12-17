@@ -22,20 +22,21 @@ import dbus, dbus.glib
 
 
 class instalador(endPage.instalador, installingPage.instalador, mainPage.instalador, nanoPage.instalador, common.instalador, QMainWindow):
-  def __init__(self):
-    QMainWindow.__init__(self)
-    self.ui = uic.loadUi("instalador.ui", self)
-    #self.ui = Ui_Form()
-    #self.ui.setupUi(self)
-    self.defineCommons()
-    self.prepareMainPage()
-    self.setIconVars()
-    self.setConnections()
+    def __init__(self):
+        QMainWindow.__init__(self)
+        self.ui = uic.loadUi("instalador.ui", self)
+        #self.ui = Ui_Form()
+        #self.ui.setupUi(self)
+        self.defineCommons()
+        self.prepareMainPage()
+        self.setIconVars()
+        self.setConnections()
     
-    #Open completly installer on the screen
-    desktop_widget = QDesktopWidget()
-    geometry = desktop_widget.screenGeometry()
-    self.ui.setGeometry(0,0, geometry.width(),geometry.height())
+        #Open completly installer on the screen
+        desktop_widget = QDesktopWidget()
+        geometry = desktop_widget.screenGeometry()
+        self.ui.setGeometry(0,0, geometry.width(),geometry.height())
+  
     
 app = QApplication(sys.argv)
 

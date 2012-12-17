@@ -1,0 +1,17 @@
+[BrowseView]
+ShowApplicationVersions=true
+
+[CheckUpdate]
+autoUpdate=2
+checkUpdatesOnBattery=false
+checkUpdatesOnMobile=false
+installUpdatesOnBattery=false
+installUpdatesOnMobile=false
+interval=3600
+
+[Transaction]
+ShowApplicationLauncher=true
+
+[UpdateView]
+ShowSizes=false
+ShowVersions=true

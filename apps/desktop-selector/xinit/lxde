@@ -16,4 +16,5 @@ unset script
 #exec ck-launch-session dbus-launch startlxdeaccessibility
 
 #new systemd config
-exec ck-launch-session startlxdeaccessibility
+#exec ck-launch-session startlxdeaccessibility
+exec startlxdeaccessibility

@@ -1118,12 +1118,21 @@ void DesktopSelector::finalSteps()
         {
             selectedDriver=ui->cb_chipset->currentText();
         }
+        
+//         //Check for nvidia-legacy use
+//         QString *selectedDriverWanted = new QString();
+//         if (selectedDriver == "nvidia-legacy") {
+//             selectedDriverWanted="nvidia";
+//         } else {
+//             selectedDriverWanted=selectedDriver;
+//         } 
+//         
         if ( file->open( QIODevice::WriteOnly  | QIODevice::Text) )
         {
             QTextStream stream( file );
             stream << "Section \"Device\"\n";
             stream << "  Identifier \"<default device>\"\n";
-            stream << "  Driver \""+ selectedDriver +"\"\n";
+            stream << "  Driver \""+ selectedDriver.replace("-legacy","") +"\"\n";  //remove legacy from driver name nvidia-legacy
             stream << "EndSection\n";
         }
         file->close();
@@ -1241,6 +1250,7 @@ void DesktopSelector::installVideoDriver(QString driver){
             settings.setValue("nvidiaDriver", "true");
         } else if (driver == "nvidia-legacy") {
             settings.setValue("nvidiaDriver", "true");
+	    settings.setValue("nvidiaLegacyDriver", "true");
         } else {
             settings.setValue("atiDriver", "true");
         }

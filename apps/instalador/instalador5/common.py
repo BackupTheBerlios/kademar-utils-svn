@@ -20,7 +20,7 @@ class instalador(QMainWindow):
     def defineCommons(self):
         #Define to Zero
         self.choosedPath=[]
-        self.actualPage=""
+        self.actualPage="/tmp/kademar5-install.log"
 
         
         self.pagePosition=0
@@ -28,7 +28,9 @@ class instalador(QMainWindow):
         self.endedCopy=0
         self.kademarType="Kademar"
         self.pathInstaller="/usr/share/instalador" 
-        self.logFile = "/tmp/kademar5-install.log"
+        self.logFile = "/"
+        
+        self.putDistroNameOnGui()
         
         locale = QLocale.system().name()   #ca_ES
         
@@ -325,3 +327,17 @@ class instalador(QMainWindow):
         #Change visivility of Debug frame
         if event.key() == Qt.Key_F12:
             self.toggleDebugVisibility()
+            
+    def putDistroNameOnGui(self):
+        if QFile("/etc/kademar/config-livecd.heliox").exists():
+            self.kademarType="Heliox"
+
+        for i in [ self.ui.LInstaller, self.ui.LHelp, self.ui.LWelcomeTitle, self.ui.LQuickInstall, self.ui.LAdvancedInstall, self.ui.LNanoInstall, self.ui.LRemoteInstall, self.ui.LWelcome, self.ui.LInformation, self.ui.RBLicenseQuickN, self.ui.RBLicenseN, self.ui.LFinished, self.ui.LThanks ]:
+            text=i.text()
+            i.setText(text.replace("%1", self.kademarType))
+        
+        self.ui.LEPcName.setText(self.kademarType) #line hostname
+        
+        #logos
+        self.ILogo.setPixmap(QPixmap(":/img/img/"+self.kademarType+"Logo.png"))
+        self.ILogo_2.setPixmap(QPixmap(":/img/img/"+self.kademarType+"Logo.png"))

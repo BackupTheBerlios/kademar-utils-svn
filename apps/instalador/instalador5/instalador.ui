@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>974</width>
+    <width>1459</width>
     <height>765</height>
    </rect>
   </property>
@@ -39,18 +39,6 @@
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_5">
-        <property name="leftMargin">
-         <number>1</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>2</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
         <item row="2" column="0">
          <widget class="QWidget" name="WLogo" native="true">
           <property name="maximumSize">
@@ -60,9 +48,6 @@
            </size>
           </property>
           <layout class="QGridLayout" name="gridLayout_8">
-           <property name="margin">
-            <number>0</number>
-           </property>
            <item row="0" column="0">
             <widget class="QPushButton" name="BHelp">
              <property name="text">
@@ -70,7 +55,7 @@
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>../../usr/share/kademar/utils/instalador/img/help.png</normaloff>../../usr/share/kademar/utils/instalador/img/help.png</iconset>
+               <normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/instalador/img/help.png</normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/instalador/img/help.png</iconset>
              </property>
             </widget>
            </item>
@@ -153,6 +138,9 @@
              </property>
              <property name="text">
               <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="resource.qrc">:/img/img/state_blue.png</pixmap>
              </property>
              <property name="scaledContents">
               <bool>true</bool>
@@ -485,7 +473,7 @@
               </font>
              </property>
              <property name="text">
-              <string>Kademar installer</string>
+              <string>%1 installer</string>
              </property>
             </widget>
            </item>
@@ -619,14 +607,11 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>1027</width>
-         <height>703</height>
+         <width>956</width>
+         <height>718</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
-        <property name="margin">
-         <number>2</number>
-        </property>
         <item row="0" column="0">
          <widget class="QStackedWidget" name="stackedPages">
           <property name="currentIndex">
@@ -662,7 +647,7 @@
                  </property>
                  <property name="icon">
                   <iconset>
-                   <normaloff>../../usr/share/kademar/utils/instalador/img/help.png</normaloff>../../usr/share/kademar/utils/instalador/img/help.png</iconset>
+                   <normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/instalador/img/help.png</normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/instalador/img/help.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -675,7 +660,7 @@
                <item row="0" column="0">
                 <widget class="QLabel" name="LHelp">
                  <property name="text">
-                  <string>kademar Installer have a help manual, it can be opened by clicking on &quot;Help&quot; button on left bar in any moment, or by clicking now right Information button.</string>
+                  <string>%1 Installer have a help manual, it can be opened by clicking on &quot;Help&quot; button on left bar in any moment, or by clicking now right Information button.</string>
                  </property>
                  <property name="wordWrap">
                   <bool>true</bool>
@@ -704,7 +689,7 @@
                </font>
               </property>
               <property name="text">
-               <string>Welcome to kademar Linux Installer</string>
+               <string>Welcome to %1 Linux Installer</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -717,8 +702,8 @@
             <item row="1" column="1" colspan="6">
              <widget class="QLabel" name="LWelcome">
               <property name="text">
-               <string>This setup assistant will guide you through the installation of kademar linux on your 
-computer. After installation you will be ready to use kademar linux</string>
+               <string>This setup assistant will guide you through the installation of %1 linux on your 
+computer. After installation you will be ready to use %1 linux</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -736,7 +721,7 @@ computer. After installation you will be ready to use kademar linux</string>
                  <number>1</number>
                 </property>
                 <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Installs kademar &lt;/p&gt;&lt;p&gt;linux with default &lt;/p&gt;&lt;p&gt;basic options&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Installs %1&lt;/p&gt;&lt;p&gt;linux with default &lt;/p&gt;&lt;p&gt;basic options&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="textFormat">
                  <enum>Qt::AutoText</enum>
@@ -749,7 +734,7 @@ computer. After installation you will be ready to use kademar linux</string>
               <item row="2" column="2">
                <widget class="QLabel" name="LNanoInstall">
                 <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Installs kademar &lt;/p&gt;&lt;p&gt;linux in a flash &lt;/p&gt;&lt;p&gt;memory&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Installs %1&lt;/p&gt;&lt;p&gt;linux in a flash &lt;/p&gt;&lt;p&gt;memory&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignHCenter|Qt::AlignTop</set>
@@ -782,7 +767,7 @@ installation</string>
               <item row="2" column="1">
                <widget class="QLabel" name="LAdvancedInstall">
                 <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Custom installation &lt;/p&gt;&lt;p&gt;of kademar linux&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Custom installation &lt;/p&gt;&lt;p&gt;of %1 linux&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignHCenter|Qt::AlignTop</set>
@@ -832,7 +817,7 @@ installer</string>
               <item row="2" column="3">
                <widget class="QLabel" name="LRemoteInstall">
                 <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Network Installation&lt;/p&gt;&lt;p&gt;of kademar linux &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Network Installation&lt;/p&gt;&lt;p&gt;of %1 linux &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignHCenter|Qt::AlignTop</set>
@@ -887,7 +872,7 @@ installation</string>
             <item row="1" column="0">
              <widget class="QLabel" name="LInformation">
               <property name="text">
-               <string>Now kademar Installer is retreiving information of your system.
+               <string>Now %1 Installer is retreiving information of your system.
 
 Be patient, please.</string>
               </property>
@@ -1108,7 +1093,7 @@ Be patient, please.</string>
                <item row="1" column="0">
                 <widget class="QRadioButton" name="RBLicenseQuickN">
                  <property name="text">
-                  <string>No, please remove all non-free software of kademar Linux</string>
+                  <string>No, please remove all non-free software of %1 Linux</string>
                  </property>
                 </widget>
                </item>
@@ -1222,7 +1207,7 @@ Be patient, please.</string>
                  </property>
                  <property name="icon">
                   <iconset>
-                   <normaloff>../../usr/share/kademar/utils/instalador/img/gparted.png</normaloff>../../usr/share/kademar/utils/instalador/img/gparted.png</iconset>
+                   <normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/instalador/img/gparted.png</normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/instalador/img/gparted.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -1750,7 +1735,7 @@ p, li { white-space: pre-wrap; }
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>../../usr/share/kademar/utils/instalador/img/gparted.png</normaloff>../../usr/share/kademar/utils/instalador/img/gparted.png</iconset>
+                <normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/instalador/img/gparted.png</normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/instalador/img/gparted.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -2123,7 +2108,7 @@ Security</string>
                  </property>
                  <property name="icon">
                   <iconset>
-                   <normaloff>../../usr/share/kademar/utils/cadi/img/list_add_user.png</normaloff>../../usr/share/kademar/utils/cadi/img/list_add_user.png</iconset>
+                   <normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/cadi/img/list_add_user.png</normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/cadi/img/list_add_user.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -2140,7 +2125,7 @@ Security</string>
                  </property>
                  <property name="icon">
                   <iconset>
-                   <normaloff>../../usr/share/kademar/utils/cadi/img/list-remove-user.png</normaloff>../../usr/share/kademar/utils/cadi/img/list-remove-user.png</iconset>
+                   <normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/cadi/img/list-remove-user.png</normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/cadi/img/list-remove-user.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -2157,7 +2142,7 @@ Security</string>
                  </property>
                  <property name="icon">
                   <iconset>
-                   <normaloff>../../usr/share/kademar/utils/cadi/img/user-properties.png</normaloff>../../usr/share/kademar/utils/cadi/img/user-properties.png</iconset>
+                   <normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/cadi/img/user-properties.png</normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/cadi/img/user-properties.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -2223,7 +2208,7 @@ Security</string>
                   <string/>
                  </property>
                  <property name="text">
-                  <string>kademar</string>
+                  <string>%1</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>
@@ -2302,7 +2287,7 @@ Security</string>
                <item row="1" column="0">
                 <widget class="QRadioButton" name="RBLicenseN">
                  <property name="text">
-                  <string>No, please remove all non-free software of kademar Linux</string>
+                  <string>No, please remove all non-free software of %1 Linux</string>
                  </property>
                 </widget>
                </item>
@@ -2623,7 +2608,7 @@ p, li { white-space: pre-wrap; }
                  </property>
                  <property name="icon">
                   <iconset>
-                   <normaloff>../../usr/share/kademar/utils/cadi/img/reload.png</normaloff>../../usr/share/kademar/utils/cadi/img/reload.png</iconset>
+                   <normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/cadi/img/reload.png</normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/cadi/img/reload.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -3402,12 +3387,12 @@ p, li { white-space: pre-wrap; }
                <string>Partitioning</string>
               </property>
               <property name="icon">
-               <iconset>
-                <normaloff>../../usr/share/kademar/utils/instalador/img/gparted.png</normaloff>../../usr/share/kademar/utils/instalador/img/gparted.png</iconset>
+               <iconset resource="resource.qrc">
+                <normaloff>:/img/img/gparted.png</normaloff>:/img/img/gparted.png</iconset>
               </property>
               <property name="iconSize">
                <size>
-                <width>32</width>
+                <width>40</width>
                 <height>32</height>
                </size>
               </property>
@@ -3433,16 +3418,6 @@ p, li { white-space: pre-wrap; }
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="8" column="1">
-             <widget class="QFrame" name="FChangesFileInfo">
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
               </property>
              </widget>
             </item>
@@ -3920,7 +3895,7 @@ You have to wait while process is finishing.</string>
           </widget>
           <widget class="QWidget" name="PEnd">
            <layout class="QGridLayout" name="gridLayout_39">
-            <item row="3" column="0">
+            <item row="4" column="0">
              <widget class="QLabel" name="ILogo_2">
               <property name="text">
                <string/>
@@ -3964,19 +3939,13 @@ You have to wait while process is finishing.</string>
             </item>
             <item row="1" column="0">
              <widget class="QLabel" name="LFinished">
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>200</height>
-               </size>
-              </property>
               <property name="text">
                <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;kademar Linux it's installed on your PC&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Now you can close installer and continue using kademar on Live mode, or you can reboot you computer and start on the installed system.&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;%1 Linux it's installed on your PC&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Now you can close installer and continue using %1 on Live mode, or you can reboot you computer and start on the installed system.&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Remember to go to contact us if you have some trouble.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -3999,8 +3968,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Support tickets: &lt;a href=&quot;www.kademar.org/support&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;www.kademar.org/support&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Documentation: &lt;a href=&quot;docs.kademar.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;docs.kademar.org&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;mail: &lt;a href=&quot;support@kademar.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;support@kademar.org&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Facebook: &lt;a href=&quot;www.facebook.com/kademarlinux&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;www.facebook.com/kademarlinux&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;Thanks for choosing kademar Linux&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Facebook: &lt;a href=&quot;www.facebook.com/kademarlinux&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;www.facebook.com/kademarlinux&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -4010,7 +3978,7 @@ p, li { white-space: pre-wrap; }
               </property>
              </widget>
             </item>
-            <item row="4" column="0">
+            <item row="5" column="0">
              <widget class="QWidget" name="WReboot" native="true">
               <property name="minimumSize">
                <size>
@@ -4065,7 +4033,7 @@ p, li { white-space: pre-wrap; }
                  </property>
                  <property name="icon">
                   <iconset>
-                   <normaloff>../../usr/share/kademar/utils/instalador/img/exit.png</normaloff>../../usr/share/kademar/utils/instalador/img/exit.png</iconset>
+                   <normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/instalador/img/exit.png</normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/instalador/img/exit.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -4078,11 +4046,34 @@ p, li { white-space: pre-wrap; }
               </layout>
              </widget>
             </item>
+            <item row="3" column="0">
+             <widget class="QLabel" name="LThanks">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Thanks for choosing %1 Linux&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
            </layout>
           </widget>
          </widget>
         </item>
-        <item row="2" column="0">
+        <item row="1" column="0">
          <widget class="QWidget" name="WButons_2" native="true">
           <property name="minimumSize">
            <size>
@@ -4118,8 +4109,8 @@ p, li { white-space: pre-wrap; }
              </property>
              <property name="iconSize">
               <size>
-               <width>20</width>
-               <height>20</height>
+               <width>30</width>
+               <height>30</height>
               </size>
              </property>
              <property name="default">
@@ -4133,13 +4124,13 @@ p, li { white-space: pre-wrap; }
               <string>Exit</string>
              </property>
              <property name="icon">
-              <iconset>
-               <normaloff>../../usr/share/kademar/utils/instalador/img/exit.png</normaloff>../../usr/share/kademar/utils/instalador/img/exit.png</iconset>
+              <iconset resource="resource.qrc">
+               <normaloff>:/img/img/exit.png</normaloff>:/img/img/exit.png</iconset>
              </property>
              <property name="iconSize">
               <size>
-               <width>20</width>
-               <height>20</height>
+               <width>30</width>
+               <height>30</height>
               </size>
              </property>
             </widget>
@@ -4155,47 +4146,9 @@ p, li { white-space: pre-wrap; }
              </property>
              <property name="iconSize">
               <size>
-               <width>20</width>
-               <height>20</height>
+               <width>30</width>
+               <height>30</height>
               </size>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item row="0" column="1" rowspan="3">
-         <widget class="QFrame" name="FDebug">
-          <property name="minimumSize">
-           <size>
-            <width>400</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_3">
-           <item row="1" column="0">
-            <widget class="QListWidget" name="LWDebug"/>
-           </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label">
-             <property name="font">
-              <font>
-               <weight>75</weight>
-               <italic>true</italic>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>Debug Mode</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
              </property>
             </widget>
            </item>
@@ -4213,12 +4166,66 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>974</width>
+     <width>1459</width>
      <height>21</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QDockWidget" name="FDebug">
+   <property name="floating">
+    <bool>false</bool>
+   </property>
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::RightDockWidgetArea</set>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <layout class="QGridLayout" name="gridLayout_7">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <italic>true</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Debug Mode</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QListWidget" name="LWDebug">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
  </widget>
  <resources>
   <include location="resource.qrc"/>

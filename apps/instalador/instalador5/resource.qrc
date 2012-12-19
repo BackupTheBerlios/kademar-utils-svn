@@ -1,5 +1,9 @@
 <RCC>
   <qresource prefix="img">
+    <file>img/gparted.png</file>
+    <file>img/state_blue.png</file>
+    <file>img/exit.png</file>
+    <file>img/HelioxLogo.png</file>
     <file>img/finish.png</file>
     <file>img/partition.png</file>
     <file>img/waitGrey.gif</file>

@@ -137,11 +137,11 @@ while true; do
 		case "$DESKTOP" in
 			[Kk][Dd][Ee]4) 
 			  echo "kde_restart" > $xsesson_commands_file
-			  tryNvidiaLegacy(kde4)
+			  tryNvidiaLegacy kde4
 		;;
 
 			[Ll][Xx][Dd][Ee])
-			  tryNvidiaLegacy(lxde)
+			  tryNvidiaLegacy lxde
 			;;
 		esac
 		

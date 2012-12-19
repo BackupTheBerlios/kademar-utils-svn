@@ -4,7 +4,7 @@ After=systemd-user-sessions.service
 
 [Service]
 Type=oneshot
-ExecStart=/etc/rc.d/desktop-selecto start &
+ExecStart=/etc/rc.d/desktop-selector start &
 RemainAfterExit=yes
 
 [Install]

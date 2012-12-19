@@ -28,6 +28,7 @@ class instalador(QMainWindow):
         self.endedCopy=0
         self.kademarType="Kademar"
         self.pathInstaller="/usr/share/instalador" 
+        self.logFile = "/tmp/kademar5-install.log"
         
         locale = QLocale.system().name()   #ca_ES
         
@@ -42,6 +43,9 @@ class instalador(QMainWindow):
       
         self.ui.stackedPages.setCurrentWidget(self.ui.PMain) #go to fist main page
       
+        self.ui.FDebug.setVisible(False)  #Hide debug frame
+        self.prepareDebugLogFile() #initializate debug vars
+
         #Show buttons of available installation paths
         self.showYourPaths()
         
@@ -316,3 +320,8 @@ class instalador(QMainWindow):
         if  self.actualPage==self.ui.PNano:
             #event.accept
             self.makeFitsRemovableDevicesComboBoxData()
+            
+    def keyPressEvent(self, event):
+        #Change visivility of Debug frame
+        if event.key() == Qt.Key_F12:
+            self.toggleDebugVisibility()

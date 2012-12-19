@@ -12,15 +12,19 @@
 
 [ "`whoami`" != root ] && echo "NEED TO BE ROOT" && exit
 
+
+logfile="/tmp/kademar5-install.log"
+
+
 if [ ! -e /tmp/instalador5-running ]; then
     touch /tmp/instalador5-running
-. /etc/rc.conf
+. /etc/rc.conf >$logfile 2>&1
 #. /etc/rc.d/functions
-. /etc/kademar/functions
-set_environment_variables
+. /etc/kademar/functions >> $logfile 2>&1
+set_environment_variables >>$logfile 2>&1
 #     touch /tmp/kademarcenter-inicial
     cd /usr/share/instalador
-    python instalador.py >>/tmp/kademar5-install.log 2>&1
+    python instalador.py >>$logfile 2>&1
 #     sh /usr/share/kademar/utils/kademarcenter/scripts/update_fstab >>/tmp/kademar-install.log 2>&1  #old regenerapc
     swapon -a
     rm -f /tmp/instalador5-running

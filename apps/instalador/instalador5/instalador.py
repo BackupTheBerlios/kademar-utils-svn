@@ -19,9 +19,10 @@ import installingPage
 import endPage
 import resource
 import dbus, dbus.glib
+import debug
 
 
-class instalador(endPage.instalador, installingPage.instalador, mainPage.instalador, nanoPage.instalador, common.instalador, QMainWindow):
+class instalador(debug.instalador, endPage.instalador, installingPage.instalador, mainPage.instalador, nanoPage.instalador, common.instalador, QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
         self.ui = uic.loadUi("instalador.ui", self)
@@ -36,6 +37,9 @@ class instalador(endPage.instalador, installingPage.instalador, mainPage.instala
         desktop_widget = QDesktopWidget()
         geometry = desktop_widget.screenGeometry()
         self.ui.setGeometry(0,0, geometry.width(),geometry.height())
+        
+        #label=QLabel("hola")
+        #self.ui.statusbar.addWidget(label)
   
     
 app = QApplication(sys.argv)

@@ -35,6 +35,7 @@ $pacman -Qu
 $pacman -Qdtq | pacman -Rs -
 ;;
 "install --download-only"|"--download-only")
+$pacman -Sy
 $pacman -Sw $var
 ;;
 "--fix-broken")
@@ -52,6 +53,7 @@ $pacman -Su
   fi
 ;;
 "install")
+$pacman -Sy
 $pacman -S $var
 if [ "$?" != 0 ]; then
   if [ -n "`which packer 2>/dev/null`" ]; then

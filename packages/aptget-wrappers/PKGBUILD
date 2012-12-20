@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=aptget-wrappers
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 epoch=
 pkgdesc="Apt-get wrappers for pacman"
@@ -22,7 +22,7 @@ install=
 changelog=
 source=($pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('3c6eace37d8926c5aef5ca27b96e84a2') #generate with 'makepkg -g'
+md5sums=('abfcfe9115a918c5605325cad3356171') #generate with 'makepkg -g'
 
 build() {
   cd "$srcdir"

@@ -1,0 +1,13 @@
+[Unit]
+Description=Festival Speech Synthesis System
+After=sound.target
+Before=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/etc/rc.d/festivald start
+ExecStop=/etc/rc.d/festivald stop
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target

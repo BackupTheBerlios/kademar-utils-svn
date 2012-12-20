@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=kademar-meta-base
-pkgver=5.3
+pkgver=5.8
 pkgrel=1
 epoch=
 pkgdesc="kademar Metapackage Base"
@@ -8,10 +8,11 @@ arch=('i686' 'x86_64')
 url="http://www.kademar.org"
 license=('GPL')
 groups=()
-depends=('acpi' 'acpid' 'pmount' 'fakeroot' 'grub-bios' 'udisks' 'upower' 'kbd' 'p7zip' 'unzip' 'zip' 'unrar' 'unace' 'cabextract' 'arj' 'unarj' 'lzop' 'lsof' 'parted' 'cdrdao' 'cdrkit' 'dvd+rw-tools' 'mtools' 'dosfstools' 'ntfs-3g' 'ntfsprogs' 'wireless_tools' 'hdparm' 'sdparm' 'partimage' 'openntpd' 'openssh' 'cpupower' 'dmraid' 'powertop' 'laptop-mode-tools' 'bash-completion' 'mc' 'bc' 'mime-types' 'ca-certificates' 'ca-certificates-java' 'dirmngr' 'iso-codes' 'fontconfig' 'lsb-release' 'mlocate' 'time' 'linux-firmware' 'smartmontools' 'encfs' 'ext4magic' 'fuseiso' 'ifuse' 'mtpfs' 'shfs-utils' 'fuse-exfat' 'exfat-utils' 'curlftpfs' 'anyfs-tools' 'hfsprogs' 'libmtp' 'libgpod' 'aptget-wrappers' 'sudo' 'convmv' 'archlinux-keyring' 'zramswap' 'laptop-detect' 'efibootmgr' 'systemd' 'haveged' 'usb_modeswitch' 'zsh' 'wvdial' 'ndiswrapper' 'speedtouch' 'htop' 'linux-headers' 'preload' )
+depends=('acpi' 'acpid' 'fakeroot' 'grub-bios' 'udisks' 'upower' 'kbd' 'p7zip' 'unzip' 'zip' 'unrar' 'unace' 'cabextract' 'arj' 'unarj' 'lzop' 'lsof' 'parted' 'cdrdao' 'cdrkit' 'dvd+rw-tools' 'mtools' 'dosfstools' 'ntfs-3g' 'ntfsprogs' 'wireless_tools' 'hdparm' 'sdparm' 'partimage' 'openntpd' 'openssh' 'cpupower' 'dmraid' 'powertop' 'laptop-mode-tools' 'bash-completion' 'mc' 'bc' 'mime-types' 'ca-certificates' 'ca-certificates-java' 'dirmngr' 'iso-codes' 'fontconfig' 'lsb-release' 'mlocate' 'time' 'linux-firmware' 'smartmontools' 'encfs' 'ext4magic' 'fuseiso' 'ifuse' 'mtpfs' 'shfs-utils' 'fuse-exfat' 'exfat-utils' 'curlftpfs' 'anyfs-tools' 'hfsprogs' 'libmtp' 'libgpod' 'aptget-wrappers' 'sudo' 'convmv' 'archlinux-keyring' 'zramswap' 'laptop-detect' 'efibootmgr' 'systemd' 'haveged' 'usb_modeswitch' 'zsh' 'wvdial' 'ndiswrapper' 'speedtouch' 'htop' 'linux-headers' 'preload' 'pkg-config' 'zerofree' 'kademar-updates' 'sysvinit')
 if test "$CARCH" == x86_64; then
   depends=("${depends[@]}" 'grub-efi-x86_64' 'gcc-multilib' 'gcc-libs-multilib' 'binutils-multilib')
 fi
+# 'pmount' 
 makedepends=()
 checkdepends=()
 optdepends=('reiser4progs: ReiserFS 4 support')

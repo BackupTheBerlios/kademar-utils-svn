@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=kademar-livecd
-pkgver=5.7.30
+pkgver=5.7.36
 pkgrel=1
 epoch=
 pkgdesc="Kademar Linux basic LiveCD package and utilities - remove on install"
@@ -8,7 +8,7 @@ arch=('any')
 url="http://www.kademar.org"
 license=('GPL')
 groups=()
-depends=('bash' 'zramswap' 'numlockx' 'laptop-detect' 'desktop-selector')
+depends=('bash' 'zramswap' 'numlockx' 'laptop-detect' 'desktop-selector' 'zerofree')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -21,7 +21,7 @@ install=kademar-livecd.install
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('85f87e099d3fa3fa9c74e1043ce23f8e') #generate with 'makepkg -g'
+md5sums=('51d96d405a916cd4d75a5e0b7154b772') #generate with 'makepkg -g'
 
 
 package() {
@@ -33,7 +33,7 @@ package() {
   find "$pkgdir"/etc/sudoers.d -type d -exec chmod 750 "{}" \;
   find "$pkgdir"/etc/sudoers.d -type f -exec chmod 440 "{}" \;
   find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
-#   find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+  find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
   find "$pkgdir"/etc/rc.d -type f -exec chmod 744 "{}" \;
   find "$pkgdir"/etc/profile.d -type f -exec chmod 755 "{}" \;
 #   chmod +x "$pkgdir"/usr/share/desktop-selector/scripts/*

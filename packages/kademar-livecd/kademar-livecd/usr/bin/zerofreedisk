@@ -1,0 +1,75 @@
+#!/bin/bash
+
+#parse all disks and 
+
+if [ -n "$(lspci | grep -i virtualbox)" ]; then
+
+  . /etc/locale.conf
+  case "$LANG" in
+  ca*)
+    echo "Estàs segur de continuar amb el procés de compactar els discs? (s/N)"
+  ;;
+  es*)
+    echo "Estás seguro de continuar con el proceso de compactar los discos? (s/N)"
+  ;;
+  *)
+    echo "Are you sure to continue with compact the hard disks? (y/N)"
+  ;;
+  esac
+  read key
+  case "$key" in
+  y|Y|s|S)
+    ok=ok
+  ;;
+  esac
+  [ "$ok" != "ok" ] && exit
+  
+  
+  for i in `ls /sys/class/block/ | grep -i sd | grep -v [0-9]`;
+  do
+#     echo "Umounting /dev/$i*"
+    umount /dev/$i*
+
+#   if it's completly umounted proceed
+    if [ -z "$(cat /proc/self/mounts | grep -i /dev/$i)" ]; then
+# 	echo "Umounted perfect $i. Removing Zeros from partition"
+	for i in  `ls /dev/$i?*`
+	do
+	  echo 
+	  case "$LANG" in
+	  ca*)
+	    echo " * Executant ZeroFree per $i *"
+	  ;;
+	  es*)
+	    echo " * Ejecutando ZeroFree para $i *"
+	  ;;
+	  *)
+	    echo " * Executing ZeroFree to $i *"
+	  ;;
+	  esac
+	  echo 
+# 	echo "Now passing FSCK to be sure that all is OK"
+	  fs="$(blkid $i -c /dev/null -o value -s TYPE)"
+	  [ "$fs" != "" -a "$fs" != "swap" ] && zerofree $i
+	  [ "$fs" != ntfs -a "$fs" != "" -a "$fs" != "swap" ] && fsck.$fs $i
+	done
+	
+    fi
+  done  
+  
+  echo
+    case "$LANG" in
+  ca*)
+    echo "Procés finalitzat. Ara s'hauria d'apagar la màquina virtual i compactar el disc"
+  ;;
+  es*)
+    echo "Proceso finalizado. Ahora se debería apagar la máquina virtual i compactar el disco"
+    ;;
+  *)
+    echo "Proces ended. Now you should stop virtual machine and compact the disk"
+    ;;
+  esac
+  echo
+else
+  echo "Need to be executed on VirtualBox"
+fi

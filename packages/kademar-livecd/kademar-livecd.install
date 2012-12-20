@@ -49,39 +49,39 @@ update_files() {
     fi
 
     #systemctl enable kademar-livecd
-    if [ ! -e /etc/systemd/system/multi-user.target.wants/kademar-livecd.service ]; then
+    if [ ! -L /etc/systemd/system/multi-user.target.wants/kademar-livecd.service ]; then
       ln -s /usr/lib/systemd/system/kademar-livecd.service /etc/systemd/system/multi-user.target.wants/kademar-livecd.service
     fi
     
     #systemctl enable NetworkManager
-    if [ ! -e /etc/systemd/system/dbus-org.freedesktop.NetworkManager.service ]; then
+    if [ ! -L /etc/systemd/system/dbus-org.freedesktop.NetworkManager.service ]; then
       ln -s '/usr/lib/systemd/system/NetworkManager.service' '/etc/systemd/system/dbus-org.freedesktop.NetworkManager.service'
     fi
     
-    if [ ! -e /etc/systemd/system/multi-user.target.wants/NetworkManager.service ]; then
+    if [ ! -L /etc/systemd/system/multi-user.target.wants/NetworkManager.service ]; then
       ln -s '/usr/lib/systemd/system/NetworkManager.service' '/etc/systemd/system/multi-user.target.wants/NetworkManager.service'
     fi
     
     #systemctl enable kademar-openntpd
-    if [ ! -e /etc/systemd/system/multi-user.target.wants/openntpd.service ]; then
+    if [ ! -L /etc/systemd/system/multi-user.target.wants/openntpd.service ]; then
       ln -s '/usr/lib/systemd/system/openntpd.service' '/etc/systemd/system/multi-user.target.wants/openntpd.service'
     fi
 
-    if [ ! -e /etc/systemd/system/multi-user.target.wants/zramswap.service ]; then
+    if [ ! -L /etc/systemd/system/multi-user.target.wants/zramswap.service ]; then
       ln -s /usr/lib/systemd/system/zramswap.service /etc/systemd/system/multi-user.target.wants/zramswap.service
     fi
     
     #systemctl enable cups
-    [ ! -e '/etc/systemd/system/printer.target.wants/' ] && mkdir -p '/etc/systemd/system/printer.target.wants/'
-    [ ! -e '/etc/systemd/system/sockets.target.wants/' ] && mkdir -p '/etc/systemd/system/sockets.target.wants/'
+    [ ! -L '/etc/systemd/system/printer.target.wants/' ] && mkdir -p '/etc/systemd/system/printer.target.wants/'
+    [ ! -L '/etc/systemd/system/sockets.target.wants/' ] && mkdir -p '/etc/systemd/system/sockets.target.wants/'
 
-    if [ ! -e '/etc/systemd/system/printer.target.wants/cups.service' ]; then
+    if [ ! -L '/etc/systemd/system/printer.target.wants/cups.service' ]; then
       ln -s '/usr/lib/systemd/system/cups.service' '/etc/systemd/system/printer.target.wants/cups.service'
     fi
-    if [ ! -e '/etc/systemd/system/sockets.target.wants/cups.socket' ]; then
+    if [ ! -L '/etc/systemd/system/sockets.target.wants/cups.socket' ]; then
 	ln -s '/usr/lib/systemd/system/cups.socket' '/etc/systemd/system/sockets.target.wants/cups.socket'
     fi
-    if [ ! -e '/etc/systemd/system/multi-user.target.wants/cups.path' ]; then
+    if [ ! -L '/etc/systemd/system/multi-user.target.wants/cups.path' ]; then
 	ln -s '/usr/lib/systemd/system/cups.path' '/etc/systemd/system/multi-user.target.wants/cups.path'
     fi
 
@@ -92,10 +92,10 @@ update_files() {
     
     rm -f /etc/systemd/system/getty.target.wants/getty*
     
-    if [ ! -e '/etc/systemd/system/getty.target.wants/autologin@tty1.service' ]; then
+    if [ ! -L '/etc/systemd/system/getty.target.wants/autologin@tty1.service' ]; then
       ln -s '/usr/lib/systemd/system/autologin@.service' '/etc/systemd/system/getty.target.wants/autologin@tty1.service'
     fi
-    if [ ! -e '/etc/systemd/system/getty.target.wants/autologin@tty2.service' ]; then
+    if [ ! -L '/etc/systemd/system/getty.target.wants/autologin@tty2.service' ]; then
       ln -s '/usr/lib/systemd/system/autologin@.service' '/etc/systemd/system/getty.target.wants/autologin@tty2.service'
     fi
     

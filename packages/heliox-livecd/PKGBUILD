@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=heliox-livecd
-pkgver=5.4
+pkgver=5.8
 pkgrel=1
 epoch=
 pkgdesc="Heliox Linux basic LiveCD package and utilities - remove on install"
@@ -21,7 +21,7 @@ install=heliox-livecd.install
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('0512b23b6d8df7e19128efab6ade25d9') #generate with 'makepkg -g'
+md5sums=('bba5e07c20cf2c3d4de577ebecc2d811') #generate with 'makepkg -g'
 
 
 package() {

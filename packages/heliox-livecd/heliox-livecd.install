@@ -4,6 +4,7 @@ post_install() {
       cp -af /usr/share/kademar/heliox-livecd-files/* /      
     fi
     create_skel
+    systemdlinks
 }
 
 post_upgrade() {
@@ -12,6 +13,7 @@ post_upgrade() {
 	cp -af /usr/share/kademar/heliox-livecd-files/* /    
     fi
   create_skel
+  systemdlinks
 }
 
 post_remove() {
@@ -20,6 +22,16 @@ post_remove() {
       cp -af /usr/share/kademar/livecd-recover/* /
     fi
 }
+
+systemdlinks() {
+    if [ ! -L '/etc/systemd/system/multi-user.target.wants/speech-dispatcherd.service' ]; then
+        ln -s '/usr/lib/systemd/system/speech-dispatcherd.service' '/etc/systemd/system/multi-user.target.wants/speech-dispatcherd.service'
+    fi
+    if [ ! -L '/etc/systemd/system/multi-user.target.wants/kademar-festival.service' ]; then
+        ln -s '/usr/lib/systemd/system/kademar-festival.service' '/etc/systemd/system/multi-user.target.wants/kademar-festival.service'
+    fi
+}
+
 
 
 

@@ -49,8 +49,19 @@ do
 sleep 5 ; sudo kill \`ps aux | grep -i polkitd | grep -v grep | awk ' { print \$2 } '\`; sudo /usr/lib/polkit-1/polkitd --no-debug &
 EOF
   chmod 777 $i/.config/autostart/polkit-hack.sh
+  
+  #disable autoupdate
+   sed "s~autoUpdate=.*~autoUpdate=0~g" -i $i/.kde4/share/config/apper
 done
+
+
+
+
+
+
 }
+
+
 
 ### MAIN
 

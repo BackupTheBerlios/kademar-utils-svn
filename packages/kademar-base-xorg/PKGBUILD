@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=kademar-base-xorg
-pkgver=5.0.5
+pkgver=5.1
 pkgrel=1
 epoch=
 pkgdesc="Kademar Linux basic Xorg package and utilities"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('8f53f79fcc724c02e1dc054c211fbbf7') #generate with 'makepkg -g'
+md5sums=('9e7aaebcbcab1c62d718d503ccf2322f') #generate with 'makepkg -g'
 
 
 package() {

@@ -17,7 +17,7 @@ class instalador(QMainWindow):
       #Inst. Nano: PMain . PNano . PInstalling . PEnd
 
     def prepareInstallNanoCopy(self):
-        #print("installing")
+        #self.logMessage("installing")
         self.target="/instalador/nano"
         self.copying=True
         self.ui.WButons_2.setVisible(False)
@@ -44,6 +44,9 @@ class instalador(QMainWindow):
         self.connect(self.installNanoKademarProcess, SIGNAL("persistentFileCreated"), self.persistentFileCreated)
         self.connect(self.installNanoKademarProcess, SIGNAL("bootManagerInstalled"), self.bootManagerInstalled)
         #self.connect(self.installNanoKademarProcess, SIGNAL("progress"), self.updateProgressBar)
+        
+        if wantFormat:
+            self.logMessage("Formating")
         self.installNanoKademarProcess.start()
         self.ui.iDisk.setPixmap(QPixmap(self.icon_greenTick))
         
@@ -51,6 +54,7 @@ class instalador(QMainWindow):
         self.ui.iFormating.setMovie(self.movieGreyIcon)
    
     def nanoEndedFormat(self):
+        self.logMessage("Beginning File Copy")
         self.ui.iFormating.setPixmap(QPixmap(self.icon_greenTick))
         self.ui.iCopy.setMovie(self.movieGreyIcon)
         
@@ -58,8 +62,15 @@ class instalador(QMainWindow):
         self.checkSpace=checkSpace(self.target, self.selectedDeviceToInstall[0], self.totalSizeOfKademar)
         self.connect(self.checkSpace, SIGNAL("progressFromCopyThread"), self.updateProgressBar)
         self.checkSpace.start()
+        self.logMessage("Initializing CheckSpace Thread")
 
     def nanoEndedCopyProcess(self):
+        self.logMessage("Ended File Copy")
+        self.checkSpace.terminate()
+        self.logMessage("Terminated CheckSpace Thread")
+        if self.ui.CHChangesFile.isChecked():
+            self.logMessage("Creating Persistent Filesystem")
+
         #global varcopiaacabada, copiant, led_order, icona_verda, icona_taronja, icona_vermella, currentpage, idioma, autologin, mbr, particioarrel, particioswap, particiohome, filesystems, target, pathinstaller
         self.ui.PBInstalling.setVisible(0)
         self.ui.LInstallFinished.setVisible(1)
@@ -71,8 +82,7 @@ class instalador(QMainWindow):
         self.ui.iCopy.setPixmap(QPixmap(self.icon_greenTick))
         self.ui.iPersistentChangesFile.setMovie(self.movieGreyIcon)
         
-        self.checkSpace.terminate()
-        print("Terminated CheckSpace Thread")
+
 
  
         #global espaidisc
@@ -84,6 +94,8 @@ class instalador(QMainWindow):
         
 
     def persistentFileCreated(self):
+        self.logMessage("Persistent File Created")
+        self.logMessage("Installing Boot Sector to "+self.selectedDeviceToInstall[0])
         self.ui.iPersistentChangesFile.setPixmap(QPixmap(self.icon_greenTick))
         self.ui.iBoot.setMovie(self.movieGreyIcon)
         
@@ -107,7 +119,7 @@ class instalador(QMainWindow):
         self.nextButton()
 
     def updateProgressBar(self, value):
-        #print("updating",num)
+        #self.logMessage("updating",num)
         self.ui.PBInstalling.setValue(value)
         self.ui.PBLogo.setValue(value)
         
@@ -193,7 +205,7 @@ class installNanoKademarProcess(QThread):
 class checkSpace(QThread):
     def __init__(self, target, device, totalSizeOfKademar):
         QThread.__init__(self)
-        print ("Initializing Check Space Class")
+        print("Initializing Check Space Class")
         self.target=target
         self.device=device
         self.totalSizeOfKademar=totalSizeOfKademar
@@ -223,7 +235,7 @@ class checkSpace(QThread):
         return result
 
     def run(self):
-        print ("starting Check Space")
+        print("starting Check Space")
         #QApplication.processEvents()
         sleep(2)
         #QApplication.processEvents()

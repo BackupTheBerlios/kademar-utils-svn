@@ -15,16 +15,19 @@ mkmenu(){
 
   arch=`uname -m`
 
+  kademarType="Kademar"
+  [ -e /etc/kademar/config-livecd.heliox ] && kademarType="Heliox"
   PART=$1
   uuid=$(blkid $PART -o value -s UUID)
 
     
   sed s."MENU ROWS 6"."MENU ROWS 7".g -i *_head.cfg
+  [ "$kademarType" != "Kademar" ] && sed s."Kademar"."$kademarType".g -i *_head.cfg
 
 
   case "$LANG" in
   *)
-  startLabel="Iniciar Kademar Linux"
+  startLabel="Iniciar $kademarType Linux"
   persistentLabel="Cambios Persistentes"
   copyToRam="Copiar a RAM"
   memtestLabel="Programa de analisis de la memoria del ordenador"

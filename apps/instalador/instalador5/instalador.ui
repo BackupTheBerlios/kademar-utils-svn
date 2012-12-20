@@ -6,12 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1459</width>
+    <width>1135</width>
     <height>765</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resource.qrc">
+    <normaloff>:/img/img/instalador-kademar.png</normaloff>:/img/img/instalador-kademar.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -607,7 +611,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>956</width>
+         <width>630</width>
          <height>718</height>
         </rect>
        </property>
@@ -4166,7 +4170,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1459</width>
+     <width>1135</width>
      <height>21</height>
     </rect>
    </property>
@@ -4197,7 +4201,7 @@ p, li { white-space: pre-wrap; }
         </font>
        </property>
        <property name="text">
-        <string>Debug Mode</string>
+        <string>Debug Mode ~ Press F12 to hide it</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>

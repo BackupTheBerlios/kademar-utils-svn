@@ -20,7 +20,7 @@ class instalador(QMainWindow):
     def defineCommons(self):
         #Define to Zero
         self.choosedPath=[]
-        self.actualPage="/tmp/kademar5-install.log"
+        self.actualPage=""
 
         
         self.pagePosition=0
@@ -28,7 +28,7 @@ class instalador(QMainWindow):
         self.endedCopy=0
         self.kademarType="Kademar"
         self.pathInstaller="/usr/share/instalador" 
-        self.logFile = "/"
+        self.logFile = "/tmp/kademar5-install.log"
         
         self.putDistroNameOnGui()
         
@@ -82,6 +82,9 @@ class instalador(QMainWindow):
         if self.copying:
             self.showWarningMessage("critical", self.tr("Installer cannot be closed"), self.tr("Installer is working and it cannot be closed until it finish."),)
             event.ignore()
+        else:
+            if self.ui.CBReboot.isChecked():
+                system("reboot")
             
     def setIconVars(self):
         self.icon_partition=":/img/img/partition.png"
@@ -115,7 +118,7 @@ class instalador(QMainWindow):
                 devicefile=devicefile.replace("/dev/","")
                 if devicefile.find("loop") == -1 and rootimage.find("root-image") == -1 and devicefile.find("zram") == -1 and isDetachable == 1 and devicefile != self.deviceKademarIsBootingFrom:
                         #print isDrive
-                    #print(size)
+                    #self.logMessage(size)
                     size=size/1000000
                     varActual.append(devicefile)
                     varActual.append(str(size))
@@ -157,7 +160,7 @@ class instalador(QMainWindow):
             if str(device).replace("/dev/","")==devicefile.replace("/dev/",""):
                 #print devicefile
                 disk=dev
-        #print(disk)
+        #self.logMessage(disk)
         if disk !="":
             for dev in self.ud_manager.EnumerateDevices():
                 varActual=[]
@@ -189,7 +192,7 @@ class instalador(QMainWindow):
                     varReturn.append(varActual)
 
             #a=sorted(result.split())
-            #print(" ".join(a))
+            #self.logMessage(" ".join(a))
             return(varReturn)
         
     def getSmartHealthOfDevice(self,device):
@@ -223,7 +226,7 @@ class instalador(QMainWindow):
             self.pagePosition=self.pagePosition-1
             self.ui.stackedPages.setCurrentWidget(self.choosedPath[self.pagePosition])
             self.processPageOnEnter()
-        #print(self.choosedPath.indexOf(self.ui.stackedPages.currentWidget()))
+        #self.logMessage(self.choosedPath.indexOf(self.ui.stackedPages.currentWidget()))
         
     def nextButton(self):
         if len(self.choosedPath)-1>self.pagePosition:
@@ -233,7 +236,7 @@ class instalador(QMainWindow):
                 QApplication.processEvents()
                 self.processPageOnEnter()
                 QApplication.processEvents()
-        #print(self.choosedPath.indexOf(self.ui.stackedPages.currentWidget()))
+        #self.logMessage(self.choosedPath.indexOf(self.ui.stackedPages.currentWidget()))
         
     def processPageOnEnter(self):
         self.actualPage=self.choosedPath[self.pagePosition]
@@ -259,10 +262,10 @@ class instalador(QMainWindow):
 
         size1=str(size).split(".")[0]
         size2=str(size).split(".")[1]
-        #print(size1)
-        #print(size2)
+        #self.logMessage(size1)
+        #self.logMessage(size2)
         if len(str(size).split(".")[0])<=3:
-            #print(str(hddsize).split(".")[0][:-3])#hddsize=int(self.parts[i].split("-")[1])  #J
+            #self.logMessage(str(hddsize).split(".")[0][:-3])#hddsize=int(self.parts[i].split("-")[1])  #J
             #hddsize1
             size=size1+","+size2[:2]
             unit="Mb"
@@ -298,7 +301,7 @@ class instalador(QMainWindow):
         proc.start(idCommand, param)
         proc.waitForFinished()
         result = proc.readAll()
-        #print(str(result))
+        #self.logMessage(str(result))
         proc.close()
         return result
 
@@ -341,3 +344,26 @@ class instalador(QMainWindow):
         #logos
         self.ILogo.setPixmap(QPixmap(":/img/img/"+self.kademarType+"Logo.png"))
         self.ILogo_2.setPixmap(QPixmap(":/img/img/"+self.kademarType+"Logo.png"))
+        
+        #Window Title
+        self.ui.setWindowTitle(self.tr("%1 Installer").replace("%1", self.kademarType))
+        
+        print(":/img/img/instalador-"+str(self.kademarType).lower()+".png")
+        self.ui.setWindowIcon(QIcon(":/img/img/instalador-"+str(self.kademarType).lower()+".png"))
+
+
+    def logMessage(self, var, var1="", var2="", var3="", var4="", var5=""):
+        #log function, to logfile and print it
+        print(var, var1, var2, var3, var4, var5)
+        with open(self.logFile, "a") as f:
+            f.write(var+"\n")
+            if var1:
+                f.write(var+"\n")
+            if var2:
+                f.write(var+"\n")
+            if var3:
+                f.write(var+"\n")
+            if var4:
+                f.write(var+"\n")
+            if var5:
+                f.write(var+"\n")

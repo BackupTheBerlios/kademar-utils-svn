@@ -73,7 +73,7 @@ class instalador(QMainWindow):
 
     def fillListOfDevicesOnCombobox(self,dev_path=None):
         if not self.copying:
-            #print("refill devices") 
+            #self.logMessage("refill devices") 
             self.ui.CBNanoDevice.blockSignals(True)
             try:
                 destroy(self.completeListDevices)
@@ -98,13 +98,13 @@ class instalador(QMainWindow):
         ##Empty Partition&Device ComboBox 
             self.ui.CBNanoDevice.clear()
             #Fill the Removable devices list
-            #print(self.removableDevicesDetected)
+            #self.logMessage(self.removableDevicesDetected)
             for i in range(len(self.removableDevicesDetected)):
-                #print(self.removableDevicesDetected[i])
+                #self.logMessage(self.removableDevicesDetected[i])
                 hdd=self.removableDevicesDetected[i][0]
                 parts=[]
                 parts=self.listPartitionsOfDevice(hdd)
-                #print(parts)
+                #self.logMessage(parts)
                 #Only append all HDD if has partitions (failed show when desconnecting pendrives)
                 if self.deviceKademarIsBootingFrom != hdd: #hide from where is booting from
                     if parts != [] and parts != None:  #put partitions if there are. If not, don't put any thing
@@ -138,7 +138,7 @@ class instalador(QMainWindow):
 
                         actualparent=self.itemList[len(self.itemList)-4]
                         for i in range(len(parts)):
-                            #print(self.removableDevicesDetected[i])
+                            #self.logMessage(self.removableDevicesDetected[i])
                             part=parts[i][0]
                             partsize=float(parts[i][1])  # 20450
                             fs=parts[i][2]
@@ -160,7 +160,7 @@ class instalador(QMainWindow):
                                 self.itemList[len(self.itemList)-1],
                                 ])
                         #self.ui.CBNanoDevice.addItem(QIcon(self.icon_partition),part+" "+partsize+" "+fs+" "+unitat+" "+label)
-                            #print(hd)
+                            #self.logMessage(hd)
 
             self.view.adjustSize()
             self.view.setAutoExpandDelay(0)
@@ -174,7 +174,7 @@ class instalador(QMainWindow):
             self.ui.LChangeFilePercent.setVisible(False)
             self.ui.SChangeFile.setVisible(False)
             self.ui.LChangesFileSize.setVisible(False)
-            self.ui.FChangesFileInfo.setVisible(False)
+            #self.ui.FChangesFileInfo.setVisible(False)
             self.ui.BNext.setEnabled(False)
 
 
@@ -189,7 +189,7 @@ class instalador(QMainWindow):
             self.ui.CBNanoDevice.blockSignals(False)
             #self.view.header().setDefaultSectionSize(300)
             self.showYourPaths() #could be changed
-            #print("hola")
+            #self.logMessage("hola")
 
     def prepareNanoConnections(self):
         self.connect(self.ui.BGpartedNano, SIGNAL("clicked()"), self.openGparted)
@@ -242,12 +242,12 @@ class instalador(QMainWindow):
 
     def permanentChangesFileSliderValueChanged(self, int):
         self.totalSizeOfDevice=self.selectedDeviceToInstall[1]
-        #print(self.totalSizeOfDevice)
-        #print(self.totalSizeOfKademar)
-        #print(self.totalSizeOfDevice-self.totalSizeOfKademar)
-        #print(str(self.totalSizeOfDevice-self.totalSizeOfKademar)[0]) #if it's "-" means device it's too small for install kademar
+        #self.logMessage(self.totalSizeOfDevice)
+        #self.logMessage(self.totalSizeOfKademar)
+        #self.logMessage(self.totalSizeOfDevice-self.totalSizeOfKademar)
+        #self.logMessage(str(self.totalSizeOfDevice-self.totalSizeOfKademar)[0]) #if it's "-" means device it's too small for install kademar
         self.realChangeFileSize=int*self.totalFreeSizeAfterInstallation/100
-        #print(self.realChangeFileSize)
+        #self.logMessage(self.realChangeFileSize)
         size,unit=self.convertSizeAndUnits(self.realChangeFileSize)
         self.ui.LChangeFilePercent.setText(str(int)+"%  ("+str(size)+" "+str(unit)+")")
 
@@ -256,30 +256,30 @@ class instalador(QMainWindow):
         self.ui.LChangeFilePercent.setVisible(state)
         self.ui.SChangeFile.setVisible(state)
         self.ui.LChangesFileSize.setVisible(state)
-        self.ui.FChangesFileInfo.setVisible(state)
+        #self.ui.FChangesFileInfo.setVisible(state)
 
     def activateOptionsBeforeDeviceIsSelected(self,int):
-        #print("holad")
+        #self.logMessage("holad")
         if int!=-1:
             self.ui.CHChangesFile.setEnabled(True)
             self.ui.CHFormatNano.setEnabled(True)
             self.ui.BNext.setEnabled(True)
 
             #Select the working sublist of device (contains all partition selected information)
-            #print(self.completeListDevices)
+            #self.logMessage(self.completeListDevices)
             search = self.ui.CBNanoDevice.currentText()
             if search != "":
                 search=search.split()[1]
-                #print(search)
+                #self.logMessage(search)
                 for sublist in self.completeListDevices:
                     if sublist[0] == search:
-                        #print("Found it!", sublist)
+                        #self.logMessage("Found it!", sublist)
                         #Found it! ['sdc1', '3,96', 'Gb', 'vfat', 'V7']
                         self.selectedDeviceToInstall=sublist
                         break
                 self.totalSizeOfDevice=self.selectedDeviceToInstall[1]
-                #print(self.totalSizeOfDevice)
-                #print(self.totalSizeOfDevice-self.totalSizeOfKademar)
+                #self.logMessage(self.totalSizeOfDevice)
+                #self.logMessage(self.totalSizeOfDevice-self.totalSizeOfKademar)
                 self.totalFreeSizeAfterInstallation=self.totalSizeOfDevice-self.totalSizeOfKademar
 
                 if str(self.totalFreeSizeAfterInstallation)[0] == "-": #if it's "-" means device it's too small for install kademar

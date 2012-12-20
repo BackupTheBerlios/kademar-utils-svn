@@ -1,6 +1,8 @@
 <RCC>
   <qresource prefix="img">
     <file>img/gparted.png</file>
+    <file>img/instalador-heliox.png</file>
+    <file>img/instalador-kademar.png</file>
     <file>img/state_blue.png</file>
     <file>img/exit.png</file>
     <file>img/HelioxLogo.png</file>

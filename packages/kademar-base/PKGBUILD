@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=kademar-base
-pkgver=5.7.9
+pkgver=5.7.10
 pkgrel=1
 epoch=
 pkgdesc="Kademar Linux basic package and utilities"
@@ -21,7 +21,7 @@ install=kademar-base.install
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('4b7ebf0b9012204a6c7e23218b930295') #generate with 'makepkg -g'
+md5sums=('e8b17f1fd13ae26f98a9ce35e3c8ed7c') #generate with 'makepkg -g'
 
 
 package() {

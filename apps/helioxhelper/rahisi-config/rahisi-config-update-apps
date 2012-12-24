@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /usr/share/helioxhelper/rahisi-config
+python2 programes.py

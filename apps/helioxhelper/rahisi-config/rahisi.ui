@@ -18,82 +18,42 @@
     <normaloff>../../../../../../usr/share/kdemar/utils/audioconversor5/img/small_logo.png</normaloff>../../../../../../usr/share/kdemar/utils/audioconversor5/img/small_logo.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="2" column="0" colspan="3">
-    <widget class="QFrame" name="frame">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>30</height>
-      </size>
+   <item row="3" column="1">
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="widgetResizable">
+      <bool>true</bool>
      </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::Box</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <property name="lineWidth">
-      <number>0</number>
-     </property>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QWidget" name="scrollAreaWidgetContents">
       <property name="geometry">
        <rect>
-        <x>3</x>
-        <y>3</y>
-        <width>84</width>
-        <height>27</height>
+        <x>0</x>
+        <y>0</y>
+        <width>790</width>
+        <height>817</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Salir</string>
-      </property>
-      <property name="icon">
-       <iconset>
-        <normaloff>images/exit.png</normaloff>images/exit.png</iconset>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_3">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>3</y>
-        <width>151</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Añadir botón</string>
-      </property>
-      <property name="icon">
-       <iconset>
-        <normaloff>images/add.png</normaloff>images/add.png</iconset>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_4">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>270</x>
-        <y>3</y>
-        <width>151</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Quitar botón</string>
-      </property>
-      <property name="icon">
-       <iconset>
-        <normaloff>images/remove.png</normaloff>images/remove.png</iconset>
-      </property>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>771</width>
+         <height>601</height>
+        </rect>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
      </widget>
     </widget>
    </item>
@@ -101,8 +61,8 @@
     <widget class="QToolBox" name="toolBox">
      <property name="minimumSize">
       <size>
-       <width>320</width>
-       <height>0</height>
+       <width>314</width>
+       <height>39</height>
       </size>
      </property>
      <property name="maximumSize">
@@ -119,7 +79,7 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>320</width>
+        <width>314</width>
         <height>734</height>
        </rect>
       </property>
@@ -273,6 +233,12 @@
        </item>
        <item row="8" column="3" colspan="2">
         <widget class="QComboBox" name="comboBox_2">
+         <property name="minimumSize">
+          <size>
+           <width>120</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="currentIndex">
           <number>2</number>
          </property>
@@ -461,183 +427,121 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>320</width>
-        <height>734</height>
+        <width>300</width>
+        <height>583</height>
        </rect>
       </property>
       <attribute name="label">
        <string>Botones</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_4">
-       <item row="6" column="0" colspan="5">
-        <widget class="QLabel" name="label_24">
-         <property name="text">
-          <string>Anchura máx.</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="0" colspan="5">
-        <widget class="QLabel" name="label_25">
-         <property name="text">
-          <string>Borde normal</string>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="0" colspan="5">
-        <widget class="QLabel" name="label_26">
-         <property name="text">
-          <string>Borde activo</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0" colspan="7">
-        <widget class="QCheckBox" name="checkBox_18">
-         <property name="text">
-          <string>Texto en el botón</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0" colspan="5">
-        <widget class="QLabel" name="label_7">
-         <property name="text">
-          <string>Atura min.</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0" colspan="5">
-        <widget class="QLabel" name="label_22">
-         <property name="text">
-          <string>Altura máx.</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0" colspan="5">
-        <widget class="QLabel" name="label_23">
-         <property name="text">
-          <string>Anchura min.</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" colspan="5">
-        <widget class="QLabel" name="label_21">
-         <property name="text">
-          <string>Tamaño Icono</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0" colspan="7">
-        <widget class="QCheckBox" name="checkBox_19">
-         <property name="text">
-          <string>Icono encima texto</string>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="0" colspan="5">
-        <widget class="QLabel" name="label_27">
-         <property name="text">
-          <string>Redondeo bord</string>
-         </property>
-        </widget>
-       </item>
-       <item row="10" column="0" colspan="5">
-        <widget class="QLabel" name="label_28">
-         <property name="text">
-          <string>Col.Borde Normal</string>
-         </property>
-        </widget>
-       </item>
-       <item row="11" column="0" colspan="5">
-        <widget class="QLabel" name="label_30">
-         <property name="text">
-          <string>Col.Borde Activo</string>
-         </property>
-        </widget>
-       </item>
-       <item row="16" column="0" colspan="5">
-        <widget class="QLabel" name="label_15">
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="2" colspan="2">
+        <widget class="QListWidget" name="listWidget">
          <property name="minimumSize">
           <size>
-           <width>0</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Color del Botón</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="6">
-        <widget class="QSpinBox" name="spinBox_8">
-         <property name="maximum">
-          <number>400</number>
-         </property>
-         <property name="value">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="12" column="6">
-        <widget class="QFrame" name="frame_5">
-         <property name="minimumSize">
-          <size>
-           <width>30</width>
+           <width>88</width>
            <height>0</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
            <width>16777215</width>
-           <height>38</height>
+           <height>150</height>
           </size>
          </property>
-         <property name="autoFillBackground">
-          <bool>true</bool>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_21">
+         <property name="maximumSize">
+          <size>
+           <width>136</width>
+           <height>16777215</height>
+          </size>
          </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
+         <property name="text">
+          <string>Tamaño Icono</string>
          </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
+        </widget>
+       </item>
+       <item row="1" column="2" colspan="2">
+        <widget class="QComboBox" name="comboBox">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>0</height>
+          </size>
          </property>
-         <widget class="QToolButton" name="toolButton_7">
-          <property name="geometry">
-           <rect>
-            <x>13</x>
-            <y>4</y>
-            <width>31</width>
-            <height>30</height>
-           </rect>
-          </property>
+         <property name="currentIndex">
+          <number>3</number>
+         </property>
+         <item>
           <property name="text">
-           <string>...</string>
+           <string>16</string>
           </property>
-          <property name="icon">
-           <iconset>
-            <normaloff>images/colores.png</normaloff>images/colores.png</iconset>
+         </item>
+         <item>
+          <property name="text">
+           <string>22</string>
           </property>
-         </widget>
+         </item>
+         <item>
+          <property name="text">
+           <string>32</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>48</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>64</string>
+          </property>
+         </item>
         </widget>
        </item>
-       <item row="6" column="6">
-        <widget class="QSpinBox" name="spinBox_7">
-         <property name="maximum">
-          <number>100</number>
+       <item row="2" column="0" colspan="2">
+        <widget class="QCheckBox" name="checkBox_19">
+         <property name="maximumSize">
+          <size>
+           <width>146</width>
+           <height>16777215</height>
+          </size>
          </property>
-         <property name="value">
-          <number>0</number>
+         <property name="text">
+          <string>Icono encima texto</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="6">
+       <item row="2" column="3">
+        <widget class="QCheckBox" name="checkBox_18">
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Texto en botón</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_7">
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Atura min.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="3">
         <widget class="QSpinBox" name="spinBox">
          <property name="maximum">
           <number>100</number>
@@ -647,7 +551,112 @@
          </property>
         </widget>
        </item>
-       <item row="8" column="6">
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_22">
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Altura máx.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="3">
+        <widget class="QSpinBox" name="spinBox_6">
+         <property name="maximum">
+          <number>100</number>
+         </property>
+         <property name="value">
+          <number>0</number>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_23">
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Anchura min.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="3">
+        <widget class="QSpinBox" name="spinBox_8">
+         <property name="maximum">
+          <number>400</number>
+         </property>
+         <property name="value">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_24">
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Anchura máx.</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="3">
+        <widget class="QSpinBox" name="spinBox_7">
+         <property name="maximum">
+          <number>100</number>
+         </property>
+         <property name="value">
+          <number>0</number>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="label_25">
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Borde normal</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="3">
+        <widget class="QSpinBox" name="spinBox_9">
+         <property name="maximum">
+          <number>6</number>
+         </property>
+         <property name="value">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="label_26">
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Borde activo</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="3">
         <widget class="QSpinBox" name="spinBox_10">
          <property name="maximum">
           <number>6</number>
@@ -657,56 +666,52 @@
          </property>
         </widget>
        </item>
-       <item row="11" column="6">
-        <widget class="QFrame" name="frame_4">
+       <item row="9" column="0" colspan="2">
+        <widget class="QLabel" name="label_27">
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Redondeo bord</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="3">
+        <widget class="QSpinBox" name="spinBox_11">
+         <property name="maximum">
+          <number>10</number>
+         </property>
+         <property name="singleStep">
+          <number>1</number>
+         </property>
+         <property name="value">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="0" colspan="2">
+        <widget class="QLabel" name="label_28">
          <property name="minimumSize">
           <size>
-           <width>30</width>
-           <height>0</height>
+           <width>0</width>
+           <height>39</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>16777215</width>
-           <height>38</height>
+           <width>140</width>
+           <height>16777215</height>
           </size>
          </property>
-         <property name="autoFillBackground">
-          <bool>true</bool>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <widget class="QToolButton" name="toolButton_3">
-          <property name="geometry">
-           <rect>
-            <x>13</x>
-            <y>4</y>
-            <width>31</width>
-            <height>30</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>...</string>
-          </property>
-          <property name="icon">
-           <iconset>
-            <normaloff>images/colores.png</normaloff>images/colores.png</iconset>
-          </property>
-         </widget>
-        </widget>
-       </item>
-       <item row="12" column="0">
-        <widget class="QLabel" name="label_31">
          <property name="text">
-          <string>Col.Borde Señalado</string>
+          <string>Col.Borde Normal</string>
          </property>
         </widget>
        </item>
-       <item row="10" column="6">
+       <item row="10" column="3">
         <widget class="QFrame" name="frame_3">
          <property name="minimumSize">
           <size>
@@ -748,88 +753,36 @@
          </widget>
         </widget>
        </item>
-       <item row="0" column="6">
-        <widget class="QComboBox" name="comboBox">
+       <item row="11" column="0" colspan="2">
+        <widget class="QLabel" name="label_30">
          <property name="minimumSize">
           <size>
-           <width>60</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="currentIndex">
-          <number>3</number>
-         </property>
-         <item>
-          <property name="text">
-           <string>16</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>22</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>32</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>48</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>64</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="7" column="6">
-        <widget class="QSpinBox" name="spinBox_9">
-         <property name="maximum">
-          <number>6</number>
-         </property>
-         <property name="value">
-          <number>1</number>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="6">
-        <widget class="QSpinBox" name="spinBox_6">
-         <property name="maximum">
-          <number>100</number>
-         </property>
-         <property name="value">
-          <number>0</number>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="6">
-        <widget class="QSpinBox" name="spinBox_11">
-         <property name="maximum">
-          <number>10</number>
-         </property>
-         <property name="singleStep">
-          <number>1</number>
-         </property>
-         <property name="value">
-          <number>1</number>
-         </property>
-        </widget>
-       </item>
-       <item row="19" column="6">
-        <widget class="QFrame" name="frame_7">
-         <property name="minimumSize">
-          <size>
-           <width>60</width>
-           <height>38</height>
+           <width>0</width>
+           <height>39</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>50</width>
+           <width>140</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Col.Borde Activo</string>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="3">
+        <widget class="QFrame" name="frame_4">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
            <height>38</height>
           </size>
          </property>
@@ -842,7 +795,7 @@
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <widget class="QToolButton" name="toolButton_5">
+         <widget class="QToolButton" name="toolButton_3">
           <property name="geometry">
            <rect>
             <x>13</x>
@@ -861,7 +814,90 @@
          </widget>
         </widget>
        </item>
-       <item row="19" column="0">
+       <item row="12" column="0" colspan="2">
+        <widget class="QLabel" name="label_31">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>39</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Col.Borde Señalado</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="3">
+        <widget class="QFrame" name="frame_5">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>38</height>
+          </size>
+         </property>
+         <property name="autoFillBackground">
+          <bool>true</bool>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <widget class="QToolButton" name="toolButton_7">
+          <property name="geometry">
+           <rect>
+            <x>13</x>
+            <y>4</y>
+            <width>31</width>
+            <height>30</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>images/colores.png</normaloff>images/colores.png</iconset>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item row="13" column="0" colspan="2">
+        <widget class="QLabel" name="label_15">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Color del Botón</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="14" column="0">
         <widget class="QFrame" name="frame_6">
          <property name="minimumSize">
           <size>
@@ -903,10 +939,65 @@
          </widget>
         </widget>
        </item>
-       <item row="19" column="1">
+       <item row="14" column="1" colspan="2">
         <widget class="QLabel" name="label_29">
          <property name="text">
           <string>    -----&gt;&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item row="14" column="3">
+        <widget class="QFrame" name="frame_7">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>38</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>50</width>
+           <height>38</height>
+          </size>
+         </property>
+         <property name="autoFillBackground">
+          <bool>true</bool>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <widget class="QToolButton" name="toolButton_5">
+          <property name="geometry">
+           <rect>
+            <x>13</x>
+            <y>4</y>
+            <width>31</width>
+            <height>30</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>images/colores.png</normaloff>images/colores.png</iconset>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="2">
+        <widget class="QLabel" name="label_2">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Lista botones</string>
          </property>
         </widget>
        </item>
@@ -917,8 +1008,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>320</width>
-        <height>734</height>
+        <width>171</width>
+        <height>403</height>
        </rect>
       </property>
       <attribute name="label">
@@ -1049,45 +1140,102 @@
      </widget>
     </widget>
    </item>
-   <item row="3" column="1">
-    <widget class="QScrollArea" name="scrollArea">
-     <property name="widgetResizable">
-      <bool>true</bool>
+   <item row="2" column="0" colspan="3">
+    <widget class="QFrame" name="frame">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
      </property>
-     <widget class="QWidget" name="scrollAreaWidgetContents">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <property name="lineWidth">
+      <number>0</number>
+     </property>
+     <widget class="QPushButton" name="pushButton">
       <property name="geometry">
        <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>784</width>
-        <height>817</height>
+        <x>3</x>
+        <y>3</y>
+        <width>84</width>
+        <height>27</height>
        </rect>
       </property>
-      <widget class="QLabel" name="label">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>4</y>
-         <width>771</width>
-         <height>781</height>
-        </rect>
-       </property>
-       <property name="autoFillBackground">
-        <bool>true</bool>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="scaledContents">
-        <bool>true</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <zorder>toolBox</zorder>
-      <zorder>toolBox</zorder>
-      <zorder>label</zorder>
+      <property name="text">
+       <string>Salir</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>images/exit.png</normaloff>images/exit.png</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>3</y>
+        <width>151</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Añadir botón</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>images/add.png</normaloff>images/add.png</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>3</y>
+        <width>151</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Quitar botón</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>images/remove.png</normaloff>images/remove.png</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_6">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>3</y>
+        <width>151</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Guardar botones</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>images/guardar.png</normaloff>images/guardar.png</iconset>
+      </property>
      </widget>
     </widget>
    </item>

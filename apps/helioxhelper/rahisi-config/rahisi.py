@@ -83,6 +83,8 @@ class Rahisi(QWidget):
         self.connect(self.ui.spinBox_10, SIGNAL("valueChanged(int)"), self.pixelsBorderFocused)
         self.connect(self.ui.spinBox_11, SIGNAL("valueChanged(int)"), self.pixelsRoundedBorder)
 
+	self.connect(self.ui.pushButton_4, SIGNAL("clicked()"), self.borra_boton)
+	self.connect(self.ui.pushButton_6, SIGNAL("clicked()"), self.guardar_botones)
         #self.pushButton_2 = QToolButtonWithEvents(self.ui.label)
         #self.pushButton_2 = QPushButton(self.ui.label)
         #self.pushButton_2.setObjectName("pushButton_2")
@@ -90,9 +92,7 @@ class Rahisi(QWidget):
         #self.pushButton_2.setVariable("exec", "audacity")
         #self.pushButton_2.setVariable("icon", "/user/share/apps/icon.png")
         #self.pushButton_2.setVariable("desc", "progama de askjfe")
-        #self.pushButton_2.setVariable("app", "audacity")
-
-
+        #self.pushButton_2.setVariable("Applications", "audacity")
 
         #self.pushButton_6 = QToolButtonWithEvents(self.ui.label)
         #self.pushButton_6.setObjectName("pushButton_2")
@@ -104,8 +104,26 @@ class Rahisi(QWidget):
         #self.pushButton_17 = QtGui.QPushButton(self.label)
         #self.pushButton_17.setObjectName("pushButton_17")
         #self.gridLayout_2.addWidget(self.pushButton_17, 1, 0, 1, 1)
+        locale = QLocale.system().name()   #ca_ES
+        self.idiomas=["en","es","ca"]      # los tres idiomas que usamos
+	self.idioma=self.idiomas.index(locale.split("_")[0])  # numero de idioma para facilitar las asignaciones en los result.value
+	
 
 #### END SIGNAL & SLOTS ####
+
+    def guardar_botones(self):
+	self.settings.beginWriteArray("Applications/app")
+	for x in range(self.numbotones-1):
+            self.settings.setArrayIndex(x)
+            text=QString(self.botons[x][2+self.idioma]).toAscii()
+            self.settings.setValue("name", str(text))
+            text=QString(self.botons[x][9]).toAscii()
+            self.settings.setValue("icon", str(text))
+            text=QString(self.botons[x][5+self.idioma]).toAscii()
+            self.settings.setValue("desc", str(text))
+            text=QString(self.botons[x][8]).toAscii()
+            self.settings.setValue("exec", str(text))
+        self.settings.endArray()
 
     def pon_boton(self):
         """
@@ -121,19 +139,33 @@ class Rahisi(QWidget):
         self.editor.show()
 
     def configura_boton(self,datos):
+	#self.datos_final=[self.Codigo,         self.Categoria,      self.Nombre_en,  self.Nombre_es, self.Nombre_ca, self.Descripcion_en,                   
+	                  #self.Descripcion_es, self.Descripcion_ca, self.Ejecutable, self.Icono,     self.Categorias]
+	boto=[]
         for x in range(1,len(datos)):
-            print x,QString(datos[x]).toAscii()
+	    boto.append(QString(datos[x]).toAscii())
         if str(datos[4]).strip()=="":
             self.ui.checkBox_18.setChecked(False)
         else:
             self.ui.checkBox_18.setChecked(True)
+        self.botons.append(boto)
+        item = QListWidgetItem(str(boto[1]))
+	self.ui.listWidget.addItem(item)
         self.numbotones+=1
-        self.pushButton_2 = QPushButton(self.ui.label)
-        self.pushButton_2.setObjectName("b_"+str(self.numbotones))
-        self.pushButton_2.setText(datos[4])
-        self.pushButton_2.setIcon(QIcon(datos[9]))
-        self.pushButton_2.setMaximumSize(self.ui.spinBox_8.value(),self.ui.spinBox.value())
-        self.ui.gridLayout_2.addWidget(self.pushButton_2, 0, 0, 1, 1)
+        if self.numbotones>0:
+	    self.ui.pushButton_4.setEnabled(True)
+	    self.ui.pushButton_6.setEnabled(True)
+	else:
+	    self.ui.pushButton_4.setEnabled(False)
+	    self.ui.pushButton_6.setEnabled(False)
+        
+    def borra_boton(self):
+	num=self.ui.listWidget.currentRow()
+	texto=self.botons[num]
+	self.botons.remove(texto)
+	item = self.ui.listWidget.takeItem(num)
+	item = None
+	self.numbotones-=1
 
     def writeConfig(self):
         if (self.settings.value("General/autostart").toString() == ""):
@@ -340,6 +372,29 @@ class Rahisi(QWidget):
 	    paleta=QPalette(self.ui.frame_7.palette())
 	    paleta.setColor(paleta.Base,color)
 	    self.ui.frame_7.setPalette(QPalette(color))
+	    self.numbotones=0
+	    self.settings.beginReadArray("Applications/app")
+	    self.numpags = self.settings.value("size").toInt()[0]
+	    self.botons=[]
+	    
+	    #self.datos_final=[self.Codigo,         self.Categoria,      self.Nombre_en,  self.Nombre_es, self.Nombre_ca, self.Descripcion_en,                   
+	                  #self.Descripcion_es, self.Descripcion_ca, self.Ejecutable, self.Icono,     self.Categorias]
+	    
+            for x in range(self.numpags):
+                self.settings.setArrayIndex(x)
+                self.numbotones+=1
+                nom=self.settings.value("name").toString()
+                icon=self.settings.value("icon").toString()
+                desc=self.settings.value("desc").toString()
+                exe=self.settings.value("exe").toString()
+                self.botons.append([' ', ' ', nom, nom, nom, desc, desc, desc, exe, icon, ' ']) 
+                item = QListWidgetItem(str(nom))
+		self.ui.listWidget.addItem(item)
+            self.settings.endArray()
+            if self.numbotones>0:
+		self.ui.pushButton_4.setEnabled(True)
+		self.ui.pushButton_6.setEnabled(True)
+            
 
     def imagen(self):
         if self.ui.checkBox.isChecked():
@@ -418,11 +473,27 @@ class Rahisi(QWidget):
             self.ui.label_12.setVisible(True)
             self.ui.label_14.setVisible(True)
             self.ui.toolButton_4.setVisible(True)
+            self.ui.frame_8.setVisible(True)
+            gradient = QLinearGradient(0, 0, 0, 400)
+            gradient.setColorAt(0.0, QColor(self.color_fondo1))
+            gradient.setColorAt(1.0, QColor(self.color_fondo2))
+            paleta=self.ui.label.palette()
+            paleta.setBrush(QPalette.Window, QBrush(gradient))
+            self.ui.label.setPalette(paleta)
+            paleta=QPalette(self.ui.frame_8.palette())
+            color=QColor(self.color_fondo2)
+	    paleta.setColor(paleta.Base,color)
+	    self.ui.frame_8.setPalette(QPalette(color))
         else:
             self.settings.setValue("Background/gradientBackground", 0)
             self.ui.label_12.setVisible(False)
             self.ui.label_14.setVisible(False)
             self.ui.toolButton_4.setVisible(False)
+            self.ui.frame_8.setVisible(False)
+            color=QColor(self.color_fondo1)
+            paleta=QPalette(self.ui.label.palette())
+            paleta.setColor(paleta.Base,color)
+	    self.ui.label.setPalette(QPalette(color))
 
     def pon_color_fondo1(self):
 	color= QColorDialog.getColor(Qt.white, self)
@@ -442,14 +513,16 @@ class Rahisi(QWidget):
             self.settings.setValue("Background/gradientBeginColor", self.color_fondo1)
             self.settings.setValue("Background/gradientEndColor", self.color_fondo2)
             self.settings.sync()
+            
             gradient = QLinearGradient(0, 0, 0, 400)
             gradient.setColorAt(0.0, QColor(self.color_fondo1))
             gradient.setColorAt(1.0, QColor(self.color_fondo2))
+            paleta=self.ui.label.palette()
+            paleta.setBrush(QPalette.Window, QBrush(gradient))
+            self.ui.label.setPalette(paleta)
             paleta=QPalette(self.ui.frame_8.palette())
 	    paleta.setColor(paleta.Base,color)
-	    paleta.setBrush(QPalette.Base, QBrush(gradient))
 	    self.ui.frame_8.setPalette(QPalette(color))
-	    self.ui.label.setPalette(QPalette(color))
 
     def tray_icon(self):
         num=self.ui.checkBox_10.isChecked()==True

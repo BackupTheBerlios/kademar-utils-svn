@@ -60,7 +60,7 @@ void writeConfig()
 
         settings.beginGroup("Contextual Menu");
         settings.setValue("showMinimize", "1");
-        settings.setValue("showRestore", "1");
+        settings.setValue("showRestore", "0");
         settings.setValue("showSettings", "1");
         settings.setValue("showExit", "1");
         settings.endGroup();

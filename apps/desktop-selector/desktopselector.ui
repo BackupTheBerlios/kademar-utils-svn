@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1135</width>
-    <height>570</height>
+    <width>965</width>
+    <height>670</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -199,7 +199,7 @@
     <item row="2" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="desktopPage">
        <layout class="QGridLayout" name="gridLayout_4">
@@ -920,77 +920,83 @@
              </property>
              <layout class="QGridLayout" name="gridLayout_11">
               <item row="9" column="0" colspan="4">
-               <widget class="QCheckBox" name="checkBox_9">
+               <widget class="QCheckBox" name="ch_access_adv_predictive">
                 <property name="text">
                  <string>Predictive Text</string>
                 </property>
                </widget>
               </item>
               <item row="0" column="0" colspan="4">
-               <widget class="QCheckBox" name="checkBox">
+               <widget class="QCheckBox" name="ch_access_adv_screenreader">
                 <property name="text">
                  <string>Screenreader</string>
                 </property>
                </widget>
               </item>
               <item row="1" column="0" colspan="4">
-               <widget class="QCheckBox" name="checkBox_2">
+               <widget class="QCheckBox" name="ch_access_adv_magnifier">
                 <property name="text">
                  <string>Screen Magnifier</string>
                 </property>
                </widget>
               </item>
               <item row="4" column="0" colspan="4">
-               <widget class="QCheckBox" name="checkBox_4">
+               <widget class="QCheckBox" name="ch_access_adv_massistant">
                 <property name="text">
                  <string>Mouse Assistant</string>
                 </property>
                </widget>
               </item>
               <item row="6" column="0" colspan="4">
-               <widget class="QCheckBox" name="checkBox_5">
+               <widget class="QCheckBox" name="ch_access_adv_mgestures">
                 <property name="text">
                  <string>Mouse Gestures</string>
                 </property>
                </widget>
               </item>
               <item row="5" column="0" colspan="4">
-               <widget class="QCheckBox" name="checkBox_6">
+               <widget class="QCheckBox" name="ch_access_adv_handwritten">
                 <property name="text">
                  <string>Handwritten Write</string>
                 </property>
                </widget>
               </item>
               <item row="7" column="0" colspan="4">
-               <widget class="QCheckBox" name="checkBox_7">
+               <widget class="QCheckBox" name="ch_access_adv_webcam">
                 <property name="text">
                  <string>Webcam Mouse Movement</string>
                 </property>
                </widget>
               </item>
               <item row="8" column="0" colspan="4">
-               <widget class="QCheckBox" name="checkBox_8">
+               <widget class="QCheckBox" name="ch_access_adv_wassistant">
                 <property name="text">
                  <string>Window Assistant</string>
                 </property>
                </widget>
               </item>
               <item row="10" column="0" colspan="4">
-               <widget class="QCheckBox" name="checkBox_10">
+               <widget class="QCheckBox" name="ch_access_adv_mmediakeyboard">
                 <property name="text">
                  <string>Multimedia Keyboard Assistant</string>
                 </property>
                </widget>
               </item>
               <item row="2" column="0" colspan="4">
-               <widget class="QCheckBox" name="checkBox_3">
+               <widget class="QCheckBox" name="ch_access_adv_vkeyboard">
                 <property name="text">
                  <string>Virtual Keyboard</string>
                 </property>
                </widget>
               </item>
               <item row="11" column="0">
-               <widget class="QPushButton" name="b_accessibilitySimpleSelection">
+               <widget class="QPushButtonWithEvents" name="b_accessibilitySimpleSelection">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
                 <property name="text">
                  <string>Simple Selection</string>
                 </property>
@@ -1093,42 +1099,50 @@
               <string>Simple Selection</string>
              </property>
              <layout class="QGridLayout" name="gridLayout_13">
-              <item row="0" column="0" colspan="4">
-               <widget class="QPushButton" name="pushButton_4">
-                <property name="text">
-                 <string>Sight difficults without useful part</string>
+              <item row="5" column="0" colspan="3">
+               <widget class="QPushButtonWithEvents" name="b_access_simple_4">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
                 </property>
-               </widget>
-              </item>
-              <item row="1" column="0" colspan="4">
-               <widget class="QPushButton" name="pushButton_9">
-                <property name="text">
-                 <string>Reduced mobility on arms and hands</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0" colspan="4">
-               <widget class="QPushButton" name="pushButton_6">
-                <property name="text">
-                 <string>Old people</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="0" colspan="4">
-               <widget class="QPushButton" name="pushButton_7">
                 <property name="text">
                  <string>Sight difficults with useful part</string>
                 </property>
                </widget>
               </item>
-              <item row="5" column="0" colspan="4">
-               <widget class="QPushButton" name="pushButton_8">
+              <item row="9" column="2">
+               <widget class="QPushButtonWithEvents" name="b_advancedAccessibility">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
                 <property name="text">
-                 <string>Learning difficults</string>
+                 <string>Advanced Selection</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="resource.qrc">
+                  <normaloff>:/img/img/advanced-configuration.png</normaloff>:/img/img/advanced-configuration.png</iconset>
                 </property>
                </widget>
               </item>
-              <item row="6" column="0" colspan="2">
+              <item row="1" column="0" colspan="3">
+               <widget class="QPushButtonWithEvents" name="b_access_simple_1">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>Sight difficults without useful part</string>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="0" colspan="2">
                <spacer name="horizontalSpacer_16">
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
@@ -1141,25 +1155,46 @@
                 </property>
                </spacer>
               </item>
-              <item row="2" column="0" colspan="4">
-               <widget class="QPushButton" name="pushButton_5">
+              <item row="4" column="0" colspan="3">
+               <widget class="QPushButtonWithEvents" name="b_access_simple_3">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
                 <property name="text">
-                 <string>Without difficults</string>
+                 <string>Old people</string>
                 </property>
                </widget>
               </item>
-              <item row="6" column="3">
-               <widget class="QPushButton" name="b_advancedAccessibility">
-                <property name="text">
-                 <string>Advanced Selection</string>
+              <item row="2" column="0" colspan="3">
+               <widget class="QPushButtonWithEvents" name="b_access_simple_2">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
                 </property>
-                <property name="icon">
-                 <iconset resource="resource.qrc">
-                  <normaloff>:/img/img/advanced-configuration.png</normaloff>:/img/img/advanced-configuration.png</iconset>
+                <property name="text">
+                 <string>Reduced mobility on arms and hands</string>
                 </property>
                </widget>
               </item>
-              <item row="7" column="0" colspan="4">
+              <item row="6" column="0" colspan="3">
+               <widget class="QPushButtonWithEvents" name="b_access_simple_5">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>Learning difficults</string>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="0" colspan="3">
                <widget class="QFrame" name="frame">
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
@@ -1204,30 +1239,20 @@
                    </property>
                   </widget>
                  </item>
-                 <item row="0" column="2">
-                  <widget class="QPushButtonWithEvents" name="b_accessibilityAccept1">
-                   <property name="minimumSize">
-                    <size>
-                     <width>150</width>
-                     <height>32</height>
-                    </size>
-                   </property>
-                   <property name="text">
-                    <string>Accept</string>
-                   </property>
-                   <property name="icon">
-                    <iconset resource="resource.qrc">
-                     <normaloff>:/img/img/ok.png</normaloff>:/img/img/ok.png</iconset>
-                   </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>32</width>
-                     <height>32</height>
-                    </size>
-                   </property>
-                  </widget>
-                 </item>
                 </layout>
+               </widget>
+              </item>
+              <item row="7" column="0" colspan="3">
+               <widget class="QPushButtonWithEvents" name="b_access_simple_no">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>Without difficults</string>
+                </property>
                </widget>
               </item>
              </layout>
@@ -1444,8 +1469,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1135</width>
-     <height>20</height>
+     <width>965</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>

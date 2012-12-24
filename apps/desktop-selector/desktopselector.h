@@ -65,6 +65,7 @@ public slots:
     void returnToUseSelectionPageFromDisplay();
     void createUserButton(QString *user);
     void installVideoDriver(QString driver);
+    //void selectSimpleAccessibility(QString string, QString prop);
 
 protected:
     void changeEvent(QEvent *e);
@@ -84,8 +85,11 @@ private:
     QString selectedDriver;
     QString selectedResol;
     QString selectedUser;
+    QString accessibilityType;
+    QString accessibilityOptions;
     bool detectedNvidia;
     bool detectedAti;
+    bool assistantMode;
     QList< QActionWithEvents* > listLangActions;
     QList< QActionWithEvents* > listDesktopActions;
     QList< QGridLayout* > listGridLayout;
@@ -94,6 +98,7 @@ private:
     QList< QPushButtonWithEvents* > listUserButtons;
     QList< QLabel* > listUserLabels;
     bool installingDrivers;
+    void prepareAccessibilityButtons();
 
 
     QList< QHBoxLayout* > listHorizontalLayout;

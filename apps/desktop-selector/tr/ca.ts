@@ -179,32 +179,32 @@
     <message>
         <location filename="../desktopselector.ui" line="1099"/>
         <source>Sight difficults without useful part</source>
-        <translation type="unfinished"></translation>
+        <translation>Dificultats visuals sense part útil</translation>
     </message>
     <message>
         <location filename="../desktopselector.ui" line="1106"/>
         <source>Reduced mobility on arms and hands</source>
-        <translation type="unfinished">Mobilitat reduïda en els braços i les mans</translation>
+        <translation>Mobilitat reduïda en braços i mans</translation>
     </message>
     <message>
         <location filename="../desktopselector.ui" line="1113"/>
         <source>Old people</source>
-        <translation type="unfinished">Gent gran</translation>
+        <translation>Gent gran</translation>
     </message>
     <message>
         <location filename="../desktopselector.ui" line="1120"/>
         <source>Sight difficults with useful part</source>
-        <translation type="unfinished"></translation>
+        <translation>Dificultats visuals amb part útil</translation>
     </message>
     <message>
         <location filename="../desktopselector.ui" line="1127"/>
         <source>Learning difficults</source>
-        <translation type="unfinished">Dificultats aprenentatge</translation>
+        <translation>Dificultats d&apos;aprenentatge</translation>
     </message>
     <message>
         <location filename="../desktopselector.ui" line="1147"/>
         <source>Without difficults</source>
-        <translation type="unfinished">Sense dificultats</translation>
+        <translation>Sense dificultats</translation>
     </message>
     <message>
         <location filename="../desktopselector.ui" line="1259"/>
@@ -234,7 +234,7 @@
     <message>
         <location filename="../desktopselector.cpp" line="1231"/>
         <source>&lt;p&gt;&lt;b&gt;Installing %1 Drivers&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Be patient, it may take a while...&lt;/p&gt;</source>
-        <translation type="unfinished">&lt;p&gt;&lt;b&gt;Instal·lant Controladors %1&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Tingueu paciència, pot trigar una estona...&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;Instal·lant Controladors %1&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Tingueu paciència, pot trigar una estona...&lt;/p&gt;</translation>
     </message>
 </context>
 <context>

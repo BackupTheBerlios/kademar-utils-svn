@@ -49,6 +49,13 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
     selectedUser="";
     detectedNvidia=false;
     installingDrivers=false;
+    accessibilityOptions="";
+    accessibilityType="simple";
+
+    //Check if it's assistant mode or not
+    assistantMode=settings.value("assistantMode").toBool();
+
+
  //   languageMenu->addSeparator();
 
     //No comments... :)
@@ -126,7 +133,7 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
 
     }
 
-
+ui->b_advancedAccessibility->setVisible(false);
    // qDebug() << "selectedLang" << selectedLang;
 
    // qDebug() << "selectedDesktop" << selectedDesktop;
@@ -226,14 +233,20 @@ void DesktopSelector::prepareGui()
     connect(ui->b_accessibilitySimpleSelection, SIGNAL(clicked()), this, SLOT(showSimpleAccessibilityConfiguration()));
     connect(ui->b_accessibilityPrevious1, SIGNAL(clicked()), this, SLOT(returnToUseSelectionPageFromAccessibility()));
     connect(ui->b_accessibilityPrevious2, SIGNAL(clicked()), this, SLOT(returnToUseSelectionPageFromAccessibility()));
-    connect(ui->b_accessibilityAccept1, SIGNAL(clicked()), this, SLOT(returnToUseSelectionPageFromAccessibility()));
+    connect(ui->b_access_simple_1, SIGNAL(buttonClicked(QString, QString)), this, SLOT(writeSettings(QString,QString)));
+    connect(ui->b_access_simple_2, SIGNAL(buttonClicked(QString, QString)), this, SLOT(writeSettings(QString,QString)));
+    connect(ui->b_access_simple_3, SIGNAL(buttonClicked(QString, QString)), this, SLOT(writeSettings(QString,QString)));
+    connect(ui->b_access_simple_4, SIGNAL(buttonClicked(QString, QString)), this, SLOT(writeSettings(QString,QString)));
+    connect(ui->b_access_simple_5, SIGNAL(buttonClicked(QString, QString)), this, SLOT(writeSettings(QString,QString)));
+    connect(ui->b_access_simple_no, SIGNAL(buttonClicked(QString, QString)), this, SLOT(writeSettings(QString,QString)));
+ //   connect(ui->b_accessibilityAccept1, SIGNAL(clicked()), this, SLOT(returnToUseSelectionPageFromAccessibility()));
     connect(ui->b_accessibilityAccept2, SIGNAL(clicked()), this, SLOT(returnToUseSelectionPageFromAccessibility()));
     connect(ui->b_displayAccept, SIGNAL(clicked()), this, SLOT(returnToUseSelectionPageFromDisplay()));
     connect(ui->b_displayPrevious, SIGNAL(clicked()), this, SLOT(returnToUseSelectionPageFromDisplay()));
 
     //Define if it's on assistant mode or not
-    extern QSettings settings;
-    if (settings.value("assistantMode").toBool() == true ){
+    //extern QSettings setting;
+    if (assistantMode == true ){
         //Assistant Mode
         ui->b_accessibility->setVisible(false);
         ui->b_language->setVisible(false);
@@ -248,8 +261,9 @@ void DesktopSelector::prepareGui()
         // KDM/GDM like
         ui->b_startDesktop->setVisible(false);
         ui->b_previous->setVisible(false);
-
+   //     ui->b_accessibilityAccept1->setVisible(false);
     }
+
 
 
     //stethic tune
@@ -266,7 +280,7 @@ void DesktopSelector::prepareGui()
 
     this->detectGraphicCard();
 
-
+    this->prepareAccessibilityButtons();
 
 }
 
@@ -285,27 +299,8 @@ void DesktopSelector::readCaptionConst( QString & label )
 void DesktopSelector::writeSettings(QString string, QString prop, int next)
 {
 
-
-    /*
-    if (string == "")
-    {
-
-
-    }
-
-    //QString *varDesktop = new QString("DESKTOP=" + *desk + "\n");
-    QFile *file = new QFile("/var/tmp/xserver");
-    if ( file->open( QIODevice::Append ) )
-    {
-        QTextStream stream( file );
-        stream <<QString(string + "=" + prop + "\n");
-    }
-    file->close();
-    */
-
-
-    extern QSettings settings;
-    if (settings.value("assistantMode").toBool() == true){
+    //extern QSettings settings;
+    if (assistantMode == true){
         //Assistant Mode
         //Process funtions of actual page
         //qDebug() << listPages[numpages]->objectName();
@@ -350,7 +345,11 @@ void DesktopSelector::writeSettings(QString string, QString prop, int next)
         } else if (string == "USER") {
             selectedUser=prop;
             finalSteps();
-            close();
+           // close();
+        } else if (string == "ACCESSIBILITY") {
+            accessibilityType="simple";
+            accessibilityOptions=prop;
+            returnToUseSelectionPageFromAccessibility();
         }
     }
 
@@ -364,8 +363,8 @@ void DesktopSelector::writeSettings(QString string, QString prop, int next)
     //settings.sync();
 
 
-    extern QSettings settings;
-    if (settings.value("assistantMode").toBool() == true){
+    //extern QSettings settings;
+    if (assistantMode == true){
         //Assistant Mode
         if (next == 1){
             this->nextPage();
@@ -529,8 +528,8 @@ void DesktopSelector::setupPages()
 
 
     //Define if it's on assistant mode or not
-    extern QSettings settings;
-    if (settings.value("assistantMode").toBool() == true){
+    //extern QSettings settings;
+    if (assistantMode == true){
         //Assistant Mode
         //Load first page
         if (listPages.size() > 0 ){
@@ -557,8 +556,8 @@ void DesktopSelector::setupPages()
 //Move along stacked widget pages
 void DesktopSelector::nextPage()
 {
-    extern QSettings settings;
-    if (settings.value("assistantMode").toBool()){
+    //extern QSettings settings;
+    if (assistantMode){
         //Assistant Mode
         numpages=numpages+1;
         //extern QList< QWidget* > listPages;
@@ -576,8 +575,8 @@ void DesktopSelector::nextPage()
 //Move along stacked widget pages
 void DesktopSelector::previousPage()
 {
-    extern QSettings settings;
-    if (settings.value("assistantMode").toBool()){
+    //extern QSettings settings;
+    if (assistantMode){
         //Assistant Mode
         numpages=numpages-1;
         //extern QList< QWidget* > listPages;
@@ -708,8 +707,8 @@ void DesktopSelector::askForShutdown()
 
 void DesktopSelector::cancelShutdown()
 {
-    extern QSettings settings;
-    if (settings.value("assistantMode").toBool()){
+    //extern QSettings settings;
+    if (assistantMode){
         //return to previous page
         //extern QList< QWidget* > listPages;
         ui->stackedWidget->setCurrentWidget(listPages[numpages]);
@@ -1078,30 +1077,17 @@ void DesktopSelector::detectGraphicCard()
         this->ui->driverFrame->setVisible(false);
         ui->displayChipetLabel->setVisible(false);
     }
+
+    //Define by default no install of propietary driver if it's on GDM like mode
+    if (assistantMode == false){
+        this->ui->rb_freeDriver->setChecked(true);
+    }
+
 }
 
 
 void DesktopSelector::finalSteps()
 {
-/*    //If possibility to choose free or propietary driver
-    if (this->ui->driverFrame->isVisible() == true)
-    {
-        if (this->ui->rb_propietaryDriver->isChecked() == true)
-        {
-            this->writeSettings("FREE_DRIVER","false", 0);
-        } else {
-            this->writeSettings("FREE_DRIVER","true", 0);
-        }
-    }
-
-    extern QList<QString> graphicResolutions;
-
-    //If forced chipset selected, use it
-    if (this->ui->ch_forceResol->isChecked() == true)
-    {
-        this->writeSettings("RESOL",graphicResolutions[ui->hslider_resolutions->value()], 0);
-    }  */
-
 
     QFile *file2 = new QFile("/var/tmp/xserver");
     if ( file2->open( QIODevice::WriteOnly ) )
@@ -1119,14 +1105,6 @@ void DesktopSelector::finalSteps()
             selectedDriver=ui->cb_chipset->currentText();
         }
         
-//         //Check for nvidia-legacy use
-//         QString *selectedDriverWanted = new QString();
-//         if (selectedDriver == "nvidia-legacy") {
-//             selectedDriverWanted="nvidia";
-//         } else {
-//             selectedDriverWanted=selectedDriver;
-//         } 
-//         
         if ( file->open( QIODevice::WriteOnly  | QIODevice::Text) )
         {
             QTextStream stream( file );
@@ -1174,6 +1152,30 @@ void DesktopSelector::finalSteps()
         }
         fileU->close();
 
+    }
+
+    //qDebug()<<accessibilityType;
+    //qDebug()<<accessibilityOptions;
+    if (accessibilityType == "simple" ){
+        QFile *fileA = new QFile("/home/"+selectedUser+"/.config/autostart/accessibility");
+
+        //If there's any option selected, do
+        if (accessibilityOptions != "" ){
+           // qDebug() << "writing";
+
+            if ( fileA->open( QIODevice::WriteOnly ) )
+            {
+                QTextStream stream( fileA );
+                stream << "#!/bin/bash\n";
+                stream <<QString("/usr/bin/accessibilitystart " + accessibilityOptions + "\n");
+            }
+            fileA->setPermissions(QFile::WriteOwner| QFile::ReadOwner| QFile::WriteGroup| QFile::ReadGroup| QFile::WriteOther|QFile::ReadOther);
+            fileA->close();
+
+            if (accessibilityOptions == "no") {
+                fileA->remove();
+            }
+        }
     }
 
     //Install drivers part
@@ -1298,6 +1300,7 @@ void DesktopSelector::installVideoDriver(QString driver){
 void DesktopSelector::showAdvancedAccessibilityConfiguration(){
     ui->advancedAccessibilityGroupBox->setVisible(true);
     ui->simpleAccessibilityGroupBox->setVisible(false);
+    accessibilityType="simple";
 }
 
 void DesktopSelector::returnToUseSelectionPageFromAccessibility(){
@@ -1307,6 +1310,18 @@ void DesktopSelector::returnToUseSelectionPageFromAccessibility(){
 void DesktopSelector::showSimpleAccessibilityConfiguration(){
     ui->advancedAccessibilityGroupBox->setVisible(false);
     ui->simpleAccessibilityGroupBox->setVisible(true);
+    accessibilityType="advanced";
+}
+
+
+void DesktopSelector::prepareAccessibilityButtons(){
+    ui->b_access_simple_1->setTextProperty(new QString("ACCESSIBILITY"),new QString("1"));
+    ui->b_access_simple_2->setTextProperty(new QString("ACCESSIBILITY"),new QString("2"));
+    ui->b_access_simple_3->setTextProperty(new QString("ACCESSIBILITY"),new QString("3"));
+    ui->b_access_simple_4->setTextProperty(new QString("ACCESSIBILITY"),new QString("4"));
+    ui->b_access_simple_5->setTextProperty(new QString("ACCESSIBILITY"),new QString("5"));
+    ui->b_access_simple_no->setTextProperty(new QString("ACCESSIBILITY"),new QString("no"));
+
 }
 
 
@@ -1404,3 +1419,5 @@ void DesktopSelector::showAccessibilityOptions(){
 void DesktopSelector::returnToUseSelectionPageFromDisplay(){
     ui->stackedWidget->setCurrentWidget(ui->selectUserPage);
 }
+
+

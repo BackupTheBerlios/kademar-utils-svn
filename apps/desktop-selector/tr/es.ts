@@ -138,7 +138,7 @@
     <message>
         <location filename="../desktopselector.ui" line="946"/>
         <source>Mouse Assistant</source>
-        <translation type="unfinished">Asistente Ratón</translation>
+        <translation>Asistente de Ratón</translation>
     </message>
     <message>
         <location filename="../desktopselector.ui" line="953"/>
@@ -148,27 +148,27 @@
     <message>
         <location filename="../desktopselector.ui" line="960"/>
         <source>Handwritten Write</source>
-        <translation type="unfinished">Escritura Manuscrita</translation>
+        <translation>Escritura a mano</translation>
     </message>
     <message>
         <location filename="../desktopselector.ui" line="967"/>
         <source>Webcam Mouse Movement</source>
-        <translation type="unfinished">Webcam movimiento del ratón</translation>
+        <translation>Webcam con movimiento del ratón</translation>
     </message>
     <message>
         <location filename="../desktopselector.ui" line="974"/>
         <source>Window Assistant</source>
-        <translation type="unfinished">Asistente de Ventanas</translation>
+        <translation>Asistente de Ventanas</translation>
     </message>
     <message>
         <location filename="../desktopselector.ui" line="981"/>
         <source>Multimedia Keyboard Assistant</source>
-        <translation type="unfinished">Asistente de Teclado Multimedia</translation>
+        <translation>Asistente de Teclado Multimedia</translation>
     </message>
     <message>
         <location filename="../desktopselector.ui" line="988"/>
         <source>Virtual Keyboard</source>
-        <translation type="unfinished">Teclado Virtual</translation>
+        <translation>Teclado Virtual</translation>
     </message>
     <message>
         <location filename="../desktopselector.ui" line="995"/>
@@ -179,32 +179,32 @@
     <message>
         <location filename="../desktopselector.ui" line="1099"/>
         <source>Sight difficults without useful part</source>
-        <translation type="unfinished"></translation>
+        <translation>Problemas en la visión sin parte útil</translation>
     </message>
     <message>
         <location filename="../desktopselector.ui" line="1106"/>
         <source>Reduced mobility on arms and hands</source>
-        <translation type="unfinished">Movilidad reducida en los brazos y las manos</translation>
+        <translation>Movilidad reducida en brazos y manos</translation>
     </message>
     <message>
         <location filename="../desktopselector.ui" line="1113"/>
         <source>Old people</source>
-        <translation type="unfinished">Gente mayor</translation>
+        <translation>Gente mayor</translation>
     </message>
     <message>
         <location filename="../desktopselector.ui" line="1120"/>
         <source>Sight difficults with useful part</source>
-        <translation type="unfinished"></translation>
+        <translation>Problemas en la visión con parte útil</translation>
     </message>
     <message>
         <location filename="../desktopselector.ui" line="1127"/>
         <source>Learning difficults</source>
-        <translation type="unfinished">Dificultades aprendizaje</translation>
+        <translation>Dificultades de aprendizaje</translation>
     </message>
     <message>
         <location filename="../desktopselector.ui" line="1147"/>
         <source>Without difficults</source>
-        <translation type="unfinished">Sin dificultades</translation>
+        <translation>Sin dificultades</translation>
     </message>
     <message>
         <location filename="../desktopselector.ui" line="1259"/>

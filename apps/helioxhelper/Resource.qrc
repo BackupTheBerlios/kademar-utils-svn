@@ -11,5 +11,6 @@
         <file>images/lang/en_US.png</file>
         <file>images/lang/es_ES.png</file>
         <file>images/lang/es_MX.png</file>
+        <file>images/settings.png</file>
     </qresource>
 </RCC>

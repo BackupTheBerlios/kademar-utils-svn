@@ -84,7 +84,7 @@ void writeConfig()
         settings.endGroup();
 
         settings.beginGroup("App Buttons");
-        settings.setValue("imageSize", "33");
+        settings.setValue("imageSize", "32");
         settings.setValue("iconAbove", "1");
         settings.setValue("showLabels", "true");
         settings.setValue("minimumHeight", "40");

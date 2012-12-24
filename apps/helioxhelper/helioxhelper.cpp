@@ -30,6 +30,7 @@ HelioxHelper::HelioxHelper(QWidget *parent) :
     languageMenu = new QMenu(this);
     numlanguage=0;
     numApp=0;
+    //settingsProcess = new QProcess();
     defineLanguageDictionary();
     createLanguageButtons();
 
@@ -58,14 +59,19 @@ HelioxHelper::HelioxHelper(QWidget *parent) :
     createActions();
     createTrayIcon();
 
+
+    //extern QSettings settings;
+
     createConnections();
 
-    createApplicationButtons();
+    //createApplicationButtons();
 
 
     setWindowIcon(QIcon(":/images/trayicon.png"));
 
-    setGuiLookAndFeel();
+
+
+    reloadConfiguration();
 
     if (settings->value("Tray Icon/showTrayIcon").toBool() == true ){
         trayIcon->show();
@@ -80,6 +86,8 @@ HelioxHelper::HelioxHelper(QWidget *parent) :
     //listApplicationButtons[0]->setBlockedSignals(false);
 
 
+//    QProcess updateApps;
+//    updateApps.start("rahisi-config-update-apps");
 
 }
 
@@ -141,8 +149,8 @@ void HelioxHelper::createActions()
      minimizeAction = new QAction(QIcon(":/images/minimize.png"),tr("Mi&nimize"), this);
      connect(minimizeAction, SIGNAL(triggered()), this, SLOT(minimizeWindow()));
 
-//     settingsAction = new QAction(QIcon(":/images/settings->png"),tr("&Settings"), this);
-//     connect(settingsAction, SIGNAL(triggered()), this, SLOT(settingsWindow()));
+     settingsAction = new QAction(QIcon(":/images/settings.png"),tr("&Settings"), this);
+     connect(settingsAction, SIGNAL(triggered()), this, SLOT(settingsWindow()));
 
 //     restoreAction = new QAction(tr("&Restore"), this);
 //     connect(restoreAction, SIGNAL(triggered()), this, SLOT(showNormal()));
@@ -168,9 +176,9 @@ void HelioxHelper::createActions()
          trayIconMenu->addAction(quitAction);
      }
 
-//     if (settings->value("Contextual Menu/showSettings").toBool() == true){
-//         trayIconMenu->addAction(quitSettings);
-//     }
+     if (settings->value("Contextual Menu/showSettings").toBool() == true){
+         trayIconMenu->addAction(settingsAction);
+     }
 
 
      if (settings->value("Contextual Menu/showExit").toBool() == true){
@@ -185,15 +193,13 @@ void HelioxHelper::createActions()
  }
 
 
- void HelioxHelper::setGuiLookAndFeel()
+ /*void HelioxHelper::setGuiLookAndFeel()
  {
-     setWidgetSize();
 
-     setStyleClass();
 
      //setWindowFlags(Qt::Tool | Qt::CustomizeWindowHint | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
 
- }
+ }*/
 
 
  void HelioxHelper::troggleShowMainWindow()
@@ -477,6 +483,7 @@ void HelioxHelper::createActions()
      QRegion::RegionType topRight;
      QRegion::RegionType bottomLeft;
      QRegion::RegionType bottomRight;
+     topLeft = topRight = bottomLeft = bottomRight = QRegion::Rectangle;
 
      if (settings->value("Round Corners/autoBorders").toBool() == true) {
 
@@ -851,31 +858,7 @@ void HelioxHelper::createActions()
 
 
  void HelioxHelper::changeLanguage(QString prop, QString value){
-     //qDebug () << prop << value;
-     //int size=0;
-    // settings->sync();
-     //extern QList< QToolButtonWithEvents* > listApplicationButtons;
-
-     //qDebug() << listApplicationButtons.size();
-    while (listApplicationButtons.size() != 0){
-        for (int i = 0; i < listApplicationButtons.size(); ++i)  {
-            delete(listApplicationButtons[i]);
-            listApplicationButtons.removeAt(i);
-        }
-
-    }
-   // qDebug() << listApplicationButtons.size();
-    delete(languageButtonSelection);
-
-
-    //languageButtonSelection->setVisible(false);
-    numRow=0;
-    numCol=0;
-    numApp=0;
-
-
-    //extern QSettings settings;
-    delete (settings);
+     delete (settings);
     selectedLanguage=value;
     settings1="ProyectoHeliox";
     settings2=QString("HelioxHelper_%1").arg(selectedLanguage);
@@ -888,7 +871,8 @@ void HelioxHelper::createActions()
 
      //listApplicationButtons << new QToolButtonWithEvents(this);
 
-     createApplicationButtons();
+     //createApplicationButtons();
+    reloadConfiguration();
  }
 
 
@@ -915,4 +899,41 @@ void HelioxHelper::createActions()
 
   //   }
 
+ }
+
+
+ void HelioxHelper::settingsWindow(){
+     //ettingsProcess=QProcess();
+   //  connect(settingsProcess,SIGNAL(finished()), this, SLOT(reloadConfiguration()));
+
+    settingsProcess.start("rahisi-config");
+    settingsProcess.waitForFinished();
+    reloadConfiguration();
+
+ }
+
+
+ void HelioxHelper::reloadConfiguration(){
+     qDebug() << "Hola";
+     //qDebug() << listApplicationButtons.size();
+    while (listApplicationButtons.size() != 0){
+        for (int i = 0; i < listApplicationButtons.size(); ++i)  {
+            delete(listApplicationButtons[i]);
+            listApplicationButtons.removeAt(i);
+        }
+
+    }
+   // qDebug() << listApplicationButtons.size();
+    delete(languageButtonSelection);
+
+    //languageButtonSelection->setVisible(false);
+    numRow=0;
+    numCol=0;
+    numApp=0;
+
+    createApplicationButtons();
+    //setGuiLookAndFeel();
+
+    setWidgetSize();
+    setStyleClass();
  }

@@ -42,6 +42,8 @@ private slots:
     void activateWindowSignal(QString string);
     void changeLanguage(QString prop, QString value);
     void showLanguageMenu();
+    void settingsWindow();
+    void reloadConfiguration();
 
 private:
     Ui::HelioxHelper *ui;
@@ -54,6 +56,7 @@ private:
     QAction *quitAction;
     QAction *normalAction;
     QAction *minimizeAction;
+    QAction *settingsAction;
     void setWindowSize();
     void createConnections();
     void setWidgetSize();
@@ -74,6 +77,7 @@ private:
     void createLanguageButtons();
     int numlanguage;
     int numApp;
+    QProcess settingsProcess;
     QToolButtonWithEvents *languageButtonSelection;
     void blockAllApplicationButtonSignals(bool value);
 
@@ -84,7 +88,7 @@ private:
          QString appDesc;
          QString appExec;
      };
-    void setGuiLookAndFeel();
+ //   void setGuiLookAndFeel();
 
     void createApplicationButtons();
 

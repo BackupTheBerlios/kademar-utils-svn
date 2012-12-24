@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = HelioxHelper
 TEMPLATE = app
 
-CONFIG += console
+#CONFIG += console
 
 
 SOURCES += main.cpp\

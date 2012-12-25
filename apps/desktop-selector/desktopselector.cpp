@@ -1169,7 +1169,7 @@ void DesktopSelector::finalSteps()
                 stream << "#!/bin/bash\n";
                 stream <<QString("/usr/bin/accessibilitystart " + accessibilityOptions + "\n");
             }
-            fileA->setPermissions(QFile::WriteOwner| QFile::ReadOwner| QFile::WriteGroup| QFile::ReadGroup| QFile::WriteOther|QFile::ReadOther);
+            fileA->setPermissions(QFile::WriteOwner| QFile::ReadOwner | QFile::ExeOwner| QFile::WriteGroup| QFile::ReadGroup| QFile::ExeGroup| QFile::WriteOther|QFile::ReadOther|QFile::ExeOther);
             fileA->close();
 
             if (accessibilityOptions == "no") {

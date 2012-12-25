@@ -1157,7 +1157,7 @@ void DesktopSelector::finalSteps()
     //qDebug()<<accessibilityType;
     //qDebug()<<accessibilityOptions;
     if (accessibilityType == "simple" ){
-        QFile *fileA = new QFile("/home/"+selectedUser+"/.config/autostart/accessibility");
+        QFile *fileA = new QFile("/home/"+selectedUser+"/.config/autostart/accessibility.desktop");
 
         //If there's any option selected, do
         if (accessibilityOptions != "" ){
@@ -1166,8 +1166,13 @@ void DesktopSelector::finalSteps()
             if ( fileA->open( QIODevice::WriteOnly ) )
             {
                 QTextStream stream( fileA );
-                stream << "#!/bin/bash\n";
-                stream <<QString("/usr/bin/accessibilitystart " + accessibilityOptions + "\n");
+                stream << "[Desktop Entry]\n";
+                stream << "Categories=QT;KDE;GNOME;Utility;Accessibility;\n";
+                stream << QString("Exec=/usr/bin/accessibilitystart " + accessibilityOptions + "\n");
+                stream << "StartupNotify=true\n";
+                stream << "Terminal=false\n";
+                stream << "TerminalOptions=\n";
+                stream << "Type=Application\n";
             }
             fileA->setPermissions(QFile::WriteOwner| QFile::ReadOwner | QFile::ExeOwner| QFile::WriteGroup| QFile::ReadGroup| QFile::ExeGroup| QFile::WriteOther|QFile::ReadOther|QFile::ExeOther);
             fileA->close();

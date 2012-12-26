@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#-*- coding: iso-8859-15 -*-
+#-*- coding: utf-8 -*-
 
 import os
 import sys
@@ -138,7 +138,7 @@ def parse_fichero(fichero):
     Ejecutable=ejecutable
     Icono=icono
     Categorias=categorias
-
+    registro=['8888','Rahisi','newRow','newRow','newRow','newRow','newRow','newRow','newRow','/usr/share/icons/hicolor/32x32/apps/kmenuedit.png','newRow']
     registro=[Codigo,Categoria,Nombre_en,Nombre_es,Nombre_ca,Descripcion_en,Descripcion_es,Descripcion_ca,Ejecutable,Icono,Categorias]
     gravaRegistre(registro)
 
@@ -159,7 +159,9 @@ for i in ficheros2:
     if fitxer[1]==".desktop":
         numficheros+=1
         parse_fichero(dir2+"/"+i)
-
+registro=['8888','Rahisi','newRow','newRow','newRow','newRow','newRow','newRow','newRow',' ',' ']
+gravaRegistre(registro)
+    
 dbL.close()
 
 

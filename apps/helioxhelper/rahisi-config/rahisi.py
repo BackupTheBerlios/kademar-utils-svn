@@ -17,11 +17,16 @@ class Rahisi(QWidget):
         QWidget.__init__(self)
         self.ui = Ui_Form()
         self.ui.setupUi(self)
-        desktop = QApplication.desktop()
-        self.totalGeometry=desktop.screenGeometry ()
-        self.maxGeometry=desktop.availableGeometry ()
-        tgeometry=self.totalGeometry
-        mgeometry=self.maxGeometry
+        #desktop = QApplication.desktop()
+        #self.totalGeometry=desktop.screenGeometry ()
+        #self.maxGeometry=desktop.availableGeometry ()
+        #tgeometry=self.totalGeometry
+        #mgeometry=self.maxGeometry
+        #Open completly installer on the screen
+        desktop_widget = QApplication.desktop()
+        geometry = desktop_widget.screenGeometry()
+        self.setGeometry(0,23, geometry.width(),geometry.height()-23)  #23px are the window handlers (kwin,etc)
+        
         self.setAcceptDrops(1)
         self.botons=[]
         self.numbotones=0
@@ -144,7 +149,6 @@ class Rahisi(QWidget):
             text=self.botons[x][2+self.idioma]
             self.settings.setValue("name", str(text))
             text=self.botons[x][9]
-            print ('icono='+text)
             self.settings.setValue("icon", str(text))
             text=self.botons[x][5+self.idioma]
             self.settings.setValue("desc", str(text))
@@ -169,14 +173,15 @@ class Rahisi(QWidget):
     #self.datos_final=[self.Codigo,         self.Categoria,      self.Nombre_en,  self.Nombre_es, self.Nombre_ca, self.Descripcion_en,                   
                       #self.Descripcion_es, self.Descripcion_ca, self.Ejecutable, self.Icono,     self.Categorias]
         boto=[]
-        for x in range(1,len(datos)):
+        for x in range(len(datos)):
+            print ('datos '+str(datos[x])+' '+str(x))
             boto.append(str(datos[x]))
         if str(datos[4]).strip()=="":
             self.ui.checkBox_18.setChecked(False)
         else:
             self.ui.checkBox_18.setChecked(True)
         self.botons.append(boto)
-        item = QListWidgetItem(str(boto[1]))
+        item = QListWidgetItem(str(boto[2]))
         self.ui.listWidget.addItem(item)
         self.numbotones+=1
         if self.numbotones>0:
@@ -412,7 +417,7 @@ class Rahisi(QWidget):
                 nom=self.settings.value("name")
                 icon=self.settings.value("icon")
                 desc=self.settings.value("desc")
-                exe=self.settings.value("exe")
+                exe=self.settings.value("exec")
                 self.botons.append([' ', ' ', nom, nom, nom, desc, desc, desc, exe, icon, ' ']) 
                 item = QListWidgetItem(str(nom))
                 self.ui.listWidget.addItem(item)
@@ -729,7 +734,7 @@ Rahisi = Rahisi()
 
 if sys.platform[:3].lower()=='win':
     Rahisi.setGeometry(5,30,1020,700)
-else:
-    Rahisi.setGeometry(mgeometry)
+#else:
+    #Rahisi.setGeometry(mgeometry)
 Rahisi.show()
 app.exec_()

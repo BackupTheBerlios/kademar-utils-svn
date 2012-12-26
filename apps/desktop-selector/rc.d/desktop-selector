@@ -88,7 +88,7 @@ rm -f /home/"$user"/.xsession-errors
 
 #Get tty num to have a polkit/loginctl active=yes session
 #
-tty_num=$(tty | grep -oE '[0-9]+$')
+tty_num=$(fgconsole)
 
 while true; do
 

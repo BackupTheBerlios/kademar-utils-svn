@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1135</width>
-    <height>765</height>
+    <width>1280</width>
+    <height>969</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,7 +26,7 @@
      <widget class="QScrollArea" name="scrollArea_2">
       <property name="maximumSize">
        <size>
-        <width>220</width>
+        <width>200</width>
         <height>16777215</height>
        </size>
       </property>
@@ -38,91 +38,11 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>214</width>
-         <height>718</height>
+         <width>194</width>
+         <height>922</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_5">
-        <item row="2" column="0">
-         <widget class="QWidget" name="WLogo" native="true">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>200</height>
-           </size>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_8">
-           <item row="0" column="0">
-            <widget class="QPushButton" name="BHelp">
-             <property name="text">
-              <string>Help</string>
-             </property>
-             <property name="icon">
-              <iconset>
-               <normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/instalador/img/help.png</normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/instalador/img/help.png</iconset>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QProgressBar" name="PBLogo">
-             <property name="value">
-              <number>0</number>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignLeading</set>
-             </property>
-             <property name="textVisible">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="LFinishedLogo">
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>Copy Finished</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignHCenter|Qt::AlignTop</set>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="ILogo">
-             <property name="text">
-              <string/>
-             </property>
-             <property name="pixmap">
-              <pixmap resource="resource.qrc">:/img/img/KademarLogo.png</pixmap>
-             </property>
-             <property name="scaledContents">
-              <bool>false</bool>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
         <item row="0" column="0">
          <widget class="QWidget" name="WProgress" native="true">
           <property name="minimumSize">
@@ -267,6 +187,22 @@
            </item>
            <item row="7" column="0">
             <widget class="QLabel" name="iSoftware">
+             <property name="maximumSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="0">
+            <widget class="QLabel" name="iFinishedProgress">
              <property name="maximumSize">
               <size>
                <width>16</width>
@@ -552,22 +488,6 @@
              </property>
             </widget>
            </item>
-           <item row="9" column="0">
-            <widget class="QLabel" name="iFinishedProgress">
-             <property name="maximumSize">
-              <size>
-               <width>16</width>
-               <height>16</height>
-              </size>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
            <item row="9" column="1" colspan="2">
             <widget class="QLabel" name="LFinishedProgress">
              <property name="text">
@@ -597,6 +517,86 @@
           </layout>
          </widget>
         </item>
+        <item row="2" column="0">
+         <widget class="QWidget" name="WLogo" native="true">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>200</height>
+           </size>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_8">
+           <item row="0" column="0">
+            <widget class="QPushButton" name="BHelp">
+             <property name="text">
+              <string>Help</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/instalador/img/help.png</normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/instalador/img/help.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QProgressBar" name="PBLogo">
+             <property name="value">
+              <number>0</number>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading</set>
+             </property>
+             <property name="textVisible">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="LFinishedLogo">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Copy Finished</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignHCenter|Qt::AlignTop</set>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="ILogo">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="resource.qrc">:/img/img/KademarLogo.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>false</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
        </layout>
       </widget>
      </widget>
@@ -611,15 +611,15 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>630</width>
-         <height>718</height>
+         <width>795</width>
+         <height>922</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="0" column="0">
          <widget class="QStackedWidget" name="stackedPages">
           <property name="currentIndex">
-           <number>9</number>
+           <number>8</number>
           </property>
           <widget class="QWidget" name="PMain">
            <layout class="QGridLayout" name="gridLayout_9">
@@ -745,29 +745,6 @@ computer. After installation you will be ready to use %1 linux</string>
                 </property>
                </widget>
               </item>
-              <item row="0" column="1">
-               <widget class="QPushButton" name="BAdvancedInstall">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>100</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>200</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Advanced 
-installation</string>
-                </property>
-                <property name="flat">
-                 <bool>false</bool>
-                </property>
-               </widget>
-              </item>
               <item row="2" column="1">
                <widget class="QLabel" name="LAdvancedInstall">
                 <property name="text">
@@ -775,46 +752,6 @@ installation</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignHCenter|Qt::AlignTop</set>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0">
-               <widget class="QPushButton" name="BQuickInstall">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>100</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>200</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Quick
-installation</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="2">
-               <widget class="QPushButton" name="BNanoInstall">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>100</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>200</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Nano
-installer</string>
                 </property>
                </widget>
               </item>
@@ -828,11 +765,11 @@ installer</string>
                 </property>
                </widget>
               </item>
-              <item row="0" column="3">
-               <widget class="QPushButton" name="BRemoteInstall">
+              <item row="0" column="2">
+               <widget class="QToolButton" name="BNanoInstall">
                 <property name="minimumSize">
                  <size>
-                  <width>0</width>
+                  <width>162</width>
                   <height>100</height>
                  </size>
                 </property>
@@ -842,9 +779,132 @@ installer</string>
                   <height>16777215</height>
                  </size>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">QToolButton {background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #e4e2df, stop: 1 #c9c4be); border-style: solid ; border-width: 1px; border-radius: 10px; border-color: #7d7d7d; font: bold 13px; min-width: 10em; padding: 5px; padding-top: 10px;} QToolButton:hover  { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #a1bdd1, stop: 1 #d4d3d2) ; border-style: solid; border-width: 1px; border-radius: 10px; border-color: #679cd0; font: bold 13px; min-width: 10em; padding: 5px; padding-top: 10px;} QToolButton:pressed  { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #d4d3d2, stop: 1 #a1bdd1) ; border-style: solid; border-width: 1px; border-radius: 10px; border-color: #679cd0; font: bold 13px; min-width: 10em; padding: 5px; padding-top: 10px;} </string>
+                </property>
+                <property name="text">
+                 <string>Nano Installer</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="resource.qrc">
+                  <normaloff>:/img/img/device-pendrive.png</normaloff>:/img/img/device-pendrive.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>32</width>
+                  <height>32</height>
+                 </size>
+                </property>
+                <property name="toolButtonStyle">
+                 <enum>Qt::ToolButtonTextUnderIcon</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QToolButton" name="BQuickInstall">
+                <property name="minimumSize">
+                 <size>
+                  <width>162</width>
+                  <height>100</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>200</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QToolButton {background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #e4e2df, stop: 1 #c9c4be); border-style: solid ; border-width: 1px; border-radius: 10px; border-color: #7d7d7d; font: bold 13px; min-width: 10em; padding: 5px; padding-top: 10px;} QToolButton:hover  { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #a1bdd1, stop: 1 #d4d3d2) ; border-style: solid; border-width: 1px; border-radius: 10px; border-color: #679cd0; font: bold 13px; min-width: 10em; padding: 5px; padding-top: 10px;} QToolButton:pressed  { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #d4d3d2, stop: 1 #a1bdd1) ; border-style: solid; border-width: 1px; border-radius: 10px; border-color: #679cd0; font: bold 13px; min-width: 10em; padding: 5px; padding-top: 10px;} </string>
+                </property>
+                <property name="text">
+                 <string>Quick
+installation</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="resource.qrc">
+                  <normaloff>:/img/img/hdd.png</normaloff>:/img/img/hdd.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>32</width>
+                  <height>32</height>
+                 </size>
+                </property>
+                <property name="toolButtonStyle">
+                 <enum>Qt::ToolButtonTextUnderIcon</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QToolButton" name="BAdvancedInstall">
+                <property name="minimumSize">
+                 <size>
+                  <width>162</width>
+                  <height>100</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>200</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QToolButton {background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #e4e2df, stop: 1 #c9c4be); border-style: solid ; border-width: 1px; border-radius: 10px; border-color: #7d7d7d; font: bold 13px; min-width: 10em; padding: 5px; padding-top: 10px;} QToolButton:hover  { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #a1bdd1, stop: 1 #d4d3d2) ; border-style: solid; border-width: 1px; border-radius: 10px; border-color: #679cd0; font: bold 13px; min-width: 10em; padding: 5px; padding-top: 10px;} QToolButton:pressed  { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #d4d3d2, stop: 1 #a1bdd1) ; border-style: solid; border-width: 1px; border-radius: 10px; border-color: #679cd0; font: bold 13px; min-width: 10em; padding: 5px; padding-top: 10px;} </string>
+                </property>
+                <property name="text">
+                 <string>Advanced 
+installation</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="resource.qrc">
+                  <normaloff>:/img/img/hdd.png</normaloff>:/img/img/hdd.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>32</width>
+                  <height>32</height>
+                 </size>
+                </property>
+                <property name="toolButtonStyle">
+                 <enum>Qt::ToolButtonTextUnderIcon</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="3">
+               <widget class="QToolButton" name="BRemoteInstall">
+                <property name="minimumSize">
+                 <size>
+                  <width>162</width>
+                  <height>100</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>200</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QToolButton {background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #e4e2df, stop: 1 #c9c4be); border-style: solid ; border-width: 1px; border-radius: 10px; border-color: #7d7d7d; font: bold 13px; min-width: 10em; padding: 5px; padding-top: 10px;} QToolButton:hover  { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #a1bdd1, stop: 1 #d4d3d2) ; border-style: solid; border-width: 1px; border-radius: 10px; border-color: #679cd0; font: bold 13px; min-width: 10em; padding: 5px; padding-top: 10px;} QToolButton:pressed  { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #d4d3d2, stop: 1 #a1bdd1) ; border-style: solid; border-width: 1px; border-radius: 10px; border-color: #679cd0; font: bold 13px; min-width: 10em; padding: 5px; padding-top: 10px;} </string>
+                </property>
                 <property name="text">
                  <string>Remote
 installation</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="resource.qrc">
+                  <normaloff>:/img/img/device-pendrive.png</normaloff>:/img/img/device-pendrive.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>32</width>
+                  <height>32</height>
+                 </size>
+                </property>
+                <property name="toolButtonStyle">
+                 <enum>Qt::ToolButtonTextUnderIcon</enum>
                 </property>
                </widget>
               </item>
@@ -1396,6 +1456,47 @@ same partition</string>
           </widget>
           <widget class="QWidget" name="PDisk">
            <layout class="QGridLayout" name="gridLayout_15">
+            <item row="5" column="1">
+             <widget class="QPushButton" name="BGparted">
+              <property name="text">
+               <string>Partitioning</string>
+              </property>
+              <property name="icon">
+               <iconset resource="resource.qrc">
+                <normaloff>:/img/img/gparted.png</normaloff>:/img/img/gparted.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="0">
+             <widget class="QLabel" name="LPartSwap">
+              <property name="maximumSize">
+               <size>
+                <width>100</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <italic>true</italic>
+               </font>
+              </property>
+              <property name="locale">
+               <locale language="English" country="UnitedKingdom"/>
+              </property>
+              <property name="text">
+               <string>Swap</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
             <item row="6" column="1" colspan="3">
              <widget class="QLabel" name="LPartition">
               <property name="maximumSize">
@@ -1440,22 +1541,6 @@ same partition</string>
               </property>
              </widget>
             </item>
-            <item row="8" column="4">
-             <widget class="QComboBox" name="CBDiskFormatSwap">
-              <item>
-               <property name="text">
-                <string>Swap FS</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item row="12" column="4">
-             <widget class="QPushButton" name="BEditPartition">
-              <property name="text">
-               <string>Edit</string>
-              </property>
-             </widget>
-            </item>
             <item row="2" column="0" colspan="4">
              <widget class="QRadioButton" name="RBPartitionN">
               <property name="text">
@@ -1464,7 +1549,14 @@ same partition</string>
              </widget>
             </item>
             <item row="7" column="1" colspan="3">
-             <widget class="QComboBox" name="CBPartRoot"/>
+             <widget class="QComboBox" name="CBPartRoot">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>40</height>
+               </size>
+              </property>
+             </widget>
             </item>
             <item row="5" column="3">
              <widget class="QCheckBox" name="CHSamePart">
@@ -1558,6 +1650,12 @@ same partition</string>
             </item>
             <item row="9" column="4">
              <widget class="QComboBox" name="CBDiskFormatOther">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>30</height>
+               </size>
+              </property>
               <item>
                <property name="text">
                 <string>Ext4</string>
@@ -1587,9 +1685,20 @@ same partition</string>
             </item>
             <item row="7" column="4">
              <widget class="QComboBox" name="CBDiskFormatRoot">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>30</height>
+               </size>
+              </property>
               <item>
                <property name="text">
                 <string>Ext4</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Btr FS</string>
                </property>
               </item>
               <item>
@@ -1616,13 +1725,35 @@ same partition</string>
             </item>
             <item row="10" column="4">
              <widget class="QPushButton" name="BAddPartition">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>30</height>
+               </size>
+              </property>
               <property name="text">
                <string>Add</string>
+              </property>
+              <property name="icon">
+               <iconset resource="resource.qrc">
+                <normaloff>:/img/img/add.png</normaloff>:/img/img/add.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>16</width>
+                <height>16</height>
+               </size>
               </property>
              </widget>
             </item>
             <item row="9" column="1">
              <widget class="QComboBox" name="CBPartDir">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>30</height>
+               </size>
+              </property>
               <item>
                <property name="text">
                 <string>home</string>
@@ -1645,40 +1776,23 @@ same partition</string>
               </item>
              </widget>
             </item>
-            <item row="11" column="4">
-             <widget class="QPushButton" name="BRemovePartition">
-              <property name="text">
-               <string>Remove</string>
+            <item row="9" column="2" colspan="2">
+             <widget class="QComboBox" name="CBPartOther">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>40</height>
+               </size>
               </property>
              </widget>
             </item>
-            <item row="9" column="2" colspan="2">
-             <widget class="QComboBox" name="CBPartOther"/>
-            </item>
             <item row="8" column="1" colspan="3">
-             <widget class="QComboBox" name="CBPartSwap"/>
-            </item>
-            <item row="8" column="0">
-             <widget class="QLabel" name="LPartSwap">
-              <property name="maximumSize">
+             <widget class="QComboBox" name="CBPartSwap">
+              <property name="minimumSize">
                <size>
-                <width>100</width>
-                <height>16777215</height>
+                <width>0</width>
+                <height>40</height>
                </size>
-              </property>
-              <property name="font">
-               <font>
-                <italic>true</italic>
-               </font>
-              </property>
-              <property name="locale">
-               <locale language="English" country="UnitedKingdom"/>
-              </property>
-              <property name="text">
-               <string>Swap</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
@@ -1732,25 +1846,53 @@ p, li { white-space: pre-wrap; }
               </property>
              </widget>
             </item>
-            <item row="5" column="1">
-             <widget class="QPushButton" name="BGparted">
-              <property name="text">
-               <string>Partitioning</string>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/instalador/img/gparted.png</normaloff>../../../../../../home/clawlinux/usr/share/kademar/utils/instalador/img/gparted.png</iconset>
-              </property>
-              <property name="iconSize">
+            <item row="8" column="4">
+             <widget class="QLabel" name="LPartSwap_2">
+              <property name="maximumSize">
                <size>
-                <width>32</width>
-                <height>32</height>
+                <width>100</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <italic>true</italic>
+               </font>
+              </property>
+              <property name="text">
+               <string>Swap FS</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="10" column="1" rowspan="2" colspan="3">
+             <widget class="QListView" name="LVMountPointList">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>200</height>
                </size>
               </property>
              </widget>
             </item>
-            <item row="10" column="1" rowspan="3" colspan="3">
-             <widget class="QListView" name="LVMountPointList"/>
+            <item row="11" column="4">
+             <widget class="QPushButton" name="BRemovePartition">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Remove</string>
+              </property>
+              <property name="icon">
+               <iconset resource="resource.qrc">
+                <normaloff>:/img/img/remove.png</normaloff>:/img/img/remove.png</iconset>
+              </property>
+             </widget>
             </item>
            </layout>
           </widget>
@@ -3387,6 +3529,9 @@ p, li { white-space: pre-wrap; }
                 <height>40</height>
                </size>
               </property>
+              <property name="statusTip">
+               <string>Open external program to make partitions on your devices. Take care with your data</string>
+              </property>
               <property name="text">
                <string>Partitioning</string>
               </property>
@@ -4170,7 +4315,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1135</width>
+     <width>1280</width>
      <height>21</height>
     </rect>
    </property>

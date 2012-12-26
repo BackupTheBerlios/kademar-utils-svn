@@ -168,6 +168,7 @@ class instalador(QMainWindow):
 
             self.ui.CBNanoDevice.setView(self.view)
             self.ui.CBNanoDevice.setModel(self.model)
+            #Restore again non selected nothing on GUI
             self.ui.CBNanoDevice.setCurrentIndex(-1)
             self.ui.CHChangesFile.setEnabled(False)
             self.ui.CHFormatNano.setEnabled(False)
@@ -175,6 +176,8 @@ class instalador(QMainWindow):
             self.ui.SChangeFile.setVisible(False)
             self.ui.LChangesFileSize.setVisible(False)
             #self.ui.FChangesFileInfo.setVisible(False)
+            self.ui.CHChangesFile.setChecked(False)
+            self.ui.CHFormatNano.setChecked(False)
             self.ui.BNext.setEnabled(False)
 
 

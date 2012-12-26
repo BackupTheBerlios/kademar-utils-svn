@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=instalador5
-pkgver=4.9.80
+pkgver=4.9.81
 pkgrel=3
 epoch=
 pkgdesc="The Installer"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=($pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('129d60b1e89739347b00ffc3d7500fc2') #generate with 'makepkg -g'
+md5sums=('cfbc58f1f7392498462fa8d56f9d1c6b') #generate with 'makepkg -g'
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -32,6 +32,7 @@ build() {
  package() {
    mkdir -p "$pkgdir/usr/share"
    cp -a $srcdir/$pkgname-$pkgver "$pkgdir/usr/share/instalador"
+   rm -fr "$pkgdir/usr/share/instalador/img" "$pkgdir/usr/share/instalador/prepare.sh" 
    cd $pkgdir && rm -fr `find . -name ".svn"` && rm -fr `find . -name "__pycache__"` && rm -fr `find . -name "*.pyc"` && rm -fr `find . -name "*.pro"` && rm -f `find . -name "*~"` && rm -f `find . -name "todo"` && rm -f `find . -name "*project"` && rm -f `find . -name "*odt"` && rm -f `find . -name "*.ts"` && rm -f `find . -name "*.kate-swp"`
    mkdir -p "$pkgdir/etc/X11/xinit/xinitrc.d"
    cp -a $srcdir/$pkgname-$pkgver/pkgscripts/80-xsession-instalador5-icon "$pkgdir/etc/X11/xinit/xinitrc.d"

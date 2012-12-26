@@ -63,11 +63,11 @@ class instalador(QMainWindow):
         self.removableDevicesDetected=self.listRemovableDevices()
         #Enable/Disable nano path
         if len(self.removableDevicesDetected) == 0:
-            self.ui.BNanoInstall.setVisible(False)
-            self.ui.LNanoInstall.setVisible(False)
+            self.ui.BNanoInstall.setEnabled(False)
+            self.ui.LNanoInstall.setEnabled(False)
         else:
-            self.ui.BNanoInstall.setVisible(True)
-            self.ui.LNanoInstall.setVisible(True)
+            self.ui.BNanoInstall.setEnabled(True)
+            self.ui.LNanoInstall.setEnabled(True)
         
     def setConnections(self):
         #Control GUI connections
@@ -119,7 +119,8 @@ class instalador(QMainWindow):
                 if devicefile.find("loop") == -1 and rootimage.find("root-image") == -1 and devicefile.find("zram") == -1 and isDetachable == 1 and devicefile != self.deviceKademarIsBootingFrom:
                         #print isDrive
                     #self.logMessage(size)
-                    size=size/1000000
+                    size=size/1024 #to MiB
+                    size=size/1024 #to GiB
                     varActual.append(devicefile)
                     varActual.append(str(size))
                     varActual.append(model)
@@ -175,7 +176,8 @@ class instalador(QMainWindow):
                     devicefile=devicefile.strip("/dev/")
                     fs=device_props.Get('org.freedesktop.UDisks.Device', "IdType")
                     size=device_props.Get('org.freedesktop.UDisks.Device', "PartitionSize")
-                    size=size/1000000
+                    size=size/1024  #to MiB
+                    size=size/1024  #to GiB
                     #if str(fs).find("swap") != -1:
                         #result=result+" "+str(devicefile)+"-"+str(fs)+"-"+str(size)+"-82"
                     #else:
@@ -203,7 +205,7 @@ class instalador(QMainWindow):
         
     def getUsedSpaceOfMountedDevice(self,var):
         size=self.execShellProcess("/bin/sh", "-c", "df "+var+" | grep -i "+var+" | awk ' { print $3 } '")
-        size=float(size)/1000
+        size=float(size)/1024
         return size
         
     def getSizeOfMountedDevice(self,var):
@@ -217,7 +219,8 @@ class instalador(QMainWindow):
             matching = [s for s in mount if var in s]
             if matching:
                 size=device_props.Get('org.freedesktop.UDisks.Device', "PartitionSize")
-                size=size/1000000
+                size=size/1024 #to MiB
+                size=size/1024 #to GiB
                 return size
         
         
@@ -268,12 +271,12 @@ class instalador(QMainWindow):
             #self.logMessage(str(hddsize).split(".")[0][:-3])#hddsize=int(self.parts[i].split("-")[1])  #J
             #hddsize1
             size=size1+","+size2[:2]
-            unit="Mb"
+            unit="MiB"
         else:
             #hddsize=str(hddsize)[:-3]+","+str(hddsize)[-3]
             size1process=str(size1)[:-3]
             size=size1process+","+size1[-3:-1]
-            unit="Gb"
+            unit="GiB"
     
         return size,unit
     

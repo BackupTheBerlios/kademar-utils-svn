@@ -214,7 +214,7 @@ class checkSpace(QThread):
         #print("/bin/sh", "-c", "df "+var+" | grep -i "+var+" | awk ' { print $3 } '")
         size=self.execShellProcess("/bin/sh", "-c", "df "+var+" 2>/dev/null | grep -i "+var+" | awk ' { print $3 } '")
         if str(size) != "" and size != None:
-            size=int(size)/1000
+            size=int(size)/1024
             return size
     
     def execShellProcess(self, idCommand, idParam = "", idParam2 = ""):

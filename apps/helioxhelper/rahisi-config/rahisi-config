@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd /usr/share/helioxhelper/rahisi-config
-python2 rahisi.py
+python rahisi.py

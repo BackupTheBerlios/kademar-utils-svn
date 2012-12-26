@@ -69,7 +69,7 @@ class editor(QDialog):
         
         locale = QLocale.system().name()   #ca_ES
         self.idiomas=["en","es","ca"]      # los tres idiomas que usamos
-	self.idioma=self.idiomas.index(locale.split("_")[0])  # numero de idioma para facilitar las asignaciones en los result.value
+        self.idioma=self.idiomas.index(locale.split("_")[0])  # numero de idioma para facilitar las asignaciones en los result.value
         self.lee_datos_menu()
 
     def pon_texto_boton(self, texto):
@@ -83,11 +83,11 @@ class editor(QDialog):
         consulta='SELECT * FROM Programas WHERE Nombre_'+self.idiomas[self.idioma]+'="'+value+'" ;'
         self.result=self.dbL.exec_(consulta)
         self.result.first()
-        num=self.result.value(0).toInt()[0]
-        self.textEdit.setText(str(self.result.value(5+self.idioma).toString()))
-        self.lineEdit.setText(self.result.value(2+self.idioma).toString())
-        self.lineEdit_2.setText(self.result.value(8).toString())
-        dicon=str(self.result.value(9).toString())
+        num=int(self.result.value(0))
+        self.textEdit.setText(self.result.value(5+self.idioma))
+        self.lineEdit.setText(self.result.value(2+self.idioma))
+        self.lineEdit_2.setText(self.result.value(8))
+        dicon=self.result.value(9)
         if dicon.find("/"):
             icono=self.diricons+dicon+".png"
         else:
@@ -102,17 +102,17 @@ class editor(QDialog):
         else:
             texto=""
             self.pushButton.setText(texto)
-        self.Codigo=self.result.value(0).toInt()[0]
-        self.Categoria=self.result.value(1).toString()
-        self.Nombre_en=self.result.value(2).toString()
-        self.Nombre_es=self.result.value(3).toString()
-        self.Nombre_ca=texto   # self.result.value(4).toString()
-        self.Descripcion_en=self.result.value(5).toString()
-        self.Descripcion_es=self.result.value(6).toString()
-        self.Descripcion_ca=self.result.value(7).toString()
-        self.Ejecutable=self.result.value(8).toString()
+        self.Codigo=int(self.result.value(0))
+        self.Categoria=self.result.value(1)
+        self.Nombre_en=self.result.value(2)
+        self.Nombre_es=self.result.value(3)
+        self.Nombre_ca=texto   # self.result.value(4)
+        self.Descripcion_en=self.result.value(5)
+        self.Descripcion_es=self.result.value(6)
+        self.Descripcion_ca=self.result.value(7)
+        self.Ejecutable=self.result.value(8)
         self.Icono=icono
-        self.Categorias=self.result.value(10).toString()
+        self.Categorias=self.result.value(10)
 
     def lee_datos_menu(self):
         self.dbL.open()
@@ -121,11 +121,12 @@ class editor(QDialog):
         #Codigo  #Categoria  #Nombre_en    #Nombre_es   #Nombre_ca
         #Descripcion_en  #Descripcion_es   #Descripcion_ca  #Ejecutable  #Icono TEXT  #Categorias
         self.comboBox.clear()
-        listaCategorias=QStringList()
+        listaCategorias=[]
         while self.result.next():
-            listaCategorias.append(self.result.value(1).toString())
+            listaCategorias.append(self.result.value(1))
         self.dbL.close()
-        listaCategorias.removeDuplicates()
+        listaCategorias = list(set(listaCategorias))
+        listaCategorias.sort()
         self.comboBox.addItems(listaCategorias)
 
     def pon_programas(self,indice):
@@ -135,25 +136,18 @@ class editor(QDialog):
         self.result=self.dbL.exec_(consulta)
         #Codigo   #Categoria   #Nombre_en   #Nombre_es   #Nombre_ca    #Descripcion_en
         #Descripcion_es  #Descripcion_ca    #Ejecutable  #Icono TEXT   #Categorias
-        lista=QStringList()
+        lista=[]
         self.listWidget.clear()
         y=26
         while self.result.next():
-            Codigo=self.result.value(0).toString()
-            Nombre=self.result.value(2+self.idioma).toString()
-            Descripcion=self.result.value(5+self.idioma).toString()
-            icono=self.result.value(8).toString()
+            Codigo=self.result.value(0)
+            Nombre=self.result.value(2+self.idioma)
+            Descripcion=self.result.value(5+self.idioma)
+            icono=self.result.value(8)
             lista.append(Nombre)
             self.listWidget.resize(240,y)
             y+=17
         self.dbL.close()
-        #lista.removeDuplicates()
-        #icon = QIcon(icono)
-        #pixmap = icon.pixmap(self.tam_icono, self.tam_icono)
-        ##item = QListWidgetItem(icon,self.listWidget.Item())
-        #item.setIcon(icon)
-        #item.setStatusTip(icon)
-
         self.listWidget.addItems(lista)
 
     def activa_programa(self):

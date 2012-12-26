@@ -7,9 +7,10 @@ arch=('i686' 'x86_64')
 url="http://www.kademar.org"
 license=('GPL3')
 groups=('kademar')
-depends=('qt' 'vorbis-tools')
+depends=('qt' 'vorbis-tools' 'pyqt')
 makedepends=('subversion')
 provides=('helioxhelper')
+install='helioxhelper.install'
 optdepends=('speech-dispatcher: speech synthesis interface')
 options=(!strip !docs !libtool !emptydirs !zipman makeflags)
 _svntrunk="svn://svn.berlios.de/kademar-utils/apps"
@@ -33,6 +34,10 @@ build() {
   cd "${srcdir}/${_svnmod}-build"
   #make ${_options} definitions=TEXTATOR_VERSION=rev${pkgver} -C src
   
+  cd rahisi-config
+  sh prepare.sh
+  cd ..
+  
   lrelease ${_svnmod}.pro
   qmake
   make
@@ -40,13 +45,20 @@ build() {
 
 package() {
   cd "${srcdir}/${_svnmod}-build"
-  mkdir -p ${pkgdir}/usr/bin ${pkgdir}/usr/share/applications ${pkgdir}/usr/share/autostart ${pkgdir}/usr/share/helioxhelper
+  mkdir -p ${pkgdir}/usr/bin ${pkgdir}/usr/share/applications ${pkgdir}/usr/share/helioxhelper ${pkgdir}/usr/share/autostart ${pkgdir}/usr/share/helioxhelper
   cp -a HelioxHelper ${pkgdir}/usr/bin
   
   cp -a {speech,icon.png} ${pkgdir}/usr/share/helioxhelper
   
   cp -a helioxhelper.desktop ${pkgdir}/usr/share/applications
   cp -a helioxhelper-autostart.desktop ${pkgdir}/usr/share/autostart
+  
+  cp -a rahisi-config ${pkgdir}/usr/share/helioxhelper
+  mv ${pkgdir}/usr/share/helioxhelper/rahisi-config/rahisi-config ${pkgdir}/usr/bin
+  mv ${pkgdir}/usr/share/helioxhelper/rahisi-config/rahisi-config-update-apps ${pkgdir}/usr/bin
+  rm -f rahisi-config/prepare.sh
+  rm -f rahisi-config/*.ui
+  
   cd ${pkgdir} && rm -fr `find . -name ".svn"` && rm -fr `find . -name "*.pyc"` && rm -f `find . -name "*~"`
   find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
   find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;

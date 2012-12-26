@@ -25,6 +25,9 @@ HelioxHelper::HelioxHelper(QWidget *parent) :
     numCol=0;
     numRow=0;
 
+    //Initial define - to not crash on first reloadConfiguration()
+    languageButtonSelection = new QToolButtonWithEvents(this, settings1, settings2, selectedLanguage);
+
     position = settings->value("General/whereIsPlacedWindow").toInt();
 
     languageMenu = new QMenu(this);
@@ -914,7 +917,7 @@ void HelioxHelper::createActions()
 
 
  void HelioxHelper::reloadConfiguration(){
-     qDebug() << "Hola";
+    //qDebug() << "Hola";
      //qDebug() << listApplicationButtons.size();
     while (listApplicationButtons.size() != 0){
         for (int i = 0; i < listApplicationButtons.size(); ++i)  {
@@ -923,7 +926,7 @@ void HelioxHelper::createActions()
         }
 
     }
-   // qDebug() << listApplicationButtons.size();
+
     delete(languageButtonSelection);
 
     //languageButtonSelection->setVisible(false);

@@ -1,0 +1,7 @@
+post_install() {
+    rahisi-config-update-apps
+}
+
+post_remove(){
+    rm -fr /usr/share/helioxhelper
+}

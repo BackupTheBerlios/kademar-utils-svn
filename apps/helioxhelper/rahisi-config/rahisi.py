@@ -33,8 +33,7 @@ class Rahisi(QWidget):
         self.ui.label.setPixmap (self.pixmap)
         self.settings=QSettings("ProyectoHeliox", "HelioxHelper")
         self.writeConfig()
-
-#####  SIGNAL & SLOTS  #####
+        
         self.connect(self.ui.pushButton, SIGNAL("clicked()"), self.boto_sortir)
         self.connect(self.ui.pushButton_5, SIGNAL("clicked()"), self.buscar_imagen)
         self.connect(self.ui.toolButton, SIGNAL("clicked()"), self.pon_color_fondo1)
@@ -55,7 +54,6 @@ class Rahisi(QWidget):
         self.connect(self.ui.spinBox_3, SIGNAL("valueChanged(int)"), self.size)
         self.connect(self.ui.comboBox_2, SIGNAL("activated(int)"), self.whereIsPlacedWindow)
         self.connect(self.ui.checkBox_9, SIGNAL("clicked()"), self.fondo_degradado)
-
         self.connect(self.ui.checkBox_10, SIGNAL("clicked()"), self.tray_icon)
         self.connect(self.ui.checkBox_11, SIGNAL("clicked()"), self.left_clic)
         self.connect(self.ui.checkBox_12, SIGNAL("clicked()"), self.right_clic)
@@ -63,14 +61,12 @@ class Rahisi(QWidget):
         self.connect(self.ui.checkBox_14, SIGNAL("clicked()"), self.show_restore)
         self.connect(self.ui.checkBox_15, SIGNAL("clicked()"), self.show_settings)
         self.connect(self.ui.checkBox_16, SIGNAL("clicked()"), self.show_exit)
-
         self.connect(self.ui.checkBox_17, SIGNAL("clicked()"), self.autoborders)
         self.connect(self.ui.spinBox_4, SIGNAL("valueChanged(int)"), self.redondeado)
         self.connect(self.ui.checkBox_20, SIGNAL("clicked()"), self.top_left)
         self.connect(self.ui.checkBox_21, SIGNAL("clicked()"), self.top_right)
         self.connect(self.ui.checkBox_22, SIGNAL("clicked()"), self.bottom_left)
         self.connect(self.ui.checkBox_23, SIGNAL("clicked()"), self.bottom_right)
-
         self.connect(self.ui.pushButton_3, SIGNAL("clicked()"), self.pon_boton)
         self.connect(self.ui.comboBox, SIGNAL("activated(int)"), self.imageSize)
         self.connect(self.ui.checkBox_19, SIGNAL("clicked()"), self.iconAbove)
@@ -82,9 +78,11 @@ class Rahisi(QWidget):
         self.connect(self.ui.spinBox_9, SIGNAL("valueChanged(int)"), self.pixelsBorderNormal)
         self.connect(self.ui.spinBox_10, SIGNAL("valueChanged(int)"), self.pixelsBorderFocused)
         self.connect(self.ui.spinBox_11, SIGNAL("valueChanged(int)"), self.pixelsRoundedBorder)
-
-	self.connect(self.ui.pushButton_4, SIGNAL("clicked()"), self.borra_boton)
-	self.connect(self.ui.pushButton_6, SIGNAL("clicked()"), self.guardar_botones)
+        self.connect(self.ui.pushButton_4, SIGNAL("clicked()"), self.borra_boton)
+        self.connect(self.ui.pushButton_6, SIGNAL("clicked()"), self.guardar_botones)
+        self.connect(self.ui.listWidget, SIGNAL("itemActivated(QListWidgetItem *)"), self.ver_ocultar_flechas)
+        self.connect(self.ui.toolButton_8, SIGNAL("clicked()"), self.sube_item)
+        self.connect(self.ui.toolButton_9, SIGNAL("clicked()"), self.baja_item)
         #self.pushButton_2 = QToolButtonWithEvents(self.ui.label)
         #self.pushButton_2 = QPushButton(self.ui.label)
         #self.pushButton_2.setObjectName("pushButton_2")
@@ -106,22 +104,51 @@ class Rahisi(QWidget):
         #self.gridLayout_2.addWidget(self.pushButton_17, 1, 0, 1, 1)
         locale = QLocale.system().name()   #ca_ES
         self.idiomas=["en","es","ca"]      # los tres idiomas que usamos
-	self.idioma=self.idiomas.index(locale.split("_")[0])  # numero de idioma para facilitar las asignaciones en los result.value
-	
-
-#### END SIGNAL & SLOTS ####
-
+        self.idioma=self.idiomas.index(locale.split("_")[0])  # numero de idioma para facilitar las asignaciones en los result.value
+        
+        
+    def sube_item(self):
+        num=self.ui.listWidget.currentRow()
+        if num>0:
+            unoviejo=self.botons[num-1]
+            dosviejo=self.botons[num]
+            self.botons[num-1]=dosviejo
+            self.botons[num]=unoviejo
+            self.ui.listWidget.clear()
+            for i in self.botons:
+                item = QListWidgetItem(str(i[2]))
+                self.ui.listWidget.addItem(item)
+            
+    def baja_item(self):
+        num=self.ui.listWidget.currentRow()
+        maximo=len(self.botons)
+        if num<maximo:
+            unoviejo=self.botons[num]
+            dosviejo=self.botons[num+1]
+            self.botons[num]=dosviejo
+            self.botons[num+1]=unoviejo
+            self.ui.listWidget.clear()
+            for i in self.botons:
+                item = QListWidgetItem(str(i[2]))
+                self.ui.listWidget.addItem(item)
+    
+    def ver_ocultar_flechas(self):
+        self.ui.toolButton_8.setEnabled(True)
+        self.ui.toolButton_9.setEnabled(True)
+        
     def guardar_botones(self):
-	self.settings.beginWriteArray("Applications/app")
-	for x in range(self.numbotones-1):
+        self.settings.beginWriteArray("Applications/app")
+        numbotones=len(self.botons)
+        for x in range(numbotones):
             self.settings.setArrayIndex(x)
-            text=QString(self.botons[x][2+self.idioma]).toAscii()
+            text=self.botons[x][2+self.idioma]
             self.settings.setValue("name", str(text))
-            text=QString(self.botons[x][9]).toAscii()
+            text=self.botons[x][9]
+            print ('icono='+text)
             self.settings.setValue("icon", str(text))
-            text=QString(self.botons[x][5+self.idioma]).toAscii()
+            text=self.botons[x][5+self.idioma]
             self.settings.setValue("desc", str(text))
-            text=QString(self.botons[x][8]).toAscii()
+            text=self.botons[x][8]
             self.settings.setValue("exec", str(text))
         self.settings.endArray()
 
@@ -139,36 +166,36 @@ class Rahisi(QWidget):
         self.editor.show()
 
     def configura_boton(self,datos):
-	#self.datos_final=[self.Codigo,         self.Categoria,      self.Nombre_en,  self.Nombre_es, self.Nombre_ca, self.Descripcion_en,                   
-	                  #self.Descripcion_es, self.Descripcion_ca, self.Ejecutable, self.Icono,     self.Categorias]
-	boto=[]
+    #self.datos_final=[self.Codigo,         self.Categoria,      self.Nombre_en,  self.Nombre_es, self.Nombre_ca, self.Descripcion_en,                   
+                      #self.Descripcion_es, self.Descripcion_ca, self.Ejecutable, self.Icono,     self.Categorias]
+        boto=[]
         for x in range(1,len(datos)):
-	    boto.append(QString(datos[x]).toAscii())
+            boto.append(str(datos[x]))
         if str(datos[4]).strip()=="":
             self.ui.checkBox_18.setChecked(False)
         else:
             self.ui.checkBox_18.setChecked(True)
         self.botons.append(boto)
         item = QListWidgetItem(str(boto[1]))
-	self.ui.listWidget.addItem(item)
+        self.ui.listWidget.addItem(item)
         self.numbotones+=1
         if self.numbotones>0:
-	    self.ui.pushButton_4.setEnabled(True)
-	    self.ui.pushButton_6.setEnabled(True)
-	else:
-	    self.ui.pushButton_4.setEnabled(False)
-	    self.ui.pushButton_6.setEnabled(False)
-        
+            self.ui.pushButton_4.setEnabled(True)
+            self.ui.pushButton_6.setEnabled(True)
+        else:
+            self.ui.pushButton_4.setEnabled(False)
+            self.ui.pushButton_6.setEnabled(False)
+            
     def borra_boton(self):
-	num=self.ui.listWidget.currentRow()
-	texto=self.botons[num]
-	self.botons.remove(texto)
-	item = self.ui.listWidget.takeItem(num)
-	item = None
-	self.numbotones-=1
+        num=self.ui.listWidget.currentRow()
+        texto=self.botons[num]
+        self.botons.remove(texto)
+        item = self.ui.listWidget.takeItem(num)
+        item = None
+        self.numbotones-=1
 
     def writeConfig(self):
-        if (self.settings.value("General/autostart").toString() == ""):
+        if (self.settings.value("General/autostart") == ""):
             self.settings.beginGroup("General")
             self.settings.setValue("autostart", "1")
             self.settings.setValue("fullscreen", "0")
@@ -271,23 +298,22 @@ class Rahisi(QWidget):
             self.settings.setValue("exec", "pidgin")
             self.settings.endArray()
             self.settings.endGroup()
-
         else:
-            self.ui.checkBox.setChecked(self.settings.value("Background/wallpaperBackground", 0).toInt()[0])
-            self.ui.lineEdit_2.setText(self.settings.value("Background/backgroundPath", "").toString())
+            self.ui.checkBox.setChecked(int(self.settings.value("Background/wallpaperBackground", 0)))
+            self.ui.lineEdit_2.setText(self.settings.value("Background/backgroundPath", ""))
             if self.ui.checkBox.isChecked():
                 self.pixmap.load(self.ui.lineEdit_2.text())
                 self.ui.label.setPixmap (self.pixmap)
                 self.imagen()
-            self.ui.checkBox_2.setChecked(self.settings.value("General/autostart", 0).toInt()[0])
-            self.ui.checkBox_3.setChecked(self.settings.value("General/fullscreen", 0).toInt()[0])
-            self.ui.checkBox_4.setChecked(self.settings.value("General/completeFullscreen", 0).toInt()[0])
-            self.ui.checkBox_5.setChecked(self.settings.value("General/alwaysOnTop", 0).toInt()[0])
-            self.ui.checkBox_6.setChecked(self.settings.value("General/alwaysOnBottom", 0).toInt()[0])
-            self.ui.checkBox_7.setChecked(self.settings.value("General/closeConfirm", 0).toInt()[0])
-            self.ui.checkBox_8.setChecked(self.settings.value("General/speechText", 0).toInt()[0])
-            self.ui.spinBox_3.setValue(self.settings.value("General/size", 350).toInt()[0])
-            self.ui.checkBox_9.setChecked(self.settings.value("Background/gradientBackground", 0).toInt()[0])
+            self.ui.checkBox_2.setChecked(int(self.settings.value("General/autostart", 0)))
+            self.ui.checkBox_3.setChecked(int(self.settings.value("General/fullscreen", 0)))
+            self.ui.checkBox_4.setChecked(int(self.settings.value("General/completeFullscreen", 0)))
+            self.ui.checkBox_5.setChecked(int(self.settings.value("General/alwaysOnTop", 0)))
+            self.ui.checkBox_6.setChecked(int(self.settings.value("General/alwaysOnBottom", 0)))
+            self.ui.checkBox_7.setChecked(int(self.settings.value("General/closeConfirm", 0)))
+            self.ui.checkBox_8.setChecked(int(self.settings.value("General/speechText", 0)))
+            self.ui.spinBox_3.setValue(int(self.settings.value("General/size", 350)))
+            self.ui.checkBox_9.setChecked(int(self.settings.value("Background/gradientBackground", 0)))
             if self.ui.checkBox_9.isChecked():
                 self.ui.label_12.setVisible(True)
                 self.ui.label_14.setVisible(True)
@@ -296,8 +322,8 @@ class Rahisi(QWidget):
                 self.ui.label_12.setVisible(False)
                 self.ui.label_14.setVisible(False)
                 self.ui.toolButton_4.setVisible(False)
-            self.color_fondo1 = self.settings.value ("Background/gradientBeginColor", "#ffffff").toString()
-            self.color_fondo2 = self.settings.value ("Background/gradientEndColor", "#ffffff").toString()
+            self.color_fondo1 = self.settings.value ("Background/gradientBeginColor", "#ffffff")
+            self.color_fondo2 = self.settings.value ("Background/gradientEndColor", "#ffffff")
             gradient = QLinearGradient(0, 0, 0, 400)
             gradient.setColorAt(0.0, QColor(self.color_fondo1))
             gradient.setColorAt(1.0, QColor(self.color_fondo2))
@@ -306,94 +332,94 @@ class Rahisi(QWidget):
             self.ui.label.setPalette(paleta)
             
             color=QColor(self.color_fondo1)
-	    paleta=QPalette(self.ui.frame_9.palette())
-	    paleta.setColor(paleta.Base,color)
-	    self.ui.frame_9.setPalette(QPalette(color))
+            paleta=QPalette(self.ui.frame_9.palette())
+            paleta.setColor(paleta.Base,color)
+            self.ui.frame_9.setPalette(QPalette(color))
 
-	    color=QColor(self.color_fondo2)
-	    paleta=QPalette(self.ui.frame_8.palette())
-	    paleta.setColor(paleta.Base,color)
-	    self.ui.frame_8.setPalette(QPalette(color))
-	    
-            self.ui.checkBox_10.setChecked(self.settings.value("Tray Icon/showTrayIcon", 0).toInt()[0])
-            self.ui.checkBox_11.setChecked(self.settings.value("Tray Icon/leftClickContextualMenu", 0).toInt()[0])
-            self.ui.checkBox_12.setChecked(self.settings.value("Tray Icon/rightClickContextualMenu", 0).toInt()[0])
-            self.ui.checkBox_13.setChecked(self.settings.value("Contextual Menu/showMinimize", 0).toInt()[0])
-            self.ui.checkBox_14.setChecked(self.settings.value("Contextual Menu/showRestore", 0).toInt()[0])
-            self.ui.checkBox_15.setChecked(self.settings.value("Contextual Menu/showSettings", 0).toInt()[0])
-            self.ui.checkBox_16.setChecked(self.settings.value("Contextual Menu/showExit", 0).toInt()[0])
+            color=QColor(self.color_fondo2)
+            paleta=QPalette(self.ui.frame_8.palette())
+            paleta.setColor(paleta.Base,color)
+            self.ui.frame_8.setPalette(QPalette(color))
+        
+            self.ui.checkBox_10.setChecked(int(self.settings.value("Tray Icon/showTrayIcon", 0)))
+            self.ui.checkBox_11.setChecked(int(self.settings.value("Tray Icon/leftClickContextualMenu", 0)))
+            self.ui.checkBox_12.setChecked(int(self.settings.value("Tray Icon/rightClickContextualMenu", 0)))
+            self.ui.checkBox_13.setChecked(int(self.settings.value("Contextual Menu/showMinimize", 0)))
+            self.ui.checkBox_14.setChecked(int(self.settings.value("Contextual Menu/showRestore", 0)))
+            self.ui.checkBox_15.setChecked(int(self.settings.value("Contextual Menu/showSettings", 0)))
+            self.ui.checkBox_16.setChecked(int(self.settings.value("Contextual Menu/showExit", 0)))
 
-            self.ui.checkBox_17.setChecked(self.settings.value("Round Corners/autoBorders", 1).toInt()[0])
-            self.ui.spinBox_4.setValue(self.settings.value("Round Corners/roundedMargin", 25).toInt()[0])
-            self.ui.checkBox_20.setChecked(self.settings.value("Round Corners/top_left", 1).toInt()[0])
-            self.ui.checkBox_21.setChecked(self.settings.value("Round Corners/top_right", 0).toInt()[0])
-            self.ui.checkBox_22.setChecked(self.settings.value("Round Corners/bottom_left", 1).toInt()[0])
-            self.ui.checkBox_23.setChecked(self.settings.value("Round Corners/bottom_right", 0).toInt()[0])
+            self.ui.checkBox_17.setChecked(int(self.settings.value("Round Corners/autoBorders", 1)))
+            self.ui.spinBox_4.setValue(int(self.settings.value("Round Corners/roundedMargin", 25)))
+            self.ui.checkBox_20.setChecked(int(self.settings.value("Round Corners/top_left", 1)))
+            self.ui.checkBox_21.setChecked(int(self.settings.value("Round Corners/top_right", 0)))
+            self.ui.checkBox_22.setChecked(int(self.settings.value("Round Corners/bottom_left", 1)))
+            self.ui.checkBox_23.setChecked(int(self.settings.value("Round Corners/bottom_right", 0)))
 
-            num=self.settings.value("App Buttons/imageSize", 48).toString()
+            num=self.settings.value("App Buttons/imageSize", 48)
             self.ui.comboBox.setCurrentIndex(self.ui.comboBox.findText(num))
 
-            self.ui.checkBox_19.setChecked(self.settings.value("App Buttons/iconAbove", 1).toInt()[0])
-            self.ui.checkBox_18.setChecked(self.settings.value("App Buttons/showLabels", 1).toInt()[0])
-            self.ui.spinBox.setValue(self.settings.value("App Buttons/minimumHeight", 40).toInt()[0])
-            self.ui.spinBox_6.setValue(self.settings.value("App Buttons/maximumHeight", 0).toInt()[0])
-            self.ui.spinBox_8.setValue(self.settings.value("App Buttons/minimumWidth", 100).toInt()[0])
-            self.ui.spinBox_7.setValue(self.settings.value("App Buttons/maximumWidth", 0).toInt()[0])
-            self.ui.spinBox_9.setValue(self.settings.value("App Buttons/pixelsBorderNormal", 1).toInt()[0])
-            self.ui.spinBox_10.setValue(self.settings.value("App Buttons/pixelsBorderFocused", 2).toInt()[0])
-            self.ui.spinBox_11.setValue(self.settings.value("App Buttons/pixelsRoundedBorder", 10).toInt()[0])
+            self.ui.checkBox_19.setChecked(int(self.settings.value("App Buttons/iconAbove", 1)))
+            self.ui.checkBox_18.setChecked(bool(self.settings.value("App Buttons/showLabels", 1)))
+            self.ui.spinBox.setValue(int(self.settings.value("App Buttons/minimumHeight", 40)))
+            self.ui.spinBox_6.setValue(int(self.settings.value("App Buttons/maximumHeight", 0)))
+            self.ui.spinBox_8.setValue(int(self.settings.value("App Buttons/minimumWidth", 100)))
+            self.ui.spinBox_7.setValue(int(self.settings.value("App Buttons/maximumWidth", 0)))
+            self.ui.spinBox_9.setValue(int(self.settings.value("App Buttons/pixelsBorderNormal", 1)))
+            self.ui.spinBox_10.setValue(int(self.settings.value("App Buttons/pixelsBorderFocused", 2)))
+            self.ui.spinBox_11.setValue(int(self.settings.value("App Buttons/pixelsRoundedBorder", 10)))
             
-            self.color_borde_normal = self.settings.value ("App Buttons/borderColorNormal", "#ffffff").toString()
+            self.color_borde_normal = self.settings.value ("App Buttons/borderColorNormal", "#ffffff")
             color=QColor(self.color_borde_normal)
-	    paleta=QPalette(self.ui.frame_3.palette())
-	    paleta.setColor(paleta.Base,color)
-	    self.ui.frame_3.setPalette(QPalette(color))
-	    
-	    self.color_borde_focused = self.settings.value ("App Buttons/borderColorFocused", "#ffffff").toString()
+            paleta=QPalette(self.ui.frame_3.palette())
+            paleta.setColor(paleta.Base,color)
+            self.ui.frame_3.setPalette(QPalette(color))
+            
+            self.color_borde_focused = self.settings.value ("App Buttons/borderColorFocused", "#ffffff")
             color=QColor(self.color_borde_focused)
-	    paleta=QPalette(self.ui.frame_4.palette())
-	    paleta.setColor(paleta.Base,color)
-	    self.ui.frame_4.setPalette(QPalette(color))
+            paleta=QPalette(self.ui.frame_4.palette())
+            paleta.setColor(paleta.Base,color)
+            self.ui.frame_4.setPalette(QPalette(color))
 
-	    self.color_borde_hovered = self.settings.value ("App Buttons/borderColorHovered", "#ffffff").toString()
+            self.color_borde_hovered = self.settings.value ("App Buttons/borderColorHovered", "#ffffff")
             color=QColor(self.color_borde_hovered)
-	    paleta=QPalette(self.ui.frame_5.palette())
-	    paleta.setColor(paleta.Base,color)
-	    self.ui.frame_5.setPalette(QPalette(color))
-	    
-	    self.color_boton_begin = self.settings.value ("App Buttons/gradientBeginColor", "#ffffff").toString()
+            paleta=QPalette(self.ui.frame_5.palette())
+            paleta.setColor(paleta.Base,color)
+            self.ui.frame_5.setPalette(QPalette(color))
+            
+            self.color_boton_begin = self.settings.value ("App Buttons/gradientBeginColor", "#ffffff")
             color=QColor(self.color_boton_begin)
-	    paleta=QPalette(self.ui.frame_6.palette())
-	    paleta.setColor(paleta.Base,color)
-	    self.ui.frame_6.setPalette(QPalette(color))
-	    
-	    self.color_boton_end = self.settings.value ("App Buttons/gradientEndColor", "#ffffff").toString()
+            paleta=QPalette(self.ui.frame_6.palette())
+            paleta.setColor(paleta.Base,color)
+            self.ui.frame_6.setPalette(QPalette(color))
+            
+            self.color_boton_end = self.settings.value ("App Buttons/gradientEndColor", "#ffffff")
             color=QColor(self.color_boton_end)
-	    paleta=QPalette(self.ui.frame_7.palette())
-	    paleta.setColor(paleta.Base,color)
-	    self.ui.frame_7.setPalette(QPalette(color))
-	    self.numbotones=0
-	    self.settings.beginReadArray("Applications/app")
-	    self.numpags = self.settings.value("size").toInt()[0]
-	    self.botons=[]
-	    
-	    #self.datos_final=[self.Codigo,         self.Categoria,      self.Nombre_en,  self.Nombre_es, self.Nombre_ca, self.Descripcion_en,                   
-	                  #self.Descripcion_es, self.Descripcion_ca, self.Ejecutable, self.Icono,     self.Categorias]
-	    
+            paleta=QPalette(self.ui.frame_7.palette())
+            paleta.setColor(paleta.Base,color)
+            self.ui.frame_7.setPalette(QPalette(color))
+            self.numbotones=0
+            self.settings.beginReadArray("Applications/app")
+            self.numpags = int(self.settings.value("size"))
+            self.botons=[]
+        
+        #self.datos_final=[self.Codigo,         self.Categoria,      self.Nombre_en,  self.Nombre_es, self.Nombre_ca, self.Descripcion_en,                   
+                      #self.Descripcion_es, self.Descripcion_ca, self.Ejecutable, self.Icono,     self.Categorias]
+        
             for x in range(self.numpags):
                 self.settings.setArrayIndex(x)
                 self.numbotones+=1
-                nom=self.settings.value("name").toString()
-                icon=self.settings.value("icon").toString()
-                desc=self.settings.value("desc").toString()
-                exe=self.settings.value("exe").toString()
+                nom=self.settings.value("name")
+                icon=self.settings.value("icon")
+                desc=self.settings.value("desc")
+                exe=self.settings.value("exe")
                 self.botons.append([' ', ' ', nom, nom, nom, desc, desc, desc, exe, icon, ' ']) 
                 item = QListWidgetItem(str(nom))
-		self.ui.listWidget.addItem(item)
+                self.ui.listWidget.addItem(item)
             self.settings.endArray()
             if self.numbotones>0:
-		self.ui.pushButton_4.setEnabled(True)
-		self.ui.pushButton_6.setEnabled(True)
+                self.ui.pushButton_4.setEnabled(True)
+                self.ui.pushButton_6.setEnabled(True)
             
 
     def imagen(self):
@@ -458,7 +484,7 @@ class Rahisi(QWidget):
 
     def buscar_imagen(self):
         fileName = QFileDialog.getOpenFileName(self, self.tr("Selecciona una Imagen"),                                                              '',self.tr("Ficheros de Imatge (*.png *.jpg)"))
-        if not fileName.isEmpty():
+        if not fileName.strip()=='':
             camino,fichero=os.path.split(str(fileName))
             self.ui.lineEdit_2.setText(fileName)
             if self.ui.checkBox.isChecked():
@@ -482,8 +508,8 @@ class Rahisi(QWidget):
             self.ui.label.setPalette(paleta)
             paleta=QPalette(self.ui.frame_8.palette())
             color=QColor(self.color_fondo2)
-	    paleta.setColor(paleta.Base,color)
-	    self.ui.frame_8.setPalette(QPalette(color))
+            paleta.setColor(paleta.Base,color)
+            self.ui.frame_8.setPalette(QPalette(color))
         else:
             self.settings.setValue("Background/gradientBackground", 0)
             self.ui.label_12.setVisible(False)
@@ -493,17 +519,17 @@ class Rahisi(QWidget):
             color=QColor(self.color_fondo1)
             paleta=QPalette(self.ui.label.palette())
             paleta.setColor(paleta.Base,color)
-	    self.ui.label.setPalette(QPalette(color))
+            self.ui.label.setPalette(QPalette(color))
 
     def pon_color_fondo1(self):
-	color= QColorDialog.getColor(Qt.white, self)
+        color= QColorDialog.getColor(Qt.white, self)
         if color.isValid():
             self.color_fondo1=color.name()
             paleta=QPalette(self.ui.frame_9.palette())
-	    paleta.setColor(paleta.Base,color)
-	    self.ui.frame_9.setPalette(QPalette(color))
-	    self.ui.label.setPalette(QPalette(color))
-	    self.settings.setValue("Background/gradientBeginColor", color.name())
+        paleta.setColor(paleta.Base,color)
+        self.ui.frame_9.setPalette(QPalette(color))
+        self.ui.label.setPalette(QPalette(color))
+        self.settings.setValue("Background/gradientBeginColor", color.name())
 
     def pon_color_fondo2(self):
         color= QColorDialog.getColor(Qt.white, self)
@@ -521,8 +547,8 @@ class Rahisi(QWidget):
             paleta.setBrush(QPalette.Window, QBrush(gradient))
             self.ui.label.setPalette(paleta)
             paleta=QPalette(self.ui.frame_8.palette())
-	    paleta.setColor(paleta.Base,color)
-	    self.ui.frame_8.setPalette(QPalette(color))
+            paleta.setColor(paleta.Base,color)
+            self.ui.frame_8.setPalette(QPalette(color))
 
     def tray_icon(self):
         num=self.ui.checkBox_10.isChecked()==True
@@ -618,7 +644,7 @@ class Rahisi(QWidget):
         num=self.ui.spinBox_8.value()
         self.settings.setValue("App Buttons/minimumWidth", int(num))
         self.settings.sync()   
-	    
+        
     def maximumWidth(self):
         num=self.ui.spinBox_7.value()
         self.settings.setValue("App Buttons/maximumWidth", int(num))
@@ -644,46 +670,46 @@ class Rahisi(QWidget):
         if color.isValid():
             self.color_borde=color
             paleta=QPalette(self.ui.frame_6.palette())
-	    paleta.setColor(paleta.Base,color)
-	    self.ui.frame_6.setPalette(QPalette(color))
-	    self.settings.setValue("App Buttons/gradientBeginColor", color.name())
+            paleta.setColor(paleta.Base,color)
+            self.ui.frame_6.setPalette(QPalette(color))
+            self.settings.setValue("App Buttons/gradientBeginColor", color.name())
 
     def gradientEndColor(self):
         color= QColorDialog.getColor(Qt.white, self)
         if color.isValid():
             self.color_borde=color
             paleta=QPalette(self.ui.frame_7.palette())
-	    paleta.setColor(paleta.Base,color)
-	    self.ui.frame_7.setPalette(QPalette(color))
-	    self.settings.setValue("App Buttons/gradientEndColor", color.name())
-	    
+            paleta.setColor(paleta.Base,color)
+            self.ui.frame_7.setPalette(QPalette(color))
+            self.settings.setValue("App Buttons/gradientEndColor", color.name())
+        
     def borderColorNormal(self):
         color= QColorDialog.getColor(Qt.white, self)
         if color.isValid():
             self.color_borde=color
             paleta=QPalette(self.ui.frame_3.palette())
-	    paleta.setColor(paleta.Base,color)
-	    self.ui.frame_3.setPalette(QPalette(color))
-	    self.settings.setValue("App Buttons/borderColorNormal", color.name())
+            paleta.setColor(paleta.Base,color)
+            self.ui.frame_3.setPalette(QPalette(color))
+            self.settings.setValue("App Buttons/borderColorNormal", color.name())
 
     def borderColorFocused(self):
         color= QColorDialog.getColor(Qt.white, self)
         if color.isValid():
             self.color_borde=color
             paleta=QPalette(self.ui.frame_4.palette())
-	    paleta.setColor(paleta.Base,color)
-	    self.ui.frame_4.setPalette(QPalette(color))
-	    self.settings.setValue("App Buttons/borderColorFocused", color.name())
-	    
+            paleta.setColor(paleta.Base,color)
+            self.ui.frame_4.setPalette(QPalette(color))
+            self.settings.setValue("App Buttons/borderColorFocused", color.name())
+        
     def borderColorHovered(self):
         color= QColorDialog.getColor(Qt.white, self)
         if color.isValid():
             self.color_borde=color
             paleta=QPalette(self.ui.frame_5.palette())
-	    paleta.setColor(paleta.Base,color)
-	    self.ui.frame_5.setPalette(QPalette(color))
-	    self.settings.setValue("App Buttons/borderColorHovered", color.name())
-	    
+            paleta.setColor(paleta.Base,color)
+            self.ui.frame_5.setPalette(QPalette(color))
+            self.settings.setValue("App Buttons/borderColorHovered", color.name())
+        
     def boto_sortir(self):
         self.close()
 

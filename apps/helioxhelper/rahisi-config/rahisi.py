@@ -125,6 +125,10 @@ class Rahisi(QWidget):
                 self.ui.listWidget.addItem(item)
             
     def baja_item(self):
+        for x in range(len(self.botons)):
+            print (str(x)+' '+self.botons[x][2])
+        print ("")
+        print ("")
         num=self.ui.listWidget.currentRow()
         maximo=len(self.botons)
         if num<maximo:
@@ -136,7 +140,11 @@ class Rahisi(QWidget):
             for i in self.botons:
                 item = QListWidgetItem(str(i[2]))
                 self.ui.listWidget.addItem(item)
-    
+        for i in self.botons:
+            print (str(x)+' '+self.botons[x][1])
+        print ("")
+        print ("")
+        
     def ver_ocultar_flechas(self):
         self.ui.toolButton_8.setEnabled(True)
         self.ui.toolButton_9.setEnabled(True)
@@ -205,7 +213,6 @@ class Rahisi(QWidget):
             self.settings.setValue("autostart", "1")
             self.settings.setValue("fullscreen", "0")
             self.settings.setValue("completeFullscreen", "0")
-            self.settings.setValue("size", "350")
             self.settings.setValue("alwaysOnTop", "0")
             self.settings.setValue("alwaysOnBottom", "0")
             self.settings.setValue("whereIsPlacedWindow", "2")
@@ -317,7 +324,7 @@ class Rahisi(QWidget):
             self.ui.checkBox_6.setChecked(int(self.settings.value("General/alwaysOnBottom", 0)))
             self.ui.checkBox_7.setChecked(int(self.settings.value("General/closeConfirm", 0)))
             self.ui.checkBox_8.setChecked(int(self.settings.value("General/speechText", 0)))
-            self.ui.spinBox_3.setValue(int(self.settings.value("General/size", 350)))
+            self.ui.spinBox_3.setValue(int(self.settings.value("Panel/size", 350)))
             self.ui.checkBox_9.setChecked(int(self.settings.value("Background/gradientBackground", 0)))
             if self.ui.checkBox_9.isChecked():
                 self.ui.label_12.setVisible(True)
@@ -484,7 +491,7 @@ class Rahisi(QWidget):
 
     def size(self):
         ancho=self.ui.spinBox_3.value()
-        self.settings.setValue("General/size", ancho)
+        self.settings.setValue("Panel/size", ancho)
         self.settings.sync()
 
     def buscar_imagen(self):

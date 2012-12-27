@@ -861,21 +861,23 @@ void HelioxHelper::createActions()
 
 
  void HelioxHelper::changeLanguage(QString prop, QString value){
-     delete (settings);
-    selectedLanguage=value;
-    settings1="ProyectoHeliox";
-    settings2=QString("HelioxHelper_%1").arg(selectedLanguage);
+     if (prop == "LANG"){
+        delete (settings);
+        selectedLanguage=value;
+        settings1="ProyectoHeliox";
+        settings2=QString("HelioxHelper_%1").arg(selectedLanguage);
 
 
-    settings = new QSettings("ProyectoHeliox", QString("HelioxHelper_%1").arg(value));
-    ////settings->setPath();
-    //qDebug() << settings->applicationName();
-    //settings->sync();
+        settings = new QSettings("ProyectoHeliox", QString("HelioxHelper_%1").arg(value));
+        ////settings->setPath();
+        //qDebug() << settings->applicationName();
+        //settings->sync();
 
-     //listApplicationButtons << new QToolButtonWithEvents(this);
+         //listApplicationButtons << new QToolButtonWithEvents(this);
 
-     //createApplicationButtons();
-    reloadConfiguration();
+         //createApplicationButtons();
+        reloadConfiguration();
+     }
  }
 
 

@@ -159,6 +159,7 @@ bool QToolButtonWithEvents::eventFilter(QObject* object,QEvent* event)
     event->accept();
 
 
+    return true;
 }
 
 

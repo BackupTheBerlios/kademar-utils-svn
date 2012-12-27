@@ -87,6 +87,7 @@ private:
     QString selectedUser;
     QString accessibilityType;
     QString accessibilityOptions;
+    bool persistentChanges;
     bool detectedNvidia;
     bool detectedAti;
     bool assistantMode;

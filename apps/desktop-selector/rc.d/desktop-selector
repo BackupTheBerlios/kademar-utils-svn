@@ -36,18 +36,6 @@ getbootparam(){
  return 0
 }
 
-# # Switch to default language
-# [ -e /etc/default/locale ] && . /etc/default/locale
-# 
-# 
-# 
-# [ -n "$LANG" ] && export LANG
-# [ -n "$LANGUAGE" ] && export LANGUAGE
-# [ -n "$LC_MESSAGES" ] && export LC_MESSAGES
-# [ -n "$LC_ALL" ] && export LC_ALL
-# 
-
-
 # Start function
 start(){
 #remove nouveau&radeon module if requested
@@ -85,6 +73,13 @@ KVER="`uname -r`"
 
 #remove previous file to avoid errors
 rm -f /home/"$user"/.xsession-errors
+
+#remove files if exists on persistent mode and can make it fail
+rm -f /etc/X11/xorg.conf.d/10-driver.conf
+rm -f /etc/X11/xorg.conf.d/10-monitor.conf
+
+#Put a default one
+cp -a /usr/share/desktop-selector/xorg.conf.d/10-monitor.conf /etc/X11/xorg.conf.d
 
 #Get tty num to have a polkit/loginctl active=yes session
 #
@@ -198,16 +193,19 @@ done
 
 tryNvidiaLegacy(){
 desktop=$1
-  rm -f /etc/X11/xinit/xinitrc
-  cp /usr/share/desktop-selector/xinit/$1 /etc/X11/xinit/xinitrc
+#   rm -f /etc/X11/xinit/xinitrc
+#   cp /usr/share/desktop-selector/xinit/$1 /etc/X11/xinit/xinitrc
+#   su -c "startx -- vt$tty_num" "$user"
 
-  su -c "startx -- vt$tty_num" "$user"
+  su -l -c "XINITRC=/usr/share/desktop-selector/xinit/$1 xinit -- /usr/bin/X -nolisten tcp vt$tty_num" "$user"
+
 
   #if failed to start session cause there's a nvidia legacy, try to install and run it again
   if [ -n "$(dmesg | grep -i nvidia | grep -i legacy)" -a -z "`grep nvidiaLegacyDriver=true /etc/kademar/desktop-selector.ini`"  ]; then
     sh /usr/share/desktop-selector/scripts/nvidia-legacy-installer-offline.sh
     echo nvidiaLegacyDriver=true >> /etc/kademar/desktop-selector.ini
-    su -c "startx -- vt$tty_num" "$user"
+#     su -c "startx -- vt$tty_num" "$user"
+  su -l -c "XINITRC=/usr/share/desktop-selector/xinit/$1 xinit -- /usr/bin/X -nolisten tcp vt$tty_num" "$user"
 
   fi
 }

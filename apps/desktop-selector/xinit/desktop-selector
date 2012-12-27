@@ -1,7 +1,5 @@
-. /etc/rc.conf
 . /etc/kademar/functions
-
-[ -e /etc/locale.conf ] && . /etc/locale.conf
+set_environment_variables
 
 #[ "`uname -m`" = "x86_64" ] && arch="-x86_64"
 

@@ -44,7 +44,7 @@ package() {
   cp -a ${_svnmod} ${pkgdir}/usr/bin
   cp -a scripts ${pkgdir}/usr/share/desktop-selector
   cp -a desktop-selector.ini ${pkgdir}/etc/kademar
-  cp -a xorg.conf.d ${pkgdir}/etc/X11
+  cp -a xorg.conf.d ${pkgdir}/usr/share/desktop-selector
   cp -a rc.d ${pkgdir}/etc/
   cp -a xinit ${pkgdir}/usr/share/desktop-selector/
   cp -a systemd/* ${pkgdir}/usr/lib/systemd/system  

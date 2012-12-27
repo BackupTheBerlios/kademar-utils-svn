@@ -33,7 +33,13 @@ OTHER_FILES += \
     TODO \
     scripts/nvidia-installer-offline.sh \
     scripts/ati-installer-offline.sh \
-    scripts/locale_configurator
+    scripts/locale_configurator \
+    rc.d/desktop-selector \
+    systemd/desktop-selector.service \
+    xinit/lxde \
+    xinit/kde4 \
+    xinit/desktop-selector \
+    xorg.conf.d/10-monitor.conf
 
 
 

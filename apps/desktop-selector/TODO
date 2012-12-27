@@ -26,10 +26,11 @@ DONE: KDM Mode & Assistant Mode
 DONE: ati/nvidia driver - free driver - force resolution/driver
 DONE: default resolution
 
-install ati or nvidia if force
+DONE: install ati or nvidia if force
+DONE: force nouveau -> don't install nvidia
+DONE: restore 10-driver i 10-monitor every start desktop selector
+
 don't install nothing if force other drivers 
-force nouveau -> don't install nvidia
-restore 10-driver i 10-monitor every start desktop selector
 
 if heliox/keyboardstart -> activate keyboard on screen if needed
 

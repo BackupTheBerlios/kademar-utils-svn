@@ -45,6 +45,7 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
     numlanguage=0;
     numpages=0;
     numusers=0;
+    persistentChanges=false;
     detectedAti=false;
     selectedUser="";
     detectedNvidia=false;
@@ -90,11 +91,12 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
 
     //qDebug() << settings.value("assistantMode").toString();
 
+    QFile *cmdline = new QFile("/proc/cmdline");
+    cmdline->open(QIODevice::ReadOnly);
+    QString *cmdlineContent = new QString(cmdline->readAll());
+
     if (settings.value("SPEECH").toString() == ""){
 
-        QFile *cmdline = new QFile("/proc/cmdline");
-        cmdline->open(QIODevice::ReadOnly);
-        QString *cmdlineContent = new QString(cmdline->readAll());
         if ( (cmdlineContent->contains("scrread")) || (cmdlineContent->contains("screenread")) )
         {
             speech=1;
@@ -115,6 +117,12 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
         volumes->waitForFinished();
 
     }
+
+    //Detect if has persistent changes or not
+    if (cmdlineContent->contains("cow_device")){
+        persistentChanges=true;
+    }
+
     ui->hslider_resolutions->blockSignals(false);  //read again after configure
 
     //qDebug() << settings.value("DisableLaptopDetect").toBool();
@@ -1081,6 +1089,13 @@ void DesktopSelector::detectGraphicCard()
     //Define by default no install of propietary driver if it's on GDM like mode
     if (assistantMode == false){
         this->ui->rb_freeDriver->setChecked(true);
+    }
+
+    //If will save changes, do not install graphic drivers
+    if (persistentChanges == true){
+        this->ui->rb_freeDriver->setChecked(true);
+        this->ui->driverFrame->setVisible(false);
+        ui->displayChipetLabel->setVisible(false);
     }
 
 }

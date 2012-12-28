@@ -22,6 +22,7 @@ post_remove(){
     
     #recover normal login
     rm -f /etc/systemd/system/getty.target.wants/autologin*
+    rm -f /etc/systemd/system/getty.target.wants/adriane*
     
     if [ ! -e '/etc/systemd/system/getty.target.wants/getty@tty1.service' ]; then
       ln -s '/usr/lib/systemd/system/getty@.service' '/etc/systemd/system/getty.target.wants/getty@tty1.service'

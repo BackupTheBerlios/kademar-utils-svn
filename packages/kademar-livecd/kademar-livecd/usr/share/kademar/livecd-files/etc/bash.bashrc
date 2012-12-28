@@ -42,4 +42,6 @@ alias change-to-utf8-filenames="convmv -r -f ISO-8859-1 -t UTF-8 --notest *"
 # alias mplayer="mplayer -zoom"
 # alias gmplayer="gmplayer -zoom"
 
+export SPEECHD_ADDRESS=unix_socket:/var/run/speech-dispatcher/speechd.sock
+
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion

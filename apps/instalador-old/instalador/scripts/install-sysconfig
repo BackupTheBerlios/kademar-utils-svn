@@ -32,9 +32,9 @@ a=$(LANG=C LOCALE=C LANGUAGE=C LC_ALL=C pacman --root $DESTI -Qi | awk '/^Name/ 
 b=$(LANG=C LOCALE=C LANGUAGE=C LC_ALL=C pacman --root $DESTI -Qi | awk '/^Name/ {print $3}' | grep -i heliox-meta)
 
 # esborrar paquets de livecd creation
-chroot $DESTI pacman --noconfirm -R $a $b instalador
-chroot $DESTI pacman --noconfirm -R kademar-skel
-chroot $DESTI pacman --noconfirm -R heliox-livecd
+chroot $DESTI pacman --noconfirm -Rdd $a $b instalador
+chroot $DESTI pacman --noconfirm -Rdd kademar-skel
+chroot $DESTI pacman --noconfirm -Rdd heliox-livecd
 
 #Install nvidia drivers before delete it
 #check if legacy
@@ -51,13 +51,18 @@ if [ "$license" != "no" -a -n "$(grep atiDriver /etc/kademar/desktop-selector.in
   chroot $DESTI sh /usr/share/desktop-selector/scripts/ati-installer-offline.sh
 fi
 
-chroot $DESTI pacman --noconfirm -R kademar-livecd
-chroot $DESTI pacman --noconfirm -R desktop-selector
-chroot $DESTI pacman --noconfirm -R desktop-selector-svn
-chroot $DESTI pacman --noconfirm -R zerofree
+chroot $DESTI pacman --noconfirm -Rdd kademar-livecd
+chroot $DESTI pacman --noconfirm -Rdd desktop-selector
+chroot $DESTI pacman --noconfirm -Rdd desktop-selector-svn
+chroot $DESTI pacman --noconfirm -Rdd zerofree
 
 # remove instalador package
-chroot $DESTI pacman --noconfirm -R instalador
+chroot $DESTI pacman --noconfirm -Rdd instalador
+chroot $DESTI pacman --noconfirm -Rdd instalador5
+
+#remove consolekit hack for livecd
+chroot $DESTI pacman --noconfirm -Rdd consolekit-git
+chroot $DESTI pacman --noconfirm -Rdd consolekit
 
 # remove mkinitcpio livecd files
 rm -fr $DESTI/usr/lib/initcpio/install/archiso*
@@ -230,7 +235,7 @@ fi
 #enable appset on systemd if exists
 #systemctl enable kademar-kademar-appset-helper
 if [ -e "$DESTI/usr/lib/systemd/system/kademar-appsethelper.service" -a ! -e "$DESTI/etc/systemd/system/multi-user.target.wants/kademar-appsethelper.service" ]; then
-  ln -s '/usr/lib/systemd/system/kademar-appsethelper.service' "$DESTI/etc/systemd/system/multi-user.target.wants/kademar-appsethelper.service"
+  ln -s /usr/lib/systemd/system/kademar-appsethelper.service "$DESTI/etc/systemd/system/multi-user.target.wants/kademar-appsethelper.service"
 fi
 
 #Open NTPd
@@ -240,9 +245,13 @@ fi
 
 #Preload
 if [ -e "$DESTI/usr/lib/systemd/system/preload.service" -a ! -e "$DESTI/etc/systemd/system/multi-user.target.wants/preload.service" ]; then
-  ln -s '/usr/lib/systemd/system/preload.service' '/etc/systemd/system/multi-user.target.wants/preload.service'
+  ln -s /usr/lib/systemd/system/preload.service "$DESTI/etc/systemd/system/multi-user.target.wants/preload.service"
 fi
 
+#Teamviewer
+if [ -e "$DESTI/usr/lib/systemd/system/teamviewerd.service" -a ! -e "$DESTI/etc/systemd/system/graphical.target.wants/teamviewerd.service" ]; then
+  ln -s /usr/lib/systemd/system/teamviewerd.service "$DESTI/etc/systemd/system/graphical.target.wants/teamviewerd.service"
+fi
 
 #Executa la configuració Modular
 [ -e /usr/share/kademar/utils/instalador/scripts/install-sysconfig_second-stage ] && sh /usr/share/kademar/utils/instalador/scripts/install-sysconfig_second-stage

@@ -5,7 +5,6 @@ GenericName=Heliox Helper
 Icon=/usr/share/helioxhelper/icon.png
 MimeType=
 Name=Heliox Helper
-Path=
 StartupNotify=true
 Terminal=false
 TerminalOptions=

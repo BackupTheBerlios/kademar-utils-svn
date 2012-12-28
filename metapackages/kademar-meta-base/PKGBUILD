@@ -1,7 +1,7 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=kademar-meta-base
-pkgver=5.8
-pkgrel=1
+pkgver=5.9
+pkgrel=2
 epoch=
 pkgdesc="kademar Metapackage Base"
 arch=('i686' 'x86_64')
@@ -21,15 +21,15 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=
+install='kademar-meta-base.install'
 changelog=
 #source=($pkgname-$pkgver.tar.gz)
 noextract=()
 #md5sums=('a1be535e26c780470e3c599b44e7d6bc') #generate with 'makepkg -g'
 
-build() {
-  cd "$srcdir"
-}
+# build() {
+#   cd "$srcdir"
+# }
 
 # package() {
 #   mkdir -p "$pkgdir/usr/bin"

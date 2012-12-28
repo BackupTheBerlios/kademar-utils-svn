@@ -1,14 +1,14 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=instalador5
-pkgver=4.9.81
-pkgrel=3
+pkgver=4.9.82
+pkgrel=5
 epoch=
 pkgdesc="The Installer"
 arch=(any)
 url="http://www.kademar.org"
 license=('GPL')
 groups=()
-depends=('kademar-meta-common-utils' 'sudo' 'pacman' 'pyqt' 'os-prober' 'gparted' 'smartmontools' 'instalador')
+depends=( 'sudo' 'pacman' 'pyqt' 'os-prober' 'gparted' 'smartmontools')
 makedepends=("pyqt")
 checkdepends=()
 optdepends=()
@@ -21,7 +21,7 @@ install=
 changelog=
 source=($pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('cfbc58f1f7392498462fa8d56f9d1c6b') #generate with 'makepkg -g'
+md5sums=('78c7f0970f62ee5186955adb0f9ad952') #generate with 'makepkg -g'
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

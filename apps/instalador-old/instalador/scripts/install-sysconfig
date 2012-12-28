@@ -39,7 +39,7 @@ chroot $DESTI pacman --noconfirm -Rdd heliox-livecd
 #Install nvidia drivers before delete it
 #check if legacy
 if [ "$license" != "no" -a -n "$(grep nvidiaLegacyDriver /etc/kademar/desktop-selector.ini | grep -i true)" ]; then
-  chroot $DESTI sh /usr/share/desktop-selector/scripts/nvidia-legagy-installer-offline.sh
+  chroot $DESTI sh /usr/share/desktop-selector/scripts/nvidia-legacy-installer-offline.sh
 else
   if [ "$license" != "no" -a -n "$(grep nvidiaDriver /etc/kademar/desktop-selector.ini | grep -i true)" ]; then
     chroot $DESTI sh /usr/share/desktop-selector/scripts/nvidia-installer-offline.sh

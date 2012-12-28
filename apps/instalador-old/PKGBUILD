@@ -1,7 +1,7 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=instalador
-pkgver=4.9.35
-pkgrel=5
+pkgver=4.9.36
+pkgrel=1
 epoch=
 pkgdesc="The Installer"
 arch=(any)
@@ -21,7 +21,7 @@ install=
 changelog=
 source=($pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('90146086ae444ec5d62cf02b1b1333c6') #generate with 'makepkg -g'
+md5sums=('e0c76a292bbd3af2a4a3bf9a2a6f37ff') #generate with 'makepkg -g'
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

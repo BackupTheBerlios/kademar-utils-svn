@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=heliox-base
-pkgver=5.4
+pkgver=5.7.2
 pkgrel=1
 epoch=
 pkgdesc="Heliox Linux basic package and utilities"
@@ -21,7 +21,7 @@ install=heliox-base.install
 changelog=
 source=($pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('e5834089452989a2e8369e70247295ff') #generate with 'makepkg -g'
+md5sums=('31f49fb9f8543f19bf600430ac4b0324') #generate with 'makepkg -g'
 
 
 package() {

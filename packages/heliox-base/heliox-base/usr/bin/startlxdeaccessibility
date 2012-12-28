@@ -8,6 +8,7 @@
 # [ -n "$GNOME_DESKTOP_SESSION_ID" ] || export GNOME_DESKTOP_SESSION_ID="LXDE"
 export SAL_USE_VCLPLUGIN="gtk" GTK_MODULES="gail:atk-bridge" GNOME_ACCESSIBILITY=1
 export QT_ACCESSIBILITY=1
+export SPEECHD_ADDRESS=unix_socket:/var/run/speech-dispatcher/speechd.sock
 
 #removed due a issue with ALT of spanish keyboards
 # Orca, for some reason, ruins Alt_R on the german keyboard.

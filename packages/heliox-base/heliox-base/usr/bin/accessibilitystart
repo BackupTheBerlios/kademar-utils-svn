@@ -1,0 +1,27 @@
+#!/bin/bash
+
+case "$1" in
+1)
+  #Dificultades en la vision SIN resto visual util
+  ( orca & )
+;;
+2)
+  #movilidad reducida en brazos y manos
+  ( xvkbd & ) ; ( easystroke & ) ; ( kmousetool &)
+;;
+3)
+  #personas mayores
+  echo "Nothing configured"
+;;
+4)
+  #Dificultades en la vision CON resto visual util
+  ( easystroke & ) ; ( kmag & ) ; ( kttsmgr ; kttsd & )
+;;
+5)
+  #Dificultades de aprendizaje
+  echo "Nothing configured"
+;;
+*)
+  echo "Not known option"
+;;
+esac

@@ -1,12 +1,20 @@
 #!/bin/bash
 
+PID2=$(pidof -o %PPID /usr/bin/speech-dispatcher)
 PID=$(pidof -o %PPID /usr/bin/festival)
+
+[ ! -e /var/run/speech-dispatcher ] && mkdir -p /var/run/speech-dispatcher && chmod 777 /var/run/speech-dispatcher
+[ ! -e /var/log/speech-dispatcher ] && mkdir -p /var/log/speech-dispatcher && chmod 777 /var/log/speech-dispatcher
+
 case "$1" in
   start)
-    [ -z "$PID" ] && (/usr/bin/festival --server & ) > /dev/null
+    [ -z "$PID" ] && (/usr/bin/festival --server & ) > /dev/null ; ( sleep 5 ; /usr/bin/speech-dispatcher -d )
+    chmod 777 /var/run/speech-dispatcher/*
     ;;
   stop)
     [ ! -z "$PID" ] && kill $PID &> /dev/null
+    [ ! -z "$PID2" ] && kill $PID2 &> /dev/null
+    rm -f /var/run/speech-dispatcher/*
     ;;
   restart)
     $0 stop

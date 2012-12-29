@@ -161,6 +161,8 @@ for i in ficheros2:
         parse_fichero(dir2+"/"+i)
 registro=['8888','Rahisi','newRow','newRow','newRow','newRow','newRow','newRow','newRow',' ',' ']
 gravaRegistre(registro)
+registro=['8889','Rahisi','Exit Pc','Apagar Pc','Tancar Pc','Shutdown Pc','Apaga el ordenador','Tanca el Pc','qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout 30 2 2','/usr/share/icons/hicolor/32x32/apps/kshutdown.png',' ']
+gravaRegistre(registro)
     
 dbL.close()
 

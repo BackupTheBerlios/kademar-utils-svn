@@ -58,6 +58,7 @@ class editor(QDialog):
         self.connect(self.comboBox, SIGNAL("activated(int)"), self.pon_programas)
         self.connect(self.listWidget, SIGNAL("itemClicked(QListWidgetItem *)"), self.pon_datos)
         self.connect(self.lineEdit, SIGNAL("textChanged (const QString&)"), self.pon_texto_boton)
+        self.connect(self.pushButton, SIGNAL("clicked()"), self.busca_icono)
         self.lineEdit.setFocus()
 
         self.dbL = QSqlDatabase()
@@ -65,13 +66,23 @@ class editor(QDialog):
         self.dbL.setDatabaseName('rahisi.db')
         self.datos_final=[]
         self.pushButton.resize(self.ancho_boton,self.alt_boton)
-        self.checkBox.setChecked(self.texto)
+        if self.texto:
+            self.checkBox.setChecked(self.texto)
+            self.activa_texto()
         
         locale = QLocale.system().name()   #ca_ES
         self.idiomas=["en","es","ca"]      # los tres idiomas que usamos
         self.idioma=self.idiomas.index(locale.split("_")[0])  # numero de idioma para facilitar las asignaciones en los result.value
         self.lee_datos_menu()
 
+    def busca_icono(self):
+        fileName = QFileDialog.getOpenFileName(self, "Selecciona un Icono", '/usr/share/icons' , "Ficheros de Icono (*.png)")
+        if not fileName.strip()=='':
+            icon = QIcon()
+            icon.addPixmap(QPixmap(fileName), QIcon.Normal, QIcon.Off)
+            self.pushButton.setIcon(icon)
+            self.Icono=fileName
+        
     def pon_texto_boton(self, texto):
         if self.checkBox.isChecked():
             self.pushButton.setText(texto)
@@ -110,7 +121,7 @@ class editor(QDialog):
         self.Descripcion_en=self.result.value(5)
         self.Descripcion_es=self.result.value(6)
         self.Descripcion_ca=self.result.value(7)
-        self.Ejecutable=self.result.value(8)
+        self.Ejecutable=self.result.value(8).strip()
         self.Icono=icono
         self.Categorias=self.result.value(10)
 
@@ -164,7 +175,6 @@ class editor(QDialog):
 
     def activa_texto(self):
         if self.checkBox.isChecked():
-            #texto=self.result.value(4).toString()
             texto=self.lineEdit.text()
             self.pushButton.setText(texto)
             self.Nombre_ca=texto

@@ -125,10 +125,6 @@ class Rahisi(QWidget):
                 self.ui.listWidget.addItem(item)
             
     def baja_item(self):
-        for x in range(len(self.botons)):
-            print (str(x)+' '+self.botons[x][2])
-        print ("")
-        print ("")
         num=self.ui.listWidget.currentRow()
         maximo=len(self.botons)
         if num<maximo:
@@ -140,10 +136,6 @@ class Rahisi(QWidget):
             for i in self.botons:
                 item = QListWidgetItem(str(i[2]))
                 self.ui.listWidget.addItem(item)
-        for i in self.botons:
-            print (str(x)+' '+self.botons[x][1])
-        print ("")
-        print ("")
         
     def ver_ocultar_flechas(self):
         self.ui.toolButton_8.setEnabled(True)
@@ -182,7 +174,6 @@ class Rahisi(QWidget):
                       #self.Descripcion_es, self.Descripcion_ca, self.Ejecutable, self.Icono,     self.Categorias]
         boto=[]
         for x in range(len(datos)):
-            print ('datos '+str(datos[x])+' '+str(x))
             boto.append(str(datos[x]))
         if str(datos[4]).strip()=="":
             self.ui.checkBox_18.setChecked(False)
@@ -369,7 +360,10 @@ class Rahisi(QWidget):
             self.ui.checkBox_23.setChecked(int(self.settings.value("Round Corners/bottom_right", 0)))
 
             num=self.settings.value("App Buttons/imageSize", 48)
-            self.ui.comboBox.setCurrentIndex(self.ui.comboBox.findText(num))
+            n=self.ui.comboBox.findText(num)
+            if n==-1:
+                n=2
+            self.ui.comboBox.setCurrentIndex(n)
 
             self.ui.checkBox_19.setChecked(int(self.settings.value("App Buttons/iconAbove", 1)))
             self.ui.checkBox_18.setChecked(bool(self.settings.value("App Buttons/showLabels", 1)))

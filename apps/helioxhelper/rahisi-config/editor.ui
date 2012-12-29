@@ -254,6 +254,9 @@
        <height>16777215</height>
       </size>
      </property>
+     <property name="toolTip">
+      <string>clic aqui para cambiar el icono</string>
+     </property>
      <property name="text">
       <string>Nombre</string>
      </property>

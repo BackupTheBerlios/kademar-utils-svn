@@ -1,0 +1,9 @@
+[Unit]
+Description=X on %I
+Wants=graphical.target
+Before=graphical.target
+
+[Service]
+Type=forking
+StopWhenUnneeded=true
+ExecStart=/etc/rc.d/desktop-selector-daemon %I

@@ -17,7 +17,16 @@ class instalador(QMainWindow):
       #PNet . PSoft . PInstalling . PEnd
       #Inst. Nano: PMain . PNano . PInstalling . PEnd
 
-    def prepareNanoPath(self):    
+    def prepareNanoPath(self):
+        #Prepare device list combobox
+        self.modelNano = QStandardItemModel()
+        self.viewNano = QTreeView()
+        self.viewNano.setModel(self.modelNano)
+        self.viewNano.setIconSize(QSize(40,30))
+        self.ui.CBNanoDevice.setView(self.viewNano)
+        self.ui.CBNanoDevice.setModel(self.modelNano)
+        self.itemListNano=[]
+        
         self.selectedDeviceToInstall=[]
 
         #self.totalSizeOfKademar=self.getSizeOfMountedDevice("/media/f96f9953-8ea6-4a13-995d-6e7baccf8535/archlive/releng64/out/a")
@@ -36,9 +45,6 @@ class instalador(QMainWindow):
             i.setVisible(False)
 
         for i in [self.ui.iRoot, self.ui.iCreatingUsers, self.ui.iNetConfig, self.ui.iInstallingProgress, self.ui.iFinishedProgress]:
-            i.setVisible(False)
-            
-        for i in [self.ui.LFinishedLogo, self.ui.PBLogo, self.ui.LInstallFinished]:
             i.setVisible(False)
             
         #Show from all
@@ -62,137 +68,15 @@ class instalador(QMainWindow):
         self.ui.BBack.setVisible(True)
         self.ui.BNext.setVisible(True)
         self.ui.scrollArea_2.setVisible(True)
+        self.ui.iDisk.setPixmap(QPixmap(self.icon_state_blue))
         #self.ui.prepareNanoPath.setChecked(False)
         #self.ui.CHChangesFile.setChecked(False)
         self.prepareNanoConnections()
-        self.fillListOfDevicesOnCombobox()
+        self.fillListOfDevicesOnCombobox(removable=True)
         self.ui.CHChangesFile.setEnabled(False)
         self.ui.CHFormatNano.setEnabled(False)
         self.nextButton() #go to first nano page
-        self.makeFitsRemovableDevicesComboBoxData()
-
-    def fillListOfDevicesOnCombobox(self,dev_path=None):
-        if not self.copying:
-            #self.logMessage("refill devices") 
-            self.ui.CBNanoDevice.blockSignals(True)
-            try:
-                destroy(self.completeListDevices)
-                destroy(self.itemList)
-            except:
-                self.completeListDevices=[]
-                self.itemList=[]
-            self.completeListDevices=[]
-            self.itemList=[]
-            self.model = QStandardItemModel()
-            self.view = QTreeView()
-            self.model.clear()
-            #self.model.setHeaderData(0, Qt.Horizontal, "Unit");
-            #self.model.setHeaderData(1, Qt.Horizontal, "Size");
-            #self.model.setHeaderData(2, Qt.Horizontal, "Information");
-            #self.model.setHeaderData(3, Qt.Horizontal, "Fs");
-
-            self.view.setModel(self.model)
-            parent = self.model.invisibleRootItem()
-            self.view.setIconSize(QSize(40,30))
-
-        ##Empty Partition&Device ComboBox 
-            self.ui.CBNanoDevice.clear()
-            #Fill the Removable devices list
-            #self.logMessage(self.removableDevicesDetected)
-            for i in range(len(self.removableDevicesDetected)):
-                #self.logMessage(self.removableDevicesDetected[i])
-                hdd=self.removableDevicesDetected[i][0]
-                parts=[]
-                parts=self.listPartitionsOfDevice(hdd)
-                #self.logMessage(parts)
-                #Only append all HDD if has partitions (failed show when desconnecting pendrives)
-                if self.deviceKademarIsBootingFrom != hdd: #hide from where is booting from
-                    if parts != [] and parts != None:  #put partitions if there are. If not, don't put any thing
-                        hddsize=float(self.removableDevicesDetected[i][1])  # 20450
-                        model=self.removableDevicesDetected[i][2]
-                        vendor=self.removableDevicesDetected[i][3]
-                        health=self.getSmartHealthOfDevice(hdd)
-                        size,unit=self.convertSizeAndUnits(hddsize)
-
-                        #self.ui.CBNanoDevice.addItem(QIcon(self.icon_device_pendrive),hdd+" "+hddsize+" "+unitat+" "+model+" "+vendor)
-                        self.completeListDevices.append([hdd,hddsize,unit,model,vendor,health])
-                        self.itemList.append(QStandardItem(QIcon(self.icon_device_pendrive), self.tr("Disk")+" "+hdd))
-                        self.itemList.append(QStandardItem(size+" "+unit))
-                        self.itemList.append(QStandardItem(str(model+" "+vendor)))
-                        if str(health) != "":
-                            self.itemList.append(QStandardItem(self.tr("SMART HEALTH:")+health))
-                        else:
-                            self.itemList.append(QStandardItem(" "))
-                        self.itemList[len(self.itemList)-4].setSelectable(False)
-                        self.itemList[len(self.itemList)-3].setSelectable(False)
-                        self.itemList[len(self.itemList)-2].setSelectable(False)
-                        self.itemList[len(self.itemList)-1].setSelectable(False)
-
-                        parent.appendRow([
-                            self.itemList[len(self.itemList)-4],
-                            self.itemList[len(self.itemList)-3],
-                            self.itemList[len(self.itemList)-2],
-                            self.itemList[len(self.itemList)-1],
-                            #it3,
-                            ])
-
-                        actualparent=self.itemList[len(self.itemList)-4]
-                        for i in range(len(parts)):
-                            #self.logMessage(self.removableDevicesDetected[i])
-                            part=parts[i][0]
-                            partsize=float(parts[i][1])  # 20450
-                            fs=parts[i][2]
-                            label=parts[i][3]
-                            #swaptype=parts[i][4]
-
-                            size,unit=self.convertSizeAndUnits(partsize)
-
-                            self.completeListDevices.append([part,partsize,unit,fs,label])
-                            self.itemList.append(QStandardItem(QIcon(self.icon_partition),  self.tr("Partition")+"  "+part))
-                            self.itemList.append(QStandardItem(size+" "+unit))
-                            self.itemList.append(QStandardItem(str(label)))
-                            self.itemList.append(QStandardItem(str(fs)))
-
-                            actualparent.appendRow([
-                                self.itemList[len(self.itemList)-4],
-                                self.itemList[len(self.itemList)-3],
-                                self.itemList[len(self.itemList)-2],
-                                self.itemList[len(self.itemList)-1],
-                                ])
-                        #self.ui.CBNanoDevice.addItem(QIcon(self.icon_partition),part+" "+partsize+" "+fs+" "+unitat+" "+label)
-                            #self.logMessage(hd)
-
-            self.view.adjustSize()
-            self.view.setAutoExpandDelay(0)
-            self.view.header().hide()
-
-            self.ui.CBNanoDevice.setView(self.view)
-            self.ui.CBNanoDevice.setModel(self.model)
-            #Restore again non selected nothing on GUI
-            self.ui.CBNanoDevice.setCurrentIndex(-1)
-            self.ui.CHChangesFile.setEnabled(False)
-            self.ui.CHFormatNano.setEnabled(False)
-            self.ui.LChangeFilePercent.setVisible(False)
-            self.ui.SChangeFile.setVisible(False)
-            self.ui.LChangesFileSize.setVisible(False)
-            #self.ui.FChangesFileInfo.setVisible(False)
-            self.ui.CHChangesFile.setChecked(False)
-            self.ui.CHFormatNano.setChecked(False)
-            self.ui.BNext.setEnabled(False)
-
-
-            self.view.expandAll()
-            combo = QComboBox()
-            self.view.setIndexWidget(self.model.indexFromItem(parent), combo )
-            #self.view.resizeColumnToContents(0)
-            #self.view.resizeColumnToContents(1)
-            #self.view.resizeColumnToContents(2)
-            #self.view.resizeColumnToContents(3)
-            self.makeFitsRemovableDevicesComboBoxData()
-            self.ui.CBNanoDevice.blockSignals(False)
-            #self.view.header().setDefaultSectionSize(300)
-            self.showYourPaths() #could be changed
-            #self.logMessage("hola")
+        #self.makeFitsRemovableDevicesComboBoxData()
 
     def prepareNanoConnections(self):
         self.connect(self.ui.BGpartedNano, SIGNAL("clicked()"), self.openGparted)
@@ -234,14 +118,6 @@ class instalador(QMainWindow):
                 reply = self.showWarningMessage("infopreg", self.tr("Close all applications"), self.tr("You must close all applications that have disk access, to be able to continue the installation.\n\nIf you want to stop the process, press 'NO'"))
                 if reply==QMessageBox.No:
                     break
-                
-
-    def makeFitsRemovableDevicesComboBoxData(self):
-        value=int(str(int(self.ui.CBNanoDevice.width())/8).split(".")[0])
-        self.view.header().resizeSection(0, value*3) #name
-        self.view.header().resizeSection(1, value) #size
-        self.view.header().resizeSection(2, value*2) #model+vendor / label
-        self.view.header().resizeSection(3, value*2) #fs / smart info
 
     def permanentChangesFileSliderValueChanged(self, int):
         self.totalSizeOfDevice=self.selectedDeviceToInstall[1]
@@ -269,12 +145,12 @@ class instalador(QMainWindow):
             self.ui.BNext.setEnabled(True)
 
             #Select the working sublist of device (contains all partition selected information)
-            #self.logMessage(self.completeListDevices)
+            #self.logMessage(self.completeListOfDevices)
             search = self.ui.CBNanoDevice.currentText()
             if search != "":
                 search=search.split()[1]
                 #self.logMessage(search)
-                for sublist in self.completeListDevices:
+                for sublist in self.completeListOfDevices:
                     if sublist[0] == search:
                         #self.logMessage("Found it!", sublist)
                         #Found it! ['sdc1', '3,96', 'Gb', 'vfat', 'V7']

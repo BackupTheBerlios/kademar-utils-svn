@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1280</width>
-    <height>969</height>
+    <height>745</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,7 +26,7 @@
      <widget class="QScrollArea" name="scrollArea_2">
       <property name="maximumSize">
        <size>
-        <width>200</width>
+        <width>202</width>
         <height>16777215</height>
        </size>
       </property>
@@ -38,8 +38,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>194</width>
-         <height>922</height>
+         <width>198</width>
+         <height>697</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_5">
@@ -52,114 +52,7 @@
            </size>
           </property>
           <layout class="QGridLayout" name="gridLayout_6">
-           <item row="3" column="0">
-            <widget class="QLabel" name="iDisk">
-             <property name="maximumSize">
-              <size>
-               <width>16</width>
-               <height>16</height>
-              </size>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="pixmap">
-              <pixmap resource="resource.qrc">:/img/img/state_blue.png</pixmap>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="15" column="0">
-            <widget class="QLabel" name="iPersistentChangesFile">
-             <property name="maximumSize">
-              <size>
-               <width>16</width>
-               <height>16</height>
-              </size>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1" colspan="2">
-            <widget class="QLabel" name="LSystemInfo">
-             <property name="text">
-              <string>System Information</string>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1" colspan="2">
-            <widget class="QLabel" name="LDisk">
-             <property name="text">
-              <string>Disk Setup</string>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="1" colspan="2">
-            <widget class="QLabel" name="LSystem">
-             <property name="text">
-              <string>System</string>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="0">
-            <widget class="QLabel" name="iInstallingProgress">
-             <property name="maximumSize">
-              <size>
-               <width>16</width>
-               <height>16</height>
-              </size>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="12" column="1" colspan="2">
-            <widget class="QLabel" name="LCopy">
-             <property name="text">
-              <string>Copying Files</string>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="12" column="0">
-            <widget class="QLabel" name="iCopy">
-             <property name="maximumSize">
-              <size>
-               <width>16</width>
-               <height>16</height>
-              </size>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0">
+           <item row="6" column="0">
             <widget class="QLabel" name="iSystem">
              <property name="maximumSize">
               <size>
@@ -175,7 +68,7 @@
              </property>
             </widget>
            </item>
-           <item row="14" column="1" colspan="2">
+           <item row="15" column="1" colspan="2">
             <widget class="QLabel" name="LCreatingUsers">
              <property name="text">
               <string>Creating users</string>
@@ -185,7 +78,7 @@
              </property>
             </widget>
            </item>
-           <item row="7" column="0">
+           <item row="8" column="0">
             <widget class="QLabel" name="iSoftware">
              <property name="maximumSize">
               <size>
@@ -201,7 +94,7 @@
              </property>
             </widget>
            </item>
-           <item row="9" column="0">
+           <item row="10" column="0">
             <widget class="QLabel" name="iFinishedProgress">
              <property name="maximumSize">
               <size>
@@ -217,63 +110,7 @@
              </property>
             </widget>
            </item>
-           <item row="4" column="1" colspan="2">
-            <widget class="QLabel" name="LUsers">
-             <property name="text">
-              <string>Users</string>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="15" column="1" colspan="2">
-            <widget class="QLabel" name="LPersistentChangesFile">
-             <property name="text">
-              <string>Creating persistent file</string>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="1" colspan="2">
-            <widget class="QLabel" name="LInstallingProgress">
-             <property name="text">
-              <string>Installing</string>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="14" column="0">
-            <widget class="QLabel" name="iCreatingUsers">
-             <property name="maximumSize">
-              <size>
-               <width>16</width>
-               <height>16</height>
-              </size>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="1" colspan="2">
-            <widget class="QLabel" name="LSoftware">
-             <property name="text">
-              <string>Software</string>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="11" column="1" colspan="2">
+           <item row="12" column="1" colspan="2">
             <widget class="QLabel" name="LFormating">
              <property name="text">
               <string>Formating</string>
@@ -283,7 +120,7 @@
              </property>
             </widget>
            </item>
-           <item row="11" column="0">
+           <item row="12" column="0">
             <widget class="QLabel" name="iFormating">
              <property name="maximumSize">
               <size>
@@ -315,27 +152,157 @@
              </property>
             </widget>
            </item>
-           <item row="2" column="1" colspan="2">
-            <widget class="QLabel" name="LTime">
+           <item row="3" column="0">
+            <widget class="QLabel" name="iDisk">
+             <property name="maximumSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
              <property name="text">
-              <string>Time &amp; Region</string>
+              <string/>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="16" column="0">
+            <widget class="QLabel" name="iPersistentChangesFile">
+             <property name="maximumSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1" colspan="2">
+            <widget class="QLabel" name="LSystemInfo">
+             <property name="text">
+              <string>System Information</string>
              </property>
              <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="1" colspan="2">
+            <widget class="QLabel" name="LSoftware">
+             <property name="text">
+              <string>Software</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1" colspan="2">
+            <widget class="QLabel" name="LSystem">
+             <property name="text">
+              <string>System</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="0">
+            <widget class="QLabel" name="iInstallingProgress">
+             <property name="maximumSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="scaledContents">
               <bool>true</bool>
              </property>
             </widget>
            </item>
            <item row="13" column="1" colspan="2">
-            <widget class="QLabel" name="LRoot">
+            <widget class="QLabel" name="LCopy">
              <property name="text">
-              <string>Setting root password</string>
+              <string>Copying Files</string>
              </property>
              <property name="wordWrap">
               <bool>true</bool>
              </property>
             </widget>
            </item>
-           <item row="6" column="0">
+           <item row="13" column="0">
+            <widget class="QLabel" name="iCopy">
+             <property name="maximumSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1" colspan="2">
+            <widget class="QLabel" name="LUsers">
+             <property name="text">
+              <string>Users</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="16" column="1" colspan="2">
+            <widget class="QLabel" name="LPersistentChangesFile">
+             <property name="text">
+              <string>Creating persistent file</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="1" colspan="2">
+            <widget class="QLabel" name="LInstallingProgress">
+             <property name="text">
+              <string>Installing</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="15" column="0">
+            <widget class="QLabel" name="iCreatingUsers">
+             <property name="maximumSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
             <widget class="QLabel" name="iNetwork">
              <property name="maximumSize">
               <size>
@@ -351,23 +318,7 @@
              </property>
             </widget>
            </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="iTime">
-             <property name="maximumSize">
-              <size>
-               <width>16</width>
-               <height>16</height>
-              </size>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="1" colspan="2">
+           <item row="7" column="1" colspan="2">
             <widget class="QLabel" name="LNetwork">
              <property name="text">
               <string>Network</string>
@@ -377,7 +328,7 @@
              </property>
             </widget>
            </item>
-           <item row="10" column="0" colspan="3">
+           <item row="11" column="0" colspan="3">
             <widget class="QLabel" name="LProcess">
              <property name="maximumSize">
               <size>
@@ -417,7 +368,7 @@
              </property>
             </widget>
            </item>
-           <item row="18" column="0">
+           <item row="19" column="0">
             <widget class="QLabel" name="iBoot">
              <property name="maximumSize">
               <size>
@@ -433,7 +384,7 @@
              </property>
             </widget>
            </item>
-           <item row="16" column="0">
+           <item row="17" column="0">
             <widget class="QLabel" name="iNetConfig">
              <property name="maximumSize">
               <size>
@@ -449,7 +400,7 @@
              </property>
             </widget>
            </item>
-           <item row="18" column="1" colspan="2">
+           <item row="19" column="1" colspan="2">
             <widget class="QLabel" name="LBoot">
              <property name="toolTip">
               <string>sadfsdf</string>
@@ -462,7 +413,7 @@
              </property>
             </widget>
            </item>
-           <item row="16" column="1" colspan="2">
+           <item row="17" column="1" colspan="2">
             <widget class="QLabel" name="LNetConfig">
              <property name="text">
               <string>Configuring network</string>
@@ -472,7 +423,7 @@
              </property>
             </widget>
            </item>
-           <item row="4" column="0">
+           <item row="5" column="0">
             <widget class="QLabel" name="iUsers">
              <property name="maximumSize">
               <size>
@@ -488,7 +439,7 @@
              </property>
             </widget>
            </item>
-           <item row="9" column="1" colspan="2">
+           <item row="10" column="1" colspan="2">
             <widget class="QLabel" name="LFinishedProgress">
              <property name="text">
               <string>Finished</string>
@@ -498,8 +449,54 @@
              </property>
             </widget>
            </item>
-           <item row="13" column="0">
+           <item row="14" column="1" colspan="2">
+            <widget class="QLabel" name="LRoot">
+             <property name="text">
+              <string>Setting root password</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="0">
             <widget class="QLabel" name="iRoot">
+             <property name="maximumSize">
+              <size>
+               <width>16</width>
+               <height>16</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1" colspan="2">
+            <widget class="QLabel" name="LDisk">
+             <property name="text">
+              <string>Disk Setup</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QLabel" name="LTime">
+             <property name="text">
+              <string>Time &amp; Region</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="iTime">
              <property name="maximumSize">
               <size>
                <width>16</width>
@@ -611,15 +608,15 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>795</width>
-         <height>922</height>
+         <width>773</width>
+         <height>719</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="0" column="0">
          <widget class="QStackedWidget" name="stackedPages">
           <property name="currentIndex">
-           <number>8</number>
+           <number>4</number>
           </property>
           <widget class="QWidget" name="PMain">
            <layout class="QGridLayout" name="gridLayout_9">
@@ -823,7 +820,7 @@ installation</string>
                 </property>
                 <property name="icon">
                  <iconset resource="resource.qrc">
-                  <normaloff>:/img/img/hdd.png</normaloff>:/img/img/hdd.png</iconset>
+                  <normaloff>:/img/img/device-hdd.png</normaloff>:/img/img/device-hdd.png</iconset>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -859,7 +856,7 @@ installation</string>
                 </property>
                 <property name="icon">
                  <iconset resource="resource.qrc">
-                  <normaloff>:/img/img/hdd.png</normaloff>:/img/img/hdd.png</iconset>
+                  <normaloff>:/img/img/device-hdd.png</normaloff>:/img/img/device-hdd.png</iconset>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -1456,23 +1453,6 @@ same partition</string>
           </widget>
           <widget class="QWidget" name="PDisk">
            <layout class="QGridLayout" name="gridLayout_15">
-            <item row="5" column="1">
-             <widget class="QPushButton" name="BGparted">
-              <property name="text">
-               <string>Partitioning</string>
-              </property>
-              <property name="icon">
-               <iconset resource="resource.qrc">
-                <normaloff>:/img/img/gparted.png</normaloff>:/img/img/gparted.png</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>32</width>
-                <height>32</height>
-               </size>
-              </property>
-             </widget>
-            </item>
             <item row="8" column="0">
              <widget class="QLabel" name="LPartSwap">
               <property name="maximumSize">
@@ -1562,9 +1542,6 @@ same partition</string>
              <widget class="QCheckBox" name="CHSamePart">
               <property name="text">
                <string>Within the same partition</string>
-              </property>
-              <property name="checked">
-               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -1754,6 +1731,12 @@ same partition</string>
                 <height>30</height>
                </size>
               </property>
+              <property name="maximumSize">
+               <size>
+                <width>130</width>
+                <height>16777215</height>
+               </size>
+              </property>
               <item>
                <property name="text">
                 <string>home</string>
@@ -1829,7 +1812,7 @@ p, li { white-space: pre-wrap; }
              <widget class="QLabel" name="LPartRoot">
               <property name="maximumSize">
                <size>
-                <width>100</width>
+                <width>65</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -1891,6 +1874,29 @@ p, li { white-space: pre-wrap; }
               <property name="icon">
                <iconset resource="resource.qrc">
                 <normaloff>:/img/img/remove.png</normaloff>:/img/img/remove.png</iconset>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="1" colspan="2">
+             <widget class="QPushButton" name="BGparted">
+              <property name="maximumSize">
+               <size>
+                <width>200</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Partitioning</string>
+              </property>
+              <property name="icon">
+               <iconset resource="resource.qrc">
+                <normaloff>:/img/img/gparted.png</normaloff>:/img/img/gparted.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
               </property>
              </widget>
             </item>
@@ -4316,7 +4322,7 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>1280</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

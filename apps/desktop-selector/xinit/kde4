@@ -21,8 +21,8 @@ export XDM_MANAGED="/var/tmp/xsession-commands,maysd,mayfn,sched,method=classic"
 #exec ck-launch-session dbus-launch startkde >> $HOME/.xsession-errors 2>&1
 
 #Support for both types
-if [ -e /usr/bin/ck-launch-session ]; then
-    exec ck-launch-session startkde >> $HOME/.xsession-errors 2>&1
-else
+#if [ -e /usr/bin/ck-launch-session ]; then
+#    exec ck-launch-session startkde >> $HOME/.xsession-errors 2>&1
+#else
     exec startkde >> $HOME/.xsession-errors 2>&1
-fi
+#fi

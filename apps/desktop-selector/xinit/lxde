@@ -16,8 +16,8 @@ unset script
 #exec ck-launch-session dbus-launch startlxdeaccessibility
 
 #Support for both types
-if [ -e /usr/bin/ck-launch-session ]; then
-    exec ck-launch-session startlxdeaccessibility
-else
+#if [ -e /usr/bin/ck-launch-session ]; then
+#    exec ck-launch-session startlxdeaccessibility
+#else
     exec startlxdeaccessibility
-fi
+#fi

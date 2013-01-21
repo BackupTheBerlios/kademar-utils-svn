@@ -7,12 +7,10 @@ export QT_ACCESSIBILITY=1
 export SPEECHD_ADDRESS=unix_socket:/var/run/speech-dispatcher/speechd.sock
 
 
-#[ "`uname -m`" = "x86_64" ] && arch="-x86_64"
-
 #Fix QT Theme and store original
 if [ -e $HOME/.config/Trolltech.conf ]; then
   echo "style=$(grep -iR style= $HOME/.config/Trolltech.conf | cut -d= -f2)" > /tmp/qt-theme-orig
   sed "s~style=.*~style=Plastique~g" -i $HOME/.config/Trolltech.conf
 fi
 
-exec desktop-selector  #$arch
+exec desktop-selector

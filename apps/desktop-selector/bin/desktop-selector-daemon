@@ -18,6 +18,7 @@ desktop=$1
 #    cp /usr/share/desktop-selector/xinit/$1 /home/$user/.xinitrc
 #   su -c "startx -- $tty_num" "$user"
 #    startx -- $tty_num
+sudo rm -fr /home/$user/.Xaut*
   rm -f $HOME/.xinitrc
   cp -a /usr/share/desktop-selector/xinit/$1 $HOME/.xinitrc
   startx
@@ -127,9 +128,10 @@ while true; do
 #    startx -- $tty_num
 
 	  sudo XINITRC=/usr/share/desktop-selector/xinit/desktop-selector xinit -- /usr/bin/X -nolisten tcp  -noreset $tty_num
-  rm -f $HOME/.xinitrc
-  cp -a /usr/share/desktop-selector/xinit/desktop-selector $HOME/.xinitrc
-  sudo startx
+	#  rm -f $HOME/.xinitrc
+	#  cp -a /usr/share/desktop-selector/xinit/desktop-selector $HOME/.xinitrc
+	#  sudo startx
+	  
 #   su -l -c "XINITRC=/usr/share/desktop-selector/xinit/$1 xinit -- /usr/bin/X -nolisten tcp  -noreset $tty_num" "$user"
 
 	## xserver_file is filled on  kademar-livecd-autoconfig

@@ -18,6 +18,12 @@ cat /usr/share/kademar/kde4-hacks/bookmarks.xml > "$HOME/.kde4/share/apps/kfilep
 
 export XDM_MANAGED="/var/tmp/xsession-commands,maysd,mayfn,sched,method=classic"
 
+#Network Manager Hack
+if [ -e "/etc/xdg/autostart/nm-applet.desktop" -a -z   "`grep NotShowIn /etc/xdg/autostart/nm-applet.desktop 2>/dev/null | grep -v \#`" ]; then
+  #echo "NotShowIn=KDE" >> /etc/xdg/autostart/nm-applet.desktop
+  su -c "echo 'NotShowIn=KDE' >> /etc/xdg/autostart/nm-applet.desktop" - root
+fi
+
 #exec ck-launch-session dbus-launch startkde >> $HOME/.xsession-errors 2>&1
 
 #Support for both types

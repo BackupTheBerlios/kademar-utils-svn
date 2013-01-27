@@ -172,16 +172,19 @@ while true; do
 		
 # 		[ -e $user_file ] && . $user_file
 	
-		case "$DESKTOP" in
-			[Kk][Dd][Ee]4) 
-			  echo "kde_restart" > $xsesson_commands_file
-			  tryNvidiaLegacy kde4
-		;;
+	
+		tryNvidiaLegacy "$DESKTOP"
 
-			[Ll][Xx][Dd][Ee])
-			  tryNvidiaLegacy lxde
-			;;
-		esac
+# 		case "$DESKTOP" in
+# 			[Kk][Dd][Ee]4) 
+# 			  echo "kde_restart" > $xsesson_commands_file
+# 			  tryNvidiaLegacy kde4
+# 		;;
+# 
+# 			[Ll][Xx][Dd][Ee])
+# 			  tryNvidiaLegacy lxde
+# 			;;
+# 		esac
 		
 	# 	su -c "/usr/share/kademar/scripts/engegada/kademar-inici.d-standalone/common-configure_wallpapers" - "$user"
 		

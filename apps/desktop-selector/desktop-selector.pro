@@ -39,7 +39,8 @@ OTHER_FILES += \
     xinit/lxde \
     xinit/kde4 \
     xinit/desktop-selector \
-    xorg.conf.d/10-monitor.conf
+    xorg.conf.d/10-monitor.conf \
+    xinit/enlightenment17
 
 
 

@@ -27,6 +27,7 @@
         <file>img/lang/es_ES.png</file>
         <file>img/lang/es_MX.png</file>
         <file>img/user.png</file>
+        <file>img/enlightenment17.png</file>
     </qresource>
     <qresource prefix="/tr">
         <file>tr/es.qm</file>

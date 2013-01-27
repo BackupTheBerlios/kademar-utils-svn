@@ -778,6 +778,7 @@ void DesktopSelector::createDesktopButtons()
     desktops["/usr/bin/startgnome"] = "gnome";
     desktops["/usr/bin/startlxde"] = "lxde";
     desktops["/usr/bin/starticewm"] = "icewm";
+    desktops["/usr/bin/enlightenment_start"] = "enlightenment17";
 
     //Create file to check if exists desktop
     QFile *desktop = new QFile();

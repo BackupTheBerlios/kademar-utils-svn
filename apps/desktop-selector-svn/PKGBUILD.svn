@@ -40,18 +40,19 @@ build() {
 
 package() {
   cd "${srcdir}/${_svnmod}-build"
-  mkdir -p ${pkgdir}/usr/bin ${pkgdir}/usr/share/desktop-selector ${pkgdir}/etc/kademar ${pkgdir}/etc/X11 ${pkgdir}/etc/ ${pkgdir}/usr/lib/systemd/system
+  mkdir -p ${pkgdir}/usr/bin ${pkgdir}/usr/share/desktop-selector ${pkgdir}/etc/kademar ${pkgdir}/etc/X11 ${pkgdir}/etc/ #${pkgdir}/usr/lib/systemd/system
   cp -a ${_svnmod} ${pkgdir}/usr/bin
   cp -a scripts ${pkgdir}/usr/share/desktop-selector
+  cp -a bin/desktop-selector-daemon ${pkgdir}/usr/bin
   cp -a desktop-selector.ini ${pkgdir}/etc/kademar
   cp -a xorg.conf.d ${pkgdir}/usr/share/desktop-selector
-  cp -a rc.d ${pkgdir}/etc/
+  #cp -a rc.d ${pkgdir}/etc/
   cp -a xinit ${pkgdir}/usr/share/desktop-selector/
-  cp -a systemd/* ${pkgdir}/usr/lib/systemd/system  
+  #cp -a systemd/* ${pkgdir}/usr/lib/systemd/system  
   cd ${pkgdir} && rm -fr `find . -name ".svn"` && rm -fr `find . -name "*.pyc"` && rm -f `find . -name "*~"`
   find "$pkgdir"/etc/ -type f -exec chmod 644 "{}" \;
   find "$pkgdir"/etc/ -type d -exec chmod 755 "{}" \;
-  find "$pkgdir"/etc/rc.d -type f -exec chmod 755 "{}" \;
+#  find "$pkgdir"/etc/rc.d -type f -exec chmod 755 "{}" \;
   find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
   find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
   find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;

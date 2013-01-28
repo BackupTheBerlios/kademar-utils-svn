@@ -26,6 +26,9 @@ fi
 
 #exec ck-launch-session dbus-launch startkde >> $HOME/.xsession-errors 2>&1
 
+#Apper not update on livecd
+sed "s~autoUpdate=.*~autoUpdate=0~g" -i "$HOME/.kde4/share/config/apper"
+
 #Support for both types
 #if [ -e /usr/bin/ck-launch-session ]; then
 #    exec ck-launch-session startkde >> $HOME/.xsession-errors 2>&1

@@ -18,6 +18,7 @@ post_upgrade() {
 ## arg 1:  the old package version
 post_remove() {
   echo "If you really want to delete /etc/skel files do it manually"
+  rm -f /etc/skel/.bash_profile
 }
 
 create_skel() {

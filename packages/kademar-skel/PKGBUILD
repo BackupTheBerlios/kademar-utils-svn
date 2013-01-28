@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=kademar-skel
-pkgver=5.1.8
+pkgver=5.1.9
 pkgrel=1
 epoch=
 pkgdesc="Kademar Linux /etc/skel files - remove on install"
@@ -21,7 +21,7 @@ install=kademar-skel.install
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('59e90ba9dffaea44a963ad437b6e95e4') #generate with 'makepkg -g'
+md5sums=('05e95047c02df0c0d6c40db39db27b71') #generate with 'makepkg -g'
 
 
 package() {

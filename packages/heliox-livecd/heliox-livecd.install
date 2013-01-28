@@ -67,22 +67,7 @@ create_skel() {
 
 	echo "Restoring QT Theme for root"
 	sed "s~style=.*~style=Plastique~g" -i /root/.config/Trolltech.conf
-	
-    sed s.USERNAME."$user".g -i '/usr/lib/systemd/system/adriane@.service'
-    if [ -L '/etc/systemd/system/getty.target.wants/getty@tty1.service' ]; then
-      rm -f '/etc/systemd/system/getty.target.wants/getty@tty1.service'
-    fi
-    if [ -L '/etc/systemd/system/getty.target.wants/autologin@tty1.service' ]; then
-      rm -f '/etc/systemd/system/getty.target.wants/autologin@tty1.service'
-    fi
-    if [ ! -L '/etc/systemd/system/getty.target.wants/adriane@tty1.service' ]; then
-      ln -s '/usr/lib/systemd/system/adriane@.service' '/etc/systemd/system/getty.target.wants/adriane@tty1.service'
-    fi
-	if [ ! -L '/etc/systemd/system/getty.target.wants/autologin@tty3.service' ]; then
-      ln -s '/usr/lib/systemd/system/autologin@.service' '/etc/systemd/system/getty.target.wants/autologin@tty3.service'
-    fi
-	
-	
+
   fi
 }
 

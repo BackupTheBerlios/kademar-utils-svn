@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=heliox-livecd
-pkgver=5.10.2
+pkgver=5.11.1
 pkgrel=2
 epoch=
 pkgdesc="Heliox Linux basic LiveCD package and utilities - remove on install"
@@ -21,14 +21,14 @@ install=heliox-livecd.install
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('68cd70c0902be40d9daea6c17c128960') #generate with 'makepkg -g'
+md5sums=('b5fd086d3556945f250c037fac23fbc6') #generate with 'makepkg -g'
 
 
 package() {
   cp -a $srcdir/$pkgname-$pkgver/* ${pkgdir}
   cd ${pkgdir} && rm -fr `find . -name ".svn"` && rm -fr `find . -name "*.pyc"` && rm -f `find . -name "*~"`
-  find "$pkgdir"/etc/ -type f -exec chmod 644 "{}" \;
-  find "$pkgdir"/etc/ -type d -exec chmod 755 "{}" \;
+#   find "$pkgdir"/etc/ -type f -exec chmod 644 "{}" \;
+#   find "$pkgdir"/etc/ -type d -exec chmod 755 "{}" \;
 #   find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
 #   find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
 }

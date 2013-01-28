@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#Clean pacman downloaded files
+
+find /var/cache/pacman/pkg  -type f   | xargs rm -f

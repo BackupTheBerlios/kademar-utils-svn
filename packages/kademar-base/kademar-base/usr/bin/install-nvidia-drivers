@@ -33,6 +33,10 @@ if [ "$(ping www.google.es -c1 2>/dev/null 1>&2 ; echo $?)" = "0" ]; then
   pacman --noconfirm -Rdd $packets
   pacman --noconfirm  -Sy nvidia nvidia-utils opencl-nvidia $bit64
     
+  modprobe nvidia
+  [ "$(dmesg | grep -i nvidia | grep -i legacy)" ] && install-nvidia-legacy-drivers force
+    
+    
   echo
   case "$LANG" in
   ca_ES*)

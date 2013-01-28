@@ -10,7 +10,8 @@
 # documents                  -  for your current user
 
 #Load language conf_file
-. /etc/rc.conf
+#. /etc/rc.conf
+. /etc/locale.conf
 
 #get translation from xdg-user-dirs
 docs=`gettext -d xdg-user-dirs -s "Documents"`
@@ -48,42 +49,47 @@ esac
 #Docs
 if [ ! -e "$HOME/$docs/.directory" -a -e "$HOME/$docs/" ]; then
 	echo "[Desktop Entry]
-Icon=/usr/share/icons/oxygen/256x256/places/folder-documents.png" > "$HOME/$docs/.directory"
+Icon=folder-documents" > "$HOME/$docs/.directory"
 fi
 #Downloads
 if [ ! -e "$HOME/$down/.directory" -a -e "$HOME/$down/" ]; then
 	echo "[Desktop Entry]
-Icon=/usr/share/icons/oxygen/256x256/places/folder-downloads.png" > "$HOME/$down/.directory"
+Icon=folder-downloads" > "$HOME/$down/.directory"
 fi
 #Video
 if [ ! -e "$HOME/$video/.directory" -a -e "$HOME/$video/" ]; then
 	echo "[Desktop Entry]
-Icon=/usr/share/icons/oxygen/256x256/places/folder-video.png" > "$HOME/$video/.directory"
+Icon=folder-video" > "$HOME/$video/.directory"
 fi
 #Audio
 if [ ! -e "$HOME/$audio/.directory" -a -e "$HOME/$audio/" ]; then
 	echo "[Desktop Entry]
-Icon=/usr/share/icons/oxygen/256x256/places/folder-sound.png" > "$HOME/$audio/.directory"
+Icon=folder-sound" > "$HOME/$audio/.directory"
 fi
 #Images
 if [ ! -e "$HOME/$img/.directory" -a -e "$HOME/$img/" ]; then
 	echo "[Desktop Entry]
-Icon=/usr/share/icons/oxygen/256x256/places/folder-image.png" > "$HOME/$img/.directory"
+Icon=folder-image" > "$HOME/$img/.directory"
 fi
 #Public (Amule - Apollon)
 if [ ! -e "$HOME/$pub/.directory" -a -e "$HOME/$pub/" ]; then
 	echo "[Desktop Entry]
-Icon=/usr/share/icons/oxygen/256x256/places/folder-remote.png" > "$HOME/$pub/.directory"
+Icon=folder-remote" > "$HOME/$pub/.directory"
 fi
 #Amsn
 # 	if [ ! -e "$HOME/$shared/$amsn/.directory" -a -e "$HOME/$shared/$amsn/" ]; then
 # 		echo "[Desktop Entry]
-# Icon=/usr/share/icons/oxygen/256x256/places//usr/share/kademar/icons/amsn_folder.png" > "$HOME/$shared/$amsn/.directory"
+# Icon=/usr/share/kademar/icons/amsn_folder" > "$HOME/$shared/$amsn/.directory"
 # 	fi
 #Templates
 if [ ! -e "$HOME/$tmpl/.directory" -a -e "$HOME/$tmpl/" ]; then
 	echo "[Desktop Entry]
-Icon=/usr/share/icons/oxygen/256x256/places/folder-html.png" > "$HOME/$tmpl/.directory"
+Icon=folder-html" > "$HOME/$tmpl/.directory"
+fi
+#Desktop
+if [ ! -e "$HOME/$desk/.directory" -a -e "$HOME/$desk/" ]; then
+	echo "[Desktop Entry]
+Icon=user-desktop" > "$HOME/$desk/.directory"
 fi
 #Carpeta de samples si existeixen i no exiteix el link que volem crear
 [ -e /usr/share/kademar/media_sample/sound ] && [ ! -e "$HOME/$audio/$audio$sample" ] && ln -s /usr/share/kademar/media_sample/sound "$HOME/$audio/$audio$sample"

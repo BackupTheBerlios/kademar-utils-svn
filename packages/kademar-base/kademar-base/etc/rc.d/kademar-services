@@ -12,3 +12,6 @@ fi
 #Process events that we couldn't earlier (udev without dbus started)
 udevadm trigger --action=add
 
+
+#remove pacman DB lock (can hungry on reboots)
+[ -e /var/lib/pacman/db.lck ] && rm -f /var/lib/pacman/db.lck

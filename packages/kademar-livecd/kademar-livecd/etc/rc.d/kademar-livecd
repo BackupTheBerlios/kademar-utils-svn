@@ -39,25 +39,25 @@ done
  sed s-deny-allow-g -i /etc/dbus-1/system.d/org.freedesktop.ModemManager.conf
  
  #workarround fix to rules.d g-file-error-quark
- chmod 777 /etc/polkit-1/rules.d
- chmod 777 /etc/polkit-1/rules.d -R
+#  chmod 777 /etc/polkit-1/rules.d
+#  chmod 777 /etc/polkit-1/rules.d -R
 
 
- for i in /home/*
- do
+#  for i in /home/*
+#  do
     
-  if [ ! -e /usr/bin/ck-launch-session ]; then
-   cat > $i/.config/autostart/polkit-hack.sh << EOF
-#!/bin/bash
-sleep 5 ; sudo kill \`ps aux | grep -i polkitd | grep -v grep | awk ' { print \$2 } '\`; sudo /usr/lib/polkit-1/polkitd --no-debug &
-EOF
-   chmod 777 $i/.config/autostart/polkit-hack.sh
-  fi
+#   if [ ! -e /usr/bin/ck-launch-session ]; then
+#    cat > $i/.config/autostart/polkit-hack.sh << EOF
+# #!/bin/bash
+# sleep 5 ; sudo kill \`ps aux | grep -i polkitd | grep -v grep | awk ' { print \$2 } '\`; sudo /usr/lib/polkit-1/polkitd --no-debug &
+# EOF
+#    chmod 777 $i/.config/autostart/polkit-hack.sh
+#   fi
 
 
   #disable autoupdate
-  sed "s~autoUpdate=.*~autoUpdate=0~g" -i $i/.kde4/share/config/apper
- done
+#   sed "s~autoUpdate=.*~autoUpdate=0~g" -i $i/.kde4/share/config/apper
+#  done
 
 
 

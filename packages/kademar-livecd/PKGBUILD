@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=kademar-livecd
-pkgver=5.7.40
+pkgver=5.8.8
 pkgrel=1
 epoch=
 pkgdesc="Kademar Linux basic LiveCD package and utilities - remove on install"
@@ -8,7 +8,7 @@ arch=('any')
 url="http://www.kademar.org"
 license=('GPL')
 groups=()
-depends=('bash' 'zramswap' 'numlockx' 'laptop-detect' 'desktop-selector' 'zerofree' 'consolekit')
+depends=('bash' 'zramswap' 'numlockx' 'laptop-detect' 'desktop-selector' 'zerofree')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -21,7 +21,7 @@ install=kademar-livecd.install
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('8d6e4ad7fa0fc8f657ad4492e29de3cd') #generate with 'makepkg -g'
+md5sums=('df4b64402a933aade4b0eb9f38515c0a') #generate with 'makepkg -g'
 
 
 package() {

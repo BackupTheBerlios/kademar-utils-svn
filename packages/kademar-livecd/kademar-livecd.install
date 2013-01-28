@@ -30,6 +30,9 @@ post_remove(){
     if [ ! -e '/etc/systemd/system/getty.target.wants/getty@tty2.service' ]; then
       ln -s '/usr/lib/systemd/system/getty@.service' '/etc/systemd/system/getty.target.wants/getty@tty2.service'
     fi
+    
+    rm -f /etc/kademar/config-livecd
+    
 }
 
 update_files() {
@@ -42,67 +45,6 @@ update_files() {
     chown root:root /etc/sudoers
     chmod 440 /etc/sudoers
 
-    #rm -fr /etc/X11/Xsession.d
-    /bin/cp -a /etc/X11/xinit/xinitrc.d/* /etc/X11/Xsession.d
-
-    if [ -n "$(grep es_ES /etc/locale.conf)" -a ! -e /etc/localtime ]; then
-      ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
-    fi
-
-    #systemctl enable kademar-livecd
-    if [ ! -L /etc/systemd/system/multi-user.target.wants/kademar-livecd.service ]; then
-      ln -s /usr/lib/systemd/system/kademar-livecd.service /etc/systemd/system/multi-user.target.wants/kademar-livecd.service
-    fi
-    
-    #systemctl enable NetworkManager
-    if [ ! -L /etc/systemd/system/dbus-org.freedesktop.NetworkManager.service ]; then
-      ln -s '/usr/lib/systemd/system/NetworkManager.service' '/etc/systemd/system/dbus-org.freedesktop.NetworkManager.service'
-    fi
-    
-    if [ ! -L /etc/systemd/system/multi-user.target.wants/NetworkManager.service ]; then
-      ln -s '/usr/lib/systemd/system/NetworkManager.service' '/etc/systemd/system/multi-user.target.wants/NetworkManager.service'
-    fi
-    
-    #systemctl enable kademar-openntpd
-    if [ ! -L /etc/systemd/system/multi-user.target.wants/openntpd.service ]; then
-      ln -s '/usr/lib/systemd/system/openntpd.service' '/etc/systemd/system/multi-user.target.wants/openntpd.service'
-    fi
-
-    if [ ! -L /etc/systemd/system/multi-user.target.wants/zramswap.service ]; then
-      ln -s /usr/lib/systemd/system/zramswap.service /etc/systemd/system/multi-user.target.wants/zramswap.service
-    fi
-    
-    #systemctl enable cups
-    [ ! -L '/etc/systemd/system/printer.target.wants/' ] && mkdir -p '/etc/systemd/system/printer.target.wants/'
-    [ ! -L '/etc/systemd/system/sockets.target.wants/' ] && mkdir -p '/etc/systemd/system/sockets.target.wants/'
-
-    if [ ! -L '/etc/systemd/system/printer.target.wants/cups.service' ]; then
-      ln -s '/usr/lib/systemd/system/cups.service' '/etc/systemd/system/printer.target.wants/cups.service'
-    fi
-    if [ ! -L '/etc/systemd/system/sockets.target.wants/cups.socket' ]; then
-	ln -s '/usr/lib/systemd/system/cups.socket' '/etc/systemd/system/sockets.target.wants/cups.socket'
-    fi
-    if [ ! -L '/etc/systemd/system/multi-user.target.wants/cups.path' ]; then
-	ln -s '/usr/lib/systemd/system/cups.path' '/etc/systemd/system/multi-user.target.wants/cups.path'
-    fi
-
-    
-    #prepare for autologin
-    . /etc/kademar/config-livecd
-    sed s.USERNAME."$user".g -i '/usr/lib/systemd/system/autologin@.service'
-    
-    rm -f /etc/systemd/system/getty.target.wants/getty*
-    
-    if [ ! -L '/etc/systemd/system/getty.target.wants/autologin@tty1.service' ]; then
-      ln -s '/usr/lib/systemd/system/autologin@.service' '/etc/systemd/system/getty.target.wants/autologin@tty1.service'
-    fi
-    if [ ! -L '/etc/systemd/system/getty.target.wants/autologin@tty2.service' ]; then
-      ln -s '/usr/lib/systemd/system/autologin@.service' '/etc/systemd/system/getty.target.wants/autologin@tty2.service'
-    fi
-    
-        echo "Kademar Linux \r (\l)
-" > /etc/issue
-    
   fi
 
   

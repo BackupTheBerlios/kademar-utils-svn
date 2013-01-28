@@ -18,6 +18,9 @@ desktop=$1
 #    cp /usr/share/desktop-selector/xinit/$1 /home/$user/.xinitrc
 #   su -c "startx -- $tty_num" "$user"
 #    startx -- $tty_num
+. /etc/kademar/functions
+set_environment_variables
+
 sudo rm -fr /home/$user/.Xaut*
   rm -f $HOME/.xinitrc
   cp -a /usr/share/desktop-selector/xinit/$1 $HOME/.xinitrc
@@ -126,7 +129,8 @@ while true; do
 #    rm -f /home/$user/.xinitrc
 #    cp /usr/share/desktop-selector/xinit/desktop-selector  /home/$user/.xinitrc
 #    startx -- $tty_num
-
+. /etc/kademar/functions
+set_environment_variables
 	  sudo XINITRC=/usr/share/desktop-selector/xinit/desktop-selector xinit -- /usr/bin/X -nolisten tcp  -noreset $tty_num
 	#  rm -f $HOME/.xinitrc
 	#  cp -a /usr/share/desktop-selector/xinit/desktop-selector $HOME/.xinitrc

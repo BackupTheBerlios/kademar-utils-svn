@@ -24,7 +24,7 @@ LANGUAGE="$1"
 [ -n "$2" ] && DESTI="$2"
 
 #Load variables
-locale_file="$DESTI/etc/rc.conf"
+# locale_file="$DESTI/etc/locale.conf"
 
 ########### //  LOCALE DEFINITION EXTRACTED FROM KNOPPIX \\ #############
 

@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=instalador
-pkgver=4.9.36
+pkgver=4.9.38
 pkgrel=1
 epoch=
 pkgdesc="The Installer"
@@ -8,7 +8,7 @@ arch=(any)
 url="http://www.kademar.org"
 license=('GPL')
 groups=()
-depends=('kademar-meta-common-utils' 'sudo' 'pacman' 'python2-pyqt' 'os-prober' 'gparted')
+depends=('sudo' 'pacman' 'python2-pyqt' 'os-prober' 'gparted')
 makedepends=("python2-pyqt")
 checkdepends=()
 optdepends=()
@@ -21,7 +21,7 @@ install=
 changelog=
 source=($pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('e0c76a292bbd3af2a4a3bf9a2a6f37ff') #generate with 'makepkg -g'
+md5sums=('e81f8e3a3a8bedf212428832a320040d') #generate with 'makepkg -g'
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

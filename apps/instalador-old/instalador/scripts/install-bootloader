@@ -292,12 +292,17 @@ EOF
 #Si no s'ha definit que NO volem mbr, instala'l
 if [ "$mbr" != "no" ]; then
 
-    . $DESTI/etc/rc.conf
+#     . $DESTI/etc/rc.conf
 
     # chroot $DESTI LANG=$LANGUAGE $grub-mkconfig -o /boot/$grub/$grub.cfg
 
     . /etc/kademar/functions
     set_environment_variables $DESTI
+    
+    #hack until  "s'esta carregant" error will be fixed
+    rm -f /usr/share/locale/ca/LC_MESSAGES/grub.mo
+    
+    
     chroot $DESTI $grub-mkconfig -o /boot/$grub/$grub.cfg
 
 

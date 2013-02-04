@@ -79,6 +79,9 @@ private:
     int numlanguage;
     int numpages;
     int numusers;
+    int numLanguageButtons;
+    int languageRowNum;
+    int languageColNum;
     QString buttonStyleSheet;
     QString selectedLang;
     QString selectedDesktop;
@@ -102,7 +105,7 @@ private:
     void prepareAccessibilityButtons();
 
 
-    QList< QHBoxLayout* > listHorizontalLayout;
+    QList< QGridLayout* > listHorizontalLayout;
     QList< QPushButtonWithEvents* > listLangButtons;
 
     QHash<QString, QString> dict;

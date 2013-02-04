@@ -52,6 +52,9 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
     installingDrivers=false;
     accessibilityOptions="";
     accessibilityType="simple";
+    numLanguageButtons=0;
+    languageRowNum=0;
+    languageColNum=0;
 
     //Check if it's assistant mode or not
     assistantMode=settings.value("assistantMode").toBool();
@@ -186,7 +189,7 @@ void DesktopSelector::prepareGui()
     listGridLayout[numdesktop]->setObjectName(QString("gridLayout_%1").arg(numdesktop));
 
     //Add new horitzontalLayout (HBox) to append to desktop frame and put new name
-    listHorizontalLayout << new QHBoxLayout(ui->languageFrame);
+    listHorizontalLayout << new QGridLayout(ui->languageFrame);
     listHorizontalLayout[numlanguage]->setObjectName(QString("horizontalLayout_%1").arg(numlanguage));
 
     //StyleSheet for title label
@@ -951,8 +954,21 @@ void DesktopSelector::createLanguageButton(QString *lang)
     //listLangButtons[numlanguage]->setStyleSheet(QString("QPushButtonWithEvents %1").arg(buttonStyleSheet));
     //listLangButtons[numlanguage]->setStyleSheet("QPushButtonWithEvents:hover  { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #f0efee, stop: 1 #d4d3d2) ; border-style: outset; border-width: 1px; border-radius: 3px; border-color: #444444; font: bold 14px; min-width: 10em; padding: 6px; margin-bottom: 10px;}");
     listLangButtons[numlanguage]->setMinimumWidth(140);
+
+    //Create rows of 3 buttons, then new row and begin again
+    if (numLanguageButtons>2){
+//        qDebug() << "newrow";
+        languageRowNum=languageRowNum+1;
+        numLanguageButtons=0;
+        languageColNum=0;
+    }
+
     // Add to GridLayout desktop Button
-    listHorizontalLayout[0]->addWidget(listLangButtons[numlanguage]);
+    listHorizontalLayout[0]->addWidget(listLangButtons[numlanguage], languageRowNum, languageColNum, 1, 1);
+    languageColNum=languageColNum+1;
+
+//    listHorizontalLayout[0]->addWidget(listLangButtons[numlanguage]);
+    numLanguageButtons=numLanguageButtons+1;
 
     connect(listLangButtons[numlanguage], SIGNAL( buttonClicked(QString, QString)), this, SLOT(writeSettings(QString, QString)));
 

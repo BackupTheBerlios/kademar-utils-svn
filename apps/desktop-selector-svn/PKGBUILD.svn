@@ -1,7 +1,7 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=desktop-selector-svn
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to select desktop, language, drivers and accessibility on livecd"
 arch=('i686' 'x86_64')
 url="http://www.kademar.org"

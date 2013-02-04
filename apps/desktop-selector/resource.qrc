@@ -28,6 +28,9 @@
         <file>img/lang/es_MX.png</file>
         <file>img/user.png</file>
         <file alias="enlightenment17">img/enlightenment17.png</file>
+        <file>img/lang/de_DE.png</file>
+        <file>img/lang/fr_FR.png</file>
+        <file>img/lang/ru_RU.png</file>
     </qresource>
     <qresource prefix="/tr">
         <file>tr/es.qm</file>

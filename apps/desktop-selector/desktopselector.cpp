@@ -893,6 +893,8 @@ void DesktopSelector::defineLanguageDictionary()
     dict["pt"] = "Português"; dict["pt_PT"] = "Português"; dict["pt_BR"] = "Português";
     dict["gl"] = "Galego"; dict["gl_ES"] = "Galego";
 
+    dict["ru"] = "Russian"; dict["ru_RU"] = "Russian";
+
     //Derivados en Mexico
     dict["mx"] = "Mexicano"; dict["es_MX"] = "Mexicano";
     dict["myn"] = "Maya"; dict["mx_myn"] = "Maya";

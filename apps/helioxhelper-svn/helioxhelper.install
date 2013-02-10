@@ -1,5 +1,9 @@
 post_install() {
-    rahisi-config-update-apps
+    if [ "$LANG" = C ]; then
+        LANG=es_ES.UTF-8  rahisi-config-update-apps 
+    else    
+        rahisi-config-update-apps
+    fi
 }
 
 post_remove(){

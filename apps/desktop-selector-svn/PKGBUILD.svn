@@ -40,11 +40,11 @@ build() {
 
 package() {
   cd "${srcdir}/${_svnmod}-build"
-  mkdir -p ${pkgdir}/usr/bin ${pkgdir}/usr/share/desktop-selector ${pkgdir}/etc/kademar ${pkgdir}/etc/X11 ${pkgdir}/etc/ #${pkgdir}/usr/lib/systemd/system
+  mkdir -p ${pkgdir}/usr/bin ${pkgdir}/usr/share/desktop-selector ${pkgdir}/etc/X11 ${pkgdir}/etc/ #${pkgdir}/usr/lib/systemd/system ${pkgdir}/etc/kademar
   cp -a ${_svnmod} ${pkgdir}/usr/bin
   cp -a scripts ${pkgdir}/usr/share/desktop-selector
   cp -a bin/desktop-selector-daemon ${pkgdir}/usr/bin
-  cp -a desktop-selector.ini ${pkgdir}/etc/kademar
+  cp -a desktop-selector.ini ${pkgdir}/usr/share/desktop-selector #${pkgdir}/etc/kademar
   cp -a xorg.conf.d ${pkgdir}/usr/share/desktop-selector
   #cp -a rc.d ${pkgdir}/etc/
   cp -a xinit ${pkgdir}/usr/share/desktop-selector/

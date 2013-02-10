@@ -1,9 +1,17 @@
-post_install() {
+createRahisiDB(){
     if [ "$LANG" = C ]; then
         LANG=es_ES.UTF-8  rahisi-config-update-apps 
     else    
         rahisi-config-update-apps
     fi
+}
+
+post_install() {
+    createRahisiDB
+}
+
+post_update() {
+    createRahisiDB
 }
 
 post_remove(){

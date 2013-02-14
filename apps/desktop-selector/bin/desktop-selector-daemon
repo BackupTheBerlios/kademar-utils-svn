@@ -13,21 +13,23 @@
 
 
 tryNvidiaLegacy(){
-  . /etc/kademar/functions
-  set_environment_variables
+  if [ -n "$1" ]; then
+    . /etc/kademar/functions
+    set_environment_variables
 
-  sudo rm -fr /home/$user/.Xaut*
-  rm -f $HOME/.xinitrc
-  cp -a /usr/share/desktop-selector/xinit/$1 $HOME/.xinitrc
-  sudo chmod 777 $HOME/.xinitrc
-  startx
-  
-  
-  if [ -n "$(dmesg | grep -i nvidia | grep -i legacy)" -a -z "`grep nvidiaLegacyDriver=true /etc/kademar/desktop-selector.ini`"  ]; then
-    sudo sh /usr/share/desktop-selector/scripts/nvidia-legacy-installer-offline.sh
-    sudo chmod 777 /etc/kademar/desktop-selector.ini
-    echo nvidiaLegacyDriver=true >> /etc/kademar/desktop-selector.ini
+    sudo rm -fr /home/$user/.Xaut*
+    rm -fr $HOME/.xinitrc
+    cp -a /usr/share/desktop-selector/xinit/$1 $HOME/.xinitrc
+    sudo chmod 777 $HOME/.xinitrc
     startx
+  
+  
+    if [ -n "$(dmesg | grep -i nvidia | grep -i legacy)" -a -z "`grep nvidiaLegacyDriver=true /etc/kademar/desktop-selector.ini`"  ]; then
+      sudo sh /usr/share/desktop-selector/scripts/nvidia-legacy-installer-offline.sh
+      sudo chmod 777 /etc/kademar/desktop-selector.ini
+      echo nvidiaLegacyDriver=true >> /etc/kademar/desktop-selector.ini
+      startx
+    fi
   fi
 }
 

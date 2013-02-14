@@ -31,6 +31,7 @@ fi
 
 #Apper not update on livecd
 sed "s~autoUpdate=.*~autoUpdate=0~g" -i "$HOME/.kde4/share/config/apper"
+sed "s~interval=.*~interval=0~g" -i "$HOME/.kde4/share/config/apper"
 
 #Support for both types
 #if [ -e /usr/bin/ck-launch-session ]; then

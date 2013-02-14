@@ -888,15 +888,16 @@ void DesktopSelector::defineLanguageDictionary()
     //extern QHash<QString, QString> dict;
     dict["ca"] = "Català";     dict["ca_ES"] = "Català";
     dict["es"] = "Castellano";     dict["es_ES"] = "Castellano";
+    dict["gl"] = "Galego"; dict["gl_ES"] = "Galego";
+    dict["eu"] = "Euskara"; dict["eu_ES"] = "Euskara";
 
     dict["en"] = "English"; dict["en_GB"] = "English"; dict["en_US"] = "English"; dict["en_IE"] = "English";
-    dict["fr"] = "French"; dict["fr_FR"] = "French";
+    dict["fr"] = "Français"; dict["fr_FR"] = "Français";
     dict["it"] = "Italiano"; dict["it_IT"] = "Italiano";
-    dict["de"] = "Deuche"; dict["de_DE"] = "Deuche";
+    dict["de"] = "Deutsch"; dict["de_DE"] = "Deutsch";
     dict["pt"] = "Português"; dict["pt_PT"] = "Português"; dict["pt_BR"] = "Português";
-    dict["gl"] = "Galego"; dict["gl_ES"] = "Galego";
 
-    dict["ru"] = "Russian"; dict["ru_RU"] = "Russian";
+    dict["ru"] = "Pу́сский"; dict["ru_RU"] = "Pу́сский";
 
     //Derivados en Mexico
     dict["mx"] = "Mexicano"; dict["es_MX"] = "Mexicano";

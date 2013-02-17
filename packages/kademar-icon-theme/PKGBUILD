@@ -1,6 +1,6 @@
 #Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=kademar-icon-theme
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 epoch=
 pkgdesc="kademar Icons based on Elementary USU"
@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver.tar.gz" "http://art.learnfree.eu/elementary_usu-8.0.7.tgz")
+source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('a4be80530b38fd1ced3d48b360532e2d' '3e999ba816b0782d6033b530526b121c') #generate with 'makepkg -g'
+md5sums=('c92f4fd3258ac1d3b7059588b1636ec5') #generate with 'makepkg -g'
 
 build() {
  cd "$srcdir"  
@@ -29,39 +29,39 @@ build() {
 
 package() {
    mkdir -p "$pkgdir/usr/share/icons"
-   cp -a "$srcdir/elementary_usu" "$pkgdir/usr/share/icons/kademar-elementary_usu"
+   cp -a "$srcdir/$pkgname-$pkgver" "$pkgdir/usr/share/icons/kademar-elementary_usu"
    
-   #Icon substitution
-   # witchFolder:icon:size
-   for i in places:start-here.svg:16 places:start-here.svg:22 places:start-here.svg:24 places:start-here.svg:32 places:start-here.svg:48 places:folder-video.svg:64 places:folder-video.svg:48 places:start-here.svg:64 places:start-here.svg:128 places:folder-video.svg:32 places:folder-video.svg:24 places:folder-video.svg:22 mimes:video-x-generic.svg:16 places:folder-video.svg:128
-   do
-     a=$(echo $i | cut -d: -f1) #places
-     b=$(echo $i | cut -d: -f2) #folder-video.svg
-     c=$(echo $i | cut -d: -f3) #16
-    /bin/cp "$srcdir/$pkgname-$pkgver/$a/$c/$b" "$pkgdir/usr/share/icons/kademar-elementary_usu/$a/$c" && echo "* Replacing $b on $a - size:$c"
-   done
-   
-   #Link Creation
-   # Folder:wichName:WhereToLink (same folder)
-   for i in places:folder-pictures.svg:folder-image.svg places:folder-templates.svg:folder-html.svg  places:folder-music.svg:folder-sound.svg places:folder-music.svg:folder-melodies.svg places:folder-music.svg:folder-sounds.svg
-   do
-     a=$(echo $i | cut -d: -f1) #places
-     b=$(echo $i | cut -d: -f2) #folder-video.svg original file
-     c=$(echo $i | cut -d: -f3) #folder-movies.svg  link file
-     for j in 16 22 24 32 48 64 128
-     do
-       ln -s "$b" "$pkgdir/usr/share/icons/kademar-elementary_usu/$a/$j/$c" && echo "* Linking $b -> $c - size:$j"
-     done
-   done
-   /bin/cp "$srcdir/$pkgname-$pkgver/index.theme" "$pkgdir/usr/share/icons/kademar-elementary_usu"
-   
-   cd "$pkgdir"
-   rm -fr "$pkgdir/usr/share/icons/kademar-elementary_usu/start-here.svg"
-   find * -type f | grep -i ubuntu | xargs rm -fr
+#    #Icon substitution
+#    # witchFolder:icon:size
+#    for i in places:start-here.svg:16 places:start-here.svg:22 places:start-here.svg:24 places:start-here.svg:32 places:start-here.svg:48 places:folder-video.svg:64 places:folder-video.svg:48 places:start-here.svg:64 places:start-here.svg:128 places:folder-video.svg:32 places:folder-video.svg:24 places:folder-video.svg:22 mimes:video-x-generic.svg:16 places:folder-video.svg:128
+#    do
+#      a=$(echo $i | cut -d: -f1) #places
+#      b=$(echo $i | cut -d: -f2) #folder-video.svg
+#      c=$(echo $i | cut -d: -f3) #16
+#     /bin/cp "$srcdir/$pkgname-$pkgver/$a/$c/$b" "$pkgdir/usr/share/icons/kademar-elementary_usu/$a/$c" && echo "* Replacing $b on $a - size:$c"
+#    done
+#    
+#    #Link Creation
+#    # Folder:wichName:WhereToLink (same folder)
+#    for i in places:folder-pictures.svg:folder-image.svg places:folder-templates.svg:folder-html.svg  places:folder-music.svg:folder-sound.svg places:folder-music.svg:folder-melodies.svg places:folder-music.svg:folder-sounds.svg
+#    do
+#      a=$(echo $i | cut -d: -f1) #places
+#      b=$(echo $i | cut -d: -f2) #folder-video.svg original file
+#      c=$(echo $i | cut -d: -f3) #folder-movies.svg  link file
+#      for j in 16 22 24 32 48 64 128
+#      do
+#        ln -s "$b" "$pkgdir/usr/share/icons/kademar-elementary_usu/$a/$j/$c" && echo "* Linking $b -> $c - size:$j"
+#      done
+#    done
+#    /bin/cp "$srcdir/$pkgname-$pkgver/index.theme" "$pkgdir/usr/share/icons/kademar-elementary_usu"
+#    
+#    cd "$pkgdir"
+#    rm -fr "$pkgdir/usr/share/icons/kademar-elementary_usu/start-here.svg"
+#    find * -type f | grep -i ubuntu | xargs rm -fr
    
 #   cp $srcdir/apt* $srcdir/dpkg "$pkgdir/usr/bin"
-#   find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
-#   find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+   find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+   find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
 #   find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
 }
 

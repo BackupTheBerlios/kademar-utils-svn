@@ -27,7 +27,10 @@ def gravaRegistre(registro):
 dir1="/usr/share/applications/"
 dir2="/usr/share/applications/kde4/"
 ficheros1=os.listdir(dir1)
-ficheros2=os.listdir(dir2)
+if os.path.exists(dir2):
+    ficheros2=os.listdir(dir2)
+else:
+    ficheros2=[]
 
 #f=open("programes.txt",'w')
 #f.write("Name | Name[es] | Name[ca] |GenericName[ca] | Exec | Categories\n\n")

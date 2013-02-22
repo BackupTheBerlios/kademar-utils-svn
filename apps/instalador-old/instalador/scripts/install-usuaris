@@ -82,7 +82,7 @@ default_user="$user"
 
 
 #default session lxde with accessibility
-if [ "$kademar_type" = "Heliox" ]; then
+if [ "$(echo $kademar_type | tr '[A-Z]' '[a-z]')" = "heliox" ]; then
   [ ! -e $DESTI/var/lib/AccountsService/users ] && mkdir -p $DESTI/var/lib/AccountsService/users
   echo "
 

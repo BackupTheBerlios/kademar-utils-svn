@@ -120,7 +120,7 @@ do
   fi
 done
 
-if [ "$kademar_type" != "Heliox" ]; then
+if [ "$(echo $kademar_type | tr '[A-Z]' '[a-z]')" != "heliox" ]; then
   echo "Removing possible network-manager GNOME conflict"
   chroot $DESTI pacman --noconfirm -R network-manager-applet
 fi 

@@ -1,7 +1,7 @@
 . /etc/kademar/config-livecd
 desk=`gettext -d xdg-user-dirs -s "Desktop"`
 
-[ "$kademar_type" = "Heliox" ] && icon="-heliox"
+[ "$(echo $kademar_type | tr '[A-Z]' '[a-z]')" = "heliox" ] && icon="-heliox"
 
 echo "[Desktop Entry]
 Encoding=UTF-8

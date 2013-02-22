@@ -72,7 +72,7 @@ TZ="Europe/Brussels"
 bg*)
 LANGUAGE="bg"
 COUNTRY="bg"
-LANG="bg_BG"
+LANG="bg_BG.UTF-8"
 KEYTABLE="bg"
 XKEYBOARD="bg"
 KDEKEYBOARD="bg"
@@ -85,7 +85,7 @@ TZ="Europe/Sofia"
 ch*)
 LANGUAGE="de"
 COUNTRY="ch"
-LANG="de_CH"
+LANG="de_CH.UTF-8"
 KEYTABLE="sg-latin1"
 XKEYBOARD="de_CH"
 KDEKEYBOARD="de_CH"
@@ -97,7 +97,7 @@ TZ="Europe/Zurich"
 cn*)
 # Simplified Chinese version
 COUNTRY="cn"
-LANG="zh_CN.GB2312"
+LANG="zh_CN.UTF-8"
 KEYTABLE="us"
 XKEYBOARD="us"
 KDEKEYBOARD="us"
@@ -111,7 +111,7 @@ TZ="Asia/Shanghai"
 cs*|cz*)
 LANGUAGE="cs"
 COUNTRY="cs"
-LANG="cs_CZ"
+LANG="cs_CZ.UTF-8"
 KEYTABLE="cz-lat2"
 XKEYBOARD="cs"
 KDEKEYBOARD="cs"
@@ -124,7 +124,7 @@ CONSOLEFONT="iso02g"
 dk*|da*)
 # Dansk version
 COUNTRY="dk"
-LANG="da_DK"
+LANG="da_DK.UTF-8"
 # Workaround: "dk" broken in gettext, use da:da_DK
 LANGUAGE="da:da_DK"
 # Keytable "dk" is correct.
@@ -178,7 +178,7 @@ he*|il*)
 # Hebrew version
 LANGUAGE="he"
 COUNTRY="il"
-LANG="he_IL"
+LANG="he_IL.UTF-8"
 KEYTABLE="us"
 XKEYBOARD="us"
 KDEKEYBOARD="il"
@@ -214,7 +214,7 @@ TZ="Europe/Rome"
 ja*)
 # (limited) Japanese version
 COUNTRY="jp"
-LANG="ja_JP"
+LANG="ja_JP.UTF-8"
 LANGUAGE="ja"
 KEYTABLE="us"
 XKEYBOARD="us"
@@ -239,7 +239,7 @@ TZ="Europe/Amsterdam"
 pl*)
 # Polish version
 COUNTRY="pl"
-LANG="pl_PL"
+LANG="pl_PL.UTF-8"
 KEYTABLE="pl"
 XKEYBOARD="pl"
 KDEKEYBOARD="pl"
@@ -252,7 +252,7 @@ CONSOLEFONT="iso02g"
 ru*)
 # Russian version
 COUNTRY="ru"
-LANG="ru_RU.KOI8-R"
+LANG="ru_RU.UTF-8"
 KEYTABLE="ru"
 XKEYBOARD="ru"
 KDEKEYBOARD="ru"
@@ -265,7 +265,7 @@ TZ="Europe/Moscow"
 sk*)
 # Slovak version (guessed)
 COUNTRY="sk"
-LANG="sk"
+LANG="sk.UTF-8"
 KEYTABLE="sk-qwerty"
 XKEYBOARD="sk"
 KDEKEYBOARD="sk"
@@ -279,7 +279,7 @@ CONSOLEFONT="iso02g"
 sl*)
 LANGUAGE="sl"
 COUNTRY="si"
-LANG="sl_SI"
+LANG="sl_SI.UTF-8"
 KEYTABLE="slovene"
 XKEYBOARD="sl"
 KDEKEYBOARD="si"
@@ -292,7 +292,7 @@ CONSOLEFONT="iso02g"
 tr*)
 # Turkish version (guessed)
 COUNTRY="tr"
-LANG="tr_TR"
+LANG="tr_TR.UTF-8"
 KEYTABLE="tr_q-latin5"
 XKEYBOARD="tr"
 KDEKEYBOARD="tr"
@@ -304,7 +304,7 @@ TZ="Europe/Istanbul"
 tw*)
 # Traditional Chinese version (thanks to Chung-Yen Chang)
 COUNTRY="tw"
-LANG="zh_TW.Big5"
+LANG="zh_TW.UTF-8"
 LANGUAGE="zh_TW.Big5"
 KEYTABLE="us"
 XKEYBOARD="us"
@@ -319,7 +319,7 @@ TZ="Asia/Taipei"
 uk*)
 # British version
 COUNTRY="uk"
-LANG="en_GB"
+LANG="en_GB.UTF-8"
 LANGUAGE="en"
 KEYTABLE="uk"
 XKEYBOARD="uk"

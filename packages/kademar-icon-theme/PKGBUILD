@@ -1,6 +1,6 @@
 #Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=kademar-icon-theme
-pkgver=1.1
+pkgver=1.5
 pkgrel=1
 epoch=
 pkgdesc="kademar Icons based on Elementary USU"
@@ -9,7 +9,7 @@ url="http://www.kademar.org"
 license=('GPL')
 groups=()
 depends=()
-makedepends=()
+makedepends=('fdupes')
 checkdepends=()
 optdepends=()
 provides=()
@@ -19,12 +19,44 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver.tar.gz")
+source=("http://www.kademar.org/kademar-icon-theme-1.5.tar.gz")
 noextract=()
-md5sums=('c92f4fd3258ac1d3b7059588b1636ec5') #generate with 'makepkg -g'
+md5sums=('b822b19be58788b2af144aa2e28028e9') #generate with 'makepkg -g'
 
 build() {
- cd "$srcdir"  
+  cd "$srcdir/$pkgname-$pkgver"
+ 
+ 
+ 
+  # REMOVE DUPLICATED ICONS
+  start=""
+
+  fdupes -r * | while read line
+  do
+
+  #search the first link to do
+    if [ -z "$start" ]; then
+     #if line is with text, means there is something, and it's the beginning of block
+      if [ -n "$line" ]; then
+        start="$line"
+#         echo BASE $start
+      fi
+    else
+      #if line is with text, there's an icon duplicated
+      if [ -n "$line" ]; then
+        rm -f "$line"
+        ln -s "../../$start" "$line"
+#         echo linking $line to $start
+      else
+       #if there isn't text, means change of block, and have to find other beginning
+        start=""
+#         echo 
+      fi
+    fi
+  done
+  
+  #REMOVE DUPLICATED ICONS END
+ 
 }
 
 package() {

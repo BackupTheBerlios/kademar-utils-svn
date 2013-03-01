@@ -10,7 +10,7 @@ post_install() {
     createRahisiDB
 }
 
-post_update() {
+post_upgrade() {
     createRahisiDB
 }
 

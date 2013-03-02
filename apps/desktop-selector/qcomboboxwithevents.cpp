@@ -6,7 +6,6 @@
 #include <QEvent>
 #include <QFocusEvent>
 #include <QDebug>
-#include <QBool>
 
 QComboBoxWithEvents::QComboBoxWithEvents(QWidget *parent) :
     QComboBox(parent)

@@ -6,7 +6,7 @@
 #include <QEvent>
 #include <QFocusEvent>
 #include <QDebug>
-#include <QBool>
+
 QCheckBoxWithEvents::QCheckBoxWithEvents(QWidget *parent) :
     QCheckBox(parent)
 {

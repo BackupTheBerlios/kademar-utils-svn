@@ -6,7 +6,6 @@
 #include <QEvent>
 #include <QFocusEvent>
 #include <QDebug>
-#include <QBool>
 
 extern QList<QString> graphicResolutions;
 

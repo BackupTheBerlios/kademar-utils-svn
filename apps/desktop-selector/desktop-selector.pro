@@ -1,6 +1,10 @@
 # -------------------------------------------------
 # Project created by QtCreator 2010-06-08T13:33:48
 # -------------------------------------------------
+QT       += core gui
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
 TARGET = desktop-selector
 TEMPLATE = app
 SOURCES += main.cpp \
@@ -41,31 +45,3 @@ OTHER_FILES += \
     xinit/desktop-selector \
     xorg.conf.d/10-monitor.conf \
     xinit/enlightenment17
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

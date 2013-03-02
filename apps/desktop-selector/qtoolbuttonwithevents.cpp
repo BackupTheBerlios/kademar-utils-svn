@@ -5,7 +5,6 @@
 #include <QEvent>
 #include <QFocusEvent>
 #include <QDebug>
-#include <QBool>
 #include <QSettings>
 #include "qtoolbuttonwithevents.h"
 #include <QToolTip>

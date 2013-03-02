@@ -495,7 +495,7 @@ void DesktopSelector::setupPages()
     }
     //If preconfigured FREE_DRIVER want, do not show chipset free/non-free choose frame
     if (settings.value("FREE_DRIVER").toString() != ""){
-        //if (QBool(settings.value("FREE_DRIVER").toBool()) == QBool(false)){
+        //if (bool(settings.value("FREE_DRIVER").toBool()) == bool(false)){
             ui->driverFrame->setVisible(false);
             ui->displayChipetLabel->setVisible(false);
             ui->displayChipetLabel->setVisible(false);
@@ -505,7 +505,7 @@ void DesktopSelector::setupPages()
     }
     //If not display advanced configuration, hide frame
     if ((settings.value("DRIVER_ADVANCED").toString() != "")){
-        if (QBool(settings.value("DRIVER_ADVANCED").toBool()) == QBool(false)){
+        if (bool(settings.value("DRIVER_ADVANCED").toBool()) == bool(false)){
             ui->advancedConfigurationFrame->setVisible(false);
             //qDebug() << "advancedconfigurationframe disabled DRIVER_ADVANCED";
         }
@@ -932,11 +932,11 @@ void DesktopSelector::createLanguageButton(QString *lang)
     QString realLanguageName = dict.value(*lang);
 
     //hack to recover good accents and punctuation - losed on qhash "dict"
-    QByteArray byteArray = realLanguageName.toAscii();
-    const char * processingString = byteArray.data();
-    QString realLanguageNameTrans = QString::fromLocal8Bit(processingString);
-
-    listLangButtons[numlanguage]->setText(QString("  " + realLanguageNameTrans));
+//     QByteArray byteArray = realLanguageName.toLatin1();
+//     const char * processingString = byteArray.data();
+//     QString realLanguageNameTrans = QString::fromLocal8Bit(processingString);
+//     listLangButtons[numlanguage]->setText(QString("  " + realLanguageNameTrans));
+    listLangButtons[numlanguage]->setText(QString("  " + realLanguageName));
     listLangButtons[numlanguage]->setTextProperty(new QString("LANG"), new QString(*lang)); //set text button property to write on file
 
     //listDesktopImage[numdesktop]->setStyleSheet("QLabel#label1 {margin-left: 50px; background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #5E5E5E, stop: 1 white) ;}");
@@ -956,8 +956,8 @@ void DesktopSelector::createLanguageButton(QString *lang)
     //listLangButtons[numlanguage]->setStyleSheet("QPushButtonWithEvents:hover  { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #f0efee, stop: 1 #d4d3d2) ; border-style: outset; border-width: 1px; border-radius: 3px; border-color: #444444; font: bold 14px; min-width: 10em; padding: 6px; margin-bottom: 10px;}");
     listLangButtons[numlanguage]->setMinimumWidth(140);
 
-    //Create rows of 3 buttons, then new row and begin again
-    if (numLanguageButtons>2){
+    //Create rows of 5 buttons, then new row and begin again
+    if (numLanguageButtons>4){
 //        qDebug() << "newrow";
         languageRowNum=languageRowNum+1;
         numLanguageButtons=0;
@@ -979,11 +979,13 @@ void DesktopSelector::createLanguageButton(QString *lang)
     QFile *filebg = new QFile(QString(":/img/img/lang/%1.png").arg(*lang) );
     if  (filebg->exists()) {
         listLangActions[numlanguage]->setIcon(QIcon(QString(":/img/img/lang/%1.png").arg(*lang)));
-        listLangActions[numlanguage]->setText(realLanguageNameTrans);
+//         listLangActions[numlanguage]->setText(realLanguageNameTrans);
+        listLangActions[numlanguage]->setText(realLanguageName);
 //        listLangActions << new QActionWithEvents(QIcon(QPixmap(QString(":/img/img/lang/%1.png").arg(*lang))),realLanguageNameTrans, this);
     } else {
         listLangActions[numlanguage]->setIcon(QIcon(QString(":/img/img/lang/%1.png").arg(*lang).split("_")[0]));
-        listLangActions[numlanguage]->setText(realLanguageNameTrans);
+//         listLangActions[numlanguage]->setText(realLanguageNameTrans);
+        listLangActions[numlanguage]->setText(realLanguageName);
         //listLangActions << new QActionWithEvents(QIcon(QPixmap(QString(":/img/img/lang/%1.png").arg(QString(*lang).split("_")[0]))),realLanguageNameTrans, this);
     }
 
@@ -1069,14 +1071,14 @@ void DesktopSelector::changeForcedState(int value)
     QObject* pObject = sender();
     if (pObject->objectName() == "ch_forceResol"){
         //forced resolution
-        ui->hslider_resolutions->setEnabled(QBool(value));
-        ui->l_resol->setEnabled(QBool(value));
+        ui->hslider_resolutions->setEnabled(bool(value));
+        ui->l_resol->setEnabled(bool(value));
     } else {
         //forced driver
-        ui->cb_chipset->setEnabled(QBool(value));
-        ui->driverFrame->setEnabled(!QBool(value));
+        ui->cb_chipset->setEnabled(bool(value));
+        ui->driverFrame->setEnabled(!bool(value));
     }
-    //qDebug() << QBool(value) << name;
+    //qDebug() << bool(value) << name;
 }
 
 void DesktopSelector::detectGraphicCard()

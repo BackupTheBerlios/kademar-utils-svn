@@ -6,7 +6,6 @@
 #include <QEvent>
 #include <QFocusEvent>
 #include <QDebug>
-#include <QBool>
 
 QRadioButtonWithEvents::QRadioButtonWithEvents(QWidget *parent) :
     QRadioButton(parent)

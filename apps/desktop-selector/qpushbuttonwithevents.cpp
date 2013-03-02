@@ -7,7 +7,6 @@
 #include <QEvent>
 #include <QFocusEvent>
 #include <QDebug>
-#include <QBool>
 
 QPushButtonWithEvents::QPushButtonWithEvents(QWidget *parent) :
     QPushButton(parent)

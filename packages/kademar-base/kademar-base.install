@@ -41,7 +41,7 @@ BUG_REPORT_URL="http://bugs.archlinux.org/"' > /etc/os-release
 
 
 
-post_update() {
+post_upgrade() {
  put_issue
 
     echo 'NAME="Kademar Linux"

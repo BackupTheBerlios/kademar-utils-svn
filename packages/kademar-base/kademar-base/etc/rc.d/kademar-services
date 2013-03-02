@@ -1,17 +1,23 @@
 #!/bin/bash
 
 #mount all
-mnt-kademar
+/usr/bin/mnt-kademar
 
 #Start VirtualBox services if it's virtual session
 if [ -n "$(lspci | grep -i virtualbox)" ]; then
- modprobe -a vboxguest vboxsf vboxvideo
- mount -t vboxsf VirtualBox_SharedFolder /media/VirtualBox_SharedFolder -o gid=group,rw,dmode=777,fmode=777,comment=systemd.automount
+ #desctivated if not forced on cmdline
+ if [ -n "$(grep -i vbox /proc/cmdline)" ];  then
+     /sbin/modprobe -a vboxguest vboxsf vboxvideo
+ fi
+ 
+ /bin/mount -t vboxsf VirtualBox_SharedFolder /media/VirtualBox_SharedFolder -o gid=group,rw,dmode=777,fmode=777,comment=systemd.automount
 fi
 
 #Process events that we couldn't earlier (udev without dbus started)
-udevadm trigger --action=add
+/usr/bin/udevadm trigger --action=add
 
 
 #remove pacman DB lock (can hungry on reboots)
 [ -e /var/lib/pacman/db.lck ] && rm -f /var/lib/pacman/db.lck
+
+exit 0

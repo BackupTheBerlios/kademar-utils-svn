@@ -10,7 +10,6 @@
 # documents                  -  for your current user
 
 #Load language conf_file
-#. /etc/rc.conf
 . /etc/locale.conf
 
 #get translation from xdg-user-dirs

@@ -392,7 +392,7 @@ void HelioxHelper::createActions()
           }
           setGeometry(xVar , yVar , xWidth ,yHeight);
 
-         // qDebug() << position->toAscii();
+         // qDebug() << position->toLatin1();
          // qDebug() << xVar.toInt();
           /*
           qDebug() << "sreen width" << screenSize.width();
@@ -622,7 +622,7 @@ void HelioxHelper::createActions()
 
             //listApplicationButtons[numButtons]->setMinimumSize(QSize(170, 40));
             // good characters lost on .config
-            QByteArray byteArray = desc.toAscii();
+            QByteArray byteArray = desc.toLatin1();
             const char * processingString = byteArray.data();
             QString realdesc = QString::fromLocal8Bit(processingString);
 
@@ -703,7 +703,7 @@ void HelioxHelper::createActions()
 
          QString desc;
          desc ="Configura el idioma";
-         QByteArray byteArray = desc.toAscii();
+         QByteArray byteArray = desc.toLatin1();
          const char * processingString = byteArray.data();
          QString realdesc = QString::fromLocal8Bit(processingString);
 
@@ -830,7 +830,7 @@ void HelioxHelper::createActions()
          QString realLanguageName = dict.value(*lang);
 
          //hack to recover good accents and punctuation - losed on qhash "dict"
-         QByteArray byteArray = realLanguageName.toAscii();
+         QByteArray byteArray = realLanguageName.toLatin1();
          const char * processingString = byteArray.data();
          QString realLanguageNameTrans = QString::fromLocal8Bit(processingString);
 

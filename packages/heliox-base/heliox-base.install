@@ -38,7 +38,7 @@ BUG_REPORT_URL="http://bugs.kademar.org/"' > /etc/os-release
 
 }
 
-post_update() {
+post_upgrade() {
     echo "Heliox Linux \r (\l)
     
 *******

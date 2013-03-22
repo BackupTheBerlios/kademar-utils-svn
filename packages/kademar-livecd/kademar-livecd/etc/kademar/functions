@@ -29,8 +29,6 @@ set_hostname () {
 
 
 set_environment_variables () {
-#. $1/etc/rc.conf
-#. $1/etc/rc.d/functions
 
 PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
 export PATH

@@ -6,7 +6,7 @@ Before=multi-user.target
 [Service]
 Type=oneshot
 ExecStart=/etc/rc.d/kademar-livecd start &
-ExecStop=swapoff -a
+ExecStop=/sbin/swapoff -a
 RemainAfterExit=yes
 
 [Install]

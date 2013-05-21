@@ -20,7 +20,7 @@
     </message>
     <message>
         <location filename="../desktopselector.ui" line="113"/>
-        <location filename="../desktopselector.ui" line="1342"/>
+        <location filename="../desktopselector.ui" line="1367"/>
         <source>Shutdown Computer</source>
         <translation>Apagar el Equipo</translation>
     </message>
@@ -32,8 +32,8 @@
     <message>
         <location filename="../desktopselector.ui" line="159"/>
         <location filename="../desktopselector.ui" line="722"/>
-        <location filename="../desktopselector.ui" line="1047"/>
-        <location filename="../desktopselector.ui" line="1193"/>
+        <location filename="../desktopselector.ui" line="1053"/>
+        <location filename="../desktopselector.ui" line="1228"/>
         <source>Previous</source>
         <translation>Anterior</translation>
     </message>
@@ -79,8 +79,7 @@
     </message>
     <message>
         <location filename="../desktopselector.ui" line="561"/>
-        <location filename="../desktopselector.ui" line="1070"/>
-        <location filename="../desktopselector.ui" line="1216"/>
+        <location filename="../desktopselector.ui" line="1076"/>
         <source>Accept</source>
         <translation>Aceptar</translation>
     </message>
@@ -116,7 +115,7 @@
     </message>
     <message>
         <location filename="../desktopselector.ui" line="919"/>
-        <location filename="../desktopselector.ui" line="1154"/>
+        <location filename="../desktopselector.ui" line="1124"/>
         <source>Advanced Selection</source>
         <translation>Selección avanzada</translation>
     </message>
@@ -171,68 +170,68 @@
         <translation>Teclado Virtual</translation>
     </message>
     <message>
-        <location filename="../desktopselector.ui" line="995"/>
-        <location filename="../desktopselector.ui" line="1093"/>
+        <location filename="../desktopselector.ui" line="1001"/>
+        <location filename="../desktopselector.ui" line="1099"/>
         <source>Simple Selection</source>
         <translation>Selección Simple</translation>
     </message>
     <message>
-        <location filename="../desktopselector.ui" line="1099"/>
+        <location filename="../desktopselector.ui" line="1141"/>
         <source>Sight difficults without useful part</source>
         <translation>Problemas en la visión sin parte útil</translation>
     </message>
     <message>
-        <location filename="../desktopselector.ui" line="1106"/>
+        <location filename="../desktopselector.ui" line="1180"/>
         <source>Reduced mobility on arms and hands</source>
         <translation>Movilidad reducida en brazos y manos</translation>
     </message>
     <message>
-        <location filename="../desktopselector.ui" line="1113"/>
+        <location filename="../desktopselector.ui" line="1167"/>
         <source>Old people</source>
         <translation>Gente mayor</translation>
     </message>
     <message>
-        <location filename="../desktopselector.ui" line="1120"/>
+        <location filename="../desktopselector.ui" line="1111"/>
         <source>Sight difficults with useful part</source>
         <translation>Problemas en la visión con parte útil</translation>
     </message>
     <message>
-        <location filename="../desktopselector.ui" line="1127"/>
+        <location filename="../desktopselector.ui" line="1193"/>
         <source>Learning difficults</source>
         <translation>Dificultades de aprendizaje</translation>
     </message>
     <message>
-        <location filename="../desktopselector.ui" line="1147"/>
+        <location filename="../desktopselector.ui" line="1254"/>
         <source>Without difficults</source>
         <translation>Sin dificultades</translation>
     </message>
     <message>
-        <location filename="../desktopselector.ui" line="1259"/>
+        <location filename="../desktopselector.ui" line="1284"/>
         <source>Are you sure to shutdown the computer?</source>
         <translation>Está seguro que desea apagar el ordenador?</translation>
     </message>
     <message>
-        <location filename="../desktopselector.ui" line="1325"/>
+        <location filename="../desktopselector.ui" line="1350"/>
         <source>Reboot Computer</source>
         <translation>Reiniciar el Ordenador</translation>
     </message>
     <message>
-        <location filename="../desktopselector.ui" line="1359"/>
+        <location filename="../desktopselector.ui" line="1384"/>
         <source>Cancel</source>
         <translation>Cancelar</translation>
     </message>
     <message>
-        <location filename="../desktopselector.cpp" line="1059"/>
+        <location filename="../desktopselector.cpp" line="1090"/>
         <source>Detected:</source>
         <translation>Detectado:</translation>
     </message>
     <message>
-        <location filename="../desktopselector.cpp" line="1064"/>
+        <location filename="../desktopselector.cpp" line="1095"/>
         <source>(Recommended)</source>
         <translation>(Recomendado)</translation>
     </message>
     <message>
-        <location filename="../desktopselector.cpp" line="1231"/>
+        <location filename="../desktopselector.cpp" line="1289"/>
         <source>&lt;p&gt;&lt;b&gt;Installing %1 Drivers&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Be patient, it may take a while...&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;Instalando Controladores %1&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Tenga paciencia, puede tardar un tiempo...&lt;/p&gt;</translation>
     </message>
@@ -253,7 +252,7 @@
 <context>
     <name>QRadioButtonWithEvents</name>
     <message>
-        <location filename="../qradiobuttonwithevents.cpp" line="52"/>
+        <location filename="../qradiobuttonwithevents.cpp" line="51"/>
         <source>Activated</source>
         <translation>Activado</translation>
     </message>

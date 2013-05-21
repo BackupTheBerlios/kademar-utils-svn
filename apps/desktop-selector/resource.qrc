@@ -31,6 +31,11 @@
         <file>img/lang/de_DE.png</file>
         <file>img/lang/fr_FR.png</file>
         <file>img/lang/ru_RU.png</file>
+        <file>img/lang/eu_ES.png</file>
+        <file>img/lang/gl_ES.png</file>
+        <file>img/lang/it_IT.png</file>
+        <file>img/lang/zh_CN.png</file>
+        <file>img/lang/zh_TW.png</file>
     </qresource>
     <qresource prefix="/tr">
         <file>tr/es.qm</file>

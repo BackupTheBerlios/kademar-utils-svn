@@ -687,7 +687,7 @@ void DesktopSelector::setMaxResolution()
     }
     if  (!(filebg->exists())) {
 
-        filebg->setFileName(QString("/usr/share/wallpapers/Gota de Gebrada/contents/images/1280x1024.png"));
+        filebg->setFileName(QString("/usr/share/wallpapers/Kademar/contents/images/1600x1200.jpg"));
     }
     if  (!(filebg->exists())) {
 
@@ -898,7 +898,7 @@ void DesktopSelector::defineLanguageDictionary()
     dict["pt"] = "Português"; dict["pt_PT"] = "Português"; dict["pt_BR"] = "Português";
 
     dict["ru"] = "Pу́сский"; dict["ru_RU"] = "Pу́сский";
-
+    dict["zh"] = "Chinese";    dict["zh_CN"] = "Chinese";    dict["zh_TW"] = "Chinese";
     //Derivados en Mexico
     dict["mx"] = "Mexicano"; dict["es_MX"] = "Mexicano";
     dict["myn"] = "Maya"; dict["mx_myn"] = "Maya";

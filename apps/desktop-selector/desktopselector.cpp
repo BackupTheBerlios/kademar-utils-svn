@@ -12,7 +12,13 @@
 #include "QLabel"
 #include "QTranslator"
 #include "QLocale"
-#include "QApplication"
+
+//QT4
+#include "QMainWindow"
+
+//QT5
+// #include "QtWidgets/QApplication"
+
 #include <qactionwithevents.h>
 #include <qtoolbuttonwithevents.h>
 
@@ -28,7 +34,7 @@ QList<QString> graphicResolutions;
 extern QTranslator *appTranslator;
 
 extern QTranslator *qtTranslator;
-//extern QApplication *app;
+//extern QMainWindow *app;
 
 DesktopSelector::DesktopSelector(QWidget *parent) :
     QMainWindow(parent),
@@ -735,7 +741,7 @@ void DesktopSelector::cancelShutdown()
 void DesktopSelector::shutdownButton()
 {
         //qDebug() << "shutdown";
-        QString action = "halt";
+        QString action = "systemctl poweroff";
         this->confirmShutReboot(action);
 }
 
@@ -898,6 +904,7 @@ void DesktopSelector::defineLanguageDictionary()
     dict["pt"] = "Português"; dict["pt_PT"] = "Português"; dict["pt_BR"] = "Português";
 
     dict["ru"] = "Pу́сский"; dict["ru_RU"] = "Pу́сский";
+//     dict["ru"] = "Russian"; dict["ru_RU"] = "Russian";
     dict["zh"] = "Chinese";    dict["zh_CN"] = "Chinese";    dict["zh_TW"] = "Chinese";
     //Derivados en Mexico
     dict["mx"] = "Mexicano"; dict["es_MX"] = "Mexicano";
@@ -913,8 +920,13 @@ void DesktopSelector::changeLanguage(QString *lang){
     appTranslator->load(*lang, qmPath);
 
     //QTranslator qtTranslator;
+    //QT4
     qtTranslator->load("qt_" + *lang, "/usr/share/qt4/translations");
 
+//     QT5
+//     qtTranslator->load("qt_" + *lang, "/usr/share/qt/translations");
+
+    
 }
 
 void DesktopSelector::createLanguageButton(QString *lang)
@@ -932,11 +944,28 @@ void DesktopSelector::createLanguageButton(QString *lang)
     QString realLanguageName = dict.value(*lang);
 
     //hack to recover good accents and punctuation - losed on qhash "dict"
+    
+    //QT4
+    //hack to recover good accents and punctuation - losed on qhash "dict"
+    QByteArray byteArray = realLanguageName.toAscii();
+//      QByteArray byteArray = realLanguageName.toLatin1();
+    const char * processingString = byteArray.data();
+    QString realLanguageNameTrans = QString::fromLocal8Bit(processingString);
+    
+    
+    //QT5  NOT USED FINALLY
 //     QByteArray byteArray = realLanguageName.toLatin1();
 //     const char * processingString = byteArray.data();
 //     QString realLanguageNameTrans = QString::fromLocal8Bit(processingString);
 //     listLangButtons[numlanguage]->setText(QString("  " + realLanguageNameTrans));
-    listLangButtons[numlanguage]->setText(QString("  " + realLanguageName));
+    
+    //QT4
+    listLangButtons[numlanguage]->setText(QString("  " + realLanguageNameTrans));
+    
+//     QT5
+//     listLangButtons[numlanguage]->setText(QString("  " + realLanguageName));
+
+
     listLangButtons[numlanguage]->setTextProperty(new QString("LANG"), new QString(*lang)); //set text button property to write on file
 
     //listDesktopImage[numdesktop]->setStyleSheet("QLabel#label1 {margin-left: 50px; background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #5E5E5E, stop: 1 white) ;}");
@@ -979,13 +1008,17 @@ void DesktopSelector::createLanguageButton(QString *lang)
     QFile *filebg = new QFile(QString(":/img/img/lang/%1.png").arg(*lang) );
     if  (filebg->exists()) {
         listLangActions[numlanguage]->setIcon(QIcon(QString(":/img/img/lang/%1.png").arg(*lang)));
-//         listLangActions[numlanguage]->setText(realLanguageNameTrans);
-        listLangActions[numlanguage]->setText(realLanguageName);
+
+        listLangActions[numlanguage]->setText(realLanguageNameTrans); //QT4
+//         listLangActions[numlanguage]->setText(realLanguageName);  //QT5
+	
 //        listLangActions << new QActionWithEvents(QIcon(QPixmap(QString(":/img/img/lang/%1.png").arg(*lang))),realLanguageNameTrans, this);
     } else {
         listLangActions[numlanguage]->setIcon(QIcon(QString(":/img/img/lang/%1.png").arg(*lang).split("_")[0]));
-//         listLangActions[numlanguage]->setText(realLanguageNameTrans);
-        listLangActions[numlanguage]->setText(realLanguageName);
+	
+        listLangActions[numlanguage]->setText(realLanguageNameTrans);  //QT4
+//         listLangActions[numlanguage]->setText(realLanguageName);  //QT5
+
         //listLangActions << new QActionWithEvents(QIcon(QPixmap(QString(":/img/img/lang/%1.png").arg(QString(*lang).split("_")[0]))),realLanguageNameTrans, this);
     }
 
@@ -1002,7 +1035,7 @@ void DesktopSelector::createLanguageButton(QString *lang)
 /*
 void DesktopSelector::translateGui(){
 
-    //QApplication a = new QApplication(this);
+    //QMainWindow a = new QMainWindow(this);
     QString qmPath = ":/tr/tr/";
 
     QTranslator appTranslator;

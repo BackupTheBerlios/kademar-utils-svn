@@ -158,7 +158,7 @@ while true; do
 	  # Temporary workaround for missing KDE/Gnome shutdown button
 	  if tail -1 /home/"$user"/.xsession-errors 2>/dev/null | egrep -q -e '(startkde: Done|^gnome)'; then
 # 	   sudo /sbin/init 0
-             sudo halt
+             sudo systemctl poweroff
 	  fi
 	#   newtime="$(date +'%s')"
 	#   if [ "$((newtime - oldtime))" -lt 30 ]; then
@@ -177,7 +177,7 @@ while true; do
 			if [ -n "$XSESSION_COMMAND" ]; then
 				case "$XSESSION_COMMAND" in
 				shutdown*halt*)
-					NEXT_RUNLEVEL=halt
+					NEXT_RUNLEVEL="systemctl poweroff"
 				;;
 				shutdown*reboot*)
 					NEXT_RUNLEVEL=reboot

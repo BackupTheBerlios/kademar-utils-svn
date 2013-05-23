@@ -38,7 +38,9 @@
         <file>img/lang/zh_TW.png</file>
     </qresource>
     <qresource prefix="/tr">
-        <file>tr/es.qm</file>
-        <file>tr/ca.qm</file>
+        <file>tr/gl_ES.qm</file>
+        <file>tr/eu_ES.qm</file>
+        <file>tr/ca_ES.qm</file>
+        <file>tr/es_ES.qm</file>
     </qresource>
 </RCC>

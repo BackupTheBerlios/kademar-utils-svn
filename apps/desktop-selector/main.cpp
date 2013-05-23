@@ -1,4 +1,4 @@
-#include <QtWidgets/QApplication>
+#include <QtGui/QApplication>
 #include "desktopselector.h"
 #include <QTranslator>
 #include <QString>
@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     QSettings settings("/home/clawlinux/desktop-selector.ini", QSettings::IniFormat);
 
     if (settings.value("START").toString() != ""){
-        if (bool(settings.value("START").toBool()) == bool(false)){
+        if (QBool(settings.value("START").toBool()) == QBool(false)){
             QApplication app(argc, argv);
         } else {
             QApplication app(argc, argv);

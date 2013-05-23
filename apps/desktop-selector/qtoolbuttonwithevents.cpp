@@ -10,7 +10,7 @@
 #include <QToolTip>
 #include <QTime>
 #include <QEventLoop>
-#include <QApplication>
+#include <QMainWindow>
 #include <QTimer>
 
 QToolButtonWithEvents::QToolButtonWithEvents(QWidget *parent) :

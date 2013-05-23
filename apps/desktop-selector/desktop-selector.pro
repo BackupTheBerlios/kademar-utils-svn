@@ -28,12 +28,10 @@ HEADERS += desktopselector.h \
     qtoolbuttonwithevents.h
 FORMS += desktopselector.ui
 RESOURCES += resource.qrc
-TRANSLATIONS = tr/es.ts tr/ca.ts tr/en.ts
+TRANSLATIONS = tr/es_ES.ts tr/ca_ES.ts tr/en.ts tr/gl_ES.ts tr/eu_ES.ts
 
 OTHER_FILES += \
-    tr/es.ts \
     tr/en.ts \
-    tr/ca.ts \
     TODO \
     scripts/nvidia-installer-offline.sh \
     scripts/ati-installer-offline.sh \
@@ -44,4 +42,8 @@ OTHER_FILES += \
     xinit/kde4 \
     xinit/desktop-selector \
     xorg.conf.d/10-monitor.conf \
-    xinit/enlightenment17
+    xinit/enlightenment17 \
+    tr/ca_ES.ts \
+    tr/es_ES.ts \
+    tr/gl_ES.ts \
+    tr/eu_ES.ts

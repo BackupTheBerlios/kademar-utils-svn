@@ -1,13 +1,13 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=desktop-selector-svn
-pkgver=1
-pkgrel=2
+pkgver=303
+pkgrel=1
 pkgdesc="Utility to select desktop, language, drivers and accessibility on livecd"
 arch=('i686' 'x86_64')
 url="http://www.kademar.org"
 license=('GPL3')
 groups=('kademar')
-depends=('qt5-base')
+depends=('qt4')
 makedepends=('subversion')
 install=desktop-selector.install
 provides=('desktop-selector')
@@ -18,9 +18,9 @@ _svnmod="desktop-selector"
 build() {
   cd "${srcdir}"
   if [ -d ${_svnmod}/.svn ]; then
-    (cd ${_svnmod} && svn up -r ${pkgver})
+    (cd ${_svnmod} && svn up)
   else
-    svn co ${_svntrunk}/${_svnmod} --config-dir ./ -r ${pkgver} ${_svnmod}
+    svn co ${_svntrunk}/${_svnmod} --config-dir ./ ${_svnmod}
   fi
   msg "SVN checkout done or server timeout"
 
@@ -33,8 +33,14 @@ build() {
   cd "${srcdir}/${_svnmod}-build"
   #make ${_options} definitions=TEXTATOR_VERSION=rev${pkgver} -C src
   
-  lrelease ${_svnmod}.pro
-  qmake
+  #QT5
+  #/usr/bin/lrelease ${_svnmod}.pro
+  #qmake
+  #make
+  
+  #QT4
+  /usr/bin/lrelease-qt4 ${_svnmod}.pro
+  qmake-qt4
   make
 }
 

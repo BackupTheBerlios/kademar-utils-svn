@@ -136,6 +136,34 @@ CHARSET="iso8859-15"
 KDEKEYBOARDS="dk,de,us,fr"
 TZ="Europe/Copenhagen"
 ;;
+gl_ES*)
+# Spanish version
+COUNTRY="es"
+LANG="gl_ES.UTF-8"
+KEYTABLE="es"
+LANG_COUNTRY="gl_ES"
+XKEYBOARD="es"
+KDEKEYBOARD="es"
+CHARSET="iso8859-15"
+# Additional KDE Keyboards
+KDEKEYBOARDS="de,us,fr"
+TZ="Europe/Madrid"
+OPTIONAL=":es_ES:es"
+;;
+eu_ES*)
+# Spanish version
+COUNTRY="es"
+LANG="eu_ES.UTF-8"
+KEYTABLE="es"
+LANG_COUNTRY="gl_ES"
+XKEYBOARD="es"
+KDEKEYBOARD="es"
+CHARSET="iso8859-15"
+# Additional KDE Keyboards
+KDEKEYBOARDS="de,us,fr"
+TZ="Europe/Madrid"
+OPTIONAL=":es_ES:es"
+;;
 es*)
 # Spanish version
 COUNTRY="es"
@@ -301,11 +329,26 @@ CHARSET="iso8859-9"
 KDEKEYBOARDS="us,de,fr"
 TZ="Europe/Istanbul"
 ;;
-tw*)
+zh_TW*)
 # Traditional Chinese version (thanks to Chung-Yen Chang)
 COUNTRY="tw"
 LANG="zh_TW.UTF-8"
 LANGUAGE="zh_TW.Big5"
+KEYTABLE="us"
+XKEYBOARD="us"
+KDEKEYBOARD="us"
+# CHARSET="big5-0"
+CHARSET="iso8859-1"
+# Additional KDE Keyboards
+KDEKEYBOARDS="us"
+XMODIFIERS="@im=xcin"
+TZ="Asia/Taipei"
+;;
+zh_CN*)
+# Simplified Chinese version (thanks to Chung-Yen Chang)
+COUNTRY="tw"
+LANG="zh_CN.UTF-8"
+# LANGUAGE="zh_TW.Big5"
 KEYTABLE="us"
 XKEYBOARD="us"
 KDEKEYBOARD="us"

@@ -1180,7 +1180,7 @@ void DesktopSelector::finalSteps()
             QTextStream stream( file );
             stream << "Section \"Device\"\n";
             stream << "  Identifier \"<default device>\"\n";
-            stream << "  Driver \""+ selectedDriver.replace("-legacy","") +"\"\n";  //remove legacy from driver name nvidia-legacy
+            stream << "  Driver \""+ QString(selectedDriver).replace("-legacy","") +"\"\n";  //remove legacy from driver name nvidia-legacy
             stream << "EndSection\n";
         }
         file->close();
@@ -1325,11 +1325,14 @@ void DesktopSelector::installVideoDriver(QString driver){
         extern QSettings settings;
         if (driver == "nvidia"){
             settings.setValue("nvidiaDriver", "true");
+           // qDebug() << "if driver nvidia";
         } else if (driver == "nvidia-legacy") {
             settings.setValue("nvidiaDriver", "true");
 	    settings.setValue("nvidiaLegacyDriver", "true");
+           // qDebug() << "if driver nvidia legacy";
         } else {
             settings.setValue("atiDriver", "true");
+           // qDebug() << "if driver ati";
         }
 
         QProcess* process = new QProcess();
@@ -1347,6 +1350,7 @@ void DesktopSelector::installVideoDriver(QString driver){
         ui->gridLayout_7->removeItem(ui->horizontalSpacer_9);
         ui->displayChipetLabel->setVisible(false);
         //qDebug() << QString("/usr/share/desktop-selector/scripts/%1-installer-offline.sh").arg(driver);
+        qDebug() << QString("/usr/share/desktop-selector/scripts/%1-installer-offline.sh").arg(driver);
         process->start(QString("/usr/share/desktop-selector/scripts/%1-installer-offline.sh").arg(driver));
 
   //      installingDrivers=false;

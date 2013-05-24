@@ -11,3 +11,13 @@ pacman --noconfirm -Rdd $packets
 pacman --noconfirm -U /usr/share/desktop-selector/drivers/nvidia/*xz
 
 rm -fr /tmp/nouveau /tmp/radeon
+
+
+
+#If error on Nvidia driver, try the legacy one
+if [ -n "$(LANG=C modprobe nvidia 2>&1 | grep -i "no such device")" -a -z "`grep nvidiaLegacyDriver=true /etc/kademar/desktop-selector.ini`"  ]; then
+  echo "Installing NVIDIA Legacy drivers"
+  sudo sh /usr/share/desktop-selector/scripts/nvidia-legacy-installer-offline.sh
+  sudo chmod 777 /etc/kademar/desktop-selector.ini
+  echo nvidiaLegacyDriver=true >> /etc/kademar/desktop-selector.ini
+fi

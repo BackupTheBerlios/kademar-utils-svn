@@ -7,12 +7,6 @@ post_upgrade() {
   update_files
 }
 
-#pre_remove() {
-    #systemctl disable desktop-selector
-    #rm -f /etc/systemd/system/multi-user.target.wants/desktop-selector.service
- #   rm -f /etc/systemd/system/display-manager.service
-#}
-
 post_remove(){
     #remove desktop-selector packages
     rm -fr /usr/share/desktop-selector/
@@ -23,10 +17,10 @@ update_files() {
 
     mkdir -p /usr/share/desktop-selector/pacmandb /usr/share/desktop-selector/drivers
     rm /var/cache/pacman/pkg/*catalyst* /var/cache/pacman/pkg/nvidia-* 2>/dev/null
-    pacman --dbpath /usr/share/desktop-selector/pacmandb --cachedir /usr/share/desktop-selector/drivers/nvidia --noconfirm -Sywdd nvidia nvidia-utils opencl-nvidia libcl libxv
+    pacman --dbpath /usr/share/desktop-selector/pacmandb --cachedir /usr/share/desktop-selector/drivers/nvidia --noconfirm -Sywdd nvidia-libgl nvidia nvidia-utils opencl-nvidia libcl libxv
     pacman --dbpath /usr/share/desktop-selector/pacmandb --cachedir /usr/share/desktop-selector/drivers/nvidia-legacy --noconfirm -Sywdd nvidia-304xx nvidia-304xx-utils opencl-nvidia-304xx libcl
     pacman --dbpath /usr/share/desktop-selector/pacmandb --cachedir /usr/share/desktop-selector/drivers/catalyst --noconfirm -Sywdd catalyst-dkms catalyst-utils opencl-catalyst netkit-bsd-finger dkms patch xinetd make
-    [ "$(uname -m)" != "i686" ] && pacman --dbpath /usr/share/desktop-selector/pacmandb --cachedir /usr/share/desktop-selector/drivers/nvidia --noconfirm -Swdd lib32-nvidia-utils lib32-libxvmc lib32-zlib lib32-libxdmcp lib32-libxau lib32-libx11 lib32-libxext lib32-libxv lib32-libxcb
+    [ "$(uname -m)" != "i686" ] && pacman --dbpath /usr/share/desktop-selector/pacmandb --cachedir /usr/share/desktop-selector/drivers/nvidia --noconfirm -Swdd lib32-nvidia-libgl lib32-nvidia-utils lib32-libxvmc lib32-zlib lib32-libxdmcp lib32-libxau lib32-libx11 lib32-libxext lib32-libxv lib32-libxcb
     [ "$(uname -m)" != "i686" ] && pacman --dbpath /usr/share/desktop-selector/pacmandb --cachedir /usr/share/desktop-selector/drivers/nvidia-legacy --noconfirm -Swdd lib32-nvidia-304xx-utils lib32-libxvmc lib32-zlib lib32-libxdmcp lib32-libxau lib32-libx11 lib32-libxext lib32-libxv lib32-libxcb
     [ "$(uname -m)" != "i686" ] && pacman --dbpath /usr/share/desktop-selector/pacmandb --cachedir /usr/share/desktop-selector/drivers/catalyst --noconfirm -Swdd lib32-catalyst-utils
     rm -fr /usr/share/desktop-selector/pacmandb

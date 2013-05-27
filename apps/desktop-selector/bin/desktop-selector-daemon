@@ -16,6 +16,12 @@ tryNvidiaLegacy(){
   if [ -n "$1" ]; then
     . /etc/kademar/functions
     set_environment_variables
+    
+    #hack if started like root, to not have problems as user
+    chown $user:users $HOME/.dbus -R 2>/dev/null
+    chown $user:users $HOME/.dbus 2>/dev/null
+    chown $user:users $HOME/.cache -R 2>/dev/null
+    chown $user:users $HOME/.cache 2>/dev/null
 
     sudo rm -fr /home/$user/.Xaut*
     rm -fr $HOME/.xinitrc

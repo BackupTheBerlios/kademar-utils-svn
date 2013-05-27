@@ -13,4 +13,4 @@ pyuic4 rahisi.ui > ui_rahisi.py
 pylupdate4 rahisi.pro
 
 #Release translation
-lrelease rahisi.pro
+/usr/bin/lrelease-qt4 rahisi.pro

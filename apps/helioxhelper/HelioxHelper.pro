@@ -35,7 +35,4 @@ RESOURCES += \
     Resource.qrc
 
 OTHER_FILES += \
-    ToDo.txt \
-    speech/vlc.ogg \
-    speech/pidgin.ogg \
-    speech/firefox.ogg
+    ToDo.txt

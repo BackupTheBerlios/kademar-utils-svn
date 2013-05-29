@@ -71,8 +71,12 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
     //No comments... :)
     this->prepareGui();
     //this->translateGui();
-    this->changeLanguage(new QString("es"));
+//     this->changeLanguage(new QString("es_ES"));
+    
+// Load current language
+    this->changeLanguage(new QString(execShellProcess(QString("/bin/sh"), QString("-c"), QString(". /etc/locale.conf ; echo $LANG"))));
 
+    
     // Manual Button Creation
     /*
     this->createDesktopButton(new QString("kde4"), new QString("true"));

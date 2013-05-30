@@ -29,14 +29,16 @@ tryNvidiaLegacy(){
     sudo chmod 777 $HOME/.xinitrc
     startx
   
-  #try to install Nvidia Legacy if failed
-    if [ -n "$(lspci | grep -i nvidia)" ]; then
-      if [ -n "$(LANG=C modprobe nvidia 2>&1 | grep -i "no such device")" -a -z "`grep nvidiaLegacyDriver=true /etc/kademar/desktop-selector.ini`"  ]; then
-        echo "Installing NVIDIA Legacy drivers"
-	sudo sh /usr/share/desktop-selector/scripts/nvidia-legacy-installer-offline.sh
-	sudo chmod 777 /etc/kademar/desktop-selector.ini
-	echo nvidiaLegacyDriver=true >> /etc/kademar/desktop-selector.ini
-	startx
+  #try to install Nvidia Legacy if failed startx
+    if [ "$?" != "0" -a -n "$(lspci | grep -i nvidia)" ]; then
+      if [ -n "$(LANG=C modprobe nvidia 2>&1 | grep -i "no such device")" -o -n "$(LANG=C modprobe nvidia 2>&1 | grep -i "not found")" ]; then
+        if [ -z "`grep nvidiaLegacyDriver=true /etc/kademar/desktop-selector.ini`"  ]; then
+          echo "Installing NVIDIA Legacy drivers"
+	  sudo sh /usr/share/desktop-selector/scripts/nvidia-legacy-installer-offline.sh
+	  sudo chmod 777 /etc/kademar/desktop-selector.ini
+	  echo nvidiaLegacyDriver=true >> /etc/kademar/desktop-selector.ini
+	  startx
+	fi
       fi
     fi
   fi

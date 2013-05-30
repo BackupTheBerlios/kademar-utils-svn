@@ -1353,6 +1353,9 @@ void DesktopSelector::installVideoDriver(QString driver){
         ui->controlFrame->setVisible(false);
         ui->gridLayout_7->removeItem(ui->horizontalSpacer_9);
         ui->displayChipetLabel->setVisible(false);
+        ui->stackedWidget->setCurrentWidget(ui->displayPage); //move to display page. Usefull if we are in KDM/GDM mode
+        ui->b_displayPrevious->setVisible(false);
+        ui->b_displayAccept->setVisible(false);
         //qDebug() << QString("/usr/share/desktop-selector/scripts/%1-installer-offline.sh").arg(driver);
         qDebug() << QString("/usr/share/desktop-selector/scripts/%1-installer-offline.sh").arg(driver);
         process->start(QString("/usr/share/desktop-selector/scripts/%1-installer-offline.sh").arg(driver));

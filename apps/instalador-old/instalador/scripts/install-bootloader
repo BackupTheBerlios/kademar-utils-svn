@@ -197,7 +197,7 @@ done
 
 
 #Define standard User params
-user_params="fastboot init=/bin/systemd $resume $moreoptions"
+user_params="fastboot $resume $moreoptions"
 #splash=silent,fadein,fadeout,theme:kademar console=/dev/tty1
 
 

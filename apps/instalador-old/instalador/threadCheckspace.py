@@ -46,10 +46,15 @@ class checkspace(QThread):
         percent=0
         #suma conté el tamany dels fitxers que s'han de copiar
         #suma=int(getoutput("df / | grep / | awk ' { print $2 } ' "))
-        if path.exists("/usr/share/kademar/utils/instalador/distrosize"):
-            suma=int(getoutput("cat /usr/share/kademar/utils/instalador/distrosize"))
-        else:
-            suma=4000000  #4 gb
+        
+        #calculat dinamicament, if not,  4gb
+        suma=int(getoutput('''var=$(du -s /run/archiso/bootmnt/kademar/`uname -m`/root-image.fs.sfs 2>/dev/null | awk ' { print $1 } ') ; if [ -n "$var" ]; then expr $var + $var + $var; else echo 4000000 ; fi'''))
+
+        #if path.exists("/usr/share/kademar/utils/instalador/distrosize"):
+            #suma=int(getoutput("cat /usr/share/kademar/utils/instalador/distrosize"))
+        #else:
+            #suma=8000000  #8 gb
+
 
         #ocupainicial conté el tamany de les particions, per si no s'han formatat
         # pero per si s'ha seleccionat home separats... es comprova cada un d'ells

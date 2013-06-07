@@ -537,7 +537,7 @@ class instalador(QDialog):
         self.checkparticionsiguals("home", char)
 
     def particionar(self):
-        system("gparted-pkexec")
+        system("gparted")
         self.llista_particions()
 
 #####

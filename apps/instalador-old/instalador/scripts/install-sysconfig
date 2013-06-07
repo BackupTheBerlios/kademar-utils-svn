@@ -204,6 +204,15 @@ if [ -e "$DESTI/usr/share/config/kdm/kdmrc" ]; then
   sessions=$(grep SessionsDirs= "$DESTI/usr/share/config/kdm/kdmrc")
   sed s."$sessions"."$sessions,/usr/share/xsessions".g -i "$DESTI/usr/share/config/kdm/kdmrc"
   
+#set kademar theme if exists
+  if [ -e "$DESTI/usr/share/apps/kdm/themes/Kademar-KDM" ]; then
+      sed "s~#Theme=.*~Theme=/usr/share/apps/kdm/themes/Kademar-KDM~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
+      sed "s~Theme=.*~Theme=/usr/share/apps/kdm/themes/Kademar-KDM~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
+      sed "s~#UseTheme=.*~UseTheme=true~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
+      sed "s~UseTheme=.*~UseTheme=true~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
+  fi
+
+  
 fi
 
 if [ -e "$DESTI/etc/slim.conf" ]; then

@@ -104,10 +104,25 @@ if [ "$AUTOLOGIN" = "si" ]; then
 
 #KDM Support
   if [ -e "$DESTI/usr/share/config/kdm/kdmrc" ]; then
+  
     sed "s~AutoLoginEnable=.*~AutoLoginEnable=true~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
     sed "s~#AutoLoginEnable=.*~AutoLoginEnable=true~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
+    
     sed "s~AutoLoginUser=.*~AutoLoginUser=$login~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
     sed "s~#AutoLoginUser=.*~AutoLoginUser=$login~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
+    
+    sed "s~#HaltCmd=.*~HaltCmd=systemctl poweroff~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
+    sed "s~HaltCmd=.*~HaltCmd=systemctl poweroff~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
+    
+    sed "s~FaceSource=.*~FaceSource=UserOnly~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
+    sed "s~#FaceSource=.*~FaceSource=UserOnly~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
+
+    #put default user icon
+    if [ -e "$DESTI/usr/share/apps/kdm/pics/users/default1.png" ]; then
+        [ ! -e "$DESTI/usr/share/apps/kdm/faces" ] && mkdir -p "$DESTI/usr/share/apps/kdm/faces"
+	cp "$DESTI/usr/share/apps/kdm/pics/users/default1.png" "$DESTI/usr/share/apps/kdm/faces/.default.face.icon"
+    fi
+    
   fi
   
 #GDM Support

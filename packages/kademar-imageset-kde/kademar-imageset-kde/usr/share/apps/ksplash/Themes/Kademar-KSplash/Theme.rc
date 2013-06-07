@@ -1,0 +1,11 @@
+[KSplash Theme: Kademar-KSplash]
+Name = Kademar-KSplash 
+Description = Kademar KSplash theme (based on Kitline)
+Version = 1.0
+  Author = Adonay Sanz Alsina <adonay@kademar.org>
+# Original Author Ayoze Hernández Díaz <koyal13[at]gmx[dot]com>
+Homepage = http://www.kademar.org
+# Original Homepage = https://sourceforge.net/projects/kitline/
+
+# Theme behaviour settings.
+Engine = KSplashQML

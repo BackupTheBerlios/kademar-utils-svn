@@ -1,0 +1,18 @@
+# This is not really a .desktop file like the rest, but it is useful to treat
+# it as such
+
+[KdmGreeterTheme]
+Greeter=kademar.xml
+Name=Kademar
+Name[x-test]=xxKademarxx
+Description=Kademar KDM Theme (Based on Kitline)
+Description[en_GB]=Kademar KDM Theme (Based on Kitline)
+Description[es]=Tema Kademar KDM (Basado en Kitline)
+Description[es]=Tema Kademar KDM (Basat en Kitline)
+Description[gl]=Tema Kademar KDM (Basado en Kitline)
+Description[de]=Kademar KDM Thema (Based on Kitline)
+
+Author=Adonay Sanz Alsina <adonay@kademar.org>
+# Original from Ayoze Hernández Díaz <ayoze12@gmail.com>
+Copyright=CreativeCommons-BY-SA | 2013
+Screenshot=screenshot.png

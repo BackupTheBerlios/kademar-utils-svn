@@ -1,0 +1,50 @@
+#!/bin/bash
+  #for j in `ls $i*`
+  #do
+  #  if [ ! -d "$j" ]; then
+  #    echo deleting $j
+  #  fi
+  #done
+  . ./PKGBUILD
+#   echo $pkgname
+
+  full=$pkgname-$pkgver
+  
+  
+  rm -fr src pkg build
+  rm -fr *xz
+  rm -fr *gz
+  rm -f *~
+  
+  [ ! -e "$full"  ] && ln -s "$pkgname" "$full"
+  
+  tar -chf "$full.tar" "$full"
+  gzip -9 "$full.tar"
+  
+  
+  md5sum=$(makepkg -g 2>/dev/null| cut -d\' -f2)
+  md5sumorig=$(grep -i md5sums PKGBUILD | cut -d\' -f2)
+  sed s."$md5sumorig"."$md5sum".g -i PKGBUILD
+  makepkg -d
+
+#   
+#   
+#   ls -1 | while read j
+#   do
+#     if [ -d "$j" -a -e "PKGBUILD" ]; then
+#       tar -cf "$j.tar" "$j"
+#       gzip -9 "$j.tar"
+#       num=${j##*-}
+# 
+#       sed "s~pkgver=.*~pkgver=$num~g" -i PKGBUILD
+#       md5sum=$(makepkg -g 2>/dev/null| cut -d\' -f2)
+#       md5sumorig=$(grep -i md5sums PKGBUILD | cut -d\' -f2)
+#       sed s."$md5sumorig"."$md5sum".g -i PKGBUILD
+# 
+#      # sed "s~md5sums=.*~"$md5sum"~g" -i PKGBUILD; a=$j
+#      
+#       makepkg -d
+#     fi
+#   done
+#   
+

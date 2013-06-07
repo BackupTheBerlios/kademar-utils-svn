@@ -1,0 +1,42 @@
+# Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+pkgname=kademar-imageset-kde
+pkgver=1.5
+pkgrel=1
+epoch=
+pkgdesc="Kademar Linux imageset pack for KDE"
+arch=('any')
+url="http://www.kademar.org"
+license=('GPL')
+groups=()
+depends=()
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+# install=kademar-imageset-kde.install
+changelog=
+source=("$pkgname-$pkgver.tar.gz")
+noextract=()
+md5sums=('f78d554a012597139cc9feaefca4c665') #generate with 'makepkg -g'
+
+
+ package() {
+   cp -a $startdir/src/$pkgname-$pkgver/* ${pkgdir}
+   cd ${pkgdir} && rm -fr `find . -name ".svn"` && rm -fr `find . -name "*.pyc"` && rm -f `find . -name "*~"`
+#   find "$pkgdir"/etc/ -type f -exec chmod 644 "{}" \;
+#   find "$pkgdir"/etc/ -type d -exec chmod 755 "{}" \;
+#   find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+#   find "$pkgdir"/etc/sudoers.d -type d -exec chmod 750 "{}" \;
+#   find "$pkgdir"/etc/sudoers.d -type f -exec chmod 440 "{}" \;
+#   find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+#   find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+#   find "$pkgdir"/etc/rc.d -type f -exec chmod 744 "{}" \;
+#   find "$pkgdir"/etc/X11/xinit/xinitrc.d -type f -exec chmod 755 "{}" \;
+# 
+# 
+# 
+ }

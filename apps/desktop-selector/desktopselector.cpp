@@ -126,7 +126,7 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
     if ( speech == 1 ){
         //configure Volumes (usefull to screenreader)
         QProcess *volumes = new QProcess();
-        volumes->start(QString("/usr/share/kademar/scripts/engegada/volums"));
+        volumes->start(QString("/usr/bin/soundcard-volume-fix"));
         volumes->waitForFinished();
 
     }

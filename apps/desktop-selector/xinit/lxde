@@ -15,9 +15,15 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-#exec ck-launch-session dbus-launch startlxdeaccessibility
+#apper hack
+for i in /usr/share/applications/kde4/apper.desktop /usr/share/applications/kde4/apper_installer.desktop /usr/share/applications/kde4/apper_settings.desktop /usr/share/applications/kde4/apper_updates.desktop
+do
+    [ -e "$i" ] && sed s.Exec=apper."Exec=sudo apper".g -i $i
+done
 
-#Support for both types
+#gparted hack
+[ -e /usr/share/applications/gparted.desktop ] && sed "s~Exec=*~Exec=sudo gparted~g"  -i /usr/share/applications/gparted.desktop
+
 
 if [ -e /usr/bin/startlxdeaccessibility ]; then
     exec startlxdeaccessibility

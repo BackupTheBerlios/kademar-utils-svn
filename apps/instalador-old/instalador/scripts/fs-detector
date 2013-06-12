@@ -37,8 +37,8 @@ if str(sys.argv[1])=="0":
 	if isDrive == 1 and isEjectable==0:
 	    devicefile=devicefile.strip("/dev/")
             if devicefile.find("loop") == -1 and rootimage.find("root-image") == -1:
-    	        #print isDrive
-  	        size=size/1000000
+    	        #print isDrive  in MiB/GiB
+  	        size=size/1073737
 	        print devicefile+"-"+str(size)
 
 else:
@@ -67,7 +67,7 @@ else:
             devicefile=devicefile.strip("/dev/")
             fs=device_props.Get('org.freedesktop.UDisks.Device', "IdType")
             size=device_props.Get('org.freedesktop.UDisks.Device', "PartitionSize")
-            size=size/1000000
+            size=size/1073737  #in MiB/GiB
             if str(fs).find("swap") != -1:
                 result=result+" "+str(devicefile)+"-"+str(fs)+"-"+str(size)+"-82"
             else:

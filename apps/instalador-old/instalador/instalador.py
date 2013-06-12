@@ -42,11 +42,14 @@ class instalador(QDialog):
         kernel=funcions_k.versiokernel()
         versiokademar=funcions_k.versiokademar()
         tipuskademar=funcions_k.tipuskademar()
-        
+        self.internet=funcions_k.internet()
+
         if path.exists("/etc/kademar/config-livecd.heliox"):
             self.setWindowTitle("Heliox Installer")
+            self.kademarType="heliox"
         else:
             self.setWindowTitle("Kademar Installer")
+            self.kademarType="kademar"
 	
 
 
@@ -248,10 +251,10 @@ class instalador(QDialog):
             #MB support
             if len(str(hddsize))<=3:
                 hddsize=int(hddtotal[i].split("-")[1])  #J
-                unitat=" Mb"
+                unitat=" MiB"
             else:
                 hddsize=str(hddsize)[:-3]+","+str(hddsize)[-3]
-                unitat=" Gb"
+                unitat=" GiB"
 
             hddsize=str(hddsize).rjust(7)
             hd=[]                  #Juntem tota la info del hd en una llista
@@ -281,10 +284,10 @@ class instalador(QDialog):
                         partsize=int(hddtotal[i].split("-")[1])  #J
                     #else:
                         #partsize=int(hddtotal[i])  #J
-                    unitat=" Mb"
+                    unitat=" MiB"
                 else:
                     partsize=str(partsize)[:-3]+","+str(partsize)[-3]
-                    unitat=" Gb"
+                    unitat=" GiB"
                 partsize=str(partsize).rjust(7)
 
                 #print part
@@ -947,7 +950,16 @@ class instalador(QDialog):
         #############################
         # CONFIGURACIONS DE SISTEMA #
         #############################
-
+        
+        #Count User on website
+        if self.internet:
+            mem=getoutput("cat /proc/meminfo  | grep MemTotal | awk ' { print $2 } '")
+            arch=getoutput("uname -m")
+            from  PyQt4.QtNetwork import QNetworkRequest,QNetworkAccessManager
+            nwam = QNetworkAccessManager()
+            request = QNetworkRequest (QUrl("http://www.kademar.org/UserCounter/count.php?login="+self.ui.t_user_account.text()+"&pc="+self.ui.t_pc.text()+"&type=hdd&kademar="+self.kademarType+"&arch="+arch+"&mem="+mem))
+            nwam.get(request)
+        
         #Muntem sistemes de fitxers virtuals
             system("mount --bind /dev "+target+"/dev")
             system("mount -t proc "+target+"/proc "+target+"/proc")

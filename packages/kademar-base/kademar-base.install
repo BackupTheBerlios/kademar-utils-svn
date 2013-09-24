@@ -8,8 +8,54 @@ ANSI_COLOR="0;36"
 HOME_URL="http://www.kademar.org/"
 SUPPORT_URL="http://www.kademar.org/"
 BUG_REPORT_URL="http://bugs.kademar.org/"' > /etc/os-release
+   
+ 
+####
+#  SYSCTL.CONF
+#    https://wiki.archlinux.org/index.php/Sysctl
+####
+
+#reisub entry
+if [ ! -e "/etc/sysctl.d/kernel_sysrq.conf" ]; then
+  echo "kernel.sysrq = 1" >> /etc/sysctl.d/kernel_sysrq.conf
+fi
     
-    [ -z "$(grep -i kernel.sysrq /etc/sysctl.conf | grep -i 1)" ] && echo "kernel.sysrq = 1" >> /etc/sysctl.conf
+#memory for small system freeze
+if [ ! -e "/etc/sysctl.d/vm_dirty_background_bytes.conf" ]; then
+  echo "vm.dirty_background_bytes = 4194304" >> /etc/sysctl.d/vm_dirty_background_bytes.conf
+fi
+
+if [ ! -e "/etc/sysctl.d/vm_dirty_bytes.conf" ]; then
+  echo "vm.dirty_bytes = 4194304" >> /etc/sysctl.d/vm_dirty_bytes.conf
+fi    
+
+
+#swapiness
+if [ ! -e "/etc/sysctl.d/vm_swappiness.conf" ]; then
+  echo "vm.swappiness = 20" >> /etc/sysctl.d/vm_swappiness.conf
+fi    
+if [ ! -e "/etc/sysctl.d/vm_vfs_cache_pressure.conf" ]; then
+  echo "vm.vfs_cache_pressure = 50" >> /etc/sysctl.d/vm_vfs_cache_pressure.conf
+fi    
+
+
+#shmmax  - Poor copy performance to USB pendrive
+if [ ! -e "/etc/sysctl.d/kernel_shmmax.conf" ]; then
+  echo "kernel.shmmax = 134217728" >> /etc/sysctl.d/kernel_shmmax.conf
+fi  
+
+####
+#  END SYSCTL.CONF
+####
+    
+# systemd -  Poor copy performance to USB pendrive
+
+if [ -z "$(grep -i '/sys/kernel/mm/transparent_hugepage/enabled' /etc/tmpfiles.d/local.conf)" ]; then
+    echo "w /sys/kernel/mm/transparent_hugepage/enabled - - - - madvise
+w /sys/kernel/mm/transparent_hugepage/defrag - - - - madvise
+w /sys/kernel/mm/transparent_hugepage/khugepaged/defrag - - - - 0" >> /etc/tmpfiles.d/local.conf
+fi
+    
     
   #systemctl enable kademar-services
   if [ ! -e /etc/systemd/system/multi-user.target.wants/kademar-services.service ]; then
@@ -42,51 +88,11 @@ BUG_REPORT_URL="http://bugs.archlinux.org/"' > /etc/os-release
 
 
 post_upgrade() {
- put_issue
-
-    echo 'NAME="Kademar Linux"
-ID=kademar
-PRETTY_NAME="Kademar Linux"
-ANSI_COLOR="0;36"
-HOME_URL="http://www.kademar.org/"
-SUPPORT_URL="http://www.kademar.org/"
-BUG_REPORT_URL="http://bugs.kademar.org/"' > /etc/os-release
-
-  #systemctl enable kademar-services
-  if [ ! -e /etc/systemd/system/multi-user.target.wants/kademar-services.service ]; then
-    ln -s '/usr/lib/systemd/system/kademar-services.service' '/etc/systemd/system/multi-user.target.wants/kademar-services.service'
-  fi  
+ post_install
 }
 
 put_issue(){
-    DESTI="$1"
-    . $DESTI/etc/locale.conf
-    case "$LANG" in
-    ca_ES*)
-      var_exec="executa"
-      var_line='Si estàs aquí perquè hi ha hagut un problema (probablement has canviat la tarja gràfica), pots instal·lar els controladors, després de fer login, amb:'
-    ;;
-    es*)
-      var_exec="ejecuta"
-      var_line='Si estás aquí porque ha habido un problema (probablemente has cambiado la tarjeta gráfica), puedes instalar los controladores, después de hacer login, con:'
-    ;;
-    *)
-      var_exec="run"
-      var_line='If you are here because you had a problem (probably you changed graphic card), you can install graphic drivers, after login, with:'
-    ;;
-    esac
-
     echo "Kademar Linux \r (\l)
-    
-*******
-
-$var_line
- 
-   - Nvidia Cards, $var_exec:  sudo install-nvidia-drivers
-   - Ati    Cards, $var_exec:  sudo install-ati-drivers
-   - Other  Cards, $var_exec:  sudo install-other-drivers
-
-*******
 
 " > $DESTI/etc/issue
 }

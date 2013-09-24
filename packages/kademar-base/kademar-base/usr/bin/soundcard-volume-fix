@@ -27,11 +27,16 @@ do
 	amixer -c$contador sset "PC Speaker" 0% 
 
 	#Mass Mute - Aquests Calla'ls
-	for i in "Front Mic" "Mic Mono" "IEC958 Capture Monitor" "IEC958 Capture Monitor" "Headphones Jack Sense" "Headphone Jack Sense" "Line Jack Sense" "Tone" Aux  Mic "External Amplifier" "Front Mic" "Mic" '3D Control - Switch' 'S/PDIF Optical Raw' 'SB Live Analog/Digital Output Jack'
+	for i in "Front Mic" "Mic Mono" "IEC958 Capture Monitor" "IEC958 Capture Monitor" "Headphones Jack Sense" "Headphone Jack Sense" "Line Jack Sense" "Tone" Aux  Mic "External Amplifier" "Front Mic" "Mic" '3D Control - Switch' 'S/PDIF Optical Raw'
 	do
 		amixer -c$contador sset "$i" mute
 	done
 
+	#Mute analog/digital commuter
+        amixer -c$contador | grep -i "analog/digital" | cut -d\' -f2 | while read i
+	do
+		amixer -c$contador sset "$i" mute
+	done
 done
 
 

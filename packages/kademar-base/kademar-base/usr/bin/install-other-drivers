@@ -25,7 +25,7 @@ if [ "$(ping www.google.es -c1 2>/dev/null 1>&2 ; echo $?)" = "0" ]; then
   
   list=`LANG=C pacman -Sl | grep -i instal`
   packets=""
-  for i in catalyst-dkms catalyst-utils opencl-catalyst lib32-catalyst-utils lib32-nvidia-utils nvidia nvidia-utils opencl-nvidia libcl xf86-video-unichrome unichrome-dri
+  for i in catalyst-dkms catalyst-utils opencl-catalyst lib32-catalyst-utils lib32-nvidia-utils nvidia nvidia-utils opencl-nvidia libcl xf86-video-unichrome unichrome-dri nvidia-libgl lib32-nvidia-libgl
   do
     [ -n "$(pacman -Q $i 2>/dev/null)" ] && packets="$packets $i"
   done

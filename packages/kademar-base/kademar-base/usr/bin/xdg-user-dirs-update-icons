@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Created by Adonay Sanz for kademar  -  Genuary 2006
+# Created by Adonay Sanz for kademar  -  Jenuary 2006
 #  Script to Create Documents folder
 #
 # Modification 09-06-10: Icon part (combinated with xdg-user-dirs)
@@ -63,12 +63,12 @@ fi
 #Audio
 if [ ! -e "$HOME/$audio/.directory" -a -e "$HOME/$audio/" ]; then
 	echo "[Desktop Entry]
-Icon=folder-sound" > "$HOME/$audio/.directory"
+Icon=folder-music" > "$HOME/$audio/.directory"
 fi
 #Images
 if [ ! -e "$HOME/$img/.directory" -a -e "$HOME/$img/" ]; then
 	echo "[Desktop Entry]
-Icon=folder-image" > "$HOME/$img/.directory"
+Icon=folder-images" > "$HOME/$img/.directory"
 fi
 #Public (Amule - Apollon)
 if [ ! -e "$HOME/$pub/.directory" -a -e "$HOME/$pub/" ]; then
@@ -83,7 +83,7 @@ fi
 #Templates
 if [ ! -e "$HOME/$tmpl/.directory" -a -e "$HOME/$tmpl/" ]; then
 	echo "[Desktop Entry]
-Icon=folder-html" > "$HOME/$tmpl/.directory"
+Icon=folder-templates" > "$HOME/$tmpl/.directory"
 fi
 #Desktop
 if [ ! -e "$HOME/$desk/.directory" -a -e "$HOME/$desk/" ]; then

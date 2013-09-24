@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+GenericName=Tray Utility and Updater
+Comment=The CADI Systray
+Name=caditray
+Exec=caditray
+Icon=/usr/share/caditray/img/caditray.png
+Type=Application
+Terminal=false
+Categories=Application;System;

@@ -1,0 +1,19 @@
+# Contributor: Adonay Sanz <adonay@kademar.org>
+
+pkgname=caditray
+pkgver=0.1
+pkgrel=0
+pkgdesc="The CADI systray"
+arch=('any')
+url="http://www.kademar.org"
+license=('GPL2')
+depends=('python' 'notification-daemon' 'python-pyqt4' 'pacman>=3.2')
+install=
+source=(${pkgname}-${pkgver}.tar.gz)
+md5sums=('d68407103e0dd9402034cca9f9d1e447')
+
+package() {
+  cd ${srcdir}/${pkgname}-${pkgver}
+
+  make PREFIX=/usr DESTDIR=${pkgdir} PYTHON=`which python` install
+}

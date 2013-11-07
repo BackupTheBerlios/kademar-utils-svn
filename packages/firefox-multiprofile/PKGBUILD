@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=firefox-multiprofile
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 epoch=
 pkgdesc="Show profiles of firefox in on main menu"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('4610f27a2dc578de575207391f129a2b') #generate with 'makepkg -g'
+md5sums=('ad204f63b2d7e969251bb31b217896b2') #generate with 'makepkg -g'
 
 
 package() {

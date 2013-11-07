@@ -3,3 +3,9 @@ Start Nepomuk=false
 
 [Service-nepomukfileindexer]
 autostart=true
+
+[Service-nepomukstrigiservice]
+autostart=false
+
+[main Settings]
+Maximum memory=10

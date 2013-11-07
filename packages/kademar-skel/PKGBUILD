@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=kademar-skel
-pkgver=5.2.0
+pkgver=5.3.4
 pkgrel=1
 epoch=
 pkgdesc="Kademar Linux /etc/skel files - remove on install"
@@ -21,7 +21,7 @@ install=kademar-skel.install
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('f9b6b117a004259e3768aa6a57a8a599') #generate with 'makepkg -g'
+md5sums=('389cbca97d255e5f0c34de77ed81443e') #generate with 'makepkg -g'
 
 
 package() {
@@ -31,6 +31,7 @@ package() {
 #  find "$pkgdir"/etc/ -type d -exec chmod 755 "{}" \;
   find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
   find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
-  find "$pkgdir"/usr/share/kademar/skel/.local/share/applications/*desktop -type f -exec chmod 755 "{}" \;
+  find "$pkgdir"/usr/share/kademar/skel/.config/autostart/ -type f -exec chmod 755 "{}" \;
+#  find "$pkgdir"/usr/share/kademar/skel/.local/share/applications/*desktop -type f -exec chmod 755 "{}" \;
 #  find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
 }

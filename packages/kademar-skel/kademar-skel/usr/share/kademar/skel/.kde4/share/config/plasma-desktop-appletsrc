@@ -22,7 +22,7 @@ zvalue=0
 slideTimer=10
 slidepaths=/usr/share/wallpapers/
 userswallpapers=
-wallpaper=/usr/share/wallpapers/Finally_Summer_in_Germany
+wallpaper=/usr/share/wallpapers/Kademar
 wallpapercolor=56,111,150
 wallpaperposition=0
 
@@ -179,12 +179,3 @@ sourceAppletPluginName=digital-clock
 
 [Containments][3][Applets][9][LayoutInformation]
 Order=11
-
-[Containments][3][Applets][34]
-geometry=36,3,32,32
-immutability=1
-plugin=org.kde.showActivityManager
-zvalue=0
-
-[Containments][3][Applets][34][LayoutInformation]
-Order=1

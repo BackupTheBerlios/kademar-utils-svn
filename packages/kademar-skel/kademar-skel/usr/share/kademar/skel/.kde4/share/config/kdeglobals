@@ -1,2 +1,5 @@
 [General]
 XftAntialias=true
+
+[Icons]
+Theme=kademar-elementary_usu

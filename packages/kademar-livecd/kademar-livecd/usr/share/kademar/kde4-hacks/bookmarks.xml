@@ -4,7 +4,7 @@
  <separator href="file:///run/archiso/sfs/root-image">
   <info>
    <metadata owner="http://www.kde.org">
-    <UDI>/org/freedesktop/UDisks/devices/loop0</UDI>
+    <UDI>/org/freedesktop/UDisks2/block_devices/loop0</UDI>
     <isSystemItem>true</isSystemItem>
     <IsHidden>true</IsHidden>
    </metadata>
@@ -17,7 +17,7 @@
  <separator>
   <info>
    <metadata owner="http://www.kde.org">
-    <UDI>/org/freedesktop/UDisks/devices/loop2</UDI>
+    <UDI>/org/freedesktop/UDisks2/block_devices/loop2</UDI>
     <isSystemItem>true</isSystemItem>
     <IsHidden>true</IsHidden>
    </metadata>
@@ -30,7 +30,7 @@
  <separator>
   <info>
    <metadata owner="http://www.kde.org">
-    <UDI>/org/freedesktop/UDisks/devices/loop1</UDI>
+    <UDI>/org/freedesktop/UDisks2/block_devices/loop1</UDI>
     <isSystemItem>true</isSystemItem>
     <IsHidden>true</IsHidden>
    </metadata>

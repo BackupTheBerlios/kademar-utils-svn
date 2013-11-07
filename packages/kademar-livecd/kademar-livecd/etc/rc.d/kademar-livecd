@@ -21,11 +21,13 @@ echo -n "Loading all swap partitions: "
 `; do
 
  if [ "`blkid -o value -s TYPE /dev/$i`" = "swap" ]; then
+
  
+   #always fresh (for persistent USB fstabs)
  
   echo -n " $i "
   
-  echo "UUID=`blkid -o value -s UUID /dev/$i`       swap    swap    pri=0   0       0" >> /etc/fstab
+  echo "UUID=`blkid -o value -s UUID /dev/$i`       swap    swap    pri=0   0       0" > /etc/fstab
 
  fi
 

@@ -66,18 +66,14 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
     assistantMode=settings.value("assistantMode").toBool();
 
 
- //   languageMenu->addSeparator();
-
     //No comments... :)
     this->prepareGui();
-    //this->translateGui();
-//     this->changeLanguage(new QString("es_ES"));
-    
-// Load current language
+
+    // Load current language
     this->changeLanguage(new QString(execShellProcess(QString("/bin/sh"), QString("-c"), QString(". /etc/locale.conf ; echo $LANG"))));
 
     
-    // Manual Button Creation
+    // Manual Button Creation - Useful for DEBUG
     /*
     this->createDesktopButton(new QString("kde4"), new QString("true"));
     this->createDesktopButton(new QString("kde3"), new QString("false"));
@@ -94,9 +90,8 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
     this->setupPages(); //setup pages after know actual situation
 
     //Use detect-monitor to configure it
-    QProcess *dresol = new QProcess();
-    dresol->start(QString("/usr/share/kademar/scripts/engegada/detect-monitor"));
-    //TODO IF not configured manually
+    //QProcess *dresol = new QProcess();
+    //dresol->start(QString("/usr/share/kademar/scripts/engegada/detect-monitor"));
 
     //Detect if want speech-dispatcher use if isn't on configuration file
     extern bool speech;
@@ -104,31 +99,33 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
 
     //qDebug() << settings.value("assistantMode").toString();
 
+    //Store /proc/cmdline on a var
     QFile *cmdline = new QFile("/proc/cmdline");
     cmdline->open(QIODevice::ReadOnly);
     QString *cmdlineContent = new QString(cmdline->readAll());
 
+    //Activate SPEECH integration
+    // If isn't on settings.ini, try to know it
     if (settings.value("SPEECH").toString() == ""){
-
+        //Look if it's defined on cmdline
         if ( (cmdlineContent->contains("scrread")) || (cmdlineContent->contains("screenread")) )
         {
             speech=1;
-
         }
         //qDebug() << "speech activated by speech-dispatcher detection. Result:" << speech;
     } else {
+        //If settings.ini knows something about, read it
         speech=bool(settings.value("SPEECH").toBool());
         //qDebug() << "speech activated by config file. Result:" << speech;
     }
 
     //qDebug() << "after: " << speech;
 
+    //configure Volumes (usefull to screenreader)
     if ( speech == 1 ){
-        //configure Volumes (usefull to screenreader)
         QProcess *volumes = new QProcess();
         volumes->start(QString("/usr/bin/soundcard-volume-fix"));
         volumes->waitForFinished();
-
     }
 
     //Detect if has persistent changes or not

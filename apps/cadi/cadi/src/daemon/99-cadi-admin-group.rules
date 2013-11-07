@@ -1,0 +1,6 @@
+polkit.addRule(function(action, subject) {
+                if (action.id.indexOf("org.archlinux.pkexec.cadidaemon") == 0 && subject.isInGroup("cadi")) {
+                        return polkit.Result.YES;
+                }
+        }
+);

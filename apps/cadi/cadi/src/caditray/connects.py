@@ -38,3 +38,9 @@ class cadiTray(QMainWindow):
         
         #self.sendNotify(self.tr("Bitnami Control Updated"),self.tr("It has been updated, you should reboot the Kademar Bitnami Control Panel to get the new features."))
         self.connect(self.action_exit, SIGNAL("triggered()"), self.askForExit)
+        
+        self.connect(self.B_checkUpdatesNow, SIGNAL("clicked()"), self.checkUpdatesNowFunction)
+
+        self.connect(self.acceptButton, SIGNAL("clicked()"), self.saveConfig)
+        self.connect(self.cancelButton, SIGNAL("clicked()"), self.loadConfig)
+

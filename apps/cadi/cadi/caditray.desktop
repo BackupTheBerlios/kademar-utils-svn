@@ -2,7 +2,7 @@
 Encoding=UTF-8
 GenericName=Tray Utility and Updater
 Comment=The CADI Systray
-Name=caditray
+Name=CADI Tray Utility
 Exec=caditray
 Icon=/usr/share/caditray/img/caditray.png
 Type=Application

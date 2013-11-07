@@ -1,0 +1,9 @@
+pkgname=caditray
+
+post_install() {
+ #create cadi Group
+ if [ -z "$(grep -i cadi: /etc/group)" ]; then
+     groupadd cadi
+     echo "Add your user to  - cadi -  group to administrate without passwords"
+ fi
+}

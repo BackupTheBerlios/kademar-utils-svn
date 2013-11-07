@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CADI</class>
+ <widget class="QMainWindow" name="CADI">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>607</width>
+    <height>507</height>
+   </rect>
+  </property>
+  <property name="palette">
+   <palette>
+    <active>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </active>
+    <inactive>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </inactive>
+    <disabled>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </disabled>
+   </palette>
+  </property>
+  <property name="windowTitle">
+   <string>CADI Update</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../../../../../../usr/share/caditray/img/caditray.png</normaloff>../../../../../../../../usr/share/caditray/img/caditray.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="1">
+     <widget class="QWidget" name="widget" native="true">
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="0" column="3">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>../../../../../../../../usr/share/caditray/img/bitnami-logo.png</pixmap>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QTabWidget" name="tabWidget">
+         <property name="currentIndex">
+          <number>1</number>
+         </property>
+         <widget class="QWidget" name="tab">
+          <attribute name="title">
+           <string>General</string>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout_6">
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_8">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>System:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QFrame" name="frame_2">
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_4">
+              <item row="4" column="0">
+               <widget class="QLabel" name="l_host">
+                <property name="text">
+                 <string>hostname</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="l_kern">
+                <property name="text">
+                 <string>kernel</string>
+                </property>
+                <property name="textFormat">
+                 <enum>Qt::PlainText</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="l_kdm">
+                <property name="text">
+                 <string>kdm</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="l_ver">
+                <property name="text">
+                 <string>versio</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="l_tipu">
+                <property name="text">
+                 <string>tipus</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="iLogoKademar">
+             <property name="maximumSize">
+              <size>
+               <width>128</width>
+               <height>128</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap>../../../../../../../../usr/share/caditray/img/kademar.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QFrame" name="frame_3">
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <widget class="QLabel" name="l_cpuinfo">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>30</y>
+                <width>261</width>
+                <height>71</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>CPU info</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+              </property>
+             </widget>
+             <widget class="QLabel" name="l_ram">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>110</y>
+                <width>261</width>
+                <height>19</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>RAM</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="l_ram_2">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>10</y>
+                <width>261</width>
+                <height>19</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>CPU</string>
+              </property>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tab_2">
+          <attribute name="title">
+           <string>Updates</string>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="3" column="1">
+            <widget class="QLabel" name="label_3">
+             <property name="minimumSize">
+              <size>
+               <width>48</width>
+               <height>48</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>48</width>
+               <height>48</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap>../../../../../../../../usr/share/caditray/img/uninstall.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
+            <widget class="QRadioButton" name="radioButton_3">
+             <property name="text">
+              <string>No Update</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QRadioButton" name="radioButton">
+             <property name="text">
+              <string>Automatic Update (Recommended)</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="label_2">
+             <property name="minimumSize">
+              <size>
+               <width>48</width>
+               <height>48</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>48</width>
+               <height>48</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap>../../../../../../../../usr/share/caditray/img/tick.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1" colspan="2">
+            <widget class="QFrame" name="frame">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_3">
+              <item row="0" column="0">
+               <widget class="QPushButton" name="B_checkUpdatesNow">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>300</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>Check updates Now</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QRadioButton" name="radioButton_2">
+             <property name="text">
+              <string>Manual Update - Download Only</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QRadioButton" name="radioButton_4">
+             <property name="text">
+              <string>No Update - Just Warn</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QFrame" name="frame_4">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_7">
+       <item row="0" column="4">
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="2">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="acceptButton">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Accept</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="3">
+        <widget class="QPushButton" name="cancelButton">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Cancel</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>607</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionStop_Server">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../../../usr/share/caditray/img/vermell_p.png</normaloff>../../../../../../../../usr/share/caditray/img/vermell_p.png</iconset>
+   </property>
+   <property name="text">
+    <string>S&amp;top Server</string>
+   </property>
+  </action>
+  <action name="actionStart_Server">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../../../usr/share/caditray/img/verd_p.png</normaloff>../../../../../../../../usr/share/caditray/img/verd_p.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Start Server</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../../../usr/share/caditray/img/exit.png</normaloff>../../../../../../../../usr/share/caditray/img/exit.png</iconset>
+   </property>
+   <property name="text">
+    <string>E&amp;xit</string>
+   </property>
+  </action>
+  <action name="actionRestart_Server">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../../../usr/share/caditray/img/taronja_p.png</normaloff>../../../../../../../../usr/share/caditray/img/taronja_p.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Restart Server</string>
+   </property>
+  </action>
+  <action name="actionManage_Stacks">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../../../usr/share/caditray/img/config.png</normaloff>../../../../../../../../usr/share/caditray/img/config.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Manage Stacks</string>
+   </property>
+  </action>
+  <action name="actionOpen_Browser">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../../../usr/share/caditray/img/browse.png</normaloff>../../../../../../../../usr/share/caditray/img/browse.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Open Browser</string>
+   </property>
+  </action>
+  <action name="actionKademar">
+   <property name="text">
+    <string>kademar</string>
+   </property>
+  </action>
+  <action name="actionKademar_2">
+   <property name="text">
+    <string>kademar</string>
+   </property>
+  </action>
+  <action name="actionAdmin">
+   <property name="text">
+    <string>admin</string>
+   </property>
+  </action>
+  <action name="actionOpen_File_Manger">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../../../usr/share/caditray/img/filemanager.png</normaloff>../../../../../../../../usr/share/caditray/img/filemanager.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;FTP Apps</string>
+   </property>
+  </action>
+  <action name="actionBitnami_Documentation">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../../../usr/share/caditray/img/bitnamistack.png</normaloff>../../../../../../../../usr/share/caditray/img/bitnamistack.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Bitnami Documentation</string>
+   </property>
+  </action>
+  <action name="actionApache_Documentation">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../../../usr/share/caditray/img/apache.png</normaloff>../../../../../../../../usr/share/caditray/img/apache.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Apache Documentation</string>
+   </property>
+  </action>
+  <action name="actionIi">
+   <property name="text">
+    <string>ii</string>
+   </property>
+  </action>
+  <action name="actionOl">
+   <property name="text">
+    <string>ol</string>
+   </property>
+  </action>
+  <action name="actionKademar_3">
+   <property name="text">
+    <string>kademar</string>
+   </property>
+  </action>
+  <action name="actionAdmin_2">
+   <property name="text">
+    <string>kademar</string>
+   </property>
+  </action>
+  <action name="actionAdmin_3">
+   <property name="text">
+    <string>admin</string>
+   </property>
+  </action>
+  <action name="actionMake_public_any_BitNami_Stack">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../../../usr/share/caditray/img/bitnamistack.png</normaloff>../../../../../../../../usr/share/caditray/img/bitnamistack.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Make public any BitNami Stack</string>
+   </property>
+  </action>
+  <action name="actionBitNami_LAMP_Stack_Readme">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../../../usr/share/caditray/img/bitnamistack.png</normaloff>../../../../../../../../usr/share/caditray/img/bitnamistack.png</iconset>
+   </property>
+   <property name="text">
+    <string>BitNami &amp;LAMP Stack Readme</string>
+   </property>
+  </action>
+  <action name="actionApps">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../../../usr/share/caditray/img/bitnamistack.png</normaloff>../../../../../../../../usr/share/caditray/img/bitnamistack.png</iconset>
+   </property>
+   <property name="text">
+    <string>A&amp;pps</string>
+   </property>
+  </action>
+  <action name="actionComponents">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../../../usr/share/caditray/img/bitnamistack.png</normaloff>../../../../../../../../usr/share/caditray/img/bitnamistack.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Components</string>
+   </property>
+  </action>
+  <action name="actionMultiple_instances_of_the_same_App">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../../../usr/share/caditray/img/bitnamistack.png</normaloff>../../../../../../../../usr/share/caditray/img/bitnamistack.png</iconset>
+   </property>
+   <property name="text">
+    <string>Multiple &amp;instances of the same App</string>
+   </property>
+  </action>
+  <action name="actionRoot">
+   <property name="text">
+    <string>root</string>
+   </property>
+  </action>
+  <action name="actionAutostart_on_boot">
+   <property name="text">
+    <string>Autostart on boot</string>
+   </property>
+  </action>
+  <action name="actionOpen_Cache_Stack">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../../../usr/share/caditray/img/filemanager.png</normaloff>../../../../../../../../usr/share/caditray/img/filemanager.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Cache Stacks</string>
+   </property>
+  </action>
+  <action name="actionStart_on_tray">
+   <property name="text">
+    <string>Start on tray</string>
+   </property>
+  </action>
+  <action name="actionBitNami_Custom_PHP_application">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../../../usr/share/caditray/img/bitnamistack.png</normaloff>../../../../../../../../usr/share/caditray/img/bitnamistack.png</iconset>
+   </property>
+   <property name="text">
+    <string>BitNami Custom PHP application</string>
+   </property>
+  </action>
+  <action name="actionBitNami_AMP_Stacks">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../../../usr/share/caditray/img/bitnamistack.png</normaloff>../../../../../../../../usr/share/caditray/img/bitnamistack.png</iconset>
+   </property>
+   <property name="text">
+    <string>BitNami AMP Stacks</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

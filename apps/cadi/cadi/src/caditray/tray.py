@@ -17,7 +17,7 @@ class cadiTray(QMainWindow):
         self.tray = QSystemTrayIcon(self)
         self.trayMenu = QMenu()
      # Menu items
-        self.action_exit = QAction(QIcon(self.imagepath+"exit.png"), self.tr('Exit Bitnami Control Panel'), self)
+        self.action_exit = QAction(QIcon(self.imagepath+"exit.png"), self.tr('Exit CADI Tray  '+self.kademarType), self)
 
      # Append items to menu
         #self.trayMenu.addAction(self.action_browseFile)
@@ -30,7 +30,7 @@ class cadiTray(QMainWindow):
         self.trayIcon = QIcon(self.imagepath+"caditray.png")
         self.tray.setContextMenu(self.trayMenu)
         self.tray.setIcon(self.trayIcon)
-        self.tray.setToolTip("CADI Tray Kademar")
+        self.tray.setToolTip("CADI Tray "+self.kademarType)
         self.tray.show()
 #############
 ####  END  TRAY MODULE & ACTIONS

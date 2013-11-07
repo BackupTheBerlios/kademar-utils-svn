@@ -1,0 +1,29 @@
+# Contributor: Adonay Sanz <adonay@kademar.org>
+
+pkgname=cadi
+replaces=cadi-svn
+pkgver=0.2.5
+pkgrel=0
+pkgdesc="The CADI systray"
+arch=('any')
+url="http://www.kademar.org"
+license=('GPL2')
+depends=('python' 'notification-daemon' 'python-pyqt4' 'pacman>=3.2' 'polkit')
+install=caditray.install
+source=(${pkgname}-${pkgver}.tar.gz)
+md5sums=('c66281c0eb92eb60eac182d1011f39b3')
+
+package() {
+  cd ${srcdir}/${pkgname}-${pkgver}
+
+  make PREFIX=/usr DESTDIR=${pkgdir} PYTHON=`which python` install
+  find "$pkgdir"/etc/ -type d -exec chmod 755 "{}" \;
+  find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+  find "$pkgdir"/etc/ -type f -exec chmod 644 "{}" \;
+  find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+#   find "$pkgdir"/usr/share/caditray/scripts -type f -exec chmod 755 "{}" \;
+  find "$pkgdir"/usr/lib/cadi -type f -exec chmod 755 "{}" \;
+  find "$pkgdir"/usr/bin/ -type f -exec chmod 755 "{}" \;
+  chmod 700 "$pkgdir"/etc/polkit-1/localauthority
+  chmod 700 "$pkgdir"/etc/polkit-1/rules.d
+}

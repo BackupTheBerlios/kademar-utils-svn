@@ -1,0 +1,6 @@
+[Allow administration from CADI if in cadi group]
+Identity=unix-group:cadi
+Action=org.archlinux.pkexec.cadidaemon
+ResultAny=yes
+ResultInactive=yes
+ResultActive=yes

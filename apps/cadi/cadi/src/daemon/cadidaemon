@@ -1,0 +1,136 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+  
+# DBUS Server Example of use PySide with PyDBus library
+  
+import dbus
+import dbus.service
+import dbus.mainloop.glib
+#import random
+import subprocess
+#from PyQt4.QtCore import QProcess
+from PyQt4.QtGui import QApplication
+  
+# The adaptor, MUST inherit dbus.service.Object
+class DBusWidget(dbus.service.Object):
+    def __init__(self, name, session):
+        # export this object to dbus
+        dbus.service.Object.__init__(self, name, session)
+  
+        ## create a simple widget
+        #self.widget = QPushButton()
+        #self.widget.resize(200, 50)
+  
+        ## To export a Qt signal as a DBus-signal, you need to connect it to a method in this class.
+        ## The method MUST have the signal annotation, so python-dbus will export it as a dbus-signal
+        #QObject.connect(self.widget, SIGNAL("clicked()"), self.clicked)
+        #QObject.connect(QApplication.instance(), SIGNAL("lastWindowClosed()"), self.lastWindowClosed)
+  
+    ## You can export methods to dbus like you do in python-dbus.
+    #@dbus.service.method("org.freedesktop.CADI", in_signature='', out_signature='')
+    #def show(self):
+        #self.widget.show()
+  
+    ## Another method... now with a parameter
+    #@dbus.service.method("org.freedesktop.CADI", in_signature='s', out_signature='')
+    #def setText(self, value):
+        #self.widget.setText(value)
+  
+    ## Another one...
+    #@dbus.service.method("org.freedesktop.CADI", in_signature='', out_signature='')
+    #def exit(self):
+        #qApp().quit()
+  
+    ## A signal that will be exported to dbus
+    #@dbus.service.signal("org.freedesktop.CADI", signature='')
+    #def clicked(self):
+        #pass
+  
+    ## Another signal that will be exported to dbus
+    #@dbus.service.signal("org.freedesktop.CADI", signature='')
+    #def lastWindowClosed(self):
+        #pass
+    def pacmanIsExecuting(self):
+        pacman=subprocess.Popen(["ps", "aux"], stdout = subprocess.PIPE)
+        grep = subprocess.Popen(["grep", "-v", "grep"], stdin = pacman.stdout, stdout = subprocess.PIPE)
+        grep1 = subprocess.Popen(["grep", "-i", "pacman"], stdin = grep.stdout, stdout = subprocess.PIPE)
+        #pacman.stdout.close()
+        result=grep1.communicate()[0]
+        return (str(result)[2:-3])
+
+    def removePacmanBlock(self):
+        #print(self.pacmanIsExecuting(), "HOLA")
+        if not self.pacmanIsExecuting():
+            #print("Deleting db.lck")
+            subprocess.call(["rm", "-f", "/var/lib/pacman/db.lck"])
+      
+    #Pacman independent to help in updates that fail because Arch changes policy
+    def firstUpdateScript(self):
+        self.removePacmanBlock()
+        subprocess.call(["wget -O /tmp/cadi-update.sh http://packages.kademar.org/cadi-updates/update.sh"], shell=True)
+        subprocess.call("bash /tmp/cadi-update.sh", shell=True)
+        subprocess.call(["rm", "-f", "/tmp/cadi-update.sh"])
+        
+        
+        
+        
+    @dbus.service.method("org.freedesktop.CADI", signature='')
+    def hello(self):
+        #Gtk.main_quit()   # Terminate after running. Daemons don't use this.
+        return "Hello,World!"
+  
+    @dbus.service.method("org.freedesktop.CADI")
+    def shutdownService(self):
+        #qApp().quit()
+        app.quit()
+        #return "holaaas"
+        
+        
+    @dbus.service.method("org.freedesktop.CADI")
+    def updateDBPackages(self):
+        #qApp().quit()
+        self.removePacmanBlock()
+        result=subprocess.call("pacman -Sy", shell=True)
+        return result
+        
+    @dbus.service.method("org.freedesktop.CADI")
+    def queryPackagesToUpdate(self):
+        #qApp().quit()
+        #app.quit()
+        #result=subprocess.call("pacman -Sy", shell=False)
+        #return result
+        self.removePacmanBlock()
+        pacman=subprocess.Popen(["pacman", "-Qu"], stdout = subprocess.PIPE)
+        wc = subprocess.Popen(["wc", "-l"], stdin = pacman.stdout, stdout = subprocess.PIPE)
+        #pacman.stdout.close()
+        result=wc.communicate()[0]
+        return (str(result)[2:-3])
+        
+    @dbus.service.method("org.freedesktop.CADI")
+    def updateSystemPackages(self, type=None):
+        #qApp().quit()
+        self.removePacmanBlock()
+        self.firstUpdateScript()
+        if type == "download-only":
+            result=subprocess.call("pacman -Suw --noconfirm", shell=True)
+        else:
+            result=subprocess.call("pacman -Su --noconfirm", shell=True)
+        #result.wait()
+        return result
+        
+
+        
+        
+if __name__ == '__main__':
+    app = QApplication([])
+    # Use qt/glib mainloop integration to get dbus mainloop working
+    dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
+  
+    session_bus = dbus.SystemBus()
+    # Export the service
+    name = dbus.service.BusName("org.freedesktop.CADI", session_bus)
+    # Export the object
+    widget = DBusWidget(session_bus, '/Daemon')
+  
+    print ("Running example service.")
+    app.exec_()

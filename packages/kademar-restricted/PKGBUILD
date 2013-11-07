@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=kademar-restricted
-pkgver=5.0.2
+pkgver=5.0.3
 pkgrel=1
 epoch=
 pkgdesc="Kademar Linux restricted Package with firmwares"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('7f73a00870d8a07e0b3c423f1c2a0d64') #generate with 'makepkg -g'
+md5sums=('ead4f01450530d2dffcb8d61c75f66dc') #generate with 'makepkg -g'
 
 
 package() {

@@ -16,7 +16,7 @@ import sys
 from PyQt4.QtGui import *
 #from PyQt4 import *
 from PyQt4.QtCore import *
-#from PyQt4 import uic
+from PyQt4 import uic
 import unicodedata
 from commands import getoutput
 #from os import getuid
@@ -28,15 +28,15 @@ from threadCopyfiles import *
 
 import dbus, dbus.glib
 
-from ui_instalador import Ui_FormInstall as Ui_Form
+#from ui_instalador import Ui_FormInstall as Ui_Form
 
 class instalador(QDialog):
     def __init__(self):
         QWidget.__init__(self)
         global tipus
-        #uic.loadUi("ui/instalador3.ui", self)
-        self.ui = Ui_Form()
-        self.ui.setupUi(self)
+        self.ui = uic.loadUi("instalador.ui", self)
+        #self.ui = Ui_Form()
+        #self.ui.setupUi(self)
 
         #Get PC info & put on info labels
         kernel=funcions_k.versiokernel()
@@ -56,7 +56,7 @@ class instalador(QDialog):
         ######
         #  VARIABLES
         ######
-        global led_order, page_order, icona_verda, icona_taronja, icona_vermella, icona_blava, band_cat, band_esp, band_eng, copiant, fs_detector, grephalinfo, target, inicial, inicialfs, icona_hd, icona_partition, mkfilesystems, filesystems, varcopiaacabada, pathinstaller, posicioprogress, labelfilesystems, mktunefilesystems
+        global led_order, page_order, icona_verda, icona_taronja, icona_vermella, icona_blava, band_cat, band_esp, band_eng, band_ru, band_de, band_gl, band_eu, band_it, band_fr, band_zhcn, band_zhtw, copiant, fs_detector, grephalinfo, target, inicial, inicialfs, icona_hd, icona_partition, mkfilesystems, filesystems, varcopiaacabada, pathinstaller, posicioprogress, labelfilesystems, mktunefilesystems
 
         #suport a linux-live i els burnix
         #if path.exists("/run/archiso/sfs/root-image/root-image.fs"):
@@ -83,6 +83,15 @@ class instalador(QDialog):
         band_cat=pathinstaller+"/img/cat.png"
         band_esp=pathinstaller+"/img/esp.png"
         band_eng=pathinstaller+"/img/eng.png"
+        band_ru=pathinstaller+"/img/ru_RU.png"
+        band_de=pathinstaller+"/img/de_DE.png"
+        band_gl=pathinstaller+"/img/gl_ES.png"
+        band_eu=pathinstaller+"/img/eu_ES.png"
+        band_it=pathinstaller+"/img/it_IT.png"
+        band_zhcn=pathinstaller+"/img/zh_CN.png"
+        band_zhtw=pathinstaller+"/img/zh_CN.png"
+        band_fr=pathinstaller+"/img/fr_FR.png"
+
 
         icona_hd=pathinstaller+"/img/hdd.png"
         icona_partition=pathinstaller+"/img/partition.png"
@@ -141,7 +150,23 @@ class instalador(QDialog):
             self.idiomacat()
         elif idioma=="es":
             self.idiomaesp()
-        elif idioma=="en":
+        elif idioma=="ru":
+            self.idiomaru()
+        elif idioma=="gl":
+            self.idiomagl()
+        elif idioma=="eu":
+            self.idiomaeu()
+        elif idioma=="it":
+            self.idiomait()
+        elif idioma=="zhcn":
+            self.idiomazhcn()
+        elif idioma=="zhtw":
+            self.idiomazhtw()
+        elif idioma=="fr":
+            self.idiomafr()
+        elif idioma=="de":
+            self.idiomade()
+        else: # idioma=="en":
             self.idiomaeng()
 
         ###  MBR
@@ -181,6 +206,14 @@ class instalador(QDialog):
         self.connect(self.ui.b_cat, SIGNAL("clicked()"), self.idiomacat)
         self.connect(self.ui.b_esp, SIGNAL("clicked()"), self.idiomaesp)
         self.connect(self.ui.b_eng, SIGNAL("clicked()"), self.idiomaeng)
+        self.connect(self.ui.b_ru, SIGNAL("clicked()"), self.idiomaru)
+        self.connect(self.ui.b_de, SIGNAL("clicked()"), self.idiomade)
+        self.connect(self.ui.b_gl, SIGNAL("clicked()"), self.idiomagl)
+        self.connect(self.ui.b_eu, SIGNAL("clicked()"), self.idiomaeu)
+        self.connect(self.ui.b_it, SIGNAL("clicked()"), self.idiomait)
+        self.connect(self.ui.b_zh_cn, SIGNAL("clicked()"), self.idiomazhcn)
+        self.connect(self.ui.b_zh_tw, SIGNAL("clicked()"), self.idiomazhtw)
+        self.connect(self.ui.b_fr, SIGNAL("clicked()"), self.idiomafr)
 
         # User
         self.connect(self.ui.t_root_passwd1, SIGNAL("textChanged (const QString&)"), self.charvalidatorroot1)
@@ -548,35 +581,46 @@ class instalador(QDialog):
 #####
 
     def setidioma(self, lang):
-        global band_cat, band_esp, band_eng, idioma
-        if lang=="ca":
-            idioma="ca"
-            self.ui.b_cat.setEnabled(0)
-            for i in self.ui.b_esp, self.ui.b_eng:
-                i.setEnabled(1)
-                i.setChecked(0)
-            self.ui.l_bandera.setPixmap(QPixmap(band_cat))
-        elif lang=="es":
-            idioma="es"
-            self.ui.b_esp.setEnabled(0)
-            for i in self.ui.b_cat, self.ui.b_eng:
-                i.setEnabled(1)
-                i.setChecked(0)
-            self.ui.l_bandera.setPixmap(QPixmap(band_esp))
-        elif lang=="en":
-            idioma="en"
-            self.ui.b_eng.setEnabled(0)
-            for i in self.ui.b_cat, self.ui.b_esp:
-                i.setEnabled(1)
-                i.setChecked(0)
-            self.ui.l_bandera.setPixmap(QPixmap(band_eng))
+        global band_cat, band_esp, band_eng, band_ru, band_de, band_gl, band_eu, band_it, band_fr, band_zhcn, band_zhtw, idioma
+
+        langs=[ "ca_ES", "es_ES", "en_GB", "ru_RU", "de_DE", "gl_ES", "eu_ES", "it_IT", "fr_FR", "zh_CN", "zh_TW" ]
+        widgets=[ self.ui.b_cat, self.ui.b_esp, self.ui.b_eng, self.ui.b_ru, self.ui.b_de, self.ui.b_gl, self.ui.b_eu, self.ui.b_it, self.ui.b_fr, self.ui.b_zh_cn, self.ui.b_zh_tw ]
+        band=[ band_cat, band_esp, band_eng, band_ru, band_de, band_gl, band_eu, band_it, band_fr, band_zhcn, band_zhtw]
+        
+        index=langs.index(lang)
+        
+        for i in widgets:
+            i.setEnabled(1)
+            i.setChecked(0)
+        
+        widgets[index].setEnabled(0)
+        idioma=lang
+
+        self.ui.l_bandera.setPixmap(QPixmap(band[index]))
 
     def idiomacat(self):
-        self.setidioma("ca")
+        self.setidioma("ca_ES")
     def idiomaesp(self):
-        self.setidioma("es")
+        self.setidioma("es_ES")
     def idiomaeng(self):
-        self.setidioma("en")
+        self.setidioma("en_GB")
+    def idiomaru(self):
+        self.setidioma("ru_RU")      
+    def idiomade(self):
+        self.setidioma("de_DE")
+    def idiomagl(self):
+        self.setidioma("gl_ES")
+    def idiomaeu(self):
+        self.setidioma("eu_ES")
+    def idiomait(self):
+        self.setidioma("it_IT")
+    def idiomazhcn(self):
+        self.setidioma("zh_CN")
+    def idiomazhtw(self):
+        self.setidioma("zh_TW")
+    def idiomafr(self):
+        self.setidioma("fr_FR")
+
 
     #Use the Character Validator to confirm OK of PC name
     def charvalidatorpc(self, line):
@@ -952,13 +996,13 @@ class instalador(QDialog):
         #############################
         
         #Count User on website
-        if self.internet:
-            mem=getoutput("cat /proc/meminfo  | grep MemTotal | awk ' { print $2 } '")
-            arch=getoutput("uname -m")
-            from  PyQt4.QtNetwork import QNetworkRequest,QNetworkAccessManager
-            nwam = QNetworkAccessManager()
-            request = QNetworkRequest (QUrl("http://www.kademar.org/UserCounter/count.php?login="+self.ui.t_user_account.text()+"&pc="+self.ui.t_pc.text()+"&type=hdd&kademar="+self.kademarType+"&arch="+arch+"&mem="+mem))
-            nwam.get(request)
+            if self.internet:
+                mem=getoutput("cat /proc/meminfo  | grep MemTotal | awk ' { print $2 } '")
+                arch=getoutput("uname -m")
+                from  PyQt4.QtNetwork import QNetworkRequest,QNetworkAccessManager
+                nwam = QNetworkAccessManager()
+                request = QNetworkRequest (QUrl("http://www.kademar.org/UserCounter/count.php?login="+self.ui.t_user_account.text()+"&pc="+self.ui.t_pc.text()+"&type=hdd&kademar="+self.kademarType+"&arch="+arch+"&mem="+mem))
+                nwam.get(request)
         
         #Muntem sistemes de fitxers virtuals
             system("mount --bind /dev "+target+"/dev")
@@ -999,11 +1043,11 @@ class instalador(QDialog):
             groups=getoutput('for i in $(grep -i '+default_user+' /etc/group | cut -d: -f1); do echo -n $i,; done')
 
             #remove xbmc user
-            system("""if [ "`grep xbmc '"""+target+"""/etc/passwd' | grep -i 100`" ]; then  echo "Removing XBMC User" ;  chroot '"""+target+"""' /usr/sbin/userdel xbmc ;   rm -fr '"""+target+"""/home/xbmc' ; fi""")
+            system("""if [ "`grep xbmc '"""+target+"""/etc/passwd' | grep -i 100`" ]; then  echo "Removing XBMC User" ;  chroot '"""+target+"""' /usr/bin/userdel xbmc ;   rm -fr '"""+target+"""/home/xbmc' ; fi""")
 
             if default_user<>login:
                 print "Deleting LiveCD default user"
-                system("chroot "+target+" /usr/sbin/userdel "+default_user)
+                system("chroot "+target+" /usr/bin/userdel "+default_user)
                 system("rm -fr "+target+"/home/"+default_user)
 
 
@@ -1020,8 +1064,8 @@ class instalador(QDialog):
                 crea_home="-M"
                 print "Crea Home NO"
 
-            system(str('chroot '+str(target)+' /usr/sbin/useradd '+str(crea_home)+' -p "" -c "'+str(gecos.toLocal8Bit())+'" -g users -G "'+str(groups[:-1])+'" '+str(login)))
-            print str('chroot '+str(target)+' /usr/sbin/useradd '+str(crea_home)+' -p "" -c "'+str(gecos.toLocal8Bit())+'" -g users -G "'+str(groups[:-1])+'" '+str(login))
+            system(str('chroot '+str(target)+' /usr/bin/useradd '+str(crea_home)+' -p "" -c "'+str(gecos.toLocal8Bit())+'" -g users -G "'+str(groups[:-1])+'" '+str(login)))
+            print str('chroot '+str(target)+' /usr/bin/useradd '+str(crea_home)+' -p "" -c "'+str(gecos.toLocal8Bit())+'" -g users -G "'+str(groups[:-1])+'" '+str(login))
 
             system("sh scripts/install-user_passwd")
             
@@ -1154,6 +1198,8 @@ elif qtTranslator.load("/usr/share/kademar/utils/instalador/tr/en.qm"):
 
 qtTranslatorQT = QTranslator()
 qtTranslatorQT.load("qt_"+locale, "/usr/share/qt4/translations")
+if qtTranslatorQT.isEmpty() and locale=="ca_ES":
+    qtTranslatorQT.load("qt_es_ES", "/usr/share/qt4/translations")
 app.installTranslator(qtTranslatorQT)
 
 instalador = instalador()

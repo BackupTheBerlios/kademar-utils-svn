@@ -12,7 +12,7 @@
 #############################################
 
 
-from PyQt4.QtCore import QThread, SIGNAL
+from PyQt4.QtCore import QThread, SIGNAL, QProcess
 from commands import getoutput
 from os import system
 from threadCheckspace import *
@@ -88,10 +88,18 @@ class copyfiles(QThread):
         self.connect(self.espaidisc, SIGNAL("progress2"), self.enviaprogress)
         self.espaidisc.start()
         #QApplication.processEvents()
-        #TEMP
+        #Old copy style
         system('cp -u -a '+inicial+'/* '+target+' ; echo $? > /tmp/instalador-copia')
+        
+        #New copy style
+        #self.copy=QProcess()
+        #self.copy.start=("/usr/bin/sh", [ "-c", 'cp -u -a '+inicial+'/* '+target+' ; echo $? > /tmp/instalador-copia'])
+        #self.copy.waitForFinised(-1)
+        
+        #debug mode
         #import time
         #time.sleep(15)
+        
         self.espaidisc.quit()
         self.emit(SIGNAL("acabat"))
 

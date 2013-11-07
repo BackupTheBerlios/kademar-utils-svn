@@ -111,8 +111,8 @@ if [ "$AUTOLOGIN" = "si" ]; then
     sed "s~AutoLoginUser=.*~AutoLoginUser=$login~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
     sed "s~#AutoLoginUser=.*~AutoLoginUser=$login~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
     
-    sed "s~#HaltCmd=.*~HaltCmd=systemctl poweroff~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
-    sed "s~HaltCmd=.*~HaltCmd=systemctl poweroff~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
+#     sed "s~#HaltCmd=.*~HaltCmd=systemctl poweroff~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
+#     sed "s~HaltCmd=.*~HaltCmd=systemctl poweroff~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
     
     sed "s~FaceSource=.*~FaceSource=UserOnly~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
     sed "s~#FaceSource=.*~FaceSource=UserOnly~g" -i "$DESTI/usr/share/config/kdm/kdmrc"

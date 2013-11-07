@@ -1,0 +1,18 @@
+
+#reiser
+reiserfstune -l "new grub" /dev/sda9
+
+#ext2/3/4
+e2label /dev/sda9 "kademar 5"
+
+#fat16,32
+mlabel -i /dev/partition ::my_label
+
+#ntfs
+ntfslabel /dev/sda9 "windoze"
+
+#xfs
+xfs_admin -L media /dev/sdb1
+
+#jfs
+jfs_tune -L "new grub" /dev/sda9

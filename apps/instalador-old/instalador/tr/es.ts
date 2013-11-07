@@ -4,102 +4,82 @@
 <context>
     <name>FormInstall</name>
     <message>
-        <location filename="../ui/instalador.ui" line="32"/>
         <source>Installer</source>
-        <translation>Instalador</translation>
+        <translation type="obsolete">Instalador</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="83"/>
         <source>Installation Process</source>
-        <translation>Proceso de Instalación</translation>
+        <translation type="obsolete">Proceso de Instalación</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="112"/>
         <source>Disk and Partition</source>
-        <translation>Disco y Partición</translation>
+        <translation type="obsolete">Disco y Partición</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="144"/>
         <source>File Copy</source>
-        <translation>Copia de Archivos</translation>
+        <translation type="obsolete">Copia de Archivos</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="176"/>
-        <location filename="../ui/instalador.ui" line="1081"/>
         <source>License</source>
-        <translation>Licencia</translation>
+        <translation type="obsolete">Licencia</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="208"/>
         <source>User</source>
-        <translation>Usuario</translation>
+        <translation type="obsolete">Usuario</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="240"/>
         <source>Boot Manager</source>
-        <translation>Gestor de Arranque</translation>
+        <translation type="obsolete">Gestor de Arranque</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="272"/>
         <source>Administrator Password</source>
-        <translation>Contraseña de Administrador</translation>
+        <translation type="obsolete">Contraseña de Administrador</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="304"/>
         <source>System</source>
-        <translation>Sistema</translation>
+        <translation type="obsolete">Sistema</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="381"/>
         <source>Copy Finished</source>
-        <translation>Copia Finalizada</translation>
+        <translation type="obsolete">Copia Finalizada</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="400"/>
         <source>Help</source>
-        <translation>Ayuda</translation>
+        <translation type="obsolete">Ayuda</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="427"/>
         <source>Back</source>
-        <translation>Atrás</translation>
+        <translation type="obsolete">Atrás</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="453"/>
         <source>Next</source>
-        <translation>Siguiente</translation>
+        <translation type="obsolete">Siguiente</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="479"/>
         <source>Exit</source>
-        <translation>Salir</translation>
+        <translation type="obsolete">Salir</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="526"/>
         <source>Welcome to kademar Linux Installer</source>
-        <translation>Bienvenido al instalador de kademar Linux</translation>
+        <translation type="obsolete">Bienvenido al instalador de kademar Linux</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="568"/>
         <source>kademar Installer have a help manual, it can be opened by clicking on &quot;Help&quot; button on left bar in any moment, or by clicking now right Information button.</source>
-        <translation>El instalador de kademar tiene un manual de ayuda, puede ser abierto en cualquier momento haciendo click en el botón &quot;Ayuda&quot; situado en la barra de la izquierda,o pulsando ahora en el botón de información de la derecha.</translation>
+        <translation type="obsolete">El instalador de kademar tiene un manual de ayuda, puede ser abierto en cualquier momento haciendo click en el botón &quot;Ayuda&quot; situado en la barra de la izquierda,o pulsando ahora en el botón de información de la derecha.</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="669"/>
         <source>Now kademar Installer is retreiving information of your system.
 
 Be patient, please.</source>
-        <translation>Ahora el instalador de kademar está obteniendo información de su sistema
+        <translation type="obsolete">Ahora el instalador de kademar está obteniendo información de su sistema
 
 Sea paciente, por favor.</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="697"/>
         <source>Retreiving System Information</source>
-        <translation>Obteniendo Información del Sistema</translation>
+        <translation type="obsolete">Obteniendo Información del Sistema</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="731"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -108,7 +88,7 @@ p, li { white-space: pre-wrap; }
 &lt;ul style=&quot;-qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Root:&lt;/span&gt; Where kademar will be installed.&lt;/li&gt;
 &lt;li style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Swap:&lt;/span&gt; Space for system management.&lt;/li&gt;&lt;/ul&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If you want, you can have your user documents in a separated partition of system partition. To do it, uncheck &lt;span style=&quot; font-style:italic;&quot;&gt;&quot;Within the same partition&quot;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -118,87 +98,66 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Si lo desea, puede tener sus documentos de usuario en una partición separada de la partición de sistema. Para hacerlo, desmarque &lt;span style=&quot; font-style:italic;&quot;&gt;&quot;Todo en la misma partición&quot;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="767"/>
         <source>Select partitions where install kademar</source>
-        <translation>Seleccione las particiones donde instalará kademar</translation>
+        <translation type="obsolete">Seleccione las particiones donde instalará kademar</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="783"/>
         <source>Within the same partition</source>
-        <translation>Todo en la misma partición</translation>
+        <translation type="obsolete">Todo en la misma partición</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="799"/>
         <source>Partitioning</source>
-        <translation>Particionado</translation>
+        <translation type="obsolete">Particionado</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="822"/>
         <source>Advanced</source>
-        <translation>Avanzado</translation>
+        <translation type="obsolete">Avanzado</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="851"/>
-        <location filename="../ui/instalador.ui" line="921"/>
         <source>Reiser FS</source>
-        <translation>Reiser FS</translation>
+        <translation type="obsolete">Reiser FS</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="846"/>
-        <location filename="../ui/instalador.ui" line="916"/>
         <source>Ext4</source>
-        <translation>Ext4</translation>
+        <translation type="obsolete">Ext4</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="856"/>
-        <location filename="../ui/instalador.ui" line="926"/>
         <source>Ext3</source>
-        <translation>Ext3</translation>
+        <translation type="obsolete">Ext3</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="861"/>
-        <location filename="../ui/instalador.ui" line="931"/>
         <source>Ext2</source>
-        <translation>Ext2</translation>
+        <translation type="obsolete">Ext2</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="866"/>
-        <location filename="../ui/instalador.ui" line="936"/>
         <source>No Format</source>
-        <translation>Sin Formato</translation>
+        <translation type="obsolete">Sin Formato</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="901"/>
         <source>Swap FS</source>
-        <translation>Swap FS</translation>
+        <translation type="obsolete">Swap FS</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="957"/>
         <source>Partition</source>
-        <translation>Partición</translation>
+        <translation type="obsolete">Partición</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="977"/>
         <source>Format as</source>
-        <translation>Formatea en</translation>
+        <translation type="obsolete">Formatea en</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="995"/>
         <source>Root</source>
-        <translation>Root</translation>
+        <translation type="obsolete">Root</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1019"/>
         <source>Swap</source>
-        <translation>Swap</translation>
+        <translation type="obsolete">Swap</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1040"/>
         <source>Home</source>
-        <translation>Home</translation>
+        <translation type="obsolete">Home</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1097"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -210,7 +169,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;You can read more about non-free licenses included on kademar, on kademar&apos;s webpage. &lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If you doesn&apos;t accept it, all non-free software such as: DivX support, MP3 support, nVidia drivers, device firmwares, flash, java, etc. will be completly removed of your system, and kademar Linux would be converted to a Linux 100% free distribution, as in freedom. &lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Do you agree terms of non-free licenses included on kademar to maximize user experience?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -223,61 +182,50 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Acepta los términos de las licencias no libres incluidas en kademar para maximizar la experiencia de usuario?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1126"/>
         <source>Yes, I accept non-free license terms</source>
-        <translation>Si, Acepto los términos de las licencias no libres</translation>
+        <translation type="obsolete">Si, Acepto los términos de las licencias no libres</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1139"/>
         <source>No, please remove all non-free software of kademar Linux</source>
-        <translation>No, por favor, borra todo el software no libre de mi kademar Linux</translation>
+        <translation type="obsolete">No, por favor, borra todo el software no libre de mi kademar Linux</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1173"/>
         <source>kademar</source>
-        <translation>kademar</translation>
+        <translation type="obsolete">kademar</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1189"/>
         <source>Now you have to configure your PC name. It&apos;s used on local network identification.
 
 Also you have to define you default language of your system. You can change it later on CADI.</source>
-        <translation>Ahora tiene que configurar el nombre de Pc. Será usado en la identificación de red.
+        <translation type="obsolete">Ahora tiene que configurar el nombre de Pc. Será usado en la identificación de red.
 
 Tambien tiene que definir el idioma por defecto de su sistema. Puede cambiarlo más tarde con CADI.</translation>
     </message>
-    <message utf8="true">
-        <location filename="../ui/instalador.ui" line="1210"/>
+    <message>
         <source>Català</source>
-        <translation>Català</translation>
+        <translation type="obsolete">Català</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1236"/>
         <source>PC Name (for local network identification, if you have it.)</source>
-        <translation>Nombre de PC (para identificación local de red, si se tiene)</translation>
+        <translation type="obsolete">Nombre de PC (para identificación local de red, si se tiene)</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1256"/>
         <source>System Configurations</source>
-        <translation>Configuraciones de sistema</translation>
+        <translation type="obsolete">Configuraciones de sistema</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1272"/>
         <source>English</source>
-        <translation>English</translation>
+        <translation type="obsolete">English</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1298"/>
         <source>Castellano</source>
-        <translation>Castellano</translation>
+        <translation type="obsolete">Castellano</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1377"/>
         <source>Reenter Administrator Password, to confirm it.</source>
-        <translation>Reintroduzca la contraseña de Administrador, para confirmar.</translation>
+        <translation type="obsolete">Reintroduzca la contraseña de Administrador, para confirmar.</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1390"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -289,7 +237,7 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Enter the password twice to confirm it and Remember it!&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; font-style:italic;&quot;&gt;(Keep this password in a safety place)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -302,123 +250,104 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; font-style:italic;&quot;&gt;(Anote esta contraseña en un lugar seguro)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1419"/>
         <source>Enter Administration Password</source>
-        <translation>Introduzca Contraseña de Administración</translation>
+        <translation type="obsolete">Introduzca Contraseña de Administración</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1455"/>
         <source>Contrassenya d&apos;Administrador (root)</source>
-        <translation>Contraseña de Administrador (root)</translation>
+        <translation type="obsolete">Contraseña de Administrador (root)</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1496"/>
         <source>Account name</source>
-        <translation>Nombre de la cuenta</translation>
+        <translation type="obsolete">Nombre de la cuenta</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1512"/>
         <source>Now you have to enter a user to be able to use the system.
 Username can be your name, to create the accout that you&apos;ll use as default.
 
 For more security, you have to enter a password for the user.
 If you don&apos;t want to be asked for it every time you start, check User Autostart checkbox.</source>
-        <translation>Ahora tiene que definir un usuario para que sea posible usar el sistema
+        <translation type="obsolete">Ahora tiene que definir un usuario para que sea posible usar el sistema
 El nombre de usuario puede ser su nombre, para crear la cuenta que se usará por defecto
 
 Para mayor seguridad, tiene que definir una contraseña para el usuario
 Si no quiere que le sea solicitada cada vez que inicie, marque la casilla Autoinicio de Usuario.</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1558"/>
         <source>Reenter User Password</source>
-        <translation>Reintroduzca la Contraseña de Usuario</translation>
+        <translation type="obsolete">Reintroduzca la Contraseña de Usuario</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1610"/>
         <source>Enter your name</source>
-        <translation>Introduzca su nombre</translation>
+        <translation type="obsolete">Introduzca su nombre</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1630"/>
         <source>User Configuration</source>
-        <translation>Configuración de Usuario</translation>
+        <translation type="obsolete">Configuración de Usuario</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1646"/>
         <source>User Autostart
  without ask your password.</source>
-        <translation>Autoinicio de Usuario
+        <translation type="obsolete">Autoinicio de Usuario
 sin solicitar la contraseña.</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1683"/>
         <source>User Password</source>
-        <translation>Contraseña de Usuario</translation>
+        <translation type="obsolete">Contraseña de Usuario</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1717"/>
         <source>Here you have to indicate a disk where install Grub Boot Manager.
 By default this selection is automatic, but you can set it manually.
 Also you can bypass, setting not to install, but use it only if you know what you are doing.
 
 Grub will make you able to start kademar Linux on your machine and other operating systems.</source>
-        <translation>Aqui tiene que indicar el disco donde se instalará el Gestor de Arranque Grub
+        <translation type="obsolete">Aqui tiene que indicar el disco donde se instalará el Gestor de Arranque Grub
 Por defecto, la selección es automática, pero puede ser configurada manualmente.
 Tambien puede escoger no instalarlo, pero use esta opción solo si sabe lo que hace.
 
 Grub hará que pueda arrancar kademar Linux en su ordenador, asi como otros sistemas operativos.</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1745"/>
         <source>Manual - Advanced Selecction</source>
-        <translation>Manual - Selección Avanzada</translation>
+        <translation type="obsolete">Manual - Selección Avanzada</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1765"/>
         <source>Automatic - Recomended</source>
-        <translation>Automática - Recomendado</translation>
+        <translation type="obsolete">Automática - Recomendado</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1786"/>
         <source>Do not install boot manager - NOT RECOMMENDED
  (Only do it if you know what are doing)</source>
-        <translation>No instalar el gestor de arranque - NO RECOMENDADO
+        <translation type="obsolete">No instalar el gestor de arranque - NO RECOMENDADO
  (Elegir solo si se sabe que está haciendo)</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1807"/>
         <source>Boot Configuration</source>
-        <translation>Configuración de Arranque</translation>
+        <translation type="obsolete">Configuración de Arranque</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1833"/>
         <source>Initrd (Activate if you receive an error when start)</source>
-        <translation>Initrd (Activar si obtiene un error en el inicio)</translation>
+        <translation type="obsolete">Initrd (Activar si obtiene un error en el inicio)</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1871"/>
         <source>Ending Installation Tasks</source>
-        <translation>Finalizando las Tareas de Instalación</translation>
+        <translation type="obsolete">Finalizando las Tareas de Instalación</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1887"/>
         <source>Some installation tasks are pending.
 
 You have to wait while process is finishing.
 You can see tasks status on left bar.</source>
-        <translation>Algunas tareas de instalación estan pendientes
+        <translation type="obsolete">Algunas tareas de instalación estan pendientes
 
 Tiene que esperar mientras el proceso finaliza.
 Puede ver el estado de las tareas en la barra de la izquierda.</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1953"/>
         <source>Installation Finished!!!</source>
-        <translation>Instalación Finalizada!!!</translation>
+        <translation type="obsolete">Instalación Finalizada!!!</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1969"/>
         <source>kademar Linux it&apos;s installed on your PC
 
 Now you can close installer and continue using kademar on Live mode, or you can reboot you computer and start on the installed system.
@@ -428,7 +357,7 @@ Remember to go to our webpage if you have some trouble.
 
 
 Thanks for choosing kademar Linux</source>
-        <translation>kademar Linux se ha instalado en su PC
+        <translation type="obsolete">kademar Linux se ha instalado en su PC
 
 Ahora ya puede cerrar el instalador y continuar usando kademar en modo Live, o puede reiniciar su ordenador y comenzar desde el sistema instalado en disco
 
@@ -439,22 +368,8 @@ Recuerde visitar nuestra página web si tiene algun problema.
 Gracias por elegir kademar Linux</translation>
     </message>
     <message>
-        <location filename="../ui/instalador.ui" line="1996"/>
         <source>Reboot Computer</source>
-        <translation>Reiniciar Ordenador</translation>
-    </message>
-    <message>
-        <location filename="../ui/instalador.ui" line="2025"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Webpage: &lt;a href=&quot;www.kademar.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;www.kademar.org&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Facebook: &lt;a href=&quot;www.facebook.com/kademarlinux&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;www.facebook.com/kademarlinux&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Twitter: &lt;a href=&quot;www.twitter.com/kademarlinux&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;@kademarlinux&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Reiniciar Ordenador</translation>
     </message>
 </context>
 <context>

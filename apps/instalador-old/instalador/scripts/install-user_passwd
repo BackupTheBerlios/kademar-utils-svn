@@ -11,4 +11,4 @@
 . /tmp/instalador-environment-passwd #Plantilla de passwords
 
 #I l'executem en el $DESTI, passant-li el parametre del pass de root
-echo "$login:$passwd" | /usr/sbin/chpasswd -R "$DESTI"
+echo "$login:$passwd" | /usr/bin/chpasswd -R "$DESTI"

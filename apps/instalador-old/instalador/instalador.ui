@@ -497,7 +497,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>9</number>
+    <number>4</number>
    </property>
    <widget class="QWidget" name="p_principal">
     <widget class="QLabel" name="label">
@@ -1197,8 +1197,8 @@ Also you have to define you default language of your system. You can change it l
     <widget class="QPushButton" name="b_cat">
      <property name="geometry">
       <rect>
-       <x>90</x>
-       <y>301</y>
+       <x>50</x>
+       <y>300</y>
        <width>121</width>
        <height>41</height>
       </rect>
@@ -1259,7 +1259,7 @@ Also you have to define you default language of your system. You can change it l
     <widget class="QPushButton" name="b_eng">
      <property name="geometry">
       <rect>
-       <x>410</x>
+       <x>330</x>
        <y>300</y>
        <width>121</width>
        <height>41</height>
@@ -1285,8 +1285,8 @@ Also you have to define you default language of your system. You can change it l
     <widget class="QPushButton" name="b_esp">
      <property name="geometry">
       <rect>
-       <x>250</x>
-       <y>301</y>
+       <x>190</x>
+       <y>300</y>
        <width>121</width>
        <height>41</height>
       </rect>
@@ -1311,10 +1311,10 @@ Also you have to define you default language of your system. You can change it l
     <widget class="QLabel" name="l_bandera">
      <property name="geometry">
       <rect>
-       <x>250</x>
-       <y>370</y>
-       <width>121</width>
-       <height>121</height>
+       <x>290</x>
+       <y>460</y>
+       <width>64</width>
+       <height>64</height>
       </rect>
      </property>
      <property name="text">
@@ -1341,6 +1341,216 @@ Also you have to define you default language of your system. You can change it l
      </property>
      <property name="pixmap">
       <pixmap>../../../../../usr/share/kademar/utils/instalador/img/system.png</pixmap>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_gl">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>300</y>
+       <width>121</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Galego</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../../../../../usr/share/kademar/utils/instalador/img/gl_ES.png</normaloff>../../../../../usr/share/kademar/utils/instalador/img/gl_ES.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_fr">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>350</y>
+       <width>121</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Français</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../../../../../usr/share/kademar/utils/instalador/img/fr_FR.png</normaloff>../../../../../usr/share/kademar/utils/instalador/img/fr_FR.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_eu">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>350</y>
+       <width>121</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Euskara</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../../../../../usr/share/kademar/utils/instalador/img/eu_ES.png</normaloff>../../../../../usr/share/kademar/utils/instalador/img/eu_ES.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_de">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>350</y>
+       <width>121</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Deutsch</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../../../../../usr/share/kademar/utils/instalador/img/de_DE.png</normaloff>../../../../../usr/share/kademar/utils/instalador/img/de_DE.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_it">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>350</y>
+       <width>121</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Italiano</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../../../../../usr/share/kademar/utils/instalador/img/it_IT.png</normaloff>../../../../../usr/share/kademar/utils/instalador/img/it_IT.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_ru">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>400</y>
+       <width>121</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Pу́сский</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../../../../../usr/share/kademar/utils/instalador/img/ru_RU.png</normaloff>../../../../../usr/share/kademar/utils/instalador/img/ru_RU.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_zh_tw">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>400</y>
+       <width>121</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Chinese
+Traditional</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../../../../../usr/share/kademar/utils/instalador/img/zh_CN.png</normaloff>../../../../../usr/share/kademar/utils/instalador/img/zh_CN.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="b_zh_cn">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>400</y>
+       <width>121</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Chinese
+Simplified</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../../../../../usr/share/kademar/utils/instalador/img/zh_CN.png</normaloff>../../../../../usr/share/kademar/utils/instalador/img/zh_CN.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>

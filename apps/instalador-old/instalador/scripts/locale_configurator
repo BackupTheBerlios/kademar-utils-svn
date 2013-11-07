@@ -329,7 +329,7 @@ CHARSET="iso8859-9"
 KDEKEYBOARDS="us,de,fr"
 TZ="Europe/Istanbul"
 ;;
-zh_TW*)
+zh_TW*|zhtw*)
 # Traditional Chinese version (thanks to Chung-Yen Chang)
 COUNTRY="tw"
 LANG="zh_TW.UTF-8"
@@ -344,7 +344,7 @@ KDEKEYBOARDS="us"
 XMODIFIERS="@im=xcin"
 TZ="Asia/Taipei"
 ;;
-zh_CN*)
+zh_CN*|zhcn*)
 # Simplified Chinese version (thanks to Chung-Yen Chang)
 COUNTRY="tw"
 LANG="zh_CN.UTF-8"

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+var=`whoami`
+if [ ! -e "/tmp/kademar-bitnami-$var" ]; then
+  touch "/tmp/kademar-bitnami-$var"
+  cd /usr/share/bitnami-controller
+  python bitnamiController.py
+  rm -fr "/tmp/kademar-bitnami-$var"
+else
+  echo "Already executing another instance of Kademar Bitnami Control Panel"
+fi

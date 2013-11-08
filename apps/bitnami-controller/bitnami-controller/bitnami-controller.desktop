@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Bitnami Control Panel
+Exec=bitnami-controller
+Icon=/usr/share/bitnami-controller/bitnamistack.png
+Terminal=false
+Type=Application
+Categories=Network;Internet
+Comment=Control Panel for Bitnami Server

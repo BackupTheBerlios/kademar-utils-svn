@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Grog</class>
+ <widget class="QMainWindow" name="Grog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>420</width>
+    <height>415</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>420</width>
+    <height>415</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>420</width>
+    <height>415</height>
+   </size>
+  </property>
+  <property name="palette">
+   <palette>
+    <active>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </active>
+    <inactive>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </inactive>
+    <disabled>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </disabled>
+   </palette>
+  </property>
+  <property name="windowTitle">
+   <string>Bitnami Controller</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resource.qrc">
+    <normaloff>:/img/img/bitnamistack.png</normaloff>:/img/img/bitnamistack.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <widget class="QWidget" name="widget" native="true">
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label">
+         <property name="maximumSize">
+          <size>
+           <width>128</width>
+           <height>128</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="resource.qrc">:/img/img/kademar.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="resource.qrc">:/img/img/bitnami-logo.png</pixmap>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QFrame" name="frame">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>200</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="1" column="0">
+        <widget class="Line" name="line">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QPushButton" name="BStopServer">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>270</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Stop Bitnami Server</string>
+         </property>
+         <property name="icon">
+          <iconset resource="resource.qrc">
+           <normaloff>:/img/img/vermell_p.png</normaloff>:/img/img/vermell_p.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QFrame" name="frame_2">
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="maximumSize">
+             <size>
+              <width>70</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Status:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="iStatus">
+            <property name="minimumSize">
+             <size>
+              <width>22</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>22</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="resource.qrc">:/img/img/verd_p.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QLabel" name="LStatus">
+            <property name="text">
+             <string>Started</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QPushButton" name="BStartServer">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>270</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Start Bitnami Server</string>
+         </property>
+         <property name="icon">
+          <iconset resource="resource.qrc">
+           <normaloff>:/img/img/verd_p.png</normaloff>:/img/img/verd_p.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QPushButton" name="BRestartServer">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>270</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Restart Bitnami Server</string>
+         </property>
+         <property name="icon">
+          <iconset resource="resource.qrc">
+           <normaloff>:/img/img/taronja_p.png</normaloff>:/img/img/taronja_p.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>420</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuMenu">
+    <property name="title">
+     <string>&amp;Server</string>
+    </property>
+    <addaction name="actionStart_Server"/>
+    <addaction name="actionStop_Server"/>
+    <addaction name="actionRestart_Server"/>
+    <addaction name="separator"/>
+    <addaction name="actionManage_Stacks"/>
+    <addaction name="actionOpen_Browser"/>
+    <addaction name="separator"/>
+    <addaction name="actionAutostart_on_boot"/>
+    <addaction name="actionStart_on_tray"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuPasswords">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <widget class="QMenu" name="menuDocumentation">
+     <property name="title">
+      <string>&amp;Documentation</string>
+     </property>
+     <property name="icon">
+      <iconset resource="resource.qrc">
+       <normaloff>:/img/img/docs.png</normaloff>:/img/img/docs.png</iconset>
+     </property>
+     <addaction name="actionBitnami_Documentation"/>
+     <addaction name="actionApache_Documentation"/>
+     <addaction name="separator"/>
+     <addaction name="actionMake_public_any_BitNami_Stack"/>
+     <addaction name="actionBitNami_LAMP_Stack_Readme"/>
+     <addaction name="actionApps"/>
+     <addaction name="actionComponents"/>
+     <addaction name="actionMultiple_instances_of_the_same_App"/>
+     <addaction name="actionBitNami_Custom_PHP_application"/>
+     <addaction name="actionBitNami_AMP_Stacks"/>
+    </widget>
+    <widget class="QMenu" name="menuDefault_Passwords">
+     <property name="title">
+      <string>Default &amp;Passwords</string>
+     </property>
+     <property name="icon">
+      <iconset resource="resource.qrc">
+       <normaloff>:/img/img/keys.png</normaloff>:/img/img/keys.png</iconset>
+     </property>
+     <widget class="QMenu" name="menuMysql">
+      <property name="title">
+       <string>M&amp;ysql Password</string>
+      </property>
+      <property name="icon">
+       <iconset resource="resource.qrc">
+        <normaloff>:/img/img/keys.png</normaloff>:/img/img/keys.png</iconset>
+      </property>
+      <addaction name="actionKademar_3"/>
+     </widget>
+     <widget class="QMenu" name="menuStack_Admin_Password">
+      <property name="title">
+       <string>S&amp;tack Admin Password</string>
+      </property>
+      <property name="icon">
+       <iconset resource="resource.qrc">
+        <normaloff>:/img/img/keys.png</normaloff>:/img/img/keys.png</iconset>
+      </property>
+      <addaction name="actionAdmin_2"/>
+     </widget>
+     <widget class="QMenu" name="menuStack_Admin_user">
+      <property name="title">
+       <string>&amp;Stack Admin User</string>
+      </property>
+      <property name="icon">
+       <iconset resource="resource.qrc">
+        <normaloff>:/img/img/user.png</normaloff>:/img/img/user.png</iconset>
+      </property>
+      <addaction name="actionAdmin_3"/>
+     </widget>
+     <widget class="QMenu" name="menuMysql_User">
+      <property name="title">
+       <string>&amp;Mysql User</string>
+      </property>
+      <property name="icon">
+       <iconset resource="resource.qrc">
+        <normaloff>:/img/img/user.png</normaloff>:/img/img/user.png</iconset>
+      </property>
+      <addaction name="actionRoot"/>
+     </widget>
+     <addaction name="menuMysql_User"/>
+     <addaction name="menuMysql"/>
+     <addaction name="separator"/>
+     <addaction name="menuStack_Admin_user"/>
+     <addaction name="menuStack_Admin_Password"/>
+    </widget>
+    <addaction name="menuDocumentation"/>
+    <addaction name="separator"/>
+    <addaction name="menuDefault_Passwords"/>
+   </widget>
+   <widget class="QMenu" name="menuFile_Manager">
+    <property name="title">
+     <string>&amp;Files</string>
+    </property>
+    <addaction name="actionOpen_File_Manger"/>
+    <addaction name="actionOpen_Cache_Stack"/>
+   </widget>
+   <widget class="QMenu" name="menuApps">
+    <property name="title">
+     <string>&amp;Apps</string>
+    </property>
+   </widget>
+   <addaction name="menuMenu"/>
+   <addaction name="menuApps"/>
+   <addaction name="menuFile_Manager"/>
+   <addaction name="menuPasswords"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionStop_Server">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/img/img/vermell_p.png</normaloff>:/img/img/vermell_p.png</iconset>
+   </property>
+   <property name="text">
+    <string>S&amp;top Server</string>
+   </property>
+  </action>
+  <action name="actionStart_Server">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/img/img/verd_p.png</normaloff>:/img/img/verd_p.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Start Server</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/img/img/exit.png</normaloff>:/img/img/exit.png</iconset>
+   </property>
+   <property name="text">
+    <string>E&amp;xit</string>
+   </property>
+  </action>
+  <action name="actionRestart_Server">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/img/img/taronja_p.png</normaloff>:/img/img/taronja_p.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Restart Server</string>
+   </property>
+  </action>
+  <action name="actionManage_Stacks">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/img/img/config.png</normaloff>:/img/img/config.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Manage Stacks</string>
+   </property>
+  </action>
+  <action name="actionOpen_Browser">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/img/img/browse.png</normaloff>:/img/img/browse.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Open Browser</string>
+   </property>
+  </action>
+  <action name="actionKademar">
+   <property name="text">
+    <string>kademar</string>
+   </property>
+  </action>
+  <action name="actionKademar_2">
+   <property name="text">
+    <string>kademar</string>
+   </property>
+  </action>
+  <action name="actionAdmin">
+   <property name="text">
+    <string>admin</string>
+   </property>
+  </action>
+  <action name="actionOpen_File_Manger">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/img/img/filemanager.png</normaloff>:/img/img/filemanager.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;FTP Apps</string>
+   </property>
+  </action>
+  <action name="actionBitnami_Documentation">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/img/img/bitnamistack.png</normaloff>:/img/img/bitnamistack.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Bitnami Documentation</string>
+   </property>
+  </action>
+  <action name="actionApache_Documentation">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/img/img/apache.png</normaloff>:/img/img/apache.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Apache Documentation</string>
+   </property>
+  </action>
+  <action name="actionIi">
+   <property name="text">
+    <string>ii</string>
+   </property>
+  </action>
+  <action name="actionOl">
+   <property name="text">
+    <string>ol</string>
+   </property>
+  </action>
+  <action name="actionKademar_3">
+   <property name="text">
+    <string>kademar</string>
+   </property>
+  </action>
+  <action name="actionAdmin_2">
+   <property name="text">
+    <string>kademar</string>
+   </property>
+  </action>
+  <action name="actionAdmin_3">
+   <property name="text">
+    <string>admin</string>
+   </property>
+  </action>
+  <action name="actionMake_public_any_BitNami_Stack">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/img/img/bitnamistack.png</normaloff>:/img/img/bitnamistack.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Make public any BitNami Stack</string>
+   </property>
+  </action>
+  <action name="actionBitNami_LAMP_Stack_Readme">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/img/img/bitnamistack.png</normaloff>:/img/img/bitnamistack.png</iconset>
+   </property>
+   <property name="text">
+    <string>BitNami &amp;LAMP Stack Readme</string>
+   </property>
+  </action>
+  <action name="actionApps">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/img/img/bitnamistack.png</normaloff>:/img/img/bitnamistack.png</iconset>
+   </property>
+   <property name="text">
+    <string>A&amp;pps</string>
+   </property>
+  </action>
+  <action name="actionComponents">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/img/img/bitnamistack.png</normaloff>:/img/img/bitnamistack.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Components</string>
+   </property>
+  </action>
+  <action name="actionMultiple_instances_of_the_same_App">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/img/img/bitnamistack.png</normaloff>:/img/img/bitnamistack.png</iconset>
+   </property>
+   <property name="text">
+    <string>Multiple &amp;instances of the same App</string>
+   </property>
+  </action>
+  <action name="actionRoot">
+   <property name="text">
+    <string>root</string>
+   </property>
+  </action>
+  <action name="actionAutostart_on_boot">
+   <property name="text">
+    <string>Autostart on boot</string>
+   </property>
+  </action>
+  <action name="actionOpen_Cache_Stack">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/img/img/filemanager.png</normaloff>:/img/img/filemanager.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Cache Stacks</string>
+   </property>
+  </action>
+  <action name="actionStart_on_tray">
+   <property name="text">
+    <string>Start on tray</string>
+   </property>
+  </action>
+  <action name="actionBitNami_Custom_PHP_application">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/img/img/bitnamistack.png</normaloff>:/img/img/bitnamistack.png</iconset>
+   </property>
+   <property name="text">
+    <string>BitNami Custom PHP application</string>
+   </property>
+  </action>
+  <action name="actionBitNami_AMP_Stacks">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/img/img/bitnamistack.png</normaloff>:/img/img/bitnamistack.png</iconset>
+   </property>
+   <property name="text">
+    <string>BitNami AMP Stacks</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,52 @@
+# Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+pkgname=bitnami-controller
+pkgver=2.4
+pkgrel=1
+epoch=
+pkgdesc="Bitnami Controller Panel"
+arch=("any")
+url="http://www.kademar.org"
+license=('GPL')
+groups=()
+depends=( 'python-pyqt4' 'wget' 'bash')
+makedepends=("python-pyqt4")
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=(!strip)
+install=bitnami-controller.install
+changelog=
+source=($pkgname-$pkgver.tar.gz)
+noextract=()
+md5sums=('777baf389de4ac7d0e52a70ff15ef215') #generate with 'makepkg -g'
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  sh prepare.sh
+  #lrelease instalador.pro
+}
+
+ package() {
+   mkdir -p "$pkgdir/usr/share/applications"
+   cp -a $srcdir/$pkgname-$pkgver "$pkgdir/usr/share/bitnami-controller"
+   mv "$pkgdir/usr/share/bitnami-controller/bitnami-controller.desktop" "$pkgdir/usr/share/applications"
+   rm -fr "$pkgdir/usr/share/bitnami-controller/prepare.sh" 
+   rm -fr "$pkgdir/usr/share/bitnami-controller/img" 
+
+   cd $pkgdir && rm -fr `find . -name ".svn"` && rm -fr `find . -name "__pycache__"` && rm -fr `find . -name "*.pyc"` && rm -fr `find . -name "*.pro"` && rm -f `find . -name "*~"` && rm -f `find . -name "todo"` && rm -f `find . -name "*project"` && rm -f `find . -name "*odt"` && rm -f `find . -name "*.ts"` && rm -f `find . -name "*.kate-swp"`
+   find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+   find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+#    chmod +x "$pkgdir/usr/share/instalador/scripts/mkdevicemap"
+   mkdir -p "$pkgdir/usr/bin"
+   mv "$pkgdir/usr/share/bitnami-controller/bin/bitnami-controller" "$pkgdir/usr/bin"
+   rm -fr $srcdir/$pkgname-$pkgver/bin
+   rm -fr "$pkgdir"/usr/share/bitnami-controller/cache
+   find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+   find "$pkgdir"/usr/share/applications -type f -exec chmod 755 "{}" \;
+#    find "$pkgdir"/usr/share/bitnami-controller/cache -type f -exec chmod 755 "{}" \;
+ }
+
+# vim:set ts=2 sw=2 et:

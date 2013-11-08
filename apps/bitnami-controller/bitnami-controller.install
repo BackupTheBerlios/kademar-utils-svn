@@ -1,0 +1,34 @@
+checkCache(){
+arch=$(uname -m)
+if [ "$arch" = "x86_64" ]; then
+ #64bit
+  grepParam=-i
+  name=-x64
+else
+ #32bit
+  grepParam=-v
+  name=
+fi
+
+  [ ! -e /usr/share/bitnami-controller/cache ] && mkdir -p /usr/share/bitnami-controller/cache
+  
+  if [ ! -e /usr/share/bitnami-controller/cache/bitnami-lampstack-linux$name-installer.run ]; then
+     download=$(wget http://bitnami.com/stack/lamp/installer -O- | grep -i "a href" | grep -i linux$name-installer.run | grep -i direct_download_link | grep -v 'role="button"' | while read i;  do echo $i | cut -d\" -f2; break; done)  ; wget http://www.bitnami.com/$download?with_popup_skip_signin=1 -O  /usr/share/bitnami-controller/cache/bitnami-lampstack-linux$name-installer.run
+     chmod +x /usr/share/bitnami-controller/cache/bitnami-lampstack-linux$name-installer.run
+  fi
+  
+}
+
+
+post_install(){
+checkCache
+}
+
+post_upgrade(){
+checkCache
+}
+
+
+post_remove(){
+rm -fr /usr/share/bitnami-controller/
+}

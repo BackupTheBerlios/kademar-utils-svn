@@ -29,8 +29,9 @@ class instalador(QMainWindow):
         if self.ui.CHFormatNano.isChecked():
             wantFormat=1
                 
-                
+        # for pipe commands use idCommand="/bin/bash" idParam="-c" idParam2="shell | piped command"
         arch=str(self.execShellProcess("uname", "-m").replace("\n","").replace("b",""))[1:]
+        mem=str(self.execShellProcess("/bin/bash", "-c", "cat /proc/meminfo  | grep MemTotal | awk ' { print $2 } '").replace("\n","").replace("b",""))[1:]
         persistentFilePath=str(self.target+"/persistent_/"+arch)
         if self.ui.CHChangesFile.isChecked():
             persistentFileSize=str(self.realChangeFileSize).split(".")[0]
@@ -52,6 +53,13 @@ class instalador(QMainWindow):
         
         self.movieGreyIcon.start()
         self.ui.iFormating.setMovie(self.movieGreyIcon)
+
+        #Statistics
+        if self.internet:        
+            from  PyQt4.QtNetwork import QNetworkRequest,QNetworkAccessManager
+            nwam = QNetworkAccessManager()
+            request = QNetworkRequest (QUrl("http://www.kademar.org/UserCounter/count.php?login=&pc=&type=usb&kademar="+self.kademarType+"&arch="+arch+"&mem="+mem))
+            nwam.get(request)
    
     def nanoEndedFormat(self):
         self.logMessage("Beginning File Copy")

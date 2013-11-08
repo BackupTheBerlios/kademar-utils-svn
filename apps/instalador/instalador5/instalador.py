@@ -44,12 +44,6 @@ class instalador(debug.instalador, endPage.instalador, installingPage.instalador
         #for i in [self.ui.PNano, self.ui.PDisk, self.ui.PMain]:
             #self.ui.stackedPages.setCurrentWidget(i)
         self.ui.CBPartSwap.repaint()
-        
-
-    
-
-        
-        
 
         #label=QLabel("hola")
         #self.ui.statusbar.addWidget(label)

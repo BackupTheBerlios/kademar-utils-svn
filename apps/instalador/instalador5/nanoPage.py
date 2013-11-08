@@ -162,7 +162,7 @@ class instalador(QMainWindow):
                 self.totalFreeSizeAfterInstallation=self.totalSizeOfDevice-self.totalSizeOfKademar
 
                 if str(self.totalFreeSizeAfterInstallation)[0] == "-": #if it's "-" means device it's too small for install kademar
-                    self.showWarningMessage("critical", "Error: The selected partition it's too small", "The selectted partition to install it's too small, choose other.")
+                    self.showWarningMessage("critical", self.tr("Error: The selected partition it's too small"), self.tr("The selectted partition to install it's too small, choose other."))
                     self.ui.CBNanoDevice.setCurrentIndex(-1)
                     self.ui.CHChangesFile.setEnabled(False)
                     self.ui.CHFormatNano.setEnabled(False)

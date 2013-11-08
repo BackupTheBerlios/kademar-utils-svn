@@ -1,5 +1,18 @@
 <RCC>
   <qresource prefix="img">
+    <file>img/lang/br_BR.png</file>
+    <file>img/lang/pt_PT.png</file>
+    <file>img/lang/ca_ES.png</file>
+    <file>img/lang/de_DE.png</file>
+    <file>img/lang/en_GB.png</file>
+    <file>img/lang/en_IE.png</file>
+    <file>img/lang/en_US.png</file>
+    <file>img/lang/es_ES.png</file>
+    <file>img/lang/es_EU.png</file>
+    <file>img/lang/es_GL.png</file>
+    <file>img/lang/es_MX.png</file>
+    <file>img/lang/fr_FR.png</file>
+    <file>img/lang/ru_RU.png</file>
     <file>img/add.png</file>
     <file>img/remove.png</file>
     <file>img/gparted.png</file>

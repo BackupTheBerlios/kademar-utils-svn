@@ -7,6 +7,7 @@ from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 #from gui1 import Ui_MainWindow
 from os import system
+from socket import socket, AF_INET, SOCK_STREAM
 
 #list partitions
 import dbus
@@ -14,7 +15,7 @@ import dbus
 class instalador(QMainWindow):
     #def __init__(self):
       #Inst. rapida: PMain -> PInfo -> PQuickInstall -> PInstalling -> PEnd
-      #Inst. Avanç: PMain -> PInfo -> PTime -> PDisk -> PUsers -> PSystem -> PNet -> PSoft -> PInstalling -> PEnd
+      #Inst. Avanç: PMain -> PInfo -> PDisk -> PTime -> PUsers -> PSystem -> PNet -> PSoft -> PInstalling -> PEnd
       #Inst. Nano: PMain -> PNano -> PInstalling -> PEnd
       
     def defineCommons(self):
@@ -28,6 +29,7 @@ class instalador(QMainWindow):
         self.kademarType="Kademar"
         self.pathInstaller="/usr/share/instalador" 
         self.logFile = "/tmp/kademar5-install.log"
+        self.checkInternetConnection()
         
         self.putDistroNameOnGui()
         
@@ -78,7 +80,7 @@ class instalador(QMainWindow):
         self.icon_state_blue=":/img/img/state_blue.png"
 
     def openGparted(self):
-        system("gparted-pkexec")
+        system("gparted")
         
     def listBlockDevices(self,removable):
         #if removable:
@@ -307,7 +309,7 @@ class instalador(QMainWindow):
         for i in range(len(view)):
             value=int(str(int(comboBox[i].width())/8).split(".")[0])
             #print(comboBox[i].width())
-            view[i].header().resizeSection(0, value*3) #name
+            #view[i].header().resizeSection(0, value*3) #name
             view[i].header().resizeSection(0, value*3) #name
             view[i].header().resizeSection(1, value) #size
             view[i].header().resizeSection(2, value*2) #model+vendor / label
@@ -561,3 +563,15 @@ class instalador(QMainWindow):
                 f.write(var+"\n")
             if var5:
                 f.write(var+"\n")
+                
+    def checkInternetConnection(self):
+        self.internet=0
+        testConn=socket(AF_INET,SOCK_STREAM)
+        try:
+            testConn.connect(('www.kademar.org',80))
+            testConn.close()
+            self.internet=1
+            #self.setWindowTitle('Gestion Freetec - Conexión al Servidor - Internet')
+        except:
+            testConn.close()
+            self.internet=0

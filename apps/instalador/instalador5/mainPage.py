@@ -30,8 +30,8 @@ class instalador(QMainWindow):
         #Define Main page buttons
         self.ui.BQuickInstall.setVisible(False)
         self.ui.LQuickInstall.setVisible(False)
-        #self.ui.BAdvancedInstall.setVisible(False)
-        #self.ui.LAdvancedInstall.setVisible(False)
+        self.ui.BAdvancedInstall.setVisible(False)
+        self.ui.LAdvancedInstall.setVisible(False)
         self.ui.BRemoteInstall.setVisible(False)
         self.ui.LRemoteInstall.setVisible(False)
         

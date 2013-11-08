@@ -16,7 +16,7 @@ mkmenu(){
   arch=`uname -m`
 
   kademarType="Kademar"
-  [ -e /etc/kademar/config-livecd.heliox ] && kademarType="Heliox"
+  [ -e /etc/kademar/config-livecd ] && . /etc/kademar/config-livecd
   PART=$1
   uuid=$(blkid $PART -o value -s UUID)
 
@@ -49,8 +49,8 @@ MENU BEGIN 0000
    MENU LABEL $startLabel
    MENU DEFAULT
    KERNEL /kademar/boot/$arch/vmlinuz
-   INITRD /kademar/boot/$arch/kademariso.img
-   APPEND archisobasedir=kademar archisodevice=/dev/disk/by-uuid/$uuid modprobe.blacklist=nouveau,radeon,floppy cow_device=/dev/disk/by-uuid/$uuid init=/bin/systemd
+   INITRD /kademar/boot/$arch/$(echo $kademarType | tr [A-Z [a-z]).img
+   APPEND archisobasedir=kademar archisodevice=/dev/disk/by-uuid/$uuid modprobe.blacklist=nouveau,radeon,floppy cow_device=/dev/disk/by-uuid/$uuid
 
    LABEL -
    MENU LABEL [*] $persistentLabel
@@ -92,8 +92,8 @@ MENU BEGIN 1000
    MENU LABEL $startLabel
    MENU DEFAULT
    KERNEL /kademar/boot/$arch/vmlinuz
-   INITRD /kademar/boot/$arch/kademariso.img
-   APPEND archisobasedir=kademar archisodevice=/dev/disk/by-uuid/$uuid modprobe.blacklist=nouveau,radeon,floppy init=/bin/systemd
+   INITRD /kademar/boot/$arch/$(echo $kademarType | tr [A-Z [a-z]).img
+   APPEND archisobasedir=kademar archisodevice=/dev/disk/by-uuid/$uuid modprobe.blacklist=nouveau,radeon,floppy
 
    LABEL -
    MENU LABEL [ ] $persistentLabel
@@ -135,8 +135,8 @@ MENU BEGIN 0001
    MENU LABEL $startLabel
    MENU DEFAULT
    KERNEL /kademar/boot/$arch/vmlinuz
-   INITRD /kademar/boot/$arch/kademariso.img
-   APPEND archisobasedir=kademar archisodevice=/dev/disk/by-uuid/$uuid modprobe.blacklist=nouveau,radeon,floppy cow_device=/dev/disk/by-uuid/$uuid copytoram init=/bin/systemd
+   INITRD /kademar/boot/$arch/$(echo $kademarType | tr [A-Z [a-z]).img
+   APPEND archisobasedir=kademar archisodevice=/dev/disk/by-uuid/$uuid modprobe.blacklist=nouveau,radeon,floppy cow_device=/dev/disk/by-uuid/$uuid copytoram
 
    LABEL -
    MENU LABEL [*] $persistentLabel
@@ -177,8 +177,8 @@ MENU BEGIN 1111
    MENU LABEL $startLabel
    MENU DEFAULT
    KERNEL /kademar/boot/$arch/vmlinuz
-   INITRD /kademar/boot/$arch/kademariso.img
-   APPEND archisobasedir=kademar archisodevice=/dev/disk/by-uuid/$uuid modprobe.blacklist=nouveau,radeon,floppy copytoram init=/bin/systemd
+   INITRD /kademar/boot/$arch/$(echo $kademarType | tr [A-Z [a-z]).img
+   APPEND archisobasedir=kademar archisodevice=/dev/disk/by-uuid/$uuid modprobe.blacklist=nouveau,radeon,floppy copytoram
 
    LABEL -
    MENU LABEL [ ] $persistentLabel

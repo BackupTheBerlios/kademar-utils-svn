@@ -52,6 +52,9 @@ class instalador(QMainWindow):
         for i in [self.ui.iRoot, self.ui.iCreatingUsers, self.ui.iNetConfig, self.ui.iInstallingProgress, self.ui.iFinishedProgress]:
             i.setVisible(True)
             
+        #for i in []:
+            #i.setVisi
+            
         #Show from all
         for i in [self.ui.iPersistentChangesFile]:
             i.setVisible(False)
@@ -80,12 +83,43 @@ class instalador(QMainWindow):
         self.connect(self.ui.CBPartRoot, SIGNAL("currentIndexChanged(int)"), self.checkPartitionsAdvancedInstaller)
         self.connect(self.ui.CBPartOther, SIGNAL("currentIndexChanged(int)"), self.checkPartitionsAdvancedInstaller)
 
+        self.connect(self.ui.CBDiskFormatRoot, SIGNAL("currentIndexChanged(int)"), self.checkPartitionsFilesystemToggleSwap)
+
+    def checkPartitionsFilesystemToggleSwap(self, value):
+        #Force to configure SWAP partition if "All within same partition" and BtrFS selected
+        if value == 0:
+            state=1
+        else:
+           state=0
+        for i in [ self.ui.LPartSwap, self.ui.CBPartSwap, self.ui.LPartSwap_2 ]:
+            i.setVisible(state)
+        self.checkIfEnabledNextButton()
+                
+    def checkIfEnabledNextButton(self):
+        
+        
+        if bool(self.ui.CHSamePart.isChecked()):
+            if self.ui.CBPartRoot.currentIndex() == -1:
+                self.ui.BNext.setEnabled(0)
+                return  #Break function
+
+        if self.ui.CBPartSwap.isVisible() == True:
+            if self.ui.CBPartSwap.currentIndex() == -1:
+                self.ui.BNext.setEnabled(0)
+                return #Break Function
+                
+        print(self.completeListOfDevices[self.ui.CBPartRoot.currentIndex()])
+        #If all is OK, activate it
+        self.ui.BNext.setEnabled(1)
         
     def checkPartitionsAdvancedInstaller(self):
         if self.ui.CHSamePart.isChecked():
             if self.ui.CBPartSwap.currentIndex() == self.ui.CBPartRoot.currentIndex():
                 print("hola")
+        self.checkIfEnabledNextButton()
 
     def installationWithinSamePartitionCheckboxChanged(self, state):
-        for i in [self.ui.LPartOther, self.ui.CBPartDir,self.ui.CBPartOther,self.ui.CBDiskFormatOther,self.ui.LVMountPointList,self.ui.BAddPartition,self.ui.BRemovePartition]:
+        for i in [ self.ui.LPartOther, self.ui.CBPartDir,self.ui.CBPartOther,self.ui.CBDiskFormatOther,self.ui.LVMountPointList,self.ui.BAddPartition,self.ui.BRemovePartition]:
             i.setVisible(not(state))
+        #print(state)
+        self.checkIfEnabledNextButton()

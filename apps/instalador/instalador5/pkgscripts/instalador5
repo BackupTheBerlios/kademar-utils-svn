@@ -18,9 +18,9 @@ logfile="/tmp/kademar5-install.log"
 
 if [ ! -e /tmp/instalador5-running ]; then
     touch /tmp/instalador5-running
-. /etc/rc.conf >$logfile 2>&1
+# . /etc/rc.conf >$logfile 2>&1
 #. /etc/rc.d/functions
-. /etc/kademar/functions >> $logfile 2>&1
+. /etc/kademar/functions > $logfile 2>&1
 set_environment_variables >>$logfile 2>&1
 #     touch /tmp/kademarcenter-inicial
     cd /usr/share/instalador

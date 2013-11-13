@@ -26,11 +26,13 @@ signals:
 public slots:
     void readCaption( QString * label );
     void buttonClickedFunction();
+    void setDefaultStyleSheet();
 
 
 private:
     void enterEvent( QEvent * event );
     void focusInEvent( QFocusEvent * event );
+    void focusOutEvent( QFocusEvent * event );
     QString m_property;
     QString m_propertyValue;
 

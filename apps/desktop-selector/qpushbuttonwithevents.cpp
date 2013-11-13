@@ -14,8 +14,7 @@ QPushButtonWithEvents::QPushButtonWithEvents(QWidget *parent) :
     connect(this, SIGNAL(clicked()),
                  this, SLOT(buttonClickedFunction()));
     m_property = QString("");
-    this->setStyleSheet("QPushButtonWithEvents {background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #e3e2e1, stop: 1 #cac9c8); border-style: solid ; border-width: 1px; border-radius: 3px; border-color: #7d7d7d; font: bold 13px; min-width: 10em; padding: 2px;} QPushButtonWithEvents:hover  { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #a1bdd1, stop: 1 #d4d3d2) ; border-style: solid; border-width: 2px; border-radius: 3px; border-color: #679cd0; font: bold 13px; min-width: 10em;} QPushButtonWithEvents:pressed  { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #d4d3d2, stop: 1 #a1bdd1) ; border-style: solid; border-width: 2px; border-radius: 3px; border-color: #679cd0; font: bold 13px; min-width: 10em;} ");
-
+    this->setDefaultStyleSheet();
 
 }
 
@@ -25,6 +24,10 @@ void QPushButtonWithEvents::readCaption( QString * label )
     readcommand->start(QString("spd-say \"%1\"").arg(*label));
 }
 
+void QPushButtonWithEvents::setDefaultStyleSheet()
+{
+    this->setStyleSheet("QPushButtonWithEvents {background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #e3e2e1, stop: 1 #cac9c8); border-style: solid ; border-width: 1px; border-radius: 3px; border-color: #7d7d7d; font: bold 13px; min-width: 10em; padding: 2px;} QPushButtonWithEvents:hover  { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #a1bdd1, stop: 1 #d4d3d2) ; border-style: solid; border-width: 2px; border-radius: 3px; border-color: #679cd0; font: bold 13px; min-width: 10em;} QPushButtonWithEvents:pressed  { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #d4d3d2, stop: 1 #a1bdd1) ; border-style: solid; border-width: 2px; border-radius: 3px; border-color: #679cd0; font: bold 13px; min-width: 10em;} ");
+}
 
 QString QPushButtonWithEvents::textProperty()
 {
@@ -56,6 +59,7 @@ void QPushButtonWithEvents::enterEvent( QEvent * event )
 
 void QPushButtonWithEvents::focusInEvent( QFocusEvent * event )
 {
+    this->setStyleSheet("QPushButtonWithEvents  { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #a1bdd1, stop: 1 #d4d3d2) ; border-style: solid; border-width: 2px; border-radius: 3px; border-color: #679cd0; font: bold 13px; min-width: 10em;} QPushButtonWithEvents:pressed  { background-color: qlineargradient(x1: 1, y1: 0, x2: 1, y2: 1, stop: 0 #d4d3d2, stop: 1 #a1bdd1) ; border-style: solid; border-width: 2px; border-radius: 3px; border-color: #679cd0; font: bold 13px; min-width: 10em;} ");
     event->accept();
     extern bool speech;
     if ( speech == 1 ){
@@ -64,6 +68,11 @@ void QPushButtonWithEvents::focusInEvent( QFocusEvent * event )
     }
     //qDebug() << "talking by tab key focus... "  << QString(this->text());
 
+}
+
+void QPushButtonWithEvents::focusOutEvent( QFocusEvent * event )
+{
+    this->setDefaultStyleSheet();
 }
 
 void QPushButtonWithEvents::setTextProperty( QString *prop, QString *value)

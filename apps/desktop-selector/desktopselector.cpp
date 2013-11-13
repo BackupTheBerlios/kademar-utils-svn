@@ -1073,7 +1073,7 @@ void DesktopSelector::defineGraphicList()
 
     //Prepare list of Resolutions of display
     extern QList<QString> graphicResolutions;
-    graphicResolutions <<  "2048x1536" << "1920x1440" << "1920x1200" << "1856x1392" << "1800x1440" << "1792x1344" << "1680x1050" << "1600x1200" << "1440x900" << "1400x1050" << "1280x1024" << "1280x960" << "1280x800" << "1280x768" << "1280x720" << "1280x480" << "1152x864" << "1024x768" << "848x480" << "800x600" << "768x576" << "720x576" << "720x480" << "720x400" << "640x960" << "640x480";
+    graphicResolutions <<  "2048x1536" << "1920x1440" << "1920x1200" << "1856x1392" << "1800x1440" << "1792x1344" << "1680x1050" << "1600x1200" << "1440x900" << "1400x1050" << "1366x768" << "1280x1024" << "1280x960" << "1280x800" << "1280x768" << "1280x720" << "1280x480" << "1152x864" << "1024x768" << "848x480" << "800x600" << "768x576" << "720x576" << "720x480" << "720x400" << "640x960" << "640x480";
 
     //Prepare resolution slider to
     this->ui->hslider_resolutions->setMaximum(graphicResolutions.count()-1);

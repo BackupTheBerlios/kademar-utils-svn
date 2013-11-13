@@ -101,7 +101,7 @@
     <message>
         <location filename="../desktopselector.ui" line="680"/>
         <source>Force Display Driver</source>
-        <translation>Forrça el Controlador Gràfic</translation>
+        <translation>Força el Controlador Gràfic</translation>
     </message>
     <message>
         <location filename="../desktopselector.ui" line="754"/>

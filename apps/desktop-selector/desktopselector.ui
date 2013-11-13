@@ -199,7 +199,7 @@
     <item row="2" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>4</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="desktopPage">
        <layout class="QGridLayout" name="gridLayout_4">
@@ -1470,7 +1470,7 @@
      <x>0</x>
      <y>0</y>
      <width>965</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
@@ -1504,6 +1504,47 @@
    <header location="global">qsliderwithevents.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>b_previous</tabstop>
+  <tabstop>b_language</tabstop>
+  <tabstop>b_desktop</tabstop>
+  <tabstop>b_accessibility</tabstop>
+  <tabstop>b_displayConfiguration</tabstop>
+  <tabstop>b_shutdown</tabstop>
+  <tabstop>b_access_simple_1</tabstop>
+  <tabstop>b_access_simple_2</tabstop>
+  <tabstop>b_access_simple_3</tabstop>
+  <tabstop>b_access_simple_4</tabstop>
+  <tabstop>b_access_simple_5</tabstop>
+  <tabstop>b_access_simple_no</tabstop>
+  <tabstop>b_advancedAccessibility</tabstop>
+  <tabstop>b_accessibilityPrevious1</tabstop>
+  <tabstop>ch_access_adv_screenreader</tabstop>
+  <tabstop>ch_access_adv_magnifier</tabstop>
+  <tabstop>ch_access_adv_vkeyboard</tabstop>
+  <tabstop>ch_access_adv_massistant</tabstop>
+  <tabstop>ch_access_adv_handwritten</tabstop>
+  <tabstop>ch_access_adv_mgestures</tabstop>
+  <tabstop>ch_access_adv_webcam</tabstop>
+  <tabstop>ch_access_adv_wassistant</tabstop>
+  <tabstop>ch_access_adv_predictive</tabstop>
+  <tabstop>ch_access_adv_mmediakeyboard</tabstop>
+  <tabstop>b_accessibilitySimpleSelection</tabstop>
+  <tabstop>b_accessibilityPrevious2</tabstop>
+  <tabstop>b_accessibilityAccept2</tabstop>
+  <tabstop>rb_propietaryDriver</tabstop>
+  <tabstop>rb_freeDriver</tabstop>
+  <tabstop>ch_forceDriver</tabstop>
+  <tabstop>cb_chipset</tabstop>
+  <tabstop>ch_forceResol</tabstop>
+  <tabstop>hslider_resolutions</tabstop>
+  <tabstop>b_displayPrevious</tabstop>
+  <tabstop>b_displayAccept</tabstop>
+  <tabstop>b_startDesktop</tabstop>
+  <tabstop>b_shutdownComputer</tabstop>
+  <tabstop>b_rebootComputer</tabstop>
+  <tabstop>b_cancel</tabstop>
+ </tabstops>
  <resources>
   <include location="resource.qrc"/>
  </resources>

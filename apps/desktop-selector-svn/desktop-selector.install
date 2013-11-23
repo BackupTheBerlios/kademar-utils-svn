@@ -10,6 +10,7 @@ post_upgrade() {
 post_remove(){
     #remove desktop-selector packages
     rm -fr /usr/share/desktop-selector/
+    rm -fr /etc/desktop-selector
 }
 
 update_files() {
@@ -31,7 +32,7 @@ update_files() {
  #     ln -s /usr/lib/systemd/system/desktop-selector.service '/etc/systemd/system/display-manager.service'
  #   fi
   
-  if [ ! -e /etc/kademar/desktop-selector.ini ]; then
+  if [ ! -e /etc/desktop-selector/desktop-selector.ini ]; then
      [ ! -e /etc/kademar ] && mkdir -p /etc/kademar
      /bin/cp /usr/share/desktop-selector/desktop-selector.ini /etc/kademar
   fi

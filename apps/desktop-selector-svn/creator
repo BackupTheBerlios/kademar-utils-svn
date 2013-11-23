@@ -4,8 +4,13 @@ rm -fr src pkg build
 rm -fr *xz
 rm -fr *gz
 rm -f *~
-
-
+  #remove links from previous versions
+  for i in `ls`
+  do
+     [ -L "$i" ] && rm -f "$i"
+  done
+  
+  
 rm -f PKGBUILD
 cp PKGBUILD.svn PKGBUILD
 makepkg -d

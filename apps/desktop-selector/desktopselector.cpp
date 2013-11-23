@@ -24,7 +24,7 @@
 
 bool speech;
 
-QSettings settings("/etc/kademar/desktop-selector.ini", QSettings::IniFormat);
+QSettings settings("/etc/desktop-selector/desktop-selector.ini", QSettings::IniFormat);
 
 //QMenu *languageMenu = new QMenu;
 
@@ -63,7 +63,7 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
     languageColNum=0;
 
     //Check if it's assistant mode or not
-    assistantMode=settings.value("assistantMode").toBool();
+    assistantMode=settings.value("assistantMode",1).toBool();
 
 
     //No comments... :)
@@ -115,7 +115,7 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
         //qDebug() << "speech activated by speech-dispatcher detection. Result:" << speech;
     } else {
         //If settings.ini knows something about, read it
-        speech=bool(settings.value("SPEECH").toBool());
+        speech=bool(settings.value("SPEECH",0).toBool());
         //qDebug() << "speech activated by config file. Result:" << speech;
     }
 
@@ -136,7 +136,7 @@ DesktopSelector::DesktopSelector(QWidget *parent) :
     ui->hslider_resolutions->blockSignals(false);  //read again after configure
 
     //qDebug() << settings.value("DisableLaptopDetect").toBool();
-    if (settings.value("DisableLaptopDetect").toBool() != true )
+    if (!(settings.value("DisableLaptopDetect",0).toBool()))
     {
         QString what;
         QString *laptop = new QString(execShellProcess(QString("/bin/sh"), QString("-c"), QString("laptop-detect 2>/dev/null | echo $?")));
@@ -699,6 +699,10 @@ void DesktopSelector::setMaxResolution()
     if  (!(filebg->exists())) {
 
         filebg->setFileName(QString("/usr/share/wallpapers/kademar.png"));
+    }
+    if  (!(filebg->exists())) {
+
+        filebg->setFileName(QString("/usr/share/wallpapers/heliox.png"));
     }
 
 

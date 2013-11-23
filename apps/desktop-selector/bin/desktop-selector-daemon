@@ -32,11 +32,11 @@ tryNvidiaLegacy(){
   #try to install Nvidia Legacy if failed startx
     if [ "$?" != "0" -a -n "$(lspci | grep -i nvidia)" ]; then
       if [ -n "$(LANG=C modprobe nvidia 2>&1 | grep -i "no such device")" -o -n "$(LANG=C modprobe nvidia 2>&1 | grep -i "not found")" ]; then
-        if [ -z "`grep nvidiaLegacyDriver=true /etc/kademar/desktop-selector.ini`"  ]; then
+        if [ -z "`grep nvidiaLegacyDriver=true /etc/desktop-selector/desktop-selector.ini`"  ]; then
           echo "Installing NVIDIA Legacy drivers"
 	  sudo sh /usr/share/desktop-selector/scripts/nvidia-legacy-installer-offline.sh
-	  sudo chmod 777 /etc/kademar/desktop-selector.ini
-	  echo nvidiaLegacyDriver=true >> /etc/kademar/desktop-selector.ini
+	  sudo chmod 777 /etc/desktop-selector/desktop-selector.ini
+	  echo nvidiaLegacyDriver=true >> /etc/desktop-selector/desktop-selector.ini
 	  startx
 	fi
       fi
@@ -135,7 +135,7 @@ while true; do
 	fi
 
 	# Restore Nouveau driver if requested
-	if [ -z "`grep nvidiaDriver=true /etc/kademar/desktop-selector.ini`" -a -z "`grep nvidiaLegacyDriver=true /etc/kademar/desktop-selector.ini`" ]; then
+	if [ -z "`grep nvidiaDriver=true /etc/desktop-selector/desktop-selector.ini`" -a -z "`grep nvidiaLegacyDriver=true /etc/desktop-selector/desktop-selector.ini`" ]; then
 	    kernel=`ls /usr/lib/modules/ --ignore=extramodules*`
 	    [ -e /tmp/nouveau ] && sudo mv /tmp/nouveau /usr/lib/modules/$kernel/kernel/drivers/gpu/drm
 	    if [ -n "$(lspci | grep -i [vV][Gg][Aa] | sed s.'VGA compatible controller: '..g | sed s,'[0-9][0-9]:[0-9][0-9].[0-9]',,g | cut -d'(' -f1 | grep -i " [Nn][Vv][Ii][Dd][Ii][Aa] ")" ]; then
@@ -143,7 +143,7 @@ while true; do
 	    fi
 	fi
 	
-	if [ -z "`grep atiDriver=true /etc/kademar/desktop-selector.ini`" ]; then
+	if [ -z "`grep atiDriver=true /etc/desktop-selector/desktop-selector.ini`" ]; then
 	    kernel=`ls /usr/lib/modules/ --ignore=extramodules*`
 	    [ -e /tmp/radeon ] && sudo mv /tmp/radeon /usr/lib/modules/$kernel/kernel/drivers/gpu/drm
 # 	    If detected ati, load it. If not can have problems

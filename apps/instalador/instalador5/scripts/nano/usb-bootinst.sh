@@ -20,9 +20,17 @@ mkmenu(){
   PART=$1
   uuid=$(blkid $PART -o value -s UUID)
 
+  if [ "$kademar_type" != "" ]; then
+      kademarType=$kademar_type
+  else
+      if [ -n "$(grep -i heliox /etc/lsb-release)" ]; then
+          kademarType=Heliox
+      fi
+  fi
+  kademarTypeMinus=$(echo $kademarType | tr [A-Z [a-z])
     
-  sed s."MENU ROWS 6"."MENU ROWS 7".g -i *_head.cfg
-  [ "$kademarType" != "Kademar" ] && sed s."Kademar"."$kademarType".g -i *_head.cfg
+  sed s."MENU ROWS 6"."MENU ROWS 7".g -i /instalador/nano/isolinux/*_head.cfg
+  [ "$kademarType" != "Kademar" ] && sed s."Kademar"."$kademarType".g -i /instalador/nano/isolinux/*_head.cfg
 
 
   case "$LANG" in
@@ -39,18 +47,17 @@ mkmenu(){
   ;;
   esac
 
-#   sed "s~MENU TABMSG Presione.*MENU TABMSG $headLabel~g -i menu_head.cfg
+#   sed "s~MENU TABMSG Presione.*MENU TABMSG $headLabel~g -i /instalador/nano/isolinux/menu_head.cfg
 
-
-  cat > menu_sys.cfg << EOF
+  cat > /instalador/nano/isolinux/menu_sys.cfg << EOF
 MENU BEGIN 0000
    MENU START
    LABEL default
    MENU LABEL $startLabel
    MENU DEFAULT
-   KERNEL /kademar/boot/$arch/vmlinuz
-   INITRD /kademar/boot/$arch/$(echo $kademarType | tr [A-Z [a-z]).img
-   APPEND archisobasedir=kademar archisodevice=/dev/disk/by-uuid/$uuid modprobe.blacklist=nouveau,radeon,floppy cow_device=/dev/disk/by-uuid/$uuid
+   KERNEL /$kademarTypeMinus/boot/$arch/vmlinuz
+   INITRD /$kademarTypeMinus/boot/$arch/$kademarType.img
+   APPEND archisobasedir=$kademarTypeMinus archisodevice=/dev/disk/by-uuid/$uuid modprobe.blacklist=nouveau,radeon,floppy cow_device=/dev/disk/by-uuid/$uuid
 
    LABEL -
    MENU LABEL [*] $persistentLabel
@@ -65,7 +72,7 @@ MENU BEGIN 0000
     $memtestLabel
     ENDTEXT
     MENU LABEL Memtest86+ (RAM test)
-    LINUX /kademar/boot/memtest
+    LINUX /isolinux/memtest
 
     # http://hdt-project.org/
     LABEL hdt
@@ -73,16 +80,16 @@ MENU BEGIN 0000
     $hardwareAnalysisLabel
     ENDTEXT
     MENU LABEL $hdtLabel
-    COM32 /kademar/boot/syslinux/hdt.c32
-    APPEND modules_alias=/kademar/boot/syslinux/hdt/modalias.gz pciids=/kademar/boot/syslinux/hdt/pciids.gz
+    COM32 /isolinux/hdt.c32
+    APPEND modules_alias=/isolinux/hdt/modalias.gz pciids=/isolinux/hdt/pciids.gz
 
     LABEL reboot
     MENU LABEL $rebootLabel
-    COM32 /kademar/boot/syslinux/reboot.c32
+    COM32 /isolinux/reboot.c32
 
     LABEL poweroff
     MENU LABEL $haltLabel
-    COMBOOT /kademar/boot/syslinux/poweroff.com
+    COM32 /isolinux/poweroff.c32
 
 MENU END
 
@@ -91,9 +98,9 @@ MENU BEGIN 1000
    LABEL default
    MENU LABEL $startLabel
    MENU DEFAULT
-   KERNEL /kademar/boot/$arch/vmlinuz
-   INITRD /kademar/boot/$arch/$(echo $kademarType | tr [A-Z [a-z]).img
-   APPEND archisobasedir=kademar archisodevice=/dev/disk/by-uuid/$uuid modprobe.blacklist=nouveau,radeon,floppy
+   KERNEL /$kademarTypeMinus/boot/$arch/vmlinuz
+   INITRD /$kademarTypeMinus/boot/$arch/$kademarType.img
+   APPEND archisobasedir=$kademarTypeMinus archisodevice=/dev/disk/by-uuid/$uuid modprobe.blacklist=nouveau,radeon,floppy
 
    LABEL -
    MENU LABEL [ ] $persistentLabel
@@ -108,7 +115,7 @@ MENU BEGIN 1000
     $memtestLabel
     ENDTEXT
     MENU LABEL Memtest86+ (RAM test)
-    LINUX /kademar/boot/memtest
+    LINUX /isolinux/memtest
 
     # http://hdt-project.org/
     LABEL hdt
@@ -116,16 +123,16 @@ MENU BEGIN 1000
     $hardwareAnalysisLabel
     ENDTEXT
     MENU LABEL $hdtLabel
-    COM32 /kademar/boot/syslinux/hdt.c32
-    APPEND modules_alias=/kademar/boot/syslinux/hdt/modalias.gz pciids=/kademar/boot/syslinux/hdt/pciids.gz
+    COM32 /isolinux/hdt.c32
+    APPEND modules_alias=/isolinux/hdt/modalias.gz pciids=/isolinux/hdt/pciids.gz
 
     LABEL reboot
     MENU LABEL $rebootLabel
-    COM32 /kademar/boot/syslinux/reboot.c32
+    COM32 /isolinux/reboot.c32
 
     LABEL poweroff
     MENU LABEL $haltLabel
-    COMBOOT /kademar/boot/syslinux/poweroff.com
+    COM32 /isolinux/poweroff.c32
 
 MENU END
 
@@ -134,9 +141,9 @@ MENU BEGIN 0001
    LABEL default
    MENU LABEL $startLabel
    MENU DEFAULT
-   KERNEL /kademar/boot/$arch/vmlinuz
-   INITRD /kademar/boot/$arch/$(echo $kademarType | tr [A-Z [a-z]).img
-   APPEND archisobasedir=kademar archisodevice=/dev/disk/by-uuid/$uuid modprobe.blacklist=nouveau,radeon,floppy cow_device=/dev/disk/by-uuid/$uuid copytoram
+   KERNEL /$kademarTypeMinus/boot/$arch/vmlinuz
+   INITRD /$kademarTypeMinus/boot/$arch/$kademarType.img
+   APPEND archisobasedir=$kademarTypeMinus archisodevice=/dev/disk/by-uuid/$uuid modprobe.blacklist=nouveau,radeon,floppy cow_device=/dev/disk/by-uuid/$uuid copytoram
 
    LABEL -
    MENU LABEL [*] $persistentLabel
@@ -151,7 +158,7 @@ MENU BEGIN 0001
     $memtestLabel
     ENDTEXT
     MENU LABEL Memtest86+ (RAM test)
-    LINUX /kademar/boot/memtest
+    LINUX /isolinux/memtest
 
     # http://hdt-project.org/
     LABEL hdt
@@ -159,16 +166,16 @@ MENU BEGIN 0001
     $hardwareAnalysisLabel
     ENDTEXT
     MENU LABEL $hdtLabel
-    COM32 /kademar/boot/syslinux/hdt.c32
-    APPEND modules_alias=/kademar/boot/syslinux/hdt/modalias.gz pciids=/kademar/boot/syslinux/hdt/pciids.gz
+    COM32 /isolinux/hdt.c32
+    APPEND modules_alias=/isolinux/hdt/modalias.gz pciids=/isolinux/hdt/pciids.gz
 
     LABEL reboot
     MENU LABEL $rebootLabel
-    COM32 /kademar/boot/syslinux/reboot.c32
+    COM32 /isolinux/reboot.c32
 
     LABEL poweroff
     MENU LABEL $haltLabel
-    COMBOOT /kademar/boot/syslinux/poweroff.com
+    COM32 /isolinux/poweroff.c32
 
 MENU END
 
@@ -176,9 +183,9 @@ MENU BEGIN 1111
    LABEL default
    MENU LABEL $startLabel
    MENU DEFAULT
-   KERNEL /kademar/boot/$arch/vmlinuz
-   INITRD /kademar/boot/$arch/$(echo $kademarType | tr [A-Z [a-z]).img
-   APPEND archisobasedir=kademar archisodevice=/dev/disk/by-uuid/$uuid modprobe.blacklist=nouveau,radeon,floppy copytoram
+   KERNEL /$kademarTypeMinus/boot/$arch/vmlinuz
+   INITRD /$kademarTypeMinus/boot/$arch/$kademarType.img
+   APPEND archisobasedir=$kademarTypeMinus archisodevice=/dev/disk/by-uuid/$uuid modprobe.blacklist=nouveau,radeon,floppy copytoram
 
    LABEL -
    MENU LABEL [ ] $persistentLabel
@@ -193,7 +200,7 @@ MENU BEGIN 1111
     $memtestLabel
     ENDTEXT
     MENU LABEL Memtest86+ (RAM test)
-    LINUX /kademar/boot/memtest
+    LINUX /isolinux/memtest
 
     # http://hdt-project.org/
     LABEL hdt
@@ -201,16 +208,16 @@ MENU BEGIN 1111
     $hardwareAnalysisLabel
     ENDTEXT
     MENU LABEL $hdtLabel
-    COM32 /kademar/boot/syslinux/hdt.c32
-    APPEND modules_alias=/kademar/boot/syslinux/hdt/modalias.gz pciids=/kademar/boot/syslinux/hdt/pciids.gz
+    COM32 /isolinux/hdt.c32
+    APPEND modules_alias=/isolinux/hdt/modalias.gz pciids=/isolinux/hdt/pciids.gz
 
     LABEL reboot
     MENU LABEL $rebootLabel
-    COM32 /kademar/boot/syslinux/reboot.c32
+    COM32 /isolinux/reboot.c32
 
     LABEL poweroff
     MENU LABEL $haltLabel
-    COMBOOT /kademar/boot/syslinux/poweroff.com
+    COM32 /isolinux/poweroff.c32
 
 MENU END
 
@@ -247,9 +254,9 @@ DEV="$(echo "$PART" | sed -r "s:[0-9]+\$::" | sed -r "s:([0-9])[a-z]+\$:\\1:i")"
 #kademar
 
 #change config if we didn't
-if [ -z "$(grep "/kademar/boot" *.cfg)" ]; then
-  sed s-boot/-/kademar/boot/-g -i *.cfg
-fi
+# if [ -z "$(grep "/$kademarTypeMinus/boot" *.cfg)" ]; then
+#   sed s-boot/-/$kademarTypeMinus/boot/-g -i *.cfg
+# fi
 
 # if [ -e kademar.cfg ]; then
 #   rm -f syslinux.cfg  #compatible coming from other USB
@@ -260,10 +267,10 @@ fi
 #   rm -f syslinux.cfg  #compatible coming from other USB
 #   mv heliox.cfg syslinux.cfg 2>/dev/null
 # fi
-  cat > syslinux.cfg << EOF
-INCLUDE /kademar/boot/syslinux/menu_head.cfg
-INCLUDE /kademar/boot/syslinux/menu_sys.cfg
-EOF
+#   cat > syslinux.cfg << EOF
+# INCLUDE /isolinux/menu_head.cfg
+# INCLUDE /isolinux/menu_sys.cfg
+# EOF
 
 
 mkmenu $PART
@@ -277,7 +284,7 @@ extlinux --install $BOOT
 
 if [ "$DEV" != "$PART" ]; then
     #kademar
-    cp /usr/lib/syslinux/mbr.bin $BOOT
+    cp /usr/lib/syslinux/bios/mbr.bin $BOOT
   
    # Setup MBR on the first block
    cat "$BOOT/mbr.bin" > "$DEV"

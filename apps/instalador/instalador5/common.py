@@ -11,6 +11,7 @@ from socket import socket, AF_INET, SOCK_STREAM
 
 #list partitions
 import dbus
+import platform
 
 class instalador(QMainWindow):
     #def __init__(self):
@@ -528,8 +529,14 @@ class instalador(QMainWindow):
             
     def putDistroNameOnGui(self):
         #if not, kademar is already defined
-        if QFile("/etc/kademar/config-livecd.heliox").exists():
+        if platform.node() == "heliox":
             self.kademarType="Heliox"
+        else:
+            self.kademarType="Kademar"
+ 
+
+#        if QFile("/etc/kademar/config-livecd.heliox").exists():
+#            self.kademarType="Heliox"
 
         #Put distro name in all parts that are parepared to recibe distro name
         for i in [ self.ui.LInstaller, self.ui.LHelp, self.ui.LWelcomeTitle, self.ui.LQuickInstall, self.ui.LAdvancedInstall, self.ui.LNanoInstall, self.ui.LRemoteInstall, self.ui.LWelcome, self.ui.LInformation, self.ui.RBLicenseQuickN, self.ui.RBLicenseN, self.ui.LFinished, self.ui.LThanks ]:

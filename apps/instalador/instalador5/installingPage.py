@@ -161,7 +161,7 @@ class installNanoKademarProcess(QThread):
             system("mkfs.vfat -n '"+self.kademarType+"' /dev/"+self.device)
             #system('dosfslabel /dev/'+self.device+' "'+self.kademarType+'"')
         else:
-            system('rm -fr '+self.target+'/kademar')
+            system('rm -fr '+self.target+'/'+str(self.kademarType).lower())
             
         print("mounting /dev/"+self.device, "on",self.target)
         system("mount -rw /dev/"+self.device+" "+self.target)
@@ -174,7 +174,18 @@ class installNanoKademarProcess(QThread):
 
         #QApplication.processEvents()
         print("Begining Copy")
-        system('cp -u -a /run/archiso/bootmnt/kademar '+self.target+' ; echo $? > /tmp/instalador-copia')
+        system('cp -u -a /run/archiso/bootmnt/'+str(self.kademarType).lower()+' '+self.target+' ; echo $? > /tmp/instalador-copia')
+        
+        #Search for isolinux in any folder :)
+        self.isolinux="/run/archiso/bootmnt/isolinux"
+        if not QFile(self.isolinux).exists():
+            self.isolinux="/run/archiso/bootmnt/isolinux/"+str(self.kademarType).lower()
+            if not QFile(self.isolinux).exists():
+                self.isolinux="/run/archiso/bootmnt/isolinux/"+str(self.kademarType).lower()+"/"+str(self.kademarType).lower()
+                if not QFile(self.isolinux).exists():
+                    self.isolinux="/run/archiso/bootmnt/isolinux/"+self.kademarBaseDir()
+
+        system('cp -u -a '+self.isolinux+' '+self.target+' ; echo $? > /tmp/instalador-copia')
         #system("sleep 5")
         
         self.emit(SIGNAL("endedCopy"))
@@ -195,10 +206,10 @@ class installNanoKademarProcess(QThread):
         # BOOTLOADER #
         ##############
         print("Installing Bootmanager")
-        system("rm -f "+self.target+"/kademar/boot/syslinux/usb-bootinst.sh")
+        system("rm -f "+self.target+"/isolinux/usb-bootinst.sh")
         #system("sleep 5")
-        system('cp '+self.pathInstaller+'/scripts/nano/usb-bootinst.sh "'+self.target+'/kademar/boot/syslinux/"') #without cp -a to be sure that don't copy a link
-        system('sh '+self.target+'/kademar/boot/syslinux/usb-bootinst.sh')
+        system('cp '+self.pathInstaller+'/scripts/nano/usb-bootinst.sh "'+self.target+'/isolinux"') #without cp -a to be sure that don't copy a link
+        system('sh '+self.target+'/isolinux/usb-bootinst.sh')
         #system('rm -f '+self.target+'/install-nano-bootinst.sh')
         self.emit(SIGNAL("bootManagerInstalled"))
 
@@ -208,6 +219,16 @@ class installNanoKademarProcess(QThread):
     #Envia al thread principal el progress
     #def sendProgress(self, num):
         #self.emit(SIGNAL("progressToGauge"), int(num))
+
+    def kademarBaseDir(self):
+        #get from cmdline archbasedir param
+        afile = open('/proc/cmdline', encoding='utf-8')
+        cmdline=afile.read()
+        afile.close()
+        for i in cmdline.split():
+            if i.split("=")[0] == "archisobasedir":
+                return (str((i.split("=")[1])))
+
 
 #Comprobació de el progrés de la còpia
 class checkSpace(QThread):

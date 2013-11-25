@@ -25,8 +25,13 @@
 #       sed s."$md5sumorig"."$md5sum".g -i PKGBUILD
 # 
 #      # sed "s~md5sums=.*~"$md5sum"~g" -i PKGBUILD; a=$j
-     
-      makepkg -d
+  #remove links from previous versions
+  for i in `ls`
+  do
+     [ -L "$i" ] && rm -f "$i"
+  done
+  
+  makepkg -d
 #     fi
 #   done
   

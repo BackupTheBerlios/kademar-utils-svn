@@ -30,6 +30,13 @@
 #   md5sum="$md5sum"
 #   md5sumorig=$(grep -i md5sums PKGBUILD | cut -d\' -f2)
 #   sed s."$md5sumorig"."$md5sum".g -i PKGBUILD
+  #remove links from previous versions
+  for i in `ls`
+  do
+     [ -L "$i" ] && rm -f "$i"
+  done
+  
+  
   makepkg -d
 
 #   

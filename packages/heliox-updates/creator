@@ -5,8 +5,12 @@
   #    echo deleting $j
   #  fi
   #done
-
-#   rm -fr src pkg build
+  #remove links from previous versions
+  for i in `ls`
+  do
+     [ -L "$i" ] && rm -f "$i"
+  done
+  #   rm -fr src pkg build
 #   rm -fr *xz
 #   rm -fr *gz
 #   rm -f *~
@@ -28,6 +32,6 @@
      
       makepkg -d
 #     fi
-  done
+#   done
   
 

@@ -24,6 +24,7 @@ ln -s /proc/self/mounts "$DESTI/etc/mtab"
 [ "$license" = "no" ] && chroot "$DESTI" sh /usr/share/kademar/utils/instalador/scripts/remove-nonfree-license
 
 #Keep X11 configurations
+rm -fr "$DESTI/etc/X11/xorg.conf.d/10-driver.conf" "$DESTI/etc/X11/xorg.conf.d/10-monitor.conf"
 [ -e "/etc/X11/xorg.conf.d/10-driver.conf" ] && cp "/etc/X11/xorg.conf.d/10-driver.conf" "$DESTI/etc/X11/xorg.conf.d/"
 [ -e "/etc/X11/xorg.conf.d/10-monitor.conf" ] && cp "/etc/X11/xorg.conf.d/10-monitor.conf" "$DESTI/etc/X11/xorg.conf.d/"
 
@@ -38,16 +39,16 @@ chroot $DESTI pacman --noconfirm -Rdd heliox-livecd
 
 #Install nvidia drivers before delete it
 #check if legacy
-if [ "$license" != "no" -a -n "$(grep nvidiaLegacyDriver /etc/kademar/desktop-selector.ini | grep -i true)" ]; then
+if [ "$license" != "no" -a -n "$(grep nvidiaLegacyDriver /etc/desktop-selector/desktop-selector.ini 2>/dev/null| grep -i true)" ]; then
   chroot $DESTI sh /usr/share/desktop-selector/scripts/nvidia-legacy-installer-offline.sh
 else
-  if [ "$license" != "no" -a -n "$(grep nvidiaDriver /etc/kademar/desktop-selector.ini | grep -i true)" ]; then
+  if [ "$license" != "no" -a -n "$(grep nvidiaDriver /etc/desktop-selector/desktop-selector.ini  2>/dev/null| grep -i true)" ]; then
     chroot $DESTI sh /usr/share/desktop-selector/scripts/nvidia-installer-offline.sh
   fi
 fi
 
 #Install ati drivers before delete it
-if [ "$license" != "no" -a -n "$(grep atiDriver /etc/kademar/desktop-selector.ini | grep -i true)" ]; then
+if [ "$license" != "no" -a -n "$(grep atiDriver /etc/desktop-selector/desktop-selector.ini  2>/dev/null| grep -i true)" ]; then
   chroot $DESTI sh /usr/share/desktop-selector/scripts/ati-installer-offline.sh
 fi
 
@@ -192,9 +193,9 @@ if [ -e "$DESTI/usr/share/config/kdm/kdmrc" ]; then
   sed "s~AllowRootLogin=.*~AllowRootLogin=true~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
   sed "s~#AllowRootLogin=.*~AllowRootLogin=true~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
 
-#Hide root user from kdm
-  sed "s~HiddenUsers=.*~HiddenUsers=root,uuidd,dnsmasq,xbmc~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
-  sed "s~#HiddenUsers=.*~HiddenUsers=root,uuidd,dnsmasq,xbmc~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
+#Hide some users from kdm
+  sed "s~HiddenUsers=.*~HiddenUsers=root,uuidd,dnsmasq,xbmc,amule,git~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
+  sed "s~#HiddenUsers=.*~HiddenUsers=root,uuidd,dnsmasq,xbmc,amule,git~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
 
 #configure if Numlock activated (table) or not (laptop)
   sed "s~NumLock=.*~NumLock=$lap~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
@@ -250,6 +251,11 @@ fi
 #Open NTPd
 if [ -e "$DESTI/usr/lib/systemd/system/openntpd.service" -a ! -e "$DESTI/etc/systemd/system/multi-user.target.wants/openntpd.service" ]; then
   ln -s /usr/lib/systemd/system/openntpd.service "$DESTI/etc/systemd/system/multi-user.target.wants/openntpd.service"
+fi
+
+#NTPd
+if [ -e "$DESTI/usr/lib/systemd/system/ntpd.service" -a ! -e "$DESTI/etc/systemd/system/multi-user.target.wants/ntpd.service" ]; then
+  ln -s /usr/lib/systemd/system/ntpd.service "$DESTI/etc/systemd/system/multi-user.target.wants/ntpd.service"
 fi
 
 #Preload

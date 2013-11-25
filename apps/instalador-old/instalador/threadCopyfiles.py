@@ -22,10 +22,10 @@ from threadCheckspace import *
 
 #Funcio de Format i Còpia de fitxers
 class copyfiles(QThread):
-    def __init__(self, a, b, c, d ,e, f, g, h, i):
+    def __init__(self, a, b, c, d ,e, f, g, h, i, j):
         QThread.__init__(self)
         
-        global target, inicial, copiant, mkfilesystems, filesystems, particioarrel, particioswap, particiohome, labelfilesystems, mktunefilesystems
+        global target, inicial, copiant, mkfilesystems, filesystems, particioarrel, particioswap, particiohome, labelfilesystems, mktunefilesystems, kademarType
 
 	target=a
 	inicial=b
@@ -36,9 +36,10 @@ class copyfiles(QThread):
         particiohome=g
         labelfilesystems=h
         mktunefilesystems=i
+        kademarType=j
 
     def run(self):
-        global target, inicial, copiant, mkfilesystems, filesystems, particioarrel, particioswap, particiohome, labelfilesystems, mktunefilesystems
+        global target, inicial, copiant, mkfilesystems, filesystems, particioarrel, particioswap, particiohome, labelfilesystems, mktunefilesystems, kademarType
         from os import system
         from commands import getoutput
         print "Zona de Format"
@@ -53,19 +54,20 @@ class copyfiles(QThread):
         if mkfilesystems[particioarrel[1]]<>"":
             print "Formatant ARREL  /dev/"+particioarrel[0]+" amb "+mkfilesystems[particioarrel[1]]
             system(mkfilesystems[particioarrel[1]]+" /dev/"+particioarrel[0])
-            system(labelfilesystems[particioarrel[1]].replace("$LABEL$",'"kademar 5"').replace('$DISK$','"/dev/'+particioarrel[0]+'"'))
+            system(labelfilesystems[particioarrel[1]].replace("$LABEL$",'"'+kademarType+'"').replace('$DISK$','"/dev/'+particioarrel[0]+'"'))
             print  mkfilesystems[particioarrel[1]]+" /dev/"+particioarrel[0]+" Arrel"
             if mktunefilesystems[particioarrel[1]]<>"":
-                system(mktunefilesystems[particioarrel[1]].replace("$LABEL$",'"kademar 5"').replace('$DISK$','"/dev/'+particioarrel[0]+'"'))
+                system(mktunefilesystems[particioarrel[1]].replace("$LABEL$",'"'+kademarType+'"').replace('$DISK$','"/dev/'+particioarrel[0]+'"'))
         if mkfilesystems[particioswap[1]]<>"":
-            print "Formatant SWAP  /dev/"+particioswap[0]+" amb "+mkfilesystems[particioswap[1]]
-            system(mkfilesystems[particioswap[1]]+" /dev/"+particioswap[0])
-            print  mkfilesystems[particioswap[1]]+" /dev/"+particioswap[0]+" Swap"
+            
+            print "Formatant SWAP  /dev/"+particioswap[0]+" amb "+mkfilesystems[particioswap[1]]+" si no es SWAP"
+            system(' [ "$(blkid /dev/'+particioswap[0]+' -s TYPE -o value)" != "swap" ] && '+mkfilesystems[particioswap[1]]+' /dev/'+particioswap[0])
+            print(' [ "$(blkid /dev/'+particioswap[0]+' -s TYPE -o value)" != "swap" ] && '+mkfilesystems[particioswap[1]]+' /dev/'+particioswap[0])
         if particiohome:
             if mkfilesystems[particiohome[1]]<>"":
                 print "Formatant HOME  /dev/"+particiohome[0]+" amb "+mkfilesystems[particiohome[1]]
                 system(mkfilesystems[particiohome[1]]+" /dev/"+particiohome[0])
-                system(labelfilesystems[particiohome[1]].replace("$LABEL$",'"kademar 5 Home"').replace('$DISK$','"/dev/'+particiohome[0]+'"'))
+                system(labelfilesystems[particiohome[1]].replace("$LABEL$",'"'+kademarType+'" Home"').replace('$DISK$','"/dev/'+particiohome[0]+'"'))
                 print  mkfilesystems[particiohome[1]]+" /dev/"+particiohome[0]+" Home"
         print "Comença copia de Fitxers"
 

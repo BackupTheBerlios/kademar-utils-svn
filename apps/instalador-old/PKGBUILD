@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=instalador
-pkgver=4.9.58
+pkgver=4.9.61.8
 pkgrel=1
 epoch=
 pkgdesc="The Installer"
@@ -16,12 +16,12 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=(!strip)
 install=
 changelog=
 source=($pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('1a2acf90431b95f8cd3b13301cd711b1') #generate with 'makepkg -g'
+md5sums=('0f456e44d857b8b01f74316ff321641e') #generate with 'makepkg -g'
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -35,8 +35,8 @@ build() {
    cd $pkgdir && rm -fr `find . -name ".svn"` && rm -fr `find . -name "*.pyc"` && rm -fr `find . -name "*.pro"` && rm -f `find . -name "*~"` && rm -f `find . -name "todo"` && rm -f `find . -name "*project"` && rm -f `find . -name "*odt"` && rm -f `find . -name "*.ts"` && rm -f `find . -name "*.kate-swp"`
    mkdir -p "$pkgdir/etc/X11/xinit/xinitrc.d"
    cp -a $srcdir/$pkgname-$pkgver/scripts/80-xsession-instalador-icon "$pkgdir/etc/X11/xinit/xinitrc.d"
-   mkdir -p "$pkgdir/usr/share/kademar/utils" "$pkgdir/etc/grub.d"
-   cp -a $srcdir/$pkgname-$pkgver/scripts/grub.d/* "$pkgdir/etc/grub.d"
+#    mkdir -p "$pkgdir/usr/share/kademar/utils" "$pkgdir/etc/grub.d"
+#    cp -a $srcdir/$pkgname-$pkgver/scripts/grub.d/* "$pkgdir/etc/grub.d"
    find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
    find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
    chmod +x "$pkgdir/usr/share/kademar/utils/instalador/scripts/mkdevicemap"
@@ -45,7 +45,7 @@ build() {
    find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
    find "$pkgdir"/etc/X11 -type f -exec chmod 755 "{}" \;
    find "$pkgdir"/usr/share/kademar/utils/instalador/scripts -type f -exec chmod 755 "{}" \;
-   find "$pkgdir"/etc/grub.d -type f -exec chmod 755 "{}" \;
+#    find "$pkgdir"/etc/grub.d -type f -exec chmod 755 "{}" \;
  }
 
 # vim:set ts=2 sw=2 et:

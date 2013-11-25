@@ -20,7 +20,20 @@ DEV="$mbr_dev"
 DEV_SENSE_NUMERO=${DEV%[1-9]}
 
 
-
+hack_mtab(){
+    #Delete Mtab (table of mounted devices)
+    rm -f  "$DESTI/etc/mtab"
+    #And create standard input for the installer
+    echo "/dev/$DEV / $fsparticioarrel defaults 0 0" > "$DESTI/etc/mtab"
+}
+    
+unhack_mtab(){
+    #Delete Mtab (table of mounted devices)
+    rm -f  "$DESTI/etc/mtab"
+    ln -s /proc/mounts "$DESTI/etc/mtab"
+ 
+}
+    
 #####
 ##   FUNCTIONS
 #####
@@ -73,10 +86,10 @@ fi
 
 
 # Si el initrd esta marcat per crear-lo
-if [ "$make_initrd" = "yes" ]; then
-    #Creem l'initrd per el kernel
+# if [ "$make_initrd" = "yes" ]; then
+#     #Creem l'initrd per el kernel
     chroot $DESTI mkinitcpio -p linux
-fi
+# fi
 
 #remove stuff
 rm -fr $DESTI/boot/syslinux
@@ -114,10 +127,7 @@ if [ "$mbr" != "no" ]; then
     # #Borrem una possible carpeta grub anterior, i la tornem a crear
     mkdir -p $DESTI/boot/$grub
 
-    #Borrem el mtab
-    rm -f  $DESTI/etc/mtab
-    #I creem una entrada estandar per l'instalador
-    echo "/dev/$DEV / $fsparticioarrel defaults 0 0" > $DESTI/etc/mtab
+    hack_mtab
 
     #Creem el Device.map amb la informacio dels dispositius
     # if [ -n "`which grub-mkdevicemap`" ]; then
@@ -147,15 +157,21 @@ if [ "$mbr" != "no" ]; then
     
     echo "$grub-install --root-directory=$DESTI /dev/$MBR_SENSE_NUMERO"
     $grub-install --root-directory=$DESTI /dev/$MBR_SENSE_NUMERO
+    output_grub="$?"
 
-    if [ "$?" != 0 ]; then
+    if [ "$output_grub" != 0 ]; then
       echo "Installing again grub, seems that was an error"
       
       echo "$grub-install --root-directory=$DESTI --target=i386-pc /dev/$MBR_SENSE_NUMERO"
       $grub-install --root-directory=$DESTI --target=i386-pc /dev/$MBR_SENSE_NUMERO
 
     fi
-
+    output_grub="$?"
+    
+    
+    
+    
+    
 #     echo "$grub-install --root-directory=$DESTI /dev/$MBR_SENSE_NUMERO"
 
 fi
@@ -215,7 +231,7 @@ fi
 
 
 distro=Kademar
-[ -e /etc/kademar/config-livecd.heliox ] && distro=Heliox
+[ -n "$(grep -iR heliox /etc/lsb-release)" ] && distro=Heliox
 
 
 #Background support
@@ -300,18 +316,49 @@ if [ "$mbr" != "no" ]; then
     set_environment_variables $DESTI
     
     #hack until  "s'esta carregant" error will be fixed
-    rm -f /usr/share/locale/ca/LC_MESSAGES/grub.mo
+#     rm -f /usr/share/locale/ca/LC_MESSAGES/grub.mo
+    unhack_mtab
+    
+        chroot $DESTI $grub-mkconfig -o /boot/$grub/$grub.cfg
+        
+    hack_mtab
     
     
-    chroot $DESTI $grub-mkconfig -o /boot/$grub/$grub.cfg
+    #Create EFI Grub Application
+    mkdir -p $DESTI/boot/efi
+    chroot $DESTI grub-mkstandalone --directory="/usr/lib/grub/x86_64-efi/" --format="x86_64-efi" --compression="xz" --output="/boot/efi/bootx64.efi" "/boot/grub/grub.cfg"
 
+    
+    #check for an efi, if install normal grub failed
+    if [ "$output_grub" != 0 ]; then
+      echo "Looking for EFI, seems that was an error"
+      /usr/bin/mnt-kademar #mount everithing to search EFI 
+      for i in /media/*; do [ -e "$i/EFI/Boot/bootx64.efi" -o -e "$efi.backup_kademar-installer" ] && efi="$i/EFI/Boot/bootx64.efi" && break; done
+      
+      if [ -n "$efi" ]; then
+          echo "Efi found"
+          
+          #create original backup
+          [ ! -e "$efi.backup_kademar-installer" ] && mv "$efi" "$efi.backup_kademar-installer"
+
+          rm -f "$efi"
+
+          cp "$DESTI/boot/efi/bootx64.efi" "$efi"
+         
+      fi
+      
+      
+      
+    fi
 
     #Fix problem with catalan locales on grub
-    sed s."S'està c"."C".g -i $DESTI/boot/$grub/$grub.cfg
+#     sed s."S'està c"."C".g -i $DESTI/boot/$grub/$grub.cfg
 
-
-    #Delete generic entry to install GRUB/BURG
-    rm -f $DESTI/etc/mtab
-    #Restore original entry
-    ln -s /proc/mounts $DESTI/etc/mtab
+    #check if it's some partition bootable
+    if [ -z "$(echo -e "Ignore" | LANC=C parted -l /dev/$MBR_SENSE_NUMERO 2>/dev/null| grep -i boot)" ]; then
+#        If isn't, make bootable first one
+        echo -e "a\n1\nw"  | LANG=C fdisk /dev/$MBR_SENSE_NUMERO\1
+    fi
 fi
+
+unhack_mtab

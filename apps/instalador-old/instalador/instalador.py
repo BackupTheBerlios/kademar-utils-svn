@@ -22,6 +22,7 @@ from commands import getoutput
 #from os import getuid
 from os import path
 from os import system
+from platform import node
 
 import funcions_k
 from threadCopyfiles import *
@@ -44,7 +45,7 @@ class instalador(QDialog):
         tipuskademar=funcions_k.tipuskademar()
         self.internet=funcions_k.internet()
 
-        if path.exists("/etc/kademar/config-livecd.heliox"):
+        if node() == "heliox":
             self.setWindowTitle("Heliox Installer")
             self.kademarType="heliox"
         else:
@@ -174,7 +175,7 @@ class instalador(QDialog):
         self.ui.ch_initrd.setChecked(1)
         self.ui.ch_initrd.setVisible(0)
         
-        if path.exists("/etc/kademar/config-livecd.heliox"):
+        if self.kademarType == "heliox":
             self.ui.t_pc.setText("Heliox")
 
         ###  FINAL
@@ -795,7 +796,7 @@ class instalador(QDialog):
 		system("mkdir -p "+inicial)
                 system("mount "+inicialfs+" "+inicial)
                 
-                self.copyfiles=copyfiles(target, inicial, mkfilesystems, filesystems, particioarrel, particioswap, particiohome, labelfilesystems, mktunefilesystems)
+                self.copyfiles=copyfiles(target, inicial, mkfilesystems, filesystems, particioarrel, particioswap, particiohome, labelfilesystems, mktunefilesystems, self.kademarType)
                 # FUNCIO COPIA
                 self.connect(self.copyfiles, SIGNAL("acabat"), self.copiaacabada)
                 self.connect(self.copyfiles, SIGNAL("progress"), self.posaprogressbar)
@@ -1042,8 +1043,8 @@ class instalador(QDialog):
             default_user=getoutput(". /etc/kademar/config-livecd ; echo $user")
             groups=getoutput('for i in $(grep -i '+default_user+' /etc/group | cut -d: -f1); do echo -n $i,; done')
 
-            #remove xbmc user
-            system("""if [ "`grep xbmc '"""+target+"""/etc/passwd' | grep -i 100`" ]; then  echo "Removing XBMC User" ;  chroot '"""+target+"""' /usr/bin/userdel xbmc ;   rm -fr '"""+target+"""/home/xbmc' ; fi""")
+            for i in [ "xbmc","amule","git","uuid","dnsmasq"]:
+                system("""if [ "`grep """+i+""" '"""+target+"""/etc/passwd' | grep -i 100`" ]; then  echo "Removing """+i+""" User" ;  chroot '"""+target+"""' /usr/bin/userdel """+i+""" ;   rm -fr '"""+target+"""/home/"""+i+"""' ; fi""")
 
             if default_user<>login:
                 print "Deleting LiveCD default user"

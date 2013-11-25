@@ -17,24 +17,29 @@ kernel=`uname -r`
 
 echo -n "Loading all swap partitions: "
  
+ 
+ #always fresh (for persistent USB fstabs)
+ echo > /etc/fstab
  cd /sys/class/block ; for i in `ls --ignore=loop* --ignore=zram* --ignore=sr*
 `; do
 
  if [ "`blkid -o value -s TYPE /dev/$i`" = "swap" ]; then
 
  
-   #always fresh (for persistent USB fstabs)
+ 
  
   echo -n " $i "
   
-  echo "UUID=`blkid -o value -s UUID /dev/$i`       swap    swap    pri=0   0       0" > /etc/fstab
+  echo "UUID=`blkid -o value -s UUID /dev/$i`       swap    swap    pri=0   0       0" >> /etc/fstab
 
  fi
 
 done
  
- echo
  swapon -a
+ 
+ #always fresh (for persistent USB fstabs)
+ echo > /etc/fstab
  
  #workarround fix to dbus & networkmanager permissions
  sed s-deny-allow-g -i /etc/dbus-1/system.d/org.freedesktop.NetworkManager.conf

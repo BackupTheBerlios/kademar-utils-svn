@@ -1,0 +1,17 @@
+. /etc/kademar/config-livecd
+desk=`gettext -d xdg-user-dirs -s "Desktop"`
+
+echo "[Desktop Entry]
+Encoding=UTF-8
+Exec=change-root-passwd
+Icon=/usr/share/icons/kademar-create-root-password.png
+Name=Create Password
+Name[ca]=Crear contrassenya
+Name[es]=Crear contraseña
+Name[en]=Create Password
+StartupNotify=true
+Terminal=false
+Type=Application
+X-KDE-SubstituteUID=false" > "/home/$user/$desk/root-passwd.desktop"
+
+chmod 777 "/home/$user/$desk/root-passwd.desktop"

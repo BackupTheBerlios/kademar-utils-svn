@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=kademar-livecd
-pkgver=5.8.14
+pkgver=5.8.23
 pkgrel=1
 epoch=
 pkgdesc="Kademar Linux basic LiveCD package and utilities - remove on install"
@@ -8,7 +8,7 @@ arch=('any')
 url="http://www.kademar.org"
 license=('GPL')
 groups=()
-depends=('bash' 'zramswap' 'numlockx' 'laptop-detect' 'desktop-selector' 'zerofree')
+depends=('bash' 'zramswap' 'numlockx' 'laptop-detect' 'zerofree')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -21,7 +21,7 @@ install=kademar-livecd.install
 changelog=
 source=("$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('0f8cf5813ed761dbccea2f801423e0cf') #generate with 'makepkg -g'
+md5sums=('df84862c9fd3792326e2d26eb5059ad8') #generate with 'makepkg -g'
 
 
 package() {
@@ -36,7 +36,7 @@ package() {
   find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
   find "$pkgdir"/etc/rc.d -type f -exec chmod 744 "{}" \;
   find "$pkgdir"/etc/X11/xinit/xinitrc.d -type f -exec chmod 755 "{}" \;
-
+  find "$pkgdir"/etc/polkit-1/ -type f -exec chmod 644 "{}" \;
 
 
 }

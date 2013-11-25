@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ -n "$(which konsole)" ]; then
+ kon="konsole -e"
+elif [ -n "$(which lxterminal)" ]; then
+    kon="lxterminal -e"
+else
+    kon="xterm -e"
+fi
+
+$kon  sudo passwd

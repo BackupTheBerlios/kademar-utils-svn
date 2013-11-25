@@ -1,0 +1,38 @@
+#!/usr/bin/bash
+
+prefix="/usr"
+exec_prefix="${prefix}"
+datarootdir="/usr/share"
+
+export TEXTDOMAIN=grub
+export TEXTDOMAINDIR="${datarootdir}/locale"
+
+. "${datarootdir}/grub/grub-mkconfig_lib"
+
+if [ "x${GRUB_DISABLE_OS_PROBER}" = "xtrue" ]; then
+  exit 0
+fi
+
+
+OSPROBED="`kademar-os-prober-efi | tr ' ' '^' | paste -s -d ' '`"
+if [ -z "${OSPROBED}" ] ; then
+  # empty os-prober output, nothing doing
+  exit 0
+fi
+
+
+for OS in ${OSPROBED} ; do
+
+#         HD="`echo ${OS} | cut -d ':' -f 1`"
+#         PART="`echo ${OS} | cut -d ':' -f 2`"
+
+        
+      cat << EOF
+menuentry 'Windows 8' {
+    set root='($OS)'
+    chainloader /EFI/microsoft/BOOT/bootmgfw.efi
+}
+EOF
+
+
+done

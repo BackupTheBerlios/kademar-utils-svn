@@ -1,0 +1,27 @@
+#!/usr/bin/bash 
+
+grub=grub
+
+ #check for an efi
+      echo "Looking for EFI"
+      /usr/bin/mnt-kademar #mount everithing to search EFI 
+      for i in /media/*; do [ -e "$i/EFI/Boot/bootx64.efi" -o -e "$i/EFI/Boot/bootx64.efi.backup_kademar-installer" ] && efi="$i/EFI/Boot/bootx64.efi" && break; done
+      
+      if [ -n "$efi" ]; then
+          echo "Efi found"
+          
+          #create original backup
+          [ ! -e "$efi.backup_kademar-installer" ] && mv "$efi" "$efi.backup_kademar-installer"
+          
+         rm -f "$efi"
+#           mkdir -p $DESTI/boot/efi
+#           cp -a /usr/lib/grub/x86_64-efi/* $DESTI/boot/efi/grub
+
+	  upgrade-grub
+
+	  grub-mkstandalone --directory="/usr/lib/grub/x86_64-efi/" --format="x86_64-efi" --compression="xz" --output="$efi" "/boot/grub/grub.cfg"
+
+# mv "$DESTI/boot/efi/grubx64_standalone.efi" "$efi"
+      else
+          echo "EFI not found"
+      fi

@@ -1,0 +1,107 @@
+#!/bin/bash
+
+[ -e /tmp/instalador-environment ] && . /tmp/instalador-environment
+
+mntpath="/tmp/kademar-os-prober"
+
+getLabel(){
+  echo `blkid /dev/$1 -s LABEL -o value 2>/dev/null | sed s.\'..g`
+}
+
+getFileSystem() { 
+  echo `blkid /dev/$1 -s TYPE -o value 2>/dev/null | sed s.\'..g`
+}
+
+isRemovable(){
+    echo "$(udevadm info --query=all --name=$i | grep ID_BUS | grep -i usb)"
+}
+getPartitionDevices()  {
+ls /sys/block/ | while read i
+do
+    case "$i" in
+        ram*|loop*|pts*|sys*|pro*|aut*|test*|fd*|zram*|sr*|scd*|dm*|*raid*)
+        ;;
+        *)
+            if [ -z "$(isRemovable $i)" ]; then
+                echo "$i"
+            
+            fi
+        ;;
+    esac
+done
+
+# echo $devices
+}
+ 
+#Be sure to be unmounted
+if [ ! -e "$mntpath" ]; then
+    mkdir -p "$mntpath"
+else
+    for i in 1 2 3 4 5 6 7 8 9 10
+    do
+        umount "$mntpath" 2>/dev/null
+    done
+fi
+    
+
+# Check for real devices not removables, and partitions
+# var=$(python /bin/os-prober-replace-python.py)
+
+
+ 
+part=""
+for i in `getPartitionDevices`
+do
+ part="$part `ls -1 /sys/block/$i/ | grep -i $i?*`"
+done
+# echo $part
+
+#remove extended/logical partition
+for i in $part
+do
+# echo $part
+    if [ `cat /sys/class/block/$i/size` -gt 100 ]; then
+       if [ "`getFileSystem $i`" != "swap" ]; then
+          part2="$part2 $i"
+       fi
+    fi
+
+done
+
+# echo $part2
+
+# exit
+
+analize=""
+for i in $part2
+do
+#        echo "Analize $i"
+       analize="$analize $i"
+done
+
+
+
+# # echo "Partitions to analizate"
+# echo "$analize"
+
+
+#nothing to process
+[ -z "$analize" ] && exit
+
+for i in $analize
+do
+    ( umount "/dev/$i" || umount "/dev/$i" || umount "/dev/$i"  ) 2>/dev/null # || umount -f "/dev/$i"
+   mount "/dev/$i" "$mntpath" 2>/dev/null
+   
+#    $i = sda1
+#    			Windows
+			ntdetect="" ; ntdetect=`ls "$mntpath" | grep -i ntdetect.com`
+			if [ -e $mntpath/EFI/microsoft/BOOT/bootmgfw.efi ]; then
+			        p=$(/usr/bin/grub-probe --device /dev/$i --target=compatibility_hint)
+			        echo $p | sed s.msdos.gpt.g
+			fi
+   
+   
+   ( umount "/dev/$i" || umount "/dev/$i" || umount "$mntpath" || umount "$mntpath" ) 2>/dev/null
+
+done

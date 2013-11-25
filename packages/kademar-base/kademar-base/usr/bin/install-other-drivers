@@ -1,27 +1,29 @@
 #!/bin/bash 
 
 if [ "$(ping www.google.es -c1 2>/dev/null 1>&2 ; echo $?)" = "0" ]; then
-  case "$LANG" in
-  ca_ES*)
-    echo "Ara s'intal·laran els controladors gràfics lliures de totes les gràfiques"
-    echo "Estàs segur de continuar amb aqust procés? (s/N)"
-  ;;
-  es_ES*)
-    echo "Ahora se intalarán los controladores gráficos libres de todas las gráficas"
-    echo "Estás seguro de continuar con este proceso? (s/N)"
-  ;;
-  *)
-    echo "Now will be installed all free graphic controllers"
-    echo "Are you sure to continue this process? (y/N)"
-  ;;
-  esac
-  read key
-  case "$key" in
-  y|Y|s|S)
-    ok=ok
-  ;;
-  esac
-  [ "$ok" != "ok" ] && exit
+  if [ "$1" != "force" ]; then 
+    case "$LANG" in
+    ca_ES*)
+      echo "Ara s'intal·laran els controladors gràfics lliures de totes les gràfiques"
+      echo "Estàs segur de continuar amb aqust procés? (s/N)"
+    ;;
+    es_ES*)
+      echo "Ahora se intalarán los controladores gráficos libres de todas las gráficas"
+      echo "Estás seguro de continuar con este proceso? (s/N)"
+    ;;
+    *)
+      echo "Now will be installed all free graphic controllers"
+      echo "Are you sure to continue this process? (y/N)"
+    ;;
+    esac
+    read key
+    case "$key" in
+    y|Y|s|S)
+      ok=ok
+    ;;
+    esac
+    [ "$ok" != "ok" ] && exit
+  fi
   
   list=`LANG=C pacman -Sl | grep -i instal`
   packets=""
@@ -36,25 +38,26 @@ if [ "$(ping www.google.es -c1 2>/dev/null 1>&2 ; echo $?)" = "0" ]; then
 #   else
   #32 bit mode
 #     bit64="xf86-video-geode"
-#   fi
+  fi
 
   pacman --noconfirm -Rdd $packets
   pacman --noconfirm  -Sy xorg-drivers $bit64
    
-  echo
-  case "$LANG" in
-  ca_ES*)
-    echo "Ara els controladors gràfics ja estan instal·lats. Per usar-los, s'ha de reiniciar la màquina. Ho pots fer amb la comanda:"
-
-  ;;
-  es_ES*)
-    echo "Ahora los controladores gráficos ya estàn instalados. Para usarlos, de debe de reiniciar el ordenador. Lo puedes hacer con el comando:"
-  ;;
-  *)
-    echo "Now graphic controllers are installed. To use it, you should reboot your computer. You can do it with:"
-  ;;
-  esac
-  echo "  sudo reboot"
+  if [ "$1" != "force" ]; then 
+    echo
+    case "$LANG" in
+    ca_ES*)
+      echo "Ara els controladors gràfics ja estan instal·lats. Per usar-los, s'ha de reiniciar la màquina. Ho pots fer amb la comanda:"
+    ;;
+    es_ES*)
+      echo "Ahora los controladores gráficos ya estàn instalados. Para usarlos, de debe de reiniciar el ordenador. Lo puedes hacer con el comando:"
+    ;;
+    *)
+      echo "Now graphic controllers are installed. To use it, you should reboot your computer. You can do it with:"
+    ;;
+    esac
+    echo "  sudo reboot"
+  fi
 else
   echo "I need internet connection"
   echo "Necesito conexión a internet"

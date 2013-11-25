@@ -1,0 +1,191 @@
+#!/bin/bash
+
+[ -e /tmp/instalador-environment ] && . /tmp/instalador-environment
+
+mntpath="/tmp/kademar-os-prober"
+
+os=$(os-prober 2>/dev/null | cut -d: -f1 | sed s./dev/..g)
+
+getLabel(){
+  echo `blkid /dev/$1 -s LABEL -o value 2>/dev/null | sed s.\'..g`
+}
+
+getFileSystem() { 
+  echo `blkid /dev/$1 -s TYPE -o value 2>/dev/null | sed s.\'..g`
+}
+
+
+detectWindows() {
+type=Windows
+label=`getLabel $1`
+if [ -n "$(ls $mntpath/[Ww][Ii][Nn][Dd][Oo][Ww][Ss]/[Mm][Ee][Dd][Ii][Aa]/*XP* 2>/dev/null)" ]; then
+  type="Windows XP"
+elif [ -e "$mntpath/ntdetect.com" -a -e "$mntpath/ntdlr" ]; then
+  type="Windows NT/2000/XP"
+elif [ -e $mntpath/[Ww][Ii][Nn][Dd][Oo][Ww][Ss]/WindowsUpdate.log ]; then
+   if [ -n "$(grep 'OS Version' $mntpath/[Ww][Ii][Nn][Dd][Oo][Ww][Ss]/WindowsUpdate.log | grep -i '6.1')" ]; then
+      type="Windows 7"
+   fi
+fi
+
+if [ -n "$label" ]; then
+    echo "/dev/$1:$type ($label):Windows:chain"
+else
+    echo "/dev/$1:$type:Windows:chain"
+fi
+}
+
+isRemovable(){
+    echo "$(udevadm info --query=all --name=$i | grep ID_BUS | grep -i usb)"
+}
+getPartitionDevices()  {
+ls /sys/block/ | while read i
+do
+    case "$i" in
+        ram*|loop*|pts*|sys*|pro*|aut*|test*|fd*|zram*|sr*|scd*|dm*|*raid*)
+        ;;
+        *)
+            if [ -z "$(isRemovable $i)" ]; then
+                echo "$i"
+            
+            fi
+        ;;
+    esac
+done
+
+# echo $devices
+}
+ 
+#Be sure to be unmounted
+if [ ! -e "$mntpath" ]; then
+    mkdir -p "$mntpath"
+else
+    for i in 1 2 3 4 5 6 7 8 9 10
+    do
+        umount "$mntpath" 2>/dev/null
+    done
+fi
+    
+
+# Check for real devices not removables, and partitions
+# var=$(python /bin/os-prober-replace-python.py)
+
+
+ 
+part=""
+for i in `getPartitionDevices`
+do
+ part="$part `ls -1 /sys/block/$i/ | grep -i $i?*`"
+done
+# echo $part
+
+#remove extended/logical partition
+for i in $part
+do
+# echo $part
+    if [ `cat /sys/class/block/$i/size` -gt 100 ]; then
+       if [ "`getFileSystem $i`" != "swap" ]; then
+          part2="$part2 $i"
+       fi
+    fi
+
+done
+
+# echo $part2
+
+# exit
+
+analize=""
+for i in $part2
+do
+# Process only which aren't detected by os-prober
+   if [ -z "$(echo $os | grep -i $i)" ]; then
+#        echo "Analize $i"
+       analize="$analize $i"
+#    else
+#        echo "Already detected on os-prober $i"
+   fi
+done
+
+
+
+# # echo "Partitions to analizate"
+# echo "$analize"
+
+
+#nothing to process
+[ -z "$analize" ] && exit
+
+for i in $analize
+do
+    ( umount "/dev/$i" || umount "/dev/$i" || umount "/dev/$i"  ) 2>/dev/null # || umount -f "/dev/$i"
+   mount "/dev/$i" "$mntpath" 2>/dev/null
+   
+   
+#    			Windows
+			ntdetect="" ; ntdetect=`ls "$mntpath" | grep -i ntdetect.com`
+			ntldr="" ; ntldr=`ls "$mntpath" | grep -i ntldr`
+# 			pagefile.sys
+			if [ -n "$ntldr" -a -n "$ntdetect" ]; then
+				detectWindows $i
+			elif [ -e "$mntpath/command.com" ]; then
+				detectWindows $i
+			elif [ -e $mntpath/[Ww][Ii][Nn][Dd][Oo][Ww][Ss]/[Ss][Yy][Ss][Tt][Ee][Mm]32 -a -e $mntpath/[Ww][Ii][Nn][Dd][Oo][Ww][Ss]/[Ee][Xx][Pp][Ll][Oo][Rr][Ee][Rr].[Ee][Xx][Ee] ]; then
+				detectWindows $i
+			elif [ -n "`grep 'Shell=' "$mntpath/config.sys" 2>/dev/null`" ]; then
+				detectWindows $i
+			# Mac OS X
+			elif [ -e "$mntpath/Applications" -a -e "$mntpath/Volumes" ]; then
+				echo "/dev/$i:Mac OS X:macosx:macosx"
+			# Linux
+			elif [ -e "$mntpath/lib/modules" -o -e "$mntpath/usr/lib/modules" ]; then
+			        
+
+				#Get name & version from Linux Standard Base
+				if [ -e "$mntpath/etc/lsb-release" ]; then
+					release=`grep DISTRIB_RELEASE "$mntpath/etc/lsb-release"  2>/dev/null | cut -d= -f2`
+					distrib=`grep DISTRIB_ID "$mntpath/etc/lsb-release"  2>/dev/null | cut -d= -f2`
+					descript=`grep DISTRIB_DESCRIPTION "$mntpath/etc/lsb-release"  2>/dev/null | cut -d= -f2`
+				fi
+				
+				if [ -z "$distrib" ]; then
+					distrib="Linux"
+# 				else
+# 					[ "$distrib" != kademar ] && distrib="$(echo "$distrib" | sed s.Linux..g) Linux"
+				fi
+				
+				#kademar  amb versio
+				if [ -z "$release" ]; then
+				    if [ -e "$mntpath/etc/kademar-release" -o -e "$mntpath/usr/share/kademar/CADI/info.txt" -o -e "$mntpath/usr/share/kademar" -o -e "$mntpath/usr/share/kademar" ]; then
+					[ -e "$mntpath/etc/kademar-release" ] && release=`cat "$mntpath/etc/kademar-release"`
+					[ -z "$release" -a -e "$mntpath/usr/share/kademar/CADI/info.txt" ] && release=`cat "$mntpath/usr/share/kademar/CADI/info.txt"  | grep versio | awk ' { print $1 } '`
+					[ -z "$release" -a -e "$mntpath/usr/share/kademar/Pc.txt" ] && release=kademar
+					[ -z "$release" ] && release=""
+# 					echo kademar "/dev/$i" "$release"
+# 				# Normal Linux
+# 				else
+# 					#kademar  sense versio
+# 					if [ -e "$mntpath/usr/share/kademar/Pc.txt" ]; then
+# 						echo "/dev/$i:kademar:kademar:linux"
+# 					else
+# 						echo "$distrib" "/dev/$i" "$release"
+# 					fi
+  				    fi
+   				fi
+				
+				if [ -z "$release" ]; then
+				   echo "/dev/$i:$descript:$distrib:linux"
+				else
+				   echo "/dev/$i:$descript ($release):$distrib:linux"
+				fi
+				
+				release=""
+				distrib=""
+				descript=""
+				
+			fi
+   
+   
+   ( umount "/dev/$i" || umount "/dev/$i" || umount "$mntpath" || umount "$mntpath" ) 2>/dev/null
+
+done

@@ -2,7 +2,7 @@
 
 pkgname=cadi
 replaces=cadi-svn
-pkgver=0.2.5
+pkgver=0.3.1
 pkgrel=0
 pkgdesc="The CADI systray"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('python' 'notification-daemon' 'python-pyqt4' 'pacman>=3.2' 'polkit')
 install=caditray.install
 source=(${pkgname}-${pkgver}.tar.gz)
-md5sums=('c66281c0eb92eb60eac182d1011f39b3')
+md5sums=('f3984636a9876972f0f5c6eb2f45a04b')
 
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}

@@ -29,6 +29,7 @@ class cadiTray(QMainWindow):
         self.timer=QTimer()
         self.fistTimer=QTimer()
         self.prepareUpdateTimer()
+        self.prepareWatchKernel()
             
     def prepareUpdateTimer(self):
         #print ("updatetype",self.upgradeType)
@@ -89,10 +90,10 @@ class cadiTray(QMainWindow):
                            #If we are on Warn-only mode, arrived here by automatic update, warn only :)
                            self.sendNotify("CADI", packagesToUpdate+" "+self.tr('packages available to update\nClick here to update now'), "info")
                              
-                    elif force==True:
-                        #if there's no packages to update, and we arribe here automatically don't say nothing:
-                        # if user pressed the button fo update, say that is already updated
-                        self.sendNotify("CADI", self.tr('System already updated!'), "ok")
+                   elif force==True:
+                       #if there's no packages to update, and we arribe here automatically don't say nothing:
+                       # if user pressed the button fo update, say that is already updated
+                       self.sendNotify("CADI", self.tr('System already updated!'), "ok")
                else:
                    #don't do nothing if isn't internet
                    print("No internet Connection")
@@ -116,4 +117,13 @@ class cadiTray(QMainWindow):
             if preg == QMessageBox.Yes:
                 #self.stopServer()
                 self.checkUpdates(force=True)
+                
+                
+    def prepareWatchKernel(self):
+        self.kernelWatcher=QFileSystemWatcher()
+        self.kernelWatcher.addPath("/boot/vmlinuz-linux")
+        self.connect(self.kernelWatcher, SIGNAL("fileChanged(const QString&)"), self.kernelChangedSlot)
+
+    def kernelChangedSlot(self):
+        self.sendNotify("CADI",self.tr("Important Upgrade done\n\nIt's recommended to reboot the system"), "important")
  

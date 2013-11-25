@@ -102,7 +102,7 @@
        <item row="1" column="3">
         <widget class="QTabWidget" name="tabWidget">
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="General">
           <attribute name="title">
@@ -199,6 +199,9 @@
                  <pixmap>../../../../../../../../usr/share/caditray/img/kademar.png</pixmap>
                 </property>
                 <property name="scaledContents">
+                 <bool>true</bool>
+                </property>
+                <property name="wordWrap">
                  <bool>true</bool>
                 </property>
                </widget>
@@ -477,7 +480,7 @@
      <x>0</x>
      <y>0</y>
      <width>569</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>

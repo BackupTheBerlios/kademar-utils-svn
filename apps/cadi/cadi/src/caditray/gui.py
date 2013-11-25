@@ -7,6 +7,7 @@ from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 #from gui1 import Ui_MainWindow
 from platform import architecture
+from platform import node
 
 class cadiTray(QMainWindow):
     def prepareGui(self):
@@ -16,7 +17,7 @@ class cadiTray(QMainWindow):
 
     def putDistroNameOnGui(self):
         #if not, kademar is already defined
-        if QFile("/etc/kademar/config-livecd.heliox").exists():
+        if node() == "heliox":
             self.kademarType="Heliox"
         else:
             self.kademarType="Kademar"

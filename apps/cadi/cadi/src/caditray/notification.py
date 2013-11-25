@@ -41,6 +41,8 @@ class cadiTray(QMainWindow):
                 self.app_icon=self.imagepath+"notick.png"
             elif icon == "info":
                 self.app_icon=self.imagepath+"info.png"
+            elif icon == "important":
+                self.app_icon=self.imagepath+"important.png"
             else:
                 self.app_icon=self.imagepath+"caditray.png"
             self.expire_timeout=5000

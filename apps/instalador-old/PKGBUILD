@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=instalador
-pkgver=4.9.61.8
+pkgver=4.9.62
 pkgrel=1
 epoch=
 pkgdesc="The Installer"
@@ -21,12 +21,14 @@ install=
 changelog=
 source=($pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('0f456e44d857b8b01f74316ff321641e') #generate with 'makepkg -g'
+md5sums=('ab444073189cb17b1bcd72339921e492') #generate with 'makepkg -g'
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 #  sh prepare.sh
-  #lrelease instalador.pro
+  pylupdate4 instalador.pro
+  lrelease instalador.pro
+
 }
 
  package() {

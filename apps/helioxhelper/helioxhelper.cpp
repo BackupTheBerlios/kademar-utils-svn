@@ -27,12 +27,17 @@ HelioxHelper::HelioxHelper(QWidget *parent) :
 
     //Initial define - to not crash on first reloadConfiguration()
     languageButtonSelection = new QToolButtonWithEvents(this, settings1, settings2, selectedLanguage);
-
+    helioxButtonSelection = new QToolButtonWithEvents(this, settings1, settings2, selectedLanguage);
+    //separatorButtons = new QFrame();
     position = settings->value("General/whereIsPlacedWindow").toInt();
 
     languageMenu = new QMenu(this);
     numlanguage=0;
     numApp=0;
+
+    QDesktopWidget qDesktopWidget;
+
+
     //settingsProcess = new QProcess();
     defineLanguageDictionary();
     createLanguageButtons();
@@ -42,6 +47,15 @@ HelioxHelper::HelioxHelper(QWidget *parent) :
 
     extern bool speech;
     speech=0;
+
+    //appBox = new QWidget();
+    //appBox->show();
+    //appBox->activateWindow();
+    //appBox->setWindowFlags(Qt:: CustomizeWindowHint);
+            //(Qt::Tool | Qt::FramelessWindowHint | Qt::CustomizeWindowHint);
+
+
+
 
     if (settings->value("General/speechText").toString() == ""){
 
@@ -101,9 +115,12 @@ HelioxHelper::~HelioxHelper()
 
 void HelioxHelper::createConnections()
 {
+        QDesktopWidget* desktop = QApplication::desktop();
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
                  this, SLOT(iconActivated(QSystemTrayIcon::ActivationReason)));
 
+    //rload all when desktop resolution changes
+    connect(desktop, SIGNAL(resized ( int )),this,SLOT(reloadConfiguration()));
 }
 
 void HelioxHelper::iconActivated(QSystemTrayIcon::ActivationReason reason)
@@ -234,7 +251,6 @@ void HelioxHelper::createActions()
  void HelioxHelper::setWidgetSize()
   {
     // extern QSettings settings;
-      QDesktopWidget qDesktopWidget;
       QRect screenSize;
       screenSize = qDesktopWidget.availableGeometry();
 
@@ -371,7 +387,6 @@ void HelioxHelper::createActions()
                   int x = screenSize.width();
                   num = (size * x);
                   num = num/100;
-
                   xWidth = num;
                   if (align == "center"){
                       num = (x-num)/2;
@@ -676,6 +691,7 @@ void HelioxHelper::createActions()
             //Put property on button wich will be written on configuration file
             listApplicationButtons[i]->setTextProperty(new QString("EXEC"), new QString(exec)); //set text button property to write on file
 
+           // connect(listApplicationButtons[i], SIGNAL(clicked()), this, SLOT(showAppBox()));
             connect(listApplicationButtons[i], SIGNAL( buttonClicked(QString, QString)), this, SLOT(startApplication(QString, QString)));
 
 
@@ -696,10 +712,16 @@ void HelioxHelper::createActions()
 
      }
      settings->endArray();
+
      if (settings->value("General/languages").toBool() == true){
           if ((numlanguage != 0) && (numlanguage != 1)){
+              numRow=numCol=0;
          languageButtonSelection = new QToolButtonWithEvents(this, settings1, settings2, selectedLanguage);
          languageButtonSelection->setIcon(QIcon(":/images/language.png"));
+         helioxButtonSelection = new QToolButtonWithEvents(this, settings1, settings2, selectedLanguage);
+         helioxButtonSelection->setIcon(QIcon(":/images/trayicon.png"));
+        // separatorButtons = new QFrame();
+         //separatorButtons->setFrameShadow(QFrame::Sunken);
 
          QString desc;
          desc ="Configura el idioma";
@@ -708,9 +730,26 @@ void HelioxHelper::createActions()
          QString realdesc = QString::fromLocal8Bit(processingString);
 
          languageButtonSelection->setToolTip(realdesc);
-            ui->gridLayout->addWidget(languageButtonSelection, numRow, numCol, 1, 1);
+         ui->gridLayoutMainButtons->addWidget(languageButtonSelection, numRow, numCol, 1, 1);
+
+         if (!((position == 0) || (position == 2) )) {
+             //Vertical orientation
+         //    qDebug() << "vertical";
+             numRow=numRow+1;
+
+          } else {
+             //Horizontal Orientation
+             numCol=numCol+1;
+         //    qDebug() << "horitzontal";
+         }
+
+         ui->gridLayoutMainButtons->addWidget(helioxButtonSelection, numRow, numCol, 1, 1);
+         ui->line->setVisible(1);
+
+
             connect(languageButtonSelection, SIGNAL(buttonClicked(QString,QString)), this, SLOT(showLanguageMenu()));
          }
+
 
      }
 
@@ -930,6 +969,8 @@ void HelioxHelper::createActions()
     }
 
     delete(languageButtonSelection);
+    delete(helioxButtonSelection);
+    ui->line->setVisible(0);
 
     //languageButtonSelection->setVisible(false);
     numRow=0;
@@ -942,3 +983,7 @@ void HelioxHelper::createActions()
     setWidgetSize();
     setStyleClass();
  }
+
+ //void HelioxHelper::showAppBox(){
+ //    qDebug() << "Hola";
+ //}

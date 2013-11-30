@@ -11,6 +11,7 @@
 #include <QBitmap>
 #include <QSettings>
 #include <QFile>
+#include <QWidget>
 #include <QDir>
 #include <QEvent>
 #include <QKeyEvent>
@@ -20,6 +21,7 @@
 //#include <qtsingleclass
 #include <qactionwithevents.h>
 #include <wideiconsmenu.h>
+//#include <QFrame>
 
 namespace Ui {
 class HelioxHelper;
@@ -33,7 +35,7 @@ public:
     explicit HelioxHelper(QWidget *parent = 0);
     ~HelioxHelper();
   // void writeConfig();
-    
+
 private slots:
     void iconActivated(QSystemTrayIcon::ActivationReason reason);
     void troggleShowMainWindow();
@@ -44,6 +46,7 @@ private slots:
     void showLanguageMenu();
     void settingsWindow();
     void reloadConfiguration();
+//    void showAppBox();
 
 private:
     Ui::HelioxHelper *ui;
@@ -79,6 +82,11 @@ private:
     int numApp;
     QProcess settingsProcess;
     QToolButtonWithEvents *languageButtonSelection;
+    QToolButtonWithEvents *helioxButtonSelection;
+   // QFrame *separatorButtons;
+    QDesktopWidget qDesktopWidget;
+
+
     void blockAllApplicationButtonSignals(bool value);
 
 
@@ -96,6 +104,7 @@ private:
     int numRow;
     int position;
     QString selectedLanguage;
+    QWidget *appBox;
 
 //protected:
 //    bool eventFilter(QObject* object,QEvent* event);

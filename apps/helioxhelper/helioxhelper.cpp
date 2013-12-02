@@ -449,16 +449,16 @@ void HelioxHelper::createActions()
          QString endColor = settings->value("Background/gradientEndColor").toString();
          if (settings->value("Background/gradientOrientation").toInt() == 1) {
             //Horitzontal Gradient Orientation
-             setStyleSheet(QString("QWidget#HelioxHelper {background-color: qlineargradient(x1: 0, y1: 1, x2: 1, y2: 1, stop: 0 %1, stop: 1 %2);}").arg(beginColor).arg(endColor));
+             ui->scrollAreaWidgetContents->setStyleSheet(QString("QWidget {background-color: qlineargradient(x1: 0, y1: 1, x2: 1, y2: 1, stop: 0 %1, stop: 1 %2);}").arg(beginColor).arg(endColor));
          } else {
             //Vertical Graident Orientation
-             setStyleSheet(QString("QWidget#HelioxHelper {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 %1, stop: 1 %2);}").arg(beginColor).arg(endColor));
+             ui->scrollAreaWidgetContents->setStyleSheet(QString("QWidget {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 %1, stop: 1 %2);}").arg(beginColor).arg(endColor));
          }
 
      } else {
        //Plain color, using first color of gradient
          QString beginColor = settings->value("Background/gradientbeginColor").toString();
-         setStyleSheet(QString("QWidget#HelioxHelper {background-color: %1;}").arg(beginColor));
+         ui->scrollAreaWidgetContents->setStyleSheet(QString("QWidget {background-color: %1;}").arg(beginColor));
      }
 
 
@@ -718,8 +718,11 @@ void HelioxHelper::createActions()
               numRow=numCol=0;
          languageButtonSelection = new QToolButtonWithEvents(this, settings1, settings2, selectedLanguage);
          languageButtonSelection->setIcon(QIcon(":/images/language.png"));
+         languageButtonSelection->setMaximumSize(QSize(22,22));
+
          helioxButtonSelection = new QToolButtonWithEvents(this, settings1, settings2, selectedLanguage);
          helioxButtonSelection->setIcon(QIcon(":/images/trayicon.png"));
+         helioxButtonSelection->setMaximumSize(QSize(22,22));
         // separatorButtons = new QFrame();
          //separatorButtons->setFrameShadow(QFrame::Sunken);
 
@@ -728,6 +731,7 @@ void HelioxHelper::createActions()
          QByteArray byteArray = desc.toLatin1();
          const char * processingString = byteArray.data();
          QString realdesc = QString::fromLocal8Bit(processingString);
+
 
          languageButtonSelection->setToolTip(realdesc);
          ui->gridLayoutMainButtons->addWidget(languageButtonSelection, numRow, numCol, 1, 1);
@@ -801,7 +805,9 @@ void HelioxHelper::createActions()
 
      //Derivados en Mexico
      dict["mx"] = "Mexicano"; dict["es_MX"] = "Mexicano";
-     dict["myn"] = "Maya"; dict["mx_myn"] = "Maya";
+     dict["myn"] = "Maya"; dict["myn_MX"] = "Maya";
+     dict["nah"] = "Nahuatl"; dict["nah_MX"] = "Nahuatl";
+     dict["pua"] = "P'urhépecha"; dict["pua_MX"] = "P'urhépecha";
  }
 
 

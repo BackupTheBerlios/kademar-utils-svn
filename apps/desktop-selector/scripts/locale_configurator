@@ -458,7 +458,7 @@ esac
 
 echo "LANG=$LANG" > "$DESTI/etc/locale.conf"echo "LANG=$LANG" > "$DESTI/etc/locale.conf"
 
-[ -n "$EXTRA" ] && echo "EXTRA=$EXTRA" > "$DESTI/etc/locale.conf"
+[ -n "$EXTRA" ] && echo "EXTRA=$EXTRA" >> "$DESTI/etc/locale.conf"
 
 
 echo "$TZ" > "$DESTI/etc/timezone"

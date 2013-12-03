@@ -98,9 +98,6 @@ fi
 
 #Activem el autologin en el KDM si es demana
 if [ "$AUTOLOGIN" = "si" ]; then
-# 	[ -e /usr/share/kademar/utils/common/autologin_slim ] && sh /usr/share/kademar/utils/common/autologin_slim autologin_si "$login" "$DESTI"
-# 	[ -e /usr/share/kademar/utils/common/autologin_gdm ] && sh /usr/share/kademar/utils/common/autologin_gdm autologin_si "$login" "$DESTI"
-#    "$login" "$DESTI"
 
 #KDM Support
   if [ -e "$DESTI/usr/share/config/kdm/kdmrc" ]; then
@@ -111,6 +108,15 @@ if [ "$AUTOLOGIN" = "si" ]; then
     sed "s~AutoLoginUser=.*~AutoLoginUser=$login~g"  -i "$DESTI/usr/share/config/kdm/kdmrc"
     sed "s~#AutoLoginUser=.*~AutoLoginUser=$login~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
     
+  fi
+
+#LXDM Support
+  if [ -e "$DESTI/etc/lxdm/lxdm.conf" ]; then
+    sed "s~autologin=.*~autologin=$login~g"  -i "$DESTI/etc/lxdm/lxdm.conf"
+    sed "s~#autologin=.*~autologin=$login~g" -i "$DESTI/etc/lxdm/lxdm.conf"  fi
+fi
+
+if [ -e "$DESTI/usr/share/config/kdm/kdmrc" ]; then
 #     sed "s~#HaltCmd=.*~HaltCmd=systemctl poweroff~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
 #     sed "s~HaltCmd=.*~HaltCmd=systemctl poweroff~g" -i "$DESTI/usr/share/config/kdm/kdmrc"
     
@@ -123,10 +129,6 @@ if [ "$AUTOLOGIN" = "si" ]; then
 	cp "$DESTI/usr/share/apps/kdm/pics/users/default1.png" "$DESTI/usr/share/apps/kdm/faces/.default.face.icon"
     fi
     
-  fi
-  
-#GDM Support
-#  en /var/lib/accountsservice
 fi
 
 

@@ -323,30 +323,31 @@ if [ "$mbr" != "no" ]; then
         
     hack_mtab
     
+    #If 64bit, means EFI support
+    if [ "$(uname -m)" = "x86_64" ]; then
+      #Create EFI Grub application
+      mkdir -p $DESTI/boot/efi
+      chroot $DESTI grub-mkstandalone --directory="/usr/lib/grub/x86_64-efi/" --format="x86_64-efi" --compression="xz" --output="/boot/efi/bootx64.efi" "/boot/grub/grub.cfg"
     
-    #Create EFI Grub Application
-    mkdir -p $DESTI/boot/efi
-    chroot $DESTI grub-mkstandalone --directory="/usr/lib/grub/x86_64-efi/" --format="x86_64-efi" --compression="xz" --output="/boot/efi/bootx64.efi" "/boot/grub/grub.cfg"
-
-    
-    #check for an efi, if install normal grub failed
-    if [ "$output_grub" != 0 ]; then
-      echo "Looking for EFI, seems that was an error"
-      /usr/bin/mnt-kademar #mount everithing to search EFI 
-      for i in /media/*; do [ -e "$i/EFI/Boot/bootx64.efi" -o -e "$efi.backup_kademar-installer" ] && efi="$i/EFI/Boot/bootx64.efi" && break; done
+      #check for an efi, if install normal grub failed
+      if [ "$output_grub" != 0 ]; then
+        echo "Looking for EFI, seems that was an error"
+        /usr/bin/mnt-kademar #mount everithing to search EFI 
+        for i in /media/*; do [ -e "$i/EFI/Boot/bootx64.efi" -o -e "$efi.backup_kademar-installer" ] && efi="$i/EFI/Boot/bootx64.efi" && break; done
       
-      if [ -n "$efi" ]; then
-          echo "Efi found"
+        if [ -n "$efi" ]; then
+            echo "Efi found"
           
-          #create original backup
-          [ ! -e "$efi.backup_kademar-installer" ] && mv "$efi" "$efi.backup_kademar-installer"
+            #create original backup
+            [ ! -e "$efi.backup_kademar-installer" ] && mv "$efi" "$efi.backup_kademar-installer"
+  
+            rm -f "$efi"
 
-          rm -f "$efi"
-
-          cp "$DESTI/boot/efi/bootx64.efi" "$efi"
+            cp "$DESTI/boot/efi/bootx64.efi" "$efi"
          
+        fi
+        
       fi
-      
       
       
     fi
@@ -355,9 +356,9 @@ if [ "$mbr" != "no" ]; then
 #     sed s."S'està c"."C".g -i $DESTI/boot/$grub/$grub.cfg
 
     #check if it's some partition bootable
-    if [ -z "$(echo -e "Ignore" | LANC=C parted -l /dev/$MBR_SENSE_NUMERO 2>/dev/null| grep -i boot)" ]; then
+   if [ -z "$(fdisk -l "/dev/$MBR_SENSE_NUMERO" | fgrep "*" | fgrep "/dev/$MBR_SENSE_NUMERO")" ]; then
 #        If isn't, make bootable first one
-        echo -e "a\n1\nw"  | LANG=C fdisk /dev/$MBR_SENSE_NUMERO\1
+       echo -ne "a\n1\nw\n" | fdisk "/dev/$MBR_SENSE_NUMERO" >/dev/null 2>&1
     fi
 fi
 

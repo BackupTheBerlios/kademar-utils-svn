@@ -229,7 +229,7 @@ if [ -e "$DESTI/etc/slim.conf" ]; then
 fi
 
 if [ -e "$DESTI/etc/gdm/Init/Default" ]; then
-  if -n "`grep numlock $DESTI/etc/gdm/Init/Default`" ]; then
+  if [ -n "`grep numlock $DESTI/etc/gdm/Init/Default`" ]; then
     echo "if [ -x /usr/bin/numlockx ]; then
        /usr/bin/numlockx $lap1
 fi" >> "$DESTI/etc/gdm/Init/Default"

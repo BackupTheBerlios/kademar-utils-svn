@@ -1024,7 +1024,7 @@ void HelioxHelper::showMenu(){
 
 void HelioxHelper::changeEvent(QEvent *e)
 {
-    qDebug() << "hola";
+    //qDebug() << "hola";
     QWidget::changeEvent(e);
     switch (e->type()) {
     case QEvent::LanguageChange:

@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=helioxhelper-svn
-pkgver=354
+pkgver=357
 pkgrel=1
 pkgdesc="Desktop widget higly customizable written in QT and accessible"
 arch=('i686' 'x86_64')
@@ -46,7 +46,7 @@ build() {
   cd ..
   
   #  QT4  
-  /usr/bin/lrelease-qt4 ${_svnmod}.pro
+  /usr/bin/lrelease-qt4 HelioxHelper.pro
   /usr/bin/qmake-qt4 #qt4
   make
   

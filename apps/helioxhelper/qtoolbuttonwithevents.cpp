@@ -66,16 +66,25 @@ void QToolButtonWithEvents::readCaption( QString * label )
     QFile *filespeechStripLang = new QFile(QString("%1/%2_%3.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue).replace("/","-").split(" ")[0]).arg(selectedLanguage) );
     QFile *filespeechFull = new QFile(QString("%1/%2.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue).replace("/","-")));
     QFile *filespeechFullLang = new QFile(QString("%1/%2_%3.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue).replace("/","-")).arg(selectedLanguage));
+    QFile *filespeechFolderFullLang = new QFile(QString("%1/%3/%2_%3.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue).replace("/","-")).arg(selectedLanguage));
+    QFile *filespeechFolderStripLang = new QFile(QString("%1/%3/%2.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue).replace("/","-")).arg(selectedLanguage));
 
 /*
     qDebug() << filespeechStrip->fileName();
     qDebug() << filespeechStripLang->fileName();
     qDebug() << filespeechFull->fileName();
     qDebug() << filespeechFullLang->fileName();
+    qDebug() << filespeechFolderFullLang->fileName();
+    qDebug() << filespeechFolderStripLang->fileName();
 */
 
-    if  (filespeechFullLang->exists()) {
-        readcommand->start(QString("ogg123 \"%1\"").arg(filespeechFullLang->fileName()));
+    if  (filespeechFolderFullLang->exists()) {
+        readcommand->start(QString("ogg123 \"%1\"").arg(filespeechFolderFullLang->fileName()));
+    } else if  (filespeechFolderStripLang->exists()) {
+            readcommand->start(QString("ogg123 \"%1\"").arg(filespeechFolderStripLang->fileName()));
+        //qDebug() << filespeech->fileName() << "playing";
+    } else if  (filespeechFullLang->exists()) {
+            readcommand->start(QString("ogg123 \"%1\"").arg(filespeechFullLang->fileName()));
         //qDebug() << filespeech->fileName() << "playing";
     } else if (filespeechFull->exists()) {
         readcommand->start(QString("ogg123 \"%1\"").arg(filespeechFull->fileName()));

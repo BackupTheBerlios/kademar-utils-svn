@@ -56,8 +56,11 @@ $pacman -Su
 $pacman -Sy
 $pacman -S $var
 if [ "$?" != 0 ]; then
+  echo " *"
+  echo " *  Searching on AUR database"
+  echo " *"
   if [ -n "`which packer 2>/dev/null`" ]; then
-    packer  --auronly -S $var
+    packer  --auronly --noconfirm -S $var
   else  
     [ -n "`which yaourt 2>/dev/null`" ] && yaourt -S --aur $var
   fi

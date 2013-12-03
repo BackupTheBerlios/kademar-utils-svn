@@ -4,6 +4,7 @@ application/sdp=vlc.desktop;mplayer.desktop;
 application/vnd.apple.mpegurl=vlc.desktop;clementine.desktop;
 application/x-cd-image=kde4-k3b.desktop;kde4-ark.desktop;
 application/x-cda=vlc.desktop;clementine.desktop;
+application/vnd.adobe.flash.movie=vlc.desktop;avidemux-gtk.desktop;
 application/xhtml+xml=firefox.desktop;kde4-kfmclient_html.desktop;firefox-maya.desktop;gedit.desktop;leafpad.desktop;abiword-quechua5.desktop;firefox-zapoteco.desktop;abiword-aymara-sur.desktop;abiword.desktop;firefox-nahuatl.desktop;firefox-tarahumara.desktop;firefox-multiprofile.desktop;abiword-aymara-norte.desktop;firefox-tseltal.desktop;abiword-quechua3.desktop;kde4-kwrite.desktop;libreoffice-writer.desktop;kde4-kate.desktop;qtcreator-2.desktop;
 audio/aac=clementine.desktop;vlc.desktop;audacity.desktop;mplayer.desktop;
 audio/ac3=clementine.desktop;vlc.desktop;audacity.desktop;kde4-kaffeine.desktop;

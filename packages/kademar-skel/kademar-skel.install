@@ -51,7 +51,7 @@ create_skel() {
 	[ -n "`ls /root/.??* 2>/dev/null`" ] && chown root:root /root/.??* -R
 
 	echo "Restoring QT Theme for root"
-	sed "s~style=.*~style=Plastique~g" -i /root/.config/Trolltech.conf
+	sed "s~style=.*~style=Cleanlooks~g" -i /root/.config/Trolltech.conf
   fi
 }
 

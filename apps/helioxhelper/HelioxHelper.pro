@@ -13,6 +13,7 @@ TEMPLATE = app
 
 #CONFIG += console
 
+TRANSLATIONS = tr/es_ES.ts tr/es_MX.ts tr/ca_ES.ts tr/gl_ES.ts tr/eu_ES.ts
 
 SOURCES += main.cpp\
         helioxhelper.cpp \
@@ -29,7 +30,8 @@ HEADERS  += helioxhelper.h \
     qactionwithevents.h \
     wideiconsmenu.h
 
-FORMS    += helioxhelper.ui
+FORMS    += helioxhelper.ui\
+    about.ui
 
 RESOURCES += \
     Resource.qrc

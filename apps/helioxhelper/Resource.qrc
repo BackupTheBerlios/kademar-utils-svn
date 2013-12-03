@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
+        <file>images/SSCYDC.png</file>
+        <file>images/inali.png</file>
         <file>images/quit.png</file>
         <file>images/restore.png</file>
         <file>images/minimize.png</file>
@@ -14,5 +16,11 @@
         <file>images/settings.png</file>
         <file>images/lang/nah_MX.png</file>
         <file>images/lang/myn_MX.png</file>
+        <file>images/about.png</file>
+        <file>tr/es_ES.qm</file>
+        <file>tr/ca_ES.qm</file>
+        <file>tr/es_MX.qm</file>
+        <file>tr/eu_ES.qm</file>
+        <file>tr/gl_ES.qm</file>
     </qresource>
 </RCC>

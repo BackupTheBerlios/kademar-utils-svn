@@ -44,8 +44,10 @@ private slots:
     void activateWindowSignal(QString string);
     void changeLanguage(QString prop, QString value);
     void showLanguageMenu();
+    void showAbout();
     void settingsWindow();
     void reloadConfiguration();
+    void showMenu();
 //    void showAppBox();
 
 private:
@@ -60,6 +62,7 @@ private:
     QAction *normalAction;
     QAction *minimizeAction;
     QAction *settingsAction;
+    QAction *aboutAction;
     void setWindowSize();
     void createConnections();
     void setWidgetSize();
@@ -104,10 +107,10 @@ private:
     int numRow;
     int position;
     QString selectedLanguage;
-    QWidget *appBox;
+    QWidget *aboutWidget;
 
-//protected:
-//    bool eventFilter(QObject* object,QEvent* event);
+protected:
+    void changeEvent(QEvent *e);
 };
 
 #endif // HELIOXHELPER_H

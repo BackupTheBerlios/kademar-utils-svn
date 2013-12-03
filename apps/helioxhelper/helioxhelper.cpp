@@ -1,7 +1,8 @@
 #include "helioxhelper.h"
 #include "ui_helioxhelper.h"
 #include <QToolButton>
-
+#include "ui_about.h"
+#include <QTranslator>
 bool speech;
 //extern QSettings settings;
 
@@ -10,6 +11,8 @@ bool speech;
 //QList< QToolButtonWithEvents* > listApplicationButtons;
 //QList< QLabel* > listApplicationImage;
 
+extern QTranslator *appTranslator;
+extern QTranslator *qtTranslator;
 
 HelioxHelper::HelioxHelper(QWidget *parent) :
     QWidget(parent),
@@ -47,14 +50,6 @@ HelioxHelper::HelioxHelper(QWidget *parent) :
 
     extern bool speech;
     speech=0;
-
-    //appBox = new QWidget();
-    //appBox->show();
-    //appBox->activateWindow();
-    //appBox->setWindowFlags(Qt:: CustomizeWindowHint);
-            //(Qt::Tool | Qt::FramelessWindowHint | Qt::CustomizeWindowHint);
-
-
 
 
     if (settings->value("General/speechText").toString() == ""){
@@ -106,6 +101,18 @@ HelioxHelper::HelioxHelper(QWidget *parent) :
 //    QProcess updateApps;
 //    updateApps.start("rahisi-config-update-apps");
 
+    //translator story
+    QString qmPath = ":/tr/";
+
+    //QTranslator appTranslator;
+    appTranslator->load("es_ES", qmPath);
+
+    //QTranslator qtTranslator;
+    //QT4
+    qtTranslator->load("qt_es", "/usr/share/qt4/translations");
+
+    ui->retranslateUi(this);
+
 }
 
 HelioxHelper::~HelioxHelper()
@@ -133,7 +140,7 @@ void HelioxHelper::iconActivated(QSystemTrayIcon::ActivationReason reason)
             troggleShowMainWindow();
         } else {
             //trayIcon->contextMenu();
-            trayIconMenu->exec(QCursor::pos());
+            this->showMenu();
           //  qDebug() << "Open context menu from left click";
         }
 
@@ -166,6 +173,9 @@ void HelioxHelper::createActions()
      quitAction = new QAction(QIcon(":/images/quit.png"), tr("&Quit"), this);
      connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
 
+     aboutAction = new QAction(QIcon(":/images/about.png"), tr("&About"), this);
+     connect(aboutAction, SIGNAL(triggered()), this, SLOT(showAbout()));
+
      minimizeAction = new QAction(QIcon(":/images/minimize.png"),tr("Mi&nimize"), this);
      connect(minimizeAction, SIGNAL(triggered()), this, SLOT(minimizeWindow()));
 
@@ -195,7 +205,9 @@ void HelioxHelper::createActions()
      if (settings->value("Contextual Menu/showExit").toBool() == true){
          trayIconMenu->addAction(quitAction);
      }
-
+     if (settings->value("Contextual Menu/showAbout").toBool() == true){
+         trayIconMenu->addAction(aboutAction);
+     }
      if (settings->value("Contextual Menu/showSettings").toBool() == true){
          trayIconMenu->addAction(settingsAction);
      }
@@ -727,7 +739,7 @@ void HelioxHelper::createActions()
          //separatorButtons->setFrameShadow(QFrame::Sunken);
 
          QString desc;
-         desc ="Configura el idioma";
+         desc = tr("Configure Language");
          QByteArray byteArray = desc.toLatin1();
          const char * processingString = byteArray.data();
          QString realdesc = QString::fromLocal8Bit(processingString);
@@ -751,7 +763,8 @@ void HelioxHelper::createActions()
          ui->line->setVisible(1);
 
 
-            connect(languageButtonSelection, SIGNAL(buttonClicked(QString,QString)), this, SLOT(showLanguageMenu()));
+         connect(languageButtonSelection, SIGNAL(buttonClicked(QString,QString)), this, SLOT(showLanguageMenu()));
+         connect(helioxButtonSelection, SIGNAL(buttonClicked(QString,QString)), this, SLOT(showMenu()));
          }
 
 
@@ -990,6 +1003,37 @@ void HelioxHelper::createActions()
     setStyleClass();
  }
 
- //void HelioxHelper::showAppBox(){
- //    qDebug() << "Hola";
- //}
+  void HelioxHelper::showAbout(){
+      //qDebug ()<< "hola";
+    //about w;
+   // w.show();
+      //Ui_about *uia = new Ui_about;
+     // uia->;
+      aboutWidget = new QWidget();
+
+      Ui_about *uia = new      Ui::about;
+      uia->setupUi(aboutWidget);
+      aboutWidget->show();
+          //appBox->activateWindow();
+          //appBox->activateWindow();
+  }
+
+void HelioxHelper::showMenu(){
+  trayIconMenu->exec(QCursor::pos());
+}
+
+void HelioxHelper::changeEvent(QEvent *e)
+{
+    qDebug() << "hola";
+    QWidget::changeEvent(e);
+    switch (e->type()) {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+
+        break;
+    default:
+        e->accept();
+        break;
+
+    }
+}

@@ -4,10 +4,22 @@
 //#include <iostream>
 //#include <QSharedMemory>
 #include <SingleApplication.h>
+#include <QTranslator>
+
+
+QTranslator *appTranslator;
+QTranslator *qtTranslator;
 
 int main(int argc, char *argv[])
 {
     SingleApplication a(argc, argv, "/ProyectoHeliox/HelioxHelper");
+
+    qtTranslator = new QTranslator();
+    //qtTranslator.load("qt_" + QLocale::system().name(), "/usr/share/qt4/translations");
+    a.installTranslator(qtTranslator);
+
+    appTranslator = new QTranslator();
+    a.installTranslator(appTranslator);
 
         if (a.isRunning())
         {
@@ -47,6 +59,8 @@ int main(int argc, char *argv[])
                   w->setWindowFlags(Qt::Tool | Qt::FramelessWindowHint | Qt::CustomizeWindowHint);
               }
 
+
+
               //a.setActiveWindow(&w);
               //a.setActiveWindow();
               w->show();
@@ -55,8 +69,6 @@ int main(int argc, char *argv[])
               //w.setFocusPolicy(Qt::StrongFocus); //solved not grabbing tabulator
               w->activateWindow();
               return a.exec();
-
-
     }
 }
 

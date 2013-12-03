@@ -1,6 +1,6 @@
 # Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
 pkgname=helioxhelper-svn
-pkgver=364
+pkgver=366
 pkgrel=1
 pkgdesc="Desktop widget higly customizable written in QT and accessible"
 arch=('i686' 'x86_64')

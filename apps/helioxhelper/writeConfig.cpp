@@ -43,6 +43,8 @@ void writeConfig()
         settings.setValue("closeConfirm", "1");
         settings.setValue("speechText", "1");
         settings.setValue("speechPath", "/usr/share/helioxhelper/speech");
+        settings.setValue("fileLanguage", "en_US");
+        settings.setValue("languageButtonDescription", "Choose your language");
         settings.endGroup();
 
         settings.beginGroup("Panel");

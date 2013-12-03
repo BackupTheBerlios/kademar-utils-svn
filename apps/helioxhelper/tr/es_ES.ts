@@ -36,7 +36,7 @@
     <message>
         <location filename="../helioxhelper.cpp" line="742"/>
         <source>Configure Language</source>
-        <translation>Configurar el Idioma</translation>
+        <translation>Elige tu Lengua</translation>
     </message>
 </context>
 <context>

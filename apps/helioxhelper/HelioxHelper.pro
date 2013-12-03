@@ -30,11 +30,16 @@ HEADERS  += helioxhelper.h \
     qactionwithevents.h \
     wideiconsmenu.h
 
-FORMS    += helioxhelper.ui\
+FORMS    += helioxhelper.ui \
     about.ui
 
 RESOURCES += \
     Resource.qrc
 
 OTHER_FILES += \
-    ToDo.txt
+    ToDo.txt \
+    tr/gl_ES.ts \
+    tr/eu_ES.ts \
+    tr/es_ES.ts \
+    tr/ca_ES.ts \
+    tr/es_MX.ts

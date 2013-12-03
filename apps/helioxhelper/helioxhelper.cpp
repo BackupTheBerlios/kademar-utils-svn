@@ -739,13 +739,20 @@ void HelioxHelper::createActions()
          //separatorButtons->setFrameShadow(QFrame::Sunken);
 
          QString desc;
-         desc = tr("Configure Language");
+         if (!(settings->value("General/languageButtonDescription").toString() == "" )){
+             desc=settings->value("General/languageButtonDescription").toString();
+         } else {
+             desc = tr("Configure Language");
+         }
          QByteArray byteArray = desc.toLatin1();
          const char * processingString = byteArray.data();
          QString realdesc = QString::fromLocal8Bit(processingString);
 
 
+
          languageButtonSelection->setToolTip(realdesc);
+         languageButtonSelection->setTextProperty(new QString("LANG"), new QString("languageButtonDescription")); //set text button property to write on file
+
          ui->gridLayoutMainButtons->addWidget(languageButtonSelection, numRow, numCol, 1, 1);
 
          if (!((position == 0) || (position == 2) )) {
@@ -979,6 +986,11 @@ void HelioxHelper::createActions()
  void HelioxHelper::reloadConfiguration(){
     //qDebug() << "Hola";
      //qDebug() << listApplicationButtons.size();
+
+     if (!(settings->value("General/fileLanguage").toString() == "")){
+             selectedLanguage=settings->value("General/fileLanguage").toString();
+     }
+
     while (listApplicationButtons.size() != 0){
         for (int i = 0; i < listApplicationButtons.size(); ++i)  {
             delete(listApplicationButtons[i]);

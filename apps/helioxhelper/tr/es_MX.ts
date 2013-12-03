@@ -36,7 +36,7 @@
     <message>
         <location filename="../helioxhelper.cpp" line="742"/>
         <source>Configure Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Elige tu Lengua</translation>
     </message>
 </context>
 <context>
@@ -71,12 +71,12 @@
         <source>Design:</source>
         <translation>Diseño:</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../about.ui" line="211"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Promoted by INALI: Instituto de Lenguas Indígenas Mexicanas - &lt;a href=&quot;http://www.inali.gob.mx&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;www.inali.gob.mx&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Promovido por el INALI: Instituto de Lenguas Indígenas Mexicanas - &lt;a href=&quot;http://www.inali.gob.mx&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;www.inali.gob.mx&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../about.ui" line="218"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Roberto Feltrero  -  Adonay Sanz · &lt;a href=&quot;http://www.proyectoheliox.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;www.proyectoheliox.org&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
@@ -94,9 +94,9 @@
     <message>
         <location filename="../about.ui" line="270"/>
         <source>Nahuatl:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nahuatl:</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../about.ui" line="277"/>
         <source>Fausto Aguilar Domínguez</source>
         <translation type="unfinished"></translation>
@@ -104,7 +104,7 @@
     <message>
         <location filename="../about.ui" line="297"/>
         <source>Catalan:</source>
-        <translation type="unfinished"></translation>
+        <translation>Catalán:</translation>
     </message>
     <message>
         <location filename="../about.ui" line="304"/>
@@ -114,7 +114,7 @@
     <message>
         <location filename="../about.ui" line="340"/>
         <source>Mayan:</source>
-        <translation type="unfinished"></translation>
+        <translation>Maya:</translation>
     </message>
     <message>
         <location filename="../about.ui" line="347"/>

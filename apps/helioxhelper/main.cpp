@@ -15,10 +15,11 @@ int main(int argc, char *argv[])
     SingleApplication a(argc, argv, "/ProyectoHeliox/HelioxHelper");
 
     qtTranslator = new QTranslator();
-    //qtTranslator.load("qt_" + QLocale::system().name(), "/usr/share/qt4/translations");
+    qtTranslator->load("qt_es", "/usr/share/qt4/translations");
     a.installTranslator(qtTranslator);
 
     appTranslator = new QTranslator();
+    appTranslator->load("es_ES", ":/tr/");
     a.installTranslator(appTranslator);
 
         if (a.isRunning())

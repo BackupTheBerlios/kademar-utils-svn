@@ -164,6 +164,71 @@ KDEKEYBOARDS="de,us,fr"
 TZ="Europe/Madrid"
 OPTIONAL=":es_ES:es"
 ;;
+es_MX*)
+# Spanish version
+COUNTRY="es"
+LANG="es_MX.UTF-8"
+KEYTABLE="es"
+LANG_COUNTRY="es_MX"
+XKEYBOARD="es"
+KDEKEYBOARD="es"
+CHARSET="iso8859-15"
+# Additional KDE Keyboards
+KDEKEYBOARDS="de,us,fr"
+TZ="America/Mexico_City"
+OPTIONAL=":es_ES:es"
+;;
+
+myn_MX*)
+# Maya version
+COUNTRY="es"
+LANG="es_MX.UTF-8"
+EXTRA="myn_MX.UTF-8"
+KEYTABLE="es"
+LANG_COUNTRY="es_MX"
+XKEYBOARD="es"
+KDEKEYBOARD="es"
+CHARSET="iso8859-15"
+# Additional KDE Keyboards
+KDEKEYBOARDS="de,us,fr"
+TZ="America/Mexico_City"
+OPTIONAL=":es_ES:es"
+;;
+
+
+nah_MX*)
+# Nahuatl version
+COUNTRY="es"
+LANG="es_MX.UTF-8"
+EXTRA="nah_MX.UTF-8"
+KEYTABLE="es"
+LANG_COUNTRY="es_MX"
+XKEYBOARD="es"
+KDEKEYBOARD="es"
+CHARSET="iso8859-15"
+# Additional KDE Keyboards
+KDEKEYBOARDS="de,us,fr"
+TZ="America/Mexico_City"
+OPTIONAL=":es_ES:es"
+;;
+
+pue_MX*)
+# P'urhépecha version
+COUNTRY="es"
+LANG="es_MX.UTF-8"
+EXTRA="pue_MX.UTF-8"
+KEYTABLE="es"
+LANG_COUNTRY="es_MX"
+XKEYBOARD="es"
+KDEKEYBOARD="es"
+CHARSET="iso8859-15"
+# Additional KDE Keyboards
+KDEKEYBOARDS="de,us,fr"
+TZ="America/Mexico_City"
+OPTIONAL=":es_ES:es"
+;;
+
+
 es*)
 # Spanish version
 COUNTRY="es"
@@ -178,6 +243,8 @@ KDEKEYBOARDS="de,us,fr"
 TZ="Europe/Madrid"
 OPTIONAL=":es_ES:es"
 ;;
+
+
 fi*)
 # Finnish version, though we may not have the kde-i18n files
 COUNTRY="fi"
@@ -389,7 +456,10 @@ esac
 
 ################ //  END OF LOCALE DEFINITION  \\  ####################
 
-echo "LANG=$LANG" > "$DESTI/etc/locale.conf"
+echo "LANG=$LANG" > "$DESTI/etc/locale.conf"echo "LANG=$LANG" > "$DESTI/etc/locale.conf"
+
+[ -n "$EXTRA" ] && echo "EXTRA=$EXTRA" > "$DESTI/etc/locale.conf"
+
 
 echo "$TZ" > "$DESTI/etc/timezone"
 

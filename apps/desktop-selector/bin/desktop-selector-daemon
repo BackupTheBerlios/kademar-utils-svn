@@ -11,6 +11,7 @@
 
 #export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
 
+nox=false
 
 tryNvidiaLegacy(){
   if [ -n "$1" ]; then
@@ -117,8 +118,8 @@ sudo cp -a /usr/share/desktop-selector/xorg.conf.d/10-monitor.conf /etc/X11/xorg
 # tty_num=$(fgconsole)
 #tty_num=$1
 
-
-while true; do
+if [ "$nox" = "false" ]; then
+    while true; do
 
 	if [ "$desktop_selector" != "no" ]; then
           . /etc/kademar/functions
@@ -203,7 +204,8 @@ while true; do
 # 	 else
 # 	 	error_msg
 	 fi
-done
+    done
+fi
 #}
 
 # 

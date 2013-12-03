@@ -913,7 +913,9 @@ void DesktopSelector::defineLanguageDictionary()
     dict["zh"] = "Chinese";    dict["zh_CN"] = "Chinese";    dict["zh_TW"] = "Chinese";
     //Derivados en Mexico
     dict["mx"] = "Mexicano"; dict["es_MX"] = "Mexicano";
-    dict["myn"] = "Maya"; dict["mx_myn"] = "Maya";
+    dict["myn"] = "Maya"; dict["myn_MX"] = "Maya";
+    dict["nah"] = "Nahuatl"; dict["nah_MX"] = "Nahuatl";
+    dict["pua"] = "P'urhépecha"; dict["pua_MX"] = "P'urhépecha";
 }
 
 void DesktopSelector::changeLanguage(QString *lang){

@@ -36,6 +36,8 @@
         <file>img/lang/it_IT.png</file>
         <file>img/lang/zh_CN.png</file>
         <file>img/lang/zh_TW.png</file>
+        <file>img/lang/myn_MX.png</file>
+        <file>img/lang/nah_MX.png</file>
     </qresource>
     <qresource prefix="/tr">
         <file>tr/gl_ES.qm</file>

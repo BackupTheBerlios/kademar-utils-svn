@@ -79,8 +79,8 @@ void QToolButtonWithEvents::readCaption( QString * label )
 */
 
     //Kill previous selection
-    QProcess *killreadcommand = new QProcess();
-    killreadcommand->start("killall -9 ogg123");
+   // QProcess *killreadcommand = new QProcess();
+  //  killreadcommand->start("killall -9 ogg123");
     //killreadcommand->waitForFinished(1000);
 
     if  (filespeechFolderFullLang->exists()) {

@@ -912,7 +912,7 @@ void DesktopSelector::defineLanguageDictionary()
 //     dict["ru"] = "Russian"; dict["ru_RU"] = "Russian";
     dict["zh"] = "Chinese";    dict["zh_CN"] = "Chinese";    dict["zh_TW"] = "Chinese";
     //Derivados en Mexico
-    dict["mx"] = "Mexicano"; dict["es_MX"] = "Mexicano";
+    dict["mx"] = "Español"; dict["es_MX"] = "Español";
     dict["myn"] = "Maya"; dict["myn_MX"] = "Maya";
     dict["nah"] = "Nahuatl"; dict["nah_MX"] = "Nahuatl";
     dict["pua"] = "P'urhépecha"; dict["pua_MX"] = "P'urhépecha";

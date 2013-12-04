@@ -1,0 +1,71 @@
+# This is a default template for a post-install scriptlet.
+# Uncomment only required functions and remove any functions
+# you don't need (and this header).
+
+## arg 1:  the new package version
+post_install() {
+  echo "Creating new /etc/skel"
+  create_skel
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  echo "Updating /etc/skel"
+  create_skel
+}
+
+## arg 1:  the old package version
+post_remove() {
+  echo "If you really want to delete /etc/skel files do it manually"
+  rm -f /etc/skel/.bash_profile
+}
+
+create_skel() {
+  rm -fr /etc/skel/.??*
+  rm -fr /etc/skel/*
+  [ -n "`ls /usr/share/kademar/skel/.??* 2>/dev/null`" ] && cp -a /usr/share/kademar/skel/.??* /etc/skel
+  [ -n "`ls /usr/share/kademar/skel/* 2>/dev/null`" ] && cp -a /usr/share/kademar/skel/* /etc/skel
+  use_gtk_oxygen_theme
+  if [ -e /etc/kademar/config-livecd ]; then
+    . /etc/kademar/config-livecd
+      if [ -n "$user" -a -e "/home/$user" ]; then
+	echo "Updating LiveCD Home files"
+	rm -fr /home/$user/.??*
+	rm -fr /home/$user/*
+	[ -n "`ls /etc/skel/.??* 2>/dev/null`" ] && cp -a /etc/skel/.??* /home/$user/
+	[ -n "`ls /etc/skel/* 2>/dev/null`" ] && cp -a /etc/skel/* /home/$user/
+	[ -n "`ls /etc/skel/.kde4/Autostart/* 2>/dev/null`" ] && chmod +x /etc/skel/.kde4/Autostart/*
+	[ -n "`ls /etc/skel/.kde3/Autostart/* 2>/dev/null`" ] && chmod +x /etc/skel/.kde3/Autostart/*
+	
+	[ -n "`ls /home/$user/* 2>/dev/null`" ] && chown $user:users /home/$user/* -R
+	[ -n "`ls /home/$user/.??* 2>/dev/null`" ] && chown $user:users /home/$user/.??* -R
+	[ -n "`ls /home/$user/.kde4/Autostart/* 2>/dev/null`" ] && chmod +x /home/$user/.kde4/Autostart/*
+	[ -n "`ls /home/$user/.kde3/Autostart/* 2>/dev/null`" ] && chmod +x /home/$user/.kde3/Autostart/*
+      fi
+      rm -fr /root/.??*
+      rm -fr /root/*
+	[ -n "`ls /etc/skel/.??* 2>/dev/null`" ] && cp -a /etc/skel/.??* /root
+	[ -n "`ls /etc/skel/* 2>/dev/null`" ] && cp -a /etc/skel/* /root
+	[ -n "`ls /root/* 2>/dev/null`" ] && chown root:root /root/* -R
+	[ -n "`ls /root/.??* 2>/dev/null`" ] && chown root:root /root/.??* -R
+
+	echo "Restoring QT Theme for root"
+	sed "s~style=.*~style=Cleanlooks~g" -i /root/.config/Trolltech.conf
+  fi
+}
+
+use_gtk_oxygen_theme() {
+  if [ -n "`pacman -Qs | grep -i 'local/oxygen-gtk2'`" -a -e "/etc/skel/.gtkrc-2.0" ]; then
+    echo "Setting oxygen-gtk2 theme"
+    sed s.Adwaita.oxygen-gtk.g -i /etc/skel/.gtkrc-2.0
+  fi
+  if [ -n "`pacman -Qs | grep -i 'local/oxygen-gtk3'`" -a -e "/etc/skel/.config/gtk-3.0/settings.ini" ]; then
+    echo "Setting oxygen-gtk3 theme"
+    sed s.Adwaita.oxygen-gtk.g -i "/etc/skel/.config/gtk-3.0/settings.ini"
+  fi
+
+}
+
+# vim:set ts=2 sw=2 et:
+

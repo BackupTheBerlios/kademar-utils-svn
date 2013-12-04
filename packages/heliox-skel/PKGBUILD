@@ -1,0 +1,37 @@
+# Maintainer: Adonay Jonay Sanz Alsina <adonay@kademar.org>
+pkgname=heliox-skel
+pkgver=1.0
+pkgrel=1
+epoch=
+pkgdesc="Heliox Linux /etc/skel files - remove on install"
+arch=('any')
+url="http://www.proyectoheliox.org"
+license=('GPL')
+groups=()
+depends=()
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=(!strip)
+install=heliox-skel.install
+changelog=
+source=("$pkgname-$pkgver.tar.gz")
+noextract=()
+md5sums=('f148e64532f3e687e58766d85a574696') #generate with 'makepkg -g'
+
+
+package() {
+  cp -a $startdir/src/$pkgname-$pkgver/* ${pkgdir}
+  cd ${pkgdir} && rm -fr `find . -name ".svn"` && rm -fr `find . -name "*.pyc"` && rm -f `find . -name "*~"`
+  #find "$pkgdir"/etc/ -type f -exec chmod 644 "{}" \;
+#  find "$pkgdir"/etc/ -type d -exec chmod 755 "{}" \;
+  find "$pkgdir"/usr/ -type f -exec chmod 644 "{}" \;
+  find "$pkgdir"/usr/ -type d -exec chmod 755 "{}" \;
+  find "$pkgdir"/usr/share/heliox/skel/.config/autostart/ -type f -exec chmod 755 "{}" \;
+#  find "$pkgdir"/usr/share/kademar/skel/.local/share/applications/*desktop -type f -exec chmod 755 "{}" \;
+#  find "$pkgdir"/usr/bin -type f -exec chmod 755 "{}" \;
+}

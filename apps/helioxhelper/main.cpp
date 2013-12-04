@@ -10,6 +10,9 @@
 QTranslator *appTranslator;
 QTranslator *qtTranslator;
 
+QProcess *readcommand = new QProcess();
+
+
 int main(int argc, char *argv[])
 {
     SingleApplication a(argc, argv, "/ProyectoHeliox/HelioxHelper");

@@ -13,6 +13,9 @@
 #include <QApplication>
 #include <QTimer>
 
+extern     QProcess *readcommand;
+
+
 QToolButtonWithEvents::QToolButtonWithEvents(QWidget *parent, QString settings1, QString settings2, QString lang) :
     QToolButton(parent)
 {
@@ -36,7 +39,6 @@ QToolButtonWithEvents::QToolButtonWithEvents(QWidget *parent, QString settings1,
 void QToolButtonWithEvents::readCaption( QString * label )
 {
     speeching = true;
-    QProcess *readcommand = new QProcess();
 
     connect(readcommand, SIGNAL(error(QProcess::ProcessError)), this, SLOT(setFalseSpeechingVar()));
     connect(readcommand, SIGNAL(destroyed()), this, SLOT(setFalseSpeechingVar()));
@@ -69,8 +71,9 @@ void QToolButtonWithEvents::readCaption( QString * label )
     QFile *filespeechFolderFullLang = new QFile(QString("%1/%3/%2_%3.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue).replace("/","-")).arg(selectedLanguage));
     QFile *filespeechFolderFullLangSpace = new QFile(QString("%1/%3/%2 %3.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue).replace("/","-")).arg(selectedLanguage));
     QFile *filespeechFolderStripLang = new QFile(QString("%1/%3/%2.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue).replace("/","-")).arg(selectedLanguage));
+    QFile *filespeechFolderStripLangWithoutSpaces = new QFile(QString("%1/%3/%2.ogg").arg(settings->value("General/speechPath").toString()).arg(QString(m_propertyValue).replace("/","-").replace(" ","_")).arg(selectedLanguage));
 
-/*
+
     qDebug() << filespeechStrip->fileName();
     qDebug() << filespeechStripLang->fileName();
     qDebug() << filespeechFull->fileName();
@@ -78,13 +81,31 @@ void QToolButtonWithEvents::readCaption( QString * label )
     qDebug() << filespeechFolderFullLang->fileName();
     qDebug() << filespeechFolderStripLang->fileName();
     qDebug() << filespeechFolderFullLangSpace->fileName();
+    qDebug() << filespeechFolderStripLangWithoutSpaces->fileName();
 
-*/
+
+
 
     //Kill previous selection
    // QProcess *killreadcommand = new QProcess();
   //  killreadcommand->start("killall -9 ogg123");
     //killreadcommand->waitForFinished(1000);
+
+    if (readcommand->isOpen()){
+       // qDebug() << "killing ogg123";
+        readcommand->close();
+    }
+
+    /*
+    //desktop file to detect ; desktop name to start
+    QList<QFile*> speechFiles;
+
+    speechFiles[ filespeechFolderFullLang, filespeechFolderStripLang, filespeechFolderFullLangSpace, filespeechFolderStripLangWithoutSpaces, filespeechFullLang, filespeechFull, filespeechStripLang, filespeechStrip];
+    int num=0;
+    foreach( QFile file, speechFiles )  {
+        qDebug(), file->fileName() << "playing";
+    }
+    */
 
     if  (filespeechFolderFullLang->exists()) {
         readcommand->start(QString("ogg123 \"%1\"").arg(filespeechFolderFullLang->fileName()));
@@ -93,6 +114,9 @@ void QToolButtonWithEvents::readCaption( QString * label )
         //qDebug() << filespeech->fileName() << "playing";
     } else if  (filespeechFolderFullLangSpace->exists()) {
             readcommand->start(QString("ogg123 \"%1\"").arg(filespeechFolderFullLangSpace->fileName()));
+        //qDebug() << filespeech->fileName() << "playing";
+    } else if  (filespeechFolderStripLangWithoutSpaces->exists()) {
+            readcommand->start(QString("ogg123 \"%1\"").arg(filespeechFolderStripLangWithoutSpaces->fileName()));
         //qDebug() << filespeech->fileName() << "playing";
     } else if  (filespeechFullLang->exists()) {
             readcommand->start(QString("ogg123 \"%1\"").arg(filespeechFullLang->fileName()));

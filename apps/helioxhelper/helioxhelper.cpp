@@ -11,6 +11,8 @@ bool speech;
 //QList< QToolButtonWithEvents* > listApplicationButtons;
 //QList< QLabel* > listApplicationImage;
 
+extern     QProcess *readcommand;
+
 extern QTranslator *appTranslator;
 extern QTranslator *qtTranslator;
 
@@ -824,7 +826,7 @@ void HelioxHelper::createActions()
      dict["gl"] = "Galego"; dict["gl_ES"] = "Galego";
 
      //Derivados en Mexico
-     dict["mx"] = "Mexicano"; dict["es_MX"] = "Mexicano";
+     dict["mx"] = "Español"; dict["es_MX"] = "Español";
      dict["myn"] = "Maya"; dict["myn_MX"] = "Maya";
      dict["nah"] = "Nahuatl"; dict["nah_MX"] = "Nahuatl";
      dict["pua"] = "P'urhépecha"; dict["pua_MX"] = "P'urhépecha";

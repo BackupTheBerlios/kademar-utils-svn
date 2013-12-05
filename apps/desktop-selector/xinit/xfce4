@@ -28,5 +28,5 @@ done
 #if [ -e /usr/bin/startlxdeaccessibility ]; then
 #    exec startlxdeaccessibility
 #else
-    exec startlxde
+    exec startxfce4
 #fi

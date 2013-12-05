@@ -791,6 +791,10 @@ void DesktopSelector::createDesktopButtons()
     desktops["/usr/bin/startkde"] = "kde4";
     desktops["/usr/bin/startgnome"] = "gnome";
     desktops["/usr/bin/startlxde"] = "lxde";
+    desktops["/usr/bin/startlxde"] = "lxdeaccessibility";
+    desktops["/usr/bin/startxfce4"] = "xfce4";
+    desktops["/usr/bin/startxfce4"] = "xfce4accessibility";
+    desktops["/usr/bin/startxfce"] = "xfce";
     desktops["/usr/bin/starticewm"] = "icewm";
     desktops["/usr/bin/enlightenment_start"] = "enlightenment17";
 

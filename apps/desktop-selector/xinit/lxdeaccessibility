@@ -26,7 +26,7 @@ done
 
 
 #if [ -e /usr/bin/startlxdeaccessibility ]; then
-#    exec startlxdeaccessibility
+    exec startlxdeaccessibility
 #else
-    exec startlxde
+#    exec startlxde
 #fi

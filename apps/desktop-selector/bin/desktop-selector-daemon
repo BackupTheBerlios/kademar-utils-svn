@@ -71,10 +71,11 @@ done
 # Start function
 # start(){
 #remove nouveau&radeon module if requested
-kernel=`uname -r`
-[ -e "/usr/lib/modules/$kernel/kernel/drivers/gpu/drm/nouveau" ] && sudo mv /usr/lib/modules/$kernel/kernel/drivers/gpu/drm/nouveau /tmp 2>/dev/null
-[ -e "/usr/lib/modules/$kernel/kernel/drivers/gpu/drm/radeon" ] && sudo mv /usr/lib/modules/$kernel/kernel/drivers/gpu/drm/radeon /tmp 2>/dev/null
-
+if [ -z "$(grep -i FREE_DRIVER=1 /etc/desktop-selector/desktop-selector.ini)" ]; then
+  kernel=`uname -r`
+  [ -e "/usr/lib/modules/$kernel/kernel/drivers/gpu/drm/nouveau" ] && sudo mv /usr/lib/modules/$kernel/kernel/drivers/gpu/drm/nouveau /tmp 2>/dev/null
+  [ -e "/usr/lib/modules/$kernel/kernel/drivers/gpu/drm/radeon" ] && sudo mv /usr/lib/modules/$kernel/kernel/drivers/gpu/drm/radeon /tmp 2>/dev/null
+fi
 
  # Read default from /etc/default (Debian) and/or /etc/sysconfig (Knoppix)
 . /etc/kademar/config-livecd
@@ -134,25 +135,27 @@ if [ "$nox" = "false" ]; then
 	  echo "Configuring Language"
 	  sudo sh /usr/share/desktop-selector/scripts/locale_configurator $LANG
 	fi
-
-	# Restore Nouveau driver if requested
-	if [ -z "`grep nvidiaDriver=true /etc/desktop-selector/desktop-selector.ini`" -a -z "`grep nvidiaLegacyDriver=true /etc/desktop-selector/desktop-selector.ini`" ]; then
+	
+	if [ -z "$(grep -i FREE_DRIVER=1 /etc/desktop-selector/desktop-selector.ini)" ]; then
+	   # Restore Nouveau driver if requested
+	  if [ -z "`grep nvidiaDriver=true /etc/desktop-selector/desktop-selector.ini`" -a -z "`grep nvidiaLegacyDriver=true /etc/desktop-selector/desktop-selector.ini`" ]; then
 	    kernel=`ls /usr/lib/modules/ --ignore=extramodules*`
 	    [ -e /tmp/nouveau ] && sudo mv /tmp/nouveau /usr/lib/modules/$kernel/kernel/drivers/gpu/drm
 	    if [ -n "$(lspci | grep -i [vV][Gg][Aa] | sed s.'VGA compatible controller: '..g | sed s,'[0-9][0-9]:[0-9][0-9].[0-9]',,g | cut -d'(' -f1 | grep -i " [Nn][Vv][Ii][Dd][Ii][Aa] ")" ]; then
             sudo modprobe nouveau
 	    fi
-	fi
+	  fi
 	
-	if [ -z "`grep atiDriver=true /etc/desktop-selector/desktop-selector.ini`" ]; then
+	  if [ -z "`grep atiDriver=true /etc/desktop-selector/desktop-selector.ini`" ]; then
 	    kernel=`ls /usr/lib/modules/ --ignore=extramodules*`
 	    [ -e /tmp/radeon ] && sudo mv /tmp/radeon /usr/lib/modules/$kernel/kernel/drivers/gpu/drm
 # 	    If detected ati, load it. If not can have problems
 	    if [ -n "$(lspci | grep -i [vV][Gg][Aa] | sed s.'VGA compatible controller: '..g | sed s,'[0-9][0-9]:[0-9][0-9].[0-9]',,g | cut -d'(' -f1 | grep -i " [Aa][Tt][Ii] ")" ]; then
             sudo modprobe radeon
 	    fi
+	  fi 
 	fi
-
+  
 	 if [ "$DESKTOP" != "none" ]; then
 		
 		sudo rm -f $xsesson_commands_file

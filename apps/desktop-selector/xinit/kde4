@@ -23,25 +23,11 @@ cat /usr/share/kademar/kde4-hacks/bookmarks.xml > "$HOME/.kde4/share/apps/kfilep
 
 export XDM_MANAGED="/var/tmp/xsession-commands,maysd,mayfn,sched,method=classic"
 
-#apper hack
-for i in /usr/share/applications/kde4/apper.desktop /usr/share/applications/kde4/apper_installer.desktop /usr/share/applications/kde4/apper_settings.desktop /usr/share/applications/kde4/apper_updates.desktop
-do
-    [ -e "$i" ] && sed s.Exec=apper."Exec=sudo apper".g -i $i
-done
-
-#gparted hack
-[ -e /usr/share/applications/gparted.desktop ] && sed "s~Exec=*~Exec=sudo gparted~g"  -i /usr/share/applications/gparted.desktop
 
 #Network Manager Hack
 if [ -e "/etc/xdg/autostart/nm-applet.desktop" -a -z   "`grep NotShowIn /etc/xdg/autostart/nm-applet.desktop 2>/dev/null | grep -v \#`" ]; then
   #echo "NotShowIn=KDE" >> /etc/xdg/autostart/nm-applet.desktop
   su -c "echo 'NotShowIn=KDE' >> /etc/xdg/autostart/nm-applet.desktop" - root
 fi
-
-#exec ck-launch-session dbus-launch startkde >> $HOME/.xsession-errors 2>&1
-
-#Apper not update on livecd
-sed "s~autoUpdate=.*~autoUpdate=0~g" -i "$HOME/.kde4/share/config/apper"
-sed "s~interval=.*~interval=0~g" -i "$HOME/.kde4/share/config/apper"
 
 exec startkde >> $HOME/.xsession-errors 2>&1

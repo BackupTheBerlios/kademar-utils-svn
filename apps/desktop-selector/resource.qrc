@@ -38,11 +38,17 @@
         <file>img/lang/zh_TW.png</file>
         <file>img/lang/myn_MX.png</file>
         <file>img/lang/nah_MX.png</file>
+        <file alias="xfce4">img/xfce4.png</file>
+        <file alias="xfce4accessibility">img/xfce4accessibility.png</file>
+        <file alias="lxdeaccessibility">img/lxdeaccessibility.png</file>
     </qresource>
     <qresource prefix="/tr">
         <file>tr/gl_ES.qm</file>
         <file>tr/eu_ES.qm</file>
         <file>tr/ca_ES.qm</file>
         <file>tr/es_ES.qm</file>
+        <file>tr/nah_MX.qm</file>
+        <file>tr/myn_MX.qm</file>
+        <file>tr/es_MX.qm</file>
     </qresource>
 </RCC>

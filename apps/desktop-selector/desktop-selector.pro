@@ -28,10 +28,9 @@ HEADERS += desktopselector.h \
     qtoolbuttonwithevents.h
 FORMS += desktopselector.ui
 RESOURCES += resource.qrc
-TRANSLATIONS = tr/es_ES.ts tr/ca_ES.ts tr/en.ts tr/gl_ES.ts tr/eu_ES.ts
+TRANSLATIONS = tr/es_ES.ts tr/es_MX.ts tr/myn_MX.ts tr/nah_MX.ts tr/ca_ES.ts tr/en.ts tr/gl_ES.ts tr/eu_ES.ts
 
 OTHER_FILES += \
-    tr/en.ts \
     TODO \
     scripts/nvidia-installer-offline.sh \
     scripts/ati-installer-offline.sh \
@@ -46,4 +45,7 @@ OTHER_FILES += \
     tr/ca_ES.ts \
     tr/es_ES.ts \
     tr/gl_ES.ts \
-    tr/eu_ES.ts
+    tr/eu_ES.ts \
+    tr/es_MX.ts \
+    tr/myn_MX.ts \
+    tr/nah_MX.ts

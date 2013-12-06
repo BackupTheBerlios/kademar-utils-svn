@@ -787,16 +787,16 @@ void DesktopSelector::createDesktopButtons()
 {
     //desktop file to detect ; desktop name to start
     QHash<QString, QString> desktops;
-    desktops["/opt/trinity/bin/startkde"] = "kde3";
-    desktops["/usr/bin/startkde"] = "kde4";
-    desktops["/usr/bin/startgnome"] = "gnome";
-    desktops["/usr/bin/startlxde"] = "lxde";
-    desktops["/usr/bin/startlxde"] = "lxdeaccessibility";
-    desktops["/usr/bin/startxfce4"] = "xfce4";
-    desktops["/usr/bin/startxfce4"] = "xfce4accessibility";
-    desktops["/usr/bin/startxfce"] = "xfce";
-    desktops["/usr/bin/starticewm"] = "icewm";
-    desktops["/usr/bin/enlightenment_start"] = "enlightenment17";
+    desktops["kde3"]                 = "/opt/trinity/bin/startkde";
+    desktops["kde4"]                 = "/usr/bin/startkde";
+    desktops["gnome"]                = "/usr/bin/startgnome";
+    desktops["lxde"]                 = "/usr/bin/startlxde";
+    desktops["lxdeaccessibility"]    = "/usr/bin/startlxde";
+    desktops["xfce4"]                = "/usr/bin/startxfce4";
+    desktops["xfce4accessibility"]   = "/usr/bin/startxfce4";
+    desktops["xfce"]                 = "/usr/bin/startxfce";
+    desktops["/usr/bin/starticewm"]  = "icewm";
+    desktops["enlightenment17"]      = "/usr/bin/enlightenment_start";
 
     //Create file to check if exists desktop
     QFile *desktop = new QFile();
@@ -805,9 +805,9 @@ void DesktopSelector::createDesktopButtons()
     QHashIterator<QString, QString> i(desktops);
     while (i.hasNext()) {
          i.next();
-         desktop->setFileName(QString(i.key()));
+         desktop->setFileName(QString(i.value()));
          if  (desktop->exists()) {
-                 this->createDesktopButton(new QString(i.value()), new QString("false"));
+                 this->createDesktopButton(new QString(i.key()), new QString("false"));
          }
      }
 }

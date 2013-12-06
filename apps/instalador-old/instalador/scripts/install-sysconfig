@@ -34,6 +34,8 @@ b=$(LANG=C LOCALE=C LANGUAGE=C LC_ALL=C pacman --root $DESTI -Qi | awk '/^Name/ 
 
 # esborrar paquets de livecd creation
 chroot $DESTI pacman --noconfirm -Rdd $a $b instalador
+chroot $DESTI pacman --noconfirm -Rdd heliox-ethnic-skel
+chroot $DESTI pacman --noconfirm -Rdd heliox-skel
 chroot $DESTI pacman --noconfirm -Rdd kademar-skel
 chroot $DESTI pacman --noconfirm -Rdd heliox-livecd
 

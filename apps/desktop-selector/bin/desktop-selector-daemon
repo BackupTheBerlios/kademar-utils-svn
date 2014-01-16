@@ -74,7 +74,7 @@ done
 if [ -z "$(grep -i FREE_DRIVER=1 /etc/desktop-selector/desktop-selector.ini)" ]; then
   kernel=`uname -r`
   [ -e "/usr/lib/modules/$kernel/kernel/drivers/gpu/drm/nouveau" ] && sudo mv /usr/lib/modules/$kernel/kernel/drivers/gpu/drm/nouveau /tmp 2>/dev/null
-  [ -e "/usr/lib/modules/$kernel/kernel/drivers/gpu/drm/radeon" ] && sudo mv /usr/lib/modules/$kernel/kernel/drivers/gpu/drm/radeon /tmp 2>/dev/null
+#   [ -e "/usr/lib/modules/$kernel/kernel/drivers/gpu/drm/radeon" ] && sudo mv /usr/lib/modules/$kernel/kernel/drivers/gpu/drm/radeon /tmp 2>/dev/null
 fi
 
  # Read default from /etc/default (Debian) and/or /etc/sysconfig (Knoppix)
@@ -148,7 +148,7 @@ if [ "$nox" = "false" ]; then
 	
 	  if [ -z "`grep atiDriver=true /etc/desktop-selector/desktop-selector.ini`" ]; then
 	    kernel=`ls /usr/lib/modules/ --ignore=extramodules*`
-	    [ -e /tmp/radeon ] && sudo mv /tmp/radeon /usr/lib/modules/$kernel/kernel/drivers/gpu/drm
+# 	    [ -e /tmp/radeon ] && sudo mv /tmp/radeon /usr/lib/modules/$kernel/kernel/drivers/gpu/drm
 # 	    If detected ati, load it. If not can have problems
 	    if [ -n "$(lspci | grep -i [vV][Gg][Aa] | sed s.'VGA compatible controller: '..g | sed s,'[0-9][0-9]:[0-9][0-9].[0-9]',,g | cut -d'(' -f1 | grep -i " [Aa][Tt][Ii] ")" ]; then
             sudo modprobe radeon

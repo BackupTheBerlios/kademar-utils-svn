@@ -502,13 +502,16 @@ void DesktopSelector::setupPages()
     }
     //If preconfigured FREE_DRIVER want, do not show chipset free/non-free choose frame
     if (settings.value("FREE_DRIVER").toString() != ""){
+        if (bool(settings.value("FREE_DRIVER").toBool()) == bool(true)){
+    
         //if (bool(settings.value("FREE_DRIVER").toBool()) == bool(false)){
             ui->driverFrame->setVisible(false);
             ui->displayChipetLabel->setVisible(false);
             ui->displayChipetLabel->setVisible(false);
 
             //qDebug() << "driverframe disabled FREE_DRIVER";
-        //}
+	//}
+        }
     }
     //If not display advanced configuration, hide frame
     if ((settings.value("DRIVER_ADVANCED").toString() != "")){
